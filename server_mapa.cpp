@@ -49,12 +49,12 @@ bool Mapa::hay_colisiones(uint16_t pos_x, uint16_t pos_y, int dimension_x, int d
         for (int j = pos_x; j < pos_x + dimension_x; j++){
             // Verifico que el edificio no se salga del mapa
             if (j >= this->ancho || i >= this->alto){
-                this->colisiones.push_back(std::make_tuple(j, i));
+                this->colisiones.push_back(Coordenadas(j, i));
                 colision = true;
                 continue;
             }
             if (this->mapa[i][j] != '.'){
-                this->colisiones.push_back(std::make_tuple(j, i));
+                this->colisiones.push_back(Coordenadas(j, i));
                 colision = true;
             }
         }
@@ -85,7 +85,7 @@ Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto) {
 
 bool Mapa::construir_edificio(comando_t comando){
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
-    this->colisiones = std::vector< std::tuple<int, int> >();
+    this->colisiones = std::vector< Coordenadas >();
 
     uint8_t edificio = 0;
     uint16_t pos_x = 0, pos_y = 0;
@@ -111,7 +111,7 @@ void Mapa::imprimir() {
     }
 }
 
-std::vector< std::tuple<int, int> > Mapa::ver_colisiones() {
+std::vector< Coordenadas > Mapa::ver_colisiones() {
     return this->colisiones;
 }
 

@@ -5,12 +5,14 @@
 #include <tuple>
 #include <memory>
 
+#include "common_coords.h"
+
 class Mapa {
 private:
     int ancho;
     int alto;
     std::vector< std::vector<char> > mapa;
-    std::vector< std::tuple<int, int> > colisiones;
+    std::vector< Coordenadas > colisiones;
 
     /*
      * Dado un edificio, devuelve la cantidad de casillas que ocupa y el tipo de edificio que es 
@@ -57,7 +59,7 @@ public:
     */
     void imprimir();
 
-    std::vector< std::tuple<int, int> > ver_colisiones();
+    std::vector< Coordenadas > ver_colisiones();
 
     // Destructor del mapa
     ~Mapa() = default;
