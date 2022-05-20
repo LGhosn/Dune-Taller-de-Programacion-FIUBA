@@ -53,7 +53,8 @@ bool Mapa::hay_colisiones(uint16_t pos_x, uint16_t pos_y, int dimension_x, int d
                 colision = true;
                 continue;
             }
-            if (this->mapa[i][j] != '.'){
+            // temporal hasta implementar los edificios
+            if (this->mapa[i][j] == TORRE_DE_AIRE || this->mapa[i][j] == CUARTEL || this->mapa[i][j] == SILO){
                 this->colisiones.push_back(Coordenadas(j, i));
                 colision = true;
             }
@@ -75,12 +76,17 @@ void Mapa::edificar(uint16_t pos_x, uint16_t pos_y, std::tuple<int, int, char> p
     }
 }
 
+bool Mapa::terreno_firme(uint16_t pos_x, uint16_t pos_y) {
+    return this->mapa[pos_y][pos_x] == 'R' ? true : false;
+}
+
+
 /* ******************************************************************
  *                        PUBLICAS
  * *****************************************************************/
 
 Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto) {
-    this->mapa = std::vector< std::vector<char> > (alto, std::vector<char>(ancho, '.'));
+    this->mapa = std::vector< std::vector<char> > (alto, std::vector<char>(ancho, 'A'));
 }
 
 bool Mapa::construir_edificio(comando_t comando){
@@ -95,7 +101,7 @@ bool Mapa::construir_edificio(comando_t comando){
     int dimension_x = 0, dimension_y = 0;
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades_del_edificio;
-    if (hay_colisiones(pos_x, pos_y, dimension_x, dimension_y)) {
+    if (!terreno_firme(pos_x, pos_y) || hay_colisiones(pos_x, pos_y, dimension_x, dimension_y)) {
         return false;
     }
     edificar(pos_x, pos_y, propiedades_del_edificio);
@@ -113,6 +119,10 @@ void Mapa::imprimir() {
 
 std::vector< Coordenadas > Mapa::ver_colisiones() {
     return this->colisiones;
+}
+
+void Mapa::modificar_terreno(uint16_t pos_x, uint16_t pos_y, const char terreno) {
+    this->mapa[pos_y][pos_x] = terreno;
 }
 
 Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto) {
