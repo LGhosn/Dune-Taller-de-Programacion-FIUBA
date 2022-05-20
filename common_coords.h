@@ -10,6 +10,8 @@ struct Coordenadas {
 	Coordenadas();
 
 	bool operator==(const Coordenadas& otra) const;
+	bool operator!=(const Coordenadas& otra) const;
+	bool operator<(const Coordenadas& otra) const;
 
 	Coordenadas(const Coordenadas& otra);
     Coordenadas& operator=(const Coordenadas& otra);

@@ -8,6 +8,14 @@ bool Coordenadas::operator==(const Coordenadas& otra) const {
 	return (this->x == otra.x && this->y == otra.y);
 }
 
+bool Coordenadas::operator!=(const Coordenadas& otra) const {
+	return (this->x != otra.x || this->y != otra.y);
+}
+
+bool Coordenadas::operator<(const Coordenadas& otra) const {
+	return (this->x + this->y < otra.x + otra.y);
+}
+
 Coordenadas::Coordenadas(const Coordenadas& otra) {
 	this->x = otra.x;
 	this->y = otra.y;
