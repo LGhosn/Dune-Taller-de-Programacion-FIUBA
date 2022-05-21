@@ -1,6 +1,7 @@
 #ifndef COORDS_H
 #define COORDS_H
 #include <stdint.h>
+#include <cstddef>
 
 struct Coordenadas {
 	uint16_t x;
@@ -15,6 +16,10 @@ struct Coordenadas {
 
 	Coordenadas(const Coordenadas& otra);
     Coordenadas& operator=(const Coordenadas& otra);
+};
+
+struct HashCoordenadas {
+	std::size_t operator() (const Coordenadas& pos) const noexcept;	
 };
 
 #endif
