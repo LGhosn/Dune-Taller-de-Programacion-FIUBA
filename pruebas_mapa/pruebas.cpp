@@ -25,7 +25,7 @@ TEST(Mapa, un_mapa_comienza_sin_colisiones) {
     ASSERT_EQ(colisiones.size(), 0);
 }
 
-TEST(Mapa, solo_se_puede_construir_sobre_roca) {
+TEST(Mapa, no_se_puede_construir_sobre_arena) {
     YAML::Node config = YAML::LoadFile("../config.yaml");
 
     const int ancho = config["Ancho"].as<int>();
@@ -38,15 +38,15 @@ TEST(Mapa, solo_se_puede_construir_sobre_roca) {
             mapa.modificar_terreno(j, i, config["Mapa"][i][j].as<char>());
         }
     }
+
+    const uint8_t edificio = config["Silo"]["Valor"].as<uint8_t>();
+    const uint16_t x_arena = config["Silo"]["Posicion"]["XArena"].as<uint16_t>();
+    const uint16_t y_arena = config["Silo"]["Posicion"]["YArena"].as<uint16_t>();
     
-    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(3, 0, 0)), false); // No se puede construir sobre precipicios
-    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(3, 5, 0)), false); // No se puede construir sobre arena
-    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(3, 5, 6)), false); // No se puede construir sobre dunas
-    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(3, 1, 4)), false); // No se puede construir sobre cima
-    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(3, 0, 1)), true); // Se puede construir sobre roca
+    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(edificio, x_arena, y_arena)), false); // No se puede construir sobre arena
 }
 
-TEST(Mapa, no_se_puede_construir_sobre_arena) {
+TEST(Mapa, no_se_puede_construir_sobre_precipicios) {
     YAML::Node config = YAML::LoadFile("../config.yaml");
 
     const int ancho = config["Ancho"].as<int>();
@@ -54,16 +54,147 @@ TEST(Mapa, no_se_puede_construir_sobre_arena) {
 
     Mapa mapa(ancho, alto);
 
-    EXPECT_EQ(ancho, 10);
-    EXPECT_EQ(alto, 9);
+    for (int i = 0; i < alto; i++){
+        for (int j = 0; j < ancho; j++){
+            mapa.modificar_terreno(j, i, config["Mapa"][i][j].as<char>());
+        }
+    }
 
-    std::tuple<uint8_t, uint16_t, uint16_t> edificio = std::make_tuple(0x01, 0, 0);
-    ASSERT_EQ(mapa.construir_edificio(edificio), false);
+    const uint8_t edificio = config["Silo"]["Valor"].as<uint8_t>();
+    const uint16_t x_precipicio = config["Silo"]["Posicion"]["XPrecipicio"].as<uint16_t>();
+    const uint16_t y_precipicio = config["Silo"]["Posicion"]["YPrecipicio"].as<uint16_t>();
+    
+    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(edificio, x_precipicio, y_precipicio)), false); // No se puede construir sobre precipicio
 }
 
+TEST(Mapa, no_se_puede_construir_sobre_duna) {
+    YAML::Node config = YAML::LoadFile("../config.yaml");
 
+    const int ancho = config["Ancho"].as<int>();
+    const int alto = config["Alto"].as<int>();
 
+    Mapa mapa(ancho, alto);
 
+    for (int i = 0; i < alto; i++){
+        for (int j = 0; j < ancho; j++){
+            mapa.modificar_terreno(j, i, config["Mapa"][i][j].as<char>());
+        }
+    }
+
+    const uint8_t edificio = config["Silo"]["Valor"].as<uint8_t>();
+    const uint16_t x_duna = config["Silo"]["Posicion"]["XDuna"].as<uint16_t>();
+    const uint16_t y_duna = config["Silo"]["Posicion"]["YDuna"].as<uint16_t>();
+    
+    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(edificio, x_duna, y_duna)), false); // No se puede construir sobre dunas
+}
+
+TEST(Mapa, no_se_puede_construir_sobre_cimas) {
+    YAML::Node config = YAML::LoadFile("../config.yaml");
+
+    const int ancho = config["Ancho"].as<int>();
+    const int alto = config["Alto"].as<int>();
+
+    Mapa mapa(ancho, alto);
+
+    for (int i = 0; i < alto; i++){
+        for (int j = 0; j < ancho; j++){
+            mapa.modificar_terreno(j, i, config["Mapa"][i][j].as<char>());
+        }
+    }
+
+    const uint8_t edificio = config["Silo"]["Valor"].as<uint8_t>();
+    const uint16_t x_cima = config["Silo"]["Posicion"]["XCima"].as<uint16_t>();
+    const uint16_t y_cima = config["Silo"]["Posicion"]["YCima"].as<uint16_t>();
+    
+    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(edificio, x_cima, y_cima)), false); // No se puede construir sobre cimas
+}
+
+TEST(Mapa, se_puede_construir_sobre_rocas) {
+    YAML::Node config = YAML::LoadFile("../config.yaml");
+
+    const int ancho = config["Ancho"].as<int>();
+    const int alto = config["Alto"].as<int>();
+
+    Mapa mapa(ancho, alto);
+
+    for (int i = 0; i < alto; i++){
+        for (int j = 0; j < ancho; j++){
+            mapa.modificar_terreno(j, i, config["Mapa"][i][j].as<char>());
+        }
+    }
+
+    const uint8_t edificio = config["Silo"]["Valor"].as<uint8_t>();
+    const uint16_t x_roca = config["Silo"]["Posicion"]["XRoca"].as<uint16_t>();
+    const uint16_t y_roca = config["Silo"]["Posicion"]["YRoca"].as<uint16_t>();
+    
+    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(edificio, x_roca, y_roca)), true); // Se puede construir sobre rocas
+}
+
+TEST(Mapa, no_se_puede_construir_sobre_otros_edificios) {
+    YAML::Node config = YAML::LoadFile("../config.yaml");
+
+    const int ancho = config["Ancho"].as<int>();
+    const int alto = config["Alto"].as<int>();
+
+    Mapa mapa(ancho, alto);
+
+    for (int i = 0; i < alto; i++){
+        for (int j = 0; j < ancho; j++){
+            mapa.modificar_terreno(j, i, config["Mapa"][i][j].as<char>());
+        }
+    }
+
+    const uint8_t edificio = config["Silo"]["Valor"].as<uint8_t>();
+    const uint16_t x_roca = config["Silo"]["Posicion"]["XRoca"].as<uint16_t>();
+    const uint16_t y_roca = config["Silo"]["Posicion"]["YRoca"].as<uint16_t>();
+
+    mapa.construir_edificio(std::make_tuple(edificio, x_roca, y_roca)); // Se construye un edificio sobre roca
+    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(edificio, x_roca, y_roca)), false); // No se puede construir sobre un edificio ya construido
+}
+
+TEST(Mapa, no_se_puede_edificar_a_menos_de_5_bloques) {
+    YAML::Node config = YAML::LoadFile("../config.yaml");
+
+    const int ancho = config["Ancho"].as<int>();
+    const int alto = config["Alto"].as<int>();
+
+    Mapa mapa(ancho, alto);
+
+    for (int i = 0; i < alto; i++){
+        for (int j = 0; j < ancho; j++){
+            mapa.modificar_terreno(j, i, config["Mapa"][i][j].as<char>());
+        }
+    }
+
+    const uint8_t edificio = config["Silo"]["Valor"].as<uint8_t>();
+    const uint16_t x_roca = config["Silo"]["Posicion"]["XRoca"].as<uint16_t>();
+    const uint16_t y_roca = config["Silo"]["Posicion"]["YRoca"].as<uint16_t>();
+
+    mapa.construir_edificio(std::make_tuple(edificio, x_roca, y_roca));
+    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(edificio, x_roca + 2, y_roca + 2)), false);
+}
+
+TEST(Mapa, se_puede_construir_a_mas_de_5_bloques) {
+    YAML::Node config = YAML::LoadFile("../config.yaml");
+
+    const int ancho = config["Ancho"].as<int>();
+    const int alto = config["Alto"].as<int>();
+
+    Mapa mapa(ancho, alto);
+
+    for (int i = 0; i < alto; i++){
+        for (int j = 0; j < ancho; j++){
+            mapa.modificar_terreno(j, i, config["Mapa2"][i][j].as<char>());
+        }
+    }
+
+    const uint8_t edificio = config["Silo"]["Valor"].as<uint8_t>();
+    const uint16_t x_roca = config["Silo"]["Posicion"]["XRoca"].as<uint16_t>();
+    const uint16_t y_roca = config["Silo"]["Posicion"]["YRoca"].as<uint16_t>();
+
+    mapa.construir_edificio(std::make_tuple(edificio, x_roca, y_roca));
+    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(edificio, x_roca, y_roca + 6)), true);
+}
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

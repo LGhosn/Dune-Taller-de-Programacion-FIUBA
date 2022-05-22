@@ -3,6 +3,7 @@
 
 #include "server_mapa.h"
 
+#define DISTANCIA_EDIFICIOS 5
 #define TORRE_DE_AIRE 'T'
 #define CUARTEL 'C'
 #define SILO 'S'
@@ -68,8 +69,11 @@ void Mapa::edificar(uint16_t pos_x, uint16_t pos_y, std::tuple<int, int, char> p
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades;
     if (this->colisiones.empty()){
-        for (int i = pos_y; i < pos_y + dimension_y; i++){
-            for (int j = pos_x; j < pos_x + dimension_x; j++){
+        for (int i = pos_y - DISTANCIA_EDIFICIOS; i < (pos_y + dimension_y + DISTANCIA_EDIFICIOS); i++){
+            for (int j = pos_x - DISTANCIA_EDIFICIOS; j < (pos_x + dimension_x + DISTANCIA_EDIFICIOS); j++){
+                if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || this->mapa[i][j] != 'R'){
+                    continue;
+                }
                 this->mapa[i][j] = tipo_edificio;                
             }
         }
