@@ -13,8 +13,12 @@ class Camino {
 
 	float distancia(const Coordenadas& origen, const Coordenadas& destino) const;
 
+	float calcular_costo_adicional(const Coordenadas& actual, const Coordenadas& vecino,
+    const std::unordered_map<char, float>& penalizacion_terreno) const;
+
 	void a_star(const Coordenadas& origen, const Coordenadas& destino,
-    std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas>& padres, std::vector<char>& terrenos_no_accesibles) const;
+    std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas>& padres,
+    std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const;
 
 	char get_tipo_de_terreno(const Coordenadas& pos) const;
 
@@ -30,7 +34,7 @@ public:
 	Camino(std::vector< std::vector<char> >& mapa);
 
 	std::stack<Coordenadas> obtener_camino(const Coordenadas& origen, const Coordenadas& destino,
-		std::vector<char>& terrenos_no_accesibles) const;
+		std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const;
 };
 
 #endif

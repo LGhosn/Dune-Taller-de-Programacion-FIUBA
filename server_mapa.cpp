@@ -79,9 +79,8 @@ void Mapa::edificar(uint16_t pos_x, uint16_t pos_y, std::tuple<int, int, char> p
  *                        PUBLICAS
  * *****************************************************************/
 
-Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto) {
-    this->mapa = std::vector< std::vector<char> > (alto, std::vector<char>(ancho, '.'));
-}
+Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto),
+mapa(std::vector< std::vector<char> >(alto, std::vector<char>(ancho, '.'))), camino(mapa) {}
 
 bool Mapa::construir_edificio(comando_t comando){
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
@@ -113,6 +112,10 @@ void Mapa::imprimir() {
 
 std::vector< std::tuple<int, int> > Mapa::ver_colisiones() {
     return this->colisiones;
+}
+
+std::list<std::tuple<uint8_t, char>> Mapa::obtener_camino(std::tuple<uint16_t, uint16_t> origen, std::tuple<uint16_t, uint16_t> destino) {
+    return camino.obtener_camino(origen, destino);
 }
 
 Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto) {

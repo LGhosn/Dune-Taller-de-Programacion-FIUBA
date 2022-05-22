@@ -1,4 +1,5 @@
 #include "server_camino.h"
+#include "server_camino_no_encontrado_exception.h"
 #include "gtest/gtest.h"
 #include <vector>
 #include <stack>
@@ -15,7 +16,9 @@ TEST(CaminoTest, caminoTrivial) {
 	Coordenadas origen(0,0);
 	Coordenadas destino(7,7);
 	std::vector<char> terrenos_no_accesibles;
-	std::stack<Coordenadas> camino_obtenido = camino.obtener_camino(origen, destino, terrenos_no_accesibles);
+	std::unordered_map<char, float> penalizacion_terreno;
+	std::stack<Coordenadas> camino_obtenido = camino.obtener_camino(origen, destino,
+		terrenos_no_accesibles, penalizacion_terreno);
 	std::stack<Coordenadas> camino_esperado;
 	for (int i = 7; i > 0; i--) {
 		Coordenadas actual(i,i);
@@ -45,8 +48,9 @@ TEST(CaminoTest, caminoConPrecipicio) {
 	int largo_esperado = 10;
 	std::vector<char> terrenos_no_accesibles;
 	terrenos_no_accesibles.push_back('P');
-	std::stack<Coordenadas> camino_obtenido = camino.obtener_camino(origen, destino, terrenos_no_accesibles);
-	
+	std::unordered_map<char, float> penalizacion_terreno;
+	std::stack<Coordenadas> camino_obtenido = camino.obtener_camino(origen, destino,
+		terrenos_no_accesibles, penalizacion_terreno);
 	ASSERT_EQ(camino_obtenido.size(), largo_esperado) << "El vector esperado deberia ser de largo " 
 	 << largo_esperado << " pero es de largo " << camino_obtenido.size() << std::endl;
 }
@@ -72,8 +76,44 @@ TEST(CaminoTest, caminoConZigZag) {
 	int largo_esperado = 18;
 	std::vector<char> terrenos_no_accesibles;
 	terrenos_no_accesibles.push_back('P');
-	std::stack<Coordenadas> camino_obtenido = camino.obtener_camino(origen, destino, terrenos_no_accesibles);
+	std::unordered_map<char, float> penalizacion_terreno;
+	std::stack<Coordenadas> camino_obtenido = camino.obtener_camino(origen, destino,
+		terrenos_no_accesibles, penalizacion_terreno);
 	
+	ASSERT_EQ(camino_obtenido.size(), largo_esperado) << "El vector esperado deberia ser de largo " 
+	 << largo_esperado << " pero es de largo " << camino_obtenido.size() << std::endl;
+}
+
+TEST(CaminoTest, caminoImposible) {
+	std::vector<std::vector<char>> mapa(8, std::vector<char>(8, '.'));
+	for (int i = 0; i < 8; i++) {
+		mapa[3][i] = 'P';
+	}
+	Camino camino(mapa);
+	Coordenadas origen(0,0);
+	Coordenadas destino(7,7);
+	std::vector<char> terrenos_no_accesibles;
+	terrenos_no_accesibles.push_back('P');
+	std::unordered_map<char, float> penalizacion_terreno;
+	EXPECT_THROW(camino.obtener_camino(origen, destino,
+		terrenos_no_accesibles, penalizacion_terreno), CaminoNoEncontradoException);
+}
+
+TEST(CaminoTest, caminoConDunas) {
+	std::vector<std::vector<char>> mapa(4, std::vector<char>(4, 'A'));
+	mapa[1][1] = 'D';
+	mapa[1][2] = 'D';
+	mapa[2][1] = 'D';
+	mapa[2][2] = 'D';
+	Camino camino(mapa);
+	Coordenadas origen(0,0);
+	Coordenadas destino(3,3);
+	std::vector<char> terrenos_no_accesibles;
+	std::unordered_map<char, float> penalizacion_terreno;
+	penalizacion_terreno['D'] = 2;
+	int largo_esperado = 5;
+	std::stack<Coordenadas> camino_obtenido = camino.obtener_camino(origen, destino,
+		terrenos_no_accesibles, penalizacion_terreno);
 	ASSERT_EQ(camino_obtenido.size(), largo_esperado) << "El vector esperado deberia ser de largo " 
 	 << largo_esperado << " pero es de largo " << camino_obtenido.size() << std::endl;
 }

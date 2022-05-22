@@ -11,6 +11,7 @@ private:
     int alto;
     std::vector< std::vector<char> > mapa;
     std::vector< std::tuple<int, int> > colisiones;
+    Camino camino;
 
     /*
      * Dado un edificio, devuelve la cantidad de casillas que ocupa y el tipo de edificio que es 
@@ -58,6 +59,15 @@ public:
     void imprimir();
 
     std::vector< std::tuple<int, int> > ver_colisiones();
+
+    /*
+     * Recibe la posicion de origen y destino, y devuelve una lista de pasos a tomar, en forma de tuplas. El primer valor de
+     * la tupla es la direccion en la que hay que moverse (1 = arriba, 2 = arriba-derecha, 3 = derecha, 4 = abajo-derecha,
+     * 5 = abajo, 6 = abajo-izquierda, 7 = izquierda, 8 = arriba-izquierda), mas un caracter que representa el tipo de terreno
+     * de la siguiente posicion (R = roca, A = arena, C = cima, D = duna).
+    */
+    std::list<std::tuple<uint8_t, char>> obtener_camino(std::tuple<uint8_t, uint8_t> origen, std::tuple<uint8_t, uint8_t> destino);
+
 
     // Destructor del mapa
     ~Mapa() = default;

@@ -14,8 +14,19 @@ float Camino::distancia(const Coordenadas& origen, const Coordenadas& destino) c
     return sqrt(pow(origen.x - destino.x, 2) + pow(origen.y - destino.y, 2));
 }
 
+float Camino::calcular_costo_adicional(const Coordenadas& actual, const Coordenadas& vecino,
+    const std::unordered_map<char, float>& pen_terr) const {
+    float dist = distancia(actual, vecino);
+    char terreno_actual = get_tipo_de_terreno(actual);
+    char terreno_vecino = get_tipo_de_terreno(vecino);
+    float pen_actual = pen_terr.find(terreno_actual) == pen_terr.end() ? 1 : pen_terr.at(terreno_actual);
+    float pen_vecino = pen_terr.find(terreno_vecino) == pen_terr.end() ? 1 : pen_terr.at(terreno_vecino);
+    return (dist * pen_actual) / 2 + (dist * pen_vecino) / 2;
+}
+
 void Camino::a_star(const Coordenadas& origen, const Coordenadas& destino,
-    std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas>& padres, std::vector<char>& terrenos_no_accesibles) const {
+    std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas>& padres,
+    std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const {
     std::unordered_map<Coordenadas, float, HashCoordenadas> costo;
     std::priority_queue<std::pair<float, Coordenadas>,
     std::vector<std::pair<float, Coordenadas>>, std::greater<std::pair<float, Coordenadas>>> frontera;
@@ -31,7 +42,7 @@ void Camino::a_star(const Coordenadas& origen, const Coordenadas& destino,
             break;
         std::list<Coordenadas> vecinos = this->get_vecinos(actual, terrenos_no_accesibles);
         for (const Coordenadas& vecino : vecinos) {
-            float costo_nuevo = costo[actual] + distancia(actual, vecino);
+            float costo_nuevo = costo[actual] + calcular_costo_adicional(actual, vecino, penalizacion_terreno); 
             if (costo.find(vecino) == costo.end() || costo_nuevo < costo[vecino]) {
                 costo[vecino] = costo_nuevo;
                 puntaje = costo_nuevo + this->distancia(vecino, destino);
@@ -123,8 +134,8 @@ std::stack<Coordenadas> Camino::construir_camino
 Camino::Camino(std::vector< std::vector<char> >& mapa) : mapa(mapa) {}
 
 std::stack<Coordenadas> Camino::obtener_camino(const Coordenadas& origen, const Coordenadas& destino,
-    std::vector<char>& terrenos_no_accesibles) const {
+    std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const {
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas> padres;
-    this->a_star(origen, destino, padres, terrenos_no_accesibles);
+    this->a_star(origen, destino, padres, terrenos_no_accesibles, penalizacion_terreno);
     return this->construir_camino(padres, origen, destino);
 }
