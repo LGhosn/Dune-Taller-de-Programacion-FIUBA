@@ -1,6 +1,7 @@
 #include "server_camino.h"
 #include "common_coords.h"
 #include "server_camino_no_encontrado_exception.h"
+#include "server_fuera_de_rango_exception.h"
 #include <queue>
 #include <cmath>
 #include <functional>
@@ -70,48 +71,12 @@ bool Camino::posicion_es_valida(const Coordenadas& pos, std::vector<char>& terr_
 
 std::list<Coordenadas> Camino::get_vecinos(const Coordenadas& origen,
     std::vector<char>& terrenos_no_accesibles) const {
-    Coordenadas limites(mapa[0].size(), mapa.size());
     std::list<Coordenadas> vecinos;
-
-    Coordenadas actual(origen.x, origen.y + 1);
-    if (posicion_es_valida(actual, terrenos_no_accesibles))
-        vecinos.push_back(actual);
-    
-    actual.x = origen.x + 1;
-    actual.y = origen.y + 1;
-    if (posicion_es_valida(actual, terrenos_no_accesibles))
-        vecinos.push_back(actual);
-
-    actual.x = origen.x + 1;
-    actual.y = origen.y;
-    if (posicion_es_valida(actual, terrenos_no_accesibles))
-        vecinos.push_back(actual);
-
-    actual.x = origen.x + 1;
-    actual.y = origen.y - 1;
-    if (posicion_es_valida(actual, terrenos_no_accesibles))
-        vecinos.push_back(actual);
-
-    actual.x = origen.x;
-    actual.y = origen.y - 1;
-    if (posicion_es_valida(actual, terrenos_no_accesibles))
-        vecinos.push_back(actual);
-
-    actual.x = origen.x - 1;
-    actual.y = origen.y - 1;
-    if (posicion_es_valida(actual, terrenos_no_accesibles))
-        vecinos.push_back(actual);
-
-    actual.x = origen.x - 1;
-    actual.y = origen.y;
-    if (posicion_es_valida(actual, terrenos_no_accesibles))
-        vecinos.push_back(actual);
-
-    actual.x = origen.x - 1;
-    actual.y = origen.y + 1;
-    if (posicion_es_valida(actual, terrenos_no_accesibles))
-        vecinos.push_back(actual);
-
+    for (const Coordenadas& posicion_vecina : this->vecinos_posibles) {
+        Coordenadas vecino_posible = posicion_vecina + origen;
+        if (posicion_es_valida(vecino_posible, terrenos_no_accesibles))
+            vecinos.push_back(vecino_posible);
+    }
     return vecinos;
 }
 
@@ -131,10 +96,23 @@ std::stack<Coordenadas> Camino::construir_camino
  *                        PUBLICAS
  * *****************************************************************/
 
-Camino::Camino(std::vector< std::vector<char> >& mapa) : mapa(mapa) {}
+Camino::Camino(std::vector< std::vector<char> >& mapa) : mapa(mapa) {
+    this->vecinos_posibles.push_back(Coordenadas(1, 0));
+    this->vecinos_posibles.push_back(Coordenadas(0, 1));
+    this->vecinos_posibles.push_back(Coordenadas(1, 1));
+    this->vecinos_posibles.push_back(Coordenadas(-1, 0));
+    this->vecinos_posibles.push_back(Coordenadas(-1, -1));
+    this->vecinos_posibles.push_back(Coordenadas(0, -1));
+    this->vecinos_posibles.push_back(Coordenadas(1, -1));
+    this->vecinos_posibles.push_back(Coordenadas(-1, 1));
+}
 
 std::stack<Coordenadas> Camino::obtener_camino(const Coordenadas& origen, const Coordenadas& destino,
     std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const {
+    if (!posicion_es_valida(origen, terrenos_no_accesibles) || 
+        !posicion_es_valida(destino, terrenos_no_accesibles)) {
+        throw FueraDeRangoException("La posicion de origen y/o destino no es valida");
+    }
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas> padres;
     this->a_star(origen, destino, padres, terrenos_no_accesibles, penalizacion_terreno);
     return this->construir_camino(padres, origen, destino);

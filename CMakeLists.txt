@@ -16,7 +16,7 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(camino_tests camino_tests.cpp server_camino.cpp common_coords.cpp server_camino_no_encontrado_exception.cpp)
+add_executable(camino_tests camino_tests.cpp server_camino.cpp common_coords.cpp server_camino_no_encontrado_exception.cpp server_fuera_de_rango_exception.cpp)
 
 target_link_libraries(
   camino_tests

@@ -17,6 +17,10 @@ bool Coordenadas::operator<(const Coordenadas& otra) const {
 	return (this->x != otra.x && this->y != otra.y);
 }
 
+Coordenadas Coordenadas::operator+(const Coordenadas& otra) const {
+	return Coordenadas(this->x + otra.x, this->y + otra.y);
+}
+
 Coordenadas::Coordenadas(const Coordenadas& otra) {
 	this->x = otra.x;
 	this->y = otra.y;

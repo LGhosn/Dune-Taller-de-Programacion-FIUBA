@@ -10,6 +10,7 @@
 
 class Camino {
 	std::vector< std::vector<char> >& mapa;
+	std::vector<Coordenadas> vecinos_posibles;
 
 	float distancia(const Coordenadas& origen, const Coordenadas& destino) const;
 
@@ -32,6 +33,10 @@ class Camino {
 
 public:
 	Camino(std::vector< std::vector<char> >& mapa);
+
+	/*
+	 * Recibe el origen y el destino del 
+	*/
 
 	std::stack<Coordenadas> obtener_camino(const Coordenadas& origen, const Coordenadas& destino,
 		std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const;
