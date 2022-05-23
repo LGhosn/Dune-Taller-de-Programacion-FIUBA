@@ -4,13 +4,18 @@
 #include <vector>
 #include <tuple>
 #include <memory>
+#include <stack>
+
+#include "common_coords.h"
+#include "server_camino.h"
 
 class Mapa {
 private:
     int ancho;
     int alto;
     std::vector< std::vector<char> > mapa;
-    std::vector< std::tuple<int, int> > colisiones;
+    std::vector< Coordenadas > colisiones;
+    Camino camino;
 
     /*
      * Dado un edificio, devuelve la cantidad de casillas que ocupa y el tipo de edificio que es 
@@ -35,6 +40,14 @@ private:
     */
     void edificar(uint16_t pos_x, uint16_t pos_y, std::tuple<int, int, char> propiedades_edif);
 
+    /*
+     * @brief Verifica que el terreno sea lo suficiente resistente para las construcciones
+     * @param pos_x: posicion en x de donde se quiere colocar el edificio
+     * @param pos_y: posicion en y de donde se quiere colocar el edificio 
+    */
+    bool terreno_firme(uint16_t pos_x, uint16_t pos_y);
+
+
 public:
     /*
      * Construye un mapa de ancho x alto
@@ -46,9 +59,9 @@ public:
     //Hago este typedef para no superar los 100 caracteres y que no haya problemas con cpplint
     typedef std::tuple<uint8_t, uint16_t, uint16_t> comando_t;
     /*
-     * Coloca un edificio en el mapa en caso de ser posible
-     *@param comando una tupla conformada por el edificio(uint8_t), la coordenada x(uint16_t) y la coordenada y(uint16_t)
-     *@return un vector de tuplas con las coordenadas en las que se colisiono, si no hubo colision devuelve un vector vacio
+     * @brief Coloca un edificio en el mapa en caso de ser posible
+     * @param comando una tupla conformada por el edificio(uint8_t), la coordenada x(uint16_t) y la coordenada y(uint16_t)
+     * @return un booleano indicando si se pudo construir o no.
      */
     bool construir_edificio(comando_t comando);
 
@@ -57,7 +70,26 @@ public:
     */
     void imprimir();
 
-    std::vector< std::tuple<int, int> > ver_colisiones();
+    std::vector< Coordenadas > ver_colisiones();
+
+    void modificar_terreno(uint16_t pos_x, uint16_t pos_y, char terreno);
+
+
+    /*
+     * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.
+     * @param origen: origen del camino a crear.
+     * @param destino: destino del camino a crear.
+     * @param terrenos_no_accesibles: vector con los terrenos (en forma de char) por los que no se puede pasar.
+     * @param penalizacion_terreno: diccionario con la penalizacion de terrenos.
+     * @return vector de coordenadas con las posiciones del camino en orden, desde el origen (sin incluir) hasta el destino.
+     * No hace falta incluir todos los terrenos en penalizacion_terreno.
+     * En caso de que no pueda encontrar un camino, se lanzara una excepcion de tipo CaminoNoEncontradoException. Si las
+     * coordenadas de origen y/o destino no son validas o estan en un terreno no accesible, lanzara una FueraDeRangoException.
+    */
+    std::stack<Coordenadas> obtener_camino(const Coordenadas& origen,
+        const Coordenadas& destino, std::vector<char>& terrenos_no_accesibles,
+        const std::unordered_map<char, float>& penalizacion_terreno) const;
+
 
     // Destructor del mapa
     ~Mapa() = default;
