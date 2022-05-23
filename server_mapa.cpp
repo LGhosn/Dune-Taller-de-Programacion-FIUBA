@@ -3,6 +3,7 @@
 
 #include "server_mapa.h"
 
+#define DISTANCIA_EDIFICIOS 5
 #define TORRE_DE_AIRE 'T'
 #define CUARTEL 'C'
 #define SILO 'S'
@@ -49,12 +50,13 @@ bool Mapa::hay_colisiones(uint16_t pos_x, uint16_t pos_y, int dimension_x, int d
         for (int j = pos_x; j < pos_x + dimension_x; j++){
             // Verifico que el edificio no se salga del mapa
             if (j >= this->ancho || i >= this->alto){
-                this->colisiones.push_back(std::make_tuple(j, i));
+                this->colisiones.push_back(Coordenadas(j, i));
                 colision = true;
                 continue;
             }
-            if (this->mapa[i][j] != '.'){
-                this->colisiones.push_back(std::make_tuple(j, i));
+            // temporal hasta implementar los edificios
+            if (this->mapa[i][j] == TORRE_DE_AIRE || this->mapa[i][j] == CUARTEL || this->mapa[i][j] == SILO){
+                this->colisiones.push_back(Coordenadas(j, i));
                 colision = true;
             }
         }
@@ -67,24 +69,32 @@ void Mapa::edificar(uint16_t pos_x, uint16_t pos_y, std::tuple<int, int, char> p
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades;
     if (this->colisiones.empty()){
-        for (int i = pos_y; i < pos_y + dimension_y; i++){
-            for (int j = pos_x; j < pos_x + dimension_x; j++){
+        for (int i = pos_y - DISTANCIA_EDIFICIOS; i < (pos_y + dimension_y + DISTANCIA_EDIFICIOS); i++){
+            for (int j = pos_x - DISTANCIA_EDIFICIOS; j < (pos_x + dimension_x + DISTANCIA_EDIFICIOS); j++){
+                if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || this->mapa[i][j] != 'R'){
+                    continue;
+                }
                 this->mapa[i][j] = tipo_edificio;                
             }
         }
     }
 }
 
+bool Mapa::terreno_firme(uint16_t pos_x, uint16_t pos_y) {
+    return this->mapa[pos_y][pos_x] == 'R' ? true : false;
+}
+
+
 /* ******************************************************************
  *                        PUBLICAS
  * *****************************************************************/
 
 Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto),
-mapa(std::vector< std::vector<char> >(alto, std::vector<char>(ancho, '.'))), camino(mapa) {}
+mapa(std::vector< std::vector<char> > (alto, std::vector<char>(ancho, 'A'))), camino(mapa) {}
 
 bool Mapa::construir_edificio(comando_t comando){
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
-    this->colisiones = std::vector< std::tuple<int, int> >();
+    this->colisiones = std::vector< Coordenadas >();
 
     uint8_t edificio = 0;
     uint16_t pos_x = 0, pos_y = 0;
@@ -94,7 +104,7 @@ bool Mapa::construir_edificio(comando_t comando){
     int dimension_x = 0, dimension_y = 0;
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades_del_edificio;
-    if (hay_colisiones(pos_x, pos_y, dimension_x, dimension_y)) {
+    if (!terreno_firme(pos_x, pos_y) || hay_colisiones(pos_x, pos_y, dimension_x, dimension_y)) {
         return false;
     }
     edificar(pos_x, pos_y, propiedades_del_edificio);
@@ -110,16 +120,21 @@ void Mapa::imprimir() {
     }
 }
 
-std::vector< std::tuple<int, int> > Mapa::ver_colisiones() {
+std::vector< Coordenadas > Mapa::ver_colisiones() {
     return this->colisiones;
 }
 
-std::list<std::tuple<uint8_t, char>> Mapa::obtener_camino(std::tuple<uint16_t, uint16_t> origen, std::tuple<uint16_t, uint16_t> destino) {
-    return camino.obtener_camino(origen, destino);
+void Mapa::modificar_terreno(uint16_t pos_x, uint16_t pos_y, const char terreno) {
+    this->mapa[pos_y][pos_x] = terreno;
 }
 
-Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto) {
-    this->mapa = otro.mapa;
+std::stack<Coordenadas> Mapa::obtener_camino(const Coordenadas& origen,
+        const Coordenadas& destino, std::vector<char>& terrenos_no_accesibles,
+        const std::unordered_map<char, float>& penalizacion_terreno) const {
+    return this->camino.obtener_camino(origen, destino, terrenos_no_accesibles, penalizacion_terreno);
+}
+
+Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), mapa(otro.mapa), camino(mapa) {
     otro.mapa = std::vector< std::vector<char> > (otro.alto);
 }
 
@@ -133,6 +148,7 @@ Mapa& Mapa::operator=(Mapa&& mapa){
     this->ancho = mapa.ancho;
     this->alto = mapa.alto;
     this->mapa = mapa.mapa;
+    this->camino = Camino(this->mapa);
 
     // Limpio el otro mapa.
     mapa.alto = -1;

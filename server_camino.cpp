@@ -97,14 +97,15 @@ std::stack<Coordenadas> Camino::construir_camino
  * *****************************************************************/
 
 Camino::Camino(std::vector< std::vector<char> >& mapa) : mapa(mapa) {
-    this->vecinos_posibles.push_back(Coordenadas(1, 0));
-    this->vecinos_posibles.push_back(Coordenadas(0, 1));
-    this->vecinos_posibles.push_back(Coordenadas(1, 1));
-    this->vecinos_posibles.push_back(Coordenadas(-1, 0));
-    this->vecinos_posibles.push_back(Coordenadas(-1, -1));
-    this->vecinos_posibles.push_back(Coordenadas(0, -1));
-    this->vecinos_posibles.push_back(Coordenadas(1, -1));
-    this->vecinos_posibles.push_back(Coordenadas(-1, 1));
+    this->vecinos_posibles.reserve(8);
+    this->vecinos_posibles.emplace_back(1, 0);
+    this->vecinos_posibles.emplace_back(0, 1);
+    this->vecinos_posibles.emplace_back(1, 1);
+    this->vecinos_posibles.emplace_back(-1, 1);
+    this->vecinos_posibles.emplace_back(-1, -1);
+    this->vecinos_posibles.emplace_back(1, -1);
+    this->vecinos_posibles.emplace_back(-1, 0);
+    this->vecinos_posibles.emplace_back(0, -1);
 }
 
 std::stack<Coordenadas> Camino::obtener_camino(const Coordenadas& origen, const Coordenadas& destino,
@@ -116,4 +117,11 @@ std::stack<Coordenadas> Camino::obtener_camino(const Coordenadas& origen, const 
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas> padres;
     this->a_star(origen, destino, padres, terrenos_no_accesibles, penalizacion_terreno);
     return this->construir_camino(padres, origen, destino);
+}
+
+Camino::Camino(const Camino& otro) : mapa(otro.mapa) {}
+
+Camino& Camino::operator=(const Camino& otro) {
+    this->mapa = otro.mapa;
+    return *this;
 }

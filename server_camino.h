@@ -40,6 +40,9 @@ public:
 
 	std::stack<Coordenadas> obtener_camino(const Coordenadas& origen, const Coordenadas& destino,
 		std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const;
+
+	Camino(const Camino&);
+    Camino& operator=(const Camino&);
 };
 
 #endif
