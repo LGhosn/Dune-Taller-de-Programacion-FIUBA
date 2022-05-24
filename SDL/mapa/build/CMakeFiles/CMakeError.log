@@ -1,0 +1,76 @@
+Performing C++ SOURCE FILE Test SDL2PP_WITH_EXPERIMENTAL_OPTIONAL failed with the following output:
+Change Dir: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7e335/fast && /usr/bin/make -f CMakeFiles/cmTC_7e335.dir/build.make CMakeFiles/cmTC_7e335.dir/build
+make[1]: Entering directory '/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_7e335.dir/src.cxx.o
+/usr/bin/c++    -Werror -Wall -pedantic -std=c++17 -ggdb -std=c++11 -DSDL2PP_WITH_EXPERIMENTAL_OPTIONAL   -o CMakeFiles/cmTC_7e335.dir/src.cxx.o -c "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx"
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx: In function ‘int main()’:
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx:2:19: error: ‘std::experimental’ has not been declared
+    2 | int main() { std::experimental::optional<int> o; return !o; }
+      |                   ^~~~~~~~~~~~
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx:2:42: error: expected primary-expression before ‘int’
+    2 | int main() { std::experimental::optional<int> o; return !o; }
+      |                                          ^~~
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx:2:58: error: ‘o’ was not declared in this scope
+    2 | int main() { std::experimental::optional<int> o; return !o; }
+      |                                                          ^
+make[1]: *** [CMakeFiles/cmTC_7e335.dir/build.make:66: CMakeFiles/cmTC_7e335.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_7e335/fast] Error 2
+
+
+Source file was:
+#include <experimental/optional>
+int main() { std::experimental::optional<int> o; return !o; }
+Performing C++ SOURCE FILE Test COMPILER_HAS_DEPRECATED_ATTR failed with the following output:
+Change Dir: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_93952/fast && /usr/bin/make -f CMakeFiles/cmTC_93952.dir/build.make CMakeFiles/cmTC_93952.dir/build
+make[1]: Entering directory '/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_93952.dir/src.cxx.o
+/usr/bin/c++    -Werror -Wall -pedantic -std=c++17 -ggdb -std=c++11  -Wall -Wextra -pedantic -DCOMPILER_HAS_DEPRECATED_ATTR   -o CMakeFiles/cmTC_93952.dir/src.cxx.o -c "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx"
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx: In function ‘int main()’:
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx:2:34: error: ‘int somefunc()’ is deprecated [-Werror=deprecated-declarations]
+    2 |     int main() { return somefunc();}
+      |                                  ^
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx:1:37: note: declared here
+    1 | __attribute__((__deprecated__)) int somefunc() { return 0; }
+      |                                     ^~~~~~~~
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx:2:34: error: ‘int somefunc()’ is deprecated [-Werror=deprecated-declarations]
+    2 |     int main() { return somefunc();}
+      |                                  ^
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx:1:37: note: declared here
+    1 | __attribute__((__deprecated__)) int somefunc() { return 0; }
+      |                                     ^~~~~~~~
+cc1plus: all warnings being treated as errors
+make[1]: *** [CMakeFiles/cmTC_93952.dir/build.make:66: CMakeFiles/cmTC_93952.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_93952/fast] Error 2
+
+
+Source file was:
+__attribute__((__deprecated__)) int somefunc() { return 0; }
+    int main() { return somefunc();}
+Performing C++ SOURCE FILE Test COMPILER_HAS_DEPRECATED failed with the following output:
+Change Dir: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ea5d8/fast && /usr/bin/make -f CMakeFiles/cmTC_ea5d8.dir/build.make CMakeFiles/cmTC_ea5d8.dir/build
+make[1]: Entering directory '/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ea5d8.dir/src.cxx.o
+/usr/bin/c++    -Werror -Wall -pedantic -std=c++17 -ggdb -std=c++11  -Wall -Wextra -pedantic -DCOMPILER_HAS_DEPRECATED   -o CMakeFiles/cmTC_ea5d8.dir/src.cxx.o -c "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx"
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx:1:11: error: expected constructor, destructor, or type conversion before ‘(’ token
+    1 | __declspec(deprecated) int somefunc() { return 0; }
+      |           ^
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx: In function ‘int main()’:
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp/src.cxx:2:25: error: ‘somefunc’ was not declared in this scope
+    2 |     int main() { return somefunc();}
+      |                         ^~~~~~~~
+make[1]: *** [CMakeFiles/cmTC_ea5d8.dir/build.make:66: CMakeFiles/cmTC_ea5d8.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_ea5d8/fast] Error 2
+
+
+Source file was:
+__declspec(deprecated) int somefunc() { return 0; }
+    int main() { return somefunc();}

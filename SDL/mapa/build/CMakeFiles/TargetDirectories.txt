@@ -1,0 +1,6 @@
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/rebuild_cache.dir
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/edit_cache.dir
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/CMakeFiles/mapa_test.dir
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/SDL2pp/build/CMakeFiles/rebuild_cache.dir
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/SDL2pp/build/CMakeFiles/edit_cache.dir
+/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/SDL/mapa/build/SDL2pp/build/CMakeFiles/SDL2pp.dir
