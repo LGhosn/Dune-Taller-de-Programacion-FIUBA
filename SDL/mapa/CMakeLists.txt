@@ -13,8 +13,5 @@ add_definitions(-DRESOURCE_PATH="${PROJECT_SOURCE_DIR}/../resources")
 
 include_directories(${SDL2PP_INCLUDE_DIRS})
 
-add_executable(mapa_test sdl_mapa_main.cpp sdl_animation.cpp sdl_sandworm.cpp)
-target_link_libraries(mapa_test ${SDL2PP_LIBRARIES})
-
 add_executable(mapa sdl_main.cpp sdl_mapa.cpp sdl_game_loop.cpp)
 target_link_libraries(mapa ${SDL2PP_LIBRARIES})

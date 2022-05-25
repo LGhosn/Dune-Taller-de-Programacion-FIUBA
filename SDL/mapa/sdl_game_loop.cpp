@@ -27,35 +27,33 @@ bool GameLoop::handleEvents() {
 }
 
 void GameLoop::handleKeyDown(SDL_KeyboardEvent& keyEvent) {
-	switch (keyEvent.keysym.sym) {
-		case SDLK_LEFT:
-			this->mapa.moverIzquierda();
-			break;
-		case SDLK_RIGHT:
-			this->mapa.moverDerecha();
-			break;
-		case SDLK_UP:
-			this->mapa.moverArriba();
-			break;
-		case SDLK_DOWN:
-			this->mapa.moverAbajo();
-			break;
+	const Uint8* keyboardState = SDL_GetKeyboardState(nullptr);
+	if (keyboardState[SDL_SCANCODE_UP]) {
+		this->mapa.moverArriba();
+	} else if (keyboardState[SDL_SCANCODE_DOWN]) {
+		this->mapa.moverAbajo();
+	}
+
+	if (keyboardState[SDL_SCANCODE_LEFT]) {
+		this->mapa.moverIzquierda();
+	} else if (keyboardState[SDL_SCANCODE_RIGHT]) {
+		this->mapa.moverDerecha();
 	}
 }
 
 void GameLoop::handleKeyUp(SDL_KeyboardEvent& keyEvent) {
 	switch (keyEvent.keysym.sym) {
 		case SDLK_LEFT:
-			this->mapa.dejarDeMoverse();
+			this->mapa.dejarDeMoverseHorizontalmente();
 			break;
 		case SDLK_RIGHT:
-			this->mapa.dejarDeMoverse();
+			this->mapa.dejarDeMoverseHorizontalmente();
 			break;
 		case SDLK_UP:
-			this->mapa.dejarDeMoverse();
+			this->mapa.dejarDeMoverseVerticalmente();
 			break;
 		case SDLK_DOWN:
-			this->mapa.dejarDeMoverse();
+			this->mapa.dejarDeMoverseVerticalmente();
 			break;
 	}
 }

@@ -7,6 +7,11 @@
 #define ANCHO_EN_PANTALLA 640
 #define LARGO_EN_PANTALLA 640
 
+#define ANCHO_VENTANA 700
+#define LARGO_VENTANA 700
+
+#define PADDING 200
+
 #define ARRIBA 'A'
 #define IZQUIERDA 'I'
 #define ABAJO 'B'
@@ -20,8 +25,10 @@ class MapaSDL {
 	SDL2pp::Texture& textura;
 	int pos_x;
 	int pos_y;
-	bool moviendose;
-	char direccion;
+	bool moviendose_h;
+	bool moviendose_v;
+	char direccion_h;
+	char direccion_v;
 	float tiempo;
 
 	bool posicion_en_limite() const;
@@ -33,7 +40,11 @@ public:
 	void moverIzquierda();
 	void moverAbajo();
 	void moverDerecha();
-	void dejarDeMoverse();
+	void dejarDeMoverseHorizontalmente();
+	void dejarDeMoverseVerticalmente();
+
+	int obtener_offset_x() const;
+	int obtener_offset_y() const;
 
 	void update(float tiempo_transcurrido);
 	void render(SDL2pp::Renderer& renderer);

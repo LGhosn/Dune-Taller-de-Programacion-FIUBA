@@ -14,6 +14,7 @@ int main() {
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			700, 700,
 			SDL_WINDOW_RESIZABLE);
+
 	SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
 	SDL2pp::Texture textura(renderer, RESOURCE_PATH "/maps/ejemplo.png");
 	MapaSDL mapa(textura);

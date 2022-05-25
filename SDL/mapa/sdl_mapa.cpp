@@ -2,98 +2,115 @@
 
 MapaSDL::MapaSDL(SDL2pp::Texture& textura) : textura(textura),
 pos_x((textura.GetWidth() - ANCHO_EN_PANTALLA) / 2), pos_y((textura.GetHeight() - ANCHO_EN_PANTALLA) / 2),
-moviendose(false), direccion(ARRIBA), tiempo(0.0f) {}
+moviendose_h(false), moviendose_v(false), direccion_h(ARRIBA), direccion_v(IZQUIERDA), tiempo(0.0f) {}
 
 void MapaSDL::moverArriba() {
-	if (pos_y > 0) {
-		this->direccion = ARRIBA;
-		this->moviendose = true;
+	if (pos_y > 0 - PADDING && !this->moviendose_v) {
+		this->direccion_v = ARRIBA;
+		this->moviendose_v = true;
 	}
 }
 
 void MapaSDL::moverIzquierda() {
-	if (pos_x > 0) {
-		this->direccion = IZQUIERDA;
-		this->moviendose = true;
+	if (pos_x > 0 - PADDING && !this->moviendose_h) {
+		this->direccion_h = IZQUIERDA;
+		this->moviendose_h = true;
 	}
 }
 
 void MapaSDL::moverAbajo() {
-	if (pos_y < this->textura.GetHeight() - LARGO_EN_PANTALLA) {
-		this->direccion = ABAJO;
-		this->moviendose = true;
+	if (pos_y < this->textura.GetHeight() - LARGO_EN_PANTALLA + PADDING && !this->moviendose_v) {
+		this->direccion_v = ABAJO;
+		this->moviendose_v = true;
 	}
 }
 
 void MapaSDL::moverDerecha() {
-	if (pos_x < this->textura.GetWidth() - ANCHO_EN_PANTALLA) {
-		this->direccion = DERECHA;
-		this->moviendose = true;
+	if (pos_x < this->textura.GetWidth() - ANCHO_EN_PANTALLA + PADDING && !this->moviendose_h) {
+		this->direccion_h = DERECHA;
+		this->moviendose_h = true;
 	}
 }
 
-void MapaSDL::dejarDeMoverse() {
-	this->moviendose = false;
+void MapaSDL::dejarDeMoverseHorizontalmente() {
+	this->moviendose_h = false;
+}
+
+void MapaSDL::dejarDeMoverseVerticalmente() {
+	this->moviendose_v = false;
+}
+
+int MapaSDL::obtener_offset_x() const {
+	return this->pos_x;
+}
+
+int MapaSDL::obtener_offset_y() const {
+	return this->pos_y;
 }
 
 void MapaSDL::update(float tiempo_transcurrido) {
-	if (moviendose) {
-		switch(this->direccion) {
-			case ARRIBA:
-				if (this->pos_y > 0) {
-					this->tiempo += tiempo_transcurrido;
-					while(this->tiempo >= FRAME_RATE) {
-						pos_y -= PASO;
-						this->tiempo -= FRAME_RATE;
-						if (this->pos_y < 0) {
-							pos_y = 0;
-							this->tiempo = 0.0f;
-							this->moviendose = false;
-							break;
-						}
-					}
-				}
-				break;
+	if (this->moviendose_h) {
+		switch(this->direccion_h) {
 			case IZQUIERDA:
-				if (this->pos_x > 0) {
+				if (this->pos_x > 0 - PADDING) {
 					this->tiempo += tiempo_transcurrido;
 					while(this->tiempo >= FRAME_RATE) {
 						pos_x -= PASO;
 						this->tiempo -= FRAME_RATE;
-						if (this->pos_x < 0) {
-							pos_x = 0;
+						if (this->pos_x < 0 - PADDING) {
+							pos_x = 0 - PADDING;
 							this->tiempo = 0.0f;
-							this->moviendose = false;
-							break;
-						}
-					}
-				}
-				break;
-			case ABAJO:
-				if (this->pos_y < this->textura.GetHeight() - LARGO_EN_PANTALLA) {
-					this->tiempo += tiempo_transcurrido;
-					while(this->tiempo >= FRAME_RATE) {
-						pos_y += PASO;
-						this->tiempo -= FRAME_RATE;
-						if (this->pos_y > this->textura.GetHeight() - LARGO_EN_PANTALLA) {
-							pos_y = this->textura.GetHeight() - LARGO_EN_PANTALLA;
-							this->tiempo = 0.0f;
-							this->moviendose = false;
+							this->moviendose_h = false;
 							break;
 						}
 					}
 				}
 				break;
 			case DERECHA:
-				if (this->pos_x < this->textura.GetWidth() - ANCHO_EN_PANTALLA) {
+				if (this->pos_x < this->textura.GetWidth() - ANCHO_EN_PANTALLA + PADDING) {
 					this->tiempo += tiempo_transcurrido;
 					while(this->tiempo >= FRAME_RATE) {
 						pos_x += PASO;
 						this->tiempo -= FRAME_RATE;
-						if (this->pos_x > this->textura.GetWidth() - ANCHO_EN_PANTALLA) {
-							pos_x = this->textura.GetWidth() - ANCHO_EN_PANTALLA;
+						if (this->pos_x > this->textura.GetWidth() - ANCHO_EN_PANTALLA + PADDING) {
+							pos_x = this->textura.GetWidth() - ANCHO_EN_PANTALLA + PADDING;
 							this->tiempo = 0.0f;
-							this->moviendose = false;
+							this->moviendose_h = false;
+							break;
+						}
+					}
+				}
+				break;
+		}
+	}
+
+	if (this->moviendose_v) {
+		switch(this->direccion_v) {
+			case ARRIBA:
+				if (this->pos_y > 0 - PADDING) {
+					this->tiempo += tiempo_transcurrido;
+					while(this->tiempo >= FRAME_RATE) {
+						pos_y -= PASO;
+						this->tiempo -= FRAME_RATE;
+						if (this->pos_y < 0 - PADDING) {
+							pos_y = 0 - PADDING;
+							this->tiempo = 0.0f;
+							this->moviendose_v = false;
+							break;
+						}
+					}
+				}
+				break;
+			case ABAJO:
+				if (this->pos_y < this->textura.GetHeight() - LARGO_EN_PANTALLA + PADDING) {
+					this->tiempo += tiempo_transcurrido;
+					while(this->tiempo >= FRAME_RATE) {
+						pos_y += PASO;
+						this->tiempo -= FRAME_RATE;
+						if (this->pos_y > this->textura.GetHeight() - LARGO_EN_PANTALLA + PADDING) {
+							pos_y = this->textura.GetHeight() - LARGO_EN_PANTALLA + PADDING;
+							this->tiempo = 0.0f;
+							this->moviendose_v = false;
 							break;
 						}
 					}
@@ -104,11 +121,33 @@ void MapaSDL::update(float tiempo_transcurrido) {
 }
 
 void MapaSDL::render(SDL2pp::Renderer& renderer) {
+	int pos_x_pantalla, pos_y_pantalla;
+	int tam_x_pantalla, tam_y_pantalla;
+	if (this->pos_x < 0) {
+		pos_x_pantalla = - this->pos_x;
+		tam_x_pantalla = ANCHO_VENTANA - pos_x_pantalla;
+	} else if (this->pos_x > this->textura.GetWidth() - ANCHO_EN_PANTALLA) {
+		pos_x_pantalla = 0;
+		tam_x_pantalla = ANCHO_VENTANA - (pos_x - (this->textura.GetWidth() - ANCHO_EN_PANTALLA));
+	} else {
+		pos_x_pantalla = 0;
+		tam_x_pantalla = ANCHO_VENTANA;
+	}
+	if (this->pos_y < 0) {
+		pos_y_pantalla = - this->pos_y;
+		tam_y_pantalla = LARGO_VENTANA - pos_y_pantalla;
+	} else if (this->pos_y > this->textura.GetHeight() - LARGO_EN_PANTALLA) {
+		pos_y_pantalla = 0;
+		tam_y_pantalla = LARGO_VENTANA - (pos_y - (this->textura.GetHeight() - LARGO_EN_PANTALLA));
+	} else {
+		pos_y_pantalla = 0;
+		tam_y_pantalla = LARGO_VENTANA;
+	}
 	renderer.Copy(this->textura,
 		SDL2pp::Rect(
 			this->pos_x,
 			this->pos_y,
 			ANCHO_EN_PANTALLA,
 			LARGO_EN_PANTALLA),
-		SDL2pp::Rect(0,0,700,700));
+		SDL2pp::Rect(pos_x_pantalla, pos_y_pantalla, tam_x_pantalla, tam_y_pantalla));
 }
