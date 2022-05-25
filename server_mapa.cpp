@@ -84,7 +84,6 @@ bool Mapa::terreno_firme(uint16_t pos_x, uint16_t pos_y) {
     return this->mapa[pos_y][pos_x] == 'R' ? true : false;
 }
 
-
 /* ******************************************************************
  *                        PUBLICAS
  * *****************************************************************/
@@ -126,6 +125,20 @@ std::vector< Coordenadas > Mapa::ver_colisiones() {
 
 void Mapa::modificar_terreno(uint16_t pos_x, uint16_t pos_y, const char terreno) {
     this->mapa[pos_y][pos_x] = terreno;
+}
+
+void Mapa::demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y) {
+    int dimension_x = 0, dimension_y = 0;
+    char tipo_edificio = 0;
+    std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades_edificio(edificio);
+    for (int i = pos_y - DISTANCIA_EDIFICIOS; i < (pos_y + dimension_y + DISTANCIA_EDIFICIOS); i++){
+        for (int j = pos_x - DISTANCIA_EDIFICIOS; j < (pos_x + dimension_x + DISTANCIA_EDIFICIOS); j++){
+            if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || this->mapa[i][j] != tipo_edificio){
+                continue;
+            }
+            this->mapa[i][j] = 'R';                
+        }
+    }
 }
 
 std::stack<Coordenadas> Mapa::obtener_camino(const Coordenadas& origen,
