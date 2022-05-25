@@ -7,7 +7,10 @@
 #define ANCHO_EN_PANTALLA 640
 #define LARGO_EN_PANTALLA 640
 
-#define ZOOM 1.3f
+#define ZOOM_INICIAL 1.3f
+#define ZOOM_INCR 0.1f
+#define ZOOM_MIN 1.0f
+#define ZOOM_MAX 2.0f
 
 #define ANCHO_VENTANA 700
 #define LARGO_VENTANA 700
@@ -32,8 +35,7 @@ class MapaSDL {
 	char direccion_h;
 	char direccion_v;
 	float tiempo;
-
-	bool posicion_en_limite() const;
+	float zoom;
 
 public:
 	explicit MapaSDL(SDL2pp::Texture& textura);
@@ -44,6 +46,9 @@ public:
 	void moverDerecha();
 	void dejarDeMoverseHorizontalmente();
 	void dejarDeMoverseVerticalmente();
+
+	void zoomIn();
+	void zoomOut();
 
 	int obtener_offset_x() const;
 	int obtener_offset_y() const;

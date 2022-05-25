@@ -19,6 +19,11 @@ bool GameLoop::handleEvents() {
 				this->handleKeyUp(keyEvent);
 			}
 			break;
+			case SDL_MOUSEWHEEL: {
+				SDL_MouseWheelEvent& mWheelEvent = (SDL_MouseWheelEvent&) event;
+				this->handleMouseWheel(mWheelEvent);
+			}
+			break;
 			case SDL_QUIT:
 				return false;
 		}
@@ -55,6 +60,14 @@ void GameLoop::handleKeyUp(SDL_KeyboardEvent& keyEvent) {
 		case SDLK_DOWN:
 			this->mapa.dejarDeMoverseVerticalmente();
 			break;
+	}
+}
+
+void GameLoop::handleMouseWheel(SDL_MouseWheelEvent& mWheelEvent) {
+	if (mWheelEvent.y > 0) {
+		this->mapa.zoomIn();
+	} else if (mWheelEvent.y < 0) {
+		this->mapa.zoomOut();
 	}
 }
 

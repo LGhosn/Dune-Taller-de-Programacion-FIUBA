@@ -16,6 +16,8 @@ class GameLoop {
 
 	void handleKeyUp(SDL_KeyboardEvent& keyEvent);
 
+	void handleMouseWheel(SDL_MouseWheelEvent& mWheelEvent);
+
 	void update(float tiempo_transcurrido);
 
 	void render();
