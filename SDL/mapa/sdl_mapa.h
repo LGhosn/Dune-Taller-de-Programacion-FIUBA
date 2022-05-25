@@ -7,6 +7,8 @@
 #define ANCHO_EN_PANTALLA 640
 #define LARGO_EN_PANTALLA 640
 
+#define ZOOM 1.3f
+
 #define ANCHO_VENTANA 700
 #define LARGO_VENTANA 700
 

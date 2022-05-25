@@ -1,7 +1,7 @@
 #include "sdl_mapa.h"
 
 MapaSDL::MapaSDL(SDL2pp::Texture& textura) : textura(textura),
-pos_x((textura.GetWidth() - ANCHO_EN_PANTALLA) / 2), pos_y((textura.GetHeight() - ANCHO_EN_PANTALLA) / 2),
+pos_x((textura.GetWidth() - ANCHO_VENTANA / ZOOM) / 2), pos_y((textura.GetHeight() - LARGO_VENTANA / ZOOM) / 2),
 moviendose_h(false), moviendose_v(false), direccion_h(ARRIBA), direccion_v(IZQUIERDA), tiempo(0.0f) {}
 
 void MapaSDL::moverArriba() {
@@ -19,14 +19,14 @@ void MapaSDL::moverIzquierda() {
 }
 
 void MapaSDL::moverAbajo() {
-	if (pos_y < this->textura.GetHeight() - LARGO_EN_PANTALLA + PADDING && !this->moviendose_v) {
+	if (pos_y < this->textura.GetHeight() - LARGO_VENTANA / ZOOM + PADDING && !this->moviendose_v) {
 		this->direccion_v = ABAJO;
 		this->moviendose_v = true;
 	}
 }
 
 void MapaSDL::moverDerecha() {
-	if (pos_x < this->textura.GetWidth() - ANCHO_EN_PANTALLA + PADDING && !this->moviendose_h) {
+	if (pos_x < this->textura.GetWidth() - ANCHO_VENTANA / ZOOM + PADDING && !this->moviendose_h) {
 		this->direccion_h = DERECHA;
 		this->moviendose_h = true;
 	}
@@ -67,13 +67,13 @@ void MapaSDL::update(float tiempo_transcurrido) {
 				}
 				break;
 			case DERECHA:
-				if (this->pos_x < this->textura.GetWidth() - ANCHO_EN_PANTALLA + PADDING) {
+				if (this->pos_x < this->textura.GetWidth() - ANCHO_VENTANA / ZOOM + PADDING) {
 					this->tiempo += tiempo_transcurrido;
 					while(this->tiempo >= FRAME_RATE) {
 						pos_x += PASO;
 						this->tiempo -= FRAME_RATE;
-						if (this->pos_x > this->textura.GetWidth() - ANCHO_EN_PANTALLA + PADDING) {
-							pos_x = this->textura.GetWidth() - ANCHO_EN_PANTALLA + PADDING;
+						if (this->pos_x > this->textura.GetWidth() - ANCHO_VENTANA / ZOOM + PADDING) {
+							pos_x = this->textura.GetWidth() - ANCHO_VENTANA / ZOOM + PADDING;
 							this->tiempo = 0.0f;
 							this->moviendose_h = false;
 							break;
@@ -102,13 +102,13 @@ void MapaSDL::update(float tiempo_transcurrido) {
 				}
 				break;
 			case ABAJO:
-				if (this->pos_y < this->textura.GetHeight() - LARGO_EN_PANTALLA + PADDING) {
+				if (this->pos_y < this->textura.GetHeight() - LARGO_VENTANA / ZOOM + PADDING) {
 					this->tiempo += tiempo_transcurrido;
 					while(this->tiempo >= FRAME_RATE) {
 						pos_y += PASO;
 						this->tiempo -= FRAME_RATE;
-						if (this->pos_y > this->textura.GetHeight() - LARGO_EN_PANTALLA + PADDING) {
-							pos_y = this->textura.GetHeight() - LARGO_EN_PANTALLA + PADDING;
+						if (this->pos_y > this->textura.GetHeight() - LARGO_VENTANA / ZOOM + PADDING) {
+							pos_y = this->textura.GetHeight() - LARGO_VENTANA / ZOOM + PADDING;
 							this->tiempo = 0.0f;
 							this->moviendose_v = false;
 							break;
@@ -126,9 +126,9 @@ void MapaSDL::render(SDL2pp::Renderer& renderer) {
 	if (this->pos_x < 0) {
 		pos_x_pantalla = - this->pos_x;
 		tam_x_pantalla = ANCHO_VENTANA - pos_x_pantalla;
-	} else if (this->pos_x > this->textura.GetWidth() - ANCHO_EN_PANTALLA) {
+	} else if (this->pos_x > this->textura.GetWidth() - ANCHO_VENTANA / ZOOM) {
 		pos_x_pantalla = 0;
-		tam_x_pantalla = ANCHO_VENTANA - (pos_x - (this->textura.GetWidth() - ANCHO_EN_PANTALLA));
+		tam_x_pantalla = ANCHO_VENTANA - (pos_x - (this->textura.GetWidth() - ANCHO_VENTANA / ZOOM));
 	} else {
 		pos_x_pantalla = 0;
 		tam_x_pantalla = ANCHO_VENTANA;
@@ -136,9 +136,9 @@ void MapaSDL::render(SDL2pp::Renderer& renderer) {
 	if (this->pos_y < 0) {
 		pos_y_pantalla = - this->pos_y;
 		tam_y_pantalla = LARGO_VENTANA - pos_y_pantalla;
-	} else if (this->pos_y > this->textura.GetHeight() - LARGO_EN_PANTALLA) {
+	} else if (this->pos_y > this->textura.GetHeight() - LARGO_VENTANA / ZOOM) {
 		pos_y_pantalla = 0;
-		tam_y_pantalla = LARGO_VENTANA - (pos_y - (this->textura.GetHeight() - LARGO_EN_PANTALLA));
+		tam_y_pantalla = LARGO_VENTANA - (pos_y - (this->textura.GetHeight() - LARGO_VENTANA / ZOOM));
 	} else {
 		pos_y_pantalla = 0;
 		tam_y_pantalla = LARGO_VENTANA;
@@ -147,7 +147,7 @@ void MapaSDL::render(SDL2pp::Renderer& renderer) {
 		SDL2pp::Rect(
 			this->pos_x,
 			this->pos_y,
-			ANCHO_EN_PANTALLA,
-			LARGO_EN_PANTALLA),
+			ANCHO_VENTANA / ZOOM,
+			LARGO_VENTANA / ZOOM),
 		SDL2pp::Rect(pos_x_pantalla, pos_y_pantalla, tam_x_pantalla, tam_y_pantalla));
 }

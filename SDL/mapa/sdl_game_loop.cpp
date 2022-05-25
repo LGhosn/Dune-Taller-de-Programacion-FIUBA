@@ -84,5 +84,4 @@ void GameLoop::start() {
 		float rest = FRAME_RATE - tiempo_transcurrido.count();
 		usleep(rest);
 	}
-	std::cout << "Frame Rate: " << FRAME_RATE << std::endl;
 }
