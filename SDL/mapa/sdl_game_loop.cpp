@@ -24,6 +24,16 @@ bool GameLoop::handleEvents() {
 				this->handleMouseWheel(mWheelEvent);
 			}
 			break;
+			case SDL_MOUSEMOTION: {
+				SDL_MouseMotionEvent& mouseEvent = (SDL_MouseMotionEvent&) event;
+				this->handleMouseMotion(mouseEvent);
+			}
+			break;
+			case SDL_MOUSEBUTTONDOWN: {
+				SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
+				this->handleMouseButton(mouseEvent);
+			}
+			break;
 			case SDL_QUIT:
 				return false;
 		}
@@ -71,6 +81,30 @@ void GameLoop::handleMouseWheel(SDL_MouseWheelEvent& mWheelEvent) {
 	}
 }
 
+void GameLoop::handleMouseMotion(SDL_MouseMotionEvent& mouseEvent) {
+	if (mouseEvent.y <= PADDING_LIMITE_VENTANA) {
+		this->mapa.moverArriba();
+	} else if (mouseEvent.y >= LARGO_VENTANA - PADDING_LIMITE_VENTANA) {
+		this->mapa.moverAbajo();
+	} else {
+		this->mapa.dejarDeMoverseVerticalmente();
+	}
+
+	if (mouseEvent.x <= PADDING_LIMITE_VENTANA) {
+		this->mapa.moverIzquierda();
+	} else if (mouseEvent.x >= ANCHO_VENTANA - PADDING_LIMITE_VENTANA) {
+		this->mapa.moverDerecha();
+	} else {
+		this->mapa.dejarDeMoverseHorizontalmente();
+	}
+}
+
+void GameLoop::handleMouseButton (SDL_MouseButtonEvent& mouseEvent) {
+	int coords_x = (this->mapa.obtener_offset_x() + mouseEvent.x / this->mapa.obtener_zoom()) / 32;
+	int coords_y = (this->mapa.obtener_offset_y() + mouseEvent.y / this->mapa.obtener_zoom()) / 32;
+	this->edificios.emplace_back(mapa, this->textura_edificios, coords_x * 32, coords_y * 32, 100, 84);
+}
+
 void GameLoop::update(float tiempo_transcurrido) {
 	mapa.update(tiempo_transcurrido);
 }
@@ -88,8 +122,9 @@ void GameLoop::render_edificios() {
 	}
 }
 
-GameLoop::GameLoop(MapaSDL& mapa, std::list<EdificioSDL>& edificios, SDL2pp::Renderer& renderer) : 
-mapa(mapa), edificios(edificios), renderer(renderer) {}
+GameLoop::GameLoop(MapaSDL& mapa, std::list<EdificioSDL>& edificios, SDL2pp::Renderer& renderer,
+	SDL2pp::Texture& textura_edificios) : 
+mapa(mapa), edificios(edificios), renderer(renderer), textura_edificios(textura_edificios) {}
 
 void GameLoop::start() {
 	bool running = true;

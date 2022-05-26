@@ -69,7 +69,7 @@ void MapaSDL::update(float tiempo_transcurrido) {
 				if (this->pos_x > 0 - PADDING) {
 					this->tiempo += tiempo_transcurrido;
 					while(this->tiempo >= FRAME_RATE) {
-						pos_x -= PASO;
+						pos_x -= PASO / this->zoom;
 						this->tiempo -= FRAME_RATE;
 						if (this->pos_x < 0 - PADDING) {
 							pos_x = 0 - PADDING;
@@ -84,7 +84,7 @@ void MapaSDL::update(float tiempo_transcurrido) {
 				if (this->pos_x < this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING) {
 					this->tiempo += tiempo_transcurrido;
 					while(this->tiempo >= FRAME_RATE) {
-						pos_x += PASO;
+						pos_x += PASO / this->zoom;
 						this->tiempo -= FRAME_RATE;
 						if (this->pos_x > this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING) {
 							pos_x = this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING;
@@ -104,7 +104,7 @@ void MapaSDL::update(float tiempo_transcurrido) {
 				if (this->pos_y > 0 - PADDING) {
 					this->tiempo += tiempo_transcurrido;
 					while(this->tiempo >= FRAME_RATE) {
-						pos_y -= PASO;
+						pos_y -= PASO / this->zoom;
 						this->tiempo -= FRAME_RATE;
 						if (this->pos_y < 0 - PADDING) {
 							pos_y = 0 - PADDING;
@@ -119,7 +119,7 @@ void MapaSDL::update(float tiempo_transcurrido) {
 				if (this->pos_y < this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING) {
 					this->tiempo += tiempo_transcurrido;
 					while(this->tiempo >= FRAME_RATE) {
-						pos_y += PASO;
+						pos_y += PASO / this->zoom;
 						this->tiempo -= FRAME_RATE;
 						if (this->pos_y > this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING) {
 							pos_y = this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING;
@@ -140,8 +140,8 @@ void MapaSDL::render(SDL2pp::Renderer& renderer) {
 	int tam_x_pantalla, tam_y_pantalla;
 	if (this->pos_x < 0) {
 		origen_x = 0;
-		pos_x_pantalla = - this->pos_x;
-		tam_x_pantalla = ANCHO_VENTANA + this->pos_x;
+		pos_x_pantalla = - this->pos_x * this->zoom;
+		tam_x_pantalla = (ANCHO_VENTANA + this->pos_x) / this->zoom;
 	} else if (this->pos_x > (this->textura.GetWidth() - ANCHO_VENTANA)) {
 		origen_x = this->pos_x;
 		pos_x_pantalla = 0;
@@ -149,12 +149,12 @@ void MapaSDL::render(SDL2pp::Renderer& renderer) {
 	} else {
 		origen_x = this->pos_x;
 		pos_x_pantalla = 0;
-		tam_x_pantalla = ANCHO_VENTANA;
+		tam_x_pantalla = ANCHO_VENTANA / this->zoom;
 	}
 	if (this->pos_y < 0) {
 		origen_y = 0;
-		pos_y_pantalla = - this->pos_y;
-		tam_y_pantalla = LARGO_VENTANA + this->pos_y;
+		pos_y_pantalla = - this->pos_y * this->zoom;
+		tam_y_pantalla = (LARGO_VENTANA + this->pos_y) / this->zoom;
 	} else if (this->pos_y > (this->textura.GetHeight() - LARGO_VENTANA)) {
 		origen_y = this->pos_y;
 		pos_y_pantalla = 0;
@@ -162,7 +162,7 @@ void MapaSDL::render(SDL2pp::Renderer& renderer) {
 	} else {
 		origen_y = this->pos_y;
 		pos_y_pantalla = 0;
-		tam_y_pantalla = LARGO_VENTANA;
+		tam_y_pantalla = LARGO_VENTANA / this->zoom;
 	}
 	renderer.Copy(this->textura,
 		SDL2pp::Rect(

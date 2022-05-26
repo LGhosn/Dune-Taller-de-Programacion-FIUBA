@@ -4,16 +4,15 @@
 #include <SDL2pp/SDL2pp.hh>
 #include <string>
 
-#define ANCHO_EN_PANTALLA 640
-#define LARGO_EN_PANTALLA 640
-
 #define ZOOM_INICIAL 1.0f
 #define ZOOM_INCR 0.1f
 #define ZOOM_MIN 1.0f
 #define ZOOM_MAX 2.0f
 
-#define ANCHO_VENTANA 700
-#define LARGO_VENTANA 700
+#define ANCHO_VENTANA 1024
+#define LARGO_VENTANA 768
+
+#define PADDING_LIMITE_VENTANA 50
 
 #define PADDING 200
 

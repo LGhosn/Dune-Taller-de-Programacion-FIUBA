@@ -12,14 +12,15 @@ class GameLoop {
 	MapaSDL& mapa;
 	std::list<EdificioSDL>& edificios;
 	SDL2pp::Renderer& renderer;
+	SDL2pp::Texture& textura_edificios;
 
 	bool handleEvents();
 
 	void handleKeyDown(SDL_KeyboardEvent& keyEvent);
-
 	void handleKeyUp(SDL_KeyboardEvent& keyEvent);
-
 	void handleMouseWheel(SDL_MouseWheelEvent& mWheelEvent);
+	void handleMouseMotion(SDL_MouseMotionEvent& mouseEvent);
+	void handleMouseButton (SDL_MouseButtonEvent& mouseEvent);
 
 	void update(float tiempo_transcurrido);
 
@@ -28,7 +29,8 @@ class GameLoop {
 	void render_edificios();
 
 public:
-	GameLoop(MapaSDL& mapa, std::list<EdificioSDL>& edificios, SDL2pp::Renderer& renderer);
+	GameLoop(MapaSDL& mapa, std::list<EdificioSDL>& edificios, SDL2pp::Renderer& renderer,
+		SDL2pp::Texture& textura_edificios);
 
 	void start();
 };

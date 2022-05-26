@@ -13,8 +13,8 @@ int main() {
 	SDL2pp::SDL sdl(SDL_INIT_VIDEO);
 	SDL2pp::Window window("MapaSDL",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-			700, 700,
-			SDL_WINDOW_RESIZABLE);
+			ANCHO_VENTANA, LARGO_VENTANA,
+			0);
 
 	SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
 	SDL2pp::Texture textura(renderer, RESOURCE_PATH "/maps/ejemplo.png");
@@ -28,8 +28,9 @@ int main() {
 
 	std::list<EdificioSDL> edificios;
 	edificios.emplace_back(mapa, textura_edificios, 600, 600, 100, 84);
+	edificios.emplace_back(mapa, textura_edificios, 50, 50, 100, 84);
 
-	GameLoop game_loop(mapa, edificios, renderer);
+	GameLoop game_loop(mapa, edificios, renderer, textura_edificios);
 	game_loop.start();
 	return 0;
 }
