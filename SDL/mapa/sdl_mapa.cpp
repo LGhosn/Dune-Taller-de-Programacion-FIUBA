@@ -40,14 +40,6 @@ void MapaSDL::dejarDeMoverseVerticalmente() {
 	this->moviendose_v = false;
 }
 
-int MapaSDL::obtener_offset_x() const {
-	return this->pos_x;
-}
-
-int MapaSDL::obtener_offset_y() const {
-	return this->pos_y;
-}
-
 void MapaSDL::zoomIn() {
 	if (this->zoom < ZOOM_MAX)
 		this->zoom += ZOOM_INCR;
@@ -56,6 +48,18 @@ void MapaSDL::zoomIn() {
 void MapaSDL::zoomOut() {
 	if (this->zoom > ZOOM_MIN)
 		this->zoom -= ZOOM_INCR;
+}
+
+int MapaSDL::obtener_offset_x() const {
+	return this->pos_x;
+}
+
+int MapaSDL::obtener_offset_y() const {
+	return this->pos_y;
+}
+
+float MapaSDL::obtener_zoom() const {
+	return this->zoom;
 }
 
 void MapaSDL::update(float tiempo_transcurrido) {
@@ -131,33 +135,44 @@ void MapaSDL::update(float tiempo_transcurrido) {
 }
 
 void MapaSDL::render(SDL2pp::Renderer& renderer) {
+	int origen_x, origen_y;
 	int pos_x_pantalla, pos_y_pantalla;
 	int tam_x_pantalla, tam_y_pantalla;
 	if (this->pos_x < 0) {
+		origen_x = 0;
 		pos_x_pantalla = - this->pos_x;
-		tam_x_pantalla = ANCHO_VENTANA - pos_x_pantalla;
-	} else if (this->pos_x > this->textura.GetWidth() - ANCHO_VENTANA / this->zoom) {
+		tam_x_pantalla = ANCHO_VENTANA + this->pos_x;
+	} else if (this->pos_x > (this->textura.GetWidth() - ANCHO_VENTANA)) {
+		origen_x = this->pos_x;
 		pos_x_pantalla = 0;
-		tam_x_pantalla = ANCHO_VENTANA - (pos_x - (this->textura.GetWidth() - ANCHO_VENTANA / this->zoom));
+		tam_x_pantalla = this->textura.GetWidth() - this->pos_x;
 	} else {
+		origen_x = this->pos_x;
 		pos_x_pantalla = 0;
 		tam_x_pantalla = ANCHO_VENTANA;
 	}
 	if (this->pos_y < 0) {
+		origen_y = 0;
 		pos_y_pantalla = - this->pos_y;
-		tam_y_pantalla = LARGO_VENTANA - pos_y_pantalla;
-	} else if (this->pos_y > this->textura.GetHeight() - LARGO_VENTANA / this->zoom) {
+		tam_y_pantalla = LARGO_VENTANA + this->pos_y;
+	} else if (this->pos_y > (this->textura.GetHeight() - LARGO_VENTANA)) {
+		origen_y = this->pos_y;
 		pos_y_pantalla = 0;
-		tam_y_pantalla = LARGO_VENTANA - (pos_y - (this->textura.GetHeight() - LARGO_VENTANA / this->zoom));
+		tam_y_pantalla = this->textura.GetHeight() - this->pos_y;
 	} else {
+		origen_y = this->pos_y;
 		pos_y_pantalla = 0;
 		tam_y_pantalla = LARGO_VENTANA;
 	}
 	renderer.Copy(this->textura,
 		SDL2pp::Rect(
-			this->pos_x,
-			this->pos_y,
-			ANCHO_VENTANA / this->zoom,
-			LARGO_VENTANA / this->zoom),
-		SDL2pp::Rect(pos_x_pantalla, pos_y_pantalla, tam_x_pantalla, tam_y_pantalla));
+			origen_x,
+			origen_y,
+			tam_x_pantalla,
+			tam_y_pantalla),
+		SDL2pp::Rect(
+			pos_x_pantalla,
+			pos_y_pantalla,
+			tam_x_pantalla * this->zoom,
+			tam_y_pantalla * this->zoom));
 }

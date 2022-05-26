@@ -7,7 +7,7 @@
 #define ANCHO_EN_PANTALLA 640
 #define LARGO_EN_PANTALLA 640
 
-#define ZOOM_INICIAL 1.3f
+#define ZOOM_INICIAL 1.0f
 #define ZOOM_INCR 0.1f
 #define ZOOM_MIN 1.0f
 #define ZOOM_MAX 2.0f
@@ -52,6 +52,7 @@ public:
 
 	int obtener_offset_x() const;
 	int obtener_offset_y() const;
+	float obtener_zoom() const;
 
 	void update(float tiempo_transcurrido);
 	void render(SDL2pp::Renderer& renderer);

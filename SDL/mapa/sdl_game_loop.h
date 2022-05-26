@@ -5,9 +5,12 @@
 #include <SDL2pp/Music.hh>
 #include <SDL2pp/Mixer.hh>
 #include "sdl_mapa.h"
+#include "sdl_edificio.h"
+#include <list>
 
 class GameLoop {
 	MapaSDL& mapa;
+	std::list<EdificioSDL>& edificios;
 	SDL2pp::Renderer& renderer;
 
 	bool handleEvents();
@@ -22,8 +25,10 @@ class GameLoop {
 
 	void render();
 
+	void render_edificios();
+
 public:
-	GameLoop(MapaSDL& mapa, SDL2pp::Renderer& renderer);
+	GameLoop(MapaSDL& mapa, std::list<EdificioSDL>& edificios, SDL2pp::Renderer& renderer);
 
 	void start();
 };

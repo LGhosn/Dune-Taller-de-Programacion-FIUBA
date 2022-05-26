@@ -78,10 +78,18 @@ void GameLoop::update(float tiempo_transcurrido) {
 void GameLoop::render() {
 	this->renderer.Clear();
 	mapa.render(this->renderer);
+	this->render_edificios();
 	this->renderer.Present();
 }
 
-GameLoop::GameLoop(MapaSDL& mapa, SDL2pp::Renderer& renderer) : mapa(mapa), renderer(renderer) {}
+void GameLoop::render_edificios() {
+	for (EdificioSDL& edificio: edificios) {
+		edificio.render(this->renderer);
+	}
+}
+
+GameLoop::GameLoop(MapaSDL& mapa, std::list<EdificioSDL>& edificios, SDL2pp::Renderer& renderer) : 
+mapa(mapa), edificios(edificios), renderer(renderer) {}
 
 void GameLoop::start() {
 	bool running = true;
