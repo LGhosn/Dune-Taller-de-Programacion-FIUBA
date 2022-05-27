@@ -1,0 +1,3 @@
+/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/pruebas_serializador/build/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir
+/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/pruebas_serializador/build/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
+/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/pruebas_serializador/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
