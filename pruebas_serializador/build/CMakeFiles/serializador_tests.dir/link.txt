@@ -1,1 +1,0 @@
-/usr/bin/c++   -Werror -Wall -pedantic -std=c++17 -ggdb  -rdynamic CMakeFiles/serializador_tests.dir/pruebas_serializador.cpp.o CMakeFiles/serializador_tests.dir/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/common_serializador.cpp.o  -o serializador_tests  lib/libgtest_main.a lib/libgtest.a -lpthread 

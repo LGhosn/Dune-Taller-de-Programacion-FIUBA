@@ -1,5 +1,0 @@
-if(EXISTS "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/pruebas_serializador/build/serializador_tests[1]_tests.cmake")
-  include("/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/pruebas_serializador/build/serializador_tests[1]_tests.cmake")
-else()
-  add_test(serializador_tests_NOT_BUILT serializador_tests_NOT_BUILT)
-endif()
