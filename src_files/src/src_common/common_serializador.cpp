@@ -1,5 +1,7 @@
 #include "common_serializador.h"
 
+#include <iostream>
+
 uint16_t Serializador::uint16_ntoh(uint16_t src){
     return ntohs(src);
 }
@@ -21,7 +23,7 @@ std::vector<char> Serializador::string_to_buffer(std::string string){
 }
 
 std::tuple<std::string, uint8_t, uint16_t, std::string> Serializador::serializar_creacion(std::string& argumento){
-    std::stringstream parseo(argumento);
+    std::istringstream parseo(argumento);
     std::string casa, requeridos, nombre_partida;
     parseo >> casa >> requeridos >> std::ws;
     std::getline(parseo, nombre_partida);

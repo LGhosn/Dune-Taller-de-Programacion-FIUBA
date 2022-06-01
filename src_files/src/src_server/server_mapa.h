@@ -6,7 +6,7 @@
 #include <memory>
 #include <stack>
 
-#include "common_coords.h"
+#include "../src_common/common_coords.h"
 #include "server_camino.h"
 
 class Mapa {
@@ -46,8 +46,6 @@ private:
      * @param pos_y: posicion en y de donde se quiere colocar el edificio 
     */
     bool terreno_firme(uint16_t pos_x, uint16_t pos_y);
-
-    void xxx(uint16_t pos_x, uint16_t pos_y, int dimension_x, int dimension_y, char reforma);
 
 public:
     /*

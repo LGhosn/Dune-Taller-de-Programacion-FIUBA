@@ -18,8 +18,8 @@ enable_testing()
 add_executable(
     serializador_tests
     pruebas_serializador.cpp
-    ../common_serializador.h
-    ../common_serializador.cpp
+    ../../src_common/common_serializador.h
+    ../../src_common/common_serializador.cpp
 )
 
 target_link_libraries(

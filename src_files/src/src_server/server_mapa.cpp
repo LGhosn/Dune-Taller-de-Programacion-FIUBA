@@ -89,7 +89,7 @@ bool Mapa::terreno_firme(uint16_t pos_x, uint16_t pos_y) {
  * *****************************************************************/
 
 Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto),
-mapa(std::vector< std::vector<char> > (alto, std::vector<char>(ancho, 'A'))), camino(mapa) {}
+mapa(std::vector< std::vector<char> > (alto, std::vector<char>(ancho, 'A'))), camino(this->mapa) {}
 
 bool Mapa::construir_edificio(comando_t comando){
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones

@@ -1,12 +1,13 @@
 #ifndef SERVER_CAMINO_H
 #define SERVER_CAMINO_H
 
-#include "common_coords.h"
 #include <vector>
 #include <unordered_map>
 #include <stack>
 #include <list>
 #include <unordered_map>
+
+#include "../src_common/common_coords.h"
 
 class Camino {
 	std::vector< std::vector<char> >& mapa;

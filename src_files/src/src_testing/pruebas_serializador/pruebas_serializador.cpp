@@ -42,11 +42,11 @@ TEST(Serializador, convierte_buffer_a_string){
 
 TEST(Serializador, serializa_creacion_correctamente){
     Serializador serializador;
-    std::string argumento = "casa_1 requeridos_1 nombre_partida_1";
+    std::string argumento = "casa_1 3 nombre_partida_1";
     std::tuple<std::string, uint8_t, uint16_t, std::string> tupla = serializador.serializar_creacion(argumento);
     EXPECT_EQ(std::get<0>(tupla), "casa_1");
-    EXPECT_EQ(std::get<1>(tupla), 1);
-    EXPECT_EQ(std::get<2>(tupla), 10);
+    EXPECT_EQ(std::get<1>(tupla), 3);
+    EXPECT_EQ(std::get<2>(tupla), 16);
     EXPECT_EQ(std::get<3>(tupla), "nombre_partida_1");
 }
 
@@ -55,7 +55,7 @@ TEST(Serializador, serializa_union_correctamente){
     std::string argumento = "casa_1 nombre_partida_1";
     std::tuple<std::string, uint16_t, std::string> tupla = serializador.serializar_union(argumento);
     EXPECT_EQ(std::get<0>(tupla), "casa_1");
-    EXPECT_EQ(std::get<1>(tupla), 10);
+    EXPECT_EQ(std::get<1>(tupla), 16);
     EXPECT_EQ(std::get<2>(tupla), "nombre_partida_1");
 }
 
