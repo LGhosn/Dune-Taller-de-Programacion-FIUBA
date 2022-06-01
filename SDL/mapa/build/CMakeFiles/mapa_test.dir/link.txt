@@ -1,1 +1,0 @@
-/usr/bin/c++   -Werror -Wall -pedantic -std=c++17 -ggdb   CMakeFiles/mapa_test.dir/sdl_mapa_main.cpp.o  -o mapa_test  /usr/lib/x86_64-linux-gnu/libSDL2main.a SDL2pp/build/libSDL2pp.a /usr/lib/x86_64-linux-gnu/libSDL2.so /usr/lib/x86_64-linux-gnu/libSDL2_image.so /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so 
