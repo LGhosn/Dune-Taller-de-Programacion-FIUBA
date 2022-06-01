@@ -1,6 +1,7 @@
 #include "sdl_mapa.h"
+#include <functional>
 
-MapaSDL::MapaSDL(SDL2pp::Texture& textura) : textura(textura),
+MapaSDL::MapaSDL(SDL2pp::Texture& textura) : textura(std::move(textura)),
 pos_x((textura.GetWidth() - ANCHO_VENTANA / ZOOM_INICIAL) / 2), pos_y((textura.GetHeight() - LARGO_VENTANA / ZOOM_INICIAL) / 2),
 moviendose_h(false), moviendose_v(false), direccion_h(ARRIBA), direccion_v(IZQUIERDA), tiempo(0.0f), zoom(ZOOM_INICIAL) {}
 

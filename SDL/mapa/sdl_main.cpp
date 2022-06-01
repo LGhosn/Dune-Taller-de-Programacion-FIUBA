@@ -5,9 +5,10 @@
 #include <unistd.h>
 #include <iostream>
 
-#include "sdl_mapa.h"
-#include "sdl_edificio.h"
-#include "sdl_game_loop.h"
+#include "hilo_renderer.h"
+#include "world_view.h"
+#include "cola_no_bloqueante.h"
+#include "cmd_mover_mapa.h"
 
 int main() {
 	SDL2pp::SDL sdl(SDL_INIT_VIDEO);
@@ -18,19 +19,24 @@ int main() {
 
 	SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
 	SDL2pp::Texture textura(renderer, RESOURCE_PATH "/maps/ejemplo.png");
-	MapaSDL mapa(textura);
+	
+	WorldView world_view(textura);
+
+	ColaNoBloqueante<Comando> cola_eventos;
+	MoverMapa mover_arriba('A');
+	cola_eventos.push(mover_arriba);
+	cola_eventos.push(mover_arriba);
+	cola_eventos.push(mover_arriba);
+	cola_eventos.push(mover_arriba);
+	cola_eventos.push(mover_arriba);
 
 	SDL2pp::Mixer mixer(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 4096);
 	SDL2pp::Music music(RESOURCE_PATH "/music/Plotting.mp3");
 	mixer.FadeInMusic(music, -1, 2000);
 
-	SDL2pp::Texture textura_edificios(renderer, RESOURCE_PATH "/buildings/construction_yard.png");
+	HiloRenderer hilo_renderer(world_view, cola_eventos, renderer);
+	hilo_renderer.start();
 
-	std::list<EdificioSDL> edificios;
-	edificios.emplace_back(mapa, textura_edificios, 600, 600, 100, 84);
-	edificios.emplace_back(mapa, textura_edificios, 50, 50, 100, 84);
-
-	GameLoop game_loop(mapa, edificios, renderer, textura_edificios);
-	game_loop.start();
+	SDL_Delay(10000);
 	return 0;
 }

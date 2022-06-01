@@ -12,21 +12,16 @@
 #define ANCHO_VENTANA 1024
 #define LARGO_VENTANA 768
 
-#define PADDING_LIMITE_VENTANA 50
+#define PADDING_LIMITE_VENTANA 100
 
 #define PADDING 200
 
-#define ARRIBA 'A'
-#define IZQUIERDA 'I'
-#define ABAJO 'B'
-#define DERECHA 'D'
-
-#define FRAME_RATE 0.1f / 3.0f
+#define FRAME_RATE 0.1f / 6.0f
 
 #define PASO 6
 
 class MapaSDL {
-	SDL2pp::Texture& textura;
+	SDL2pp::Texture textura;
 	int pos_x;
 	int pos_y;
 	bool moviendose_h;
