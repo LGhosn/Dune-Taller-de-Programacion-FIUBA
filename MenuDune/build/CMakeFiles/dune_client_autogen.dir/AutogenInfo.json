@@ -1,0 +1,95 @@
+{
+	"BUILD_DIR" : "/home/sruizs/Escritorio/MenuDune/build/dune_client_autogen",
+	"CMAKE_BINARY_DIR" : "/home/sruizs/Escritorio/MenuDune/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/sruizs/Escritorio/MenuDune/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/sruizs/Escritorio/MenuDune",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_SOURCE_DIR" : "/home/sruizs/Escritorio/MenuDune",
+	"HEADERS" : 
+	[
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_form_creacion/FormCreacion.h",
+			"Mu",
+			"6C5Y7EDPMM/moc_FormCreacion.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_form_union/FormUnion.h",
+			"Mu",
+			"X3XPAEUDM5/moc_FormUnion.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_menu/MenuDune.h",
+			"Mu",
+			"XNRR3YFLCQ/moc_MenuDune.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/sruizs/Escritorio/MenuDune/build/dune_client_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/sruizs/Escritorio/MenuDune/build/dune_client_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_NO_DEBUG", "QT_WIDGETS_LIB" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/sruizs/Escritorio/MenuDune/src",
+		"/home/sruizs/Escritorio/MenuDune/src/src_menu",
+		"/home/sruizs/Escritorio/MenuDune/src/src_form_creacion",
+		"/home/sruizs/Escritorio/MenuDune/src/src_form_union",
+		"/home/sruizs/Escritorio/MenuDune/src/src_cliente",
+		"/home/sruizs/Escritorio/MenuDune/src/src_server",
+		"/home/sruizs/Escritorio/MenuDune/src/src_common",
+		"/home/sruizs/Escritorio/MenuDune/build",
+		"/usr/include/x86_64-linux-gnu/qt5",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
+		"/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++",
+		"/usr/include/c++/9",
+		"/usr/include/x86_64-linux-gnu/c++/9",
+		"/usr/include/c++/9/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/9/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu",
+		"/usr/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : true,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/sruizs/Escritorio/MenuDune/build/dune_client_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/dune_client_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 5,
+	"SETTINGS_FILE" : "/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/dune_client_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "/home/sruizs/Escritorio/MenuDune/src/main.cpp", "Mu" ],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_form_creacion/FormCreacion.cpp",
+			"Mu"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_form_union/FormUnion.cpp",
+			"Mu"
+		],
+		[ "/home/sruizs/Escritorio/MenuDune/src/src_menu/MenuDune.cpp", "Mu" ]
+	],
+	"VERBOSITY" : 0
+}

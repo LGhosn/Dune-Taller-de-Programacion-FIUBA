@@ -1,0 +1,156 @@
+{
+	"BUILD_DIR" : "/home/sruizs/Escritorio/MenuDune/build/server_autogen",
+	"CMAKE_BINARY_DIR" : "/home/sruizs/Escritorio/MenuDune/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/sruizs/Escritorio/MenuDune/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/sruizs/Escritorio/MenuDune",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_SOURCE_DIR" : "/home/sruizs/Escritorio/MenuDune",
+	"HEADERS" : 
+	[
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_common/common_resolver.h",
+			"Mu",
+			"ZX4T27ISJP/moc_common_resolver.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_common/common_serializador.h",
+			"Mu",
+			"ZX4T27ISJP/moc_common_serializador.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_common/common_socket.h",
+			"Mu",
+			"ZX4T27ISJP/moc_common_socket.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_common/common_socket_error.h",
+			"Mu",
+			"ZX4T27ISJP/moc_common_socket_error.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_aceptador.h",
+			"Mu",
+			"SWWEXVT3ET/moc_server_aceptador.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_handler.h",
+			"Mu",
+			"SWWEXVT3ET/moc_server_handler.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_lobby.h",
+			"Mu",
+			"SWWEXVT3ET/moc_server_lobby.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_partida.h",
+			"Mu",
+			"SWWEXVT3ET/moc_server_partida.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_protocolo.h",
+			"Mu",
+			"SWWEXVT3ET/moc_server_protocolo.cpp"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_server.h",
+			"Mu",
+			"SWWEXVT3ET/moc_server_server.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/sruizs/Escritorio/MenuDune/build/server_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/sruizs/Escritorio/MenuDune/build/server_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/sruizs/Escritorio/MenuDune/src",
+		"/home/sruizs/Escritorio/MenuDune/src/src_menu",
+		"/home/sruizs/Escritorio/MenuDune/src/src_form_creacion",
+		"/home/sruizs/Escritorio/MenuDune/src/src_form_union",
+		"/home/sruizs/Escritorio/MenuDune/src/src_cliente",
+		"/home/sruizs/Escritorio/MenuDune/src/src_server",
+		"/home/sruizs/Escritorio/MenuDune/src/src_common",
+		"/home/sruizs/Escritorio/MenuDune/build",
+		"/usr/include/c++/9",
+		"/usr/include/x86_64-linux-gnu/c++/9",
+		"/usr/include/c++/9/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/9/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu",
+		"/usr/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : true,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/sruizs/Escritorio/MenuDune/build/server_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/server_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 5,
+	"SETTINGS_FILE" : "/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/server_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "/home/sruizs/Escritorio/MenuDune/src/main_server.cpp", "Mu" ],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_common/common_resolver.cpp",
+			"Mu"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_common/common_serializador.cpp",
+			"Mu"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_common/common_socket.cpp",
+			"Mu"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_common/common_socket_error.cpp",
+			"Mu"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_aceptador.cpp",
+			"Mu"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_handler.cpp",
+			"Mu"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_lobby.cpp",
+			"Mu"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_partida.cpp",
+			"Mu"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_protocolo.cpp",
+			"Mu"
+		],
+		[
+			"/home/sruizs/Escritorio/MenuDune/src/src_server/server_server.cpp",
+			"Mu"
+		]
+	],
+	"VERBOSITY" : 0
+}
