@@ -1,6 +1,0 @@
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/rebuild_cache.dir
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/edit_cache.dir
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/server.dir
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/client.dir
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/server_autogen.dir
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/client_autogen.dir

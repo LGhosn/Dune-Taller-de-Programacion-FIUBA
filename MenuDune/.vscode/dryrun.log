@@ -1,6 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/sruizs/Escritorio/MenuDune'
-make: Leaving directory '/home/sruizs/Escritorio/MenuDune'
- 
-make: *** No targets specified and no makefile found.  Stop.
-
