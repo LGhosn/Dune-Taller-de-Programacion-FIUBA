@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11  -Wall -Wextra -pedantic  -rdynamic CMakeFiles/image.dir/image.cc.o  -o image  -Wl,-rpath,"/home/joaquin/Documents/Facultad/Taller/TP Final/SDL2PP/libSDL2pp-0.16.2" -Wl,-Bstatic -lSDL2main -Wl,-Bdynamic ../libSDL2pp.so.8.3.0 -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer 
