@@ -6,25 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/home/sruizs/Escritorio/MenuDune/src/main_client.cpp
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/client_autogen/GBFAFXFCVO/qrc_resources.cpp
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/client_autogen/mocs_compilation.cpp
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/main_client.cpp
 src_cliente/client_client.h
-/home/sruizs/Escritorio/MenuDune/src/src_cliente/client_client.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_client.h
 src_menu/MenuDune.h
-/home/sruizs/Escritorio/MenuDune/src/src_menu/MenuDune.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu/MenuDune.h
 QApplication
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_cliente/client_client.cpp
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_client.cpp
 client_client.h
-/home/sruizs/Escritorio/MenuDune/src/src_cliente/client_client.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_client.h
 
-/home/sruizs/Escritorio/MenuDune/src/src_cliente/client_client.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_client.h
 ../src_common/common_socket.h
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_socket.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket.h
 ../src_menu/MenuDune.h
-/home/sruizs/Escritorio/MenuDune/src/src_menu/MenuDune.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu/MenuDune.h
 client_protocolo.h
-/home/sruizs/Escritorio/MenuDune/src/src_cliente/client_protocolo.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_protocolo.h
 vector
 -
 mutex
@@ -42,15 +46,19 @@ fstream
 sstream
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_cliente/client_protocolo.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_protocolo.cpp
+client_protocolo.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_protocolo.h
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_protocolo.h
 ../src_common/common_serializador.h
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_serializador.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.h
 ../src_common/common_socket.h
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_socket.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket.h
 ../src_common/common_DTOs.h
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_DTOs.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_DTOs.h
 ../src_server/server_partida.h
-/home/sruizs/Escritorio/MenuDune/src/src_server/server_partida.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_partida.h
 string
 -
 vector
@@ -64,15 +72,47 @@ fstream
 netinet/in.h
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_DTOs.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_DTOs.h
 ../src_server/server_partida.h
-/home/sruizs/Escritorio/MenuDune/src/src_server/server_partida.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_partida.h
 map
 -
 string
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_serializador.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_resolver.cpp
+common_resolver.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_resolver.h
+stdio.h
+-
+assert.h
+-
+string.h
+-
+errno.h
+-
+exception
+-
+sys/socket.h
+-
+sys/types.h
+-
+arpa/inet.h
+-
+netdb.h
+-
+unistd.h
+-
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_resolver.h
+common_socket_error.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket_error.h
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp
+common_serializador.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.h
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.h
 map
 -
 string
@@ -86,25 +126,61 @@ arpa/inet.h
 sstream
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_socket.h
-common_socket_error.h
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_socket_error.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket.cpp
+stdio.h
+-
+assert.h
+-
+string.h
+-
+errno.h
+-
+sys/socket.h
+-
+sys/types.h
+-
+arpa/inet.h
+-
+netdb.h
+-
+unistd.h
+-
+common_socket.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket.h
+common_resolver.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_resolver.h
 
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_socket_error.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket.h
+common_socket_error.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket_error.h
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket_error.cpp
+cerrno
+-
+cstdarg
+-
+cstring
+-
+cstdio
+-
+common_socket_error.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket_error.h
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket_error.h
 exception
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_form_creacion/FormCreacion.cpp
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion/FormCreacion.cpp
 FormCreacion.h
-/home/sruizs/Escritorio/MenuDune/src/src_form_creacion/FormCreacion.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion/FormCreacion.h
 
-/home/sruizs/Escritorio/MenuDune/src/src_form_creacion/FormCreacion.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion/FormCreacion.h
 ../src_cliente/client_protocolo.h
-/home/sruizs/Escritorio/MenuDune/src/src_cliente/client_protocolo.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_protocolo.h
 ../src_common/common_DTOs.h
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_DTOs.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_DTOs.h
 ui_FormCreacionUi.h
-/home/sruizs/Escritorio/MenuDune/src/src_form_creacion/ui_FormCreacionUi.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion/ui_FormCreacionUi.h
 syslog.h
 -
 set
@@ -116,7 +192,7 @@ QScreen
 QMessageBox
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_form_creacion/ui_FormCreacionUi.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion/ui_FormCreacionUi.h
 QtCore/QVariant
 -
 QtWidgets/QApplication
@@ -130,19 +206,19 @@ QtWidgets/QPushButton
 QtWidgets/QWidget
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_form_union/FormUnion.cpp
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union/FormUnion.cpp
 FormUnion.h
-/home/sruizs/Escritorio/MenuDune/src/src_form_union/FormUnion.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union/FormUnion.h
 
-/home/sruizs/Escritorio/MenuDune/src/src_form_union/FormUnion.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union/FormUnion.h
 ../src_cliente/client_protocolo.h
-/home/sruizs/Escritorio/MenuDune/src/src_cliente/client_protocolo.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_protocolo.h
 ../src_common/common_serializador.h
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_serializador.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.h
 ../src_common/common_DTOs.h
-/home/sruizs/Escritorio/MenuDune/src/src_common/common_DTOs.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_DTOs.h
 ui_FormUnionUi.h
-/home/sruizs/Escritorio/MenuDune/src/src_form_union/ui_FormUnionUi.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union/ui_FormUnionUi.h
 set
 -
 syslog.h
@@ -154,7 +230,7 @@ QScreen
 QMessageBox
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_form_union/ui_FormUnionUi.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union/ui_FormUnionUi.h
 QtCore/QVariant
 -
 QtWidgets/QApplication
@@ -168,25 +244,25 @@ QtWidgets/QPushButton
 QtWidgets/QWidget
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_menu/MenuDune.cpp
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu/MenuDune.cpp
 ui_MenuUi.h
-/home/sruizs/Escritorio/MenuDune/src/src_menu/ui_MenuUi.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu/ui_MenuUi.h
 MenuDune.h
-/home/sruizs/Escritorio/MenuDune/src/src_menu/MenuDune.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu/MenuDune.h
 
-/home/sruizs/Escritorio/MenuDune/src/src_menu/MenuDune.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu/MenuDune.h
 ../src_cliente/client_protocolo.h
-/home/sruizs/Escritorio/MenuDune/src/src_cliente/client_protocolo.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_protocolo.h
 ../src_form_creacion/FormCreacion.h
-/home/sruizs/Escritorio/MenuDune/src/src_form_creacion/FormCreacion.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion/FormCreacion.h
 ../src_form_union/FormUnion.h
-/home/sruizs/Escritorio/MenuDune/src/src_form_union/FormUnion.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union/FormUnion.h
 QWidget
 -
 QScreen
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_menu/ui_MenuUi.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu/ui_MenuUi.h
 QtCore/QVariant
 -
 QtWidgets/QApplication
@@ -200,7 +276,7 @@ QtWidgets/QVBoxLayout
 QtWidgets/QWidget
 -
 
-/home/sruizs/Escritorio/MenuDune/src/src_server/server_partida.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_partida.h
 iostream
 -
 string

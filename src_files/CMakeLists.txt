@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.00)
-project(MenuDune)
+project(Dune2000)
 find_package(Qt5Widgets)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -pedantic -std=c++17 -ggdb")
 
+# GoogleTest requires at least C++11
+set(CMAKE_CXX_STANDARD 17)
 message("[INFO] La raiz del proyecto es ${PROJECT_SOURCE_DIR}")
 
 include_directories(${PROJECT_SOURCE_DIR}/src
@@ -12,6 +15,17 @@ include_directories(${PROJECT_SOURCE_DIR}/src
         ${PROJECT_SOURCE_DIR}/src/src_server
         ${PROJECT_SOURCE_DIR}/src/src_common
         )
+
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/src_testing/pruebas_mapa/third_party/yaml_cpp)
+
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+)
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
 
 qt5_wrap_ui(UIS_HEADERS
         src/src_menu/MenuUi.ui
@@ -55,5 +69,39 @@ add_executable(server
         src/main_server.cpp
         )
 
+add_executable(camino_tests
+        src/src_testing/pruebas_camino/pruebas_camino.cpp
+        src/src_server/server_camino.cpp
+        src/src_server/server_camino_no_encontrado_exception.cpp
+        src/src_server/server_fuera_de_rango_exception.cpp
+        src/src_common/common_coords.cpp
+        )
+
+add_executable(
+        pruebas_mapa
+        src/src_testing/pruebas_mapa/pruebas.cpp
+        src/src_server/server_mapa.h
+        src/src_server/server_mapa.cpp
+        src/src_server/server_camino.cpp
+        src/src_server/server_camino_no_encontrado_exception.cpp
+        src/src_server/server_fuera_de_rango_exception.cpp
+        src/src_common/common_coords.h
+        src/src_common/common_coords.cpp
+)
+
+add_executable(
+        serializador_tests
+        src/src_testing/pruebas_serializador/pruebas_serializador.cpp
+        src/src_common/common_serializador.h
+        src/src_common/common_serializador.cpp
+)
+
+
 target_link_libraries(client Qt5::Widgets Qt5::Core)
 target_link_libraries(server pthread)
+target_link_libraries(camino_tests gtest_main)
+target_link_libraries(pruebas_mapa PRIVATE yaml-cpp gtest_main)
+target_link_libraries(serializador_tests gtest_main)
+
+include(GoogleTest)
+gtest_discover_tests(camino_tests pruebas_mapa serializador_tests)

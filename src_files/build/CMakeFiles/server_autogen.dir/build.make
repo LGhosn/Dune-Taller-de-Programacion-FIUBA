@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sruizs/Escritorio/MenuDune
+CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sruizs/Escritorio/MenuDune/build
+CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build"
 
 # Utility rule file for server_autogen.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/sruizs/Escritorio/MenuDune/build
 include CMakeFiles/server_autogen.dir/progress.make
 
 CMakeFiles/server_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/sruizs/Escritorio/MenuDune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target server"
-	/usr/bin/cmake -E cmake_autogen /home/sruizs/Escritorio/MenuDune/build/CMakeFiles/server_autogen.dir/AutogenInfo.json ""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target server"
+	/usr/bin/cmake -E cmake_autogen "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/server_autogen.dir/AutogenInfo.json" ""
 
 server_autogen: CMakeFiles/server_autogen
 server_autogen: CMakeFiles/server_autogen.dir/build.make
@@ -72,6 +72,6 @@ CMakeFiles/server_autogen.dir/clean:
 .PHONY : CMakeFiles/server_autogen.dir/clean
 
 CMakeFiles/server_autogen.dir/depend:
-	cd /home/sruizs/Escritorio/MenuDune/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sruizs/Escritorio/MenuDune /home/sruizs/Escritorio/MenuDune /home/sruizs/Escritorio/MenuDune/build /home/sruizs/Escritorio/MenuDune/build /home/sruizs/Escritorio/MenuDune/build/CMakeFiles/server_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/server_autogen.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/server_autogen.dir/depend
 

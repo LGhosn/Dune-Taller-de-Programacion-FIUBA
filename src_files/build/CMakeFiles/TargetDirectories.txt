@@ -1,6 +1,60 @@
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/rebuild_cache.dir
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/edit_cache.dir
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/server.dir
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/client.dir
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/server_autogen.dir
-/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/client_autogen.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/install/strip.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/install.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/list_install_components.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/rebuild_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/edit_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/test.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/serializador_tests.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/pruebas_mapa.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/camino_tests.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/install/local.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/server.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/client.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/serializador_tests_autogen.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/pruebas_mapa_autogen.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/camino_tests_autogen.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/server_autogen.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/client_autogen.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/CMakeFiles/install/strip.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/CMakeFiles/install/local.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/CMakeFiles/install.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/CMakeFiles/list_install_components.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/CMakeFiles/rebuild_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/CMakeFiles/edit_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/CMakeFiles/test.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/CMakeFiles/yaml-cpp.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/install/strip.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/install/local.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/install.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/list_install_components.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/rebuild_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/yaml-cpp-read.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/edit_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/test.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/yaml-cpp-parse.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/yaml-cpp-sandbox.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/CMakeFiles/install/strip.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/CMakeFiles/install/local.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/CMakeFiles/install.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/CMakeFiles/list_install_components.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/CMakeFiles/rebuild_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/CMakeFiles/edit_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/CMakeFiles/test.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googlemock/CMakeFiles/install/strip.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googlemock/CMakeFiles/install/local.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googlemock/CMakeFiles/install.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googlemock/CMakeFiles/list_install_components.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googlemock/CMakeFiles/rebuild_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googlemock/CMakeFiles/edit_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googlemock/CMakeFiles/test.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googlemock/CMakeFiles/gmock.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googletest/CMakeFiles/install/strip.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googletest/CMakeFiles/install/local.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googletest/CMakeFiles/install.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googletest/CMakeFiles/list_install_components.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googletest/CMakeFiles/rebuild_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googletest/CMakeFiles/edit_cache.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googletest/CMakeFiles/test.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/googletest/CMakeFiles/gtest.dir

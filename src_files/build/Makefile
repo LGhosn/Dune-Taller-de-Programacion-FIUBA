@@ -48,13 +48,47 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sruizs/Escritorio/MenuDune
+CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sruizs/Escritorio/MenuDune/build
+CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -78,11 +112,34 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sruizs/Escritorio/MenuDune/build/CMakeFiles /home/sruizs/Escritorio/MenuDune/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sruizs/Escritorio/MenuDune/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -107,8 +164,48 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/VerifyGlobs.cmake"
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named serializador_tests
+
+# Build rule for target.
+serializador_tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serializador_tests
+.PHONY : serializador_tests
+
+# fast build rule for target.
+serializador_tests/fast:
+	$(MAKE) -f CMakeFiles/serializador_tests.dir/build.make CMakeFiles/serializador_tests.dir/build
+.PHONY : serializador_tests/fast
+
+#=============================================================================
+# Target rules for targets named pruebas_mapa
+
+# Build rule for target.
+pruebas_mapa: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pruebas_mapa
+.PHONY : pruebas_mapa
+
+# fast build rule for target.
+pruebas_mapa/fast:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/build
+.PHONY : pruebas_mapa/fast
+
+#=============================================================================
+# Target rules for targets named camino_tests
+
+# Build rule for target.
+camino_tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 camino_tests
+.PHONY : camino_tests
+
+# fast build rule for target.
+camino_tests/fast:
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/build
+.PHONY : camino_tests/fast
 
 #=============================================================================
 # Target rules for targets named server
@@ -137,6 +234,45 @@ client/fast:
 .PHONY : client/fast
 
 #=============================================================================
+# Target rules for targets named serializador_tests_autogen
+
+# Build rule for target.
+serializador_tests_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 serializador_tests_autogen
+.PHONY : serializador_tests_autogen
+
+# fast build rule for target.
+serializador_tests_autogen/fast:
+	$(MAKE) -f CMakeFiles/serializador_tests_autogen.dir/build.make CMakeFiles/serializador_tests_autogen.dir/build
+.PHONY : serializador_tests_autogen/fast
+
+#=============================================================================
+# Target rules for targets named pruebas_mapa_autogen
+
+# Build rule for target.
+pruebas_mapa_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pruebas_mapa_autogen
+.PHONY : pruebas_mapa_autogen
+
+# fast build rule for target.
+pruebas_mapa_autogen/fast:
+	$(MAKE) -f CMakeFiles/pruebas_mapa_autogen.dir/build.make CMakeFiles/pruebas_mapa_autogen.dir/build
+.PHONY : pruebas_mapa_autogen/fast
+
+#=============================================================================
+# Target rules for targets named camino_tests_autogen
+
+# Build rule for target.
+camino_tests_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 camino_tests_autogen
+.PHONY : camino_tests_autogen
+
+# fast build rule for target.
+camino_tests_autogen/fast:
+	$(MAKE) -f CMakeFiles/camino_tests_autogen.dir/build.make CMakeFiles/camino_tests_autogen.dir/build
+.PHONY : camino_tests_autogen/fast
+
+#=============================================================================
 # Target rules for targets named server_autogen
 
 # Build rule for target.
@@ -161,6 +297,137 @@ client_autogen: cmake_check_build_system
 client_autogen/fast:
 	$(MAKE) -f CMakeFiles/client_autogen.dir/build.make CMakeFiles/client_autogen.dir/build
 .PHONY : client_autogen/fast
+
+#=============================================================================
+# Target rules for targets named yaml-cpp
+
+# Build rule for target.
+yaml-cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 yaml-cpp
+.PHONY : yaml-cpp
+
+# fast build rule for target.
+yaml-cpp/fast:
+	$(MAKE) -f src/src_testing/pruebas_mapa/third_party/yaml_cpp/CMakeFiles/yaml-cpp.dir/build.make src/src_testing/pruebas_mapa/third_party/yaml_cpp/CMakeFiles/yaml-cpp.dir/build
+.PHONY : yaml-cpp/fast
+
+#=============================================================================
+# Target rules for targets named yaml-cpp-read
+
+# Build rule for target.
+yaml-cpp-read: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 yaml-cpp-read
+.PHONY : yaml-cpp-read
+
+# fast build rule for target.
+yaml-cpp-read/fast:
+	$(MAKE) -f src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/yaml-cpp-read.dir/build.make src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/yaml-cpp-read.dir/build
+.PHONY : yaml-cpp-read/fast
+
+#=============================================================================
+# Target rules for targets named yaml-cpp-parse
+
+# Build rule for target.
+yaml-cpp-parse: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 yaml-cpp-parse
+.PHONY : yaml-cpp-parse
+
+# fast build rule for target.
+yaml-cpp-parse/fast:
+	$(MAKE) -f src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/yaml-cpp-parse.dir/build.make src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/yaml-cpp-parse.dir/build
+.PHONY : yaml-cpp-parse/fast
+
+#=============================================================================
+# Target rules for targets named yaml-cpp-sandbox
+
+# Build rule for target.
+yaml-cpp-sandbox: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 yaml-cpp-sandbox
+.PHONY : yaml-cpp-sandbox
+
+# fast build rule for target.
+yaml-cpp-sandbox/fast:
+	$(MAKE) -f src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/build.make src/src_testing/pruebas_mapa/third_party/yaml_cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/build
+.PHONY : yaml-cpp-sandbox/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+camino_tests_autogen/mocs_compilation.o: camino_tests_autogen/mocs_compilation.cpp.o
+
+.PHONY : camino_tests_autogen/mocs_compilation.o
+
+# target to build an object file
+camino_tests_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/camino_tests_autogen/mocs_compilation.cpp.o
+.PHONY : camino_tests_autogen/mocs_compilation.cpp.o
+
+camino_tests_autogen/mocs_compilation.i: camino_tests_autogen/mocs_compilation.cpp.i
+
+.PHONY : camino_tests_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+camino_tests_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/camino_tests_autogen/mocs_compilation.cpp.i
+.PHONY : camino_tests_autogen/mocs_compilation.cpp.i
+
+camino_tests_autogen/mocs_compilation.s: camino_tests_autogen/mocs_compilation.cpp.s
+
+.PHONY : camino_tests_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+camino_tests_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/camino_tests_autogen/mocs_compilation.cpp.s
+.PHONY : camino_tests_autogen/mocs_compilation.cpp.s
 
 client_autogen/GBFAFXFCVO/qrc_resources.o: client_autogen/GBFAFXFCVO/qrc_resources.cpp.o
 
@@ -215,6 +482,60 @@ client_autogen/mocs_compilation.s: client_autogen/mocs_compilation.cpp.s
 client_autogen/mocs_compilation.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_autogen/mocs_compilation.cpp.s
 .PHONY : client_autogen/mocs_compilation.cpp.s
+
+pruebas_mapa_autogen/mocs_compilation.o: pruebas_mapa_autogen/mocs_compilation.cpp.o
+
+.PHONY : pruebas_mapa_autogen/mocs_compilation.o
+
+# target to build an object file
+pruebas_mapa_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/pruebas_mapa_autogen/mocs_compilation.cpp.o
+.PHONY : pruebas_mapa_autogen/mocs_compilation.cpp.o
+
+pruebas_mapa_autogen/mocs_compilation.i: pruebas_mapa_autogen/mocs_compilation.cpp.i
+
+.PHONY : pruebas_mapa_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+pruebas_mapa_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/pruebas_mapa_autogen/mocs_compilation.cpp.i
+.PHONY : pruebas_mapa_autogen/mocs_compilation.cpp.i
+
+pruebas_mapa_autogen/mocs_compilation.s: pruebas_mapa_autogen/mocs_compilation.cpp.s
+
+.PHONY : pruebas_mapa_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+pruebas_mapa_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/pruebas_mapa_autogen/mocs_compilation.cpp.s
+.PHONY : pruebas_mapa_autogen/mocs_compilation.cpp.s
+
+serializador_tests_autogen/mocs_compilation.o: serializador_tests_autogen/mocs_compilation.cpp.o
+
+.PHONY : serializador_tests_autogen/mocs_compilation.o
+
+# target to build an object file
+serializador_tests_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/serializador_tests.dir/build.make CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o
+.PHONY : serializador_tests_autogen/mocs_compilation.cpp.o
+
+serializador_tests_autogen/mocs_compilation.i: serializador_tests_autogen/mocs_compilation.cpp.i
+
+.PHONY : serializador_tests_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+serializador_tests_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/serializador_tests.dir/build.make CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.i
+.PHONY : serializador_tests_autogen/mocs_compilation.cpp.i
+
+serializador_tests_autogen/mocs_compilation.s: serializador_tests_autogen/mocs_compilation.cpp.s
+
+.PHONY : serializador_tests_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+serializador_tests_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/serializador_tests.dir/build.make CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.s
+.PHONY : serializador_tests_autogen/mocs_compilation.cpp.s
 
 server_autogen/mocs_compilation.o: server_autogen/mocs_compilation.cpp.o
 
@@ -351,6 +672,36 @@ src/src_cliente/client_protocolo.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_protocolo.cpp.s
 .PHONY : src/src_cliente/client_protocolo.cpp.s
 
+src/src_common/common_coords.o: src/src_common/common_coords.cpp.o
+
+.PHONY : src/src_common/common_coords.o
+
+# target to build an object file
+src/src_common/common_coords.cpp.o:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_common/common_coords.cpp.o
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_common/common_coords.cpp.o
+.PHONY : src/src_common/common_coords.cpp.o
+
+src/src_common/common_coords.i: src/src_common/common_coords.cpp.i
+
+.PHONY : src/src_common/common_coords.i
+
+# target to preprocess a source file
+src/src_common/common_coords.cpp.i:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_common/common_coords.cpp.i
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_common/common_coords.cpp.i
+.PHONY : src/src_common/common_coords.cpp.i
+
+src/src_common/common_coords.s: src/src_common/common_coords.cpp.s
+
+.PHONY : src/src_common/common_coords.s
+
+# target to generate assembly for a file
+src/src_common/common_coords.cpp.s:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_common/common_coords.cpp.s
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_common/common_coords.cpp.s
+.PHONY : src/src_common/common_coords.cpp.s
+
 src/src_common/common_resolver.o: src/src_common/common_resolver.cpp.o
 
 .PHONY : src/src_common/common_resolver.o
@@ -387,6 +738,7 @@ src/src_common/common_serializador.o: src/src_common/common_serializador.cpp.o
 
 # target to build an object file
 src/src_common/common_serializador.cpp.o:
+	$(MAKE) -f CMakeFiles/serializador_tests.dir/build.make CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.o
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_serializador.cpp.o
 .PHONY : src/src_common/common_serializador.cpp.o
@@ -397,6 +749,7 @@ src/src_common/common_serializador.i: src/src_common/common_serializador.cpp.i
 
 # target to preprocess a source file
 src/src_common/common_serializador.cpp.i:
+	$(MAKE) -f CMakeFiles/serializador_tests.dir/build.make CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.i
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_serializador.cpp.i
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_serializador.cpp.i
 .PHONY : src/src_common/common_serializador.cpp.i
@@ -407,6 +760,7 @@ src/src_common/common_serializador.s: src/src_common/common_serializador.cpp.s
 
 # target to generate assembly for a file
 src/src_common/common_serializador.cpp.s:
+	$(MAKE) -f CMakeFiles/serializador_tests.dir/build.make CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.s
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_serializador.cpp.s
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_serializador.cpp.s
 .PHONY : src/src_common/common_serializador.cpp.s
@@ -579,6 +933,96 @@ src/src_server/server_aceptador.cpp.s:
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.s
 .PHONY : src/src_server/server_aceptador.cpp.s
 
+src/src_server/server_camino.o: src/src_server/server_camino.cpp.o
+
+.PHONY : src/src_server/server_camino.o
+
+# target to build an object file
+src/src_server/server_camino.cpp.o:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_camino.cpp.o
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_server/server_camino.cpp.o
+.PHONY : src/src_server/server_camino.cpp.o
+
+src/src_server/server_camino.i: src/src_server/server_camino.cpp.i
+
+.PHONY : src/src_server/server_camino.i
+
+# target to preprocess a source file
+src/src_server/server_camino.cpp.i:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_camino.cpp.i
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_server/server_camino.cpp.i
+.PHONY : src/src_server/server_camino.cpp.i
+
+src/src_server/server_camino.s: src/src_server/server_camino.cpp.s
+
+.PHONY : src/src_server/server_camino.s
+
+# target to generate assembly for a file
+src/src_server/server_camino.cpp.s:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_camino.cpp.s
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_server/server_camino.cpp.s
+.PHONY : src/src_server/server_camino.cpp.s
+
+src/src_server/server_camino_no_encontrado_exception.o: src/src_server/server_camino_no_encontrado_exception.cpp.o
+
+.PHONY : src/src_server/server_camino_no_encontrado_exception.o
+
+# target to build an object file
+src/src_server/server_camino_no_encontrado_exception.cpp.o:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_camino_no_encontrado_exception.cpp.o
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_server/server_camino_no_encontrado_exception.cpp.o
+.PHONY : src/src_server/server_camino_no_encontrado_exception.cpp.o
+
+src/src_server/server_camino_no_encontrado_exception.i: src/src_server/server_camino_no_encontrado_exception.cpp.i
+
+.PHONY : src/src_server/server_camino_no_encontrado_exception.i
+
+# target to preprocess a source file
+src/src_server/server_camino_no_encontrado_exception.cpp.i:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_camino_no_encontrado_exception.cpp.i
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_server/server_camino_no_encontrado_exception.cpp.i
+.PHONY : src/src_server/server_camino_no_encontrado_exception.cpp.i
+
+src/src_server/server_camino_no_encontrado_exception.s: src/src_server/server_camino_no_encontrado_exception.cpp.s
+
+.PHONY : src/src_server/server_camino_no_encontrado_exception.s
+
+# target to generate assembly for a file
+src/src_server/server_camino_no_encontrado_exception.cpp.s:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_camino_no_encontrado_exception.cpp.s
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_server/server_camino_no_encontrado_exception.cpp.s
+.PHONY : src/src_server/server_camino_no_encontrado_exception.cpp.s
+
+src/src_server/server_fuera_de_rango_exception.o: src/src_server/server_fuera_de_rango_exception.cpp.o
+
+.PHONY : src/src_server/server_fuera_de_rango_exception.o
+
+# target to build an object file
+src/src_server/server_fuera_de_rango_exception.cpp.o:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_fuera_de_rango_exception.cpp.o
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_server/server_fuera_de_rango_exception.cpp.o
+.PHONY : src/src_server/server_fuera_de_rango_exception.cpp.o
+
+src/src_server/server_fuera_de_rango_exception.i: src/src_server/server_fuera_de_rango_exception.cpp.i
+
+.PHONY : src/src_server/server_fuera_de_rango_exception.i
+
+# target to preprocess a source file
+src/src_server/server_fuera_de_rango_exception.cpp.i:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_fuera_de_rango_exception.cpp.i
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_server/server_fuera_de_rango_exception.cpp.i
+.PHONY : src/src_server/server_fuera_de_rango_exception.cpp.i
+
+src/src_server/server_fuera_de_rango_exception.s: src/src_server/server_fuera_de_rango_exception.cpp.s
+
+.PHONY : src/src_server/server_fuera_de_rango_exception.s
+
+# target to generate assembly for a file
+src/src_server/server_fuera_de_rango_exception.cpp.s:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_fuera_de_rango_exception.cpp.s
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_server/server_fuera_de_rango_exception.cpp.s
+.PHONY : src/src_server/server_fuera_de_rango_exception.cpp.s
+
 src/src_server/server_handler.o: src/src_server/server_handler.cpp.o
 
 .PHONY : src/src_server/server_handler.o
@@ -632,6 +1076,33 @@ src/src_server/server_lobby.s: src/src_server/server_lobby.cpp.s
 src/src_server/server_lobby.cpp.s:
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_lobby.cpp.s
 .PHONY : src/src_server/server_lobby.cpp.s
+
+src/src_server/server_mapa.o: src/src_server/server_mapa.cpp.o
+
+.PHONY : src/src_server/server_mapa.o
+
+# target to build an object file
+src/src_server/server_mapa.cpp.o:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_mapa.cpp.o
+.PHONY : src/src_server/server_mapa.cpp.o
+
+src/src_server/server_mapa.i: src/src_server/server_mapa.cpp.i
+
+.PHONY : src/src_server/server_mapa.i
+
+# target to preprocess a source file
+src/src_server/server_mapa.cpp.i:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_mapa.cpp.i
+.PHONY : src/src_server/server_mapa.cpp.i
+
+src/src_server/server_mapa.s: src/src_server/server_mapa.cpp.s
+
+.PHONY : src/src_server/server_mapa.s
+
+# target to generate assembly for a file
+src/src_server/server_mapa.cpp.s:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_server/server_mapa.cpp.s
+.PHONY : src/src_server/server_mapa.cpp.s
 
 src/src_server/server_partida.o: src/src_server/server_partida.cpp.o
 
@@ -714,24 +1185,133 @@ src/src_server/server_server.cpp.s:
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_server.cpp.s
 .PHONY : src/src_server/server_server.cpp.s
 
+src/src_testing/pruebas_camino/pruebas_camino.o: src/src_testing/pruebas_camino/pruebas_camino.cpp.o
+
+.PHONY : src/src_testing/pruebas_camino/pruebas_camino.o
+
+# target to build an object file
+src/src_testing/pruebas_camino/pruebas_camino.cpp.o:
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_testing/pruebas_camino/pruebas_camino.cpp.o
+.PHONY : src/src_testing/pruebas_camino/pruebas_camino.cpp.o
+
+src/src_testing/pruebas_camino/pruebas_camino.i: src/src_testing/pruebas_camino/pruebas_camino.cpp.i
+
+.PHONY : src/src_testing/pruebas_camino/pruebas_camino.i
+
+# target to preprocess a source file
+src/src_testing/pruebas_camino/pruebas_camino.cpp.i:
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_testing/pruebas_camino/pruebas_camino.cpp.i
+.PHONY : src/src_testing/pruebas_camino/pruebas_camino.cpp.i
+
+src/src_testing/pruebas_camino/pruebas_camino.s: src/src_testing/pruebas_camino/pruebas_camino.cpp.s
+
+.PHONY : src/src_testing/pruebas_camino/pruebas_camino.s
+
+# target to generate assembly for a file
+src/src_testing/pruebas_camino/pruebas_camino.cpp.s:
+	$(MAKE) -f CMakeFiles/camino_tests.dir/build.make CMakeFiles/camino_tests.dir/src/src_testing/pruebas_camino/pruebas_camino.cpp.s
+.PHONY : src/src_testing/pruebas_camino/pruebas_camino.cpp.s
+
+src/src_testing/pruebas_mapa/pruebas.o: src/src_testing/pruebas_mapa/pruebas.cpp.o
+
+.PHONY : src/src_testing/pruebas_mapa/pruebas.o
+
+# target to build an object file
+src/src_testing/pruebas_mapa/pruebas.cpp.o:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_testing/pruebas_mapa/pruebas.cpp.o
+.PHONY : src/src_testing/pruebas_mapa/pruebas.cpp.o
+
+src/src_testing/pruebas_mapa/pruebas.i: src/src_testing/pruebas_mapa/pruebas.cpp.i
+
+.PHONY : src/src_testing/pruebas_mapa/pruebas.i
+
+# target to preprocess a source file
+src/src_testing/pruebas_mapa/pruebas.cpp.i:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_testing/pruebas_mapa/pruebas.cpp.i
+.PHONY : src/src_testing/pruebas_mapa/pruebas.cpp.i
+
+src/src_testing/pruebas_mapa/pruebas.s: src/src_testing/pruebas_mapa/pruebas.cpp.s
+
+.PHONY : src/src_testing/pruebas_mapa/pruebas.s
+
+# target to generate assembly for a file
+src/src_testing/pruebas_mapa/pruebas.cpp.s:
+	$(MAKE) -f CMakeFiles/pruebas_mapa.dir/build.make CMakeFiles/pruebas_mapa.dir/src/src_testing/pruebas_mapa/pruebas.cpp.s
+.PHONY : src/src_testing/pruebas_mapa/pruebas.cpp.s
+
+src/src_testing/pruebas_serializador/pruebas_serializador.o: src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o
+
+.PHONY : src/src_testing/pruebas_serializador/pruebas_serializador.o
+
+# target to build an object file
+src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o:
+	$(MAKE) -f CMakeFiles/serializador_tests.dir/build.make CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o
+.PHONY : src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o
+
+src/src_testing/pruebas_serializador/pruebas_serializador.i: src/src_testing/pruebas_serializador/pruebas_serializador.cpp.i
+
+.PHONY : src/src_testing/pruebas_serializador/pruebas_serializador.i
+
+# target to preprocess a source file
+src/src_testing/pruebas_serializador/pruebas_serializador.cpp.i:
+	$(MAKE) -f CMakeFiles/serializador_tests.dir/build.make CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.i
+.PHONY : src/src_testing/pruebas_serializador/pruebas_serializador.cpp.i
+
+src/src_testing/pruebas_serializador/pruebas_serializador.s: src/src_testing/pruebas_serializador/pruebas_serializador.cpp.s
+
+.PHONY : src/src_testing/pruebas_serializador/pruebas_serializador.s
+
+# target to generate assembly for a file
+src/src_testing/pruebas_serializador/pruebas_serializador.cpp.s:
+	$(MAKE) -f CMakeFiles/serializador_tests.dir/build.make CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.s
+.PHONY : src/src_testing/pruebas_serializador/pruebas_serializador.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install/strip"
+	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test"
+	@echo "... serializador_tests"
+	@echo "... pruebas_mapa"
+	@echo "... camino_tests"
+	@echo "... install/local"
 	@echo "... server"
 	@echo "... client"
+	@echo "... serializador_tests_autogen"
+	@echo "... pruebas_mapa_autogen"
+	@echo "... camino_tests_autogen"
 	@echo "... server_autogen"
 	@echo "... client_autogen"
+	@echo "... yaml-cpp"
+	@echo "... yaml-cpp-read"
+	@echo "... yaml-cpp-parse"
+	@echo "... yaml-cpp-sandbox"
+	@echo "... gmock_main"
+	@echo "... gmock"
+	@echo "... gtest_main"
+	@echo "... gtest"
+	@echo "... camino_tests_autogen/mocs_compilation.o"
+	@echo "... camino_tests_autogen/mocs_compilation.i"
+	@echo "... camino_tests_autogen/mocs_compilation.s"
 	@echo "... client_autogen/GBFAFXFCVO/qrc_resources.o"
 	@echo "... client_autogen/GBFAFXFCVO/qrc_resources.i"
 	@echo "... client_autogen/GBFAFXFCVO/qrc_resources.s"
 	@echo "... client_autogen/mocs_compilation.o"
 	@echo "... client_autogen/mocs_compilation.i"
 	@echo "... client_autogen/mocs_compilation.s"
+	@echo "... pruebas_mapa_autogen/mocs_compilation.o"
+	@echo "... pruebas_mapa_autogen/mocs_compilation.i"
+	@echo "... pruebas_mapa_autogen/mocs_compilation.s"
+	@echo "... serializador_tests_autogen/mocs_compilation.o"
+	@echo "... serializador_tests_autogen/mocs_compilation.i"
+	@echo "... serializador_tests_autogen/mocs_compilation.s"
 	@echo "... server_autogen/mocs_compilation.o"
 	@echo "... server_autogen/mocs_compilation.i"
 	@echo "... server_autogen/mocs_compilation.s"
@@ -747,6 +1327,9 @@ help:
 	@echo "... src/src_cliente/client_protocolo.o"
 	@echo "... src/src_cliente/client_protocolo.i"
 	@echo "... src/src_cliente/client_protocolo.s"
+	@echo "... src/src_common/common_coords.o"
+	@echo "... src/src_common/common_coords.i"
+	@echo "... src/src_common/common_coords.s"
 	@echo "... src/src_common/common_resolver.o"
 	@echo "... src/src_common/common_resolver.i"
 	@echo "... src/src_common/common_resolver.s"
@@ -771,12 +1354,24 @@ help:
 	@echo "... src/src_server/server_aceptador.o"
 	@echo "... src/src_server/server_aceptador.i"
 	@echo "... src/src_server/server_aceptador.s"
+	@echo "... src/src_server/server_camino.o"
+	@echo "... src/src_server/server_camino.i"
+	@echo "... src/src_server/server_camino.s"
+	@echo "... src/src_server/server_camino_no_encontrado_exception.o"
+	@echo "... src/src_server/server_camino_no_encontrado_exception.i"
+	@echo "... src/src_server/server_camino_no_encontrado_exception.s"
+	@echo "... src/src_server/server_fuera_de_rango_exception.o"
+	@echo "... src/src_server/server_fuera_de_rango_exception.i"
+	@echo "... src/src_server/server_fuera_de_rango_exception.s"
 	@echo "... src/src_server/server_handler.o"
 	@echo "... src/src_server/server_handler.i"
 	@echo "... src/src_server/server_handler.s"
 	@echo "... src/src_server/server_lobby.o"
 	@echo "... src/src_server/server_lobby.i"
 	@echo "... src/src_server/server_lobby.s"
+	@echo "... src/src_server/server_mapa.o"
+	@echo "... src/src_server/server_mapa.i"
+	@echo "... src/src_server/server_mapa.s"
 	@echo "... src/src_server/server_partida.o"
 	@echo "... src/src_server/server_partida.i"
 	@echo "... src/src_server/server_partida.s"
@@ -786,6 +1381,15 @@ help:
 	@echo "... src/src_server/server_server.o"
 	@echo "... src/src_server/server_server.i"
 	@echo "... src/src_server/server_server.s"
+	@echo "... src/src_testing/pruebas_camino/pruebas_camino.o"
+	@echo "... src/src_testing/pruebas_camino/pruebas_camino.i"
+	@echo "... src/src_testing/pruebas_camino/pruebas_camino.s"
+	@echo "... src/src_testing/pruebas_mapa/pruebas.o"
+	@echo "... src/src_testing/pruebas_mapa/pruebas.i"
+	@echo "... src/src_testing/pruebas_mapa/pruebas.s"
+	@echo "... src/src_testing/pruebas_serializador/pruebas_serializador.o"
+	@echo "... src/src_testing/pruebas_serializador/pruebas_serializador.i"
+	@echo "... src/src_testing/pruebas_serializador/pruebas_serializador.s"
 .PHONY : help
 
 
@@ -797,6 +1401,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/DUNE/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/VerifyGlobs.cmake"
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
