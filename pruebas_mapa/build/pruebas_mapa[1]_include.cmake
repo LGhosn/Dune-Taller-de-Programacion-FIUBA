@@ -1,0 +1,5 @@
+if(EXISTS "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/pruebas_mapa/build/pruebas_mapa[1]_tests.cmake")
+  include("/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/pruebas_mapa/build/pruebas_mapa[1]_tests.cmake")
+else()
+  add_test(pruebas_mapa_NOT_BUILT pruebas_mapa_NOT_BUILT)
+endif()

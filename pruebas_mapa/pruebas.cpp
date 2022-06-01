@@ -196,6 +196,29 @@ TEST(Mapa, se_puede_construir_a_mas_de_5_bloques) {
     ASSERT_EQ(mapa.construir_edificio(std::make_tuple(edificio, x_roca, y_roca + 6)), true);
 }
 
+TEST(Mapa, se_puede_construir_despues_de_demoler) {
+    YAML::Node config = YAML::LoadFile("../config.yaml");
+
+    const int ancho = config["Ancho"].as<int>();
+    const int alto = config["Alto"].as<int>();
+
+    Mapa mapa(ancho, alto);
+
+    for (int i = 0; i < alto; i++){
+        for (int j = 0; j < ancho; j++){
+            mapa.modificar_terreno(j, i, config["Mapa2"][i][j].as<char>());
+        }
+    }
+
+    const uint8_t edificio = config["Silo"]["Valor"].as<uint8_t>();
+    const uint16_t x_roca = config["Silo"]["Posicion"]["XRoca"].as<uint16_t>();
+    const uint16_t y_roca = config["Silo"]["Posicion"]["YRoca"].as<uint16_t>();
+
+    mapa.construir_edificio(std::make_tuple(edificio, x_roca, y_roca));
+    mapa.demoler_edificio(edificio, x_roca, y_roca);
+    ASSERT_EQ(mapa.construir_edificio(std::make_tuple(edificio, x_roca, y_roca)), true);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

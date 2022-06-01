@@ -1,0 +1,24 @@
+{
+	"BUILD_DIR" : "/home/sruizs/Escritorio/MenuDune/build/dune_client_autogen",
+	"CMAKE_BINARY_DIR" : "/home/sruizs/Escritorio/MenuDune/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/sruizs/Escritorio/MenuDune/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/sruizs/Escritorio/MenuDune",
+	"CMAKE_SOURCE_DIR" : "/home/sruizs/Escritorio/MenuDune",
+	"INCLUDE_DIR" : "/home/sruizs/Escritorio/MenuDune/build/dune_client_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/sruizs/Escritorio/MenuDune/assets/logo.jpg",
+		"/home/sruizs/Escritorio/MenuDune/assets/mute.png",
+		"/home/sruizs/Escritorio/MenuDune/assets/dune_space_wars.jpg"
+	],
+	"LOCK_FILE" : "/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/dune_client_autogen.dir/AutoRcc_resources_GBFAFXFCVO_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "GBFAFXFCVO",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt5/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/sruizs/Escritorio/MenuDune/build/CMakeFiles/dune_client_autogen.dir/AutoRcc_resources_GBFAFXFCVO_Used.txt",
+	"SOURCE" : "/home/sruizs/Escritorio/MenuDune/assets/resources.qrc",
+	"VERBOSITY" : 0
+}

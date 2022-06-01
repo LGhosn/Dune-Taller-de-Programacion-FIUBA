@@ -47,6 +47,7 @@ private:
     */
     bool terreno_firme(uint16_t pos_x, uint16_t pos_y);
 
+    void xxx(uint16_t pos_x, uint16_t pos_y, int dimension_x, int dimension_y, char reforma);
 
 public:
     /*
@@ -74,6 +75,7 @@ public:
 
     void modificar_terreno(uint16_t pos_x, uint16_t pos_y, char terreno);
 
+    void demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y);
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.
