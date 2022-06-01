@@ -1,7 +1,0 @@
-/snap/clion/190/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/190/bin/ninja/linux/ninja -G Ninja -S /home/sruizs/Escritorio/MenuDune -B /home/sruizs/Escritorio/MenuDune/cmake-build-debug
-[INFO] La raiz del proyecto es /home/sruizs/Escritorio/MenuDune
-Agregando '/home/sruizs/Escritorio/MenuDune/cmake-build-debug' como directorio de includes
-Headers generados: /home/sruizs/Escritorio/MenuDune/cmake-build-debug/ui_MenuUi.h;/home/sruizs/Escritorio/MenuDune/cmake-build-debug/ui_FormCreacion.h;/home/sruizs/Escritorio/MenuDune/cmake-build-debug/ui_FormUnion.h
--- Configuring done
--- Generating done
--- Build files have been written to: /home/sruizs/Escritorio/MenuDune/cmake-build-debug
