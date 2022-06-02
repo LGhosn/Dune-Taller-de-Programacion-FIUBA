@@ -1,0 +1,219 @@
+Start testing: Jun 01 22:02 -03
+----------------------------------------------------------
+1/8 Testing: CaminoTest.creaUnCamino
+1/8 Test: CaminoTest.creaUnCamino
+Command: "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/camino_tests" "--gtest_filter=CaminoTest.creaUnCamino" "--gtest_also_run_disabled_tests"
+Directory: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build
+"CaminoTest.creaUnCamino" start time: Jun 01 22:02 -03
+Output:
+----------------------------------------------------------
+Running main() from /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CaminoTest.creaUnCamino
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CaminoTest
+[ RUN      ] CaminoTest.creaUnCamino
+[       OK ] CaminoTest.creaUnCamino (0 ms)
+[----------] 1 test from CaminoTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CaminoTest.creaUnCamino" end time: Jun 01 22:02 -03
+"CaminoTest.creaUnCamino" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/8 Testing: CaminoTest.caminoTrivial
+2/8 Test: CaminoTest.caminoTrivial
+Command: "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/camino_tests" "--gtest_filter=CaminoTest.caminoTrivial" "--gtest_also_run_disabled_tests"
+Directory: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build
+"CaminoTest.caminoTrivial" start time: Jun 01 22:02 -03
+Output:
+----------------------------------------------------------
+Running main() from /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CaminoTest.caminoTrivial
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CaminoTest
+[ RUN      ] CaminoTest.caminoTrivial
+[       OK ] CaminoTest.caminoTrivial (0 ms)
+[----------] 1 test from CaminoTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CaminoTest.caminoTrivial" end time: Jun 01 22:02 -03
+"CaminoTest.caminoTrivial" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/8 Testing: CaminoTest.caminoConPrecipicio
+3/8 Test: CaminoTest.caminoConPrecipicio
+Command: "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/camino_tests" "--gtest_filter=CaminoTest.caminoConPrecipicio" "--gtest_also_run_disabled_tests"
+Directory: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build
+"CaminoTest.caminoConPrecipicio" start time: Jun 01 22:02 -03
+Output:
+----------------------------------------------------------
+Running main() from /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CaminoTest.caminoConPrecipicio
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CaminoTest
+[ RUN      ] CaminoTest.caminoConPrecipicio
+[       OK ] CaminoTest.caminoConPrecipicio (0 ms)
+[----------] 1 test from CaminoTest (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CaminoTest.caminoConPrecipicio" end time: Jun 01 22:02 -03
+"CaminoTest.caminoConPrecipicio" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/8 Testing: CaminoTest.caminoConZigZag
+4/8 Test: CaminoTest.caminoConZigZag
+Command: "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/camino_tests" "--gtest_filter=CaminoTest.caminoConZigZag" "--gtest_also_run_disabled_tests"
+Directory: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build
+"CaminoTest.caminoConZigZag" start time: Jun 01 22:02 -03
+Output:
+----------------------------------------------------------
+Running main() from /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CaminoTest.caminoConZigZag
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CaminoTest
+[ RUN      ] CaminoTest.caminoConZigZag
+[       OK ] CaminoTest.caminoConZigZag (0 ms)
+[----------] 1 test from CaminoTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CaminoTest.caminoConZigZag" end time: Jun 01 22:02 -03
+"CaminoTest.caminoConZigZag" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/8 Testing: CaminoTest.caminoImposible
+5/8 Test: CaminoTest.caminoImposible
+Command: "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/camino_tests" "--gtest_filter=CaminoTest.caminoImposible" "--gtest_also_run_disabled_tests"
+Directory: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build
+"CaminoTest.caminoImposible" start time: Jun 01 22:02 -03
+Output:
+----------------------------------------------------------
+Running main() from /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CaminoTest.caminoImposible
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CaminoTest
+[ RUN      ] CaminoTest.caminoImposible
+[       OK ] CaminoTest.caminoImposible (0 ms)
+[----------] 1 test from CaminoTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CaminoTest.caminoImposible" end time: Jun 01 22:02 -03
+"CaminoTest.caminoImposible" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/8 Testing: CaminoTest.caminoConDunas
+6/8 Test: CaminoTest.caminoConDunas
+Command: "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/camino_tests" "--gtest_filter=CaminoTest.caminoConDunas" "--gtest_also_run_disabled_tests"
+Directory: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build
+"CaminoTest.caminoConDunas" start time: Jun 01 22:02 -03
+Output:
+----------------------------------------------------------
+Running main() from /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CaminoTest.caminoConDunas
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CaminoTest
+[ RUN      ] CaminoTest.caminoConDunas
+[       OK ] CaminoTest.caminoConDunas (0 ms)
+[----------] 1 test from CaminoTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CaminoTest.caminoConDunas" end time: Jun 01 22:02 -03
+"CaminoTest.caminoConDunas" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/8 Testing: CaminoTest.caminoConCoordenadasNoValidas
+7/8 Test: CaminoTest.caminoConCoordenadasNoValidas
+Command: "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/camino_tests" "--gtest_filter=CaminoTest.caminoConCoordenadasNoValidas" "--gtest_also_run_disabled_tests"
+Directory: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build
+"CaminoTest.caminoConCoordenadasNoValidas" start time: Jun 01 22:02 -03
+Output:
+----------------------------------------------------------
+Running main() from /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CaminoTest.caminoConCoordenadasNoValidas
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CaminoTest
+[ RUN      ] CaminoTest.caminoConCoordenadasNoValidas
+[       OK ] CaminoTest.caminoConCoordenadasNoValidas (0 ms)
+[----------] 1 test from CaminoTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"CaminoTest.caminoConCoordenadasNoValidas" end time: Jun 01 22:02 -03
+"CaminoTest.caminoConCoordenadasNoValidas" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/8 Testing: CaminoTest.caminoConCoordenadasEnTerrenoNoAccesible
+8/8 Test: CaminoTest.caminoConCoordenadasEnTerrenoNoAccesible
+Command: "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/camino_tests" "--gtest_filter=CaminoTest.caminoConCoordenadasEnTerrenoNoAccesible" "--gtest_also_run_disabled_tests"
+Directory: /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build
+"CaminoTest.caminoConCoordenadasEnTerrenoNoAccesible" start time: Jun 01 22:02 -03
+Output:
+----------------------------------------------------------
+Running main() from /home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = CaminoTest.caminoConCoordenadasEnTerrenoNoAccesible
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from CaminoTest
+[ RUN      ] CaminoTest.caminoConCoordenadasEnTerrenoNoAccesible
+[       OK ] CaminoTest.caminoConCoordenadasEnTerrenoNoAccesible (0 ms)
+[----------] 1 test from CaminoTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"CaminoTest.caminoConCoordenadasEnTerrenoNoAccesible" end time: Jun 01 22:02 -03
+"CaminoTest.caminoConCoordenadasEnTerrenoNoAccesible" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 01 22:02 -03

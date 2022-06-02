@@ -1,0 +1,9 @@
+CaminoTest.creaUnCamino 1 0.00262869
+CaminoTest.caminoTrivial 1 0.00212948
+CaminoTest.caminoConPrecipicio 1 0.00189453
+CaminoTest.caminoConZigZag 1 0.00418449
+CaminoTest.caminoImposible 1 0.00246314
+CaminoTest.caminoConDunas 1 0.00207195
+CaminoTest.caminoConCoordenadasNoValidas 1 0.00181236
+CaminoTest.caminoConCoordenadasEnTerrenoNoAccesible 1 0.00808004
+---

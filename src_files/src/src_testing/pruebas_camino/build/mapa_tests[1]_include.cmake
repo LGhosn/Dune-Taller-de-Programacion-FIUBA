@@ -1,0 +1,5 @@
+if(EXISTS "/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/mapa_tests[1]_tests.cmake")
+  include("/home/joaquin/Documents/Facultad/Taller/TP Final/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/build/mapa_tests[1]_tests.cmake")
+else()
+  add_test(mapa_tests_NOT_BUILT mapa_tests_NOT_BUILT)
+endif()
