@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11  -Wall -Wextra -pedantic  -rdynamic CMakeFiles/live_mixer.dir/live_mixer.cc.o  -o live_mixer  -Wl,-rpath,"/home/joaquin/Documents/Facultad/Taller/TP Final/SDL2PP/libSDL2pp-0.16.2" -Wl,-Bstatic -lSDL2main -Wl,-Bdynamic ../libSDL2pp.so.8.3.0 -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer 
