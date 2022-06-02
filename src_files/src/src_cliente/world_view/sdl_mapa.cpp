@@ -7,7 +7,7 @@ renderer(renderer), textura(renderer, RESOURCE_PATH "/maps/ejemplo.png"),
 pos_x((textura.GetWidth() - ANCHO_VENTANA / ZOOM_INICIAL) / 2),
 pos_y((textura.GetHeight() - LARGO_VENTANA / ZOOM_INICIAL) / 2),
 moviendose_h(false), moviendose_v(false), direccion_h(ARRIBA),
-direccion_v(IZQUIERDA), tiempo(0.0f), zoom(ZOOM_INICIAL) {}
+direccion_v(IZQUIERDA), zoom(ZOOM_INICIAL) {}
 
 void MapaSDL::moverArriba() {
 	if (pos_y > 0 - PADDING && !this->moviendose_v) {
@@ -67,36 +67,26 @@ float MapaSDL::obtener_zoom() const {
 	return this->zoom;
 }
 
-void MapaSDL::update(float tiempo_transcurrido) {
+void MapaSDL::update() {
 	if (this->moviendose_h) {
 		switch(this->direccion_h) {
 			case IZQUIERDA:
 				if (this->pos_x > 0 - PADDING) {
-					this->tiempo += tiempo_transcurrido;
-					while(this->tiempo >= FRAME_RATE) {
-						pos_x -= PASO / this->zoom;
-						this->tiempo -= FRAME_RATE;
-						if (this->pos_x < 0 - PADDING) {
-							pos_x = 0 - PADDING;
-							this->tiempo = 0.0f;
-							this->moviendose_h = false;
-							break;
-						}
+					pos_x -= PASO / this->zoom;
+					if (this->pos_x < 0 - PADDING) {
+						pos_x = 0 - PADDING;
+						this->moviendose_h = false;
+						break;
 					}
 				}
 				break;
 			case DERECHA:
 				if (this->pos_x < this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING) {
-					this->tiempo += tiempo_transcurrido;
-					while(this->tiempo >= FRAME_RATE) {
-						pos_x += PASO / this->zoom;
-						this->tiempo -= FRAME_RATE;
-						if (this->pos_x > this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING) {
-							pos_x = this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING;
-							this->tiempo = 0.0f;
-							this->moviendose_h = false;
-							break;
-						}
+					pos_x += PASO / this->zoom;
+					if (this->pos_x > this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING) {
+						pos_x = this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING;
+						this->moviendose_h = false;
+						break;
 					}
 				}
 				break;
@@ -107,31 +97,21 @@ void MapaSDL::update(float tiempo_transcurrido) {
 		switch(this->direccion_v) {
 			case ARRIBA:
 				if (this->pos_y > 0 - PADDING) {
-					this->tiempo += tiempo_transcurrido;
-					while(this->tiempo >= FRAME_RATE) {
-						pos_y -= PASO / this->zoom;
-						this->tiempo -= FRAME_RATE;
-						if (this->pos_y < 0 - PADDING) {
-							pos_y = 0 - PADDING;
-							this->tiempo = 0.0f;
-							this->moviendose_v = false;
-							break;
-						}
+					pos_y -= PASO / this->zoom;
+					if (this->pos_y < 0 - PADDING) {
+						pos_y = 0 - PADDING;
+						this->moviendose_v = false;
+						break;
 					}
 				}
 				break;
 			case ABAJO:
 				if (this->pos_y < this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING) {
-					this->tiempo += tiempo_transcurrido;
-					while(this->tiempo >= FRAME_RATE) {
-						pos_y += PASO / this->zoom;
-						this->tiempo -= FRAME_RATE;
-						if (this->pos_y > this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING) {
-							pos_y = this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING;
-							this->tiempo = 0.0f;
-							this->moviendose_v = false;
-							break;
-						}
+					pos_y += PASO / this->zoom;
+					if (this->pos_y > this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING) {
+						pos_y = this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING;
+						this->moviendose_v = false;
+						break;
 					}
 				}
 				break;

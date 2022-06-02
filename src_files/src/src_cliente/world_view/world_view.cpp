@@ -22,7 +22,7 @@ void WorldView::moverMapaAbajo() {
 }
 
 void WorldView::update(float tiempo_transcurrido) {
-	this->mapa.update(tiempo_transcurrido);
+	this->mapa.update();
 }
 
 void WorldView::render(long frame) {

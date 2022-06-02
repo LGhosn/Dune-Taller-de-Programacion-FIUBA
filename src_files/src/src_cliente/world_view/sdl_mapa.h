@@ -21,7 +21,7 @@
 
 #define PADDING 200
 
-#define FRAME_RATE 0.1f / 6.0f
+#define FRAME_RATE 33.0f
 
 #define PASO 6
 
@@ -34,7 +34,6 @@ class MapaSDL {
 	bool moviendose_v;
 	char direccion_h;
 	char direccion_v;
-	float tiempo;
 	float zoom;
 
 public:
@@ -54,7 +53,7 @@ public:
 	int obtener_offset_y() const;
 	float obtener_zoom() const;
 
-	void update(float tiempo_transcurrido);
+	void update();
 	void render(long frame);
 };
 
