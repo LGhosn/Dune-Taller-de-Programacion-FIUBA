@@ -1,9 +1,13 @@
 #include "sdl_mapa.h"
 #include <functional>
+#include <iostream>
 
-MapaSDL::MapaSDL(SDL2pp::Texture& textura) : textura(std::move(textura)),
-pos_x((textura.GetWidth() - ANCHO_VENTANA / ZOOM_INICIAL) / 2), pos_y((textura.GetHeight() - LARGO_VENTANA / ZOOM_INICIAL) / 2),
-moviendose_h(false), moviendose_v(false), direccion_h(ARRIBA), direccion_v(IZQUIERDA), tiempo(0.0f), zoom(ZOOM_INICIAL) {}
+MapaSDL::MapaSDL(SDL2pp::Renderer& renderer) :
+renderer(renderer), textura(renderer, RESOURCE_PATH "/maps/ejemplo.png"),
+pos_x((textura.GetWidth() - ANCHO_VENTANA / ZOOM_INICIAL) / 2),
+pos_y((textura.GetHeight() - LARGO_VENTANA / ZOOM_INICIAL) / 2),
+moviendose_h(false), moviendose_v(false), direccion_h(ARRIBA),
+direccion_v(IZQUIERDA), tiempo(0.0f), zoom(ZOOM_INICIAL) {}
 
 void MapaSDL::moverArriba() {
 	if (pos_y > 0 - PADDING && !this->moviendose_v) {
@@ -135,7 +139,7 @@ void MapaSDL::update(float tiempo_transcurrido) {
 	}
 }
 
-void MapaSDL::render(SDL2pp::Renderer& renderer) {
+void MapaSDL::render(long frame) {
 	int origen_x, origen_y;
 	int pos_x_pantalla, pos_y_pantalla;
 	int tam_x_pantalla, tam_y_pantalla;
@@ -165,7 +169,7 @@ void MapaSDL::render(SDL2pp::Renderer& renderer) {
 		pos_y_pantalla = 0;
 		tam_y_pantalla = LARGO_VENTANA / this->zoom;
 	}
-	renderer.Copy(this->textura,
+	this->renderer.Copy(this->textura,
 		SDL2pp::Rect(
 			origen_x,
 			origen_y,

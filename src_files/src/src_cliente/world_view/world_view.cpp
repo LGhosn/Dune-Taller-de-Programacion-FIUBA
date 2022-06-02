@@ -1,7 +1,9 @@
 #include "world_view.h"
 #include <functional>
 
-WorldView::WorldView(SDL2pp::Texture& mapa_textura) : mapa(mapa_textura) {}
+WorldView::WorldView() : 
+window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ANCHO_VENTANA, LARGO_VENTANA, 0),
+renderer(window, -1, SDL_RENDERER_ACCELERATED), mapa(renderer) {}
 
 void WorldView::moverMapaArriba() {
 	this->mapa.moverArriba();
@@ -23,6 +25,8 @@ void WorldView::update(float tiempo_transcurrido) {
 	this->mapa.update(tiempo_transcurrido);
 }
 
-void WorldView::render(SDL2pp::Renderer& renderer) {
-	this->mapa.render(renderer);
+void WorldView::render(long frame) {
+	this->renderer.Clear();
+	this->mapa.render(frame);
+	this->renderer.Present();
 }

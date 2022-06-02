@@ -4,10 +4,10 @@
 #include <iostream>
 #include "hilo_renderer.h"
 
-bool HiloRenderer::handle_command(float tiempo_transcurrido) {
-	Command comando = this->cola_eventos.pop();
+bool HiloRenderer::manejar_comando() {
+	std::unique_ptr<Comando> comando = this->cola_eventos.pop();
 	if (comando)
-		return comando.ejecutar(this->world_view, tiempo_transcurrido);
+		return comando->ejecutar(this->world_view);
 	return true;
 }
 
@@ -16,9 +16,7 @@ void HiloRenderer::update(float tiempo_transcurrido) {
 }
 
 void HiloRenderer::render(long frame) {
-	this->renderer.Clear();
-	this->world_view.render(this->renderer, frame);
-	this->renderer.Present();
+	this->world_view.render(frame);
 }
 
 void HiloRenderer::game_loop() {
@@ -30,8 +28,8 @@ void HiloRenderer::game_loop() {
 		std::chrono::duration<float> tiempo_transcurrido = std::chrono::duration_cast
 		<std::chrono::duration<float>>(t1 - t2);
 		t1 = t2;
-		running = this->handle_command(tiempo_transcurrido.count());
-		this->update(tiempo_transcurrido.count());
+		running = this->manejar_comando();
+		this->update(FRAME_RATE);
 		this->render(frame);
 		float rest = FRAME_RATE - tiempo_transcurrido.count();
 		frame++;
@@ -42,16 +40,14 @@ void HiloRenderer::game_loop() {
 void HiloRenderer::manejar_hilo() {
 	try {
 		this->game_loop();
-	} catch (const Exception& e) {
+	} catch (const std::exception& e) {
 		std::cerr << "Excepcion encontrada en hilo renderer: " << e.what() << std::endl;
 	} catch (...) {
 		std::cerr << "Excepcion desconocida en hilo renderer" << std::endl;
 	}
 }
 
-HiloRenderer::HiloRenderer(WorldView& world_view, ColaNoBloqueante<Command>& cola_eventos,
-	SDL2pp::Renderer& renderer) : world_view(world_view), cola_eventos(cola_eventos),
-	renderer(renderer) {}
+HiloRenderer::HiloRenderer(ColaNoBloqueante<Comando>& cola_eventos) : cola_eventos(cola_eventos) {}
 
 void HiloRenderer::start() {
 	this->hilo = std::thread(&HiloRenderer::manejar_hilo, this);

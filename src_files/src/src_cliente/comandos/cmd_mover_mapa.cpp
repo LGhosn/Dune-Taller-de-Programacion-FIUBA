@@ -2,7 +2,7 @@
 
 MoverMapa::MoverMapa(char direccion) : direccion(direccion) {}
 
-void MoverMapa::ejecutar(WorldView& worldView) const {
+bool MoverMapa::ejecutar(WorldView& worldView) const {
 	switch (this->direccion) {
 		case ARRIBA:
 			worldView.moverMapaArriba();
@@ -17,4 +17,5 @@ void MoverMapa::ejecutar(WorldView& worldView) const {
 			worldView.moverMapaAbajo();
 			break;
 	}
+	return true;
 }

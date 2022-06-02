@@ -7,7 +7,7 @@
 #define DERECHA 'D'
 
 #include "comando.h"
-#include "world_view.h"
+#include "../world_view/world_view.h"
 
 class MoverMapa : public Comando {
 	const char direccion;
@@ -15,7 +15,7 @@ class MoverMapa : public Comando {
 public:
 	explicit MoverMapa(char direccion);
 
-	virtual void ejecutar(WorldView& worldView) const;
+	virtual bool ejecutar(WorldView& worldView) const override;
 };
 
 #endif
