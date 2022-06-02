@@ -11,12 +11,12 @@ bool HiloRenderer::manejar_comando() {
 	return true;
 }
 
-void HiloRenderer::update(float tiempo_transcurrido) {
-	this->world_view.update(tiempo_transcurrido);
+void HiloRenderer::update(long frame_actual) {
+	this->world_view.update(frame_actual);
 }
 
-void HiloRenderer::render(long frame) {
-	this->world_view.render(frame);
+void HiloRenderer::render() {
+	this->world_view.render();
 }
 
 void HiloRenderer::game_loop() {
@@ -28,8 +28,8 @@ void HiloRenderer::game_loop() {
 		float tiempo_transcurrido = std::chrono::duration<float, std::milli>(t2 - t1).count();
 		t1 = t2;
 		running = this->manejar_comando();
-		this->update(FRAME_RATE);
-		this->render(frame);
+		this->update(frame);
+		this->render();
 		float rest = FRAME_RATE - tiempo_transcurrido;
 		if (rest < 0) {
 			float demora = - rest;

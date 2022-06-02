@@ -54,7 +54,7 @@ public:
 	float obtener_zoom() const;
 
 	void update();
-	void render(long frame);
+	void render();
 };
 
 #endif

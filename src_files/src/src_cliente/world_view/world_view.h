@@ -7,6 +7,7 @@ class WorldView {
 	SDL2pp::Window window;
 	SDL2pp::Renderer renderer;
 	MapaSDL mapa;
+	long frame_anterior;
 
 public:
 	WorldView();
@@ -15,9 +16,11 @@ public:
 	void moverMapaIzquierda();
 	void moverMapaDerecha();
 	void moverMapaAbajo();
+	void dejarDeMoverMapaHorizontalmente();
+	void dejarDeMoverMapaVerticalmente();
 
-	void update(float tiempo_transcurrido);
-	void render(long frame);
+	void update(long frame_actual);
+	void render();
 };
 
 #endif

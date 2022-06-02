@@ -17,9 +17,9 @@ class HiloRenderer {
 
 	bool manejar_comando();
 
-	void update(float tiempo_transcurrido);
+	void update(long frame_actual);
 
-	void render(long frame);
+	void render();
 
 	void game_loop();
 

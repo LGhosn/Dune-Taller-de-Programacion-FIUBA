@@ -119,7 +119,7 @@ void MapaSDL::update() {
 	}
 }
 
-void MapaSDL::render(long frame) {
+void MapaSDL::render() {
 	int origen_x, origen_y;
 	int pos_x_pantalla, pos_y_pantalla;
 	int tam_x_pantalla, tam_y_pantalla;
