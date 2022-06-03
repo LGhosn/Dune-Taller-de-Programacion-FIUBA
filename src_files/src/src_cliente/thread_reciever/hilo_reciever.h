@@ -4,6 +4,7 @@
 #include "../cola_no_bloqueante.h"
 #include "../client_protocolo.h"
 #include "../comandos/comando.h"
+#include <thread>
 
 class HiloReceiver {
     std::thread hilo;
@@ -15,6 +16,7 @@ public:
     void manejarHilo();
     void recibirInfoYPushearComandos();
     void push();
+    void cerrarHilo();
 };
 
 

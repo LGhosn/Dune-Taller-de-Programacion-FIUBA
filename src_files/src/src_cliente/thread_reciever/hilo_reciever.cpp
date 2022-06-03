@@ -18,8 +18,15 @@ void HiloReceiver::recibirInfoYPushearComandos() {
         // Luego la traducimos a un comando
         // Finalmente encolamos el comando
     }
+    cerrarHilo();
 }
 
 void HiloReceiver::push(Comando& comando_creado) {
     cola_eventos.push(comando_creado);
+}
+
+HiloReceiver::cerrarHilo() {
+    if (this->hilo.joinable()) {
+        this->hilo.join();
+    }
 }
