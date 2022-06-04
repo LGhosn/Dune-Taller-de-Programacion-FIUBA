@@ -10,7 +10,7 @@
 
 class Serializador {
 private:
-    std::map<std::string, uint8_t> operaciones = {{"unirse", 1}, {"listar", 2}, {"crear", 3}};
+    std::map<std::string, uint8_t> operaciones = {{"unirse", 1}, {"listar", 2}, {"crear", 3}, {"mover", 4}};
     std::map<std::string, uint8_t> casas = {{"Harkonnen", 0}, {"Atreides", 1}, {"Ordos", 2}};
 public:
     Serializador() = default;

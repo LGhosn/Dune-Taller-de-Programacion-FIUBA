@@ -1,0 +1,24 @@
+---
+MoverUnidad:
+  tipo: 4 #uint8  
+  id: 'id' #uint16
+  direccion: 'direccion' #uint16
+  velocidad: 'velocidad' #uint16
+
+direccion:
+  arriba: 0
+  abajo: 1
+  izquierda: 2
+  derecha: 3
+  arriba_izquierda: 4
+  arriba_derecha: 5
+  abajo_izquierda: 6
+  abajo_derecha: 7
+
+
+SolicitudMoverUnidad:
+  tipo: 4 #uint8
+  id: 'id' #uint16
+  x: 'x' #uint16
+  y: 'y' #uint16
+
