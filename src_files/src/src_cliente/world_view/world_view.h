@@ -4,18 +4,23 @@
 #include "sdl_mapa.h"
 
 class WorldView {
+	SDL2pp::Window window;
+	SDL2pp::Renderer renderer;
 	MapaSDL mapa;
+	long frame_anterior;
 
 public:
-	WorldView(SDL2pp::Texture& mapa_textura);
+	WorldView();
 
 	void moverMapaArriba();
 	void moverMapaIzquierda();
 	void moverMapaDerecha();
 	void moverMapaAbajo();
+	void dejarDeMoverMapaHorizontalmente();
+	void dejarDeMoverMapaVerticalmente();
 
-	void update(float tiempo_transcurrido);
-	void render(SDL2pp::Renderer& renderer, long frame);
+	void update(long frame_actual);
+	void render();
 };
 
 #endif

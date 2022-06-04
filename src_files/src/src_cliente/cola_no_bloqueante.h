@@ -2,19 +2,20 @@
 #define COLA_NO_BLOQUEANTE_H
 
 #include <queue>
+#include <memory>
 #include <mutex>
 
-template<class T>
+template<typename T>
 class ColaNoBloqueante {
-	std::queue<T> cola;
+	std::queue<std::unique_ptr<T>> cola;
 	std::mutex mutex;
 
 public:
 	ColaNoBloqueante() = default;
 
-	T pop();
+	std::unique_ptr<T> pop();
 
-	void push(T& elem);
+	void push(T* elem);
 };
 
 #endif

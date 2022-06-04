@@ -5,7 +5,7 @@
 
 class Comando {
 public:
-	virtual bool ejecutar(WorldView& worldView, float tiempo_transcurrido);
+	virtual bool ejecutar(WorldView& worldView) const = 0;
 };
 
 #endif

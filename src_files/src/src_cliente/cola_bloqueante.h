@@ -2,11 +2,12 @@
 #define COLA_BLOQUEANTE_H
 
 #include <queue>
+#include <memory>
 #include <mutex>
 #include <condition_variable>
 
-template<class T>
-class ColaBloqueante{
+template<typename T>
+class ColaBloqueante {
 	std::queue<T> cola;
 	std::mutex mutex;
 	std::condition_variable cv;
@@ -14,9 +15,9 @@ class ColaBloqueante{
 public:
 	ColaBloqueante();
 
-	T wait_and_pop();
+	std::unique_lock<T> wait_and_pop();
 
-	void push(T& elem);
+	void push(T* elem);
 };
 
 #endif

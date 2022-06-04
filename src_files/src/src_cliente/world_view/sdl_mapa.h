@@ -4,6 +4,11 @@
 #include <SDL2pp/SDL2pp.hh>
 #include <string>
 
+#define ARRIBA 'A'
+#define IZQUIERDA 'I'
+#define DERECHA 'D'
+#define ABAJO 'B'
+
 #define ZOOM_INICIAL 1.0f
 #define ZOOM_INCR 0.1f
 #define ZOOM_MIN 1.0f
@@ -16,11 +21,12 @@
 
 #define PADDING 200
 
-#define FRAME_RATE 0.1f / 6.0f
+#define FRAME_RATE 33.0f
 
 #define PASO 6
 
 class MapaSDL {
+	SDL2pp::Renderer& renderer;
 	SDL2pp::Texture textura;
 	int pos_x;
 	int pos_y;
@@ -28,11 +34,10 @@ class MapaSDL {
 	bool moviendose_v;
 	char direccion_h;
 	char direccion_v;
-	float tiempo;
 	float zoom;
 
 public:
-	explicit MapaSDL(SDL2pp::Texture& textura);
+	explicit MapaSDL(SDL2pp::Renderer& renderer);
 
 	void moverArriba();
 	void moverIzquierda();
@@ -48,8 +53,8 @@ public:
 	int obtener_offset_y() const;
 	float obtener_zoom() const;
 
-	void update(float tiempo_transcurrido);
-	void render(SDL2pp::Renderer& renderer);
+	void update();
+	void render();
 };
 
 #endif

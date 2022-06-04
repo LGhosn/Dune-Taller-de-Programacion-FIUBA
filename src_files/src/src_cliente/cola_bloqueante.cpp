@@ -1,8 +1,10 @@
 #include "cola_bloqueante.h"
 
-ColaBloqueante::ColaBloqueante() {}
+template<class T>
+ColaBloqueante<T>::ColaBloqueante() {}
 
-T ColaBloqueante::wait_and_pop() {
+template<class T>
+std::unique_lock<T> ColaBloqueante<T>::wait_and_pop() {
 	std::unique_lock<std::mutex> lock(this->mutex);
 	while (this->cola.empty()) {
 		this->cv.wait(lock);
@@ -12,7 +14,8 @@ T ColaBloqueante::wait_and_pop() {
 	return elem;
 }
 
-void push(T& elem) {
+template<class T>
+void ColaBloqueante<T>::push(T* elem) {
 	std::unique_lock<std::mutex> lock(this->mutex);
 	this->cola.push(elem);
 	this->cv.notify_all();
