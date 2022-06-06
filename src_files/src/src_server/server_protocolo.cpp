@@ -79,3 +79,19 @@ void Protocolo_servidor::enviarStatusDeUnion
         (&status, sizeof(uint8_t), &socket_cerrado);
     }
 }
+
+void Protocolo_servidor::recibirCodigoDeOperacion(uint8_t& codigo) {
+    this->skt_comunicador.recvall(&codigo, sizeof(uint8_t), &socket_cerrado);
+}
+
+std::unique_ptr<infoDTO> Protocolo_servidor::recibirInfoSegunCodigo(uint8_t& codigo) {
+    uint16_t id_unidad;
+    uint16_t x;
+    uint16_t y;
+
+    this->skt_comunicador.recvall(&id_unidad, sizeof(uint8_t), &socket_cerrado);
+    this->skt_comunicador.recvall(&x, sizeof(uint8_t), &socket_cerrado);
+    this->skt_comunicador.recvall(&y, sizeof(uint8_t), &socket_cerrado);
+
+    return MovimientoDTO(id_unidad, x, y);
+}

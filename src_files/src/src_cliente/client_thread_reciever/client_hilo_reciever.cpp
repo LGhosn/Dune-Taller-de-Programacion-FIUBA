@@ -20,9 +20,10 @@ void ClientHiloReciever::run() {
     while (this->hay_que_seguir) {
         // Recibimos la info del server
         // - Primero recibimos el codigo de la operacion
+        // - En función al codigo invocamos al metodo que recibe la info respectiva
         uint8_t codigo;
         protocolo.recibirCodigoDeOperacion(codigo);
-        // - En función al codigo invocamos al metodo que recibe la info respectiva
+        protocolo.recibirInfoSegunCodigo(codigo);
         // Luego la traducimos a un comando
         // Finalmente encolamos el comando
     }

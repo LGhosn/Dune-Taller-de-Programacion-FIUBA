@@ -1,6 +1,7 @@
 #ifndef SERVER_PROTOCOLO_H_
 #define SERVER_PROTOCOLO_H_
 
+#include "../src_common/common_infoDTO/infoDTO.h"
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_DTOs.h"
 #include "../src_common/common_socket.h"
@@ -56,6 +57,9 @@ class Protocolo_servidor {
      * */
     PartidaDTO recibirSolicitudDeCreacion(bool& socket_cerrado);
     void enviarStatusDeCreacion(bool la_partida_se_creo, bool& socket_cerrado);
+
+    void recibirCodigoDeOperacion(uint8_t& codigo);
+    std::unique_ptr<infoDTO> recibirInfoSegunCodigo(uint8_t& codigo);
 
     /*
      * No tiene sentido copiar un protocolo_servidor, tampoco moverlo.

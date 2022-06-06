@@ -20,7 +20,7 @@ private:
 
 public:
     ClientHiloReciever(ColaNoBloqueante<Comando>& cola_eventos, ProtocoloCliente& protocolo);
-    void ~ClientHiloReciever();
+    ~ClientHiloReciever();
 
     /*
      * No tiene sentido copiar un ClientHiloReciever, tampoco moverlo.

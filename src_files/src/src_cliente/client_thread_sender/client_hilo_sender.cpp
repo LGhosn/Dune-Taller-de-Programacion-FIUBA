@@ -22,7 +22,7 @@ void ClientHiloSender::run() {
 }
 
 void ClientHiloSender::send(ComandoAEnviar &comando) {
-    comando->enviar_solicitud(this->protocolo);
+    comando->enviarSolicitud(this->protocolo);
 }
 
 void ClientHiloSender::stop() {

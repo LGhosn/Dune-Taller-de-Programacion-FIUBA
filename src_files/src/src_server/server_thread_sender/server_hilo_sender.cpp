@@ -1,10 +1,10 @@
-#include "hilo_sender.h"
+#include "server_hilo_sender.h"
 
 ServerHiloSender::ServerHiloSender(ColaBloqueante<ComandoAEnviar> &cola_comandos,
                                    Protocolo_servidor &protocolo) :
                                    cola_comandos(cola_comandos),
                                    protocolo(protocolo) {
-    this->th = std::thread(&ServerHiloSender::handleThread, this);
+    this->thread = std::thread(&ServerHiloSender::handleThread, this);
 }
 
 void ServerHiloSender::handleThread() {
@@ -25,7 +25,7 @@ void ServerHiloSender::run() {
 }
 
 void ServerHiloSender::send(ComandoAEnviar &comando) {
-    comando->enviar_instruccion(this->protocolo);
+    comando->enviarInstruccion(this->protocolo);
 }
 
 void ServerHiloSender::stop() {
@@ -33,7 +33,7 @@ void ServerHiloSender::stop() {
 }
 
 ServerHiloSender::~ServerHiloSender() {
-    if (this->th.joinable()) {
-        this->th.join();
+    if (this->thread.joinable()) {
+        this->thread.join();
     }
 }

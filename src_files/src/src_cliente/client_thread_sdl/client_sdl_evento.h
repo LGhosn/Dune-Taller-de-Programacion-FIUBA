@@ -1,7 +1,6 @@
 #ifndef SDL_EVENTO_H
 #define SDL_EVENTO_H
 
-// #include <SDL2/SDL.h>
 #include <SDL2pp/SDL2pp.hh>
 #include "../../src_common/common_comandos/comando.h"
 #include "../pix_a_coords.h"
@@ -10,10 +9,10 @@
 
 class SDLEvento {
 protected:
-    // ColaBloqueante<ComandoAEnviar*>& cola_eventos;
-    // ColaNoBloqueante<ComandoAEnviar*>& cola_eventos_no_bloqueantes;
+    ColaBloqueante<ComandoAEnviar*>& cola_eventos;
+    ColaNoBloqueante<ComandoAEnviar*>& cola_eventos_no_bloqueantes;
 public:
-    SDLEvento();
+    SDLEvento(ColaBloqueante<ComandoAEnviar*>& cola_eventos, ColaNoBloqueante<ComandoAEnviar*>& cola_eventos_no_bloqueantes);
     virtual std::unique_ptr<SDLEvento> clasificar_evento(uint32_t eventType);
     virtual void ejecutar_evento(SDL_Event& keyEvent) = 0;
     ~SDLEvento();

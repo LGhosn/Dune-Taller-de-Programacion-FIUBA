@@ -15,7 +15,7 @@ class ColaBloqueante {
 public:
 	ColaBloqueante();
 
-	std::unique_lock<T> wait_and_pop();
+	std::unique_ptr<T> wait_and_pop();
 
 	void push(T* elem);
 };

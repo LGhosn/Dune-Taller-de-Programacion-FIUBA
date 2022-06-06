@@ -8,7 +8,7 @@
 
 class ServerHiloSender {
 private:
-    std::thread th;
+    std::thread thread;
     ColaBloqueante<ComandoAEnviar>& cola_comandos;
     Protocolo_servidor& protocolo;
     bool hay_que_seguir = true;

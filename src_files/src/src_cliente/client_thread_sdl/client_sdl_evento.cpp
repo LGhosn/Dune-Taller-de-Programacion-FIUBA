@@ -72,7 +72,7 @@ void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
 
             PixACoords coords_normalizadas(x, y);
             SolicitudMoverUnidad solicitud(1, coords_normalizadas.get_x(), coords_normalizadas.get_y());
-            //falta agregarlo a la cola de eventos bloqueante
+            this->cola_eventos.push(&solicitud);
             break;
     }
 }

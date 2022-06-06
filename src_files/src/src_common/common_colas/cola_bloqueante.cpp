@@ -4,7 +4,7 @@ template<class T>
 ColaBloqueante<T>::ColaBloqueante() {}
 
 template<class T>
-std::unique_lock<T> ColaBloqueante<T>::wait_and_pop() {
+std::unique_ptr<T> ColaBloqueante<T>::wait_and_pop() {
 	std::unique_lock<std::mutex> lock(this->mutex);
 	while (this->cola.empty()) {
 		this->cv.wait(lock);

@@ -56,4 +56,5 @@ struct SolicitudDeUnion {
             nombre_partida(std::move(nombre_partida)),
             casa(std::move(casa)) {}
 };
+
 #endif  // COMMON_DTOS_H_
