@@ -1,21 +1,24 @@
 #ifndef CLIENT_HILO_SENDER_H
 #define CLIENT_HILO_SENDER_H
 
-#include "../cola_bloqueante.h"
-#include "../comandos/comando_a_enviar.h"
 #include "../client_protocolo.h"
+#include "../../src_common/common_colas/cola_bloqueante.h"
+#include "../../src_common/common_comandos/comando_a_enviar.h"
 #include <thread>
 
-class HiloSender {
+class ClientHiloSender {
 private:
     ColaBloqueante<ComandoAEnviar> &cola_comandos;
     std::thread thread;
     ProtocoloCliente &protocolo;
+    bool hay_que_seguir = true;
 
 public:
-    HiloSender(ColaBloqueante<ComandoAEnviar> &cola_comandos, ProtocoloCliente &protocolo);
+    ClientHiloSender(ColaBloqueante<ComandoAEnviar> &cola_comandos, ProtocoloCliente &protocolo);
+    void handleThread();
     void run();
+    void send();
     void stop();
-    ~HiloSender();
+    ~ClientHiloSender();
 };
 #endif // CLIENT_HILO_SENDER_H

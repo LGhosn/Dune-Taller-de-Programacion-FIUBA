@@ -1,4 +1,4 @@
-#include "hilo_sdl.h"
+#include "client_hilo_sdl.h"
 
 ManejadorEventos::ManejadorEventos() :
      hay_que_seguir(true) {

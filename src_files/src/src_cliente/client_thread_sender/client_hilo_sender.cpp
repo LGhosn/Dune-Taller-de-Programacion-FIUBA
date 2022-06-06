@@ -1,26 +1,36 @@
-#include "hilo_sender.h"
+#include "client_hilo_sender.h"
 
-HiloSender::HiloSender(ColaBloqueante<ComandoAEnviar> &cola_comandos, ProtocoloCliente &protocolo) : cola_comandos(cola_comandos), protocolo(protocolo) {
-    this->thread = std::thread(&HiloSender::run, this);
+ClientHiloSender::ClientHiloSender(ColaBloqueante<ComandoAEnviar> &cola_comandos, ProtocoloCliente &protocolo) : cola_comandos(cola_comandos), protocolo(protocolo) {
+    this->thread = std::thread(&ClientHiloSender::handleThread, this);
 }
 
-void HiloSender::run() {
-    // try: // como pingo hacer esto
+void ClientHiloSender::handleThread() {
+    try {
+        this->run();
+    } catch (const std::exception& e) {
+        std::cerr << "Excepción encontrada en ClientHiloSender: " << e.what() << std::endl;
+    } catch (...) {
+        std::cerr << "Excepción desconocida en ClientHiloSender: " << std::endl;
+    }
+}
+
+void ClientHiloSender::run() {
     while (this->hay_que_seguir) {
         std::unique_ptr<ComandoAEnviar> comando = this->cola_comandos.wait_and_pop();
-        this->enviar(comando);
+        this->send(comando);
     }
-    // } catch (std::exception &e) {}
 }
 
-void HiloSender::enviar(ComandoAEnviar &comando) {
-    comando->enviar_instruccion(this->protocolo);
+void ClientHiloSender::send(ComandoAEnviar &comando) {
+    comando->enviar_solicitud(this->protocolo);
 }
 
-void HiloSender::stop() {
+void ClientHiloSender::stop() {
     this->hay_que_seguir = false;
 }
 
-HiloSender::~HiloSender() {
-    this->thread.join();
+ClientHiloSender::~ClientHiloSender() {
+    if (this->thread.joinable()) {
+        this->thread.join();
+    }
 }

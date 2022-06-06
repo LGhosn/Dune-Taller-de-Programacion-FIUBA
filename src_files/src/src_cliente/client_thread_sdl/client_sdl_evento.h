@@ -3,10 +3,10 @@
 
 // #include <SDL2/SDL.h>
 #include <SDL2pp/SDL2pp.hh>
-#include "../comandos/comando.h"
+#include "../../src_common/common_comandos/comando.h"
 #include "../pix_a_coords.h"
-#include "../cola_bloqueante.h"
-#include "../cola_no_bloqueante.h"
+#include "../../src_common/common_colas/cola_bloqueante.h"
+#include "../../src_common/common_colas/cola_no_bloqueante.h"
 
 class SDLEvento {
 protected:

@@ -1,9 +1,9 @@
-#include "hilo_reciever.h"
+#include "client_hilo_reciever.h"
 
 ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<Comando>& cola_eventos,  ProtocoloCliente& protocolo) :
                                         cola_eventos(cola_eventos),
                                         protocolo(protocolo) {
-    this->th = std::thread(&ClientHiloSender::handleThread, this);
+    this->thread = std::thread(&ClientHiloSender::handleThread, this);
 }
 
 void ClientHiloReciever::handleThread() {
@@ -19,6 +19,10 @@ void ClientHiloReciever::handleThread() {
 void ClientHiloReciever::run() {
     while (this->hay_que_seguir) {
         // Recibimos la info del server
+        // - Primero recibimos el codigo de la operacion
+        uint8_t codigo;
+        protocolo.recibirCodigoDeOperacion(codigo);
+        // - En función al codigo invocamos al metodo que recibe la info respectiva
         // Luego la traducimos a un comando
         // Finalmente encolamos el comando
     }
@@ -33,7 +37,7 @@ void ClientHiloReciever::push(Comando& comando_creado) {
 }
 
 ClientHiloReciever::~ClientHiloReciever() {
-    if (this->th.joinable()) {
-        this->th.join();
+    if (this->thread.joinable()) {
+        this->thread.join();
     }
 }

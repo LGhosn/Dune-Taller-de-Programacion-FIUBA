@@ -1,4 +1,4 @@
-#include "sdl_evento.h"
+#include "client_sdl_evento.h"
 #include "../comandos/cmd_sol_mover_unidad.h"
 
 std::unique_ptr<SDLEvento> SDLEvento::clasificar_evento(uint32_t eventType) {

@@ -16,23 +16,20 @@ class ProtocoloCliente {
     private:
     bool was_closed = false;
     Socket& skt_cliente;
-    std::map<std::string, uint8_t> operaciones = {{"unirse", 1}, {"listar", 2}, {"crear", 3}};
-    std::map<std::string, uint8_t> casas = {{"Harkonnen", 0}, {"Atreides", 1}, {"Ordos", 2}};
 
     public:
-    /*
-     * Constructor de la clase.
-     * */
     explicit ProtocoloCliente(Socket& skt_cliente);
 
     void enviarSolicitudDeCreacion(SolicitudDeCreacion& solicitud);
     void enviarSolicitudDeUnion(SolicitudDeUnion& solicitud);
-    void enviarSolicitudMoverUnidad(uint16_t id_unidad, uint16_t x, uint16_t y);
+    void enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y);
+
+    void recibirCodigoDeOperacion(uint8_t& codigo);
 
 
     /*
-     * Recibe el status de una peticion de union o creacion, el mismo
-     * sera usado por el cliente para imprimir un mensaje.
+     * Recibe el status de una petición de union o creacion, el mismo
+     * será usado por el cliente para imprimir un mensaje.
      * */
     StatusDTO recibirStatus();
 

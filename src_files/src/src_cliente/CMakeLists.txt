@@ -19,16 +19,16 @@ add_executable(
     comandos/cmd_mover_mapa.cpp
     comandos/cmd_sol_mover_unidad.cpp
     comandos/comando.cpp
-    thread_renderer/hilo_renderer.cpp
-    world_view/sdl_mapa.cpp
-    world_view/sdl_mapa.h
-    world_view/world_view.cpp
+        client_thread_renderer/client_hilo_renderer.cpp
+        client_world_view/sdl_mapa.cpp
+        client_world_view/sdl_mapa.h
+        client_world_view/world_view.cpp
     cola_bloqueante.cpp
     cola_no_bloqueante.cpp
-    thread_sdl/hilo_sdl.h
-    thread_sdl/hilo_sdl.cpp
-    thread_sdl/sdl_evento.h
-    thread_sdl/sdl_evento.cpp
+        client_thread_sdl/client_hilo_sdl.h
+        client_thread_sdl/client_hilo_sdl.cpp
+        client_thread_sdl/client_sdl_evento.h
+        client_thread_sdl/client_sdl_evento.cpp
 )
 
 target_link_libraries(

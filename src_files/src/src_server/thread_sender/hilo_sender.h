@@ -1,8 +1,8 @@
 #ifndef SERVER_HILO_SENDER_H
 #define SERVER_HILO_SENDER_H
 
-#include "../../src_cliente/cola_bloqueante.h"
-#include "../../src_cliente/comandos/comando_a_enviar.h"
+#include "../../src_common/common_colas/cola_bloqueante.h"
+#include "../../src_common/common_comandos/comando_a_enviar.h"
 #include "../server_protocolo.h"
 #include <thread>
 

@@ -4,10 +4,10 @@
 #include <SDL2/SDL.h>
 #include <thread>
 
-#include "sdl_evento.h"
+#include "client_sdl_evento.h"
 // #include "../cola_bloqueante.h"
-// #include "../cola_no_bloqueante.h"
-// #include "../comandos/comando_a_enviar.h"
+// #include "../../src_common/common_colas/cola_no_bloqueante.h"
+// #include "../../src_common/common_comandos/comando_a_enviar.h"
 
 class ManejadorEventos {
 private:

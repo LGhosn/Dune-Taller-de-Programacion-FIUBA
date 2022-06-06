@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <chrono>
 #include <iostream>
-#include "hilo_renderer.h"
+#include "client_hilo_renderer.h"
 
 ClientHiloRenderer::ClientHiloRenderer(ColaNoBloqueante<Comando>& cola_eventos) : cola_eventos(cola_eventos) {}
 

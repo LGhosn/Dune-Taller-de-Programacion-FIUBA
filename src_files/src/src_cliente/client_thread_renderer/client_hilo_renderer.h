@@ -4,9 +4,10 @@
 #include <SDL2pp/SDL2pp.hh>
 #include <SDL2pp/Music.hh>
 #include <SDL2pp/Mixer.hh>
-#include "../world_view/sdl_mapa.h"
-#include "../cola_no_bloqueante.h"
-#include "../comandos/comando.h"
+#include "../client_world_view/sdl_mapa.h"
+#include "../client_world_view/world_view.h"
+#include "../../src_common/common_colas/cola_no_bloqueante.h"
+#include "../../src_common/common_comandos/comando.h"
 #include <list>
 #include <thread>
 
