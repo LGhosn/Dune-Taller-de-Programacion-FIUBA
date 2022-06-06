@@ -4,22 +4,24 @@
 #include <iostream>
 #include "hilo_renderer.h"
 
-bool HiloRenderer::manejar_comando() {
+ClientHiloRenderer::ClientHiloRenderer(ColaNoBloqueante<Comando>& cola_eventos) : cola_eventos(cola_eventos) {}
+
+bool ClientHiloRenderer::manejar_comando() {
 	std::unique_ptr<Comando> comando = this->cola_eventos.pop();
 	if (comando)
 		return comando->ejecutar(this->world_view);
 	return true;
 }
 
-void HiloRenderer::update(long frame_actual) {
+void ClientHiloRenderer::update(long frame_actual) {
 	this->world_view.update(frame_actual);
 }
 
-void HiloRenderer::render() {
+void ClientHiloRenderer::render() {
 	this->world_view.render();
 }
 
-void HiloRenderer::game_loop() {
+void ClientHiloRenderer::game_loop() {
 	bool running = true;
 	long frame = 0;
 	auto t1 = std::chrono::steady_clock::now();
@@ -42,23 +44,21 @@ void HiloRenderer::game_loop() {
 	}
 }
 
-void HiloRenderer::manejar_hilo() {
+void ClientHiloRenderer::manejar_hilo() {
 	try {
 		this->game_loop();
 	} catch (const std::exception& e) {
-		std::cerr << "Excepcion encontrada en hilo renderer: " << e.what() << std::endl;
+		std::cerr << "Excepción encontrada en ClientHiloRenderer: " << e.what() << std::endl;
 	} catch (...) {
-		std::cerr << "Excepcion desconocida en hilo renderer" << std::endl;
+		std::cerr << "Excepción desconocida en ClientHiloRenderer: " << std::endl;
 	}
 }
 
-HiloRenderer::HiloRenderer(ColaNoBloqueante<Comando>& cola_eventos) : cola_eventos(cola_eventos) {}
-
-void HiloRenderer::start() {
-	this->hilo = std::thread(&HiloRenderer::manejar_hilo, this);
+void ClientHiloRenderer::start() {
+	this->hilo = std::thread(&ClientHiloRenderer::manejar_hilo, this);
 }
 
-HiloRenderer::~HiloRenderer() {
+ClientHiloRenderer::~ClientHiloRenderer() {
 	if (this->hilo.joinable())
 		this->hilo.join();
 }

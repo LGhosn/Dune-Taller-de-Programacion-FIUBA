@@ -10,27 +10,22 @@
 #include <list>
 #include <thread>
 
-class HiloRenderer {
+class ClientHiloRenderer {
+private:
 	WorldView world_view;
 	ColaNoBloqueante<Comando>& cola_eventos;
 	std::thread hilo;
 
 	bool manejar_comando();
-
 	void update(long frame_actual);
-
 	void render();
-
 	void game_loop();
-
 	void manejar_hilo();
 
 public:
-	HiloRenderer(ColaNoBloqueante<Comando>& cola_eventos);
-
+    ClientHiloRenderer(ColaNoBloqueante<Comando>& cola_eventos);
 	void start();
-
-	~HiloRenderer();
+	~ClientHiloRenderer();
 };
 
 #endif
