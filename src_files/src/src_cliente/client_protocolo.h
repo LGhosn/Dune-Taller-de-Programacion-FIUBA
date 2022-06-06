@@ -25,6 +25,8 @@ class ProtocoloCliente {
     void enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y);
 
     void recibirCodigoDeOperacion(uint8_t& codigo);
+    void recibirInfoSegunCodigo(uint8_t& codigo);
+    void recibirInfoMoverUnidad();
 
 
     /*

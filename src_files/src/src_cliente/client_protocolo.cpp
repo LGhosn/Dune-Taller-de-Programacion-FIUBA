@@ -70,10 +70,12 @@ void ProtocoloCliente::enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t&
 	Serializador s;
     std::string operacion = "mover";
 	uint8_t codigo = s.obtenerCodigoOperacion(operacion);
+
+    id_unidad = s.uint16_hton(id_unidad);
+    x = s.uint16_hton(x);
+    y = s.uint16_hton(y);
+
 	this->skt_cliente.sendall(&codigo, sizeof(uint8_t), &this->was_closed);
-	id_unidad = s.uint16_hton(id_unidad);
-	x = s.uint16_hton(x);
-	y = s.uint16_hton(y);
 	this->skt_cliente.sendall(&id_unidad, sizeof(uint16_t), &this->was_closed);
 	this->skt_cliente.sendall(&x, sizeof(uint16_t), &this->was_closed);
 	this->skt_cliente.sendall(&y, sizeof(uint16_t), &this->was_closed);
@@ -81,4 +83,10 @@ void ProtocoloCliente::enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t&
 
 void ProtocoloCliente::recibirCodigoDeOperacion(uint8_t& codigo) {
     this->skt_cliente.recvall(&codigo, sizeof(uint8_t), &this->was_closed);
+}
+
+void ProtocoloCliente::recibirInfoSegunCodigo(uint8_t& codigo) {
+    if (codigo == 4) {
+        this->recibirInfoMoverUnidad();
+    }
 }
