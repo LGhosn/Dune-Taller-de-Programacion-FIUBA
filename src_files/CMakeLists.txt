@@ -16,7 +16,7 @@ include_directories(${PROJECT_SOURCE_DIR}/src
         ${PROJECT_SOURCE_DIR}/src/src_common
         )
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/src/src_testing/pruebas_mapa/third_party/yaml_cpp)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/src_libs/yaml_cpp)
 
 include(FetchContent)
 FetchContent_Declare(

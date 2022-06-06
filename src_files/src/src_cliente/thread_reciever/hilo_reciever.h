@@ -6,17 +6,18 @@
 #include "../comandos/comando.h"
 #include <thread>
 
-class HiloReceiver {
-    std::thread hilo;
+class ClientHiloReciever {
+    std::thread th;
     ProtocoloCliente& protocolo;
     ColaNoBloqueante<Comando>& cola_eventos;
-    bool hayQueSeguirRecibiendo = true;
+    bool hay_que_seguir = true;
 public:
-    HiloReceiver(ColaNoBloqueante<Comando>& cola_eventos, ProtocoloCliente& protocolo);
-    void manejarHilo();
-    void recibirInfoYPushearComandos();
-    void push();
-    void cerrarHilo();
+    ClientHiloReciever(ColaNoBloqueante<Comando>& cola_eventos, ProtocoloCliente& protocolo);
+    void run();
+    void handleThread();
+    void push(Comando& comando_creado);
+    void stop();
+    void ~ClientHiloReciever();
 };
 
 

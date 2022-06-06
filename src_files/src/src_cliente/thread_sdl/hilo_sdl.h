@@ -1,5 +1,5 @@
-#ifndef HILO_SDL_H
-#define HILO_SDL_H
+#ifndef CLIENT_HILO_SDL_H
+#define CLIENT_HILO_SDL_H
 
 #include <SDL2/SDL.h>
 #include <thread>
@@ -26,4 +26,4 @@ public:
     ~ManejadorEventos();
 };
 
-#endif //HILO_SDL_H
+#endif //CLIENT_HILO_SDL_H

@@ -1,5 +1,5 @@
-#ifndef HILO_RENDERER_H
-#define HILO_RENDERER_H
+#ifndef CLIENT_HILO_RENDERER_H
+#define CLIENT_HILO_RENDERER_H
 
 #include <SDL2pp/SDL2pp.hh>
 #include <SDL2pp/Music.hh>

@@ -68,7 +68,8 @@ StatusDTO ProtocoloCliente::recibirStatus() {
 
 void ProtocoloCliente::enviarSolicitudMoverUnidad(uint16_t id_unidad, uint16_t x, uint16_t y){
 	Serializador s;
-	uint8_t codigo = s.obtenerCodigoOperacion("mover");
+    std::string operacion = "mover";
+	uint8_t codigo = s.obtenerCodigoOperacion(operacion);
 	this->skt_cliente.sendall(&codigo, sizeof(uint8_t), &this->was_closed);
 	id_unidad = s.uint16_hton(id_unidad);
 	x = s.uint16_hton(x);

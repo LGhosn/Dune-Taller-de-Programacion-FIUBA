@@ -1,10 +1,9 @@
-#ifndef HILO_SENDER_H
-#define HILO_SENDER_H
+#ifndef CLIENT_HILO_SENDER_H
+#define CLIENT_HILO_SENDER_H
 
 #include "../cola_bloqueante.h"
 #include "../comandos/comando_a_enviar.h"
 #include "../client_protocolo.h"
-
 #include <thread>
 
 class HiloSender {
@@ -19,5 +18,4 @@ public:
     void stop();
     ~HiloSender();
 };
-
-#endif // HILO_SENDER_H
+#endif // CLIENT_HILO_SENDER_H
