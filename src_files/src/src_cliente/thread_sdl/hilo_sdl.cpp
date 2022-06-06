@@ -1,6 +1,7 @@
 #include "hilo_sdl.h"
 
-ManejadorEventos::ManejadorEventos() {
+ManejadorEventos::ManejadorEventos() :
+     hay_que_seguir(true) {
     this->thread = std::thread(&ManejadorEventos::manejar_evento, this);
 }
 
@@ -11,8 +12,8 @@ void ManejadorEventos::manejar_evento() {
             //TODO lanzar excepcion porque ocurrio un error mientras esperaba un evento.
         }
 
-        SDLEvento *evento_ocurrido = xxx->clasificar_evento(this->event.type);
-        evento_ocurrido->ejecutar_evento(this->event);
+        std::unique_ptr<SDLEvento> evento = evento_ocurrido->clasificar_evento(this->event.type);
+        evento->ejecutar_evento(this->event);
 
     }// fin while
 }

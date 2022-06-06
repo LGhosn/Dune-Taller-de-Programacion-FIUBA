@@ -1,25 +1,25 @@
 #include "sdl_evento.h"
+#include "../comandos/cmd_sol_mover_unidad.h"
 
-SDLEvento* SDLEvento::clasificar_evento(uint32_t eventType) {
+std::unique_ptr<SDLEvento> SDLEvento::clasificar_evento(uint32_t eventType) {
     switch (eventType) {
         case SDL_KEYDOWN:
-            return new TeclaPresionada();
+            return std::unique_ptr<TeclaPresionada>();
         case SDL_KEYUP:
-            return new TeclaLevantada();
+            return std::unique_ptr<TeclaLevantada>();
         case SDL_MOUSEWHEEL:
-            return new Rueda();
+            return std::unique_ptr<Rueda>();
         case SDL_MOUSEBUTTONDOWN:
-            return new ClickPresionado();
+            return std::unique_ptr<ClickPresionado>();
         case SDL_MOUSEBUTTONUP:
-            return new ClickLevantado();
+            return std::unique_ptr<ClickLevantado>();
     }
 }
 
 void TeclaPresionada::ejecutar_evento(SDL_Event& keyEvent) {
     SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) keyEvent;
-    switch (keyEvent.keysym.sym) {
+    switch (keyEvent.key.keysym.sym) {
         case (SDLK_LEFT):
-            this->
             break;
         
         case (SDLK_RIGHT):
@@ -39,7 +39,7 @@ void TeclaPresionada::ejecutar_evento(SDL_Event& keyEvent) {
 
 void TeclaLevantada::ejecutar_evento(SDL_Event& keyEvent) {
     SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) keyEvent;
-    switch (keyEvent.keysym.sym) {
+    switch (keyEvent.key.keysym.sym) {
         case (SDLK_LEFT):
             /* code */
             break;
@@ -61,13 +61,18 @@ void TeclaLevantada::ejecutar_evento(SDL_Event& keyEvent) {
 
 void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
     SDL_MouseButtonEvent& mouseButtonEvent = (SDL_MouseButtonEvent&) mouseButtonEvent;
-    switch (mouseButtonEvent.button) {
+    switch (mouseButtonEvent.button.button) {
         case (SDL_BUTTON_LEFT):
             // temporal crear un comando para soldado
             break;
         
         case (SDL_BUTTON_RIGHT):
-            // obtener coords del click y mover soldado
+            uint16_t x = mouseButtonEvent.button.x;
+            uint16_t y = mouseButtonEvent.button.y;
+
+            PixACoords coords_normalizadas(x, y);
+            SolicitudMoverUnidad solicitud(1, coords_normalizadas.get_x(), coords_normalizadas.get_y());
+            //falta agregarlo a la cola de eventos bloqueante
             break;
     }
 }

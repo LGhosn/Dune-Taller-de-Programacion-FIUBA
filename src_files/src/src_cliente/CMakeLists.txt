@@ -17,12 +17,18 @@ add_executable(
     sdl_cliente_main
     sdl_client_main.cpp
     comandos/cmd_mover_mapa.cpp
+    comandos/cmd_sol_mover_unidad.cpp
     comandos/comando.cpp
     thread_renderer/hilo_renderer.cpp
     world_view/sdl_mapa.cpp
+    world_view/sdl_mapa.h
     world_view/world_view.cpp
     cola_bloqueante.cpp
     cola_no_bloqueante.cpp
+    thread_sdl/hilo_sdl.h
+    thread_sdl/hilo_sdl.cpp
+    thread_sdl/sdl_evento.h
+    thread_sdl/sdl_evento.cpp
 )
 
 target_link_libraries(
