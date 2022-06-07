@@ -1,6 +1,8 @@
 #ifndef CLIENT_HILO_RENDERER_H
 #define CLIENT_HILO_RENDERER_H
 
+#define FRAME_RATE 33.0f
+
 #include <SDL2pp/SDL2pp.hh>
 #include <SDL2pp/Music.hh>
 #include <SDL2pp/Mixer.hh>

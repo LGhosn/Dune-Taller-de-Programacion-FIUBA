@@ -1,37 +1,69 @@
 #include "sdl_mapa.h"
+#include "../../src_libs/yaml-cpp/yaml.h"
 #include <functional>
 #include <iostream>
 
-MapaSDL::MapaSDL(SDL2pp::Renderer& renderer) :
-renderer(renderer), textura(renderer, RESOURCE_PATH "/maps/ejemplo.png"),
-pos_x((textura.GetWidth() - ANCHO_VENTANA / ZOOM_INICIAL) / 2),
-pos_y((textura.GetHeight() - LARGO_VENTANA / ZOOM_INICIAL) / 2),
-moviendose_h(false), moviendose_v(false), direccion_h(ARRIBA),
-direccion_v(IZQUIERDA), zoom(ZOOM_INICIAL) {}
+	int limite_superior() const {
+		return - PADDING;
+	}
+
+	int limite_inferior() const {
+		return largo_mapa - LARGO_VENTANA + PADDING;
+	}
+
+	int limite_izquierdo() const {
+		return - PADDING;
+	}
+
+	int limite_derecho() const {
+		return ancho_mapa - ANCHO_VENTANA + PADDING;
+	}
+
+	void updateTiles() {
+		for (auto& tile : tiles) {
+			tile.update(this->pos_x, this->pos_y);
+		}
+	}
+
+MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa) : renderer(renderer) {
+	YAML::Node mapa_config = YAML::LoadFile(RESOURCE_PATH "maps/mapa1.yaml");
+	this->ancho = mapa_config["Ancho"].as<int>();
+	this->alto = mapa_config["Alto"].as<int>();
+	this->tiles.resize(this->alto * this->ancho);
+	for (int i = 0; i < alto; i++) {
+		for (int j = 0; j < ancho; j++){
+			Coordenadas coords(j, i);
+			this->tiles[i * ancho + j] = TileFactorySDL::crearTile(
+				mapa_config["TiposTerrenos"][i][j].as<char>(), 
+				mapa_config["TiposTexturas"][i][j].as<int>(),
+				coords);
+		}
+	}
+}
 
 void MapaSDL::moverArriba() {
-	if (pos_y > 0 - PADDING && !this->moviendose_v) {
+	if (pos_y > this->limite_superior() && !this->moviendose_v) {
 		this->direccion_v = ARRIBA;
 		this->moviendose_v = true;
 	}
 }
 
 void MapaSDL::moverIzquierda() {
-	if (pos_x > 0 - PADDING && !this->moviendose_h) {
+	if (pos_x > this->limite_izquierdo() && !this->moviendose_h) {
 		this->direccion_h = IZQUIERDA;
 		this->moviendose_h = true;
 	}
 }
 
 void MapaSDL::moverAbajo() {
-	if (pos_y < this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING && !this->moviendose_v) {
+	if (pos_y < this->limite_inferior() && !this->moviendose_v) {
 		this->direccion_v = ABAJO;
 		this->moviendose_v = true;
 	}
 }
 
 void MapaSDL::moverDerecha() {
-	if (pos_x < this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING && !this->moviendose_h) {
+	if (pos_x < this->limite_derecho() && !this->moviendose_h) {
 		this->direccion_h = DERECHA;
 		this->moviendose_h = true;
 	}
@@ -45,16 +77,6 @@ void MapaSDL::dejarDeMoverseVerticalmente() {
 	this->moviendose_v = false;
 }
 
-void MapaSDL::zoomIn() {
-	if (this->zoom < ZOOM_MAX)
-		this->zoom += ZOOM_INCR;
-}
-
-void MapaSDL::zoomOut() {
-	if (this->zoom > ZOOM_MIN)
-		this->zoom -= ZOOM_INCR;
-}
-
 int MapaSDL::obtener_offset_x() const {
 	return this->pos_x;
 }
@@ -63,31 +85,23 @@ int MapaSDL::obtener_offset_y() const {
 	return this->pos_y;
 }
 
-float MapaSDL::obtener_zoom() const {
-	return this->zoom;
-}
-
 void MapaSDL::update() {
 	if (this->moviendose_h) {
 		switch(this->direccion_h) {
 			case IZQUIERDA:
-				if (this->pos_x > 0 - PADDING) {
-					pos_x -= PASO / this->zoom;
-					if (this->pos_x < 0 - PADDING) {
-						pos_x = 0 - PADDING;
-						this->moviendose_h = false;
-						break;
-					}
+				if (this->pos_x > this->limite_izquierdo()) {
+					this->pos_x -= PASO;
+					this->updateTiles();
+				} else {
+					this->dejarDeMoverseHorizontalmente();
 				}
 				break;
 			case DERECHA:
-				if (this->pos_x < this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING) {
-					pos_x += PASO / this->zoom;
-					if (this->pos_x > this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING) {
-						pos_x = this->textura.GetWidth() - ANCHO_VENTANA / this->zoom + PADDING;
-						this->moviendose_h = false;
-						break;
-					}
+				if (this->pos_x < this->limite_derecho()) {
+					this->pos_x += PASO;
+					this->updateTiles();
+				} else {
+					this->dejarDeMoverseHorizontalmente();
 				}
 				break;
 		}
@@ -96,23 +110,19 @@ void MapaSDL::update() {
 	if (this->moviendose_v) {
 		switch(this->direccion_v) {
 			case ARRIBA:
-				if (this->pos_y > 0 - PADDING) {
-					pos_y -= PASO / this->zoom;
-					if (this->pos_y < 0 - PADDING) {
-						pos_y = 0 - PADDING;
-						this->moviendose_v = false;
-						break;
-					}
+				if (this->pos_y > this->limite_superior()) {
+					this->pos_y -= PASO;
+					this->updateTiles();
+				} else {
+					this->dejarDeMoverseVerticalmente();
 				}
 				break;
 			case ABAJO:
-				if (this->pos_y < this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING) {
-					pos_y += PASO / this->zoom;
-					if (this->pos_y > this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING) {
-						pos_y = this->textura.GetHeight() - LARGO_VENTANA / this->zoom + PADDING;
-						this->moviendose_v = false;
-						break;
-					}
+				if (this->pos_y < this->limite_inferior()) {
+					this->pos_y += PASO;
+					this->updateTiles();
+				} else {
+					this->dejarDeMoverseVerticalmente();
 				}
 				break;
 		}
@@ -120,44 +130,9 @@ void MapaSDL::update() {
 }
 
 void MapaSDL::render() {
-	int origen_x, origen_y;
-	int pos_x_pantalla, pos_y_pantalla;
-	int tam_x_pantalla, tam_y_pantalla;
-	if (this->pos_x < 0) {
-		origen_x = 0;
-		pos_x_pantalla = - this->pos_x * this->zoom;
-		tam_x_pantalla = (ANCHO_VENTANA + this->pos_x) / this->zoom;
-	} else if (this->pos_x > (this->textura.GetWidth() - ANCHO_VENTANA)) {
-		origen_x = this->pos_x;
-		pos_x_pantalla = 0;
-		tam_x_pantalla = this->textura.GetWidth() - this->pos_x;
-	} else {
-		origen_x = this->pos_x;
-		pos_x_pantalla = 0;
-		tam_x_pantalla = ANCHO_VENTANA / this->zoom;
+	for (int i = 0; i < this->alto; i++) {
+		for (int j = 0; j < this->ancho; j++) {
+			this->tiles[i * ancho + j].render();
+		}
 	}
-	if (this->pos_y < 0) {
-		origen_y = 0;
-		pos_y_pantalla = - this->pos_y * this->zoom;
-		tam_y_pantalla = (LARGO_VENTANA + this->pos_y) / this->zoom;
-	} else if (this->pos_y > (this->textura.GetHeight() - LARGO_VENTANA)) {
-		origen_y = this->pos_y;
-		pos_y_pantalla = 0;
-		tam_y_pantalla = this->textura.GetHeight() - this->pos_y;
-	} else {
-		origen_y = this->pos_y;
-		pos_y_pantalla = 0;
-		tam_y_pantalla = LARGO_VENTANA / this->zoom;
-	}
-	this->renderer.Copy(this->textura,
-		SDL2pp::Rect(
-			origen_x,
-			origen_y,
-			tam_x_pantalla,
-			tam_y_pantalla),
-		SDL2pp::Rect(
-			pos_x_pantalla,
-			pos_y_pantalla,
-			tam_x_pantalla * this->zoom,
-			tam_y_pantalla * this->zoom));
 }

@@ -4,9 +4,8 @@
 #include <iostream>
 #include "client_hilo_renderer.h"
 
-ClientHiloRenderer::ClientHiloRenderer(ColaNoBloqueante<Comando>& cola_eventos) : cola_eventos(cola_eventos) {}
-
 bool ClientHiloRenderer::manejar_comando() {
+	// popall
 	std::unique_ptr<Comando> comando = this->cola_eventos.pop();
 	if (comando)
 		return comando->ejecutar(this->world_view);
