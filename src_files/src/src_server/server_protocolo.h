@@ -5,6 +5,7 @@
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_DTOs.h"
 #include "../src_common/common_socket.h"
+#include <memory>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -59,7 +60,7 @@ class Protocolo_servidor {
     void enviarStatusDeCreacion(bool la_partida_se_creo, bool& socket_cerrado);
 
     void recibirCodigoDeOperacion(uint8_t& codigo);
-    std::unique_ptr<infoDTO> recibirInfoSegunCodigo(uint8_t& codigo);
+    std::unique_ptr<InfoDTO> recibirInfoSegunCodigo(uint8_t& codigo);
 
     /*
      * No tiene sentido copiar un protocolo_servidor, tampoco moverlo.

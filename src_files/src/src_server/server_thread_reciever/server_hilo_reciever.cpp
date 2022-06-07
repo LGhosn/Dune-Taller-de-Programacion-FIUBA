@@ -18,11 +18,16 @@ void ServerHiloReciever::handleThread() {
 
 void ServerHiloReciever::run() {
     while (this->hay_que_seguir) {
+        // Recibimos el código de operación.
         uint8_t codigo;
         protocolo.recibirCodigoDeOperacion(codigo);
+
+        // En base a este código recibimos la info correspondiente.
         std::unique_ptr<InfoDTO> info = protocolo.recibirInfoSegunCodigo(codigo);
-        SolicitudMoverUnidad solicitud(info->getUnidad(), info->getX(), info->getY());
-        cola_eventos.push(&solicitud);
+
+        // Tomamos esa información y encolamos.
+        // Comando cmd = this->armarComandoSegunInfo(info);
+        // cola_eventos.push(&cmd);
     }
 }
 

@@ -19,6 +19,7 @@ public:
     void handleThread();
     void run();
     void stop();
+    void armarComandoSegunInfo(InfoDTO& info);
     ~ServerHiloReciever();
 };
 

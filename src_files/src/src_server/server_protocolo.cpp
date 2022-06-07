@@ -84,7 +84,7 @@ void Protocolo_servidor::recibirCodigoDeOperacion(uint8_t& codigo) {
     this->skt_comunicador.recvall(&codigo, sizeof(uint8_t), &socket_cerrado);
 }
 
-std::unique_ptr<infoDTO> Protocolo_servidor::recibirInfoSegunCodigo(uint8_t& codigo) {
+std::unique_ptr<InfoDTO> Protocolo_servidor::recibirInfoSegunCodigo(uint8_t& codigo) {
     uint16_t id_unidad;
     uint16_t x;
     uint16_t y;
