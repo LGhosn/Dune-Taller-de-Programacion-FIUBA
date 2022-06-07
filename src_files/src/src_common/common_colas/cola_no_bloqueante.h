@@ -14,6 +14,7 @@ public:
 	ColaNoBloqueante() = default;
 
 	std::unique_ptr<T> pop();
+	std::queue<std::unique_ptr<T>> popAll(); 
 
 	void push(T* elem);
 };

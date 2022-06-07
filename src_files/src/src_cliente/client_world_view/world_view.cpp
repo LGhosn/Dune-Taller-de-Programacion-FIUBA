@@ -1,9 +1,11 @@
 #include "world_view.h"
 #include <functional>
 
+#define RUTA_MAPA_1 "maps/mapa1.yaml"
+
 WorldView::WorldView() : 
 window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ANCHO_VENTANA, LARGO_VENTANA, 0),
-renderer(window, -1, SDL_RENDERER_ACCELERATED), mapa(renderer), frame_anterior(0) {}
+renderer(window, -1, SDL_RENDERER_ACCELERATED), mapa(renderer, RESOURCE_PATH RUTA_MAPA_1), frame_anterior(0) {}
 
 void WorldView::moverMapaArriba() {
 	this->mapa.moverArriba();

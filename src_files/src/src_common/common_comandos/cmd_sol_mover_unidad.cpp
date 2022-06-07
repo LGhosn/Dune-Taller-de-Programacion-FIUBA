@@ -6,6 +6,6 @@ void SolicitudMoverUnidad::enviarSolicitud(ProtocoloCliente& protocolo) {
     protocolo.enviarSolicitudMoverUnidad(id_unidad, x, y);
 }
 
-void SolicitudMoverUnidad::enviarInstruccion(Protocolo_server& protocolo) {
-    protocolo.enviarInstruccionMoverUnidad(id_unidad, x, y);
+void SolicitudMoverUnidad::enviarInstruccion(Protocolo_servidor& protocolo) {
+    // protocolo.enviarInstruccionMoverUnidad(id_unidad, x, y);
 }

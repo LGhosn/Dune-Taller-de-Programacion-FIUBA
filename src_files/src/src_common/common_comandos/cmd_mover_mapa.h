@@ -7,7 +7,7 @@
 #define DERECHA 'D'
 
 #include "comando.h"
-#include "../world_view/world_view.h"
+#include "../../src_cliente/client_world_view/world_view.h"
 
 class MoverMapa : public Comando {
 	const char direccion;

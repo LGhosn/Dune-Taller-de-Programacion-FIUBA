@@ -3,7 +3,7 @@
 
 
 class InfoDTO {
-    virtual InfoDTO(...) = 0;
+    InfoDTO(...);
 };
 
 #endif //COMMON_INFODTO_H

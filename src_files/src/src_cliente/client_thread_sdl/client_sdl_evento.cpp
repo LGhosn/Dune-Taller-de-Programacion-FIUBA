@@ -1,5 +1,6 @@
 #include "client_sdl_evento.h"
-#include "../comandos/cmd_sol_mover_unidad.h"
+#include "../../src_common/common_comandos/comando_a_enviar.h"
+#include "../../src_common/common_comandos/cmd_sol_mover_unidad.h"
 
 std::unique_ptr<SDLEvento> SDLEvento::clasificar_evento(uint32_t eventType) {
     switch (eventType) {
@@ -13,12 +14,14 @@ std::unique_ptr<SDLEvento> SDLEvento::clasificar_evento(uint32_t eventType) {
             return std::unique_ptr<ClickPresionado>();
         case SDL_MOUSEBUTTONUP:
             return std::unique_ptr<ClickLevantado>();
+        default:
+            throw std::runtime_error("Evento no reconocido");
     }
 }
 
 void TeclaPresionada::ejecutar_evento(SDL_Event& keyEvent) {
-    SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) keyEvent;
-    switch (keyEvent.key.keysym.sym) {
+    SDL_KeyboardEvent& teclaEvent = (SDL_KeyboardEvent&) keyEvent;
+    switch (teclaEvent.keysym.sym) {
         case (SDLK_LEFT):
             break;
         
@@ -38,8 +41,8 @@ void TeclaPresionada::ejecutar_evento(SDL_Event& keyEvent) {
 }
 
 void TeclaLevantada::ejecutar_evento(SDL_Event& keyEvent) {
-    SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) keyEvent;
-    switch (keyEvent.key.keysym.sym) {
+    SDL_KeyboardEvent& teclaEvent = (SDL_KeyboardEvent&) keyEvent;
+    switch (teclaEvent.keysym.sym) {
         case (SDLK_LEFT):
             /* code */
             break;
@@ -60,8 +63,8 @@ void TeclaLevantada::ejecutar_evento(SDL_Event& keyEvent) {
 }
 
 void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
-    SDL_MouseButtonEvent& mouseButtonEvent = (SDL_MouseButtonEvent&) mouseButtonEvent;
-    switch (mouseButtonEvent.button.button) {
+    SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) mouseButtonEvent;
+    switch (mouseEvent.button) {
         case (SDL_BUTTON_LEFT):
             // temporal crear un comando para soldado
             break;
@@ -71,7 +74,8 @@ void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
             uint16_t y = mouseButtonEvent.button.y;
 
             PixACoords coords_normalizadas(x, y);
-            SolicitudMoverUnidad solicitud(1, coords_normalizadas.get_x(), coords_normalizadas.get_y());
+            uint16_t id = 1;        // TODO: obtener id de la unidad
+            SolicitudMoverUnidad solicitud(id, coords_normalizadas.get_x(), coords_normalizadas.get_y());
             this->cola_eventos.push(&solicitud);
             break;
     }

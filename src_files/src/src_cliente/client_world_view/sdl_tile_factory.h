@@ -3,6 +3,7 @@
 
 #include <SDL2pp/SDL2pp.hh>
 #include "sdl_tile.h"
+#include <vector>
 
 #define TEX_BASE_PATH "/terrain/d2k_BLOXBASE.bmp"
 
@@ -16,18 +17,25 @@
 class TileFactorySDL {
     SDL2pp::Renderer& renderer;
     SDL2pp::Texture& textura_base;
+    uint32_t ancho, alto;
+    std::vector<TileSDL> tiles;
 
-    TileSDL crearTileDeRoca(uint16_t tipo_textura, Coordenadas& coords);
-    TileSDL crearTileDeArena(uint16_t tipo_textura, Coordenadas& coords);
-    TileSDL crearTileDePrecipicio(uint16_t tipo_textura, Coordenadas& coords);
-    TileSDL crearTileDeCima(uint16_t tipo_textura, Coordenadas& coords);
-    TileSDL crearTileDeDuna(uint16_t tipo_textura, Coordenadas& coords);
-    TileSDL crearTileDeEspecia(uint16_t tipo_textura, Coordenadas& coords);
+    void agregarTileDeRoca(uint16_t tipo_textura, Coordenadas& coords);
+    void agregarTileDeArena(uint16_t tipo_textura, Coordenadas& coords);
+    void agregarTileDePrecipicio(uint16_t tipo_textura, Coordenadas& coords);
+    void agregarTileDeCima(uint16_t tipo_textura, Coordenadas& coords);
+    void agregarTileDeDuna(uint16_t tipo_textura, Coordenadas& coords);
+    void agregarTileDeEspecia(uint16_t tipo_textura, Coordenadas& coords);
+
+    void agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Coordenadas& coords);
 
 public:
-    TileFactorySDL(SDL2pp::Renderer& renderer);
+    TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa);
 
-    TileSDL crearTile(uint8_t tipo_terreno, uint16_t tipo_textura, Coordenadas& coords);
+    std::vector<TileSDL>& obtenerTiles();
+
+    uint16_t obtenerAlto() const;
+    uint16_t obtenerAncho() const;
 };
 
 #endif

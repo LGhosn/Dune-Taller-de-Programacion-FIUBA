@@ -1,5 +1,6 @@
 #include "cola_no_bloqueante.h"
-#include "comandos/comando.h"
+#include "../common_comandos/comando.h"
+#include "../common_comandos/common_solicitud.h"
 #include <utility>
 
 template<class T>
@@ -13,9 +14,18 @@ std::unique_ptr<T> ColaNoBloqueante<T>::pop() {
 }
 
 template<class T>
+std::queue<std::unique_ptr<T>> ColaNoBloqueante<T>::popAll() {
+	std::unique_lock<std::mutex> lock(this->mutex);
+	std::queue<std::unique_ptr<T>> cola_copia = std::move(this->cola);
+	this->cola = std::queue<std::unique_ptr<T>>();
+	return cola_copia;
+}
+
+template<class T>
 void ColaNoBloqueante<T>::push(T* elem) {
 	std::unique_lock<std::mutex> lock(this->mutex);
 	this->cola.emplace(elem);
 }
 
 template class ColaNoBloqueante<Comando>;
+template class ColaNoBloqueante<Solicitud>;

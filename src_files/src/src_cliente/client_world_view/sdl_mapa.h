@@ -3,8 +3,9 @@
 
 #include <SDL2pp/SDL2pp.hh>
 #include <string>
-#include <list>
+#include <vector>
 #include "sdl_tile.h"
+#include "sdl_tile_factory.h"
 
 #define ARRIBA 'A'
 #define IZQUIERDA 'I'
@@ -20,9 +21,9 @@
 
 class MapaSDL {
 	SDL2pp::Renderer& renderer;
-	std::list<TileSDL> tiles;
-	int largo_mapa;
-	int ancho_mapa;
+	TileFactorySDL tile_factory;
+	std::vector<TileSDL>& tiles;
+	int ancho, alto;
 	int pos_x, pos_y;
 	bool moviendose_h, moviendose_v;
 	char direccion_h, direccion_v;

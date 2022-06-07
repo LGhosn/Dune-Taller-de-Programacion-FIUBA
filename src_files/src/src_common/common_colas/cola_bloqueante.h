@@ -8,7 +8,7 @@
 
 template<typename T>
 class ColaBloqueante {
-	std::queue<T> cola;
+	std::queue<std::unique_ptr<T>> cola;
 	std::mutex mutex;
 	std::condition_variable cv;
 

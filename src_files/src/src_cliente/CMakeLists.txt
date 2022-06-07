@@ -16,15 +16,15 @@ add_definitions(-DRESOURCE_PATH="${PROJECT_SOURCE_DIR}/../../assets")
 add_executable(
     sdl_cliente_main
     sdl_client_main.cpp
-    comandos/cmd_mover_mapa.cpp
-    comandos/cmd_sol_mover_unidad.cpp
-    comandos/comando.cpp
-        client_thread_renderer/client_hilo_renderer.cpp
-        client_world_view/sdl_mapa.cpp
-        client_world_view/sdl_mapa.h
-        client_world_view/world_view.cpp
-    cola_bloqueante.cpp
-    cola_no_bloqueante.cpp
+    ../src_common/common_comandos/cmd_mover_mapa.cpp
+    ../src_common/common_comandos/cmd_sol_mover_unidad.cpp
+    ../src_common/common_comandos/comando.cpp
+    client_thread_renderer/client_hilo_renderer.cpp
+    client_world_view/sdl_mapa.cpp
+    client_world_view/sdl_mapa.h
+    client_world_view/world_view.cpp
+    ../src_common/common_colas/cola_bloqueante.cpp
+    ../src_common/common_colas/cola_no_bloqueante.cpp
         client_thread_sdl/client_hilo_sdl.h
         client_thread_sdl/client_hilo_sdl.cpp
         client_thread_sdl/client_sdl_evento.h
@@ -33,6 +33,5 @@ add_executable(
 
 target_link_libraries(
   sdl_cliente_main
-  PRIVATE
   ${SDL2PP_LIBRARIES}
 )

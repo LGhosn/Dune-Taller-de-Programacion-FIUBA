@@ -1,45 +1,33 @@
 #include "sdl_mapa.h"
-#include "../../src_libs/yaml-cpp/yaml.h"
 #include <functional>
 #include <iostream>
 
-	int limite_superior() const {
+	int MapaSDL::limite_superior() const {
 		return - PADDING;
 	}
 
-	int limite_inferior() const {
-		return largo_mapa - LARGO_VENTANA + PADDING;
+	int MapaSDL::limite_inferior() const {
+		return this->alto - LARGO_VENTANA + PADDING;
 	}
 
-	int limite_izquierdo() const {
+	int MapaSDL::limite_izquierdo() const {
 		return - PADDING;
 	}
 
-	int limite_derecho() const {
-		return ancho_mapa - ANCHO_VENTANA + PADDING;
+	int MapaSDL::limite_derecho() const {
+		return this->ancho - ANCHO_VENTANA + PADDING;
 	}
 
-	void updateTiles() {
+	void MapaSDL::updateTiles() {
 		for (auto& tile : tiles) {
 			tile.update(this->pos_x, this->pos_y);
 		}
 	}
 
-MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa) : renderer(renderer) {
-	YAML::Node mapa_config = YAML::LoadFile(RESOURCE_PATH "maps/mapa1.yaml");
-	this->ancho = mapa_config["Ancho"].as<int>();
-	this->alto = mapa_config["Alto"].as<int>();
-	this->tiles.resize(this->alto * this->ancho);
-	for (int i = 0; i < alto; i++) {
-		for (int j = 0; j < ancho; j++){
-			Coordenadas coords(j, i);
-			this->tiles[i * ancho + j] = TileFactorySDL::crearTile(
-				mapa_config["TiposTerrenos"][i][j].as<char>(), 
-				mapa_config["TiposTexturas"][i][j].as<int>(),
-				coords);
-		}
-	}
-}
+MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa) : renderer(renderer),
+tile_factory(renderer, ruta_mapa), tiles(tile_factory.obtenerTiles()), ancho(tile_factory.obtenerAncho()),
+alto(tile_factory.obtenerAlto()), pos_x(0), pos_y(0), moviendose_h(false), moviendose_v(false), direccion_h(IZQUIERDA),
+direccion_v(ARRIBA) {}
 
 void MapaSDL::moverArriba() {
 	if (pos_y > this->limite_superior() && !this->moviendose_v) {
