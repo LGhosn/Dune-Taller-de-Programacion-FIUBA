@@ -6,6 +6,8 @@
 class Comando {
 public:
 	virtual bool ejecutar(WorldView& worldView) const = 0;
+
+	virtual ~Comando();
 };
 
 #endif

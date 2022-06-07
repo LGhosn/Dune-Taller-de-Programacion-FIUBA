@@ -5,6 +5,7 @@
 #include "hilo_renderer.h"
 
 bool HiloRenderer::manejar_comando() {
+	// popall
 	std::unique_ptr<Comando> comando = this->cola_eventos.pop();
 	if (comando)
 		return comando->ejecutar(this->world_view);

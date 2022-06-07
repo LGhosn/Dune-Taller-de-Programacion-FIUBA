@@ -3,41 +3,39 @@
 
 #include <SDL2pp/SDL2pp.hh>
 #include <string>
+#include <list>
+#include "sdl_tile.h"
 
 #define ARRIBA 'A'
 #define IZQUIERDA 'I'
 #define DERECHA 'D'
 #define ABAJO 'B'
 
-#define ZOOM_INICIAL 1.0f
-#define ZOOM_INCR 0.1f
-#define ZOOM_MIN 1.0f
-#define ZOOM_MAX 2.0f
-
 #define ANCHO_VENTANA 1024
 #define LARGO_VENTANA 768
 
-#define PADDING_LIMITE_VENTANA 100
-
 #define PADDING 200
-
-#define FRAME_RATE 33.0f
 
 #define PASO 6
 
 class MapaSDL {
 	SDL2pp::Renderer& renderer;
-	SDL2pp::Texture textura;
-	int pos_x;
-	int pos_y;
-	bool moviendose_h;
-	bool moviendose_v;
-	char direccion_h;
-	char direccion_v;
-	float zoom;
+	std::list<TileSDL> tiles;
+	int largo_mapa;
+	int ancho_mapa;
+	int pos_x, pos_y;
+	bool moviendose_h, moviendose_v;
+	char direccion_h, direccion_v;
+
+	int limite_superior() const;
+	int limite_inferior() const;
+	int limite_izquierdo() const;
+	int limite_derecho() const;
+
+	void updateTiles();
 
 public:
-	explicit MapaSDL(SDL2pp::Renderer& renderer);
+	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa);
 
 	void moverArriba();
 	void moverIzquierda();
@@ -46,12 +44,8 @@ public:
 	void dejarDeMoverseHorizontalmente();
 	void dejarDeMoverseVerticalmente();
 
-	void zoomIn();
-	void zoomOut();
-
 	int obtener_offset_x() const;
 	int obtener_offset_y() const;
-	float obtener_zoom() const;
 
 	void update();
 	void render();
