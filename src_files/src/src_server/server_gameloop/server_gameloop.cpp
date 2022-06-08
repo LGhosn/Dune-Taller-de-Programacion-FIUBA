@@ -1,9 +1,9 @@
-#include "server_hilo_gameloop.h"
+#include "server_gameloop.h"
 #include <exception>
 #include <iostream>
 #include <chrono>
 
-void ServerHiloGameLoop::manejarHilo() {
+void GameLoop::manejarHilo() {
     try {
         this->run();
     } catch (const std::exception &e) {
@@ -13,7 +13,7 @@ void ServerHiloGameLoop::manejarHilo() {
     }
 }
 
-void ServerHiloGameLoop::run() {
+void GameLoop::run() {
     long iter = 0;
     bool running = true;
     auto t1 = std::chrono::steady_clock::now();
@@ -29,12 +29,13 @@ void ServerHiloGameLoop::run() {
             rest = FRAME_RATE - (int) demora % (int) FRAME_RATE;
             float tiempo_perdido = demora + rest;
             iter += tiempo_perdido / FRAME_RATE;
+        } else {
+            iter++;
         }
-        iter++;
     }
 }
 
-void ServerHiloGameLoop::manejarSolicitudes() {
+void GameLoop::manejarSolicitudes() {
     std::queue<std::unique_ptr<Solicitud>> solicitudes = this->sol_entrantes.popAll();
     while(!solicitudes.empty()) {
         std::unique_ptr<Solicitud> solicitud = std::move(solicitudes.front());
@@ -43,17 +44,12 @@ void ServerHiloGameLoop::manejarSolicitudes() {
     }
 }
 
-bool ServerHiloGameLoop::update(long iter) {
+bool GameLoop::update(long iter) {
     return this->game.update(iter);
 }
 
-ServerHiloGameLoop::ServerHiloGameLoop(std::vector<ColaBloqueante<ComandoAEnviar>&>& colas_eventos, ColaNoBloqueante<Solicitud>& sol_entrantes):
+GameLoop::GameLoop(std::vector<ColaBloqueante<ComandoAEnviar>&>& colas_eventos,
+ColaNoBloqueante<Solicitud>& sol_entrantes, std::string& ruta_mapa):
 colas_eventos(colas_eventos), sol_entrantes(sol_entrantes), game(colas_eventos) {
-    thread = std::thread(&ServerHiloGameLoop::manejarHilo, this);
-}
-
-ServerHiloGameLoop::~ServerHiloGameLoop() {
-    if (this->thread.joinable()) {
-        this->thread.join();
-    }
+    this->manejarHilo();
 }

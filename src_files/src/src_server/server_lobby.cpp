@@ -34,6 +34,7 @@ bool Lobby::unirAPartida(const PartidaDTO& partida_a_unirse) {
                 std::string notificacion =
                 "Comenzando partida " + partida_a_unirse.nombre_partida + "...\n";
                 std::cout << notificacion;
+                this->cola_juegos.emplace();
             }
             return true;
         } else {

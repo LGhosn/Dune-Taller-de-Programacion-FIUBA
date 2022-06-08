@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <thread>
+#include <string>
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
 #include "../../src_common/common_comandos/comando_a_enviar.h"
@@ -11,23 +12,23 @@
 
 #define FRAME_RATE 33.0f
 
-class ServerHiloGameLoop {
+class GameLoop {
     std::vector<ColaBloqueante<ComandoAEnviar>&>& colas_eventos;
     ColaNoBloqueante<Solicitud>& sol_entrantes;
     Game game;
-    std::thread thread;
 
     void manejarHilo();
     void run();
 
+    // Hace un pop de todas las solicitudes de la cola y las ejecuta
     void manejarSolicitudes();
 
+    // Actualiza el game a partir del numero de iteracion actual y devuelve si el hilo debe continuar
     bool update(long iter);
 
 public:
-    ServerHiloGameLoop(std::vector<ColaBloqueante<ComandoAEnviar>&>& colas_sender, ColaNoBloqueante<Solicitud>& sol_entrantes);
-
-    ~ServerHiloGameLoop();
+    GameLoop(std::vector<ColaBloqueante<ComandoAEnviar>&>& colas_sender,
+    ColaNoBloqueante<Solicitud>& sol_entrantes, std::string& ruta_mapa);
 };
 
 #endif
