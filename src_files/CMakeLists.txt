@@ -1,13 +1,31 @@
 cmake_minimum_required(VERSION 3.00)
 project(Dune2000)
 find_package(Qt5Widgets)
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -pedantic -std=c++17 -ggdb")
 
 # GoogleTest requires at least C++11
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
+
 message("[INFO] La raiz del proyecto es ${PROJECT_SOURCE_DIR}")
 
+SET(SDL2PP_WITH_IMAGE YES)
+SET(SDL2PP_WITH_TTF YES)
+
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/src_libs/yaml_cpp)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/src_libs/SDL2pp)
+
+# Agrego la carpeta con los headers autogenerados a los includes
+message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
+include_directories(${PROJECT_BINARY_DIR})
+message("Headers generados: ${UIS_HEADERS}")
+
+message("Agregando '${PROJECT_SOURCE_DIR}/src/src_libs' como directorio de includes")
+include_directories(${PROJECT_SOURCE_DIR}/src/src_libs)
+include_directories(${SDL2PP_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS}
+        ${SDL2TTF_INCLUDE_DIRS} ${SDL2MIXER_INCLUDE_DIRS})
+
 include_directories(${PROJECT_SOURCE_DIR}/src
+        ${PROJECT_SOURCE_DIR}/src/src_libs
         ${PROJECT_SOURCE_DIR}/src/src_menu
         ${PROJECT_SOURCE_DIR}/src/src_form_creacion
         ${PROJECT_SOURCE_DIR}/src/src_form_union
@@ -16,7 +34,7 @@ include_directories(${PROJECT_SOURCE_DIR}/src
         ${PROJECT_SOURCE_DIR}/src/src_common
         )
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/src/src_libs/yaml_cpp)
+        # Agrego la libreria SDL2pp habilitando manejo de imagenes y de letras
 
 include(FetchContent)
 FetchContent_Declare(
@@ -36,10 +54,6 @@ qt5_wrap_ui(UIS_HEADERS
 set(CMAKE_AUTOMOC on)
 # Habilito autorcc para manejar automaticamente los QResources
 set(CMAKE_AUTORCC ON)
-# Agrego la carpeta con los headers autogenerados a los includes
-message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
-include_directories(${PROJECT_BINARY_DIR})
-message("Headers generados: ${UIS_HEADERS}")
 
 add_executable(client
         src/src_menu/MenuDune.cpp
@@ -62,6 +76,7 @@ add_executable(server
         src/src_server/server_lobby.cpp
         src/src_server/server_handler.cpp
         src/src_server/server_aceptador.cpp
+        # src/src_server/server_partida_empezada.cpp
         src/src_common/common_resolver.cpp
         src/src_common/common_socket.cpp
         src/src_common/common_socket_error.cpp

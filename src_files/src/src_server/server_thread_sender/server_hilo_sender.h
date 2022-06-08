@@ -10,10 +10,10 @@ class ServerHiloSender {
 private:
     std::thread thread;
     ColaBloqueante<ComandoAEnviar>& cola_comandos;
-    Protocolo_servidor& protocolo;
+    ProtocoloServidor& protocolo;
     bool hay_que_seguir = true;
 public:
-    ServerHiloSender(ColaBloqueante<ComandoAEnviar> &cola_comandos, Protocolo_servidor &protocolo);
+    ServerHiloSender(ColaBloqueante<ComandoAEnviar> &cola_comandos, ProtocoloServidor &protocolo);
     void run();
     void handleThread();
     void send(ComandoAEnviar& comando);

@@ -6,29 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/camino_tests_autogen/mocs_compilation.cpp
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/camino_tests_autogen/mocs_compilation.cpp
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.cpp
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.cpp
 common_coords.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h
 functional
 -
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h
 stdint.h
 -
 cstddef
 -
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino.cpp
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino.cpp
 server_camino.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino.h
 ../src_common/common_coords.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h
 server_camino_no_encontrado_exception.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino_no_encontrado_exception.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino_no_encontrado_exception.h
 server_fuera_de_rango_exception.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_fuera_de_rango_exception.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_fuera_de_rango_exception.h
 queue
 -
 cmath
@@ -38,7 +38,7 @@ functional
 algorithm
 -
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino.h
 vector
 -
 unordered_map
@@ -50,9 +50,9 @@ list
 unordered_map
 -
 ../src_common/common_coords.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino_no_encontrado_exception.cpp
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino_no_encontrado_exception.cpp
 cerrno
 -
 cstdarg
@@ -64,13 +64,13 @@ cstdio
 iostream
 -
 server_camino_no_encontrado_exception.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino_no_encontrado_exception.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino_no_encontrado_exception.h
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino_no_encontrado_exception.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino_no_encontrado_exception.h
 exception
 -
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_fuera_de_rango_exception.cpp
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_fuera_de_rango_exception.cpp
 cerrno
 -
 cstdarg
@@ -82,21 +82,21 @@ cstdio
 iostream
 -
 server_fuera_de_rango_exception.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_fuera_de_rango_exception.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_fuera_de_rango_exception.h
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_fuera_de_rango_exception.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_fuera_de_rango_exception.h
 exception
 -
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/pruebas_camino.cpp
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/pruebas_camino.cpp
 ../../src_server/server_camino.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino.h
 ../../src_server/server_camino_no_encontrado_exception.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino_no_encontrado_exception.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_camino_no_encontrado_exception.h
 ../../src_server/server_fuera_de_rango_exception.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_fuera_de_rango_exception.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_fuera_de_rango_exception.h
 gtest/gtest.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/gtest/gtest.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/gtest/gtest.h
 vector
 -
 stack

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/yaml_cpp/util/parse.cpp" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_libs/yaml_cpp/util/CMakeFiles/yaml-cpp-parse.dir/parse.cpp.o"
+  "/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/yaml_cpp/util/parse.cpp" "/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_libs/yaml_cpp/util/CMakeFiles/yaml-cpp-parse.dir/parse.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,19 +15,12 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../src"
-  "../src/src_menu"
-  "../src/src_form_creacion"
-  "../src/src_form_union"
-  "../src/src_cliente"
-  "../src/src_server"
-  "../src/src_common"
   "../src/src_libs/yaml_cpp/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_libs/yaml_cpp/CMakeFiles/yaml-cpp.dir/DependInfo.cmake"
+  "/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_libs/yaml_cpp/CMakeFiles/yaml-cpp.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/gmock-all.cc
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/gmock-all.cc
 gmock/gmock.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/gmock/gmock.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/gmock/gmock.h
 src/gmock-cardinalities.cc
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/src/gmock-cardinalities.cc
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/src/gmock-cardinalities.cc
 src/gmock-internal-utils.cc
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/src/gmock-internal-utils.cc
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/src/gmock-internal-utils.cc
 src/gmock-matchers.cc
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/src/gmock-matchers.cc
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/src/gmock-matchers.cc
 src/gmock-spec-builders.cc
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/src/gmock-spec-builders.cc
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/src/gmock-spec-builders.cc
 src/gmock.cc
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/src/gmock.cc
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/src/gmock.cc
 
 _deps/googletest-src/googlemock/include/gmock/gmock-actions.h
 errno.h

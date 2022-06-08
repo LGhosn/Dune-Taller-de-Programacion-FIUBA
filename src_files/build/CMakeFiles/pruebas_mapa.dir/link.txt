@@ -1,1 +1,1 @@
-/usr/bin/c++    -rdynamic CMakeFiles/pruebas_mapa.dir/pruebas_mapa_autogen/mocs_compilation.cpp.o  -o pruebas_mapa  src/src_libs/yaml_cpp/libyaml-cpp.a lib/libgtest_main.a lib/libgtest.a -lpthread 
+/usr/bin/c++   -std=c++11 -pthread  -rdynamic CMakeFiles/pruebas_mapa.dir/pruebas_mapa_autogen/mocs_compilation.cpp.o  -o pruebas_mapa  src/src_libs/yaml_cpp/libyaml-cpp.a lib/libgtest_main.a lib/libgtest.a -lpthread 

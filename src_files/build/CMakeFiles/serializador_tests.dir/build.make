@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files"
+CMAKE_SOURCE_DIR = /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build"
+CMAKE_BINARY_DIR = /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/serializador_tests.dir/depend.make
@@ -59,42 +59,42 @@ include CMakeFiles/serializador_tests.dir/flags.make
 
 CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o: CMakeFiles/serializador_tests.dir/flags.make
 CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o: serializador_tests_autogen/mocs_compilation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/serializador_tests_autogen/mocs_compilation.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/serializador_tests_autogen/mocs_compilation.cpp
 
 CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/serializador_tests_autogen/mocs_compilation.cpp" > CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/serializador_tests_autogen/mocs_compilation.cpp > CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.i
 
 CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/serializador_tests_autogen/mocs_compilation.cpp" -o CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/serializador_tests_autogen/mocs_compilation.cpp -o CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o: CMakeFiles/serializador_tests.dir/flags.make
 CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o: ../src/src_testing/pruebas_serializador/pruebas_serializador.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/pruebas_serializador.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/pruebas_serializador.cpp
 
 CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/pruebas_serializador.cpp" > CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/pruebas_serializador.cpp > CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.i
 
 CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/pruebas_serializador.cpp" -o CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/pruebas_serializador.cpp -o CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.s
 
 CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.o: CMakeFiles/serializador_tests.dir/flags.make
 CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.o: ../src/src_common/common_serializador.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp
 
 CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp" > CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp > CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.i
 
 CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp" -o CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp -o CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.s
 
 # Object files for target serializador_tests
 serializador_tests_OBJECTS = \
@@ -112,7 +112,7 @@ serializador_tests: CMakeFiles/serializador_tests.dir/build.make
 serializador_tests: lib/libgtest_main.a
 serializador_tests: lib/libgtest.a
 serializador_tests: CMakeFiles/serializador_tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable serializador_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable serializador_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/serializador_tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -125,6 +125,6 @@ CMakeFiles/serializador_tests.dir/clean:
 .PHONY : CMakeFiles/serializador_tests.dir/clean
 
 CMakeFiles/serializador_tests.dir/depend:
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/serializador_tests.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/serializador_tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/serializador_tests.dir/depend
 

@@ -26,7 +26,7 @@ class ProtocoloCliente {
 
     void recibirCodigoDeOperacion(uint8_t& codigo);
     void recibirInfoSegunCodigo(uint8_t& codigo);
-    void recibirInfoMoverUnidad();
+    // void recibirInfoMoverUnidad();
 
 
     /*

@@ -16,7 +16,7 @@ class HandlerCliente {
     std::atomic<bool> flag_sigue_conectado;
     std::atomic<bool> flag_ha_finalizado;
     Socket skt_comunicador;
-    Protocolo_servidor protocolo;
+    ProtocoloServidor protocolo;
     Lobby& lobby;
 
     enum class Operaciones : uint8_t {
@@ -42,6 +42,7 @@ class HandlerCliente {
     void crearPartida();
     void listarPartidas();
 
+    void comenzarPartida();
 
     /*
      * Lanza un hilo llamando al método

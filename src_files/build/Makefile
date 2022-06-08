@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files"
+CMAKE_SOURCE_DIR = /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build"
+CMAKE_BINARY_DIR = /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,9 +137,9 @@ install/local/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -164,7 +164,7 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/VerifyGlobs.cmake"
+	$(CMAKE_COMMAND) -P /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -299,6 +299,19 @@ client_autogen/fast:
 .PHONY : client_autogen/fast
 
 #=============================================================================
+# Target rules for targets named format
+
+# Build rule for target.
+format: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 format
+.PHONY : format
+
+# fast build rule for target.
+format/fast:
+	$(MAKE) -f src/src_libs/yaml_cpp/CMakeFiles/format.dir/build.make src/src_libs/yaml_cpp/CMakeFiles/format.dir/build
+.PHONY : format/fast
+
+#=============================================================================
 # Target rules for targets named yaml-cpp
 
 # Build rule for target.
@@ -349,6 +362,19 @@ yaml-cpp-sandbox: cmake_check_build_system
 yaml-cpp-sandbox/fast:
 	$(MAKE) -f src/src_libs/yaml_cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/build.make src/src_libs/yaml_cpp/util/CMakeFiles/yaml-cpp-sandbox.dir/build
 .PHONY : yaml-cpp-sandbox/fast
+
+#=============================================================================
+# Target rules for targets named SDL2pp
+
+# Build rule for target.
+SDL2pp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SDL2pp
+.PHONY : SDL2pp
+
+# fast build rule for target.
+SDL2pp/fast:
+	$(MAKE) -f src/src_libs/SDL2pp/CMakeFiles/SDL2pp.dir/build.make src/src_libs/SDL2pp/CMakeFiles/SDL2pp.dir/build
+.PHONY : SDL2pp/fast
 
 #=============================================================================
 # Target rules for targets named gmock_main
@@ -1223,10 +1249,12 @@ help:
 	@echo "... camino_tests_autogen"
 	@echo "... server_autogen"
 	@echo "... client_autogen"
+	@echo "... format"
 	@echo "... yaml-cpp"
 	@echo "... yaml-cpp-read"
 	@echo "... yaml-cpp-parse"
 	@echo "... yaml-cpp-sandbox"
+	@echo "... SDL2pp"
 	@echo "... gmock_main"
 	@echo "... gmock"
 	@echo "... gtest_main"
@@ -1329,7 +1357,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/VerifyGlobs.cmake"
+	$(CMAKE_COMMAND) -P /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

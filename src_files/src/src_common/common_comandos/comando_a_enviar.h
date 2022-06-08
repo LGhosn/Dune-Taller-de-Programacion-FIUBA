@@ -7,7 +7,7 @@
 
 class ComandoAEnviar {
 public:
-    virtual void enviarInstruccion(Protocolo_servidor& protocolo) = 0;
+    virtual void enviarInstruccion(ProtocoloServidor& protocolo) = 0;
 	virtual void enviarSolicitud(ProtocoloCliente& protocolo) = 0;
 };
 

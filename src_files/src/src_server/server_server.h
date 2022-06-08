@@ -1,7 +1,7 @@
 #ifndef SERVER_SERVER_H_
 #define SERVER_SERVER_H_
 
-#include "server_partida_empezada.h"
+// #include "server_partida_empezada.h"
 #include "../src_common/common_socket.h"
 #include "server_aceptador.h"
 #include "server_handler.h"
@@ -17,7 +17,7 @@
 class Server {
     bool was_closed = false;
     std::atomic<bool> el_server_no_debe_cerrarse;
-    std::list<PartidaEmpezada> partidas_empezadas;
+    // std::list<PartidaEmpezada> partidas_empezadas;
     Socket skt_aceptador;
     Lobby lobby;
 

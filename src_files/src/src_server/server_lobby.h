@@ -25,7 +25,7 @@ public:
      * Devuelve true en caso de poder crearse la partida (en tal
      * caso es listada), false en caso contrario.
      * */
-    bool crearPartida(const PartidaDTO& partida_a_crear);
+    bool crearPartida(const PartidaDTO& partida_a_crear, HandlerCliente *handler);
 
     /*
      * Devuelve true en caso de poder unir un jugador a la partida
@@ -33,7 +33,7 @@ public:
      * partida, se imprime un mensaje que lo informa), false en 
      * caso contrario.
      * */
-    bool unirAPartida(const PartidaDTO& partida_a_unirse);
+    bool unirAPartida(const PartidaDTO& partida_a_unirse, HandlerCliente *handler);
     
     /*
      * Devuelve un objeto DTO para enviarlo al protocolo.

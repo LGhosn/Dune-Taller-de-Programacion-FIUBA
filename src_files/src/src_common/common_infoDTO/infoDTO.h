@@ -3,7 +3,7 @@
 
 
 class InfoDTO {
-    InfoDTO(...);
+    InfoDTO();
 };
 
 #endif //COMMON_INFODTO_H

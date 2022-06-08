@@ -368,7 +368,7 @@ yaml-cpp/node/parse.h
 yaml-cpp/node/emit.h
 ../src/src_libs/yaml_cpp/include/yaml-cpp/yaml-cpp/node/emit.h
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/yaml_cpp/util/parse.cpp
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/yaml_cpp/util/parse.cpp
 fstream
 -
 iostream
@@ -376,7 +376,7 @@ iostream
 vector
 -
 yaml-cpp/eventhandler.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/yaml_cpp/util/yaml-cpp/eventhandler.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/yaml_cpp/util/yaml-cpp/eventhandler.h
 yaml-cpp/yaml.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/yaml_cpp/util/yaml-cpp/yaml.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/yaml_cpp/util/yaml-cpp/yaml.h
 

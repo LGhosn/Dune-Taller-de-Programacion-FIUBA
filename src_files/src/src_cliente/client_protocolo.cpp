@@ -86,7 +86,7 @@ void ProtocoloCliente::recibirCodigoDeOperacion(uint8_t& codigo) {
 }
 
 void ProtocoloCliente::recibirInfoSegunCodigo(uint8_t& codigo) {
-    if (codigo == 4) {
-        this->recibirInfoMoverUnidad();
-    }
+    // if (codigo == 4) {
+    //     this->recibirInfoMoverUnidad();
+    // }
 }

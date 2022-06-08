@@ -31,6 +31,7 @@ void FormUnion::solicitudDeUnion() {
             protocolo_asociado.enviarSolicitudDeUnion(solicitud);
             StatusDTO status = protocolo_asociado.recibirStatus();
             unirseNotificacion(status);
+            protocolo_asociado.esperarComenzarPartida();
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());

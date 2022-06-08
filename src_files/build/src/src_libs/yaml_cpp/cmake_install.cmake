@@ -1,4 +1,4 @@
-# Install script for directory: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/yaml_cpp
+# Install script for directory: /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/yaml_cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_libs/yaml_cpp/util/cmake_install.cmake")
+  include("/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_libs/yaml_cpp/util/cmake_install.cmake")
 
 endif()
 

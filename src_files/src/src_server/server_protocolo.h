@@ -2,6 +2,7 @@
 #define SERVER_PROTOCOLO_H_
 
 #include "../src_common/common_infoDTO/infoDTO.h"
+#include "../src_common/common_infoDTO/MovimientoDTO.h"
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_DTOs.h"
 #include "../src_common/common_socket.h"
@@ -12,7 +13,7 @@
 #include <fstream>
 #include <netinet/in.h>
 
-class Protocolo_servidor {
+class ProtocoloServidor {
     private:
     Socket& skt_comunicador;
     enum class Operaciones : uint8_t {unirse = 1, listar = 2, crear = 3};
@@ -22,7 +23,7 @@ class Protocolo_servidor {
      * Construye la clase, estableciendo un socket
      * válido como su atributo.
      * */
-    explicit Protocolo_servidor(Socket& comunicador);
+    explicit ProtocoloServidor(Socket& comunicador);
 
     /*
      * Recibe el codigo de operacion solicitado
@@ -44,6 +45,7 @@ class Protocolo_servidor {
      * */
     PartidaDTO recibirSolicitudDeUnion(bool& socket_cerrado);
     void enviarStatusDeUnion(bool el_jugador_se_unio, bool& socket_cerrado);
+    void notificarComenzarPartida(bool& socket_cerrado);
 
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR PARTIDAS
@@ -59,15 +61,15 @@ class Protocolo_servidor {
     PartidaDTO recibirSolicitudDeCreacion(bool& socket_cerrado);
     void enviarStatusDeCreacion(bool la_partida_se_creo, bool& socket_cerrado);
 
-    void recibirCodigoDeOperacion(uint8_t& codigo);
-    std::unique_ptr<InfoDTO> recibirInfoSegunCodigo(uint8_t& codigo);
+    void recibirCodigoDeOperacion(uint8_t& codigo, bool& socket_cerrado);
+    std::unique_ptr<InfoDTO> recibirInfoSegunCodigo(uint8_t& codigo, bool& socket_cerrado);
 
     /*
      * No tiene sentido copiar un protocolo_servidor, tampoco moverlo.
      * */
-    Protocolo_servidor(const Protocolo_servidor&) = delete;
-    Protocolo_servidor& operator=(const Protocolo_servidor&) = delete;
-    Protocolo_servidor(Protocolo_servidor&&) = delete;
-    Protocolo_servidor& operator=(Protocolo_servidor&&) = delete;
+    ProtocoloServidor(const ProtocoloServidor&) = delete;
+    ProtocoloServidor& operator=(const ProtocoloServidor&) = delete;
+    ProtocoloServidor(ProtocoloServidor&&) = delete;
+    ProtocoloServidor& operator=(ProtocoloServidor&&) = delete;
 };
 #endif  // SERVER_PROTOCOLO_H_

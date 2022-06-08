@@ -23,7 +23,7 @@ void ClientHiloReciever::run() {
         // - En función al codigo invocamos al metodo que recibe la info respectiva
         uint8_t codigo;
         protocolo.recibirCodigoDeOperacion(codigo);
-        protocolo.recibirInfoSegunCodigo(codigo);
+        // protocolo.recibirInfoSegunCodigo(codigo);
         // Luego la traducimos a un comando
         // Finalmente encolamos el comando
     }

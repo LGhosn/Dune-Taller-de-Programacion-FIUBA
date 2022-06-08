@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/gmock_main.cc
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/gmock_main.cc
 iostream
 -
 gmock/gmock.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/gmock/gmock.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/gmock/gmock.h
 gtest/gtest.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/gtest/gtest.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googlemock/src/gtest/gtest.h
 tchar.h
 -
 

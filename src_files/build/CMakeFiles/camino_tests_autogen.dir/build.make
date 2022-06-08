@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files"
+CMAKE_SOURCE_DIR = /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build"
+CMAKE_BINARY_DIR = /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build
 
 # Utility rule file for camino_tests_autogen.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINA
 include CMakeFiles/camino_tests_autogen.dir/progress.make
 
 CMakeFiles/camino_tests_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target camino_tests"
-	/usr/bin/cmake -E cmake_autogen "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/camino_tests_autogen.dir/AutogenInfo.json" ""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target camino_tests"
+	/usr/bin/cmake -E cmake_autogen /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/camino_tests_autogen.dir/AutogenInfo.json ""
 
 camino_tests_autogen: CMakeFiles/camino_tests_autogen
 camino_tests_autogen: CMakeFiles/camino_tests_autogen.dir/build.make
@@ -72,6 +72,6 @@ CMakeFiles/camino_tests_autogen.dir/clean:
 .PHONY : CMakeFiles/camino_tests_autogen.dir/clean
 
 CMakeFiles/camino_tests_autogen.dir/depend:
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/camino_tests_autogen.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles/camino_tests_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/camino_tests_autogen.dir/depend
 
