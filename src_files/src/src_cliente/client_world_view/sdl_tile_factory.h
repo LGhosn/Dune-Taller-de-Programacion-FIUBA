@@ -16,7 +16,7 @@
 
 class TileFactorySDL {
     SDL2pp::Renderer& renderer;
-    SDL2pp::Texture& textura_base;
+    SDL2pp::Texture textura_base;
     uint32_t ancho, alto;
     std::vector<TileSDL> tiles;
 

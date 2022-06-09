@@ -52,10 +52,8 @@ void ClientHiloRenderer::manejar_hilo() {
 		std::cerr << "Excepción desconocida en ClientHiloRenderer: " << std::endl;
 	}
 }
-
-void ClientHiloRenderer::start() {
-	this->hilo = std::thread(&ClientHiloRenderer::manejar_hilo, this);
-}
+ClientHiloRenderer::ClientHiloRenderer(ColaNoBloqueante<Comando>& cola_eventos) : cola_eventos(cola_eventos),
+hilo(&ClientHiloRenderer::manejar_hilo, this) {}
 
 ClientHiloRenderer::~ClientHiloRenderer() {
 	if (this->hilo.joinable())

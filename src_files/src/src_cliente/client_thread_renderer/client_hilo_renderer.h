@@ -27,7 +27,6 @@ private:
 
 public:
     ClientHiloRenderer(ColaNoBloqueante<Comando>& cola_eventos);
-	void start();
 	~ClientHiloRenderer();
 };
 

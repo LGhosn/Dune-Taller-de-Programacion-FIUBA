@@ -8,7 +8,6 @@ int main() {
 	Comando* mover_mapa = new MoverMapa('A');
 	cola_eventos.push(mover_mapa);
 	ClientHiloRenderer hilo_renderer(cola_eventos);
-	hilo_renderer.start();
-	SDL_Delay(10000);
+	SDL_Delay(50000);
 	return 0;
 }

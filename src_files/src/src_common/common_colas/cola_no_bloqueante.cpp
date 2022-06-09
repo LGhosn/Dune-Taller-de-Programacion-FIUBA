@@ -1,6 +1,6 @@
 #include "cola_no_bloqueante.h"
 #include "../common_comandos/comando.h"
-#include "../common_comandos/common_solicitud.h"
+// #include "../common_comandos/common_solicitud.h"
 #include <utility>
 
 template<class T>
@@ -28,4 +28,4 @@ void ColaNoBloqueante<T>::push(T* elem) {
 }
 
 template class ColaNoBloqueante<Comando>;
-template class ColaNoBloqueante<Solicitud>;
+// template class ColaNoBloqueante<Solicitud>;

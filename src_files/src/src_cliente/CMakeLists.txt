@@ -17,7 +17,7 @@ add_executable(
     sdl_cliente_main
     sdl_client_main.cpp
     ../src_common/common_comandos/cmd_mover_mapa.cpp
-    ../src_common/common_comandos/cmd_sol_mover_unidad.cpp
+    #../src_common/common_comandos/cmd_sol_mover_unidad.cpp
     ../src_common/common_comandos/comando.cpp
         client_thread_renderer/client_hilo_renderer.cpp
         client_world_view/sdl_tile_factory.cpp
@@ -25,12 +25,13 @@ add_executable(
         client_world_view/sdl_mapa.cpp
         client_world_view/sdl_mapa.h
         client_world_view/world_view.cpp
-        ../src_common/common_colas/cola_bloqueante.cpp
+        #../src_common/common_colas/cola_bloqueante.cpp
         ../src_common/common_colas/cola_no_bloqueante.cpp
         #client_thread_sdl/client_hilo_sdl.h
         #client_thread_sdl/client_hilo_sdl.cpp
         #client_thread_sdl/client_sdl_evento.h
         #client_thread_sdl/client_sdl_evento.cpp
+    ../src_common/common_coords.cpp
 )
 
 target_link_libraries(

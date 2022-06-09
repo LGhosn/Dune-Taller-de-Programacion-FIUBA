@@ -7,7 +7,7 @@ class Comando {
 public:
 	virtual bool ejecutar(WorldView& worldView) const = 0;
 
-	virtual ~Comando();
+	virtual ~Comando() = default;
 };
 
 #endif

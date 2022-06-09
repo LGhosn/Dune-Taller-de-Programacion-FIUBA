@@ -16,6 +16,8 @@ public:
 	explicit MoverMapa(char direccion);
 
 	virtual bool ejecutar(WorldView& worldView) const override;
+
+	virtual ~MoverMapa() = default;
 };
 
 #endif
