@@ -1,10 +1,12 @@
 #ifndef CLIENT_PROTOCOLO_H
 #define CLIENT_PROTOCOLO_H
 
+#include "client_DTO/Status.h"
+#include "client_DTO/SolicitudDeCreacion.h"
+#include "client_DTO/SolicitudDeUnion.h"
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_socket.h"
 #include "../src_common/common_coords.h"
-#include "client_DTO/client_DTO.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -35,7 +37,7 @@ class ProtocoloCliente {
      * Recibe el status de una petición de union o creacion, el mismo
      * será usado por el cliente para imprimir un mensaje.
      * */
-    StatusDTO recibirStatus();
+    Status recibirStatus();
 
     /*
      * No tiene sentido copiar un ProtocoloCliente, tampoco moverlo.

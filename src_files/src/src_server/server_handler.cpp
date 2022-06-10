@@ -42,13 +42,13 @@ void HandlerCliente::evaluarOperacion(uint8_t operacion) {
 
 void HandlerCliente::unirsePartida() {
     PartidaDTO partida_a_unirse = protocolo.recibirSolicitudDeUnion(this->fue_cerrado);
-    bool el_jugador_se_unio = lobby.unirAPartida(partida_a_unirse, this);
+    bool el_jugador_se_unio = lobby.unirAPartida(partida_a_unirse);
     protocolo.enviarStatusDeUnion(el_jugador_se_unio, this->fue_cerrado);
 }
 
 void HandlerCliente::crearPartida() {
     PartidaDTO partida_a_crear = protocolo.recibirSolicitudDeCreacion(this->fue_cerrado);
-    bool la_partida_se_creo = lobby.crearPartida(partida_a_crear, this);
+    bool la_partida_se_creo = lobby.crearPartida(partida_a_crear);
     protocolo.enviarStatusDeCreacion(la_partida_se_creo, this->fue_cerrado);
 }
 

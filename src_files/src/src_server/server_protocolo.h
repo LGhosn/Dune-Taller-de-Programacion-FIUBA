@@ -1,10 +1,10 @@
 #ifndef SERVER_PROTOCOLO_H_
 #define SERVER_PROTOCOLO_H_
 
+#include "server_DTO/PartidaDTO.h"
 #include "../src_common/common_infoDTO/infoDTO.h"
 #include "../src_common/common_infoDTO/MovimientoDTO.h"
 #include "../src_common/common_serializador.h"
-#include "../src_common/common_DTOs.h"
 #include "../src_common/common_socket.h"
 #include <memory>
 #include <string>

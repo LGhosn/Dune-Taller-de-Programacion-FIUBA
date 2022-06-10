@@ -1,11 +1,11 @@
 #ifndef SERVER_MANEJADOR_H_
 #define SERVER_MANEJADOR_H_
 
+#include "server_DTO/PartidaDTO.h"
 #include "../src_common/common_socket_error.h"
 #include "../src_common/common_socket.h"
-#include "server_lobby.h"
 #include "server_protocolo.h"
-#include "../src_common/common_DTOs.h"
+#include "server_lobby.h"
 #include <utility>
 #include <thread>
 #include <atomic>

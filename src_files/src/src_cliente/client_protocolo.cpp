@@ -76,10 +76,10 @@ void ProtocoloCliente::enviarSolicitudCrearEdificio(uint8_t id_jugador, Coordena
  *                      METODOS AUXILIARES
  * *****************************************************************/
 
-StatusDTO ProtocoloCliente::recibirStatus() {
+Status ProtocoloCliente::recibirStatus() {
     uint8_t status;
     this->skt_cliente.recvall(&status, sizeof(uint8_t), &this->was_closed);
-    return StatusDTO(status);
+    return Status(status);
 }
 
 void ProtocoloCliente::enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y){

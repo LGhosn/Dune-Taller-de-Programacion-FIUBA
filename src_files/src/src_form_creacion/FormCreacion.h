@@ -1,11 +1,13 @@
 #ifndef FORM_CREACION_H
 #define FORM_CREACION_H
 
+#include "../src_cliente/client_DTO/Status.h"
+#include "../src_cliente/client_DTO/SolicitudDeCreacion.h"
 #include "../src_cliente/client_protocolo.h"
-#include "../src_common/common_DTOs.h"
 #include "ui_FormCreacionUi.h"
 #include <syslog.h>
 #include <set>
+#include <string>
 #include <QWidget>
 #include <QScreen>
 #include <QMessageBox>
@@ -31,7 +33,7 @@ public:
     /* Muestra un QMessageBox indicando si la union solicitada fue
      * completada con o sin éxito.
      * */
-    void crearNotificacion(StatusDTO& status);
+    void crearNotificacion(Status& status);
 
     /* Devuelve true si el nombre de partida, mapa, jugadores requeridos
      * la casa elegida no son válidos, falso en caso contrario.

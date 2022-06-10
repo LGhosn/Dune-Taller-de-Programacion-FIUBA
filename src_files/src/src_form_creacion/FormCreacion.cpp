@@ -31,8 +31,8 @@ void FormCreacion::solicitudDeCreacion() {
             // Armamos la solicitud de creacion a enviar por el protocolo del cliente.
             SolicitudDeCreacion solicitud(nombre_partida, mapa, casa, jugadores_requeridos);
             protocolo_asociado.enviarSolicitudDeCreacion(solicitud);
-            StatusDTO status = protocolo_asociado.recibirStatus();
-            crearNotificacion(status);
+            Status status_recibido = protocolo_asociado.recibirStatus();
+            crearNotificacion(status_recibido);
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());
@@ -41,8 +41,9 @@ void FormCreacion::solicitudDeCreacion() {
     }
 }
 
-void FormCreacion::crearNotificacion(StatusDTO &status) {
-    if (status.status == 0) {
+void FormCreacion::crearNotificacion(Status& status) {
+    if (status.conexionEstablecida()) {
+        // Lanzamos hilos
         QMessageBox::information(this, "Creacion Existosa", "Esperando jugadores restantes...");
     } else {
         QMessageBox::information(this, "Creacion Fallida", "Existe otra partida con ese mismo nombre, por favor elegir otro.");

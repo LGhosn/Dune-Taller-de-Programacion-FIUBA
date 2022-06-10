@@ -29,9 +29,9 @@ void FormUnion::solicitudDeUnion() {
             // Armamos la solicitud de union a enviar por el protocolo del cliente.
             SolicitudDeUnion solicitud(nombre_partida, casa);
             protocolo_asociado.enviarSolicitudDeUnion(solicitud);
-            StatusDTO status = protocolo_asociado.recibirStatus();
+            Status status = protocolo_asociado.recibirStatus();
             unirseNotificacion(status);
-            protocolo_asociado.esperarComenzarPartida();
+            //protocolo_asociado.esperarComenzarPartida();
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());
@@ -40,10 +40,16 @@ void FormUnion::solicitudDeUnion() {
     }
 }
 
-void FormUnion::unirseNotificacion(StatusDTO &status) {
-    if (status.status == 0) {
-        QMessageBox::information(this, "Union Existosa", "Esperando jugadores restantes...");
-        this->close();
+void FormUnion::unirseNotificacion(Status &status) {
+    if (status.conexionEstablecida()) {
+        // Lanzo hilos sender/reciever
+        if (status.esperandoJugadores()) {
+            QMessageBox::information(this, "Union Existosa", "Esperando jugadores restantes...");
+            this->close();
+        } else {
+            QMessageBox::information(this, "Union Existosa", "Comenzando partida...");
+            this->close();
+        }
     } else {
         QMessageBox::information(this, "Union Fallida", "Parece que esa partida no existe o ya que ha comenzado.");
     }

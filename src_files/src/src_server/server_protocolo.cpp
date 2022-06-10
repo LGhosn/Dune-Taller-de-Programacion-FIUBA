@@ -101,7 +101,7 @@ std::unique_ptr<InfoDTO> ProtocoloServidor::recibirInfoSegunCodigo(uint8_t& codi
     this->skt_comunicador.recvall(&x, sizeof(uint8_t), &socket_cerrado);
     this->skt_comunicador.recvall(&y, sizeof(uint8_t), &socket_cerrado);
 
-    // return MovimientoDTO(id_unidad, x, y);
+    //return MovimientoDTO(id_unidad, x, y);
 }
 
 void ProtocoloServidor::notificarComenzarPartida(bool& socket_cerrado) {
