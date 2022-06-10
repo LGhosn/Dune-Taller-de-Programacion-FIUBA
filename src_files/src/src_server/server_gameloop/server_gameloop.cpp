@@ -36,9 +36,9 @@ void GameLoop::run() {
 }
 
 void GameLoop::manejarSolicitudes() {
-    std::queue<std::unique_ptr<Solicitud>> solicitudes = this->sol_entrantes.popAll();
+    std::queue<std::unique_ptr<SolicitudServer>> solicitudes = this->cola_solicitudes.popAll();
     while(!solicitudes.empty()) {
-        std::unique_ptr<Solicitud> solicitud = std::move(solicitudes.front());
+        std::unique_ptr<SolicitudServer> solicitud = std::move(solicitudes.front());
         solicitudes.pop();
         solicitud->ejecutar(this->game);
     }
@@ -48,8 +48,7 @@ bool GameLoop::update(long iter) {
     return this->game.update(iter);
 }
 
-GameLoop::GameLoop(std::vector<ColaBloqueante<ComandoAEnviar>&>& colas_eventos,
-ColaNoBloqueante<Solicitud>& sol_entrantes, std::string& ruta_mapa):
-colas_eventos(colas_eventos), sol_entrantes(sol_entrantes), game(colas_eventos) {
-    this->manejarHilo();
-}
+GameLoop::GameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_comandos,
+ColaNoBloqueante<SolicitudServer>& cola_solicitudes, std::string& ruta_mapa):
+cola_solicitudes(cola_solicitudes), game(colas_comandos),
+hilo(&GameLoop::manejarHilo, this) {}

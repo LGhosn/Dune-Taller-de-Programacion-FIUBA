@@ -2,6 +2,7 @@
 #define SERVER_MANEJADOR_H_
 
 #include "../src_common/common_socket_error.h"
+#include "../src_common/common_socket.h"
 #include "server_lobby.h"
 #include "server_protocolo.h"
 #include "../src_common/common_DTOs.h"

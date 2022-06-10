@@ -1,9 +1,9 @@
 #include "server_hilo_reciever.h"
 
-ServerHiloReciever::ServerHiloSender(ColaNoBloqueante<Comando>& cola_eventos, Protocolo_servidor& protocolo) :
-                                    cola_eventos(cola_eventos),
+ServerHiloReciever::ServerHiloReciever(ColaNoBloqueante<SolicitudServer>& cola_solicitudes, ProtocoloServidor& protocolo) :
+                                    cola_solicitudes(cola_solicitudes),
                                     protocolo(protocolo) {
-    this->thread = std::thread(&ServerHiloSender::handleThread, this);
+    this->thread = std::thread(&ServerHiloReciever::handleThread, this);
 }
 
 void ServerHiloReciever::handleThread() {

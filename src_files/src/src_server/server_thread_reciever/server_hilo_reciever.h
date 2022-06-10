@@ -3,19 +3,19 @@
 
 #include "../../src_common/common_infoDTO/infoDTO.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
-#include "../../src_common/common_comandos/comando_a_enviar.h"
+#include "../server_solicitudes/server_solicitud.h"
 #include "../server_protocolo.h"
 #include <thread>
 
 class ServerHiloReciever {
 private:
-    ColaNoBloqueante<Comando>& cola_eventos;
-    ProtocoloServidor protocolo;
+    ColaNoBloqueante<SolicitudServer>& cola_solicitudes;
+    ProtocoloServidor& protocolo;
     std::thread thread;
     bool hay_que_seguir = true;
 
 public:
-    ServerHiloReciever(ColaNoBloqueante<Comando>& cola_eventos, ProtocoloServidor& protocolo);
+    ServerHiloReciever(ColaNoBloqueante<SolicitudServer>& cola_solicitudes, ProtocoloServidor& protocolo);
     void handleThread();
     void run();
     void stop();

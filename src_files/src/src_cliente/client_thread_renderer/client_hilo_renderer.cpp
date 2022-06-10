@@ -6,7 +6,7 @@
 
 bool ClientHiloRenderer::manejar_comando() {
 	// popall
-	std::unique_ptr<Comando> comando = this->cola_eventos.pop();
+	std::unique_ptr<ComandoCliente> comando = this->cola_eventos.pop();
 	if (comando)
 		return comando->ejecutar(this->world_view);
 	return true;
@@ -52,7 +52,7 @@ void ClientHiloRenderer::manejar_hilo() {
 		std::cerr << "Excepción desconocida en ClientHiloRenderer: " << std::endl;
 	}
 }
-ClientHiloRenderer::ClientHiloRenderer(ColaNoBloqueante<Comando>& cola_eventos) : cola_eventos(cola_eventos),
+ClientHiloRenderer::ClientHiloRenderer(ColaNoBloqueante<ComandoCliente>& cola_eventos) : cola_eventos(cola_eventos),
 hilo(&ClientHiloRenderer::manejar_hilo, this) {}
 
 ClientHiloRenderer::~ClientHiloRenderer() {

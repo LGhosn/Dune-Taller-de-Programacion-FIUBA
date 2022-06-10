@@ -1,66 +1,69 @@
 #include "client_sdl_evento.h"
-#include "../../src_common/common_comandos/comando_a_enviar.h"
-#include "../../src_common/common_comandos/cmd_sol_mover_unidad.h"
+#include "../client_solicitudes/sol_mover_unidad.h"
 
-std::unique_ptr<SDLEvento> SDLEvento::clasificar_evento(uint32_t eventType) {
-    switch (eventType) {
-        case SDL_KEYDOWN:
-            return std::unique_ptr<TeclaPresionada>();
-        case SDL_KEYUP:
-            return std::unique_ptr<TeclaLevantada>();
-        case SDL_MOUSEWHEEL:
-            return std::unique_ptr<Rueda>();
-        case SDL_MOUSEBUTTONDOWN:
-            return std::unique_ptr<ClickPresionado>();
-        case SDL_MOUSEBUTTONUP:
-            return std::unique_ptr<ClickLevantado>();
-        default:
-            throw std::runtime_error("Evento no reconocido");
-    }
-}
+TeclaPresionada::TeclaPresionada(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
+    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
 
 void TeclaPresionada::ejecutar_evento(SDL_Event& keyEvent) {
     SDL_KeyboardEvent& teclaEvent = (SDL_KeyboardEvent&) keyEvent;
     switch (teclaEvent.keysym.sym) {
-        case (SDLK_LEFT):
+        case (SDLK_LEFT): {
+            ComandoCliente* comando = new MoverMapa(IZQUIERDA);
+            cola_comandos.push(comando);
             break;
-        
-        case (SDLK_RIGHT):
-            /* code */
+        }
+        case (SDLK_RIGHT): {
+            ComandoCliente* comando = new MoverMapa(DERECHA);
+            cola_comandos.push(comando);
             break;
-
-        case (SDLK_UP):
-            /* code */
+        }
+        case (SDLK_UP): {
+            ComandoCliente* comando = new MoverMapa(ARRIBA);
+            cola_comandos.push(comando);
             break;
-        
-        case (SDLK_DOWN):
-            /* code */
+        }
+        case (SDLK_DOWN): {
+            ComandoCliente* comando = new MoverMapa(ABAJO);
+            cola_comandos.push(comando);
             break;
+        }
     }
-    // this->comando->ejecutar(keyEvent);
 }
+
+TeclaLevantada::TeclaLevantada(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+    ColaNoBloqueante<ComandoCliente>& cola_comandos) :
+    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
 
 void TeclaLevantada::ejecutar_evento(SDL_Event& keyEvent) {
     SDL_KeyboardEvent& teclaEvent = (SDL_KeyboardEvent&) keyEvent;
     switch (teclaEvent.keysym.sym) {
-        case (SDLK_LEFT):
-            /* code */
+        case (SDLK_LEFT): {
+            ComandoCliente* comando = new MoverMapa(DEJAR_DE_MOVER_H);
+            cola_comandos.push(comando);
             break;
-        
-        case (SDLK_RIGHT):
-            /* code */
+        }
+        case (SDLK_RIGHT):{
+            ComandoCliente *comando = new MoverMapa(DEJAR_DE_MOVER_H);
+            cola_comandos.push(comando);
             break;
+        }
 
-        case (SDLK_UP):
-            /* code */
+        case (SDLK_UP):{
+            ComandoCliente *comando = new MoverMapa(DEJAR_DE_MOVER_V);
+            cola_comandos.push(comando);
             break;
-        
-        case (SDLK_DOWN):
-            /* code */
+        }
+        case (SDLK_DOWN):{
+            ComandoCliente *comando = new MoverMapa(DEJAR_DE_MOVER_V);
+            cola_comandos.push(comando);
             break;
+        }
     }
-    // this->comando->ejecutar(keyEvent);
 }
+
+
+ClickPresionado::ClickPresionado(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
+    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
 
 void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
     SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) mouseButtonEvent;
@@ -69,14 +72,28 @@ void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
             // temporal crear un comando para soldado
             break;
         
-        case (SDL_BUTTON_RIGHT):
+        case (SDL_BUTTON_RIGHT): {
             uint16_t x = mouseButtonEvent.button.x;
             uint16_t y = mouseButtonEvent.button.y;
 
             PixACoords coords_normalizadas(x, y);
-            uint16_t id = 1;        // TODO: obtener id de la unidad
-            SolicitudMoverUnidad solicitud(id, coords_normalizadas.get_x(), coords_normalizadas.get_y());
-            this->cola_eventos.push(&solicitud);
+            SolicitudMoverUnidad* solicitud = new SolicitudMoverUnidad(1, coords_normalizadas.get_x(), coords_normalizadas.get_y());
+            this->cola_solicitudes.push(solicitud);
             break;
+        }
     }
+}
+
+ClickLevantado::ClickLevantado(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
+    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
+
+void ClickLevantado::ejecutar_evento(SDL_Event &clickEvent) {
+    
+}
+
+Rueda::Rueda(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
+    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
+
+void Rueda::ejecutar_evento(SDL_Event &ruedaEvent) {
+    
 }

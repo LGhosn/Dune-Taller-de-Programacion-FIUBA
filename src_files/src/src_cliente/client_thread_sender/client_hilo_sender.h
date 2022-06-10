@@ -3,21 +3,21 @@
 
 #include "../client_protocolo.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
-#include "../../src_common/common_comandos/comando_a_enviar.h"
+#include "../client_solicitudes/cliente_solicitud.h"
 #include <thread>
 
 class ClientHiloSender {
 private:
-    ColaBloqueante<ComandoAEnviar> &cola_comandos;
+    ColaBloqueante<SolicitudCliente> &cola_comandos;
     std::thread thread;
     ProtocoloCliente &protocolo;
     bool hay_que_seguir = true;
 
 public:
-    ClientHiloSender(ColaBloqueante<ComandoAEnviar> &cola_comandos, ProtocoloCliente &protocolo);
+    ClientHiloSender(ColaBloqueante<SolicitudCliente> &cola_comandos, ProtocoloCliente &protocolo);
     void handleThread();
     void run();
-    void send();
+    void send(std::unique_ptr<SolicitudCliente>& solicitud);
     void stop();
     ~ClientHiloSender();
 };

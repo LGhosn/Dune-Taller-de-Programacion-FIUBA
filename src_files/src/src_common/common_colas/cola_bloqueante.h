@@ -13,11 +13,25 @@ class ColaBloqueante {
 	std::condition_variable cv;
 
 public:
-	ColaBloqueante();
+	ColaBloqueante<T>() = default;
 
-	std::unique_ptr<T> wait_and_pop();
+	std::unique_ptr<T> wait_and_pop() {
+		std::unique_lock<std::mutex> lock(this->mutex);
+		while (this->cola.empty()) {
+			this->cv.wait(lock);
+		}
+		std::unique_ptr<T> elem = std::move(this->cola.front());
+		this->cola.pop();
+		return elem;
+	}
 
-	void push(T* elem);
+	void push(T* elem) {
+		std::unique_lock<std::mutex> lock(this->mutex);
+		this->cola.emplace(elem);
+		this->cv.notify_all();
+	}
+
+	~ColaBloqueante<T>() = default;
 };
 
 #endif

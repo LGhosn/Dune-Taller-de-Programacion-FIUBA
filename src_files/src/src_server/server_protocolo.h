@@ -64,6 +64,12 @@ class ProtocoloServidor {
     void recibirCodigoDeOperacion(uint8_t& codigo, bool& socket_cerrado);
     std::unique_ptr<InfoDTO> recibirInfoSegunCodigo(uint8_t& codigo, bool& socket_cerrado);
 
+/* *****************************************************************
+ *             METODOS REFERIDOS A MOVER UNIDADES
+ * *****************************************************************/
+
+    void enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y);
+
     /*
      * No tiene sentido copiar un protocolo_servidor, tampoco moverlo.
      * */

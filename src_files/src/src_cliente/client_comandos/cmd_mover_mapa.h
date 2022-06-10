@@ -5,11 +5,13 @@
 #define IZQUIERDA 'I'
 #define ABAJO 'B'
 #define DERECHA 'D'
+#define DEJAR_DE_MOVER_H 'H'
+#define DEJAR_DE_MOVER_V 'V'
 
-#include "comando.h"
+#include "client_comando.h"
 #include "../../src_cliente/client_world_view/world_view.h"
 
-class MoverMapa : public Comando {
+class MoverMapa : public ComandoCliente {
 	const char direccion;
 
 public:

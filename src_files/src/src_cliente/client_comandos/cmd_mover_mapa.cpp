@@ -16,6 +16,12 @@ bool MoverMapa::ejecutar(WorldView& worldView) const {
 		case ABAJO:
 			worldView.moverMapaAbajo();
 			break;
+		case DEJAR_DE_MOVER_H:
+			worldView.dejarDeMoverMapaHorizontalmente();
+			break;
+		case DEJAR_DE_MOVER_V:
+			worldView.dejarDeMoverMapaVerticalmente();
+			break;
 	}
 	return true;
 }

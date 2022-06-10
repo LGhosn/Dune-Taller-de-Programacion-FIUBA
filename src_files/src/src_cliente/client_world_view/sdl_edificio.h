@@ -5,6 +5,8 @@
 #include "../../src_common/common_coords.h"
 #include "sdl_jugador.h"
 
+#define LARGO_TILE 16
+
 class EdificioSDL {
     uint16_t id;
     JugadorSDL jugador;
@@ -13,6 +15,8 @@ class EdificioSDL {
     Coordenadas coords;
     uint16_t alto, ancho;
     int pos_textura_x, pos_textura_y;
+    int pos_x, pos_y;
+    long iter_anterior;
 
 public:
     EdificioSDL(uint16_t id, JugadorSDL jugador, SDL2pp::Renderer& renderer, SDL2pp::Texture& textura,

@@ -6,16 +6,16 @@
 #include <string>
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
-#include "../../src_common/common_comandos/comando_a_enviar.h"
-#include "../../src_common/common_comandos/common_solicitud.h"
-#include "../../src_game/game.h"
+#include "../server_solicitudes/server_solicitud.h"
+#include "../server_comandos/server_comando.h"
+#include "../server_game/game.h"
 
 #define FRAME_RATE 33.0f
 
 class GameLoop {
-    std::vector<ColaBloqueante<ComandoAEnviar>&>& colas_eventos;
-    ColaNoBloqueante<Solicitud>& sol_entrantes;
+    ColaNoBloqueante<SolicitudServer>& cola_solicitudes;
     Game game;
+    std::thread hilo;
 
     void manejarHilo();
     void run();
@@ -27,8 +27,8 @@ class GameLoop {
     bool update(long iter);
 
 public:
-    GameLoop(std::vector<ColaBloqueante<ComandoAEnviar>&>& colas_sender,
-    ColaNoBloqueante<Solicitud>& sol_entrantes, std::string& ruta_mapa);
+    GameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender,
+    ColaNoBloqueante<SolicitudServer>& sol_entrantes, std::string& ruta_mapa);
 };
 
 #endif

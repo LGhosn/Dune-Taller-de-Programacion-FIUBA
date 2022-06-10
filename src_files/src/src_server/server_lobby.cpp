@@ -36,7 +36,14 @@ bool Lobby::unirAPartida(const PartidaDTO& partida_a_unirse, HandlerCliente *han
                 std::string notificacion =
                 "Comenzando partida " + partida_a_unirse.nombre_partida + "...\n";
                 std::cout << notificacion;
-                
+                // Le pedimos a la partida los handlers
+                // Eliminamos la partida del lobby
+                // Creamos una partida empezada (y la encolamos a una lista de partidas)
+                // pasandole los handlers
+                // La partida empezada va a obtener los protocoloCliente de cada jugador de los
+                // handlers.
+                // Luego joineamos los handlers.
+                // Luego la partida empezada crea todos los hilos (sender, reciever, y gameloop)
                 for (auto& handler : partida->second.jugadores) {
                     handler->comenzarPartida();
                 }

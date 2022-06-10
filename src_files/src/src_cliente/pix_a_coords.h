@@ -10,9 +10,9 @@ private:
 
 public:
     PixACoords(uint16_t x, uint16_t y);
-    virtual ~PixACoords();
-    virtual uint16_t get_x();
-    virtual uint16_t get_y();
+    uint16_t get_x();
+    uint16_t get_y();
+    ~PixACoords() = default;
 };
 
 #endif // PIX_A_COORDS_H

@@ -1,9 +1,9 @@
 #include "client_hilo_reciever.h"
 
-ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<Comando>& cola_eventos,  ProtocoloCliente& protocolo) :
+ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos,  ProtocoloCliente& protocolo) :
                                         cola_eventos(cola_eventos),
                                         protocolo(protocolo) {
-    this->thread = std::thread(&ClientHiloSender::handleThread, this);
+    this->thread = std::thread(&ClientHiloReciever::handleThread, this);
 }
 
 void ClientHiloReciever::handleThread() {
@@ -33,7 +33,7 @@ void ClientHiloReciever::stop() {
     this->hay_que_seguir = false;
 }
 
-void ClientHiloReciever::push(Comando& comando_creado) {
+void ClientHiloReciever::push(ComandoCliente* comando_creado) {
     this->cola_eventos.push(comando_creado);
 }
 

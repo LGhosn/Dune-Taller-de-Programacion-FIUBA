@@ -80,6 +80,14 @@ void ProtocoloServidor::enviarStatusDeUnion
     }
 }
 
+/* *****************************************************************
+ *             METODOS REFERIDOS A MOVER UNIDADES
+ * *****************************************************************/
+
+void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y) {
+    
+}
+
 void ProtocoloServidor::recibirCodigoDeOperacion(uint8_t& codigo, bool& socket_cerrado) {
     this->skt_comunicador.recvall(&codigo, sizeof(uint8_t), &socket_cerrado);
 }

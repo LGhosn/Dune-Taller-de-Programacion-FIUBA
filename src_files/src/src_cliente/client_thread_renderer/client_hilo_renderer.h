@@ -9,14 +9,14 @@
 #include "../client_world_view/sdl_mapa.h"
 #include "../client_world_view/world_view.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
-#include "../../src_common/common_comandos/comando.h"
+#include "../client_comandos/client_comando.h"
 #include <list>
 #include <thread>
 
 class ClientHiloRenderer {
 private:
 	WorldView world_view;
-	ColaNoBloqueante<Comando>& cola_eventos;
+	ColaNoBloqueante<ComandoCliente>& cola_eventos;
 	std::thread hilo;
 
 	bool manejar_comando();
@@ -26,7 +26,7 @@ private:
 	void manejar_hilo();
 
 public:
-    ClientHiloRenderer(ColaNoBloqueante<Comando>& cola_eventos);
+    ClientHiloRenderer(ColaNoBloqueante<ComandoCliente>& cola_eventos);
 	~ClientHiloRenderer();
 };
 

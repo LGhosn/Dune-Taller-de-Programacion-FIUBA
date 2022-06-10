@@ -3,8 +3,8 @@
 
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_socket.h"
-#include "../src_common/common_DTOs.h"
-#include "../src_server/server_partida.h"
+#include "../src_common/common_coords.h"
+#include "client_DTO/client_DTO.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -28,6 +28,8 @@ class ProtocoloCliente {
     void recibirInfoSegunCodigo(uint8_t& codigo);
     // void recibirInfoMoverUnidad();
 
+
+    void enviarSolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords, uint8_t tipo);
 
     /*
      * Recibe el status de una petición de union o creacion, el mismo

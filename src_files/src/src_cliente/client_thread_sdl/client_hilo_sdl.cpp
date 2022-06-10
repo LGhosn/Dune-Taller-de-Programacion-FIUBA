@@ -1,7 +1,9 @@
 #include "client_hilo_sdl.h"
+#include <iostream>
 
-ManejadorEventos::ManejadorEventos() :
-     hay_que_seguir(true) {
+
+ManejadorEventos::ManejadorEventos(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
+     hay_que_seguir(true), cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {
     this->thread = std::thread(&ManejadorEventos::manejar_evento, this);
 }
 
@@ -9,13 +11,30 @@ ManejadorEventos::ManejadorEventos() :
 void ManejadorEventos::manejar_evento() {
     while (this->hay_que_seguir) {
         if (!SDL_WaitEvent(&this->event)) {
-            //TODO lanzar excepcion porque ocurrio un error mientras esperaba un evento.
+            std::runtime_error("Error al esperar evento");
         }
-
-        std::unique_ptr<SDLEvento> evento = evento_ocurrido->clasificar_evento(this->event.type);
-        evento->ejecutar_evento(this->event);
+        std::unique_ptr<SDLEvento> evento = this->clasificarEvento(this->event.type);
+        if (evento)
+            evento->ejecutar_evento(this->event);
 
     }// fin while
+}
+
+std::unique_ptr<SDLEvento> ManejadorEventos::clasificarEvento(uint32_t eventType) {
+    switch (eventType) {
+        case SDL_KEYDOWN:
+            return std::unique_ptr<TeclaPresionada>(new TeclaPresionada(cola_solicitudes, cola_comandos));
+        case SDL_KEYUP:
+            return std::unique_ptr<TeclaLevantada>(new TeclaLevantada(cola_solicitudes, cola_comandos));
+        case SDL_MOUSEWHEEL:
+            return std::unique_ptr<Rueda>(new Rueda(cola_solicitudes, cola_comandos));
+        case SDL_MOUSEBUTTONDOWN:
+            return std::unique_ptr<ClickPresionado>(new ClickPresionado(cola_solicitudes, cola_comandos));
+        case SDL_MOUSEBUTTONUP:
+            return std::unique_ptr<ClickLevantado>(new ClickLevantado(cola_solicitudes, cola_comandos));
+        default:
+            return nullptr;
+    }
 }
 
 ManejadorEventos::~ManejadorEventos() {

@@ -1,6 +1,6 @@
 #include "client_hilo_sender.h"
 
-ClientHiloSender::ClientHiloSender(ColaBloqueante<ComandoAEnviar> &cola_comandos, ProtocoloCliente &protocolo) : cola_comandos(cola_comandos), protocolo(protocolo) {
+ClientHiloSender::ClientHiloSender(ColaBloqueante<SolicitudCliente> &cola_comandos, ProtocoloCliente &protocolo) : cola_comandos(cola_comandos), protocolo(protocolo) {
     this->thread = std::thread(&ClientHiloSender::handleThread, this);
 }
 
@@ -16,13 +16,13 @@ void ClientHiloSender::handleThread() {
 
 void ClientHiloSender::run() {
     while (this->hay_que_seguir) {
-        std::unique_ptr<ComandoAEnviar> comando = this->cola_comandos.wait_and_pop();
-        this->send(comando);
+        std::unique_ptr<SolicitudCliente> solicitud = this->cola_comandos.wait_and_pop();
+        this->send(solicitud);
     }
 }
 
-void ClientHiloSender::send(ComandoAEnviar &comando) {
-    comando->enviarSolicitud(this->protocolo);
+void ClientHiloSender::send(std::unique_ptr<SolicitudCliente>& solicitud) {
+    solicitud->enviarSolicitud(this->protocolo);
 }
 
 void ClientHiloSender::stop() {

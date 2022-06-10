@@ -57,6 +57,12 @@ void ProtocoloCliente::enviarSolicitudDeCreacion(SolicitudDeCreacion& solicitud)
 }
 
 /* *****************************************************************
+ *                METODOS REFERIDOS A CREAR EDIFICIOS
+ * *****************************************************************/
+
+void ProtocoloCliente::enviarSolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords, uint8_t tipo)
+
+/* *****************************************************************
  *                      METODOS AUXILIARES
  * *****************************************************************/
 

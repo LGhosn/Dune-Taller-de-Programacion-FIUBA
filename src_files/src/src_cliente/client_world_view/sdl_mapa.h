@@ -1,7 +1,7 @@
 #ifndef SDL_MAPA_H
 #define SDL_MAPA_H
 
-#include <SDL2pp/SDL2pp.hh>
+#include "../../src_libs/SDL2pp/SDL2pp/SDL2pp.hh"
 #include <string>
 #include <vector>
 #include "sdl_tile.h"

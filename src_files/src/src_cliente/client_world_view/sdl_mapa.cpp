@@ -7,7 +7,7 @@
 	}
 
 	int MapaSDL::limite_inferior() const {
-		return this->alto - LARGO_VENTANA + PADDING;
+		return this->alto * LARGO_TILE - LARGO_VENTANA + PADDING;
 	}
 
 	int MapaSDL::limite_izquierdo() const {
@@ -15,7 +15,7 @@
 	}
 
 	int MapaSDL::limite_derecho() const {
-		return this->ancho - ANCHO_VENTANA + PADDING;
+		return this->ancho * LARGO_TILE - ANCHO_VENTANA + PADDING;
 	}
 
 	void MapaSDL::updateTiles() {

@@ -2,55 +2,71 @@
 #define SDL_EVENTO_H
 
 #include <SDL2pp/SDL2pp.hh>
-#include "../../src_common/common_comandos/comando_a_enviar.h"
+#include "../client_solicitudes/cliente_solicitud.h"
+#include "../client_comandos/client_comando.h"
+#include "../client_comandos/cmd_mover_mapa.h"
 #include "../pix_a_coords.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
 
 class SDLEvento {
-protected:
-    ColaBloqueante<ComandoAEnviar>& cola_eventos;
-    ColaNoBloqueante<ComandoAEnviar>& cola_eventos_no_bloqueantes;
 public:
-    SDLEvento(ColaBloqueante<ComandoAEnviar>& cola_eventos, ColaNoBloqueante<ComandoAEnviar>& cola_eventos_no_bloqueantes);
-    virtual std::unique_ptr<SDLEvento> clasificar_evento(uint32_t eventType);
+    SDLEvento() = default;
     virtual void ejecutar_evento(SDL_Event& keyEvent) = 0;
-    ~SDLEvento();
+    virtual ~SDLEvento() = default;
 };
 
 class TeclaPresionada : public SDLEvento {
+private:
+    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
+    ColaNoBloqueante<ComandoCliente>& cola_comandos;
+
 public:
-    TeclaPresionada();
+    TeclaPresionada(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+    ColaNoBloqueante<ComandoCliente>& cola_comandos);
     virtual void ejecutar_evento(SDL_Event& keyEvent);
-    ~TeclaPresionada();
+    ~TeclaPresionada() = default;
 };
 
 class TeclaLevantada : public SDLEvento {
+private:
+    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
+    ColaNoBloqueante<ComandoCliente>& cola_comandos;
+
 public:
-    TeclaLevantada();
+    TeclaLevantada(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
     virtual void ejecutar_evento(SDL_Event& keyEvent);
-    ~TeclaLevantada();
+    ~TeclaLevantada() = default;
 };
 
 class Rueda : public SDLEvento {
+private:
+    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
+    ColaNoBloqueante<ComandoCliente>& cola_comandos;
 public:
-    Rueda();
+    Rueda(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
     virtual void ejecutar_evento(SDL_Event& wheelEvent);
-    ~Rueda();
+    ~Rueda() = default;
 };
 
 class ClickPresionado : public SDLEvento {
+private:
+    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
+    ColaNoBloqueante<ComandoCliente>& cola_comandos;
 public:
-    ClickPresionado();
+    ClickPresionado(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
     virtual void ejecutar_evento(SDL_Event& mouseButtonEvent);
-    ~ClickPresionado();
+    ~ClickPresionado() = default;
 };
 
 class ClickLevantado : public SDLEvento {
+private:
+    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
+    ColaNoBloqueante<ComandoCliente>& cola_comandos;
 public:
-    ClickLevantado();
+    ClickLevantado(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
     virtual void ejecutar_evento(SDL_Event& mouseButtonEvent);
-    ~ClickLevantado();
+    ~ClickLevantado() = default;
 };
 
 

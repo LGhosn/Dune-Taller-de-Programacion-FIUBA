@@ -5,9 +5,10 @@
 #include <thread>
 
 #include "client_sdl_evento.h"
-// #include "../cola_bloqueante.h"
-// #include "../../src_common/common_colas/cola_no_bloqueante.h"
-// #include "../../src_common/common_comandos/comando_a_enviar.h"
+#include "../..//src_common/common_colas/cola_bloqueante.h"
+#include "../../src_common/common_colas/cola_no_bloqueante.h"
+#include "../client_comandos/client_comando.h"
+#include "../client_solicitudes/cliente_solicitud.h"
 
 class ManejadorEventos {
 private:
@@ -15,12 +16,13 @@ private:
     std::thread thread;
     SDL_Event event;
     SDLEvento *evento_ocurrido;
-    // ColaBloqueante<ComandoAEnviar*>& cola_comandos;
-    // ColaNoBloqueante<ComandoAEnviar*>& cola_comandos_no_bloqueantes;
+    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
+    ColaNoBloqueante<ComandoCliente>& cola_comandos;
 
 public:
-    ManejadorEventos();
+    ManejadorEventos(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
     void manejar_evento();
+    std::unique_ptr<SDLEvento> clasificarEvento(uint32_t eventType);
     void manejar_tecla(SDL_KeyboardEvent& keyEvent);
     void manejar_mouse(SDL_MouseButtonEvent& keyEvent);
     ~ManejadorEventos();
