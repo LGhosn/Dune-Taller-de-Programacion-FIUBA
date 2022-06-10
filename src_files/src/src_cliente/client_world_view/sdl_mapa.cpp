@@ -30,28 +30,28 @@ alto(tile_factory.obtenerAlto()), pos_x(PADDING), pos_y(PADDING), moviendose_h(f
 direccion_v(ARRIBA), zoom(zoom_inicial) {}
 
 void MapaSDL::moverArriba() {
-	if (pos_y > this->limite_superior() && !this->moviendose_v) {
+	if (pos_y > this->limite_superior() + PASO && !this->moviendose_v) {
 		this->direccion_v = ARRIBA;
 		this->moviendose_v = true;
 	}
 }
 
 void MapaSDL::moverIzquierda() {
-	if (pos_x > this->limite_izquierdo() && !this->moviendose_h) {
+	if (pos_x > this->limite_izquierdo() + PASO && !this->moviendose_h) {
 		this->direccion_h = IZQUIERDA;
 		this->moviendose_h = true;
 	}
 }
 
 void MapaSDL::moverAbajo() {
-	if (pos_y < this->limite_inferior() && !this->moviendose_v) {
+	if (pos_y < this->limite_inferior() - PASO && !this->moviendose_v) {
 		this->direccion_v = ABAJO;
 		this->moviendose_v = true;
 	}
 }
 
 void MapaSDL::moverDerecha() {
-	if (pos_x < this->limite_derecho() && !this->moviendose_h) {
+	if (pos_x < this->limite_derecho() - PASO && !this->moviendose_h) {
 		this->direccion_h = DERECHA;
 		this->moviendose_h = true;
 	}

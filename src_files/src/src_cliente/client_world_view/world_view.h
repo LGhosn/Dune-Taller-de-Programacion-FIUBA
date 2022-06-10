@@ -6,6 +6,9 @@
 #include <list>
 
 #define ZOOM_INICIAL 3.5f
+#define ZOOM_MAXIMO 4.0f
+#define ZOOM_MINIMO 2.0f
+#define ZOOM_PASO 0.1f
 
 class WorldView {
 	SDL2pp::Window window;
@@ -24,6 +27,8 @@ public:
 	void moverMapaAbajo();
 	void dejarDeMoverMapaHorizontalmente();
 	void dejarDeMoverMapaVerticalmente();
+	void zoomIn();
+	void zoomOut();
 
 	void salir();
 

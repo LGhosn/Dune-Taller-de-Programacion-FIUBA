@@ -32,6 +32,18 @@ void WorldView::dejarDeMoverMapaVerticalmente() {
 	this->mapa.dejarDeMoverseVerticalmente();
 }
 
+void WorldView::zoomIn() {
+	if (this->zoom < ZOOM_MAXIMO) {
+		this->zoom += ZOOM_PASO;
+	}
+}
+
+void WorldView::zoomOut() {
+	if (this->zoom > ZOOM_MINIMO) {
+		this->zoom -= ZOOM_PASO;
+	}
+}
+
 void WorldView::salir() {
 
 }

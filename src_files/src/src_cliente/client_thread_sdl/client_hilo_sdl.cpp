@@ -32,6 +32,8 @@ std::unique_ptr<SDLEvento> ManejadorEventos::clasificarEvento(uint32_t eventType
             return std::unique_ptr<ClickPresionado>(new ClickPresionado(cola_solicitudes, cola_comandos));
         case SDL_MOUSEBUTTONUP:
             return std::unique_ptr<ClickLevantado>(new ClickLevantado(cola_solicitudes, cola_comandos));
+        case SDL_QUIT:
+            return std::unique_ptr<EventoSalir>(new EventoSalir(cola_solicitudes, cola_comandos));
         default:
             return nullptr;
     }

@@ -5,6 +5,7 @@
 #include "../client_solicitudes/cliente_solicitud.h"
 #include "../client_comandos/client_comando.h"
 #include "../client_comandos/cmd_mover_mapa.h"
+#include "../client_comandos/cmd_zoom.h"
 #include "../client_comandos/cmd_salir.h"
 #include "../pix_a_coords.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
@@ -68,6 +69,16 @@ public:
     ClickLevantado(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
     virtual void ejecutar_evento(SDL_Event& mouseButtonEvent);
     ~ClickLevantado() = default;
+};
+
+class EventoSalir : public SDLEvento {
+private:
+    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
+    ColaNoBloqueante<ComandoCliente>& cola_comandos;
+public:
+    EventoSalir(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
+    virtual void ejecutar_evento(SDL_Event& quitEvent);
+    ~EventoSalir() = default;
 };
 
 

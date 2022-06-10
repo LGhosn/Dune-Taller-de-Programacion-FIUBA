@@ -20,6 +20,7 @@ add_executable(
     sdl_client_main.cpp
     pix_a_coords.cpp
     client_comandos/cmd_mover_mapa.cpp
+    client_comandos/cmd_zoom.cpp
     client_comandos/cmd_salir.cpp
     client_solicitudes/sol_mover_unidad.cpp
     client_comandos/client_comando.cpp
@@ -41,6 +42,7 @@ add_executable(
     ../src_common/common_socket.cpp
     ../src_common/common_resolver.cpp
     ../src_common/common_socket_error.cpp
+    client_DTO/Status.cpp
 )
 
 target_link_libraries(

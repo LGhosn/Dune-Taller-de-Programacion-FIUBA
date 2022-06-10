@@ -100,5 +100,19 @@ Rueda::Rueda(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueant
     cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
 
 void Rueda::ejecutar_evento(SDL_Event &ruedaEvent) {
-    
+    if (ruedaEvent.wheel.y > 0) {
+        ComandoCliente* comando = new ComandoZoom(ZOOM_IN);
+        cola_comandos.push(comando);
+    } else if (ruedaEvent.wheel.y < 0) {
+        ComandoCliente* comando = new ComandoZoom(ZOOM_OUT);
+        cola_comandos.push(comando);
+    }
+}
+
+EventoSalir::EventoSalir(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
+    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
+
+void EventoSalir::ejecutar_evento(SDL_Event &quitEvent) {
+    ComandoCliente* comando = new ComandoSalir();
+    cola_comandos.push(comando);
 }
