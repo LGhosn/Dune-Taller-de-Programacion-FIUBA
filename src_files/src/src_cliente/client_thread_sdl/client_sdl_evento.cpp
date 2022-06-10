@@ -27,6 +27,11 @@ void TeclaPresionada::ejecutar_evento(SDL_Event& keyEvent) {
             cola_comandos.push(comando);
             break;
         }
+        case (SDLK_ESCAPE): {
+            ComandoCliente* comando = new ComandoSalir();
+            cola_comandos.push(comando);
+            break;
+        }
     }
 }
 

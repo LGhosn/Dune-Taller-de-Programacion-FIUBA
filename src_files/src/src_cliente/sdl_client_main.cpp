@@ -1,4 +1,4 @@
-#include "client_thread_renderer/client_hilo_renderer.h"
+#include "client_renderer/client_renderer.h"
 #include "client_comandos/client_comando.h"
 #include "../src_common/common_colas/cola_no_bloqueante.h"
 #include "../src_common/common_colas/cola_bloqueante.h"
@@ -10,8 +10,8 @@ int main() {
 	SDL2pp::SDL sdl(SDL_INIT_VIDEO);
 	ColaNoBloqueante<ComandoCliente> cola_comandos;
 	ColaBloqueante<SolicitudCliente> cola_solicitudes;
-	ClientHiloRenderer hilo_renderer(cola_comandos);
+	ClientRenderer client_renderer(cola_comandos);
 	ManejadorEventos hilo_sdl(cola_solicitudes, cola_comandos);
-	SDL_Delay(50000);
+	client_renderer.start();
 	return 0;
 }

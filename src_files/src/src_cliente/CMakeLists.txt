@@ -18,9 +18,10 @@ add_executable(
     sdl_client_main.cpp
     pix_a_coords.cpp
     client_comandos/cmd_mover_mapa.cpp
+    client_comandos/cmd_salir.cpp
     client_solicitudes/sol_mover_unidad.cpp
     client_comandos/client_comando.cpp
-        client_thread_renderer/client_hilo_renderer.cpp
+        client_renderer/client_renderer.cpp
         client_world_view/sdl_tile_factory.cpp
         client_world_view/sdl_tile.cpp
         client_world_view/sdl_mapa.cpp

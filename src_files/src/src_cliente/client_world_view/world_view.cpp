@@ -33,6 +33,10 @@ void WorldView::dejarDeMoverMapaVerticalmente() {
 	this->mapa.dejarDeMoverseVerticalmente();
 }
 
+void WorldView::salir() {
+
+}
+
 // void WorldView::crearEdificio(uint16_t id, uint8_t id_jugador,
 // const Coordenadas& coords, uint8_t tipo) {
 // 	this->edificios.emplace_back(this->renderer, id, id_jugador, coords, tipo);

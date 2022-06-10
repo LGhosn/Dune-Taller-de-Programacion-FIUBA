@@ -22,6 +22,8 @@ public:
 	void dejarDeMoverMapaHorizontalmente();
 	void dejarDeMoverMapaVerticalmente();
 
+	void salir();
+
 	// void crearEdificio(uint16_t id, uint8_t id_jugador, const Coordenadas& coords, uint8_t tipo);
 
 	void update(long frame_actual);

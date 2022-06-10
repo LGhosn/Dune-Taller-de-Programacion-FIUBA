@@ -5,6 +5,7 @@
 #include "../client_solicitudes/cliente_solicitud.h"
 #include "../client_comandos/client_comando.h"
 #include "../client_comandos/cmd_mover_mapa.h"
+#include "../client_comandos/cmd_salir.h"
 #include "../pix_a_coords.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"

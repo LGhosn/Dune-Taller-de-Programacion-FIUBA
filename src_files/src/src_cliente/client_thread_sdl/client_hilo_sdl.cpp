@@ -38,5 +38,8 @@ std::unique_ptr<SDLEvento> ManejadorEventos::clasificarEvento(uint32_t eventType
 }
 
 ManejadorEventos::~ManejadorEventos() {
-    this->thread.join();
+    if (this->thread.joinable()) {
+        this->hay_que_seguir = false;
+        this->thread.join();
+    }
 }

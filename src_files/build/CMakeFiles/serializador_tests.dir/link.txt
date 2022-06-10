@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11 -pthread  -rdynamic CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o CMakeFiles/serializador_tests.dir/src/src_testing/pruebas_serializador/pruebas_serializador.cpp.o CMakeFiles/serializador_tests.dir/src/src_common/common_serializador.cpp.o  -o serializador_tests  lib/libgtest_main.a lib/libgtest.a -lpthread 

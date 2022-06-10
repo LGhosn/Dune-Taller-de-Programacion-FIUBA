@@ -60,7 +60,17 @@ void ProtocoloCliente::enviarSolicitudDeCreacion(SolicitudDeCreacion& solicitud)
  *                METODOS REFERIDOS A CREAR EDIFICIOS
  * *****************************************************************/
 
-void ProtocoloCliente::enviarSolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords, uint8_t tipo)
+void ProtocoloCliente::enviarSolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords, uint8_t tipo) {
+    Serializador s;
+    std::string operacion = "crear_edificio";
+    uint8_t codigo = s.obtenerCodigoOperacion(operacion);
+    uint16_t x = s.uint16_hton(coords.x);
+    uint16_t y = s.uint16_hton(coords.y);
+    this->skt_cliente.sendall(&codigo, sizeof(uint8_t), &this->was_closed);
+    this->skt_cliente.sendall(&id_jugador, sizeof(uint8_t), &this->was_closed);
+    this->skt_cliente.sendall(&x, sizeof(uint16_t), &this->was_closed);
+    this->skt_cliente.sendall(&y, sizeof(uint16_t), &this->was_closed);
+}
 
 /* *****************************************************************
  *                      METODOS AUXILIARES

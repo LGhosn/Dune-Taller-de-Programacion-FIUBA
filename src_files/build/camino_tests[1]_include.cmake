@@ -1,5 +1,0 @@
-if(EXISTS "/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/camino_tests[1]_tests.cmake")
-  include("/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/camino_tests[1]_tests.cmake")
-else()
-  add_test(camino_tests_NOT_BUILT camino_tests_NOT_BUILT)
-endif()
