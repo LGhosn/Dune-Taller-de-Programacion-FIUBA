@@ -15,7 +15,7 @@
 #define ANCHO_VENTANA 1024
 #define LARGO_VENTANA 768
 
-#define PADDING 200
+#define PADDING 100
 
 #define PASO 6
 
@@ -27,6 +27,7 @@ class MapaSDL {
 	int pos_x, pos_y;
 	bool moviendose_h, moviendose_v;
 	char direccion_h, direccion_v;
+	float zoom;
 
 	int limite_superior() const;
 	int limite_inferior() const;
@@ -36,7 +37,7 @@ class MapaSDL {
 	void updateTiles();
 
 public:
-	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa);
+	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa, float zoom);
 
 	void moverArriba();
 	void moverIzquierda();
@@ -48,7 +49,7 @@ public:
 	int obtener_offset_x() const;
 	int obtener_offset_y() const;
 
-	void update();
+	void update(float zoom);
 	void render();
 };
 

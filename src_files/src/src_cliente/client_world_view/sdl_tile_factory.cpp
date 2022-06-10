@@ -1,29 +1,29 @@
 #include "sdl_tile_factory.h"
-// #include "../../src_libs/yaml-cpp/"
+#include "yaml-cpp/yaml.h"
 #include <exception>
 
 void TileFactorySDL::agregarTileDeRoca(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 7, 15);
+    tiles.emplace_back(renderer, textura_base, coords, 7, 15, zoom_inicial);
 }
 
 void TileFactorySDL::agregarTileDeArena(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 1, 1);
+    tiles.emplace_back(renderer, textura_base, coords, 1, 1, zoom_inicial);
 }
 
 void TileFactorySDL::agregarTileDePrecipicio(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 0, 7);
+    tiles.emplace_back(renderer, textura_base, coords, 0, 7, zoom_inicial);
 }
 
 void TileFactorySDL::agregarTileDeCima(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 0, 9);
+    tiles.emplace_back(renderer, textura_base, coords, 0, 9, zoom_inicial);
 }
 
 void TileFactorySDL::agregarTileDeDuna(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 3, 16);
+    tiles.emplace_back(renderer, textura_base, coords, 3, 16, zoom_inicial);
 }
 
 void TileFactorySDL::agregarTileDeEspecia(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 3, 18);
+    tiles.emplace_back(renderer, textura_base, coords, 3, 18, zoom_inicial);
 }
 
 void TileFactorySDL::agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Coordenadas& coords) {
@@ -51,22 +51,23 @@ void TileFactorySDL::agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Co
     }
 }
 
-TileFactorySDL::TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa) : renderer(renderer),
-textura_base(renderer, "../../../assets/terrain/d2k_BLOXBASE.bmp") {
-    // YAML::Node mapa_config = YAML::LoadFile(ruta_mapa);
-    // this->ancho = mapa_config["Ancho"].as<uint16_t>();
-    // this->alto = mapa_config["Alto"].as<uint16_t>();
-    this->ancho = 100;
-    this->alto = 100;
+TileFactorySDL::TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa,
+float zoom_inicial) : renderer(renderer),
+textura_base(renderer, RESOURCE_PATH "/terrain/d2k_BLOXBASE.bmp"), zoom_inicial(zoom_inicial) {
+    YAML::Node mapa_config = YAML::LoadFile(ruta_mapa);
+    this->ancho = mapa_config["Ancho"].as<uint16_t>();
+    this->alto = mapa_config["Alto"].as<uint16_t>();
+    // this->ancho = 100;
+    // this->alto = 100;
     this->tiles = std::vector<TileSDL>();
     for (uint32_t i = 0; i < alto; i++) {
 		for (uint32_t j = 0; j < ancho; j++){
 			Coordenadas coords(j, i);
             // TODO: implementar YAML
-            // uint8_t tipo_terreno = mapa_config["TiposTerrenos"][i][j].as<uint8_t>();
-            // uint16_t tipo_textura = mapa_config["TiposTexturas"][i][j].as<uint16_t>();
-            uint8_t tipo_terreno = 'A';
-            uint16_t tipo_textura = 0;
+            uint8_t tipo_terreno = mapa_config["TiposTerrenos"][i][j].as<char>();
+            uint16_t tipo_textura = mapa_config["TiposTexturas"][i][j].as<uint16_t>();
+            // uint8_t tipo_terreno = 'A';
+            // uint16_t tipo_textura = 0;
             agregarTile(tipo_terreno, tipo_textura, coords);
 		}
 	}

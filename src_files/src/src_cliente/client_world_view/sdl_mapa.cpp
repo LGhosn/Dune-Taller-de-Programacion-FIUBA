@@ -3,31 +3,31 @@
 #include <iostream>
 
 	int MapaSDL::limite_superior() const {
-		return - PADDING;
+		return 1;
 	}
 
 	int MapaSDL::limite_inferior() const {
-		return this->alto * LARGO_TILE - LARGO_VENTANA + PADDING;
+		return (this->alto * LARGO_TILE + 2 * PADDING) * zoom - LARGO_VENTANA;
 	}
 
 	int MapaSDL::limite_izquierdo() const {
-		return - PADDING;
+		return 1;
 	}
 
 	int MapaSDL::limite_derecho() const {
-		return this->ancho * LARGO_TILE - ANCHO_VENTANA + PADDING;
+		return (this->ancho * LARGO_TILE + 2 * PADDING) * zoom - ANCHO_VENTANA;
 	}
 
 	void MapaSDL::updateTiles() {
 		for (auto& tile : tiles) {
-			tile.update(this->pos_x, this->pos_y);
+			tile.update(this->pos_x, this->pos_y, zoom);
 		}
 	}
 
-MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa) : renderer(renderer),
-tile_factory(renderer, ruta_mapa), tiles(tile_factory.obtenerTiles()), ancho(tile_factory.obtenerAncho()),
-alto(tile_factory.obtenerAlto()), pos_x(0), pos_y(0), moviendose_h(false), moviendose_v(false), direccion_h(IZQUIERDA),
-direccion_v(ARRIBA) {}
+MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa, float zoom_inicial) : renderer(renderer),
+tile_factory(renderer, ruta_mapa, zoom_inicial), tiles(tile_factory.obtenerTiles()), ancho(tile_factory.obtenerAncho()),
+alto(tile_factory.obtenerAlto()), pos_x(PADDING), pos_y(PADDING), moviendose_h(false), moviendose_v(false), direccion_h(IZQUIERDA),
+direccion_v(ARRIBA), zoom(zoom_inicial) {}
 
 void MapaSDL::moverArriba() {
 	if (pos_y > this->limite_superior() && !this->moviendose_v) {
@@ -73,7 +73,8 @@ int MapaSDL::obtener_offset_y() const {
 	return this->pos_y;
 }
 
-void MapaSDL::update() {
+void MapaSDL::update(float zoom) {
+	this->zoom = zoom;
 	if (this->moviendose_h) {
 		switch(this->direccion_h) {
 			case IZQUIERDA:
@@ -115,6 +116,11 @@ void MapaSDL::update() {
 				break;
 		}
 	}
+
+	if (pos_x < this->limite_izquierdo())
+		this->pos_x = this->limite_izquierdo();
+	if (pos_y < this->limite_superior())
+		this->pos_y = this->limite_superior();
 }
 
 void MapaSDL::render() {

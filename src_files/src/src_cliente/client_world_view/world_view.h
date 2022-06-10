@@ -5,9 +5,12 @@
 // #include "sdl_edificio.h"
 #include <list>
 
+#define ZOOM_INICIAL 3.5f
+
 class WorldView {
 	SDL2pp::Window window;
 	SDL2pp::Renderer renderer;
+	float zoom;
 	MapaSDL mapa;
 	// std::list<EdificioSDL> edificios;
 	long frame_anterior;

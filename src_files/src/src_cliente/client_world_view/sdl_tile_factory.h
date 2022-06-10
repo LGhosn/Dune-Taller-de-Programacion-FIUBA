@@ -19,6 +19,7 @@ class TileFactorySDL {
     SDL2pp::Texture textura_base;
     uint32_t ancho, alto;
     std::vector<TileSDL> tiles;
+    float zoom_inicial;
 
     void agregarTileDeRoca(uint16_t tipo_textura, Coordenadas& coords);
     void agregarTileDeArena(uint16_t tipo_textura, Coordenadas& coords);
@@ -30,7 +31,7 @@ class TileFactorySDL {
     void agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Coordenadas& coords);
 
 public:
-    TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa);
+    TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa, float zoom_inicial);
 
     std::vector<TileSDL>& obtenerTiles();
 
