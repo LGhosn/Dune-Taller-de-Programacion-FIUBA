@@ -1,6 +1,6 @@
-#include "../../src_server/server_camino.h"
-#include "../../src_server/server_camino_no_encontrado_exception.h"
-#include "../../src_server/server_fuera_de_rango_exception.h"
+#include "../../src_server/server_game/server_mapa/server_camino.h"
+#include "../../src_server/server_game/server_mapa/server_camino_no_encontrado_exception.h"
+#include "../../src_server/server_game/server_mapa/server_fuera_de_rango_exception.h"
 #include "gtest/gtest.h"
 #include <vector>
 #include <stack>

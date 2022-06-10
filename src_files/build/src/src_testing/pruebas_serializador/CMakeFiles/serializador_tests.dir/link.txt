@@ -1,0 +1,1 @@
+/usr/bin/c++   -Werror -Wall -pedantic -std=c++17 -ggdb  -rdynamic CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o CMakeFiles/serializador_tests.dir/pruebas_serializador.cpp.o CMakeFiles/serializador_tests.dir/__/__/src_common/common_serializador.cpp.o  -o serializador_tests  ../../../lib/libgtest_main.a ../../../lib/libgtest.a -lpthread 

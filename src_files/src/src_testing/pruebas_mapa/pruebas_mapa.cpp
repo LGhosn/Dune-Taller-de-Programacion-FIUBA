@@ -3,7 +3,7 @@
 #include <tuple>
 #include <vector>
 
-#include "../../src_server/server_mapa.h"
+#include "../../src_server/server_game/server_mapa/server_mapa.h"
 #include "yaml-cpp/yaml.h"
 
 /*

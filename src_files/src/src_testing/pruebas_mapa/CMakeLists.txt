@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.0)
 project(tests_mapa)
 
 # GoogleTest requires at least C++11
@@ -13,15 +13,12 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(
-    mapa_tests
+add_executable(mapa_tests
     pruebas_mapa.cpp
-    ../../src_server/server_mapa.h
-    ../../src_server/server_mapa.cpp
-    ../../src_server/server_camino.cpp
-    ../../src_server/server_camino_no_encontrado_exception.cpp 
-    ../../src_server/server_fuera_de_rango_exception.cpp
-    ../../src_common/common_coords.h
+    ../../src_server/server_game/server_mapa/server_mapa.cpp
+    ../../src_server/server_game/server_mapa/server_camino.cpp
+    ../../src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp
+    ../../src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp
     ../../src_common/common_coords.cpp
 )
 
@@ -34,4 +31,3 @@ target_link_libraries(
 
 include(GoogleTest)
 gtest_discover_tests(mapa_tests)
-

@@ -56,5 +56,9 @@ add_executable(server
         src/main_server.cpp
         )
 
+add_subdirectory(src/src_testing/pruebas_camino)
+#add_subdirectory(src/src_testing/pruebas_mapa)
+add_subdirectory(src/src_testing/pruebas_serializador)
+
 target_link_libraries(client Qt5::Widgets Qt5::Core)
 target_link_libraries(server pthread)

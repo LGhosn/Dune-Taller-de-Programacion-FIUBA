@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.00)
 project(tests_serializador)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -pedantic -std=c++17 -ggdb")
@@ -15,8 +15,7 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(
-    serializador_tests
+add_executable(serializador_tests
     pruebas_serializador.cpp
     ../../src_common/common_serializador.h
     ../../src_common/common_serializador.cpp
@@ -29,4 +28,3 @@ target_link_libraries(
 
 include(GoogleTest)
 gtest_discover_tests(serializador_tests)
-

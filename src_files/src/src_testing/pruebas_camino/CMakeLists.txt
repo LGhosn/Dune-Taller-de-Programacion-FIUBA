@@ -1,5 +1,8 @@
-cmake_minimum_required(VERSION 3.1)
-project(tests_mapa)
+cmake_minimum_required(VERSION 3.00)
+
+project(tests_camino)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -pedantic -std=c++17 -ggdb")
 
 # GoogleTest requires at least C++11
 set(CMAKE_CXX_STANDARD 11)
@@ -13,21 +16,19 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(
-    camino_tests
-    pruebas_camino.cpp
-    ../../src_server/server_camino.cpp
-    ../../src_server/server_camino_no_encontrado_exception.cpp 
-    ../../src_server/server_fuera_de_rango_exception.cpp
-    ../../src_common/common_coords.cpp
+add_executable(camino_tests
+pruebas_camino.cpp
+../../src_server/server_game/server_mapa/server_camino.cpp
+../../src_server/server_game/server_mapa/server_camino.cpp
+../../src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp
+../../src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp
+../../src_common/common_coords
 )
 
 target_link_libraries(
   camino_tests
-  PRIVATE
   gtest_main
 )
 
 include(GoogleTest)
 gtest_discover_tests(camino_tests)
-
