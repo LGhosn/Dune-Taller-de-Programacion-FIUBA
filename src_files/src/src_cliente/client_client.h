@@ -2,20 +2,24 @@
 #define CLIENT_CLIENT_H_
 
 #include "../src_common/common_socket.h"
-#include "../src_menu/MenuDune.h"
 #include "client_protocolo.h"
-#include <vector>
-#include <mutex>
-#include <string>
-#include <map>
-#include <cstdlib>
-#include <iostream>
-#include <fstream>
-#include <sstream>
+#include "client_thread_sender/client_hilo_sender.h"
+#include "client_thread_reciever/client_hilo_reciever.h"
+#include "../src_common/common_colas/cola_no_bloqueante.h"
+#include "../src_common/common_colas/cola_bloqueante.h"
+#include "client_comandos/client_comando.h"
+#include "client_solicitudes/cliente_solicitud.h"
+
+class ClientHiloReciever;
+class ClientHiloSender;
 
 class Client {
     Socket skt_cliente;
     ProtocoloCliente protocolo;
+    ColaNoBloqueante<ComandoCliente> cola_comandos;
+    ClientHiloReciever* receiver;
+    ColaBloqueante<SolicitudCliente> cola_solicitudes;
+    ClientHiloSender* sender;
 
     public:
     /*
@@ -32,6 +36,8 @@ class Client {
      * */
     ProtocoloCliente& protocoloAsociado();
 
+    void enviarSolicitud(SolicitudCliente* solicitud);
+
     /*
      * No tiene sentido copiar un cliente y tampoco moverlo (al menos por ahora).
      * */
@@ -39,5 +45,7 @@ class Client {
     Client& operator=(const Client&) = delete;
     Client(Client&&) = delete;
     Client& operator=(Client&&) = delete;
+
+    ~Client();
 };
 #endif  // CLIENT_CLIENT_H_

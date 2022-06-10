@@ -3,7 +3,8 @@
 
 
 class InfoDTO {
-    InfoDTO();
+public:
+    InfoDTO() = default;
 };
 
 #endif //COMMON_INFODTO_H

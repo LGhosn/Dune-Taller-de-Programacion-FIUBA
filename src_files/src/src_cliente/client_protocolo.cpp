@@ -28,6 +28,22 @@ void ProtocoloCliente::enviarSolicitudDeUnion(SolicitudDeUnion& solicitud) {
             (nombre_partida.c_str(), nombre_partida.length(), &this->was_closed);
 }
 
+void ProtocoloCliente::unirseAPartida(std::string& casa, std::string& nombre_partida) {
+    std::string operacion = "unirse";
+
+    Serializador s;
+    uint8_t codigo = s.obtenerCodigoOperacion(operacion);
+    uint8_t codigo_casa = s.obtenerCodigoCasa(casa);
+
+    this->skt_cliente.sendall(&codigo, sizeof(uint8_t), &this->was_closed);
+    this->skt_cliente.sendall(&codigo_casa, sizeof(uint8_t), &this->was_closed);
+
+    uint16_t len_nombre = nombre_partida.length();
+    this->skt_cliente.sendall(&len_nombre, sizeof(uint16_t), &this->was_closed);
+
+    this->skt_cliente.sendall(nombre_partida.c_str(), nombre_partida.length(), &this->was_closed);
+}
+
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR PARTIDAS
  * *****************************************************************/

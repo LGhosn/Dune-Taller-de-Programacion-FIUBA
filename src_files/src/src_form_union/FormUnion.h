@@ -4,6 +4,7 @@
 #include "../src_cliente/client_DTO/Status.h"
 #include "../src_cliente/client_DTO/SolicitudDeUnion.h"
 #include "../src_cliente/client_protocolo.h"
+#include "../src_cliente/client_client.h"
 #include "../src_common/common_serializador.h"
 #include "ui_FormUnionUi.h"
 #include <set>
@@ -21,7 +22,7 @@ public:
      * asociado para el envío de solicitudes de unión y su posterior informe
      * de estado.
      * */
-    explicit FormUnion(ProtocoloCliente& protocolo_asociado, QWidget* parent = nullptr);
+    explicit FormUnion(Client& cliente, QWidget* parent = nullptr);
 
     /* Toma y valida los campos rellenados por el usuario para la unión a
      * una partida, la cual puede ser o no existente, el usuario será
@@ -72,8 +73,8 @@ public:
     FormUnion(FormUnion&&) = delete;
     FormUnion& operator=(FormUnion&&) = delete;
 private:
+    Client& cliente;
     Ui_FormUnir* ui;
-    ProtocoloCliente& protocolo_asociado;
     std::set<std::string> casas_elegibles = {"Atreides", "Harkonnen", "Ordos"};
 };
 #endif //FORM_UNION_H

@@ -1,17 +1,21 @@
 #ifndef CLIENT_HILO_RECEIVER_H
 #define CLIENT_HILO_RECEIVER_H
 
+#include "../client_client.h"
 #include "../client_protocolo.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
-#include "../../client_comandos/client_comando.h"
+#include "../client_comandos/client_comando.h"
 #include <thread>
+
+class Client;
 
 class ClientHiloReciever {
 private:
-    std::thread thread;
+    Client* cliente;
     ProtocoloCliente& protocolo;
     ColaNoBloqueante<ComandoCliente>& cola_eventos;
     bool hay_que_seguir = true;
+    std::thread thread;
 
     void run();
     void handleThread();
@@ -19,7 +23,7 @@ private:
     void stop();
 
 public:
-    ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, ProtocoloCliente& protocolo);
+    ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, Client* cliente);
     ~ClientHiloReciever();
 
     /*

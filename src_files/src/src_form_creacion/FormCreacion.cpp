@@ -1,8 +1,9 @@
 #include "FormCreacion.h"
+#include "../src_cliente/client_solicitudes/sol_crear_partida.h"
 
-FormCreacion::FormCreacion(ProtocoloCliente& protocolo_asociado, QWidget* parent) :
-                            protocolo_asociado(protocolo_asociado),
+FormCreacion::FormCreacion(Client& cliente, QWidget* parent) :
                             QWidget(parent),
+                            cliente(cliente),
                             ui(new Ui_FromCrear) {
     ui->setupUi(this);
     move(QGuiApplication::screens().at(0)->geometry().center() - frameGeometry().center());
@@ -28,11 +29,8 @@ void FormCreacion::solicitudDeCreacion() {
             QMessageBox::information(this, "Error en los campos rellenados",
                                      "Recuerda rellenar el campo de nombre de partida, mapa, elegir una casa de las tres disponibles y una cantidad de jugadores requeridos para comenzar la partida.");
         } else {
-            // Armamos la solicitud de creacion a enviar por el protocolo del cliente.
-            SolicitudDeCreacion solicitud(nombre_partida, mapa, casa, jugadores_requeridos);
-            protocolo_asociado.enviarSolicitudDeCreacion(solicitud);
-            Status status_recibido = protocolo_asociado.recibirStatus();
-            crearNotificacion(status_recibido);
+            SolicitudCrearPartida* solicitud = new SolicitudCrearPartida(nombre_partida, mapa, casa, jugadores_requeridos);
+            cliente.enviarSolicitud(solicitud);
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());

@@ -1,8 +1,8 @@
 #include "FormUnion.h"
 
-FormUnion::FormUnion(ProtocoloCliente& protocolo_asociado, QWidget *parent) :
-                        protocolo_asociado(protocolo_asociado),
+FormUnion::FormUnion(Client& cliente, QWidget *parent) :
                         QWidget(parent),
+                        cliente(cliente),
                         ui(new Ui_FormUnir) {
     ui->setupUi(this);
     move(QGuiApplication::screens().at(0)->geometry().center() - frameGeometry().center());
@@ -28,8 +28,9 @@ void FormUnion::solicitudDeUnion() {
         } else {
             // Armamos la solicitud de union a enviar por el protocolo del cliente.
             SolicitudDeUnion solicitud(nombre_partida, casa);
-            protocolo_asociado.enviarSolicitudDeUnion(solicitud);
-            Status status = protocolo_asociado.recibirStatus();
+            ProtocoloCliente& protocolo = cliente.protocoloAsociado();
+            protocolo.enviarSolicitudDeUnion(solicitud);
+            Status status = protocolo.recibirStatus();
             unirseNotificacion(status);
             //protocolo_asociado.esperarComenzarPartida();
         }

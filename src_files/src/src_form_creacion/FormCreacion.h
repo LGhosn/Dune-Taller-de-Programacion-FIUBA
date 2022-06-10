@@ -4,6 +4,7 @@
 #include "../src_cliente/client_DTO/Status.h"
 #include "../src_cliente/client_DTO/SolicitudDeCreacion.h"
 #include "../src_cliente/client_protocolo.h"
+#include "../src_cliente/client_client.h"
 #include "ui_FormCreacionUi.h"
 #include <syslog.h>
 #include <set>
@@ -21,7 +22,7 @@ public:
      * asociado para el envío de solicitudes de creación y su posterior informe
      * de estado.
      * */
-    explicit FormCreacion(ProtocoloCliente& protocolo_asociado, QWidget* parent = nullptr);
+    explicit FormCreacion(Client& cliente, QWidget* parent = nullptr);
 
     /* Toma y valida los campos rellenados por el usuario para la creación
      * de una partida, la cual puede ser o no existente, el usuario será
@@ -80,8 +81,8 @@ public:
     FormCreacion(FormCreacion&&) = delete;
     FormCreacion& operator=(FormCreacion&&) = delete;
 private:
+    Client& cliente;
     Ui_FromCrear* ui;
-    ProtocoloCliente& protocolo_asociado;
     std::set<std::string> casas_elegibles = {"Atreides", "Harkonnen", "Ordos"};
 };
 #endif // FORM_CREACION_H

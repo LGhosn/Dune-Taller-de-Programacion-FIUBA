@@ -1,6 +1,7 @@
 #ifndef MENU_DUNE_H
 #define MENU_DUNE_H
 
+#include "../src_cliente/client_client.h"
 #include "../src_cliente/client_protocolo.h"
 #include "../src_form_creacion/FormCreacion.h"
 #include "../src_form_union/FormUnion.h"
@@ -11,7 +12,7 @@ class Ui_Menu;
 
 class MenuDune : public QWidget {
 public:
-    explicit MenuDune(ProtocoloCliente& protocolo, QWidget *parent = nullptr);
+    explicit MenuDune(Client& cliente, QWidget *parent = nullptr);
     void mostrarVentanaDeCreacion();
     void mostrarVentanaDeUnion();
     ~MenuDune() override;
@@ -25,7 +26,7 @@ public:
     MenuDune& operator=(MenuDune&&) = delete;
 private:
     Ui_Menu* ui;
-    FormUnion* formulario_union;
     FormCreacion* formulario_creacion;
+    FormUnion* formulario_union;
 };
 #endif // MENU_DUNE_H

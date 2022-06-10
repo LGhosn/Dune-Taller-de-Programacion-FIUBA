@@ -32,6 +32,7 @@ class ProtocoloCliente {
 
 
     void enviarSolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords, uint8_t tipo);
+    void unirseAPartida(std::string& casa, std::string& nombre_partida);
 
     /*
      * Recibe el status de una petición de union o creacion, el mismo

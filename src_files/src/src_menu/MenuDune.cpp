@@ -1,11 +1,11 @@
 #include "ui_MenuUi.h"
 #include "MenuDune.h"
 
-MenuDune::MenuDune(ProtocoloCliente& protocolo_asociado, QWidget *parent) :
+MenuDune::MenuDune(Client& cliente, QWidget *parent) :
                                         QWidget(parent),
                                         ui(new Ui_Menu),
-                                        formulario_creacion(new FormCreacion(protocolo_asociado)),
-                                        formulario_union(new FormUnion(protocolo_asociado)) {
+                                        formulario_creacion(new FormCreacion(cliente)),
+                                        formulario_union(new FormUnion(cliente)) {
     ui->setupUi(this);
     move(QGuiApplication::screens().at(0)->geometry().center() - frameGeometry().center());
     connect(ui->CrearLabel, &QPushButton::clicked, this, &MenuDune::mostrarVentanaDeCreacion);
