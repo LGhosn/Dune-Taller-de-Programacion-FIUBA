@@ -14,6 +14,8 @@
 #include <fstream>
 #include <netinet/in.h>
 
+#define CODIGO_COMIENZO_PARTIDA 0
+
 class ProtocoloCliente {
     private:
     bool was_closed = false;
@@ -39,6 +41,7 @@ class ProtocoloCliente {
      * será usado por el cliente para imprimir un mensaje.
      * */
     Status recibirStatus();
+    void esperarAComienzoDePartida();
 
     /*
      * No tiene sentido copiar un ProtocoloCliente, tampoco moverlo.

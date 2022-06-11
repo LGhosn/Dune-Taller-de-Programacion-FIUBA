@@ -3,9 +3,7 @@
 ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, Client* cliente) :
                                         cliente(cliente),
                                         protocolo(cliente->protocoloAsociado()),
-                                        cola_eventos(cola_eventos) {
-    this->thread = std::thread(&ClientHiloReciever::handleThread, this);
-}
+                                        cola_eventos(cola_eventos) {}
 
 void ClientHiloReciever::handleThread() {
     try {
@@ -28,6 +26,10 @@ void ClientHiloReciever::run() {
         // Luego la traducimos a un comando
         // Finalmente encolamos el comando
     }
+}
+
+void ClientHiloReciever::start() {
+    this->thread = std::thread(&ClientHiloReciever::handleThread, this);
 }
 
 void ClientHiloReciever::stop() {

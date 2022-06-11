@@ -38,6 +38,8 @@ class Client {
 
     void enviarSolicitud(SolicitudCliente* solicitud);
 
+    void empezarPartida();
+
     /*
      * No tiene sentido copiar un cliente y tampoco moverlo (al menos por ahora).
      * */

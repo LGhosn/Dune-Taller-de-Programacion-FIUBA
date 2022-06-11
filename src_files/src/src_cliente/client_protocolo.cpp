@@ -98,6 +98,15 @@ Status ProtocoloCliente::recibirStatus() {
     return Status(status);
 }
 
+void ProtocoloCliente::esperarAComienzoDePartida() {
+    uint8_t codigo;
+    this->skt_cliente.recvall(&codigo, sizeof(uint8_t), &this->was_closed);
+    if (codigo != CODIGO_COMIENZO_PARTIDA) {
+        throw std::runtime_error("No se recibió el comienzo de la partida.");
+    }
+}
+
+
 void ProtocoloCliente::enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y){
 	Serializador s;
     std::string operacion = "mover";

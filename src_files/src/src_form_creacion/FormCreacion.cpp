@@ -31,6 +31,11 @@ void FormCreacion::solicitudDeCreacion() {
         } else {
             SolicitudCrearPartida* solicitud = new SolicitudCrearPartida(nombre_partida, mapa, casa, jugadores_requeridos);
             cliente.enviarSolicitud(solicitud);
+            ProtocoloCliente& protocolo = cliente.protocoloAsociado();
+            Status status_recibido = protocolo.recibirStatus();
+            crearNotificacion(status_recibido);
+            protocolo.esperarAComienzoDePartida();
+            QApplication::exit();
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());

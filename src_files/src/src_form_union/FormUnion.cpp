@@ -1,4 +1,5 @@
 #include "FormUnion.h"
+#include "../src_cliente/client_solicitudes/sol_unirse_a_partida.h"
 
 FormUnion::FormUnion(Client& cliente, QWidget *parent) :
                         QWidget(parent),
@@ -26,13 +27,13 @@ void FormUnion::solicitudDeUnion() {
             QMessageBox::information(this, "Error en la casa o el nombre de partida elegidos",
                                      "Recuerda elegir una casa de las tres disponibles y que rellenar el campo de nombre de partida.");
         } else {
-            // Armamos la solicitud de union a enviar por el protocolo del cliente.
-            SolicitudDeUnion solicitud(nombre_partida, casa);
+            SolicitudUnirseAPartida* solicitud = new SolicitudUnirseAPartida(nombre_partida, casa);
+            cliente.enviarSolicitud(solicitud);
             ProtocoloCliente& protocolo = cliente.protocoloAsociado();
-            protocolo.enviarSolicitudDeUnion(solicitud);
             Status status = protocolo.recibirStatus();
             unirseNotificacion(status);
-            //protocolo_asociado.esperarComenzarPartida();
+            protocolo.esperarAComienzoDePartida();
+            QApplication::exit();
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());

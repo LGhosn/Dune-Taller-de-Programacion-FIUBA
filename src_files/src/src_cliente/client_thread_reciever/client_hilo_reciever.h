@@ -24,6 +24,9 @@ private:
 
 public:
     ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, Client* cliente);
+    
+    void start();
+
     ~ClientHiloReciever();
 
     /*

@@ -3,7 +3,7 @@
 
 #include "cliente_solicitud.h"
 
-class SolicitudUnirseAPartida : SolicitudCliente {
+class SolicitudUnirseAPartida : public SolicitudCliente {
     std::string casa;
     std::string nombre_partida;
 public:

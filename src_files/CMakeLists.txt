@@ -2,7 +2,20 @@ cmake_minimum_required(VERSION 3.00)
 project(Dune2000)
 find_package(Qt5Widgets)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -pedantic -std=c++17 -ggdb -O0 -pthread -lyaml-cpp")
+
 message("[INFO] La raiz del proyecto es ${PROJECT_SOURCE_DIR}")
+
+find_package(yaml-cpp REQUIRED)
+
+set(SDL2PP_WITH_IMAGE ON) # if you need SDL_image support
+set(SDL2PP_WITH_MIXER ON) # if you need SDL_mixer support
+set(SDL2PP_WITH_TTF ON) # if you need SDL_ttf support
+add_subdirectory(src/src_libs/SDL2pp ./SDL2pp/build)
+
+add_definitions(-DRESOURCE_PATH="${PROJECT_SOURCE_DIR}/assets")
+
+include_directories(${SDL2PP_INCLUDE_DIRS})
 
 include_directories(${PROJECT_SOURCE_DIR}/src
         ${PROJECT_SOURCE_DIR}/src/src_menu
@@ -28,17 +41,38 @@ include_directories(${PROJECT_BINARY_DIR})
 message("Headers generados: ${UIS_HEADERS}")
 
 add_executable(client
+        src/main_client.cpp
+        src/src_cliente/pix_a_coords.cpp
+        src/src_cliente/client_client.cpp
+        src/src_cliente/client_protocolo.cpp
+        src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp
+        src/src_cliente/client_thread_sender/client_hilo_sender.cpp
+        src/src_cliente/client_renderer/client_renderer.cpp
+        src/src_cliente/client_thread_sender/client_hilo_sender.cpp
+        src/src_cliente/client_solicitudes/sol_crear_partida.cpp
+        src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp
         src/src_cliente/client_DTO/Status.cpp
+        src/src_cliente/client_comandos/cmd_mover_mapa.cpp
+        src/src_cliente/client_comandos/cmd_zoom.cpp
+        src/src_cliente/client_comandos/cmd_salir.cpp
+        src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
+        src/src_cliente/client_comandos/client_comando.cpp
+        src/src_cliente/client_world_view/sdl_tile_factory.cpp
+        src/src_cliente/client_world_view/sdl_tile.cpp
+        src/src_cliente/client_world_view/sdl_mapa.cpp
+        src/src_cliente/client_world_view/world_view.cpp
+        ../src_common/common_colas/cola_bloqueante.cpp
+        ../src_common/common_colas/cola_no_bloqueante.cpp
+        client_thread_sdl/client_hilo_sdl.cpp
+        client_thread_sdl/client_sdl_evento.cpp
+        ../src_common/common_coords.cpp
         src/src_menu/MenuDune.cpp
         src/src_form_creacion/FormCreacion.cpp
         src/src_form_union/FormUnion.cpp
-        src/src_cliente/client_client.cpp
-        src/src_cliente/client_protocolo.cpp
         src/src_common/common_resolver.cpp
         src/src_common/common_socket.cpp
         src/src_common/common_socket_error.cpp
         src/src_common/common_serializador.cpp
-        src/main_client.cpp
         assets/resources.qrc
         ${UIS_HEADERS})
 
@@ -46,6 +80,7 @@ add_executable(server
         src/src_server/server_server.cpp
         src/src_server/server_protocolo.cpp
         src/src_server/server_DTO/PartidaDTO.cpp
+        src/src_server/server_DTO/MovimientoDTO.cpp
         src/src_server/server_lobby.cpp
         src/src_server/server_handler.cpp
         src/src_server/server_aceptador.cpp
@@ -60,5 +95,5 @@ add_subdirectory(src/src_testing/pruebas_camino)
 #add_subdirectory(src/src_testing/pruebas_mapa)
 add_subdirectory(src/src_testing/pruebas_serializador)
 
-target_link_libraries(client Qt5::Widgets Qt5::Core)
+target_link_libraries(client Qt5::Widgets Qt5::Core ${SDL2PP_LIBRARIES})
 target_link_libraries(server pthread)
