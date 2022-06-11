@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.00)
 project(Dune2000)
 find_package(Qt5Widgets)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -pedantic -std=c++17 -ggdb -O0 -pthread -lyaml-cpp")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -pedantic -std=c++17 -pthread")
 
 message("[INFO] La raiz del proyecto es ${PROJECT_SOURCE_DIR}")
 
@@ -61,11 +61,11 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_tile.cpp
         src/src_cliente/client_world_view/sdl_mapa.cpp
         src/src_cliente/client_world_view/world_view.cpp
-        ../src_common/common_colas/cola_bloqueante.cpp
-        ../src_common/common_colas/cola_no_bloqueante.cpp
-        client_thread_sdl/client_hilo_sdl.cpp
-        client_thread_sdl/client_sdl_evento.cpp
-        ../src_common/common_coords.cpp
+        src/src_common/common_colas/cola_bloqueante.cpp
+        src/src_common/common_colas/cola_no_bloqueante.cpp
+        src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp
+        src/src_cliente/client_thread_sdl/client_sdl_evento.cpp
+        src/src_common/common_coords.cpp
         src/src_menu/MenuDune.cpp
         src/src_form_creacion/FormCreacion.cpp
         src/src_form_union/FormUnion.cpp
@@ -92,8 +92,8 @@ add_executable(server
         )
 
 add_subdirectory(src/src_testing/pruebas_camino)
-#add_subdirectory(src/src_testing/pruebas_mapa)
+add_subdirectory(src/src_testing/pruebas_mapa)
 add_subdirectory(src/src_testing/pruebas_serializador)
 
-target_link_libraries(client Qt5::Widgets Qt5::Core ${SDL2PP_LIBRARIES})
-target_link_libraries(server pthread)
+target_link_libraries(client Qt5::Widgets Qt5::Core ${SDL2PP_LIBRARIES} yaml-cpp)
+#target_link_libraries(server pthread)
