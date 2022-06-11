@@ -12,7 +12,8 @@
 
 #define FRAME_RATE 33.0f
 
-class GameLoop {
+class HiloGameLoop {
+    std::vector<ColaBloqueante<ComandoServer>*> colas_sender;
     ColaNoBloqueante<SolicitudServer>& cola_solicitudes;
     Game game;
     std::thread hilo;
@@ -27,8 +28,17 @@ class GameLoop {
     bool update(long iter);
 
 public:
-    GameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender,
+    HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender,
     ColaNoBloqueante<SolicitudServer>& sol_entrantes, std::string& ruta_mapa);
+
+    void start(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender);
+
+    ~HiloGameLoop();
+
+    HiloGameLoop &operator=(const HiloGameLoop &hilo_game_loop) = delete;
+    HiloGameLoop(const HiloGameLoop &hilo_game_loop) = delete;
+    HiloGameLoop &operator=(HiloGameLoop &&hilo_game_loop);
+    HiloGameLoop(HiloGameLoop &&hilo_game_loop);
 };
 
 #endif

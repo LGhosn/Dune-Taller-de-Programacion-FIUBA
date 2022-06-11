@@ -11,16 +11,16 @@
 #include "../../src_common/common_socket_error.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
-#include "server_lobby.h"
 
 class Partida;
 class Lobby;
+class HiloClienteLobby;
 
 class HandlerCliente {
     Socket socket;
     Lobby& lobby;
     ProtocoloServidor protocolo;
-    HiloClienteLobby hilo_cliente_lobby;
+    HiloClienteLobby* hilo_cliente_lobby;
     ColaBloqueante<ComandoServer> cola_comandos;
     ServerHiloSender hilo_sender;
     ServerHiloReciever hilo_reciever;
@@ -40,6 +40,12 @@ public:
     void notificarInicioDePartida();
 
     ColaBloqueante<ComandoServer>* obtenerColaSender();
+
+    bool haFinalizado() const;
+
+    void cerrar();
+
+    ~HandlerCliente();
 };
 
 

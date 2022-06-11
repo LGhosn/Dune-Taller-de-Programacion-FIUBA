@@ -36,6 +36,23 @@ public:
 	}
 
 	~ColaNoBloqueante<T>() = default;
+
+	ColaNoBloqueante<T>& operator=(const ColaNoBloqueante<T>&) = delete;
+	ColaNoBloqueante<T>(const ColaNoBloqueante<T>&) = delete;
+
+	ColaNoBloqueante<T>& operator=(ColaNoBloqueante<T>&& otra) {
+		if (otra == *this)
+			return *this;
+		this->cola = std::move(otra.cola);
+		this->mutex = std::move(otra.mutex);
+		return *this;
+	}
+
+	ColaNoBloqueante<T>(ColaNoBloqueante<T>&& otra) {
+		this->cola = std::move(otra.cola);
+		this->mutex = std::move(otra.mutex);
+	}
+
 };
 
 #endif

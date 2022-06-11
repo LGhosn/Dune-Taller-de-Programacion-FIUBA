@@ -1,12 +1,15 @@
 #ifndef LOBBY_H
 #define LOBBY_H
 
-#include "server_DTO/PartidaDTO.h"
+#include "server_DTO/partida_DTO.h"
+#include "server_partida/server_partida.h"
 #include <map>
 #include <string>
 #include <iostream>
 #include <cstdlib>
 #include <mutex>
+
+class Partida;
 
 class Lobby {
     std::map<std::string, Partida, PartidaCmp> partidas_creadas;
@@ -17,7 +20,7 @@ class Lobby {
      * fue creada anteriormente, es decir, no existe una
      * partida con el mismo nombre en la lista de partidas.
      * */
-    void listarPartida(const Partida& nueva_partida);
+    void listarPartida(Partida& nueva_partida);
 
 public:
     /*

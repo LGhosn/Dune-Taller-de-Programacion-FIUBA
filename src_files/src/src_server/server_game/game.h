@@ -12,6 +12,11 @@ public:
     Game(std::vector< ColaBloqueante<ComandoServer>* >& colas_comandos);
 
     bool update(long iter);
+
+    Game &operator=(const Game &game) = delete;
+    Game(const Game &game) = delete;
+    Game &operator=(Game &&game);
+    Game(Game &&game);
 };
 
 

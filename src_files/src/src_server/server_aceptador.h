@@ -4,7 +4,7 @@
 #include "../src_common/common_socket.h"
 #include "../src_server/server_lobby.h"
 #include "server_thread_client_lobby/server_hilo_cliente_lobby.h"
-#include <vector>
+#include <list>
 #include <algorithm>
 #include <syslog.h>
 
@@ -12,7 +12,7 @@ class HiloAceptador {
     Socket& skt_aceptador;
     Lobby& lobby;
     std::atomic <bool>& hay_que_seguir;
-    std::vector<HiloClienteLobby*> clientes;
+    std::list<HandlerCliente> clientes;
 
     /*
      * Crea un nuevo cliente y lo guarda en el container
@@ -31,7 +31,7 @@ class HiloAceptador {
      * En caso de que un HiloCliente haya finalizado su ejecucion
      * este metodo cierra el hilo y devuelve true, sino devuelve false.
      */
-    static bool esperarSiHaFinalizado(HiloClienteLobby* cliente);
+    static bool esperarSiHaFinalizado(HandlerCliente& cliente);
 
     /*
      * En caso de que se deba cerrar el servidor, se cierra

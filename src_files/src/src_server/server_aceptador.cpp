@@ -23,10 +23,7 @@ void HiloAceptador::atenderClientes() {
 }
 
 void HiloAceptador::lanzarHandlerCliente(Socket& aceptado) {
-    HiloClienteLobby* nuevo_cliente = new HiloClienteLobby(aceptado, lobby);
-    // Guardo los Manejadores para poder esperarlos.
-    clientes.push_back(nuevo_cliente);
-    nuevo_cliente->iniciarComunicacion();
+    clientes.emplace_back(aceptado, &lobby);
 }
 
 bool HiloAceptador::hayQueSeguir() {
@@ -40,10 +37,9 @@ void HiloAceptador::limpiarHandlersClientesFinalizados() {
                    clientes.end());
 }
 
-bool HiloAceptador::esperarSiHaFinalizado(HiloClienteLobby* cliente) {
-    if (cliente->haFinalizado()) {
-        cliente->cerrar_hilo();
-        delete cliente;
+bool HiloAceptador::esperarSiHaFinalizado(HandlerCliente& cliente) {
+    if (cliente.haFinalizado()) {
+        cliente.cerrar();
         return true;
     } else {
         return false;
@@ -52,9 +48,6 @@ bool HiloAceptador::esperarSiHaFinalizado(HiloClienteLobby* cliente) {
 
 void HiloAceptador::esperarHandlersCliente() {
     for (auto itr = clientes.begin(); itr != clientes.end(); itr++) {
-        HiloClienteLobby* actual = *itr;
-        actual->cerrar_conexion();
-        actual->cerrar_hilo();
-        delete actual;
+        itr->cerrar();
     }
 }

@@ -1,9 +1,10 @@
-#include "server_gameloop.h"
+#include "server_hilo_gameloop.h"
 #include <exception>
 #include <iostream>
 #include <chrono>
+#include <utility>
 
-void GameLoop::manejarHilo() {
+void HiloGameLoop::manejarHilo() {
     try {
         this->run();
     } catch (const std::exception &e) {
@@ -13,7 +14,7 @@ void GameLoop::manejarHilo() {
     }
 }
 
-void GameLoop::run() {
+void HiloGameLoop::run() {
     long iter = 0;
     bool running = true;
     auto t1 = std::chrono::steady_clock::now();
@@ -35,7 +36,7 @@ void GameLoop::run() {
     }
 }
 
-void GameLoop::manejarSolicitudes() {
+void HiloGameLoop::manejarSolicitudes() {
     std::queue<std::unique_ptr<SolicitudServer>> solicitudes = this->cola_solicitudes.popAll();
     while(!solicitudes.empty()) {
         std::unique_ptr<SolicitudServer> solicitud = std::move(solicitudes.front());
@@ -44,11 +45,34 @@ void GameLoop::manejarSolicitudes() {
     }
 }
 
-bool GameLoop::update(long iter) {
+bool HiloGameLoop::update(long iter) {
     return this->game.update(iter);
 }
 
-GameLoop::GameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_comandos,
+HiloGameLoop::HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_comandos,
 ColaNoBloqueante<SolicitudServer>& cola_solicitudes, std::string& ruta_mapa):
-cola_solicitudes(cola_solicitudes), game(colas_comandos),
-hilo(&GameLoop::manejarHilo, this) {}
+cola_solicitudes(cola_solicitudes), game(colas_comandos) {}
+
+void HiloGameLoop::start(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender) {
+    this->colas_sender = colas_sender;
+    this->hilo = std::thread(&HiloGameLoop::manejarHilo, this);
+}
+
+HiloGameLoop::~HiloGameLoop() {
+    if (this->hilo.joinable()) {
+        this->hilo.join();
+    }
+}
+
+HiloGameLoop& HiloGameLoop::operator=(HiloGameLoop&& otro) {
+    if (this == &otro)
+        return *this;
+    this->cola_solicitudes = std::move(otro.cola_solicitudes);
+    this->game = std::move(otro.game);
+    this->hilo = std::move(otro.hilo);
+    return *this;
+}
+HiloGameLoop::HiloGameLoop(HiloGameLoop &&otro) :
+                            cola_solicitudes(otro.cola_solicitudes),
+                            game(std::move(otro.game)),
+                            hilo(std::move(otro.hilo)) {}

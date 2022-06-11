@@ -1,7 +1,7 @@
 #ifndef SERVER_PROTOCOLO_H_
 #define SERVER_PROTOCOLO_H_
 
-#include "server_DTO/PartidaDTO.h"
+#include "server_DTO/partida_DTO.h"
 #include "../src_common/common_infoDTO/infoDTO.h"
 #include "../src_common/common_infoDTO/MovimientoDTO.h"
 #include "../src_common/common_serializador.h"
@@ -12,6 +12,8 @@
 #include <iostream>
 #include <fstream>
 #include <netinet/in.h>
+
+class PartidaDTO;
 
 class ProtocoloServidor {
     private:

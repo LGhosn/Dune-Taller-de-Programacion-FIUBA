@@ -2,7 +2,7 @@
 #define SERVER_MANEJADOR_H_
 
 #include "../server_lobby.h"
-#include "../server_DTO/PartidaDTO.h"
+#include "../server_DTO/partida_DTO.h"
 #include "../../src_common/common_socket_error.h"
 #include "../../src_common/common_socket.h"
 #include "../server_protocolo.h"
@@ -11,13 +11,15 @@
 #include <atomic>
 #include <syslog.h>
 
+class Lobby;
+
 class HiloClienteLobby {
     std::thread hilo;
     bool fue_cerrado = false;
     std::atomic<bool> flag_ha_finalizado;
     // Socket skt_comunicador;
     ProtocoloServidor& protocolo;
-    Lobby& lobby;
+    Lobby* lobby;
 
     enum class Operaciones : uint8_t {
         unirse = 1, listar = 2, crear = 3, fin = 4
@@ -30,7 +32,7 @@ class HiloClienteLobby {
      * con las operaciones solicitadas por un Cliente, por
      * medio del ProtocoloServidor.
      */
-    HiloClienteLobby(ProtocoloServidor& protocolo, Lobby& lobby);
+    HiloClienteLobby(ProtocoloServidor& protocolo, Lobby* lobby);
 
     /*
     * En funcion de la operacion solicitada, se utilizara

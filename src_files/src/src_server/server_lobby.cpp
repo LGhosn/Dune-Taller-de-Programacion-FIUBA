@@ -1,7 +1,7 @@
 #include "server_lobby.h"
 
-void Lobby::listarPartida(const Partida& nueva_partida) {
-    this->partidas_creadas.insert({nueva_partida.nombre_partida, nueva_partida});
+void Lobby::listarPartida(Partida& nueva_partida) {
+    this->partidas_creadas.emplace(nueva_partida.getNombre(), std::move(nueva_partida));
 }
 
 bool Lobby::crearPartida(const PartidaDTO& partida_a_crear) {
@@ -46,5 +46,10 @@ bool Lobby::unirAPartida(const PartidaDTO& partida_a_unirse) {
 
 PartidasDTO Lobby::getListado() {
     std::lock_guard<std::mutex> lock(m);
-    return PartidasDTO(this->partidas_creadas);
+    std::vector<PartidaDTO> partidas;
+    for (auto& partida : this->partidas_creadas) {
+        partidas.emplace_back(partida.second.getNombre(), partida.second.jugadores_requeridos,
+                              partida.second.jugadores_actuales);
+    }
+    return PartidasDTO(partidas);
 }

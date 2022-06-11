@@ -1,6 +1,6 @@
 #include "server_hilo_cliente_lobby.h"
 
-HiloClienteLobby::HiloClienteLobby(ProtocoloServidor& protocolo, Lobby& lobby) :
+HiloClienteLobby::HiloClienteLobby(ProtocoloServidor& protocolo, Lobby* lobby) :
         flag_ha_finalizado(false),
         protocolo(protocolo),
         lobby(lobby) {}
@@ -38,13 +38,13 @@ void HiloClienteLobby::evaluarOperacion(uint8_t operacion) {
 
 void HiloClienteLobby::unirsePartida() {
     PartidaDTO partida_a_unirse = protocolo.recibirSolicitudDeUnion(this->fue_cerrado);
-    bool el_jugador_se_unio = lobby.unirAPartida(partida_a_unirse);
+    bool el_jugador_se_unio = lobby->unirAPartida(partida_a_unirse);
     protocolo.enviarStatusDeUnion(el_jugador_se_unio, this->fue_cerrado);
 }
 
 void HiloClienteLobby::crearPartida() {
     PartidaDTO partida_a_crear = protocolo.recibirSolicitudDeCreacion(this->fue_cerrado);
-    bool la_partida_se_creo = lobby.crearPartida(partida_a_crear);
+    bool la_partida_se_creo = lobby->crearPartida(partida_a_crear);
     protocolo.enviarStatusDeCreacion(la_partida_se_creo, this->fue_cerrado);
 }
 
