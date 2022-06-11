@@ -27,9 +27,9 @@ void FormUnion::solicitudDeUnion() {
             QMessageBox::information(this, "Error en la casa o el nombre de partida elegidos",
                                      "Recuerda elegir una casa de las tres disponibles y que rellenar el campo de nombre de partida.");
         } else {
-            SolicitudUnirseAPartida* solicitud = new SolicitudUnirseAPartida(nombre_partida, casa);
-            cliente.enviarSolicitud(solicitud);
+            SolicitudDeUnion solicitud(nombre_partida, casa);
             ProtocoloCliente& protocolo = cliente.protocoloAsociado();
+            protocolo.enviarSolicitudDeUnion(solicitud);
             Status status = protocolo.recibirStatus();
             unirseNotificacion(status);
             protocolo.esperarAComienzoDePartida();

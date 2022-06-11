@@ -29,9 +29,9 @@ void FormCreacion::solicitudDeCreacion() {
             QMessageBox::information(this, "Error en los campos rellenados",
                                      "Recuerda rellenar el campo de nombre de partida, mapa, elegir una casa de las tres disponibles y una cantidad de jugadores requeridos para comenzar la partida.");
         } else {
-            SolicitudCrearPartida* solicitud = new SolicitudCrearPartida(nombre_partida, mapa, casa, jugadores_requeridos);
-            cliente.enviarSolicitud(solicitud);
+            SolicitudDeCreacion solicitud(nombre_partida, mapa, casa, jugadores_requeridos);
             ProtocoloCliente& protocolo = cliente.protocoloAsociado();
+            protocolo.enviarSolicitudDeCreacion(solicitud);
             Status status_recibido = protocolo.recibirStatus();
             crearNotificacion(status_recibido);
             protocolo.esperarAComienzoDePartida();

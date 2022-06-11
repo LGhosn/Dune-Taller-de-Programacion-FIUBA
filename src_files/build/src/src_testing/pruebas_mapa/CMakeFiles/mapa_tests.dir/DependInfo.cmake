@@ -14,9 +14,18 @@ set(CMAKE_DEPENDS_CHECK_CXX
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "RESOURCE_PATH=\"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/assets\""
+  )
+
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "src/src_testing/pruebas_mapa/mapa_tests_autogen/include"
+  "../src/src_libs/SDL2pp"
+  "SDL2pp/build"
+  "/usr/local/include/SDL2"
+  "/usr/include/SDL2"
   "../src"
   "../src/src_menu"
   "../src/src_form_creacion"

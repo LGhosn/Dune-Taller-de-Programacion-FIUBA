@@ -169,6 +169,7 @@ src/src_testing/pruebas_mapa/mapa_tests: src/src_testing/pruebas_mapa/CMakeFiles
 src/src_testing/pruebas_mapa/mapa_tests: src/src_testing/pruebas_mapa/CMakeFiles/mapa_tests.dir/__/__/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o
 src/src_testing/pruebas_mapa/mapa_tests: src/src_testing/pruebas_mapa/CMakeFiles/mapa_tests.dir/__/__/src_common/common_coords.cpp.o
 src/src_testing/pruebas_mapa/mapa_tests: src/src_testing/pruebas_mapa/CMakeFiles/mapa_tests.dir/build.make
+src/src_testing/pruebas_mapa/mapa_tests: /usr/local/lib/libyaml-cpp.a
 src/src_testing/pruebas_mapa/mapa_tests: lib/libgtest_main.a
 src/src_testing/pruebas_mapa/mapa_tests: lib/libgtest.a
 src/src_testing/pruebas_mapa/mapa_tests: src/src_testing/pruebas_mapa/CMakeFiles/mapa_tests.dir/link.txt
