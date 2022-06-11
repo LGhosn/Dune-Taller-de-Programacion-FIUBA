@@ -1,0 +1,65 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"cmake-build-debug/_deps/googletest-src/googlemock/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 0,
+			"id" : "gmock::@0f7bb11d64f3678238c7"
+		}
+	],
+	"id" : "gmock_main_autogen::@0f7bb11d64f3678238c7",
+	"isGeneratorProvided" : true,
+	"name" : "gmock_main_autogen",
+	"paths" : 
+	{
+		"build" : "_deps/googletest-build/googlemock",
+		"source" : "cmake-build-debug/_deps/googletest-src/googlemock"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/_deps/googletest-build/googlemock/CMakeFiles/gmock_main_autogen",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/_deps/googletest-build/googlemock/CMakeFiles/gmock_main_autogen.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

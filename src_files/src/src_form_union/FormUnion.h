@@ -22,7 +22,7 @@ public:
      * asociado para el envío de solicitudes de unión y su posterior informe
      * de estado.
      * */
-    explicit FormUnion(Client& cliente, QWidget* parent = nullptr);
+    explicit FormUnion(Client& cliente, QWidget* parent);
 
     /* Toma y valida los campos rellenados por el usuario para la unión a
      * una partida, la cual puede ser o no existente, el usuario será

@@ -5,7 +5,7 @@
 #include <map>
 #include <string>
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 #include <mutex>
 
 class Lobby {

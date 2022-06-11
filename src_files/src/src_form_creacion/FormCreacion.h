@@ -22,7 +22,7 @@ public:
      * asociado para el envío de solicitudes de creación y su posterior informe
      * de estado.
      * */
-    explicit FormCreacion(Client& cliente, QWidget* parent = nullptr);
+    explicit FormCreacion(Client& cliente, QWidget* parent);
 
     /* Toma y valida los campos rellenados por el usuario para la creación
      * de una partida, la cual puede ser o no existente, el usuario será

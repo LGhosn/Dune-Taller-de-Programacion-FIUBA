@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "src/src_testing/pruebas_mapa",
+		"source" : "src/src_testing/pruebas_mapa"
+	}
+}

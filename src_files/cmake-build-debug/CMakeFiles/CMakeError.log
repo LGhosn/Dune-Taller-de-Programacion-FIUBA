@@ -1,0 +1,136 @@
+Performing C++ SOURCE FILE Test SDL2PP_WITH_EXPERIMENTAL_OPTIONAL failed with the following output:
+Change Dir: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_2e60a/fast && /usr/bin/make  -f CMakeFiles/cmTC_2e60a.dir/build.make CMakeFiles/cmTC_2e60a.dir/build
+make[1]: se entra en el directorio '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_2e60a.dir/src.cxx.o
+/usr/bin/c++ -DSDL2PP_WITH_EXPERIMENTAL_OPTIONAL  -Werror -Wall -pedantic -std=c++17 -pthread -std=c++11  -o CMakeFiles/cmTC_2e60a.dir/src.cxx.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx"
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx: In function ‘int main()’:
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx:2:19: error: ‘std::experimental’ has not been declared
+    2 | int main() { std::experimental::optional<int> o; return !o; }
+      |                   ^~~~~~~~~~~~
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx:2:42: error: expected primary-expression before ‘int’
+    2 | int main() { std::experimental::optional<int> o; return !o; }
+      |                                          ^~~
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx:2:58: error: ‘o’ was not declared in this scope
+    2 | int main() { std::experimental::optional<int> o; return !o; }
+      |                                                          ^
+make[1]: *** [CMakeFiles/cmTC_2e60a.dir/build.make:78: CMakeFiles/cmTC_2e60a.dir/src.cxx.o] Error 1
+make[1]: se sale del directorio '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_2e60a/fast] Error 2
+
+
+Source file was:
+#include <experimental/optional>
+int main() { std::experimental::optional<int> o; return !o; }
+Performing C++ SOURCE FILE Test COMPILER_HAS_DEPRECATED_ATTR failed with the following output:
+Change Dir: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_f73c2/fast && /usr/bin/make  -f CMakeFiles/cmTC_f73c2.dir/build.make CMakeFiles/cmTC_f73c2.dir/build
+make[1]: se entra en el directorio '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f73c2.dir/src.cxx.o
+/usr/bin/c++ -DCOMPILER_HAS_DEPRECATED_ATTR  -Werror -Wall -pedantic -std=c++17 -pthread -std=c++11  -Wall -Wextra -pedantic  -o CMakeFiles/cmTC_f73c2.dir/src.cxx.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx"
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx: In function ‘int main()’:
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx:2:34: error: ‘int somefunc()’ is deprecated [-Werror=deprecated-declarations]
+    2 |     int main() { return somefunc();}
+      |                                  ^
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx:1:37: note: declared here
+    1 | __attribute__((__deprecated__)) int somefunc() { return 0; }
+      |                                     ^~~~~~~~
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx:2:34: error: ‘int somefunc()’ is deprecated [-Werror=deprecated-declarations]
+    2 |     int main() { return somefunc();}
+      |                                  ^
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx:1:37: note: declared here
+    1 | __attribute__((__deprecated__)) int somefunc() { return 0; }
+      |                                     ^~~~~~~~
+cc1plus: all warnings being treated as errors
+make[1]: *** [CMakeFiles/cmTC_f73c2.dir/build.make:78: CMakeFiles/cmTC_f73c2.dir/src.cxx.o] Error 1
+make[1]: se sale del directorio '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_f73c2/fast] Error 2
+
+
+Source file was:
+__attribute__((__deprecated__)) int somefunc() { return 0; }
+    int main() { return somefunc();}
+Performing C++ SOURCE FILE Test COMPILER_HAS_DEPRECATED failed with the following output:
+Change Dir: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_8e92b/fast && /usr/bin/make  -f CMakeFiles/cmTC_8e92b.dir/build.make CMakeFiles/cmTC_8e92b.dir/build
+make[1]: se entra en el directorio '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_8e92b.dir/src.cxx.o
+/usr/bin/c++ -DCOMPILER_HAS_DEPRECATED  -Werror -Wall -pedantic -std=c++17 -pthread -std=c++11  -Wall -Wextra -pedantic  -o CMakeFiles/cmTC_8e92b.dir/src.cxx.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx"
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx:1:11: error: expected constructor, destructor, or type conversion before ‘(’ token
+    1 | __declspec(deprecated) int somefunc() { return 0; }
+      |           ^
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx: In function ‘int main()’:
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx:2:25: error: ‘somefunc’ was not declared in this scope
+    2 |     int main() { return somefunc();}
+      |                         ^~~~~~~~
+make[1]: *** [CMakeFiles/cmTC_8e92b.dir/build.make:78: CMakeFiles/cmTC_8e92b.dir/src.cxx.o] Error 1
+make[1]: se sale del directorio '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_8e92b/fast] Error 2
+
+
+Source file was:
+__declspec(deprecated) int somefunc() { return 0; }
+    int main() { return somefunc();}
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_0275a/fast && /usr/bin/make  -f CMakeFiles/cmTC_0275a.dir/build.make CMakeFiles/cmTC_0275a.dir/build
+make[1]: se entra en el directorio '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0275a.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_0275a.dir/src.c.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp/src.c"
+Linking C executable cmTC_0275a
+/snap/clion/193/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0275a.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_0275a.dir/src.c.o -o cmTC_0275a 
+/usr/bin/ld: CMakeFiles/cmTC_0275a.dir/src.c.o: en la función `main':
+src.c:(.text+0x46): referencia a `pthread_create' sin definir
+/usr/bin/ld: src.c:(.text+0x52): referencia a `pthread_detach' sin definir
+/usr/bin/ld: src.c:(.text+0x5e): referencia a `pthread_cancel' sin definir
+/usr/bin/ld: src.c:(.text+0x6f): referencia a `pthread_join' sin definir
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_0275a.dir/build.make:99: cmTC_0275a] Error 1
+make[1]: se sale del directorio '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_0275a/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_d7170/fast && /usr/bin/make  -f CMakeFiles/cmTC_d7170.dir/build.make CMakeFiles/cmTC_d7170.dir/build
+make[1]: se entra en el directorio '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d7170.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_d7170.dir/CheckFunctionExists.c.o -c /snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d7170
+/snap/clion/193/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7170.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_d7170.dir/CheckFunctionExists.c.o -o cmTC_d7170  -lpthreads 
+/usr/bin/ld: no se puede encontrar -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_d7170.dir/build.make:99: cmTC_d7170] Error 1
+make[1]: se sale del directorio '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_d7170/fast] Error 2
+
+
+

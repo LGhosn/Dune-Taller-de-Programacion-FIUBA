@@ -84,9 +84,7 @@ void ProtocoloServidor::enviarStatusDeUnion
  *             METODOS REFERIDOS A MOVER UNIDADES
  * *****************************************************************/
 
-void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y) {
-    
-}
+void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y) {}
 
 void ProtocoloServidor::recibirCodigoDeOperacion(uint8_t& codigo, bool& socket_cerrado) {
     this->skt_comunicador.recvall(&codigo, sizeof(uint8_t), &socket_cerrado);
@@ -108,3 +106,8 @@ void ProtocoloServidor::notificarComenzarPartida(bool& socket_cerrado) {
     this->skt_comunicador.sendall(&status, sizeof(uint8_t), &socket_cerrado);
 }
 
+void ProtocoloServidor::notificarComienzoDePartida() {
+    uint8_t start = 1;
+    bool fue_cerrado = false;
+    this->skt_comunicador.sendall(&start, sizeof(uint8_t), &fue_cerrado);
+}

@@ -1,16 +1,22 @@
 #ifndef SERVER_PARTIDA_DTO_H
 #define SERVER_PARTIDA_DTO_H
 
-#include <vector>
+//#include "../server_handler_cliente/server_handler_cliente.h"
+#include <list>
 #include <string>
 #include <map>
 
-struct Partida {
+class Partida {
     const std::string nombre_partida;
     uint8_t jugadores_actuales;
     const uint8_t jugadores_requeridos;
+    std::list<HandlerCliente*> clientes_conectados;
 
+public:
     Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos);
+    void empezar();
+    void agregarJugador(HandlerCliente* cliente);
+    const bool estaCompleta();
 };
 
 struct PartidaCmp {

@@ -82,8 +82,9 @@ add_executable(server
         src/src_server/server_DTO/PartidaDTO.cpp
         src/src_server/server_DTO/MovimientoDTO.cpp
         src/src_server/server_lobby.cpp
-        src/src_server/server_handler.cpp
+        src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp
         src/src_server/server_aceptador.cpp
+        src/src_server/server_handler_cliente/server_handler_cliente.cpp
         src/src_common/common_resolver.cpp
         src/src_common/common_socket.cpp
         src/src_common/common_socket_error.cpp

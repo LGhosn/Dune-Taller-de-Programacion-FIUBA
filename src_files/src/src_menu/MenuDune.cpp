@@ -4,8 +4,8 @@
 MenuDune::MenuDune(Client& cliente, QWidget *parent) :
                                         QWidget(parent),
                                         ui(new Ui_Menu),
-                                        formulario_creacion(new FormCreacion(cliente)),
-                                        formulario_union(new FormUnion(cliente)) {
+                                        formulario_creacion(new FormCreacion(cliente, nullptr)),
+                                        formulario_union(new FormUnion(cliente, nullptr)) {
     ui->setupUi(this);
     move(QGuiApplication::screens().at(0)->geometry().center() - frameGeometry().center());
     connect(ui->CrearLabel, &QPushButton::clicked, this, &MenuDune::mostrarVentanaDeCreacion);

@@ -70,6 +70,8 @@ class ProtocoloServidor {
 
     void enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y);
 
+    void notificarComienzoDePartida();
+
     /*
      * No tiene sentido copiar un protocolo_servidor, tampoco moverlo.
      * */

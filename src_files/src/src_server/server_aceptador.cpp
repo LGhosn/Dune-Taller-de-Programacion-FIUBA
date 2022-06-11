@@ -23,7 +23,7 @@ void HiloAceptador::atenderClientes() {
 }
 
 void HiloAceptador::lanzarHandlerCliente(Socket& aceptado) {
-    HandlerCliente* nuevo_cliente = new HandlerCliente(aceptado, lobby);
+    HiloClienteLobby* nuevo_cliente = new HiloClienteLobby(aceptado, lobby);
     // Guardo los Manejadores para poder esperarlos.
     clientes.push_back(nuevo_cliente);
     nuevo_cliente->iniciarComunicacion();
@@ -40,7 +40,7 @@ void HiloAceptador::limpiarHandlersClientesFinalizados() {
                    clientes.end());
 }
 
-bool HiloAceptador::esperarSiHaFinalizado(HandlerCliente* cliente) {
+bool HiloAceptador::esperarSiHaFinalizado(HiloClienteLobby* cliente) {
     if (cliente->haFinalizado()) {
         cliente->cerrar_hilo();
         delete cliente;
@@ -52,7 +52,7 @@ bool HiloAceptador::esperarSiHaFinalizado(HandlerCliente* cliente) {
 
 void HiloAceptador::esperarHandlersCliente() {
     for (auto itr = clientes.begin(); itr != clientes.end(); itr++) {
-        HandlerCliente* actual = *itr;
+        HiloClienteLobby* actual = *itr;
         actual->cerrar_conexion();
         actual->cerrar_hilo();
         delete actual;

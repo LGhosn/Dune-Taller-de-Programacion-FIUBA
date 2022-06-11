@@ -28,12 +28,14 @@ bool Lobby::unirAPartida(const PartidaDTO& partida_a_unirse) {
     } else {
         // En cambio si el iterador encontró dicha partida,
         // debemos chequear que no esté completa.
-        if (partida->second.jugadores_actuales < partida->second.jugadores_requeridos) {
-            partida->second.jugadores_actuales++;
-            if (partida->second.jugadores_actuales == partida->second.jugadores_requeridos) {
+        if (!partida->second.estaCompleta()) {
+            //partida->second.agregarJugador();
+            //partida->second.jugadores_actuales++;
+            if (partida->second.estaCompleta()) {
                 std::string notificacion =
-                "Comenzando partida " + partida_a_unirse.nombre_partida + "...\n";
+                        "Comenzando partida " + partida_a_unirse.nombre_partida + "...\n";
                 std::cout << notificacion;
+                partida->second.empezar();
             }
             return true;
         } else {

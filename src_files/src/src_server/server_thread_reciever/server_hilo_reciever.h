@@ -9,15 +9,16 @@
 
 class ServerHiloReciever {
 private:
-    ColaNoBloqueante<SolicitudServer>& cola_solicitudes;
+    ColaNoBloqueante<SolicitudServer>* cola_solicitudes;
     ProtocoloServidor& protocolo;
     std::thread thread;
     bool hay_que_seguir = true;
 
 public:
-    ServerHiloReciever(ColaNoBloqueante<SolicitudServer>& cola_solicitudes, ProtocoloServidor& protocolo);
+    ServerHiloReciever(ProtocoloServidor& protocolo);
     void handleThread();
     void run();
+    void start(ColaNoBloqueante<SolicitudServer>* cola_solicitudes);
     void stop();
     void armarComandoSegunInfo(InfoDTO& info);
     ~ServerHiloReciever();

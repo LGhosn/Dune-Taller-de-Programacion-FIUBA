@@ -15,7 +15,7 @@ add_executable(
   server_thread_reciever/server_hilo_reciever.cpp
   server_thread_sender/server_hilo_sender.cpp
   server_aceptador.cpp
-  server_handler.cpp
+        server_thread_client_lobby/server_hilo_cliente_lobby.cpp
   server_jugador.cpp
   server_lobby.cpp
   server_main.cpp

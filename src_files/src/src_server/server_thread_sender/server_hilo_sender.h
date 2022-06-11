@@ -2,22 +2,24 @@
 #define SERVER_HILO_SENDER_H
 
 #include "../../src_common/common_colas/cola_bloqueante.h"
-#include "../../src_common/common_comandos/comando_a_enviar.h"
+#include "../server_comandos/server_comando.h"
 #include "../server_protocolo.h"
 #include <thread>
 
 class ServerHiloSender {
 private:
     std::thread thread;
-    ColaBloqueante<ComandoAEnviar>& cola_comandos;
+    ColaBloqueante<ComandoServer>& cola_comandos;
     ProtocoloServidor& protocolo;
     bool hay_que_seguir = true;
-public:
-    ServerHiloSender(ColaBloqueante<ComandoAEnviar> &cola_comandos, ProtocoloServidor &protocolo);
-    void run();
+
     void handleThread();
-    void send(ComandoAEnviar& comando);
+    void run();
+    void send(std::unique_ptr<ComandoServer> comando);
     void stop();
+public:
+    ServerHiloSender(ColaBloqueante<ComandoServer> &cola_comandos, ProtocoloServidor &protocolo);
+    void start();
     ~ServerHiloSender();
 };
 #endif //SERVER_HILO_SENDER_H
