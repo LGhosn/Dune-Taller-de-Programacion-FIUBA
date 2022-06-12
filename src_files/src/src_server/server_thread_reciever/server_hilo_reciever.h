@@ -4,24 +4,33 @@
 #include "../../src_common/common_infoDTO/infoDTO.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
 #include "../server_solicitudes/server_solicitud.h"
-#include "../server_protocolo.h"
+#include "../server_protocolo/server_protocolo.h"
 #include <thread>
 
 class ServerHiloReciever {
 private:
     ColaNoBloqueante<SolicitudServer>* cola_solicitudes;
-    ProtocoloServidor& protocolo;
+    ProtocoloServidor* protocolo;
     std::thread thread;
     bool hay_que_seguir = true;
 
-public:
-    ServerHiloReciever(ProtocoloServidor& protocolo);
     void handleThread();
     void run();
+    SolicitudServer* recibirComandoSegunCodigo(uint8_t codigo);
+    void armarComandoSegunInfo(InfoDTO& info);
+
+public:
+    ServerHiloReciever(ProtocoloServidor* protocolo);
+    
     void start(ColaNoBloqueante<SolicitudServer>* cola_solicitudes);
     void stop();
-    void armarComandoSegunInfo(InfoDTO& info);
+
     ~ServerHiloReciever();
+
+    ServerHiloReciever(const ServerHiloReciever&) = delete;
+    ServerHiloReciever& operator=(const ServerHiloReciever&) = delete;
+    ServerHiloReciever(ServerHiloReciever&&);
+    ServerHiloReciever& operator=(ServerHiloReciever&&);
 };
 
 

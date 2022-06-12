@@ -12,7 +12,7 @@ void HiloClienteLobby::iniciarComunicacion() {
 void HiloClienteLobby::comunicarseConCliente() {
     try {
         uint8_t codigo;
-        while (!this->fue_cerrado) {
+        while (!this->flag_ha_finalizado) {
             protocolo.recibirOperacion(codigo, this->fue_cerrado);
             this->evaluarOperacion(codigo);
         }
@@ -33,6 +33,8 @@ void HiloClienteLobby::evaluarOperacion(uint8_t operacion) {
         case (uint8_t) Operaciones::crear:
             this->crearPartida();
             break;
+        case (uint8_t) Operaciones::fin:
+            this->cerrar_hilo();
     }
 }
 
@@ -49,10 +51,16 @@ void HiloClienteLobby::crearPartida() {
 }
 
 void HiloClienteLobby::cerrar_hilo() {
+    flag_ha_finalizado = true;
     hilo.join();
 }
 
 void HiloClienteLobby::comenzarPartida() {
-    protocolo.notificarComenzarPartida(this->fue_cerrado);
+    protocolo.notificarComienzoDePartida();
 }
 
+HiloClienteLobby::~HiloClienteLobby(){
+    if (hilo.joinable()) {
+        hilo.join();
+    }
+}

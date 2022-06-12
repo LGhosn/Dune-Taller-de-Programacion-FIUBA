@@ -1,11 +1,13 @@
 #ifndef SERVER_PROTOCOLO_H_
 #define SERVER_PROTOCOLO_H_
 
-#include "server_DTO/partida_DTO.h"
-#include "../src_common/common_infoDTO/infoDTO.h"
-#include "../src_common/common_infoDTO/MovimientoDTO.h"
-#include "../src_common/common_serializador.h"
-#include "../src_common/common_socket.h"
+#include "../server_DTO/partida_DTO.h"
+#include "../../src_common/common_infoDTO/infoDTO.h"
+#include "../../src_common/common_infoDTO/MovimientoDTO.h"
+#include "../../src_common/common_serializador.h"
+#include "../../src_common/common_socket.h"
+#include "../../src_common/common_coords.h"
+#include "server_serializador.h"
 #include <memory>
 #include <string>
 #include <vector>
@@ -17,15 +19,18 @@ class PartidaDTO;
 
 class ProtocoloServidor {
     private:
-    Socket& skt_comunicador;
+    Socket* skt_comunicador;
+    SerializadorServer serializador;
     enum class Operaciones : uint8_t {unirse = 1, listar = 2, crear = 3};
+
+    void enviarBuffer(const std::vector<uint8_t>& buffer) const;
 
     public:
     /*
      * Construye la clase, estableciendo un socket
      * válido como su atributo.
      * */
-    explicit ProtocoloServidor(Socket& comunicador);
+    explicit ProtocoloServidor(Socket* comunicador);
 
     /*
      * Recibe el codigo de operacion solicitado
@@ -47,7 +52,7 @@ class ProtocoloServidor {
      * */
     PartidaDTO recibirSolicitudDeUnion(bool& socket_cerrado);
     void enviarStatusDeUnion(bool el_jugador_se_unio, bool& socket_cerrado);
-    void notificarComenzarPartida(bool& socket_cerrado);
+    void notificarComienzoDePartida();
 
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR PARTIDAS
@@ -72,14 +77,18 @@ class ProtocoloServidor {
 
     void enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y);
 
-    void notificarComienzoDePartida();
+/* *****************************************************************
+ *             METODOS REFERIDOS A CREAR EDIFICIOS
+ * *****************************************************************/
+
+    void enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio, uint8_t tipo, const Coordenadas& coords) const;
 
     /*
-     * No tiene sentido copiar un protocolo_servidor, tampoco moverlo.
+     * No tiene sentido copiar un ProtocoloServidor.
      * */
     ProtocoloServidor(const ProtocoloServidor&) = delete;
     ProtocoloServidor& operator=(const ProtocoloServidor&) = delete;
-    ProtocoloServidor(ProtocoloServidor&&) = delete;
-    ProtocoloServidor& operator=(ProtocoloServidor&&) = delete;
+    ProtocoloServidor(ProtocoloServidor&&);
+    ProtocoloServidor& operator=(ProtocoloServidor&&);
 };
 #endif  // SERVER_PROTOCOLO_H_

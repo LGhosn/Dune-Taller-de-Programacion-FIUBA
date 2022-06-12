@@ -5,7 +5,7 @@
 #include "../src_common/common_socket.h"
 #include "server_aceptador.h"
 #include "server_thread_client_lobby/server_hilo_cliente_lobby.h"
-#include "server_protocolo.h"
+#include "server_protocolo/server_protocolo.h"
 #include <list>
 #include <string>
 #include <vector>

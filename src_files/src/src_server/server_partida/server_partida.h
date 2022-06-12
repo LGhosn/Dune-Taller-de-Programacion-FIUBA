@@ -33,13 +33,4 @@ public:
     Partida(Partida&&);
 };
 
-struct PartidaCmp {
-    bool operator()(const std::string& lhs, const std::string& rhs) const {
-        if (lhs < rhs) {
-            return true;
-        }
-        return false;
-    }
-};
-
 #endif //SERVER_PARTIDA_H

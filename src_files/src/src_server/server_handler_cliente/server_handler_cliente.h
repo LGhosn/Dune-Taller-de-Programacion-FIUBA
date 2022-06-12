@@ -18,12 +18,12 @@ class HiloClienteLobby;
 
 class HandlerCliente {
     Socket socket;
-    Lobby& lobby;
+    Lobby* lobby;
     ProtocoloServidor protocolo;
     HiloClienteLobby* hilo_cliente_lobby;
-    ColaBloqueante<ComandoServer> cola_comandos;
+    ColaBloqueante<ComandoServer>* cola_comandos;
     ServerHiloSender hilo_sender;
-    ServerHiloReciever hilo_reciever;
+    ServerHiloReciever hilo_receiver;
 
     /*
      * Lanza hilos sender y reciever.
@@ -33,7 +33,7 @@ public:
     /*
      * Constructor, lanza el HiloClienteLobby.
      */
-    HandlerCliente(Socket& socket, Lobby& lobby);
+    HandlerCliente(Socket& socket, Lobby* lobby);
 
     void empezarPartida(ColaNoBloqueante<SolicitudServer>* cola);
 
@@ -46,6 +46,11 @@ public:
     void cerrar();
 
     ~HandlerCliente();
+
+    HandlerCliente(const HandlerCliente&) = delete;
+    HandlerCliente& operator=(const HandlerCliente&) = delete;
+    HandlerCliente(HandlerCliente&&);
+    HandlerCliente& operator=(HandlerCliente&&);
 };
 
 

@@ -3,6 +3,7 @@
 
 #include "server_DTO/partida_DTO.h"
 #include "server_partida/server_partida.h"
+#include "server_partida/server_partida_cmp.h"
 #include <map>
 #include <string>
 #include <iostream>

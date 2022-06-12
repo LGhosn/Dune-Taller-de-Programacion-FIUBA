@@ -5,7 +5,7 @@
 #include "../server_DTO/partida_DTO.h"
 #include "../../src_common/common_socket_error.h"
 #include "../../src_common/common_socket.h"
-#include "../server_protocolo.h"
+#include "../server_protocolo/server_protocolo.h"
 #include <utility>
 #include <thread>
 #include <atomic>
@@ -61,6 +61,8 @@ class HiloClienteLobby {
      * Hace join al hilo que maneja HiloClienteLobby.
      * */
     void cerrar_hilo();
+
+    ~HiloClienteLobby();
 
     /*
      * No tiene sentido copiar un handler y tampoco moverlo (al menos por ahora).

@@ -38,6 +38,7 @@ Partida& Partida::operator=(Partida&& otra) {
     this->jugadores_requeridos = otra.jugadores_requeridos;
     this->clientes_conectados = std::move(otra.clientes_conectados);
     this->cola_solicitudes = std::move(otra.cola_solicitudes);
+    return *this;
 }
 
 Partida::Partida(Partida&& otra) {
