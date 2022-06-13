@@ -1,26 +1,16 @@
 #include "server_handler_cliente.h"
 
-HandlerCliente::HandlerCliente(Socket& socket, Lobby* lobby) :
+HandlerCliente::HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos,
+                                ColaBloqueante<SolicitudMenuServer>* cola_solicitudes_menu) :
+                                id_cliente(contador_ids++),
                                 socket(std::move(socket)),
-                                lobby(lobby),
-                                protocolo(&this->socket),
-                                hilo_cliente_lobby(new HiloClienteLobby(this->protocolo, this->lobby)),
+                                protocolo(&this->socket, codigos),
                                 cola_comandos(new ColaBloqueante<ComandoServer>()),
                                 hilo_sender(this->cola_comandos, &this->protocolo),
-                                hilo_receiver(&this->protocolo) {}
-
-void HandlerCliente::lanzarHilos(ColaNoBloqueante<SolicitudServer>* cola) {
-    hilo_receiver.start(cola);
-    hilo_sender.start();
-}
+                                hilo_receiver(&this->protocolo, cola_solicitudes_menu, this) {}
 
 void HandlerCliente::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola) {
-    this->notificarInicioDePartida();
-    this->lanzarHilos(cola);
-}
-
-void HandlerCliente::notificarInicioDePartida() {
-    protocolo.notificarComienzoDePartida();
+    this->hilo_receiver.empezarPartida();
 }
 
 ColaBloqueante<ComandoServer>* HandlerCliente::obtenerColaSender() {
@@ -37,8 +27,13 @@ void HandlerCliente::cerrar() {
     this->socket.close();
 }
 
+uint8_t HandlerCliente::obtenerId() const {
+    return this->id_cliente;
+}
+
 HandlerCliente::~HandlerCliente() {
     delete this->hilo_cliente_lobby;
+    delete cola_comandos;
 }
 
 HandlerCliente::HandlerCliente(HandlerCliente&& otro):

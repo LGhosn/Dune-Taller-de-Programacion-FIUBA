@@ -14,6 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include <netinet/in.h>
+#include "yaml-cpp/yaml.h"
 
 class PartidaDTO;
 
@@ -30,13 +31,13 @@ class ProtocoloServidor {
      * Construye la clase, estableciendo un socket
      * válido como su atributo.
      * */
-    explicit ProtocoloServidor(Socket* comunicador);
+    explicit ProtocoloServidor(Socket* comunicador, YAML::Node* codigos);
 
     /*
      * Recibe el codigo de operacion solicitado
      * por el cliente.
      * */
-    void recibirOperacion(uint8_t& codigo_operacion, bool& socket_cerrado);
+    void recibirOperacion(uint8_t& codigo_operacion);
 
 /* *****************************************************************
  *             METODOS REFERIDOS A UNIRSE A PARTIDAS
@@ -50,8 +51,8 @@ class ProtocoloServidor {
      * Si la partida se completa, el servidor lo informa
      * con un mensaje.
      * */
-    PartidaDTO recibirSolicitudDeUnion(bool& socket_cerrado);
-    void enviarStatusDeUnion(bool el_jugador_se_unio, bool& socket_cerrado);
+    PartidaDTO recibirSolicitudDeUnion();
+    void enviarStatusDeUnion(bool el_jugador_se_unio);
     void notificarComienzoDePartida();
 
 /* *****************************************************************
@@ -65,11 +66,11 @@ class ProtocoloServidor {
      * de si la partida fue o no creada, envía un status
      * al cliente
      * */
-    PartidaDTO recibirSolicitudDeCreacion(bool& socket_cerrado);
-    void enviarStatusDeCreacion(bool la_partida_se_creo, bool& socket_cerrado);
+    PartidaDTO recibirSolicitudDeCreacion();
+    void enviarStatusDeCreacion(bool la_partida_se_creo);
 
-    void recibirCodigoDeOperacion(uint8_t& codigo, bool& socket_cerrado);
-    std::unique_ptr<InfoDTO> recibirInfoSegunCodigo(uint8_t& codigo, bool& socket_cerrado);
+    void recibirCodigoDeOperacion(uint8_t& codigo);
+    std::unique_ptr<InfoDTO> recibirInfoSegunCodigo(uint8_t& codigo);
 
 /* *****************************************************************
  *             METODOS REFERIDOS A MOVER UNIDADES

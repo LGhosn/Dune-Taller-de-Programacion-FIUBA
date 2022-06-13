@@ -4,8 +4,8 @@
 // #include "server_partida_empezada.h"
 #include "../src_common/common_socket.h"
 #include "server_aceptador.h"
-#include "server_thread_client_lobby/server_hilo_cliente_lobby.h"
 #include "server_protocolo/server_protocolo.h"
+#include "yaml-cpp/yaml.h"
 #include <list>
 #include <string>
 #include <vector>
@@ -15,11 +15,8 @@
 #include <iostream>
 
 class Server {
-    bool was_closed = false;
-    std::atomic<bool> el_server_no_debe_cerrarse;
-    // std::list<PartidaEmpezada> partidas_empezadas;
-    Socket skt_aceptador;
-    Lobby lobby;
+    YAML::Node codigos;
+    HiloAceptador hilo_aceptador;
 
     public:
     /*

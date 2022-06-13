@@ -3,16 +3,25 @@
 
 #include "../src_common/common_socket.h"
 #include "../src_server/server_lobby.h"
-#include "server_thread_client_lobby/server_hilo_cliente_lobby.h"
+#include "server_thread_prepartida/server_hilo_prepartida.h"
+#include "server_handler_cliente/server_handler_cliente.h"
+#include "yaml-cpp/yaml.h"
 #include <list>
 #include <algorithm>
 #include <syslog.h>
+#include <thread>
+#include <map>
 
 class HiloAceptador {
-    Socket& skt_aceptador;
-    Lobby& lobby;
-    std::atomic <bool>& hay_que_seguir;
+    Socket skt_aceptador;
+    YAML::Node *codigos;
+    ColaBloqueante<SolicitudMenuServer> cola_solicitudes_menu;
+    std::map<uint8_t, ColaBloqueante<ComandoServer>*> colas_sender;
+    HiloPrepartida hilo_prepartida;
+    Lobby lobby;
+    std::atomic <bool> hay_que_seguir = true;
     std::list<HandlerCliente> clientes;
+    std::thread hilo;
 
     /*
      * Crea un nuevo cliente y lo guarda en el container
@@ -31,7 +40,7 @@ class HiloAceptador {
      * En caso de que un HiloCliente haya finalizado su ejecucion
      * este metodo cierra el hilo y devuelve true, sino devuelve false.
      */
-    static bool esperarSiHaFinalizado(HandlerCliente& cliente);
+    bool esperarSiHaFinalizado();
 
     /*
      * En caso de que se deba cerrar el servidor, se cierra
@@ -53,7 +62,7 @@ public:
      * para luego utilizar y pasar por movimiento a los clientes cada
      * socket aceptado (el lobby lo pasa por referencia).
      */
-    HiloAceptador(Socket& skt_aceptador, Lobby& lobby, std::atomic <bool>& hay_que_seguir);
+    HiloAceptador(const char* servicename, YAML::Node* codigos);
 
     /*
      * Metodo principal de este objeto, es el encargado de lanzar los
@@ -63,6 +72,10 @@ public:
      * HilosCliente para su liberacion de memoria.
      */
     void atenderClientes();
+
+    void terminar();
+
+    ~HiloAceptador();
 
     /*
      * No tiene sentido copiar un HiloAceptador, tampoco moverlo.

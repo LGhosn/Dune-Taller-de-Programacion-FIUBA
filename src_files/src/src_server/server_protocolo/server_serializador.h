@@ -9,16 +9,21 @@
 
 class SerializadorServer {
 private:
-    YAML::Node codigos;
+    YAML::Node* codigos;
 
 public:
-    SerializadorServer();
+    SerializadorServer(YAML::Node* codigos);
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR EDIFICIOS
  * *****************************************************************/
 
     std::vector<uint8_t> serializarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio,
     uint8_t tipo, const Coordenadas& coords) const;
+
+    SerializadorServer(const SerializadorServer& otro) = delete;
+    SerializadorServer& operator=(const SerializadorServer& otro) = delete;
+    SerializadorServer(SerializadorServer&& otro);
+    SerializadorServer& operator=(SerializadorServer&& otro);
 };
 
 #endif  // SERVER_SERIALIZADOR_H

@@ -18,7 +18,7 @@
 
 class ProtocoloCliente {
     private:
-    bool was_closed = false;
+    // bool was_closed = false;
     Socket& skt_cliente;
 
     public:

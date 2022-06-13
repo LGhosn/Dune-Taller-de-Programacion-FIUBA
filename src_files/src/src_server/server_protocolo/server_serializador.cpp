@@ -1,12 +1,12 @@
 #include "server_serializador.h"
 #include <arpa/inet.h>
 
-SerializadorServer::SerializadorServer(): codigos(YAML::LoadFile(RUTA_CODIGOS)) {}
+SerializadorServer::SerializadorServer(YAML::Node* codigos): codigos(codigos) {}
 
 std::vector<uint8_t> SerializadorServer::serializarComandoCrearEdificio(uint8_t id_jugador,
 uint8_t id_edificio, uint8_t tipo, const Coordenadas& coords) const {
-    std::vector<uint8_t> buffer(8);
-    uint8_t codigo = this->codigos["CrearEdificio"].as<uint8_t>();
+    std::vector<uint8_t> buffer(7);
+    uint8_t codigo = (*codigos)["CrearEdificio"].as<uint8_t>();
     buffer[0] = codigo;
     buffer[1] = id_jugador;
     buffer[2] = tipo;
@@ -16,4 +16,15 @@ uint8_t id_edificio, uint8_t tipo, const Coordenadas& coords) const {
     aux[0] = x;
     aux[1] = y;
     return buffer;
+}
+
+SerializadorServer::SerializadorServer(SerializadorServer&& otro) {
+    this->codigos = otro.codigos;
+}
+SerializadorServer& SerializadorServer::operator=(SerializadorServer&& otro) {
+    if (this == &otro) {
+        return *this;
+    }
+    this->codigos = otro.codigos;
+    return *this;
 }

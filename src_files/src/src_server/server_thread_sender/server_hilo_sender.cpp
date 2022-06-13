@@ -1,9 +1,10 @@
 #include "server_hilo_sender.h"
 
 ServerHiloSender::ServerHiloSender(ColaBloqueante<ComandoServer>* cola_comandos,
-                                   ProtocoloServidor* protocolo) :
+                                   ProtocoloServidor* protocolo, YAML::Node* codigos) :
                                    cola_comandos(cola_comandos),
-                                   protocolo(protocolo) {}
+                                   protocolo(protocolo),
+                                   codigos(codigos) {}
 
 void ServerHiloSender::start() {
     this->thread = std::thread(&ServerHiloSender::handleThread, this);
@@ -44,7 +45,8 @@ ServerHiloSender::ServerHiloSender(ServerHiloSender&& otro):
                                     thread(std::move(otro.thread)),
                                      cola_comandos(otro.cola_comandos),
                                      protocolo(otro.protocolo),
-                                     hay_que_seguir(otro.hay_que_seguir) {}
+                                     hay_que_seguir(otro.hay_que_seguir),
+                                     codigos(otro.codigos) {}
 
 ServerHiloSender& ServerHiloSender::operator=(ServerHiloSender&& otro) {
     if (this == &otro) {

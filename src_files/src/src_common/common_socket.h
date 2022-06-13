@@ -48,8 +48,8 @@ class Socket {
      *
      * Lease man send y man recv
      * */
-    int sendsome(const void *data, unsigned int sz, bool *was_closed);
-    int recvsome(void *data, unsigned int sz, bool *was_closed);
+    int sendsome(const void *data, unsigned int sz);
+    int recvsome(void *data, unsigned int sz);
 
     /*
      * Socket::sendall() envia exactamente sz bytes leidos del buffer, ni mas,
@@ -64,8 +64,8 @@ class Socket {
      *
      * En caso de que se cierre el socket, was_closed es puesto a True.
      * */
-    int sendall(const void *data, unsigned int sz, bool *was_closed);
-    int recvall(void *data, unsigned int sz, bool *was_closed);
+    int sendall(const void *data, unsigned int sz);
+    int recvall(void *data, unsigned int sz);
 
     /*
      * Acepta una conexion entrante y construye con ella un Socket peer.

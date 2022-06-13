@@ -1,11 +1,9 @@
 #include "server_aceptador.h"
 
-HiloAceptador::HiloAceptador(Socket& skt_aceptador,
-                    Lobby& lobby,
-                    std::atomic<bool> &hay_que_seguir):
-                    skt_aceptador(skt_aceptador),
-                    lobby(lobby),
-                    hay_que_seguir(hay_que_seguir) {}
+HiloAceptador::HiloAceptador(const char* servicename, YAML::Node* codigos) :
+                            skt_aceptador(servicename),
+                            codigos(codigos),
+                            hilo_prepartida(&cola_solicitudes_menu, &colas_sender) {}
 
 void HiloAceptador::atenderClientes() {
     try {
@@ -23,7 +21,9 @@ void HiloAceptador::atenderClientes() {
 }
 
 void HiloAceptador::lanzarHandlerCliente(Socket& aceptado) {
-    clientes.emplace_back(aceptado, &lobby);
+    clientes.emplace_back(aceptado, &lobby, codigos);
+    uint8_t id_cliente = clientes.back().obtenerId();
+    colas_sender[id_cliente] = clientes.back().obtenerColaSender();
 }
 
 bool HiloAceptador::hayQueSeguir() {
@@ -31,23 +31,38 @@ bool HiloAceptador::hayQueSeguir() {
 }
 
 void HiloAceptador::limpiarHandlersClientesFinalizados() {
-    clientes.erase(std::remove_if(clientes.begin(),
-                                  clientes.end(),
-                                  esperarSiHaFinalizado),
-                   clientes.end());
+    esperarSiHaFinalizado();
 }
 
-bool HiloAceptador::esperarSiHaFinalizado(HandlerCliente& cliente) {
-    if (cliente.haFinalizado()) {
-        cliente.cerrar();
-        return true;
-    } else {
-        return false;
-    }
+bool HiloAceptador::esperarSiHaFinalizado() {
+
+    std::list<HandlerCliente>::iterator iter = clientes.begin();
+	while (iter != clientes.end()) {
+		if (iter->haFinalizado()){
+            iter = clientes.erase(iter);
+            uint8_t id_cliente = iter->obtenerId();
+            colas_sender.erase(id_cliente);
+        } else {
+            ++iter;
+        }
+	}
 }
 
 void HiloAceptador::esperarHandlersCliente() {
-    for (auto itr = clientes.begin(); itr != clientes.end(); itr++) {
-        itr->cerrar();
-    }
+    std::list<HandlerCliente>::iterator iter = clientes.begin();
+	while (iter != clientes.end()) {
+        iter = clientes.erase(iter);
+        uint8_t id_cliente = iter->obtenerId();
+        colas_sender.erase(id_cliente);
+	}
+}
+
+void HiloAceptador::terminar() {
+    this->hay_que_seguir = false;
+    skt_aceptador.shutdown(SHUT_RDWR);
+}
+
+HiloAceptador::~HiloAceptador() {
+    if (this->hilo.joinable())
+        this->hilo.join();
 }
