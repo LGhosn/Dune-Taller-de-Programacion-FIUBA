@@ -39,19 +39,18 @@ PartidaDTO ProtocoloServidor::recibirSolicitudDeCreacion() {
     std::string nombre_partida(buff.begin(), buff.end());
 
 
-    return PartidaDTO(nombre_partida, 1, requeridos, "sdasd"); // TODO: cambiar esto
+    return PartidaDTO(nombre_partida, 1, requeridos, "mapa_prueba"); // TODO: cambiar esto
 }
 
-void ProtocoloServidor::enviarStatusDeCreacion
-(bool la_partida_se_creo) {
+void ProtocoloServidor::enviarStatusDeCreacion(bool la_partida_se_creo) {
     if (la_partida_se_creo) {
         uint8_t status = 0;
         this->skt_comunicador->sendall
-        (&status, sizeof(uint8_t));
+            (&status, sizeof(uint8_t));
     } else {
         uint8_t status = 1;
         this->skt_comunicador->sendall
-        (&status, sizeof(uint8_t));
+            (&status, sizeof(uint8_t));
     }
 }
 
@@ -72,18 +71,18 @@ PartidaDTO ProtocoloServidor::recibirSolicitudDeUnion() {
     this->skt_comunicador->recvall(&buff.front(), len_nombre);
     std::string nombre_partida(buff.begin(), buff.end());
 
-    return PartidaDTO(nombre_partida, 0, 0, "asdads"); // TODO: cambiar esto
+    return PartidaDTO(nombre_partida, 0, 0, "mapa_prueba");
 }
 
 void ProtocoloServidor::enviarStatusDeUnion(bool el_jugador_se_unio) {
     if (el_jugador_se_unio) {
         uint8_t status = 0;
         this->skt_comunicador->sendall
-        (&status, sizeof(uint8_t));
+            (&status, sizeof(uint8_t));
     } else {
         uint8_t status = 1;
         this->skt_comunicador->sendall
-        (&status, sizeof(uint8_t));
+            (&status, sizeof(uint8_t));
     }
 }
 

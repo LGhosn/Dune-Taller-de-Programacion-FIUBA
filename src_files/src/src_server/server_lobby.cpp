@@ -25,9 +25,11 @@ bool Lobby::unirAPartida(const PartidaDTO& partida_a_unirse, HandlerCliente* cli
     if (partida == this->partidas_creadas.end()) {
         return false;
     } else {
-        // En cambio si el iterador encontró dicha partida,
+        // En cambio, si el iterador encontró dicha partida,
         // debemos chequear que no esté completa.
-        if (!partida->second.estaCompleta()) {
+        if (partida->second.estaCompleta()) {
+            return false;
+        } else {
             partida->second.agregarJugador(cliente);
             partida->second.jugadores_actuales++;
             if (partida->second.estaCompleta()) {
@@ -37,8 +39,6 @@ bool Lobby::unirAPartida(const PartidaDTO& partida_a_unirse, HandlerCliente* cli
                 partida->second.empezar();
             }
             return true;
-        } else {
-            return false;
         }
     }
 }

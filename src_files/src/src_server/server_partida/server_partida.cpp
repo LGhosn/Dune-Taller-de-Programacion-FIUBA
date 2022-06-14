@@ -8,7 +8,7 @@ Partida::Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos
 }
 
 bool Partida::estaCompleta() const {
-    return (this->jugadores_actuales < this->jugadores_requeridos);
+    return (this->jugadores_actuales == this->jugadores_requeridos);
 }
 
 void Partida::agregarJugador(HandlerCliente* cliente) {

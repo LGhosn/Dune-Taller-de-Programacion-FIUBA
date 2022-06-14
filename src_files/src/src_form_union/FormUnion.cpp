@@ -30,8 +30,8 @@ void FormUnion::solicitudDeUnion() {
             SolicitudDeUnion solicitud(nombre_partida, casa);
             ProtocoloCliente& protocolo = cliente.protocoloAsociado();
             protocolo.enviarSolicitudDeUnion(solicitud);
-            Status status = protocolo.recibirStatus();
-            unirseNotificacion(status);
+            Status status_recibido = protocolo.recibirStatus();
+            unirseNotificacion(status_recibido);
             // protocolo.esperarAComienzoDePartida();
         }
     } catch (const std::exception &e) {
