@@ -34,7 +34,7 @@ void FormCreacion::solicitudDeCreacion() {
             protocolo.enviarSolicitudDeCreacion(solicitud);
             Status status_recibido = protocolo.recibirStatus();
             crearNotificacion(status_recibido);
-            protocolo.esperarAComienzoDePartida();
+            //protocolo.esperarAComienzoDePartida();
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());
@@ -45,7 +45,6 @@ void FormCreacion::solicitudDeCreacion() {
 
 void FormCreacion::crearNotificacion(Status& status) {
     if (status.conexionEstablecida()) {
-        // Lanzamos hilos
         QMessageBox::information(this, "Creacion Existosa", "Esperando jugadores restantes...");
     } else {
         QMessageBox::information(this, "Creacion Fallida", "Existe otra partida con ese mismo nombre, por favor elegir otro.");

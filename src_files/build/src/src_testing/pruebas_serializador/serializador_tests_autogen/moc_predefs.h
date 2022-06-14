@@ -128,7 +128,7 @@
 #define __INTPTR_WIDTH__ 64
 #define __FLT32X_HAS_DENORM__ 1
 #define __INT_FAST16_TYPE__ long int
-#define RESOURCE_PATH "/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/assets"
+#define RESOURCE_PATH "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/assets"
 #define __LDBL_HAS_DENORM__ 1
 #define __cplusplus 201402L
 #define __cpp_ref_qualifiers 200710

@@ -15,7 +15,6 @@ class HandlerCliente;
 
 class ServerHiloReciever {
 private:
-    //ColaBloqueante<SolicitudMenuServer>* cola_solicitudes_menu;
     ColaNoBloqueante<SolicitudServer>* cola_solicitudes;
     ProtocoloServidor* protocolo;
     bool hay_que_seguir;

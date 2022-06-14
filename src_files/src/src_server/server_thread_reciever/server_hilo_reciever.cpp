@@ -9,15 +9,16 @@ void ServerHiloReciever::recibirSolicitudSegunCodigo(uint8_t codigo) {
 
 void ServerHiloReciever::recibirSolicitudMenuSegunCodigo(uint8_t codigo) {
     switch (codigo) {
-         case 3: // Solicitan crear una partida.
-            this->recibirSolicitudDeCreacion();
-            break;
+        // Solicitan unirse a una partida.
+        case 1:
+        this->recibirSolicitudDeUnion();
+        break;
 
-         case 1: // Solicitan unirse a una partida.
-            this->recibirSolicitudDeUnion();
-            break;
+        // Solicitan crear una partida.
+        case 3:
+        this->recibirSolicitudDeCreacion();
+        break;
     }
-    //codigos[codigo];
 }
 
 void ServerHiloReciever::recibirSolicitudDeCreacion() {

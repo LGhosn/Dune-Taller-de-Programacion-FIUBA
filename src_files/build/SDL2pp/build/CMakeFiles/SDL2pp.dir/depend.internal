@@ -7,136 +7,142 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
  ../src/src_libs/SDL2pp/SDL2pp/Optional.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioDevice.cc
- /usr/include/SDL2/SDL_atomic.h
- /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_platform.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_thread.h
- /usr/include/SDL2/SDL_version.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioDevice.cc
+ /usr/local/include/SDL2/SDL_atomic.h
+ /usr/local/include/SDL2/SDL_audio.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_mutex.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_thread.h
+ /usr/local/include/SDL2/SDL_version.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/AudioDevice.hh
  ../src/src_libs/SDL2pp/SDL2pp/Optional.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioLock.cc
- /usr/include/SDL2/SDL_atomic.h
- /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_platform.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_thread.h
- /usr/include/SDL2/SDL_version.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioLock.cc
+ /usr/local/include/SDL2/SDL_atomic.h
+ /usr/local/include/SDL2/SDL_audio.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_mutex.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_thread.h
+ /usr/local/include/SDL2/SDL_version.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/AudioSpec.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioSpec.cc
- /usr/include/SDL2/SDL_atomic.h
- /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_platform.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_thread.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioSpec.cc
+ /usr/local/include/SDL2/SDL_atomic.h
+ /usr/local/include/SDL2/SDL_audio.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_mutex.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_thread.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Chunk.hh
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
  ../src/src_libs/SDL2pp/SDL2pp/RWops.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Chunk.cc
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Chunk.cc
  /usr/include/SDL2/SDL_atomic.h
  /usr/include/SDL2/SDL_audio.h
  /usr/include/SDL2/SDL_config.h
  /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
  /usr/include/SDL2/SDL_mixer.h
  /usr/include/SDL2/SDL_mutex.h
  /usr/include/SDL2/SDL_platform.h
- /usr/include/SDL2/SDL_rwops.h
  /usr/include/SDL2/SDL_stdinc.h
  /usr/include/SDL2/SDL_thread.h
  /usr/include/SDL2/SDL_version.h
  /usr/include/SDL2/begin_code.h
  /usr/include/SDL2/close_code.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_rwops.h
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Color.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Color.cc
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Color.cc
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Exception.cc
- /usr/include/SDL2/SDL.h
- /usr/include/SDL2/SDL_assert.h
- /usr/include/SDL2/SDL_atomic.h
- /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_blendmode.h
- /usr/include/SDL2/SDL_clipboard.h
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_cpuinfo.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_events.h
- /usr/include/SDL2/SDL_filesystem.h
- /usr/include/SDL2/SDL_gamecontroller.h
- /usr/include/SDL2/SDL_gesture.h
- /usr/include/SDL2/SDL_haptic.h
- /usr/include/SDL2/SDL_hints.h
- /usr/include/SDL2/SDL_joystick.h
- /usr/include/SDL2/SDL_keyboard.h
- /usr/include/SDL2/SDL_keycode.h
- /usr/include/SDL2/SDL_loadso.h
- /usr/include/SDL2/SDL_log.h
- /usr/include/SDL2/SDL_main.h
- /usr/include/SDL2/SDL_messagebox.h
- /usr/include/SDL2/SDL_mouse.h
- /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_platform.h
- /usr/include/SDL2/SDL_power.h
- /usr/include/SDL2/SDL_quit.h
- /usr/include/SDL2/SDL_rect.h
- /usr/include/SDL2/SDL_render.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_scancode.h
- /usr/include/SDL2/SDL_sensor.h
- /usr/include/SDL2/SDL_shape.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_surface.h
- /usr/include/SDL2/SDL_system.h
- /usr/include/SDL2/SDL_thread.h
- /usr/include/SDL2/SDL_timer.h
- /usr/include/SDL2/SDL_touch.h
- /usr/include/SDL2/SDL_version.h
- /usr/include/SDL2/SDL_video.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Exception.cc
+ /usr/local/include/SDL2/SDL.h
+ /usr/local/include/SDL2/SDL_assert.h
+ /usr/local/include/SDL2/SDL_atomic.h
+ /usr/local/include/SDL2/SDL_audio.h
+ /usr/local/include/SDL2/SDL_blendmode.h
+ /usr/local/include/SDL2/SDL_clipboard.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_cpuinfo.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_events.h
+ /usr/local/include/SDL2/SDL_filesystem.h
+ /usr/local/include/SDL2/SDL_gamecontroller.h
+ /usr/local/include/SDL2/SDL_gesture.h
+ /usr/local/include/SDL2/SDL_guid.h
+ /usr/local/include/SDL2/SDL_haptic.h
+ /usr/local/include/SDL2/SDL_hidapi.h
+ /usr/local/include/SDL2/SDL_hints.h
+ /usr/local/include/SDL2/SDL_joystick.h
+ /usr/local/include/SDL2/SDL_keyboard.h
+ /usr/local/include/SDL2/SDL_keycode.h
+ /usr/local/include/SDL2/SDL_loadso.h
+ /usr/local/include/SDL2/SDL_locale.h
+ /usr/local/include/SDL2/SDL_log.h
+ /usr/local/include/SDL2/SDL_main.h
+ /usr/local/include/SDL2/SDL_messagebox.h
+ /usr/local/include/SDL2/SDL_metal.h
+ /usr/local/include/SDL2/SDL_misc.h
+ /usr/local/include/SDL2/SDL_mouse.h
+ /usr/local/include/SDL2/SDL_mutex.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_power.h
+ /usr/local/include/SDL2/SDL_quit.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_render.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_scancode.h
+ /usr/local/include/SDL2/SDL_sensor.h
+ /usr/local/include/SDL2/SDL_shape.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_surface.h
+ /usr/local/include/SDL2/SDL_system.h
+ /usr/local/include/SDL2/SDL_thread.h
+ /usr/local/include/SDL2/SDL_timer.h
+ /usr/local/include/SDL2/SDL_touch.h
+ /usr/local/include/SDL2/SDL_version.h
+ /usr/local/include/SDL2/SDL_video.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Color.hh
@@ -148,12 +154,11 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Rect.hh
  ../src/src_libs/SDL2pp/SDL2pp/Surface.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Font.cc
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Font.cc
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
  /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
  /usr/include/SDL2/SDL_config.h
  /usr/include/SDL2/SDL_cpuinfo.h
@@ -178,9 +183,7 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o
  /usr/include/SDL2/SDL_platform.h
  /usr/include/SDL2/SDL_power.h
  /usr/include/SDL2/SDL_quit.h
- /usr/include/SDL2/SDL_rect.h
  /usr/include/SDL2/SDL_render.h
- /usr/include/SDL2/SDL_rwops.h
  /usr/include/SDL2/SDL_scancode.h
  /usr/include/SDL2/SDL_sensor.h
  /usr/include/SDL2/SDL_shape.h
@@ -195,6 +198,9 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o
  /usr/include/SDL2/SDL_video.h
  /usr/include/SDL2/begin_code.h
  /usr/include/SDL2/close_code.h
+ /usr/local/include/SDL2/SDL_blendmode.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_rwops.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.o
@@ -202,85 +208,88 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
  ../src/src_libs/SDL2pp/SDL2pp/Mixer.hh
  ../src/src_libs/SDL2pp/SDL2pp/Music.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Mixer.cc
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Mixer.cc
  /usr/include/SDL2/SDL_atomic.h
  /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_config.h
  /usr/include/SDL2/SDL_endian.h
  /usr/include/SDL2/SDL_error.h
  /usr/include/SDL2/SDL_mixer.h
  /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_platform.h
  /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_stdinc.h
  /usr/include/SDL2/SDL_thread.h
  /usr/include/SDL2/SDL_version.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
  ../src/src_libs/SDL2pp/SDL2pp/Music.hh
  ../src/src_libs/SDL2pp/SDL2pp/RWops.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Music.cc
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Music.cc
  /usr/include/SDL2/SDL_atomic.h
  /usr/include/SDL2/SDL_audio.h
  /usr/include/SDL2/SDL_config.h
  /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
  /usr/include/SDL2/SDL_mixer.h
  /usr/include/SDL2/SDL_mutex.h
  /usr/include/SDL2/SDL_platform.h
- /usr/include/SDL2/SDL_rwops.h
  /usr/include/SDL2/SDL_stdinc.h
  /usr/include/SDL2/SDL_thread.h
  /usr/include/SDL2/SDL_version.h
  /usr/include/SDL2/begin_code.h
  /usr/include/SDL2/close_code.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_rwops.h
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Optional.hh
  ../src/src_libs/SDL2pp/SDL2pp/Point.hh
  ../src/src_libs/SDL2pp/SDL2pp/Rect.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Point.cc
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_rect.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Point.cc
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
  ../src/src_libs/SDL2pp/SDL2pp/RWops.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/RWops.cc
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/RWops.cc
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Optional.hh
  ../src/src_libs/SDL2pp/SDL2pp/Point.hh
  ../src/src_libs/SDL2pp/SDL2pp/Rect.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Rect.cc
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_rect.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Rect.cc
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.o
@@ -293,108 +302,118 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Texture.hh
  ../src/src_libs/SDL2pp/SDL2pp/Window.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Renderer.cc
- /usr/include/SDL2/SDL.h
- /usr/include/SDL2/SDL_assert.h
- /usr/include/SDL2/SDL_atomic.h
- /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_blendmode.h
- /usr/include/SDL2/SDL_clipboard.h
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_cpuinfo.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_events.h
- /usr/include/SDL2/SDL_filesystem.h
- /usr/include/SDL2/SDL_gamecontroller.h
- /usr/include/SDL2/SDL_gesture.h
- /usr/include/SDL2/SDL_haptic.h
- /usr/include/SDL2/SDL_hints.h
- /usr/include/SDL2/SDL_joystick.h
- /usr/include/SDL2/SDL_keyboard.h
- /usr/include/SDL2/SDL_keycode.h
- /usr/include/SDL2/SDL_loadso.h
- /usr/include/SDL2/SDL_log.h
- /usr/include/SDL2/SDL_main.h
- /usr/include/SDL2/SDL_messagebox.h
- /usr/include/SDL2/SDL_mouse.h
- /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_platform.h
- /usr/include/SDL2/SDL_power.h
- /usr/include/SDL2/SDL_quit.h
- /usr/include/SDL2/SDL_rect.h
- /usr/include/SDL2/SDL_render.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_scancode.h
- /usr/include/SDL2/SDL_sensor.h
- /usr/include/SDL2/SDL_shape.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_surface.h
- /usr/include/SDL2/SDL_system.h
- /usr/include/SDL2/SDL_thread.h
- /usr/include/SDL2/SDL_timer.h
- /usr/include/SDL2/SDL_touch.h
- /usr/include/SDL2/SDL_version.h
- /usr/include/SDL2/SDL_video.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Renderer.cc
+ /usr/local/include/SDL2/SDL.h
+ /usr/local/include/SDL2/SDL_assert.h
+ /usr/local/include/SDL2/SDL_atomic.h
+ /usr/local/include/SDL2/SDL_audio.h
+ /usr/local/include/SDL2/SDL_blendmode.h
+ /usr/local/include/SDL2/SDL_clipboard.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_cpuinfo.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_events.h
+ /usr/local/include/SDL2/SDL_filesystem.h
+ /usr/local/include/SDL2/SDL_gamecontroller.h
+ /usr/local/include/SDL2/SDL_gesture.h
+ /usr/local/include/SDL2/SDL_guid.h
+ /usr/local/include/SDL2/SDL_haptic.h
+ /usr/local/include/SDL2/SDL_hidapi.h
+ /usr/local/include/SDL2/SDL_hints.h
+ /usr/local/include/SDL2/SDL_joystick.h
+ /usr/local/include/SDL2/SDL_keyboard.h
+ /usr/local/include/SDL2/SDL_keycode.h
+ /usr/local/include/SDL2/SDL_loadso.h
+ /usr/local/include/SDL2/SDL_locale.h
+ /usr/local/include/SDL2/SDL_log.h
+ /usr/local/include/SDL2/SDL_main.h
+ /usr/local/include/SDL2/SDL_messagebox.h
+ /usr/local/include/SDL2/SDL_metal.h
+ /usr/local/include/SDL2/SDL_misc.h
+ /usr/local/include/SDL2/SDL_mouse.h
+ /usr/local/include/SDL2/SDL_mutex.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_power.h
+ /usr/local/include/SDL2/SDL_quit.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_render.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_scancode.h
+ /usr/local/include/SDL2/SDL_sensor.h
+ /usr/local/include/SDL2/SDL_shape.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_surface.h
+ /usr/local/include/SDL2/SDL_system.h
+ /usr/local/include/SDL2/SDL_thread.h
+ /usr/local/include/SDL2/SDL_timer.h
+ /usr/local/include/SDL2/SDL_touch.h
+ /usr/local/include/SDL2/SDL_version.h
+ /usr/local/include/SDL2/SDL_video.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
  ../src/src_libs/SDL2pp/SDL2pp/SDL.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDL.cc
- /usr/include/SDL2/SDL.h
- /usr/include/SDL2/SDL_assert.h
- /usr/include/SDL2/SDL_atomic.h
- /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_blendmode.h
- /usr/include/SDL2/SDL_clipboard.h
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_cpuinfo.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_events.h
- /usr/include/SDL2/SDL_filesystem.h
- /usr/include/SDL2/SDL_gamecontroller.h
- /usr/include/SDL2/SDL_gesture.h
- /usr/include/SDL2/SDL_haptic.h
- /usr/include/SDL2/SDL_hints.h
- /usr/include/SDL2/SDL_joystick.h
- /usr/include/SDL2/SDL_keyboard.h
- /usr/include/SDL2/SDL_keycode.h
- /usr/include/SDL2/SDL_loadso.h
- /usr/include/SDL2/SDL_log.h
- /usr/include/SDL2/SDL_main.h
- /usr/include/SDL2/SDL_messagebox.h
- /usr/include/SDL2/SDL_mouse.h
- /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_platform.h
- /usr/include/SDL2/SDL_power.h
- /usr/include/SDL2/SDL_quit.h
- /usr/include/SDL2/SDL_rect.h
- /usr/include/SDL2/SDL_render.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_scancode.h
- /usr/include/SDL2/SDL_sensor.h
- /usr/include/SDL2/SDL_shape.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_surface.h
- /usr/include/SDL2/SDL_system.h
- /usr/include/SDL2/SDL_thread.h
- /usr/include/SDL2/SDL_timer.h
- /usr/include/SDL2/SDL_touch.h
- /usr/include/SDL2/SDL_version.h
- /usr/include/SDL2/SDL_video.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDL.cc
+ /usr/local/include/SDL2/SDL.h
+ /usr/local/include/SDL2/SDL_assert.h
+ /usr/local/include/SDL2/SDL_atomic.h
+ /usr/local/include/SDL2/SDL_audio.h
+ /usr/local/include/SDL2/SDL_blendmode.h
+ /usr/local/include/SDL2/SDL_clipboard.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_cpuinfo.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_events.h
+ /usr/local/include/SDL2/SDL_filesystem.h
+ /usr/local/include/SDL2/SDL_gamecontroller.h
+ /usr/local/include/SDL2/SDL_gesture.h
+ /usr/local/include/SDL2/SDL_guid.h
+ /usr/local/include/SDL2/SDL_haptic.h
+ /usr/local/include/SDL2/SDL_hidapi.h
+ /usr/local/include/SDL2/SDL_hints.h
+ /usr/local/include/SDL2/SDL_joystick.h
+ /usr/local/include/SDL2/SDL_keyboard.h
+ /usr/local/include/SDL2/SDL_keycode.h
+ /usr/local/include/SDL2/SDL_loadso.h
+ /usr/local/include/SDL2/SDL_locale.h
+ /usr/local/include/SDL2/SDL_log.h
+ /usr/local/include/SDL2/SDL_main.h
+ /usr/local/include/SDL2/SDL_messagebox.h
+ /usr/local/include/SDL2/SDL_metal.h
+ /usr/local/include/SDL2/SDL_misc.h
+ /usr/local/include/SDL2/SDL_mouse.h
+ /usr/local/include/SDL2/SDL_mutex.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_power.h
+ /usr/local/include/SDL2/SDL_quit.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_render.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_scancode.h
+ /usr/local/include/SDL2/SDL_sensor.h
+ /usr/local/include/SDL2/SDL_shape.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_surface.h
+ /usr/local/include/SDL2/SDL_system.h
+ /usr/local/include/SDL2/SDL_thread.h
+ /usr/local/include/SDL2/SDL_timer.h
+ /usr/local/include/SDL2/SDL_touch.h
+ /usr/local/include/SDL2/SDL_version.h
+ /usr/local/include/SDL2/SDL_video.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
  ../src/src_libs/SDL2pp/SDL2pp/SDLImage.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLImage.cc
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLImage.cc
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
@@ -445,7 +464,7 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.o
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
  ../src/src_libs/SDL2pp/SDL2pp/SDLMixer.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLMixer.cc
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLMixer.cc
  /usr/include/SDL2/SDL_atomic.h
  /usr/include/SDL2/SDL_audio.h
  /usr/include/SDL2/SDL_config.h
@@ -464,7 +483,7 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.o
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
  ../src/src_libs/SDL2pp/SDL2pp/SDLTTF.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLTTF.cc
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLTTF.cc
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
@@ -521,17 +540,13 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Rect.hh
  ../src/src_libs/SDL2pp/SDL2pp/Surface.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Surface.cc
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Surface.cc
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
  /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
- /usr/include/SDL2/SDL_config.h
  /usr/include/SDL2/SDL_cpuinfo.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
  /usr/include/SDL2/SDL_events.h
  /usr/include/SDL2/SDL_filesystem.h
  /usr/include/SDL2/SDL_gamecontroller.h
@@ -548,26 +563,30 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.o
  /usr/include/SDL2/SDL_messagebox.h
  /usr/include/SDL2/SDL_mouse.h
  /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_platform.h
  /usr/include/SDL2/SDL_power.h
  /usr/include/SDL2/SDL_quit.h
- /usr/include/SDL2/SDL_rect.h
  /usr/include/SDL2/SDL_render.h
- /usr/include/SDL2/SDL_rwops.h
  /usr/include/SDL2/SDL_scancode.h
  /usr/include/SDL2/SDL_sensor.h
  /usr/include/SDL2/SDL_shape.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_surface.h
  /usr/include/SDL2/SDL_system.h
  /usr/include/SDL2/SDL_thread.h
  /usr/include/SDL2/SDL_timer.h
  /usr/include/SDL2/SDL_touch.h
  /usr/include/SDL2/SDL_version.h
  /usr/include/SDL2/SDL_video.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /usr/local/include/SDL2/SDL_blendmode.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_surface.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.o
@@ -578,18 +597,19 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Rect.hh
  ../src/src_libs/SDL2pp/SDL2pp/Surface.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SurfaceLock.cc
- /usr/include/SDL2/SDL_blendmode.h
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_rect.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_surface.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SurfaceLock.cc
+ /usr/local/include/SDL2/SDL_blendmode.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_surface.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.o
@@ -603,17 +623,14 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Surface.hh
  ../src/src_libs/SDL2pp/SDL2pp/Texture.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Texture.cc
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Texture.cc
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
  /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_blendmode.h
  /usr/include/SDL2/SDL_clipboard.h
- /usr/include/SDL2/SDL_config.h
  /usr/include/SDL2/SDL_cpuinfo.h
  /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
  /usr/include/SDL2/SDL_events.h
  /usr/include/SDL2/SDL_filesystem.h
  /usr/include/SDL2/SDL_gamecontroller.h
@@ -630,26 +647,29 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.o
  /usr/include/SDL2/SDL_messagebox.h
  /usr/include/SDL2/SDL_mouse.h
  /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_platform.h
  /usr/include/SDL2/SDL_power.h
  /usr/include/SDL2/SDL_quit.h
- /usr/include/SDL2/SDL_rect.h
- /usr/include/SDL2/SDL_render.h
- /usr/include/SDL2/SDL_rwops.h
  /usr/include/SDL2/SDL_scancode.h
  /usr/include/SDL2/SDL_sensor.h
  /usr/include/SDL2/SDL_shape.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_surface.h
  /usr/include/SDL2/SDL_system.h
  /usr/include/SDL2/SDL_thread.h
  /usr/include/SDL2/SDL_timer.h
  /usr/include/SDL2/SDL_touch.h
  /usr/include/SDL2/SDL_version.h
- /usr/include/SDL2/SDL_video.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /usr/local/include/SDL2/SDL_blendmode.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_render.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_surface.h
+ /usr/local/include/SDL2/SDL_video.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.o
@@ -660,20 +680,21 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Rect.hh
  ../src/src_libs/SDL2pp/SDL2pp/Texture.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/TextureLock.cc
- /usr/include/SDL2/SDL_blendmode.h
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_rect.h
- /usr/include/SDL2/SDL_render.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_surface.h
- /usr/include/SDL2/SDL_video.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/TextureLock.cc
+ /usr/local/include/SDL2/SDL_blendmode.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_render.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_surface.h
+ /usr/local/include/SDL2/SDL_video.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.o
@@ -681,19 +702,19 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Exception.hh
  ../src/src_libs/SDL2pp/SDL2pp/RWops.hh
  ../src/src_libs/SDL2pp/SDL2pp/Wav.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Wav.cc
- /usr/include/SDL2/SDL_atomic.h
- /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_platform.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_thread.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Wav.cc
+ /usr/local/include/SDL2/SDL_atomic.h
+ /usr/local/include/SDL2/SDL_audio.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_mutex.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_thread.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Export.hh
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Color.hh
@@ -704,51 +725,56 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.o
  ../src/src_libs/SDL2pp/SDL2pp/Surface.hh
  ../src/src_libs/SDL2pp/SDL2pp/Window.hh
  ../src/src_libs/SDL2pp/SDL2pp/external/libcpp_optional.hh
- /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Window.cc
- /usr/include/SDL2/SDL.h
- /usr/include/SDL2/SDL_assert.h
- /usr/include/SDL2/SDL_atomic.h
- /usr/include/SDL2/SDL_audio.h
- /usr/include/SDL2/SDL_blendmode.h
- /usr/include/SDL2/SDL_clipboard.h
- /usr/include/SDL2/SDL_config.h
- /usr/include/SDL2/SDL_cpuinfo.h
- /usr/include/SDL2/SDL_endian.h
- /usr/include/SDL2/SDL_error.h
- /usr/include/SDL2/SDL_events.h
- /usr/include/SDL2/SDL_filesystem.h
- /usr/include/SDL2/SDL_gamecontroller.h
- /usr/include/SDL2/SDL_gesture.h
- /usr/include/SDL2/SDL_haptic.h
- /usr/include/SDL2/SDL_hints.h
- /usr/include/SDL2/SDL_joystick.h
- /usr/include/SDL2/SDL_keyboard.h
- /usr/include/SDL2/SDL_keycode.h
- /usr/include/SDL2/SDL_loadso.h
- /usr/include/SDL2/SDL_log.h
- /usr/include/SDL2/SDL_main.h
- /usr/include/SDL2/SDL_messagebox.h
- /usr/include/SDL2/SDL_mouse.h
- /usr/include/SDL2/SDL_mutex.h
- /usr/include/SDL2/SDL_pixels.h
- /usr/include/SDL2/SDL_platform.h
- /usr/include/SDL2/SDL_power.h
- /usr/include/SDL2/SDL_quit.h
- /usr/include/SDL2/SDL_rect.h
- /usr/include/SDL2/SDL_render.h
- /usr/include/SDL2/SDL_rwops.h
- /usr/include/SDL2/SDL_scancode.h
- /usr/include/SDL2/SDL_sensor.h
- /usr/include/SDL2/SDL_shape.h
- /usr/include/SDL2/SDL_stdinc.h
- /usr/include/SDL2/SDL_surface.h
- /usr/include/SDL2/SDL_system.h
- /usr/include/SDL2/SDL_thread.h
- /usr/include/SDL2/SDL_timer.h
- /usr/include/SDL2/SDL_touch.h
- /usr/include/SDL2/SDL_version.h
- /usr/include/SDL2/SDL_video.h
- /usr/include/SDL2/begin_code.h
- /usr/include/SDL2/close_code.h
+ /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Window.cc
+ /usr/local/include/SDL2/SDL.h
+ /usr/local/include/SDL2/SDL_assert.h
+ /usr/local/include/SDL2/SDL_atomic.h
+ /usr/local/include/SDL2/SDL_audio.h
+ /usr/local/include/SDL2/SDL_blendmode.h
+ /usr/local/include/SDL2/SDL_clipboard.h
+ /usr/local/include/SDL2/SDL_config.h
+ /usr/local/include/SDL2/SDL_cpuinfo.h
+ /usr/local/include/SDL2/SDL_endian.h
+ /usr/local/include/SDL2/SDL_error.h
+ /usr/local/include/SDL2/SDL_events.h
+ /usr/local/include/SDL2/SDL_filesystem.h
+ /usr/local/include/SDL2/SDL_gamecontroller.h
+ /usr/local/include/SDL2/SDL_gesture.h
+ /usr/local/include/SDL2/SDL_guid.h
+ /usr/local/include/SDL2/SDL_haptic.h
+ /usr/local/include/SDL2/SDL_hidapi.h
+ /usr/local/include/SDL2/SDL_hints.h
+ /usr/local/include/SDL2/SDL_joystick.h
+ /usr/local/include/SDL2/SDL_keyboard.h
+ /usr/local/include/SDL2/SDL_keycode.h
+ /usr/local/include/SDL2/SDL_loadso.h
+ /usr/local/include/SDL2/SDL_locale.h
+ /usr/local/include/SDL2/SDL_log.h
+ /usr/local/include/SDL2/SDL_main.h
+ /usr/local/include/SDL2/SDL_messagebox.h
+ /usr/local/include/SDL2/SDL_metal.h
+ /usr/local/include/SDL2/SDL_misc.h
+ /usr/local/include/SDL2/SDL_mouse.h
+ /usr/local/include/SDL2/SDL_mutex.h
+ /usr/local/include/SDL2/SDL_pixels.h
+ /usr/local/include/SDL2/SDL_platform.h
+ /usr/local/include/SDL2/SDL_power.h
+ /usr/local/include/SDL2/SDL_quit.h
+ /usr/local/include/SDL2/SDL_rect.h
+ /usr/local/include/SDL2/SDL_render.h
+ /usr/local/include/SDL2/SDL_rwops.h
+ /usr/local/include/SDL2/SDL_scancode.h
+ /usr/local/include/SDL2/SDL_sensor.h
+ /usr/local/include/SDL2/SDL_shape.h
+ /usr/local/include/SDL2/SDL_stdinc.h
+ /usr/local/include/SDL2/SDL_surface.h
+ /usr/local/include/SDL2/SDL_system.h
+ /usr/local/include/SDL2/SDL_thread.h
+ /usr/local/include/SDL2/SDL_timer.h
+ /usr/local/include/SDL2/SDL_touch.h
+ /usr/local/include/SDL2/SDL_version.h
+ /usr/local/include/SDL2/SDL_video.h
+ /usr/local/include/SDL2/begin_code.h
+ /usr/local/include/SDL2/close_code.h
  SDL2pp/build/SDL2pp/Config.hh
  SDL2pp/build/SDL2pp/Export.hh

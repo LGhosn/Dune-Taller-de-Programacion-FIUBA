@@ -1,4 +1,4 @@
-# Install script for directory: /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino
+# Install script for directory: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/cmake_install.cmake")
+  include("/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-build/cmake_install.cmake")
 
 endif()
 

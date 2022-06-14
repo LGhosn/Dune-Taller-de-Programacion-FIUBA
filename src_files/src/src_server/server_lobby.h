@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <mutex>
 
+class HandlerCliente;
 class Partida;
 
 class Lobby {
@@ -28,15 +29,15 @@ public:
      * Devuelve true en caso de poder crearse la partida (en tal
      * caso es listada), false en caso contrario.
      * */
-    bool crearPartida(const PartidaDTO& partida_a_crear);
+    bool crearPartida(const PartidaDTO& partida_a_crear, HandlerCliente* cliente);
 
     /*
      * Devuelve true en caso de poder unir un jugador a la partida
-     * (si el juador se puede unir y con el se puede comenzar la
+     * (si el jugador se puede unir y con el se puede comenzar la
      * partida, se imprime un mensaje que lo informa), false en 
      * caso contrario.
      * */
-    bool unirAPartida(const PartidaDTO& partida_a_unirse);
+    bool unirAPartida(const PartidaDTO& partida_a_unirse, HandlerCliente* cliente);
     
     /*
      * Devuelve un objeto DTO para enviarlo al protocolo.

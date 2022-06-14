@@ -44,9 +44,9 @@ void FormUnion::solicitudDeUnion() {
 void FormUnion::unirseNotificacion(Status &status) {
     if (status.conexionEstablecida()) {
         QMessageBox::information(this, "Union Existosa", "Esperando jugadores restantes...");
-        this->close();
     } else {
         QMessageBox::information(this, "Union Fallida", "Parece que esa partida no existe o ya que ha comenzado.");
+        this->close();
     }
 }
 

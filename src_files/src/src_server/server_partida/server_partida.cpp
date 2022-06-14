@@ -21,7 +21,7 @@ void Partida::empezar() {
         colas_sender.push_back(cliente->obtenerColaSender());
         cliente->empezarPartida(&this->cola_solicitudes);
     }
-    std::string ruta_mapa = "";     // TODO: implementar ruta al mapa
+    std::string ruta_mapa = "../../../assets/maps/mapa1.yaml";     // TODO: implementar ruta al mapa
     HiloGameLoop hilo_gameloop(colas_sender, this->cola_solicitudes, ruta_mapa);
     hilo_gameloop.start(colas_sender);
 }
