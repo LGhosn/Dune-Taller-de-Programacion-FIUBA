@@ -49,7 +49,7 @@ public:
     /* Muestra un QMessageBox indicando si la union solicitada fue
      * completada con o sin éxito.
      * */
-    void unirseNotificacion(Status& status);
+    void unirseNotificacion(ProtocoloCliente& protocolo, Status& status);
 
     /* Establece la casa elegida por el usuario como Atreides.
      * */

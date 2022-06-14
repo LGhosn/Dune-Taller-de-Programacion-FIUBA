@@ -357,32 +357,6 @@ gtest_main_autogen/fast:
 .PHONY : gtest_main_autogen/fast
 
 #=============================================================================
-# Target rules for targets named mapa_tests
-
-# Build rule for target.
-mapa_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mapa_tests
-.PHONY : mapa_tests
-
-# fast build rule for target.
-mapa_tests/fast:
-	$(MAKE) $(MAKESILENT) -f src/src_testing/pruebas_mapa/CMakeFiles/mapa_tests.dir/build.make src/src_testing/pruebas_mapa/CMakeFiles/mapa_tests.dir/build
-.PHONY : mapa_tests/fast
-
-#=============================================================================
-# Target rules for targets named mapa_tests_autogen
-
-# Build rule for target.
-mapa_tests_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mapa_tests_autogen
-.PHONY : mapa_tests_autogen
-
-# fast build rule for target.
-mapa_tests_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f src/src_testing/pruebas_mapa/CMakeFiles/mapa_tests_autogen.dir/build.make src/src_testing/pruebas_mapa/CMakeFiles/mapa_tests_autogen.dir/build
-.PHONY : mapa_tests_autogen/fast
-
-#=============================================================================
 # Target rules for targets named serializador_tests
 
 # Build rule for target.
@@ -1062,6 +1036,7 @@ src/src_common/common_coords.o: src/src_common/common_coords.cpp.o
 # target to build an object file
 src/src_common/common_coords.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_coords.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_coords.cpp.o
 .PHONY : src/src_common/common_coords.cpp.o
 
 src/src_common/common_coords.i: src/src_common/common_coords.cpp.i
@@ -1070,6 +1045,7 @@ src/src_common/common_coords.i: src/src_common/common_coords.cpp.i
 # target to preprocess a source file
 src/src_common/common_coords.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_coords.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_coords.cpp.i
 .PHONY : src/src_common/common_coords.cpp.i
 
 src/src_common/common_coords.s: src/src_common/common_coords.cpp.s
@@ -1078,6 +1054,7 @@ src/src_common/common_coords.s: src/src_common/common_coords.cpp.s
 # target to generate assembly for a file
 src/src_common/common_coords.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_coords.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_coords.cpp.s
 .PHONY : src/src_common/common_coords.cpp.s
 
 src/src_common/common_resolver.o: src/src_common/common_resolver.cpp.o
@@ -1284,30 +1261,6 @@ src/src_server/server_DTO/MovimientoDTO.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.s
 .PHONY : src/src_server/server_DTO/MovimientoDTO.cpp.s
 
-src/src_server/server_DTO/PartidaDTO.o: src/src_server/server_DTO/PartidaDTO.cpp.o
-.PHONY : src/src_server/server_DTO/PartidaDTO.o
-
-# target to build an object file
-src/src_server/server_DTO/PartidaDTO.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.o
-.PHONY : src/src_server/server_DTO/PartidaDTO.cpp.o
-
-src/src_server/server_DTO/PartidaDTO.i: src/src_server/server_DTO/PartidaDTO.cpp.i
-.PHONY : src/src_server/server_DTO/PartidaDTO.i
-
-# target to preprocess a source file
-src/src_server/server_DTO/PartidaDTO.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.i
-.PHONY : src/src_server/server_DTO/PartidaDTO.cpp.i
-
-src/src_server/server_DTO/PartidaDTO.s: src/src_server/server_DTO/PartidaDTO.cpp.s
-.PHONY : src/src_server/server_DTO/PartidaDTO.s
-
-# target to generate assembly for a file
-src/src_server/server_DTO/PartidaDTO.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.s
-.PHONY : src/src_server/server_DTO/PartidaDTO.cpp.s
-
 src/src_server/server_aceptador.o: src/src_server/server_aceptador.cpp.o
 .PHONY : src/src_server/server_aceptador.o
 
@@ -1331,6 +1284,174 @@ src/src_server/server_aceptador.s: src/src_server/server_aceptador.cpp.s
 src/src_server/server_aceptador.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.s
 .PHONY : src/src_server/server_aceptador.cpp.s
+
+src/src_server/server_comandos/cmd_crear_edificio.o: src/src_server/server_comandos/cmd_crear_edificio.cpp.o
+.PHONY : src/src_server/server_comandos/cmd_crear_edificio.o
+
+# target to build an object file
+src/src_server/server_comandos/cmd_crear_edificio.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.o
+.PHONY : src/src_server/server_comandos/cmd_crear_edificio.cpp.o
+
+src/src_server/server_comandos/cmd_crear_edificio.i: src/src_server/server_comandos/cmd_crear_edificio.cpp.i
+.PHONY : src/src_server/server_comandos/cmd_crear_edificio.i
+
+# target to preprocess a source file
+src/src_server/server_comandos/cmd_crear_edificio.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.i
+.PHONY : src/src_server/server_comandos/cmd_crear_edificio.cpp.i
+
+src/src_server/server_comandos/cmd_crear_edificio.s: src/src_server/server_comandos/cmd_crear_edificio.cpp.s
+.PHONY : src/src_server/server_comandos/cmd_crear_edificio.s
+
+# target to generate assembly for a file
+src/src_server/server_comandos/cmd_crear_edificio.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.s
+.PHONY : src/src_server/server_comandos/cmd_crear_edificio.cpp.s
+
+src/src_server/server_game/game.o: src/src_server/server_game/game.cpp.o
+.PHONY : src/src_server/server_game/game.o
+
+# target to build an object file
+src/src_server/server_game/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/game.cpp.o
+.PHONY : src/src_server/server_game/game.cpp.o
+
+src/src_server/server_game/game.i: src/src_server/server_game/game.cpp.i
+.PHONY : src/src_server/server_game/game.i
+
+# target to preprocess a source file
+src/src_server/server_game/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/game.cpp.i
+.PHONY : src/src_server/server_game/game.cpp.i
+
+src/src_server/server_game/game.s: src/src_server/server_game/game.cpp.s
+.PHONY : src/src_server/server_game/game.s
+
+# target to generate assembly for a file
+src/src_server/server_game/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/game.cpp.s
+.PHONY : src/src_server/server_game/game.cpp.s
+
+src/src_server/server_game/server_mapa/server_camino.o: src/src_server/server_game/server_mapa/server_camino.cpp.o
+.PHONY : src/src_server/server_game/server_mapa/server_camino.o
+
+# target to build an object file
+src/src_server/server_game/server_mapa/server_camino.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.o
+.PHONY : src/src_server/server_game/server_mapa/server_camino.cpp.o
+
+src/src_server/server_game/server_mapa/server_camino.i: src/src_server/server_game/server_mapa/server_camino.cpp.i
+.PHONY : src/src_server/server_game/server_mapa/server_camino.i
+
+# target to preprocess a source file
+src/src_server/server_game/server_mapa/server_camino.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.i
+.PHONY : src/src_server/server_game/server_mapa/server_camino.cpp.i
+
+src/src_server/server_game/server_mapa/server_camino.s: src/src_server/server_game/server_mapa/server_camino.cpp.s
+.PHONY : src/src_server/server_game/server_mapa/server_camino.s
+
+# target to generate assembly for a file
+src/src_server/server_game/server_mapa/server_camino.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.s
+.PHONY : src/src_server/server_game/server_mapa/server_camino.cpp.s
+
+src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.o: src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o
+.PHONY : src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.o
+
+# target to build an object file
+src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o
+.PHONY : src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o
+
+src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.i: src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.i
+.PHONY : src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.i
+
+# target to preprocess a source file
+src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.i
+.PHONY : src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.i
+
+src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.s: src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.s
+.PHONY : src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.s
+
+# target to generate assembly for a file
+src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.s
+.PHONY : src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.s
+
+src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.o: src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o
+.PHONY : src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.o
+
+# target to build an object file
+src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o
+.PHONY : src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o
+
+src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.i: src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.i
+.PHONY : src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.i
+
+# target to preprocess a source file
+src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.i
+.PHONY : src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.i
+
+src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.s: src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.s
+.PHONY : src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.s
+
+# target to generate assembly for a file
+src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.s
+.PHONY : src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.s
+
+src/src_server/server_game/server_mapa/server_mapa.o: src/src_server/server_game/server_mapa/server_mapa.cpp.o
+.PHONY : src/src_server/server_game/server_mapa/server_mapa.o
+
+# target to build an object file
+src/src_server/server_game/server_mapa/server_mapa.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.o
+.PHONY : src/src_server/server_game/server_mapa/server_mapa.cpp.o
+
+src/src_server/server_game/server_mapa/server_mapa.i: src/src_server/server_game/server_mapa/server_mapa.cpp.i
+.PHONY : src/src_server/server_game/server_mapa/server_mapa.i
+
+# target to preprocess a source file
+src/src_server/server_game/server_mapa/server_mapa.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.i
+.PHONY : src/src_server/server_game/server_mapa/server_mapa.cpp.i
+
+src/src_server/server_game/server_mapa/server_mapa.s: src/src_server/server_game/server_mapa/server_mapa.cpp.s
+.PHONY : src/src_server/server_game/server_mapa/server_mapa.s
+
+# target to generate assembly for a file
+src/src_server/server_game/server_mapa/server_mapa.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.s
+.PHONY : src/src_server/server_game/server_mapa/server_mapa.cpp.s
+
+src/src_server/server_handler_cliente/server_handler_cliente.o: src/src_server/server_handler_cliente/server_handler_cliente.cpp.o
+.PHONY : src/src_server/server_handler_cliente/server_handler_cliente.o
+
+# target to build an object file
+src/src_server/server_handler_cliente/server_handler_cliente.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.o
+.PHONY : src/src_server/server_handler_cliente/server_handler_cliente.cpp.o
+
+src/src_server/server_handler_cliente/server_handler_cliente.i: src/src_server/server_handler_cliente/server_handler_cliente.cpp.i
+.PHONY : src/src_server/server_handler_cliente/server_handler_cliente.i
+
+# target to preprocess a source file
+src/src_server/server_handler_cliente/server_handler_cliente.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.i
+.PHONY : src/src_server/server_handler_cliente/server_handler_cliente.cpp.i
+
+src/src_server/server_handler_cliente/server_handler_cliente.s: src/src_server/server_handler_cliente/server_handler_cliente.cpp.s
+.PHONY : src/src_server/server_handler_cliente/server_handler_cliente.s
+
+# target to generate assembly for a file
+src/src_server/server_handler_cliente/server_handler_cliente.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.s
+.PHONY : src/src_server/server_handler_cliente/server_handler_cliente.cpp.s
 
 src/src_server/server_lobby.o: src/src_server/server_lobby.cpp.o
 .PHONY : src/src_server/server_lobby.o
@@ -1356,29 +1477,77 @@ src/src_server/server_lobby.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_lobby.cpp.s
 .PHONY : src/src_server/server_lobby.cpp.s
 
-src/src_server/server_protocolo.o: src/src_server/server_protocolo.cpp.o
-.PHONY : src/src_server/server_protocolo.o
+src/src_server/server_partida/server_partida.o: src/src_server/server_partida/server_partida.cpp.o
+.PHONY : src/src_server/server_partida/server_partida.o
 
 # target to build an object file
-src/src_server/server_protocolo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.o
-.PHONY : src/src_server/server_protocolo.cpp.o
+src/src_server/server_partida/server_partida.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.o
+.PHONY : src/src_server/server_partida/server_partida.cpp.o
 
-src/src_server/server_protocolo.i: src/src_server/server_protocolo.cpp.i
-.PHONY : src/src_server/server_protocolo.i
+src/src_server/server_partida/server_partida.i: src/src_server/server_partida/server_partida.cpp.i
+.PHONY : src/src_server/server_partida/server_partida.i
 
 # target to preprocess a source file
-src/src_server/server_protocolo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.i
-.PHONY : src/src_server/server_protocolo.cpp.i
+src/src_server/server_partida/server_partida.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.i
+.PHONY : src/src_server/server_partida/server_partida.cpp.i
 
-src/src_server/server_protocolo.s: src/src_server/server_protocolo.cpp.s
-.PHONY : src/src_server/server_protocolo.s
+src/src_server/server_partida/server_partida.s: src/src_server/server_partida/server_partida.cpp.s
+.PHONY : src/src_server/server_partida/server_partida.s
 
 # target to generate assembly for a file
-src/src_server/server_protocolo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.s
-.PHONY : src/src_server/server_protocolo.cpp.s
+src/src_server/server_partida/server_partida.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.s
+.PHONY : src/src_server/server_partida/server_partida.cpp.s
+
+src/src_server/server_protocolo/server_protocolo.o: src/src_server/server_protocolo/server_protocolo.cpp.o
+.PHONY : src/src_server/server_protocolo/server_protocolo.o
+
+# target to build an object file
+src/src_server/server_protocolo/server_protocolo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.o
+.PHONY : src/src_server/server_protocolo/server_protocolo.cpp.o
+
+src/src_server/server_protocolo/server_protocolo.i: src/src_server/server_protocolo/server_protocolo.cpp.i
+.PHONY : src/src_server/server_protocolo/server_protocolo.i
+
+# target to preprocess a source file
+src/src_server/server_protocolo/server_protocolo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.i
+.PHONY : src/src_server/server_protocolo/server_protocolo.cpp.i
+
+src/src_server/server_protocolo/server_protocolo.s: src/src_server/server_protocolo/server_protocolo.cpp.s
+.PHONY : src/src_server/server_protocolo/server_protocolo.s
+
+# target to generate assembly for a file
+src/src_server/server_protocolo/server_protocolo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.s
+.PHONY : src/src_server/server_protocolo/server_protocolo.cpp.s
+
+src/src_server/server_protocolo/server_serializador.o: src/src_server/server_protocolo/server_serializador.cpp.o
+.PHONY : src/src_server/server_protocolo/server_serializador.o
+
+# target to build an object file
+src/src_server/server_protocolo/server_serializador.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o
+.PHONY : src/src_server/server_protocolo/server_serializador.cpp.o
+
+src/src_server/server_protocolo/server_serializador.i: src/src_server/server_protocolo/server_serializador.cpp.i
+.PHONY : src/src_server/server_protocolo/server_serializador.i
+
+# target to preprocess a source file
+src/src_server/server_protocolo/server_serializador.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.i
+.PHONY : src/src_server/server_protocolo/server_serializador.cpp.i
+
+src/src_server/server_protocolo/server_serializador.s: src/src_server/server_protocolo/server_serializador.cpp.s
+.PHONY : src/src_server/server_protocolo/server_serializador.s
+
+# target to generate assembly for a file
+src/src_server/server_protocolo/server_serializador.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.s
+.PHONY : src/src_server/server_protocolo/server_serializador.cpp.s
 
 src/src_server/server_server.o: src/src_server/server_server.cpp.o
 .PHONY : src/src_server/server_server.o
@@ -1404,29 +1573,77 @@ src/src_server/server_server.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_server.cpp.s
 .PHONY : src/src_server/server_server.cpp.s
 
-src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.o: src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o
-.PHONY : src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.o
+src/src_server/server_thread_gameloop/server_hilo_gameloop.o: src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o
+.PHONY : src/src_server/server_thread_gameloop/server_hilo_gameloop.o
 
 # target to build an object file
-src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o
-.PHONY : src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o
+src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o
+.PHONY : src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o
 
-src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.i: src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.i
-.PHONY : src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.i
+src/src_server/server_thread_gameloop/server_hilo_gameloop.i: src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.i
+.PHONY : src/src_server/server_thread_gameloop/server_hilo_gameloop.i
 
 # target to preprocess a source file
-src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.i
-.PHONY : src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.i
+src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.i
+.PHONY : src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.i
 
-src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.s: src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.s
-.PHONY : src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.s
+src/src_server/server_thread_gameloop/server_hilo_gameloop.s: src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.s
+.PHONY : src/src_server/server_thread_gameloop/server_hilo_gameloop.s
 
 # target to generate assembly for a file
-src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.s
-.PHONY : src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.s
+src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.s
+.PHONY : src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.s
+
+src/src_server/server_thread_reciever/server_hilo_reciever.o: src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o
+.PHONY : src/src_server/server_thread_reciever/server_hilo_reciever.o
+
+# target to build an object file
+src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o
+.PHONY : src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o
+
+src/src_server/server_thread_reciever/server_hilo_reciever.i: src/src_server/server_thread_reciever/server_hilo_reciever.cpp.i
+.PHONY : src/src_server/server_thread_reciever/server_hilo_reciever.i
+
+# target to preprocess a source file
+src/src_server/server_thread_reciever/server_hilo_reciever.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.i
+.PHONY : src/src_server/server_thread_reciever/server_hilo_reciever.cpp.i
+
+src/src_server/server_thread_reciever/server_hilo_reciever.s: src/src_server/server_thread_reciever/server_hilo_reciever.cpp.s
+.PHONY : src/src_server/server_thread_reciever/server_hilo_reciever.s
+
+# target to generate assembly for a file
+src/src_server/server_thread_reciever/server_hilo_reciever.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.s
+.PHONY : src/src_server/server_thread_reciever/server_hilo_reciever.cpp.s
+
+src/src_server/server_thread_sender/server_hilo_sender.o: src/src_server/server_thread_sender/server_hilo_sender.cpp.o
+.PHONY : src/src_server/server_thread_sender/server_hilo_sender.o
+
+# target to build an object file
+src/src_server/server_thread_sender/server_hilo_sender.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.o
+.PHONY : src/src_server/server_thread_sender/server_hilo_sender.cpp.o
+
+src/src_server/server_thread_sender/server_hilo_sender.i: src/src_server/server_thread_sender/server_hilo_sender.cpp.i
+.PHONY : src/src_server/server_thread_sender/server_hilo_sender.i
+
+# target to preprocess a source file
+src/src_server/server_thread_sender/server_hilo_sender.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.i
+.PHONY : src/src_server/server_thread_sender/server_hilo_sender.cpp.i
+
+src/src_server/server_thread_sender/server_hilo_sender.s: src/src_server/server_thread_sender/server_hilo_sender.cpp.s
+.PHONY : src/src_server/server_thread_sender/server_hilo_sender.s
+
+# target to generate assembly for a file
+src/src_server/server_thread_sender/server_hilo_sender.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.s
+.PHONY : src/src_server/server_thread_sender/server_hilo_sender.cpp.s
 
 # Help Target
 help:
@@ -1446,7 +1663,6 @@ help:
 	@echo "... gmock_main_autogen"
 	@echo "... gtest_autogen"
 	@echo "... gtest_main_autogen"
-	@echo "... mapa_tests_autogen"
 	@echo "... serializador_tests_autogen"
 	@echo "... server_autogen"
 	@echo "... SDL2pp"
@@ -1456,7 +1672,6 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... mapa_tests"
 	@echo "... serializador_tests"
 	@echo "... server"
 	@echo "... client_autogen/GBFAFXFCVO/qrc_resources.o"
@@ -1567,24 +1782,54 @@ help:
 	@echo "... src/src_server/server_DTO/MovimientoDTO.o"
 	@echo "... src/src_server/server_DTO/MovimientoDTO.i"
 	@echo "... src/src_server/server_DTO/MovimientoDTO.s"
-	@echo "... src/src_server/server_DTO/PartidaDTO.o"
-	@echo "... src/src_server/server_DTO/PartidaDTO.i"
-	@echo "... src/src_server/server_DTO/PartidaDTO.s"
 	@echo "... src/src_server/server_aceptador.o"
 	@echo "... src/src_server/server_aceptador.i"
 	@echo "... src/src_server/server_aceptador.s"
+	@echo "... src/src_server/server_comandos/cmd_crear_edificio.o"
+	@echo "... src/src_server/server_comandos/cmd_crear_edificio.i"
+	@echo "... src/src_server/server_comandos/cmd_crear_edificio.s"
+	@echo "... src/src_server/server_game/game.o"
+	@echo "... src/src_server/server_game/game.i"
+	@echo "... src/src_server/server_game/game.s"
+	@echo "... src/src_server/server_game/server_mapa/server_camino.o"
+	@echo "... src/src_server/server_game/server_mapa/server_camino.i"
+	@echo "... src/src_server/server_game/server_mapa/server_camino.s"
+	@echo "... src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.o"
+	@echo "... src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.i"
+	@echo "... src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.s"
+	@echo "... src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.o"
+	@echo "... src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.i"
+	@echo "... src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.s"
+	@echo "... src/src_server/server_game/server_mapa/server_mapa.o"
+	@echo "... src/src_server/server_game/server_mapa/server_mapa.i"
+	@echo "... src/src_server/server_game/server_mapa/server_mapa.s"
+	@echo "... src/src_server/server_handler_cliente/server_handler_cliente.o"
+	@echo "... src/src_server/server_handler_cliente/server_handler_cliente.i"
+	@echo "... src/src_server/server_handler_cliente/server_handler_cliente.s"
 	@echo "... src/src_server/server_lobby.o"
 	@echo "... src/src_server/server_lobby.i"
 	@echo "... src/src_server/server_lobby.s"
-	@echo "... src/src_server/server_protocolo.o"
-	@echo "... src/src_server/server_protocolo.i"
-	@echo "... src/src_server/server_protocolo.s"
+	@echo "... src/src_server/server_partida/server_partida.o"
+	@echo "... src/src_server/server_partida/server_partida.i"
+	@echo "... src/src_server/server_partida/server_partida.s"
+	@echo "... src/src_server/server_protocolo/server_protocolo.o"
+	@echo "... src/src_server/server_protocolo/server_protocolo.i"
+	@echo "... src/src_server/server_protocolo/server_protocolo.s"
+	@echo "... src/src_server/server_protocolo/server_serializador.o"
+	@echo "... src/src_server/server_protocolo/server_serializador.i"
+	@echo "... src/src_server/server_protocolo/server_serializador.s"
 	@echo "... src/src_server/server_server.o"
 	@echo "... src/src_server/server_server.i"
 	@echo "... src/src_server/server_server.s"
-	@echo "... src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.o"
-	@echo "... src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.i"
-	@echo "... src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.s"
+	@echo "... src/src_server/server_thread_gameloop/server_hilo_gameloop.o"
+	@echo "... src/src_server/server_thread_gameloop/server_hilo_gameloop.i"
+	@echo "... src/src_server/server_thread_gameloop/server_hilo_gameloop.s"
+	@echo "... src/src_server/server_thread_reciever/server_hilo_reciever.o"
+	@echo "... src/src_server/server_thread_reciever/server_hilo_reciever.i"
+	@echo "... src/src_server/server_thread_reciever/server_hilo_reciever.s"
+	@echo "... src/src_server/server_thread_sender/server_hilo_sender.o"
+	@echo "... src/src_server/server_thread_sender/server_hilo_sender.i"
+	@echo "... src/src_server/server_thread_sender/server_hilo_sender.s"
 .PHONY : help
 
 

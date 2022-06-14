@@ -10,8 +10,7 @@
 					[
 						1,
 						2,
-						6,
-						7
+						6
 					],
 					"hasInstallRule" : true,
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
@@ -25,8 +24,8 @@
 					[
 						3,
 						4,
-						17,
-						18
+						15,
+						16
 					]
 				},
 				{
@@ -124,22 +123,6 @@
 					]
 				},
 				{
-					"build" : "src/src_testing/pruebas_mapa",
-					"jsonFile" : "directory-src.src_testing.pruebas_mapa-Debug-65db662ad2ed0922edc0.json",
-					"minimumCMakeVersion" : 
-					{
-						"string" : "3.0"
-					},
-					"parentIndex" : 0,
-					"projectIndex" : 6,
-					"source" : "src/src_testing/pruebas_mapa",
-					"targetIndexes" : 
-					[
-						13,
-						14
-					]
-				},
-				{
 					"build" : "src/src_testing/pruebas_serializador",
 					"jsonFile" : "directory-src.src_testing.pruebas_serializador-Debug-f6f1d1c00939c06bd193.json",
 					"minimumCMakeVersion" : 
@@ -147,12 +130,12 @@
 						"string" : "3.00"
 					},
 					"parentIndex" : 0,
-					"projectIndex" : 7,
+					"projectIndex" : 6,
 					"source" : "src/src_testing/pruebas_serializador",
 					"targetIndexes" : 
 					[
-						15,
-						16
+						13,
+						14
 					]
 				}
 			],
@@ -164,8 +147,7 @@
 					[
 						1,
 						2,
-						6,
-						7
+						6
 					],
 					"directoryIndexes" : 
 					[
@@ -176,8 +158,8 @@
 					[
 						3,
 						4,
-						17,
-						18
+						15,
+						16
 					]
 				},
 				{
@@ -260,25 +242,12 @@
 					[
 						6
 					],
-					"name" : "tests_mapa",
+					"name" : "tests_serializador",
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
 						13,
 						14
-					]
-				},
-				{
-					"directoryIndexes" : 
-					[
-						7
-					],
-					"name" : "tests_serializador",
-					"parentIndex" : 0,
-					"targetIndexes" : 
-					[
-						15,
-						16
 					]
 				}
 			],
@@ -287,14 +256,14 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "SDL2pp::@5294c835cb04e2b60d48",
-					"jsonFile" : "target-SDL2pp-Debug-87ed6b71a65a68c4c0a3.json",
+					"jsonFile" : "target-SDL2pp-Debug-2c9f50a9ca514c1e78cd.json",
 					"name" : "SDL2pp",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "camino_tests::@96a13d363dd1a15e8b6a",
-					"jsonFile" : "target-camino_tests-Debug-188ad3e2a634d0c3dbee.json",
+					"jsonFile" : "target-camino_tests-Debug-8b71998cd35ed6d36108.json",
 					"name" : "camino_tests",
 					"projectIndex" : 2
 				},
@@ -308,7 +277,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "client::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-client-Debug-6cd19756728e288ce629.json",
+					"jsonFile" : "target-client-Debug-f39a5a7ca86550f1c4c5.json",
 					"name" : "client",
 					"projectIndex" : 0
 				},
@@ -322,7 +291,7 @@
 				{
 					"directoryIndex" : 4,
 					"id" : "gmock::@0f7bb11d64f3678238c7",
-					"jsonFile" : "target-gmock-Debug-145ec325d7e403a5f686.json",
+					"jsonFile" : "target-gmock-Debug-2a5fecff6fe8c561c011.json",
 					"name" : "gmock",
 					"projectIndex" : 4
 				},
@@ -336,7 +305,7 @@
 				{
 					"directoryIndex" : 4,
 					"id" : "gmock_main::@0f7bb11d64f3678238c7",
-					"jsonFile" : "target-gmock_main-Debug-6ed7abb300559345bb90.json",
+					"jsonFile" : "target-gmock_main-Debug-5b13ad11121b7c1a8560.json",
 					"name" : "gmock_main",
 					"projectIndex" : 4
 				},
@@ -350,7 +319,7 @@
 				{
 					"directoryIndex" : 5,
 					"id" : "gtest::@1ea2dfc0605fe3ab2a3f",
-					"jsonFile" : "target-gtest-Debug-1516d54581cf8ea5c228.json",
+					"jsonFile" : "target-gtest-Debug-c4e4f2cb92a636789afd.json",
 					"name" : "gtest",
 					"projectIndex" : 5
 				},
@@ -364,7 +333,7 @@
 				{
 					"directoryIndex" : 5,
 					"id" : "gtest_main::@1ea2dfc0605fe3ab2a3f",
-					"jsonFile" : "target-gtest_main-Debug-83c7a5aeba930186123f.json",
+					"jsonFile" : "target-gtest_main-Debug-582c46bf4541af4347a0.json",
 					"name" : "gtest_main",
 					"projectIndex" : 5
 				},
@@ -377,36 +346,22 @@
 				},
 				{
 					"directoryIndex" : 6,
-					"id" : "mapa_tests::@1752ef342e3c28595887",
-					"jsonFile" : "target-mapa_tests-Debug-d4961f0d531565ccf805.json",
-					"name" : "mapa_tests",
+					"id" : "serializador_tests::@7a652f142dc1e700579d",
+					"jsonFile" : "target-serializador_tests-Debug-72fa2112eb31bad34f5e.json",
+					"name" : "serializador_tests",
 					"projectIndex" : 6
 				},
 				{
 					"directoryIndex" : 6,
-					"id" : "mapa_tests_autogen::@1752ef342e3c28595887",
-					"jsonFile" : "target-mapa_tests_autogen-Debug-3f3c63aa40f0ab09aa26.json",
-					"name" : "mapa_tests_autogen",
-					"projectIndex" : 6
-				},
-				{
-					"directoryIndex" : 7,
-					"id" : "serializador_tests::@7a652f142dc1e700579d",
-					"jsonFile" : "target-serializador_tests-Debug-5ef7dd904ed8e4aab243.json",
-					"name" : "serializador_tests",
-					"projectIndex" : 7
-				},
-				{
-					"directoryIndex" : 7,
 					"id" : "serializador_tests_autogen::@7a652f142dc1e700579d",
 					"jsonFile" : "target-serializador_tests_autogen-Debug-2a5b84111ae3833b340d.json",
 					"name" : "serializador_tests_autogen",
-					"projectIndex" : 7
+					"projectIndex" : 6
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "server::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-server-Debug-96f10b719922593c682f.json",
+					"jsonFile" : "target-server-Debug-8c12c557a1a3f85ce992.json",
 					"name" : "server",
 					"projectIndex" : 0
 				},

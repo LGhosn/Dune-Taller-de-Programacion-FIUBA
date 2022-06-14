@@ -17,6 +17,12 @@ void ProtocoloServidor::recibirOperacion
         (&codigo_operacion, sizeof(codigo_operacion));
 }
 
+void ProtocoloServidor::enviarComienzoDePartida() {
+    uint8_t codigo_comienzo = 0;
+    this->skt_comunicador->sendall(&codigo_comienzo, sizeof(codigo_comienzo));
+    std::cout << "Se envio la señal de comienzo de partida" << std::endl;
+}
+
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR PARTIDAS
  * *****************************************************************/
@@ -115,11 +121,6 @@ void ProtocoloServidor::enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t i
                                             uint8_t tipo, const Coordenadas& coords) const {
     std::vector<uint8_t> buffer = serializador.serializarComandoCrearEdificio(id_jugador, id_edificio, tipo, coords);
     this->enviarBuffer(buffer);
-}
-
-void ProtocoloServidor::notificarComienzoDePartida() {
-    uint8_t start = 1;
-    this->skt_comunicador->sendall(&start, sizeof(uint8_t));
 }
 
 ProtocoloServidor::ProtocoloServidor(ProtocoloServidor&& otro) :

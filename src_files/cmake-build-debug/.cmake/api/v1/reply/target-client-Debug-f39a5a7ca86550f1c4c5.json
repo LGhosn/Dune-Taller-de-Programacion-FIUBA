@@ -27,37 +27,37 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 43,
+				"line" : 44,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 98,
+				"line" : 111,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 16,
+				"line" : 17,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 18,
+				"line" : 19,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 20,
+				"line" : 21,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 40,
+				"line" : 41,
 				"parent" : 0
 			}
 		]
@@ -68,7 +68,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -Werror -Wall -pedantic -std=c++17 -pthread -g"
+					"fragment" : " -Werror -Wall -pedantic -std=c++17 -g"
 				},
 				{
 					"backtrace" : 2,
@@ -230,7 +230,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-Werror -Wall -pedantic -std=c++17 -pthread -g",
+				"fragment" : "-Werror -Wall -pedantic -std=c++17 -g",
 				"role" : "flags"
 			},
 			{
@@ -271,6 +271,11 @@
 			},
 			{
 				"fragment" : "-lSDL2_mixer",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lpthread",
 				"role" : "libraries"
 			},
 			{

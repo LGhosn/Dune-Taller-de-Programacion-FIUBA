@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "lib/libgmockd.a"
+			"path" : "lib/libgtest_maind.a"
 		}
 	],
 	"backtrace" : 3,
@@ -23,7 +23,7 @@
 		"files" : 
 		[
 			"cmake-build-debug/_deps/googletest-src/googletest/cmake/internal_utils.cmake",
-			"cmake-build-debug/_deps/googletest-src/googlemock/CMakeLists.txt",
+			"cmake-build-debug/_deps/googletest-src/googletest/CMakeLists.txt",
 			"CMakeLists.txt"
 		],
 		"nodes" : 
@@ -34,7 +34,7 @@
 			{
 				"command" : 2,
 				"file" : 1,
-				"line" : 101,
+				"line" : 130,
 				"parent" : 0
 			},
 			{
@@ -52,7 +52,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 123,
+				"line" : 148,
 				"parent" : 0
 			},
 			{
@@ -64,7 +64,7 @@
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 102,
+				"line" : 143,
 				"parent" : 0
 			},
 			{
@@ -73,25 +73,25 @@
 			{
 				"command" : 6,
 				"file" : 2,
-				"line" : 18,
+				"line" : 19,
 				"parent" : 7
 			},
 			{
 				"command" : 6,
 				"file" : 2,
-				"line" : 20,
+				"line" : 21,
 				"parent" : 7
 			},
 			{
 				"command" : 6,
 				"file" : 2,
-				"line" : 40,
+				"line" : 41,
 				"parent" : 7
 			},
 			{
 				"command" : 6,
 				"file" : 1,
-				"line" : 79,
+				"line" : 118,
 				"parent" : 0
 			},
 			{
@@ -108,7 +108,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -Werror -Wall -pedantic -std=c++17 -pthread -Werror -Wall -pedantic -std=c++17 -ggdb -g"
+					"fragment" : " -Werror -Wall -pedantic -std=c++17 -Werror -Wall -pedantic -std=c++17 -ggdb -g"
 				},
 				{
 					"fragment" : "-Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers"
@@ -127,7 +127,7 @@
 			[
 				{
 					"backtrace" : 0,
-					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-build/googlemock/gmock_autogen/include"
+					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-build/googletest/gtest_main_autogen/include"
 				},
 				{
 					"backtrace" : 8,
@@ -179,14 +179,6 @@
 				},
 				{
 					"backtrace" : 11,
-					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-src/googlemock/include"
-				},
-				{
-					"backtrace" : 11,
-					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-src/googlemock"
-				},
-				{
-					"backtrace" : 11,
 					"isSystem" : true,
 					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-src/googletest/include"
 				},
@@ -220,10 +212,10 @@
 		},
 		{
 			"backtrace" : 0,
-			"id" : "gmock_autogen::@0f7bb11d64f3678238c7"
+			"id" : "gtest_main_autogen::@1ea2dfc0605fe3ab2a3f"
 		}
 	],
-	"id" : "gmock::@0f7bb11d64f3678238c7",
+	"id" : "gtest_main::@1ea2dfc0605fe3ab2a3f",
 	"install" : 
 	{
 		"destinations" : 
@@ -238,12 +230,12 @@
 			"path" : "/usr/local"
 		}
 	},
-	"name" : "gmock",
-	"nameOnDisk" : "libgmockd.a",
+	"name" : "gtest_main",
+	"nameOnDisk" : "libgtest_maind.a",
 	"paths" : 
 	{
-		"build" : "_deps/googletest-build/googlemock",
-		"source" : "cmake-build-debug/_deps/googletest-src/googlemock"
+		"build" : "_deps/googletest-build/googletest",
+		"source" : "cmake-build-debug/_deps/googletest-src/googletest"
 	},
 	"sourceGroups" : 
 	[
@@ -262,13 +254,13 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/_deps/googletest-build/googlemock/gmock_autogen/mocs_compilation.cpp",
+			"path" : "cmake-build-debug/_deps/googletest-build/googletest/gtest_main_autogen/mocs_compilation.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "cmake-build-debug/_deps/googletest-src/googlemock/src/gmock-all.cc",
+			"path" : "cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc",
 			"sourceGroupIndex" : 0
 		}
 	],

@@ -31,8 +31,7 @@ void FormUnion::solicitudDeUnion() {
             ProtocoloCliente& protocolo = cliente.protocoloAsociado();
             protocolo.enviarSolicitudDeUnion(solicitud);
             Status status_recibido = protocolo.recibirStatus();
-            unirseNotificacion(status_recibido);
-            // protocolo.esperarAComienzoDePartida();
+            unirseNotificacion(protocolo, status_recibido);
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());
@@ -41,12 +40,20 @@ void FormUnion::solicitudDeUnion() {
     }
 }
 
-void FormUnion::unirseNotificacion(Status &status) {
+void FormUnion::unirseNotificacion(ProtocoloCliente &protocolo, Status &status) {
     if (status.conexionEstablecida()) {
-        QMessageBox::information(this, "Union Existosa", "Esperando jugadores restantes...");
+        std::cout << "Union Existosa, esperando jugadores restantes..." << std::endl;
+        bool partida_comenzada = protocolo.esperarAComienzoDePartida();
+        if (partida_comenzada) {
+            // Cierro todas las ventanas y abro el juego
+            std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
+            //this->close();
+        }
+        //QMessageBox::information(this, "Union Existosa", "Esperando jugadores restantes...");
     } else {
-        QMessageBox::information(this, "Union Fallida", "Parece que esa partida no existe o ya que ha comenzado.");
-        this->close();
+        std::cout << "Union Fallida, parece que esa partida no existe o ya que ha comenzado." << std::endl;
+        //QMessageBox::information(this, "Union Fallida", "Parece que esa partida no existe o ya que ha comenzado.");
+        //this->close();
     }
 }
 

@@ -53,7 +53,7 @@ class ProtocoloServidor {
      * */
     PartidaDTO recibirSolicitudDeUnion();
     void enviarStatusDeUnion(bool el_jugador_se_unio);
-    void notificarComienzoDePartida();
+    void enviarComienzoDePartida();
 
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR PARTIDAS

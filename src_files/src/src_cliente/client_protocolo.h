@@ -41,7 +41,7 @@ class ProtocoloCliente {
      * será usado por el cliente para imprimir un mensaje.
      * */
     Status recibirStatus();
-    void esperarAComienzoDePartida();
+    bool esperarAComienzoDePartida();
 
     /*
      * No tiene sentido copiar un ProtocoloCliente, tampoco moverlo.

@@ -98,11 +98,15 @@ Status ProtocoloCliente::recibirStatus() {
     return Status(status);
 }
 
-void ProtocoloCliente::esperarAComienzoDePartida() {
-    uint8_t codigo;
-    this->skt_cliente.recvall(&codigo, sizeof(uint8_t));
-    if (codigo != CODIGO_COMIENZO_PARTIDA) {
+bool ProtocoloCliente::esperarAComienzoDePartida() {
+    std::cout << "Esperando comienzo de partida" << std::endl;
+    uint8_t codigo_comienzo;
+    this->skt_cliente.recvall(&codigo_comienzo, sizeof(uint8_t));
+    if (codigo_comienzo != CODIGO_COMIENZO_PARTIDA) {
         throw std::runtime_error("No se recibió el comienzo de la partida.");
+        return false;
+    } else {
+        return true;
     }
 }
 

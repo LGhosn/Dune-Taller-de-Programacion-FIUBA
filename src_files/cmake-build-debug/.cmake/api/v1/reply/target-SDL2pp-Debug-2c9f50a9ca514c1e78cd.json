@@ -55,7 +55,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -Werror -Wall -pedantic -std=c++17 -pthread -std=c++11  -Wall -Wextra -pedantic -g"
+					"fragment" : " -Werror -Wall -pedantic -std=c++17 -std=c++11  -Wall -Wextra -pedantic -g"
 				}
 			],
 			"includes" : 

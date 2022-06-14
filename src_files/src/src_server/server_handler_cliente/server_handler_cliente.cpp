@@ -24,6 +24,7 @@ void HandlerCliente::crearPartida(PartidaDTO& partida_a_crear) {
 
 void HandlerCliente::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola) {
     this->hilo_reciever->empezarPartida(cola);
+    protocolo.enviarComienzoDePartida();
 }
 
 ColaBloqueante<ComandoServer>* HandlerCliente::obtenerColaSender() {
