@@ -1,9 +1,12 @@
 #include "server_aceptador.h"
+#include <iostream>
 
 HiloAceptador::HiloAceptador(const char* servicename, YAML::Node* codigos) :
                             skt_aceptador(servicename),
                             codigos(codigos),
-                            hilo_prepartida(&cola_solicitudes_menu, &colas_sender) {}
+                            hay_que_seguir(true) {
+    this->hilo = std::thread(&HiloAceptador::atenderClientes, this);
+}
 
 void HiloAceptador::atenderClientes() {
     try {
@@ -21,7 +24,8 @@ void HiloAceptador::atenderClientes() {
 }
 
 void HiloAceptador::lanzarHandlerCliente(Socket& aceptado) {
-    clientes.emplace_back(aceptado, &lobby, codigos);
+    clientes.emplace_back(aceptado, &lobby, codigos, clientes_conectados);
+    this->clientes_conectados++;
     uint8_t id_cliente = clientes.back().obtenerId();
     colas_sender[id_cliente] = clientes.back().obtenerColaSender();
 }
@@ -34,8 +38,7 @@ void HiloAceptador::limpiarHandlersClientesFinalizados() {
     esperarSiHaFinalizado();
 }
 
-bool HiloAceptador::esperarSiHaFinalizado() {
-
+void HiloAceptador::esperarSiHaFinalizado() {
     std::list<HandlerCliente>::iterator iter = clientes.begin();
 	while (iter != clientes.end()) {
 		if (iter->haFinalizado()){

@@ -35,7 +35,6 @@ void FormCreacion::solicitudDeCreacion() {
             Status status_recibido = protocolo.recibirStatus();
             crearNotificacion(status_recibido);
             protocolo.esperarAComienzoDePartida();
-            QApplication::exit();
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());

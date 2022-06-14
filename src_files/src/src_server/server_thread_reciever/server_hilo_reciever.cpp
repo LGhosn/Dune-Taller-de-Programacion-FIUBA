@@ -1,27 +1,43 @@
 #include "server_hilo_reciever.h"
 
-SolicitudServer* ServerHiloReciever::recibirSolicitudSegunCodigo(uint8_t codigo) {
+void ServerHiloReciever::recibirSolicitudSegunCodigo(uint8_t codigo) {
     // switch (codigo) {
     //     case 
     // }
     //codigos[codigo] 
 }
 
-SolicitudMenuServer* ServerHiloReciever::recibirSolicitudMenuSegunCodigo(uint8_t codigo) {
-    // switch (codigo) {
-    //     case 
-    // }
-    //codigos[codigo] 
+void ServerHiloReciever::recibirSolicitudMenuSegunCodigo(uint8_t codigo) {
+    switch (codigo) {
+         case 3: // Solicitan crear una partida.
+            this->recibirSolicitudDeCreacion();
+            break;
+
+         case 1: // Solicitan unirse a una partida.
+            this->recibirSolicitudDeUnion();
+            break;
+    }
+    //codigos[codigo];
 }
 
-ServerHiloReciever::ServerHiloReciever(ProtocoloServidor* protocolo, YAML::Node* codigos,
-                                    ColaBloqueante<SolicitudMenuServer>* cola_solicitudes_menu,
-                                    HandlerCliente* handler_cliente_padre) :
-                                    cola_solicitudes_menu(cola_solicitudes_menu),
+void ServerHiloReciever::recibirSolicitudDeCreacion() {
+    PartidaDTO solicitud = this->protocolo->recibirSolicitudDeCreacion();
+    this->cliente_asociado->crearPartida(solicitud);
+}
+
+void ServerHiloReciever::recibirSolicitudDeUnion() {
+    PartidaDTO solicitud = protocolo->recibirSolicitudDeUnion();
+    this->cliente_asociado->unirsePartida(solicitud);
+}
+
+ServerHiloReciever::ServerHiloReciever(ProtocoloServidor* protocolo, YAML::Node* codigos, HandlerCliente *cliente_asociado) :
                                     protocolo(protocolo),
-                                    thread(std::thread(&ServerHiloReciever::handleThread, this)),
+                                    hay_que_seguir(true),
+                                    partida_comenzada(false),
                                     codigos(codigos),
-                                    handler_cliente_padre(handler_cliente_padre) {}
+                                    cliente_asociado(cliente_asociado) {
+    this->thread = std::thread(&ServerHiloReciever::handleThread, this);
+}
 
 void ServerHiloReciever::handleThread() {
     try {
@@ -38,13 +54,12 @@ void ServerHiloReciever::handleThread() {
 void ServerHiloReciever::run() {
     while (this->hay_que_seguir) {
         uint8_t codigo;
-        protocolo->recibirCodigoDeOperacion(codigo, hay_que_seguir);
+        protocolo->recibirCodigoDeOperacion(codigo);
         if (partida_comenzada) {
-            SolicitudServer* solicitud = this->recibirSolicitudSegunCodigo(codigo);
-            this->cola_solicitudes->push(solicitud);
+            this->recibirSolicitudSegunCodigo(codigo);
         } else {
-            SolicitudMenuServer* solicitud = this->recibirSolicitudMenuSegunCodigo(codigo);
-            this->cola_solicitudes_menu->push(solicitud);
+            std::cout << codigo << std::endl;
+            this->recibirSolicitudMenuSegunCodigo(codigo);
         }
     }
 }
@@ -65,7 +80,6 @@ ServerHiloReciever::~ServerHiloReciever() {
 }
 
 ServerHiloReciever::ServerHiloReciever(ServerHiloReciever&& otro):
-                                        cola_solicitudes_menu(otro.cola_solicitudes_menu),
                                         cola_solicitudes(otro.cola_solicitudes),
                                         protocolo(otro.protocolo),
                                         thread(std::move(otro.thread)) {}
@@ -74,7 +88,6 @@ ServerHiloReciever& ServerHiloReciever::operator=(ServerHiloReciever&& otro) {
     if (this == &otro) {
         return *this;
     }
-    this->cola_solicitudes_menu = otro.cola_solicitudes_menu;
     this->cola_solicitudes = otro.cola_solicitudes;
     this->protocolo = otro.protocolo;
     this->thread = std::move(otro.thread);

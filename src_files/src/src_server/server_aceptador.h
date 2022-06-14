@@ -3,7 +3,6 @@
 
 #include "../src_common/common_socket.h"
 #include "../src_server/server_lobby.h"
-#include "server_thread_prepartida/server_hilo_prepartida.h"
 #include "server_handler_cliente/server_handler_cliente.h"
 #include "yaml-cpp/yaml.h"
 #include <list>
@@ -13,13 +12,12 @@
 #include <map>
 
 class HiloAceptador {
+    uint8_t clientes_conectados = 1;
     Socket skt_aceptador;
     YAML::Node *codigos;
-    ColaBloqueante<SolicitudMenuServer> cola_solicitudes_menu;
     std::map<uint8_t, ColaBloqueante<ComandoServer>*> colas_sender;
-    HiloPrepartida hilo_prepartida;
     Lobby lobby;
-    std::atomic <bool> hay_que_seguir = true;
+    std::atomic <bool> hay_que_seguir;
     std::list<HandlerCliente> clientes;
     std::thread hilo;
 
@@ -40,7 +38,7 @@ class HiloAceptador {
      * En caso de que un HiloCliente haya finalizado su ejecucion
      * este metodo cierra el hilo y devuelve true, sino devuelve false.
      */
-    bool esperarSiHaFinalizado();
+    void esperarSiHaFinalizado();
 
     /*
      * En caso de que se deba cerrar el servidor, se cierra

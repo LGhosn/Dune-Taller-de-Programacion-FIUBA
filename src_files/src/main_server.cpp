@@ -1,5 +1,6 @@
 #include "src_server/server_server.h"
 #include <syslog.h>
+#include <iostream>
 
 #define SUCCESS 0
 #define FAILURE 1

@@ -1,7 +1,7 @@
 #ifndef SERVER_SOLICITUD_H
 #define SERVER_SOLICITUD_H
 
-#include "../server_game/game.h"
+#include "../../server_game/game.h"
 
 class SolicitudServer {
 public:

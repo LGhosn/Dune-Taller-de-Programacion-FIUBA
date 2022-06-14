@@ -5,7 +5,6 @@
  * *****************************************************************/
 
 void ProtocoloServidor::enviarBuffer(const std::vector<uint8_t>& buffer) const {
-    bool socket_cerrado = false;
     this->skt_comunicador->sendall(buffer.data(), buffer.size());
 }
 
@@ -38,6 +37,7 @@ PartidaDTO ProtocoloServidor::recibirSolicitudDeCreacion() {
     std::vector<char> buff(len_nombre);
     this->skt_comunicador->recvall(&buff.front(), len_nombre);
     std::string nombre_partida(buff.begin(), buff.end());
+
 
     return PartidaDTO(nombre_partida, 1, requeridos, "sdasd"); // TODO: cambiar esto
 }
@@ -75,8 +75,7 @@ PartidaDTO ProtocoloServidor::recibirSolicitudDeUnion() {
     return PartidaDTO(nombre_partida, 0, 0, "asdads"); // TODO: cambiar esto
 }
 
-void ProtocoloServidor::enviarStatusDeUnion
-(bool el_jugador_se_unio) {
+void ProtocoloServidor::enviarStatusDeUnion(bool el_jugador_se_unio) {
     if (el_jugador_se_unio) {
         uint8_t status = 0;
         this->skt_comunicador->sendall
@@ -94,18 +93,18 @@ void ProtocoloServidor::enviarStatusDeUnion
 
 void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y) {}
 
-void ProtocoloServidor::recibirCodigoDeOperacion(uint8_t& codigo, bool& socket_cerrado) {
+void ProtocoloServidor::recibirCodigoDeOperacion(uint8_t& codigo) {
     this->skt_comunicador->recvall(&codigo, sizeof(uint8_t));
 }
 
-std::unique_ptr<InfoDTO> ProtocoloServidor::recibirInfoSegunCodigo(uint8_t& codigo, bool& socket_cerrado) {
+std::unique_ptr<InfoDTO> ProtocoloServidor::recibirInfoSegunCodigo(uint8_t& codigo) {
     uint16_t id_unidad;
     uint16_t x;
     uint16_t y;
 
     this->skt_comunicador->recvall(&id_unidad, sizeof(uint8_t));
-    this->skt_comunicador->recvall(&x, sizeof(uint8_t);
-    this->skt_comunicador->recvall(&y, sizeof(uint8_t);
+    this->skt_comunicador->recvall(&x, sizeof(uint8_t));
+    this->skt_comunicador->recvall(&y, sizeof(uint8_t));
     return std::unique_ptr<InfoDTO>(new MovimientoDTO(id_unidad, x, y));
 }
 
@@ -121,8 +120,7 @@ void ProtocoloServidor::enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t i
 
 void ProtocoloServidor::notificarComienzoDePartida() {
     uint8_t start = 1;
-    bool fue_cerrado = false;
-    this->skt_comunicador->sendall(&start, sizeof(uint8_t), &fue_cerrado);
+    this->skt_comunicador->sendall(&start, sizeof(uint8_t));
 }
 
 ProtocoloServidor::ProtocoloServidor(ProtocoloServidor&& otro) :

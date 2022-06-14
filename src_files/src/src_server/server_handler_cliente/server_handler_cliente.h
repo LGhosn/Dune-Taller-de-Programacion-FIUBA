@@ -2,36 +2,44 @@
 #define SERVER_HANDLER_CLIENTE_H
 
 #include "../server_lobby.h"
-#include "../server_solicitudes/server_solicitud.h"
+#include "../server_solicitudes/solicitud_juego/server_solicitud.h"
 #include "../server_comandos/server_comando.h"
-#include "../server_thread_reciever/server_hilo_reciever.h"
 #include "../server_thread_sender/server_hilo_sender.h"
+#include "../server_thread_reciever/server_hilo_reciever.h"
 #include "../../src_common/common_socket.h"
 #include "../../src_common/common_socket_error.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
+#include "yaml-cpp/yaml.h"
+
+#include <thread>
 
 class Partida;
 class Lobby;
+class ServerHiloReciever;
+class ServerHiloSender;
 
 class HandlerCliente {
-    static uint8_t contador_ids;
     uint8_t id_cliente;
     Socket socket;
+    Lobby *lobby;
     ProtocoloServidor protocolo;
+    YAML::Node* codigos;
     ColaBloqueante<ComandoServer>* cola_comandos;
-    ServerHiloSender hilo_sender;
-    ServerHiloReciever hilo_receiver;
+    ServerHiloSender* hilo_sender;
+    ServerHiloReciever* hilo_reciever;
+    std::thread hilo;
 
 public:
     /*
      * Constructor, lanza el HiloClienteLobby.
      */
-    HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos,
-                    ColaBloqueante<SolicitudMenuServer>* cola_solicitudes_menu);
+    HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos, uint8_t id_cliente);
+
+    void unirsePartida(PartidaDTO& partida_a_unirse);
+    void crearPartida(PartidaDTO& partida_a_unirse);
 
     void empezarPartida(ColaNoBloqueante<SolicitudServer>* cola);
-
 
     ColaBloqueante<ComandoServer>* obtenerColaSender();
 
@@ -49,6 +57,5 @@ public:
     HandlerCliente& operator=(HandlerCliente&&);
 };
 
-uint8_t HandlerCliente::contador_ids = 0;
 
 #endif //SERVER_HANDLER_CLIENTE_H

@@ -85,7 +85,6 @@ add_executable(server
         src/src_server/server_DTO/partida_DTO.h
         src/src_server/server_DTO/MovimientoDTO.cpp
         src/src_server/server_lobby.cpp
-        src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp
         src/src_server/server_thread_sender/server_hilo_sender.cpp
         src/src_server/server_thread_reciever/server_hilo_reciever.cpp
         src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp
@@ -106,7 +105,7 @@ add_executable(server
         )
 
 add_subdirectory(src/src_testing/pruebas_camino)
-add_subdirectory(src/src_testing/pruebas_mapa)
+#add_subdirectory(src/src_testing/pruebas_mapa)
 add_subdirectory(src/src_testing/pruebas_serializador)
 
 target_link_libraries(client Qt5::Widgets Qt5::Core ${SDL2PP_LIBRARIES} pthread yaml-cpp)

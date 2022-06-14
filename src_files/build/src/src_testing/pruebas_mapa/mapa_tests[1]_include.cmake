@@ -1,5 +1,5 @@
-if(EXISTS "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/mapa_tests[1]_tests.cmake")
-  include("/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/mapa_tests[1]_tests.cmake")
+if(EXISTS "/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/mapa_tests[1]_tests.cmake")
+  include("/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_mapa/mapa_tests[1]_tests.cmake")
 else()
   add_test(mapa_tests_NOT_BUILT mapa_tests_NOT_BUILT)
 endif()

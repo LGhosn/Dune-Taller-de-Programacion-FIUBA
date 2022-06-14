@@ -6,7 +6,7 @@
 #include <string>
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
-#include "../server_solicitudes/server_solicitud.h"
+#include "../server_solicitudes/solicitud_juego/server_solicitud.h"
 #include "../server_comandos/server_comando.h"
 #include "../server_game/game.h"
 

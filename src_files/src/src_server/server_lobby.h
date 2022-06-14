@@ -41,6 +41,6 @@ public:
     /*
      * Devuelve un objeto DTO para enviarlo al protocolo.
      * */
-    PartidasDTO getListado();
+    // PartidasDTO getListado();
 };
 #endif

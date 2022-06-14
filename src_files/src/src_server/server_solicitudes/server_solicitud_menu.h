@@ -3,6 +3,8 @@
 
 #include "../server_lobby.h"
 
+class Lobby;
+
 class SolicitudMenuServer {
 public:
     SolicitudMenuServer() = default;

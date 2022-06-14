@@ -21,7 +21,8 @@ private:
     void stop();
 public:
     ServerHiloSender(ColaBloqueante<ComandoServer>* cola_comandos,
-    ProtocoloServidor* protocolo, YAML::Node* codigos);
+                        ProtocoloServidor* protocolo,
+                        YAML::Node* codigos);
     void start();
     ~ServerHiloSender();
 

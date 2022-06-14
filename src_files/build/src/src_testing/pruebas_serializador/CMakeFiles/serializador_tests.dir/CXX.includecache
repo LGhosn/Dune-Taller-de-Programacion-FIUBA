@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_serializador/serializador_tests_autogen/mocs_compilation.cpp
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_serializador/serializador_tests_autogen/mocs_compilation.cpp
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp
 common_serializador.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.h
 iostream
 -
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.h
 map
 -
 string
@@ -28,11 +28,11 @@ arpa/inet.h
 sstream
 -
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/pruebas_serializador.cpp
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/pruebas_serializador.cpp
 gtest/gtest.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/gtest/gtest.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/gtest/gtest.h
 ../../src_common/common_serializador.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.h
+/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.h
 
 _deps/googletest-src/googletest/include/gtest/gtest-death-test.h
 gtest/internal/gtest-death-test-internal.h

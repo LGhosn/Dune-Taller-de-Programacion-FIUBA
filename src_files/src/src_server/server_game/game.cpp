@@ -1,5 +1,5 @@
 #include "game.h"
-#include "../server_solicitudes/sol_crear_edificio.h"
+#include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
 #include "../server_comandos/cmd_crear_edificio.h"
 
 Game::Game(std::vector<ColaBloqueante<ComandoServer>* >& colas_comandos) :

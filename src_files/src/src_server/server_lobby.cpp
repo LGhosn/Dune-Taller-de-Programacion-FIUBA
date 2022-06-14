@@ -44,12 +44,12 @@ bool Lobby::unirAPartida(const PartidaDTO& partida_a_unirse) {
     }
 }
 
-PartidasDTO Lobby::getListado() {
-    std::lock_guard<std::mutex> lock(m);
-    std::vector<PartidaDTO> partidas;
-    for (auto& partida : this->partidas_creadas) {
-        partidas.emplace_back(partida.second.getNombre(), partida.second.jugadores_requeridos,
-                              partida.second.jugadores_actuales);
-    }
-    return PartidasDTO(partidas);
-}
+// PartidasDTO Lobby::getListado() {
+//     std::lock_guard<std::mutex> lock(m);
+//     std::vector<PartidaDTO> partidas;
+//     for (auto& partida : this->partidas_creadas) {
+//         partidas.emplace_back(partida.second.getNombre(), partida.second.jugadores_requeridos,
+//                               partida.second.jugadores_actuales);
+//     }
+//     return PartidasDTO(partidas);
+// }

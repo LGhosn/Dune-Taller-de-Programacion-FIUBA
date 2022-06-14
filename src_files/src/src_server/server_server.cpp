@@ -1,11 +1,10 @@
 #include "server_server.h"
-
+#include <iostream>
 
 #define CENTINELA 'q'
-#define RUTA_CODIGOS RESOURCE_PATH "constantes/codigos.yaml"
+#define RUTA_YAML "../../assets/constantes/codigos.yaml"
 
-Server::Server(const char* servicename) : codigos(YAML::LoadFile(RUTA_CODIGOS)),
-hilo_aceptador(servicename, &codigos) {}
+Server::Server(const char* servicename) : codigos(NULL), hilo_aceptador(servicename, &codigos) {}
 
 void Server::iniciar() {
     char entrada = 0;

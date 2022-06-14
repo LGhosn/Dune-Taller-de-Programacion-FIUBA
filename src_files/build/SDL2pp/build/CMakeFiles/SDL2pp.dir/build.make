@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files"
+CMAKE_SOURCE_DIR = /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build"
+CMAKE_BINARY_DIR = /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build
 
 # Include any dependencies generated for this target.
 include SDL2pp/build/CMakeFiles/SDL2pp.dir/depend.make
@@ -59,302 +59,302 @@ include SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.o: ../src/src_libs/SDL2pp/SDL2pp/AudioDevice.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioDevice.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioDevice.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioDevice.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioDevice.cc > CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioDevice.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioDevice.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.o: ../src/src_libs/SDL2pp/SDL2pp/AudioLock.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioLock.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioLock.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioLock.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioLock.cc > CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioLock.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioLock.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.o: ../src/src_libs/SDL2pp/SDL2pp/AudioSpec.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioSpec.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioSpec.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioSpec.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioSpec.cc > CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioSpec.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioSpec.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Color.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Color.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Color.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Color.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Color.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Color.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Color.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Exception.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Exception.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Exception.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Exception.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Exception.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Exception.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Exception.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Point.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Point.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Point.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Point.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Point.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Point.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Point.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.o: ../src/src_libs/SDL2pp/SDL2pp/RWops.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/RWops.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/RWops.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/RWops.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/RWops.cc > CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/RWops.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/RWops.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Rect.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Rect.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Rect.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Rect.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Rect.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Rect.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Rect.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Renderer.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Renderer.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Renderer.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Renderer.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Renderer.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Renderer.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Renderer.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.o: ../src/src_libs/SDL2pp/SDL2pp/SDL.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDL.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDL.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDL.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDL.cc > CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDL.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDL.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Surface.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Surface.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Surface.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Surface.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Surface.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Surface.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Surface.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.o: ../src/src_libs/SDL2pp/SDL2pp/SurfaceLock.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SurfaceLock.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SurfaceLock.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SurfaceLock.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SurfaceLock.cc > CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SurfaceLock.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SurfaceLock.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Texture.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Texture.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Texture.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Texture.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Texture.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Texture.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Texture.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.o: ../src/src_libs/SDL2pp/SDL2pp/TextureLock.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/TextureLock.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/TextureLock.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/TextureLock.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/TextureLock.cc > CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/TextureLock.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/TextureLock.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Wav.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Wav.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Wav.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Wav.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Wav.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Wav.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Wav.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Window.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Window.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Window.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Window.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Window.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Window.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Window.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.o: ../src/src_libs/SDL2pp/SDL2pp/SDLTTF.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLTTF.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLTTF.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLTTF.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLTTF.cc > CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLTTF.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLTTF.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Font.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Font.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Font.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Font.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Font.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Font.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Font.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.o: ../src/src_libs/SDL2pp/SDL2pp/SDLImage.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLImage.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLImage.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLImage.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLImage.cc > CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLImage.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLImage.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Chunk.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Chunk.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Chunk.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Chunk.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Chunk.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Chunk.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Chunk.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Mixer.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Mixer.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Mixer.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Mixer.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Mixer.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Mixer.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Mixer.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.o: ../src/src_libs/SDL2pp/SDL2pp/Music.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Music.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Music.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Music.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Music.cc > CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Music.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Music.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.s
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.o: SDL2pp/build/CMakeFiles/SDL2pp.dir/flags.make
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.o: ../src/src_libs/SDL2pp/SDL2pp/SDLMixer.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.o"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLMixer.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.o"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.o -c /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLMixer.cc
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.i"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLMixer.cc" > CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.i
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLMixer.cc > CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.i
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.s"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLMixer.cc" -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.s
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/SDLMixer.cc -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.s
 
 # Object files for target SDL2pp
 SDL2pp_OBJECTS = \
@@ -410,9 +410,9 @@ SDL2pp/build/libSDL2pp.a: SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.o
 SDL2pp/build/libSDL2pp.a: SDL2pp/build/CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.o
 SDL2pp/build/libSDL2pp.a: SDL2pp/build/CMakeFiles/SDL2pp.dir/build.make
 SDL2pp/build/libSDL2pp.a: SDL2pp/build/CMakeFiles/SDL2pp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_24) "Linking CXX static library libSDL2pp.a"
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && $(CMAKE_COMMAND) -P CMakeFiles/SDL2pp.dir/cmake_clean_target.cmake
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SDL2pp.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Linking CXX static library libSDL2pp.a"
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && $(CMAKE_COMMAND) -P CMakeFiles/SDL2pp.dir/cmake_clean_target.cmake
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SDL2pp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 SDL2pp/build/CMakeFiles/SDL2pp.dir/build: SDL2pp/build/libSDL2pp.a
@@ -420,10 +420,10 @@ SDL2pp/build/CMakeFiles/SDL2pp.dir/build: SDL2pp/build/libSDL2pp.a
 .PHONY : SDL2pp/build/CMakeFiles/SDL2pp.dir/build
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/clean:
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" && $(CMAKE_COMMAND) -P CMakeFiles/SDL2pp.dir/cmake_clean.cmake
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build && $(CMAKE_COMMAND) -P CMakeFiles/SDL2pp.dir/cmake_clean.cmake
 .PHONY : SDL2pp/build/CMakeFiles/SDL2pp.dir/clean
 
 SDL2pp/build/CMakeFiles/SDL2pp.dir/depend:
-	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build/CMakeFiles/SDL2pp.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build/CMakeFiles/SDL2pp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : SDL2pp/build/CMakeFiles/SDL2pp.dir/depend
 

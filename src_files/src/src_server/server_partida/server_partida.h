@@ -4,7 +4,7 @@
 #include "../server_handler_cliente/server_handler_cliente.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
 #include "../server_thread_gameloop/server_hilo_gameloop.h"
-#include "../server_solicitudes/server_solicitud.h"
+#include "../server_solicitudes/solicitud_juego/server_solicitud.h"
 #include <list>
 #include <string>
 #include <map>
