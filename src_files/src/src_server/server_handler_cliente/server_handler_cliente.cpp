@@ -1,4 +1,5 @@
 #include "server_handler_cliente.h"
+#include <iostream>
 
 HandlerCliente::HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos, uint8_t id_cliente) :
                                 id_cliente(id_cliente),
@@ -14,6 +15,7 @@ HandlerCliente::HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos
 
 void HandlerCliente::unirsePartida(PartidaDTO& partida_a_unirse) {
     bool el_jugador_se_unio = lobby->unirAPartida(partida_a_unirse, this);
+    std::cout << "Llegue aca" << std::endl;
     protocolo.enviarStatusDeUnion(el_jugador_se_unio);
 }
 

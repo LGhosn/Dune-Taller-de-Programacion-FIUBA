@@ -56,11 +56,15 @@ add_executable(client
         src/src_cliente/client_comandos/cmd_mover_mapa.cpp
         src/src_cliente/client_comandos/cmd_zoom.cpp
         src/src_cliente/client_comandos/cmd_salir.cpp
+        src/src_cliente/client_comandos/cmd_click_en_mapa.cpp
         src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
         src/src_cliente/client_comandos/client_comando.cpp
-        src/src_cliente/client_world_view/sdl_tile_factory.cpp
-        src/src_cliente/client_world_view/sdl_tile.cpp
-        src/src_cliente/client_world_view/sdl_mapa.cpp
+        src/src_cliente/client_world_view/sdl_mapa/sdl_tile_factory.cpp
+        src/src_cliente/client_world_view/sdl_mapa/sdl_tile.cpp
+        src/src_cliente/client_world_view/sdl_mapa/sdl_mapa.cpp
+        src/src_cliente/client_world_view/sdl_edificio/sdl_edificio.h
+        src/src_cliente/client_world_view/sdl_edificio/sdl_edificio_factory.cpp
+        src/src_cliente/client_world_view/sdl_edificio/sdl_centro.cpp
         src/src_cliente/client_world_view/world_view.cpp
         src/src_common/common_colas/cola_bloqueante.cpp
         src/src_common/common_colas/cola_no_bloqueante.cpp

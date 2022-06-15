@@ -53,8 +53,7 @@ HiloGameLoop::HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_co
 ColaNoBloqueante<SolicitudServer>& cola_solicitudes, std::string& ruta_mapa):
 cola_solicitudes(cola_solicitudes), game(colas_comandos) {}
 
-void HiloGameLoop::start(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender) {
-    this->colas_sender = colas_sender;
+void HiloGameLoop::start() {
     this->hilo = std::thread(&HiloGameLoop::manejarHilo, this);
 }
 

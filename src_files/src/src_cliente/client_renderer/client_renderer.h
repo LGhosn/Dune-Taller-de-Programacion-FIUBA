@@ -1,12 +1,12 @@
 #ifndef CLIENT_RENDERER_H
 #define CLIENT_RENDERER_H
 
-#define FRAME_RATE 33.0f
+#define FRAME_RATE 30
 
 #include <SDL2pp/SDL2pp.hh>
 #include <SDL2pp/Music.hh>
 #include <SDL2pp/Mixer.hh>
-#include "../client_world_view/sdl_mapa.h"
+#include "../client_world_view/sdl_mapa/sdl_mapa.h"
 #include "../client_world_view/world_view.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
 #include "../client_comandos/client_comando.h"

@@ -23,7 +23,8 @@ void Partida::empezar() {
     }
     std::string ruta_mapa = "../../../assets/maps/mapa1.yaml";     // TODO: implementar ruta al mapa
     HiloGameLoop hilo_gameloop(colas_sender, this->cola_solicitudes, ruta_mapa);
-    hilo_gameloop.start(colas_sender);
+    hilo_gameloop.start();
+    std::cout << "Gameloop empezado" << std::endl;
 }
 
 std::string Partida::getNombre() const {
