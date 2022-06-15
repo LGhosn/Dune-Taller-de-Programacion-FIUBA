@@ -4,7 +4,7 @@
 #include <SDL2pp/SDL2pp.hh>
 #include "../../../src_common/common_coords.h"
 
-#define LARGO_TILE 16
+#define LARGO_TILE 32
 #define PADDING 100
 
 class TileSDL {

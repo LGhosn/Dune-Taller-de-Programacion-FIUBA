@@ -7,7 +7,7 @@ void TileFactorySDL::agregarTileDeRoca(uint16_t tipo_textura, Coordenadas &coord
 }
 
 void TileFactorySDL::agregarTileDeArena(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 1, 1);
+    tiles.emplace_back(renderer, textura_base, coords, 8, 8);
 }
 
 void TileFactorySDL::agregarTileDePrecipicio(uint16_t tipo_textura, Coordenadas &coords) {

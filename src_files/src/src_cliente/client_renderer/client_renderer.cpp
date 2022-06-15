@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <chrono>
 #include <iostream>
+#include <thread>
 #include "client_renderer.h"
 
 bool ClientRenderer::manejar_comando() {
@@ -21,27 +22,32 @@ void ClientRenderer::render() {
 }
 
 void ClientRenderer::game_loop() {
+	using namespace std::chrono;
 	bool running = true;
 	long frame = 0;
-	auto t1 = std::chrono::steady_clock::now();
-	std::chrono::seconds frame_rate(1 / FRAME_RATE);
+	time_point t1 = system_clock::now();
+	milliseconds frame_rate(1000 / FPS);
+	std::cout << "Frame rate: " << frame_rate.count() << std::endl;
 	while (running) {
 		running = this->manejar_comando();
 		this->update(frame);
 		this->render();
-		std::chrono::time_point t2 = std::chrono::steady_clock::now();
-		auto tiempo_transcurrido = std::chrono::duration<std::seconds>(t2 - t1);
+		time_point t2 = system_clock::now();
+		milliseconds tiempo_transcurrido = duration_cast<milliseconds>(t2 - t1);
 		t1 = t2;
-		auto rest = frame_rate - tiempo_transcurrido;
-		// float rest = FRAME_RATE - tiempo_transcurrido;
-		if (rest < 0) {
-			float demora = - rest;
-			rest = FRAME_RATE - (int) demora % (int) FRAME_RATE;
-			float tiempo_perdido = demora + rest;
-			frame += tiempo_perdido / FRAME_RATE;
+		milliseconds rest;
+		// Equivalente a calcular el rest y preguntar si es menor a cero
+		if (tiempo_transcurrido.count() > frame_rate.count()) {
+			milliseconds demora = duration_cast<milliseconds>(tiempo_transcurrido - frame_rate);
+			rest = duration_cast<milliseconds>(demora % frame_rate);
+			milliseconds tiempo_perdido = demora + rest;
+			frame += tiempo_perdido.count() / frame_rate.count();
+		} else {
+			rest = duration_cast<milliseconds>(frame_rate - tiempo_transcurrido);
+			frame++;
 		}
-		usleep(rest);
-		frame++;
+		std::this_thread::sleep_for(rest);
+		
 	}
 }
 

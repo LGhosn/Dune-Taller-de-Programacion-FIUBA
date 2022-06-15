@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-#define LARGO_TILE 16
+#define LARGO_TILE 32
 
 class PixACoords {
 private:

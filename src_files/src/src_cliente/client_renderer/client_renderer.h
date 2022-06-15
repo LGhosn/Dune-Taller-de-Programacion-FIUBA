@@ -1,7 +1,7 @@
 #ifndef CLIENT_RENDERER_H
 #define CLIENT_RENDERER_H
 
-#define FRAME_RATE 30
+#define FPS 60
 
 #include <SDL2pp/SDL2pp.hh>
 #include <SDL2pp/Music.hh>

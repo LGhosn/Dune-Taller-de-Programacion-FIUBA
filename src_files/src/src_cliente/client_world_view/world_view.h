@@ -19,7 +19,7 @@ class WorldView {
 	MapaSDL mapa;
 	std::unordered_map<Coordenadas, EdificioSDL*, HashCoordenadas> edificios;
 	EdificioFactorySDL edificio_factory;
-	long frame_anterior;
+	long frame_anterior = 0;
 
 public:
 	WorldView();

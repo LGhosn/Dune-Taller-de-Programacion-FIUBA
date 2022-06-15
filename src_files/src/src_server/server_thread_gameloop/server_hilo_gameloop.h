@@ -10,10 +10,9 @@
 #include "../server_comandos/server_comando.h"
 #include "../server_game/game.h"
 
-#define FRAME_RATE 33.0f
+#define TICKS_POR_SEGUNDO 60
 
 class HiloGameLoop {
-    std::vector<ColaBloqueante<ComandoServer>*> colas_sender;
     ColaNoBloqueante<SolicitudServer>& cola_solicitudes;
     Game game;
     std::thread hilo;
@@ -31,7 +30,7 @@ public:
     HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender,
     ColaNoBloqueante<SolicitudServer>& sol_entrantes, std::string& ruta_mapa);
 
-    void start(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender);
+    void start();
 
     ~HiloGameLoop();
 

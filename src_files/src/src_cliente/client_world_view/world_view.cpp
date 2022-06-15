@@ -73,7 +73,6 @@ void WorldView::salir() {
 
 void WorldView::update(long frame_actual) {
 	long frames_transcurridos = frame_actual - this->frame_anterior;
-	std::cout << "Frames: " << frames_transcurridos << std::endl;
 	for (int i = 0; i < frames_transcurridos; i++) {
 		this->mapa.update(this->zoom);
 	}

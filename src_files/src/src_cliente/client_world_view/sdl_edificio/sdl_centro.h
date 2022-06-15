@@ -5,13 +5,15 @@
 
 #define ANCHO_TEX_EDIFICIO 97
 #define ALTO_TEX_EDIFICIO 86
-#define ANCHO_TEX_BRAZO 51
+#define ANCHO_TEX_BRAZO 52
 #define ALTO_TEX_BRAZO 65
 #define CANT_FRAMES_BRAZO 14
-#define RATE_BRAZO 30
+#define RATE_BRAZO 5
 
-#define OFFSET_BRAZO_X 11
-#define OFFSET_BRAZO_Y 18
+#define OFFSET_EDIFICIO_X 3
+
+#define OFFSET_BRAZO_X 2
+#define OFFSET_BRAZO_Y 25
 
 #define HARKONNEN 0 
 #define ATREIDES 1
@@ -38,6 +40,9 @@ class CentroSDL : public EdificioSDL {
     int tam_actual_brazo_x = 0;
     int tam_actual_brazo_y = 0;
     long frame_anterior = 0;
+
+    void actualizarFrameBrazo(long frame_actual);
+    void setearPosicionBrazo();
 
 public:
     CentroSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer, SDL2pp::Texture& textura,
