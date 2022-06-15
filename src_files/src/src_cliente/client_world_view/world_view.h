@@ -7,9 +7,9 @@
 #include "../../src_common/common_coords.h"
 #include <list>
 
-#define ZOOM_INICIAL 1.0f
+#define ZOOM_INICIAL 3.0f
 #define ZOOM_MAXIMO 4.0f
-#define ZOOM_MINIMO 1.0f
+#define ZOOM_MINIMO 2.0f
 #define ZOOM_PASO 0.1f
 
 class WorldView {
@@ -18,8 +18,12 @@ class WorldView {
 	float zoom;
 	MapaSDL mapa;
 	std::unordered_map<Coordenadas, EdificioSDL*, HashCoordenadas> edificios;
+	std::vector<EdificioSDL*> edificios_seleccionados;
 	EdificioFactorySDL edificio_factory;
 	long frame_anterior = 0;
+
+	void deseleccionarEdificios();
+	void seleccionarEdificio(EdificioSDL* edificio);
 
 public:
 	WorldView();

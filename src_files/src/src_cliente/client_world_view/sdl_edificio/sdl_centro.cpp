@@ -49,9 +49,21 @@ CentroSDL::CentroSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
     pos_en_tex_brazo_y = pos_en_tex_y + ALTO_TEX_EDIFICIO;
 }
 
+Coordenadas CentroSDL::obtenerDimensiones() const {
+    return Coordenadas(ancho, alto);
+}
+
 void CentroSDL::cambiarHP(uint16_t hp_edificio) {
     if (hp_edificio < LIMITE_HP_DEBILITAR)
         pos_en_tex_x = ANCHO_TEX_EDIFICIO;
+}
+
+void CentroSDL::seleccionar() {
+    seleccionado = true;
+}
+
+void CentroSDL::deseleccionar() {
+    seleccionado = false;
 }
 
 void CentroSDL::update(uint32_t offset_x, uint32_t offset_y, long frame_actual) {
@@ -75,9 +87,9 @@ void CentroSDL::render() {
                   ),
                   SDL2pp::Rect(
                     pos_actual_x,
-                    pos_actual_y,
+                    pos_actual_y + PADDING_EDIFICIO_Y,
                     tam_actual_x,
-                    tam_actual_y
+                    tam_actual_y - 2 * PADDING_EDIFICIO_Y
                   )
                 );
 
@@ -95,4 +107,27 @@ void CentroSDL::render() {
                         tam_actual_brazo_y
                     )
                 );
+    if (seleccionado) {
+        renderer.SetDrawColor(255, 255, 255);
+        renderer.DrawRect(
+            pos_actual_x,
+            pos_actual_y,
+            pos_actual_x + tam_actual_x,
+            pos_actual_y + tam_actual_y
+        );
+        renderer.SetDrawColor(90, 146, 22);
+        renderer.FillRect(
+            pos_actual_x + (tam_actual_x - ANCHO_HP) / 2,
+            pos_actual_y + OFFSET_HP_Y,
+            pos_actual_x + (tam_actual_x + ANCHO_HP) / 2,
+            pos_actual_y + OFFSET_HP_Y + ALTO_HP
+        );
+        renderer.SetDrawColor(0, 0, 0);
+        renderer.DrawRect(
+            pos_actual_x + (tam_actual_x - ANCHO_HP) / 2,
+            pos_actual_y + OFFSET_HP_Y,
+            pos_actual_x + (tam_actual_x + ANCHO_HP) / 2,
+            pos_actual_y + OFFSET_HP_Y + ALTO_HP
+        );
+    }
 }
