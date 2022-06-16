@@ -1,6 +1,7 @@
 #include "client_serializador.h"
 #include <arpa/inet.h>
 #include <stdexcept>
+#include <iostream>
 
 uint8_t SerializadorCliente::obtenerCodigoCasa(const std::string& casa) const {
     if (casa == "Harkonnen")
@@ -18,19 +19,25 @@ std::vector<uint8_t> SerializadorCliente::serializarSolicitudCrearPartida(
     uint16_t largo_nombre = solicitud.nombre_partida.length();
     uint16_t largo_mapa = solicitud.mapa.length();
     std::vector<uint8_t> buffer(7 + largo_nombre + largo_mapa);
+
     buffer[0] = CODIGO_SOLICITUD_CREAR_PARTIDA;
     buffer[1] = obtenerCodigoCasa(solicitud.casa);
     buffer[2] = solicitud.jugadores_requeridos;
-    uint16_t* ptr_16 = (uint16_t*) buffer.data() + 3;
+
+    uint16_t* ptr_16 = (uint16_t*) (buffer.data() + 3);
     ptr_16[0] = htons(largo_nombre);
+
     for (int i = 0; i < largo_nombre; i++) {
         buffer[5 + i] = solicitud.nombre_partida[i];
     }
-    ptr_16 = (uint16_t*) buffer.data() + 5 + largo_nombre;
+
+    ptr_16 = (uint16_t*) (buffer.data() + 5 + largo_nombre);
     ptr_16[0] = htons(largo_mapa);
+
     for (int i = 0; i < largo_mapa; i++) {
         buffer[7 + largo_nombre + i] = solicitud.mapa[i];
     }
+
     return buffer;
 }
 
@@ -40,7 +47,7 @@ std::vector<uint8_t> SerializadorCliente::serializarSolicitudUnirseAPartida(
     std::vector<uint8_t> buffer(4 + largo_nombre);
     buffer[0] = CODIGO_SOLICITUD_UNIRSE_A_PARTIDA;
     buffer[1] = obtenerCodigoCasa(solicitud.casa);
-    uint16_t* ptr_16 = (uint16_t*) buffer.data() + 2;
+    uint16_t* ptr_16 = (uint16_t*) (buffer.data() + 2);
     ptr_16[0] = htons(largo_nombre);
     for (int i = 0; i < largo_nombre; i++) {
         buffer[4 + i] = solicitud.nombre_partida[i];
@@ -55,7 +62,7 @@ std::vector<uint8_t> SerializadorCliente::serializarSolicitudCrearEdificio(Coord
     buffer[1] = tipo;
     uint16_t x = htons(coords.x);
     uint16_t y = htons(coords.y);
-    uint16_t* ptr_16 = (uint16_t*) buffer.data() + 2;
+    uint16_t* ptr_16 = (uint16_t*) (buffer.data() + 2);
     ptr_16[0] = x;
     ptr_16[1] = y;
     return buffer;

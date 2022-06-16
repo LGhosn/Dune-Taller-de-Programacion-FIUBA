@@ -17,6 +17,14 @@ void Client::enviarSolicitud(SolicitudCliente* solicitud) {
     cola_solicitudes.push(solicitud);
 }
 
+void Client::establecerPartidaEmpezada() {
+    this->partida_empezada = true;
+}
+
+bool Client::estaEnPartida() {
+    return this->partida_empezada;
+}
+
 void Client::empezarPartida() {
     receiver->start();
     ClientRenderer renderer(cola_comandos, cola_solicitudes, id_jugador);

@@ -52,7 +52,8 @@ void FormCreacion::crearNotificacion(Status& status) {
         if (partida_comenzada) {
             // Cierro todas las ventanas y abro el juego
             std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
-            ///this->close();
+            this->cliente.establecerPartidaEmpezada();
+            this->close();
         }
     } else {
         std::cout << "Creacion Fallida, existe otra partida con ese mismo nombre, por favor elegir otro...." << std::endl;

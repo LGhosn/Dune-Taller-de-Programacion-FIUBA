@@ -70,13 +70,13 @@ void ServerHiloReceiver::recibirSolicitudMenuSegunCodigo(uint8_t codigo) {
 }
 
 void ServerHiloReceiver::recibirSolicitudDeCreacion() {
-    // PartidaDTO solicitud = this->protocolo->recibirSolicitudDeCreacion();
-    // this->cliente_asociado->crearPartida(solicitud);
+    SolicitudCrearPartidaDTO solicitud = protocolo->recibirSolicitudCrearPartida();
+    this->cliente_asociado->crearPartida(solicitud);
 }
 
 void ServerHiloReceiver::recibirSolicitudDeUnion() {
-    // PartidaDTO solicitud = protocolo->recibirSolicitudDeUnion();
-    // this->cliente_asociado->unirsePartida(solicitud);
+    SolicitudUnirseAPartidaDTO solicitud = protocolo->recibirSolicitudUnirseAPartida();
+    this->cliente_asociado->unirsePartida(solicitud);
 }
 
 /* *****************************************************************

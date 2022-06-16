@@ -54,16 +54,17 @@ SolicitudCrearPartidaDTO ProtocoloServidor::recibirSolicitudCrearPartida() {
     std::string nombre_partida = this->recibirNombre();
 
     std::string nombre_mapa = this->recibirNombre();
-
     return SolicitudCrearPartidaDTO(nombre_partida, nombre_mapa, casa_codigo, jugadores_requeridos);
 }
 
 void ProtocoloServidor::enviarStatusDeCreacion(bool la_partida_se_creo) {
     if (la_partida_se_creo) {
+        std::cout << "Se creo la partida" << std::endl;
         uint8_t status = 0;
         this->skt_comunicador->sendall
             (&status, sizeof(uint8_t));
     } else {
+        std::cout << "No se pudo crear la partida" << std::endl;
         uint8_t status = 1;
         this->skt_comunicador->sendall
             (&status, sizeof(uint8_t));

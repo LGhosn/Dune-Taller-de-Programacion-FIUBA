@@ -47,7 +47,8 @@ void FormUnion::unirseNotificacion(ProtocoloCliente &protocolo, Status &status) 
         if (partida_comenzada) {
             // Cierro todas las ventanas y abro el juego
             std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
-            //this->close();
+            this->cliente.establecerPartidaEmpezada();
+            this->close();
         }
         //QMessageBox::information(this, "Union Existosa", "Esperando jugadores restantes...");
     } else {
