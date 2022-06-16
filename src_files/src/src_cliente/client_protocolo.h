@@ -39,7 +39,7 @@ class ProtocoloCliente {
     // void recibirInfoMoverUnidad();
 
     ComandoCrearEdificioDTO recibirComandoCrearEdificio();
-    void enviarSolicitudCrearEdificio(Coordenadas& coords, uint8_t tipo);
+    void enviarSolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords, uint8_t tipo);
     void enviarSolicitudUnirseAPartida(std::string& casa, std::string& nombre_partida);
 
     /*

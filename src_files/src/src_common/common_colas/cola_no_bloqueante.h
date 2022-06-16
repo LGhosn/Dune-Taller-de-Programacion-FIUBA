@@ -47,9 +47,7 @@ public:
 		return *this;
 	}
 
-	ColaNoBloqueante<T>(ColaNoBloqueante<T>&& otra) {
-		this->cola = std::move(otra.cola);
-	}
+	ColaNoBloqueante<T>(ColaNoBloqueante<T>&& otra) : cola(std::move(otra.cola)) {}
 
 };
 

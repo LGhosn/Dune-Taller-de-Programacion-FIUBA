@@ -5,10 +5,11 @@
 #include "../../src_common/common_coords.h"
 
 class SolicitudCrearEdificio : public SolicitudCliente {
+    uint8_t id_jugador;
     Coordenadas coords;
     uint8_t tipo;
 public:
-    SolicitudCrearEdificio(Coordenadas& coords, uint8_t tipo);
+    SolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords, uint8_t tipo);
 
     void enviarSolicitud(ProtocoloCliente& protocolo);
 

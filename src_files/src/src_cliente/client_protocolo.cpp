@@ -30,8 +30,9 @@ void ProtocoloCliente::enviarSolicitudCrearPartida(SolicitudCrearPartidaDTO& sol
  *                METODOS REFERIDOS A CREAR EDIFICIOS
  * *****************************************************************/
 
-void ProtocoloCliente::enviarSolicitudCrearEdificio(Coordenadas& coords, uint8_t tipo) {
-    std::vector<uint8_t> buffer = serializador.serializarSolicitudCrearEdificio(coords, tipo);
+void ProtocoloCliente::enviarSolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords,
+                                                    uint8_t tipo) {
+    std::vector<uint8_t> buffer = serializador.serializarSolicitudCrearEdificio(id_jugador, coords, tipo);
     this->enviarBuffer(buffer);
 }
 

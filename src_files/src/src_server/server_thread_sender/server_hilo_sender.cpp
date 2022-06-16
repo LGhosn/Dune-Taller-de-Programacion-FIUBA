@@ -4,7 +4,7 @@ ServerHiloSender::ServerHiloSender(ColaBloqueante<ComandoServer>* cola_comandos,
                                    ProtocoloServidor* protocolo, YAML::Node* codigos) :
                                    cola_comandos(cola_comandos),
                                    protocolo(protocolo),
-                                   codigos(codigos) {}
+                                   codigos(nullptr) {}
 
 void ServerHiloSender::start() {
     this->thread = std::thread(&ServerHiloSender::handleThread, this);
@@ -22,6 +22,7 @@ void ServerHiloSender::handleThread() {
 
 void ServerHiloSender::run() {
     while (this->hay_que_seguir) {
+        std::cout << "Sender en el loop" << std::endl;
         std::unique_ptr<ComandoServer> comando = this->cola_comandos->wait_and_pop();
         this->send(std::move(comando));
     }
@@ -46,7 +47,7 @@ ServerHiloSender::ServerHiloSender(ServerHiloSender&& otro):
                                      cola_comandos(otro.cola_comandos),
                                      protocolo(otro.protocolo),
                                      hay_que_seguir(otro.hay_que_seguir),
-                                     codigos(otro.codigos) {}
+                                     codigos(nullptr) {}
 
 ServerHiloSender& ServerHiloSender::operator=(ServerHiloSender&& otro) {
     if (this == &otro) {

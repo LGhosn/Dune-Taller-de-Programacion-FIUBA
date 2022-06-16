@@ -17,6 +17,7 @@ void ClientHiloReciever::handleThread() {
 
 void ClientHiloReciever::run() {
     while (this->hay_que_seguir) {
+        std::cout << "Reciever en el loop" << std::endl;
         uint8_t codigo_comando;
         protocolo.recibirCodigoDeComando(codigo_comando);
         ComandoCliente* comando = this->crearComandoSegunCodigo(codigo_comando);

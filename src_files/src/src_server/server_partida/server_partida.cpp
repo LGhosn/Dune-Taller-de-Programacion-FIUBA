@@ -26,6 +26,7 @@ void Partida::agregarJugador(HandlerCliente* cliente) {
 
 void Partida::empezar() {
     for (auto cliente : this->clientes_conectados) {
+        colas_sender.push_back(cliente->obtenerColaSender());
         cliente->empezarPartida(&this->cola_solicitudes);
     }
     std::string ruta_mapa = obtenerRutaMapa();

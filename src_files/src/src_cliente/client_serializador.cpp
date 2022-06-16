@@ -55,14 +55,16 @@ std::vector<uint8_t> SerializadorCliente::serializarSolicitudUnirseAPartida(
     return buffer;
 }
 
-std::vector<uint8_t> SerializadorCliente::serializarSolicitudCrearEdificio(Coordenadas& coords,
+std::vector<uint8_t> SerializadorCliente::serializarSolicitudCrearEdificio(uint8_t id_jugador,
+                                                                            Coordenadas& coords,
                                                                             uint8_t tipo) {
-    std::vector<uint8_t> buffer(6);
+    std::vector<uint8_t> buffer(7);
     buffer[0] = CODIGO_SOLICITUD_CREAR_EDIFICIO;
-    buffer[1] = tipo;
+    buffer[1] = id_jugador;
+    buffer[2] = tipo;
     uint16_t x = htons(coords.x);
     uint16_t y = htons(coords.y);
-    uint16_t* ptr_16 = (uint16_t*) (buffer.data() + 2);
+    uint16_t* ptr_16 = (uint16_t*) (buffer.data() + 3);
     ptr_16[0] = x;
     ptr_16[1] = y;
     return buffer;

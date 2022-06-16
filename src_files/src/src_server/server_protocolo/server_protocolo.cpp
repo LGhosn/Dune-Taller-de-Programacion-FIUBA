@@ -35,7 +35,6 @@ void ProtocoloServidor::enviarId(uint8_t id_cliente) {
 void ProtocoloServidor::enviarComienzoDePartida() {
     uint8_t codigo_comienzo = 0;
     this->skt_comunicador->sendall(&codigo_comienzo, sizeof(codigo_comienzo));
-    std::cout << "Se envio la señal de comienzo de partida" << std::endl;
 }
 
 

@@ -20,19 +20,18 @@ enum dimensiones {
 std::tuple<int, int, char> Mapa::propiedadesEdificio(uint8_t edificio) {
     int dimension_x = 0, dimension_y = 0;
     char tipo_edificio = 0;
-    const uint8_t torre = 0x01, cuartel = 0x02, silo = 0x03;
     switch (edificio) {
-        case torre:
+        case 0:
             dimension_x = tres_dimension;
             dimension_y = tres_dimension;
             tipo_edificio = TORRE_DE_AIRE;
             break;
-        case cuartel:
+        case 1:
             dimension_x = dos_dimensiones;
             dimension_y = tres_dimension;
             tipo_edificio = CUARTEL;
             break;
-        case silo:
+        case 2:
             dimension_x = una_dimension;
             dimension_y = una_dimension;
             tipo_edificio = SILO;

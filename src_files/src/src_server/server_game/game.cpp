@@ -7,10 +7,12 @@ Game::Game(std::vector<ColaBloqueante<ComandoServer>* >& colas_comandos) :
             mapa(100, 100) {}
 
 void Game::crearEdificio(uint16_t id_jugador, uint16_t tipo, const Coordenadas& coords) {
-    bool resultado = mapa.construirEdificio(id_jugador, tipo, coords);
+    // bool resultado = mapa.construirEdificio(id_jugador, tipo, coords);
+    bool resultado = true;
     if (resultado) {
         // uint16_t id_edificio = edificios.add(id_jugador, tipo, coords);
         for (auto& cola : colas_comandos) {
+            std::cout << "Pushando comando crear edificio en cola" << std::endl;
             CmdCrearEdificioServer* comando = new CmdCrearEdificioServer(id_jugador, conts_id_edificios, tipo, coords, 0); // fix
             cola->push(comando);
         }

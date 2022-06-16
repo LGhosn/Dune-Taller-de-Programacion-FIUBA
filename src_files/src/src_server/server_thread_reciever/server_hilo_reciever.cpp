@@ -42,6 +42,8 @@ void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
         case 5:
             manejarSolicitudCrearEdificio();
             break;
+        default:
+            throw std::runtime_error("Código de solicitud no reconocido");
     }
 }
 

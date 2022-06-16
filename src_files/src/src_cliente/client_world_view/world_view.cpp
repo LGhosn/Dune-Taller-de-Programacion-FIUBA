@@ -80,7 +80,7 @@ void WorldView::click_en_mapa(int pos_x, int pos_y) {
 	if (edificios.find(coords) != edificios.end()) {
 		seleccionarEdificio(edificios.at(coords));
 	} else {
-		SolicitudCrearEdificio* solicitud = new SolicitudCrearEdificio(coords, 0);
+		SolicitudCrearEdificio* solicitud = new SolicitudCrearEdificio(id_jugador, coords, 0);
 		cola_solicitudes.push(solicitud);
 		deseleccionarEdificios();
 	}
