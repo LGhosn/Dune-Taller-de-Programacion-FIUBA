@@ -1,58 +1,58 @@
 #include "server_hilo_reciever.h"
 
-void ServerHiloReciever::recibirSolicitudSegunCodigo(uint8_t codigo) {
+void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
     // switch (codigo) {
     //     case 
     // }
     //codigos[codigo] 
 }
 
-void ServerHiloReciever::recibirSolicitudMenuSegunCodigo(uint8_t codigo) {
+void ServerHiloReceiver::manejarSolicitudMenuSegunCodigo(uint8_t codigo) {
     switch (codigo) {
         // Solicitan unirse a una partida.
         case 1:
-        this->recibirSolicitudDeUnion();
+        this->manejarSolicitudUnirseAPartida();
         break;
 
         // Solicitan crear una partida.
         case 3:
-        this->recibirSolicitudDeCreacion();
+        this->manejarSolicitudCrearPartida();
         break;
     }
 }
 
-void ServerHiloReciever::recibirSolicitudDeCreacion() {
-    PartidaDTO solicitud = this->protocolo->recibirSolicitudDeCreacion();
+void ServerHiloReceiver::manejarSolicitudCrearPartida() {
+    SolicitudCrearPartidaDTO solicitud = this->protocolo->recibirSolicitudCrearPartida();
     this->cliente_asociado->crearPartida(solicitud);
 }
 
-void ServerHiloReciever::recibirSolicitudDeUnion() {
-    PartidaDTO solicitud = protocolo->recibirSolicitudDeUnion();
+void ServerHiloReceiver::manejarSolicitudUnirseAPartida() {
+    SolicitudUnirseAPartidaDTO solicitud = protocolo->recibirSolicitudUnirseAPartida();
     this->cliente_asociado->unirsePartida(solicitud);
 }
 
-ServerHiloReciever::ServerHiloReciever(ProtocoloServidor* protocolo, YAML::Node* codigos, HandlerCliente *cliente_asociado) :
+ServerHiloReceiver::ServerHiloReceiver(ProtocoloServidor* protocolo, YAML::Node* codigos, HandlerCliente *cliente_asociado) :
                                     protocolo(protocolo),
                                     hay_que_seguir(true),
                                     partida_comenzada(false),
                                     codigos(codigos),
                                     cliente_asociado(cliente_asociado) {
-    this->thread = std::thread(&ServerHiloReciever::handleThread, this);
+    this->thread = std::thread(&ServerHiloReceiver::handleThread, this);
 }
 
-void ServerHiloReciever::handleThread() {
+void ServerHiloReceiver::handleThread() {
     try {
         this->run();
     } catch (const SocketError& e) {
         
     } catch (const std::exception &e) {
-        std::cerr << "Excepción encontrada en ServerHiloReciever: " << e.what() << std::endl;
+        std::cerr << "Excepción encontrada en ServerHiloReceiver: " << e.what() << std::endl;
     } catch (...) {
-        std::cerr << "Excepción encontrada en ServerHiloReciever: " << std::endl;
+        std::cerr << "Excepción encontrada en ServerHiloReceiver: " << std::endl;
     }
 }
 
-void ServerHiloReciever::run() {
+void ServerHiloReceiver::run() {
     while (this->hay_que_seguir) {
         uint8_t codigo;
         protocolo->recibirCodigoDeOperacion(codigo);
@@ -60,32 +60,32 @@ void ServerHiloReciever::run() {
             this->recibirSolicitudSegunCodigo(codigo);
         } else {
             std::cout << codigo << std::endl;
-            this->recibirSolicitudMenuSegunCodigo(codigo);
+            this->manejarSolicitudMenuSegunCodigo(codigo);
         }
     }
 }
 
-void ServerHiloReciever::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola_de_solicitudes) {
+void ServerHiloReceiver::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola_de_solicitudes) {
     this->cola_solicitudes = cola_de_solicitudes;
     this->partida_comenzada = true;
 }
 
-void ServerHiloReciever::stop() {
+void ServerHiloReceiver::stop() {
     this->hay_que_seguir = false;
 }
 
-ServerHiloReciever::~ServerHiloReciever() {
+ServerHiloReceiver::~ServerHiloReceiver() {
     if (this->thread.joinable()) {
         this->thread.join();
     }
 }
 
-ServerHiloReciever::ServerHiloReciever(ServerHiloReciever&& otro):
+ServerHiloReceiver::ServerHiloReceiver(ServerHiloReceiver&& otro):
                                         cola_solicitudes(otro.cola_solicitudes),
                                         protocolo(otro.protocolo),
                                         thread(std::move(otro.thread)) {}
 
-ServerHiloReciever& ServerHiloReciever::operator=(ServerHiloReciever&& otro) {
+ServerHiloReceiver& ServerHiloReceiver::operator=(ServerHiloReceiver&& otro) {
     if (this == &otro) {
         return *this;
     }

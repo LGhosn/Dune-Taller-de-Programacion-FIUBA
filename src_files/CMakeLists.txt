@@ -46,6 +46,7 @@ add_executable(client
         src/src_cliente/pix_a_coords.cpp
         src/src_cliente/client_client.cpp
         src/src_cliente/client_protocolo.cpp
+        src/src_cliente/client_serializador.cpp
         src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp
         src/src_cliente/client_thread_sender/client_hilo_sender.cpp
         src/src_cliente/client_renderer/client_renderer.cpp

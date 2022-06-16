@@ -7,7 +7,7 @@
 
 bool ClientRenderer::manejar_comando() {
 	// popall
-	std::unique_ptr<ComandoCliente> comando = this->cola_eventos.pop();
+	std::unique_ptr<ComandoCliente> comando = this->cola_comandos.pop();
 	if (comando)
 		return comando->ejecutar(this->world_view);
 	return true;
@@ -47,11 +47,14 @@ void ClientRenderer::game_loop() {
 			frame++;
 		}
 		std::this_thread::sleep_for(rest);
-		
 	}
 }
 
-ClientRenderer::ClientRenderer(ColaNoBloqueante<ComandoCliente>& cola_eventos) : cola_eventos(cola_eventos) {}
+ClientRenderer::ClientRenderer(ColaNoBloqueante<ComandoCliente>& cola_comandos,
+								ColaBloqueante<SolicitudCliente>& cola_solicitudes) :
+								cola_solicitudes(cola_solicitudes),
+								cola_comandos(cola_comandos),
+								world_view(cola_solicitudes) {}
 
 void ClientRenderer::start() {
 	try {

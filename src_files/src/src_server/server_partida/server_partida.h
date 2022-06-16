@@ -14,14 +14,16 @@ class Lobby;
 
 class Partida {
     std::string nombre_partida;
-    uint8_t jugadores_actuales;
+    uint8_t jugadores_actuales = 1;
     uint8_t jugadores_requeridos;
+    std::string nombre_mapa;
     std::list<HandlerCliente*> clientes_conectados;
     ColaNoBloqueante<SolicitudServer>  cola_solicitudes;
 
     friend class Lobby;
 public:
-    Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos);
+    Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos,
+            const std::string& nombre_mapa);
     void empezar();
     void agregarJugador(HandlerCliente* cliente);
     bool estaCompleta() const;

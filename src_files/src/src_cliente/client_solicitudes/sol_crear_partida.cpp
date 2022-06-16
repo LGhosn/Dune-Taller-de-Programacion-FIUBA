@@ -1,13 +1,14 @@
 #include "sol_crear_partida.h"
-#include "../client_DTO/SolicitudDeCreacion.h"
+#include "../../src_common/common_DTO/dto_sol_crear_partida.h"
 
-SolicitudCrearPartida::SolicitudCrearPartida(std::string casa, std::string nombre_partida,
-std::string mapa, uint8_t jugadores_requeridos): casa(casa),
+SolicitudCrearPartida::SolicitudCrearPartida(std::string& nombre_partida, std::string& mapa,
+                                    std::string& casa, uint8_t jugadores_requeridos):
                                                  nombre_partida(nombre_partida),
                                                  mapa(mapa),
+                                                 casa(casa),
                                                  jugadores_requeridos(jugadores_requeridos) {}
 
 void SolicitudCrearPartida::enviarSolicitud(ProtocoloCliente& protocolo) {
-    SolicitudDeCreacion solicitud(nombre_partida, mapa, casa, jugadores_requeridos);
-    protocolo.enviarSolicitudDeCreacion(solicitud);
+    SolicitudCrearPartidaDTO solicitud(nombre_partida, mapa, casa, jugadores_requeridos);
+    protocolo.enviarSolicitudCrearPartida(solicitud);
 }

@@ -27,25 +27,30 @@ void ProtocoloServidor::enviarComienzoDePartida() {
  *             METODOS REFERIDOS A CREAR PARTIDAS
  * *****************************************************************/
 
-PartidaDTO ProtocoloServidor::recibirSolicitudDeCreacion() {
-    uint8_t casa;
-    this->skt_comunicador->recvall(&casa, sizeof(uint8_t));
+SolicitudCrearPartidaDTO ProtocoloServidor::recibirSolicitudCrearPartida() {
+    uint8_t casa_codigo;
+    this->skt_comunicador->recvall(&casa_codigo, sizeof(uint8_t));
 
-    uint8_t requeridos;
-    this->skt_comunicador->recvall
-    (&requeridos, sizeof(uint8_t));
+    uint8_t jugadores_requeridos;
+    this->skt_comunicador->recvall(&jugadores_requeridos, sizeof(uint8_t));
 
-    uint16_t len_nombre;
-    this->skt_comunicador->recvall
-    (&len_nombre, sizeof(uint16_t));
-    len_nombre = ntohs(len_nombre);
+    uint16_t largo_nombre;
+    this->skt_comunicador->recvall(&largo_nombre, sizeof(uint16_t));
+    largo_nombre = ntohs(largo_nombre);
 
-    std::vector<char> buff(len_nombre);
-    this->skt_comunicador->recvall(&buff.front(), len_nombre);
-    std::string nombre_partida(buff.begin(), buff.end());
+    std::vector<uint8_t> buffer_nombre(largo_nombre);
+    this->skt_comunicador->recvall(buffer_nombre.data(), largo_nombre);
+    std::string nombre_partida(buffer_nombre.begin(), buffer_nombre.end());
 
+    uint16_t largo_mapa;
+    this->skt_comunicador->recvall(&largo_mapa, sizeof(uint16_t));
+    largo_mapa = ntohs(largo_mapa);
 
-    return PartidaDTO(nombre_partida, 1, requeridos, "mapa_prueba"); // TODO: cambiar esto
+    std::vector<uint8_t> buffer_mapa(largo_mapa);
+    this->skt_comunicador->recvall(buffer_mapa.data(), largo_mapa);
+    std::string mapa(buffer_mapa.begin(), buffer_mapa.end());
+
+    return SolicitudCrearPartidaDTO(nombre_partida, mapa, casa_codigo, jugadores_requeridos);
 }
 
 void ProtocoloServidor::enviarStatusDeCreacion(bool la_partida_se_creo) {
@@ -64,20 +69,19 @@ void ProtocoloServidor::enviarStatusDeCreacion(bool la_partida_se_creo) {
  *             METODOS REFERIDOS A UNIRSE A PARTIDAS
  * *****************************************************************/
 
-PartidaDTO ProtocoloServidor::recibirSolicitudDeUnion() {
+SolicitudUnirseAPartidaDTO ProtocoloServidor::recibirSolicitudUnirseAPartida() {
     uint8_t casa;
     this->skt_comunicador->recvall(&casa, sizeof(uint8_t));
 
-    uint16_t len_nombre;
-    this->skt_comunicador->recvall
-    (&len_nombre, sizeof(uint16_t));
-    len_nombre = ntohs(len_nombre);
+    uint16_t largo_nombre;
+    this->skt_comunicador->recvall(&largo_nombre, sizeof(uint16_t));
+    largo_nombre = ntohs(largo_nombre);
 
-    std::vector<char> buff(len_nombre);
-    this->skt_comunicador->recvall(&buff.front(), len_nombre);
-    std::string nombre_partida(buff.begin(), buff.end());
+    std::vector<char> buffer_nombre(largo_nombre);
+    this->skt_comunicador->recvall(buffer_nombre.data(), largo_nombre);
+    std::string nombre_partida(buffer_nombre.begin(), buffer_nombre.end());
 
-    return PartidaDTO(nombre_partida, 0, 0, "mapa_prueba");
+    return SolicitudUnirseAPartidaDTO(nombre_partida, casa);
 }
 
 void ProtocoloServidor::enviarStatusDeUnion(bool el_jugador_se_unio) {

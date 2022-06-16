@@ -4,7 +4,9 @@
 #include "sdl_mapa/sdl_mapa.h"
 #include "sdl_edificio/sdl_edificio.h"
 #include "sdl_edificio/sdl_edificio_factory.h"
+#include "../client_solicitudes/cliente_solicitud.h"
 #include "../../src_common/common_coords.h"
+#include "../../src_common/common_colas/cola_bloqueante.h"
 #include <list>
 
 #define ZOOM_INICIAL 3.0f
@@ -15,6 +17,7 @@
 class WorldView {
 	SDL2pp::Window window;
 	SDL2pp::Renderer renderer;
+	ColaBloqueante<SolicitudCliente>& cola_solicitudes;
 	float zoom;
 	MapaSDL mapa;
 	std::unordered_map<Coordenadas, EdificioSDL*, HashCoordenadas> edificios;
@@ -26,7 +29,7 @@ class WorldView {
 	void seleccionarEdificio(EdificioSDL* edificio);
 
 public:
-	WorldView();
+	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes);
 
 	void moverMapaArriba();
 	void moverMapaIzquierda();

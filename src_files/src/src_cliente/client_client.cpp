@@ -16,7 +16,7 @@ void Client::enviarSolicitud(SolicitudCliente* solicitud) {
 
 void Client::empezarPartida() {
     receiver->start();
-    ClientRenderer renderer(cola_comandos);
+    ClientRenderer renderer(cola_comandos, cola_solicitudes);
     ManejadorEventos manejador(cola_solicitudes, cola_comandos);
     renderer.start();
 }

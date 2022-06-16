@@ -2,8 +2,9 @@
 #define CLIENT_PROTOCOLO_H
 
 #include "client_DTO/Status.h"
-#include "client_DTO/SolicitudDeCreacion.h"
-#include "client_DTO/SolicitudDeUnion.h"
+#include "../src_common/common_DTO/dto_sol_crear_partida.h"
+#include "../src_common/common_DTO/dto_sol_unirse_a_partida.h"
+#include "client_serializador.h"
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_socket.h"
 #include "../src_common/common_coords.h"
@@ -18,14 +19,16 @@
 
 class ProtocoloCliente {
     private:
-    // bool was_closed = false;
     Socket& skt_cliente;
+    SerializadorCliente serializador;
+
+    void enviarBuffer(const std::vector<uint8_t>& buffer) const;
 
     public:
     explicit ProtocoloCliente(Socket& skt_cliente);
 
-    void enviarSolicitudDeCreacion(SolicitudDeCreacion& solicitud);
-    void enviarSolicitudDeUnion(SolicitudDeUnion& solicitud);
+    void enviarSolicitudCrearPartida(SolicitudCrearPartidaDTO& solicitud);
+    void enviarSolicitudUnirseAPartida(SolicitudUnirseAPartidaDTO& solicitud);
     void enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y);
 
     void recibirCodigoDeOperacion(uint8_t& codigo);
@@ -34,7 +37,7 @@ class ProtocoloCliente {
 
 
     void enviarSolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords, uint8_t tipo);
-    void unirseAPartida(std::string& casa, std::string& nombre_partida);
+    void enviarSolicitudUnirseAPartida(std::string& casa, std::string& nombre_partida);
 
     /*
      * Recibe el status de una petición de union o creacion, el mismo

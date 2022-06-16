@@ -10,13 +10,15 @@
 #include "../../src_common/common_socket_error.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
+#include "../../src_common/common_DTO/dto_sol_crear_partida.h"
+#include "../../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "yaml-cpp/yaml.h"
 
 #include <thread>
 
 class Partida;
 class Lobby;
-class ServerHiloReciever;
+class ServerHiloReceiver;
 class ServerHiloSender;
 
 class HandlerCliente {
@@ -27,7 +29,7 @@ class HandlerCliente {
     YAML::Node* codigos;
     ColaBloqueante<ComandoServer>* cola_comandos;
     ServerHiloSender* hilo_sender;
-    ServerHiloReciever* hilo_reciever;
+    ServerHiloReceiver* hilo_reciever;
     std::thread hilo;
 
 public:
@@ -36,8 +38,8 @@ public:
      */
     HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos, uint8_t id_cliente);
 
-    void unirsePartida(PartidaDTO& partida_a_unirse);
-    void crearPartida(PartidaDTO& partida_a_unirse);
+    void unirsePartida(SolicitudUnirseAPartidaDTO& partida_a_unirse);
+    void crearPartida(SolicitudCrearPartidaDTO& partida_a_unirse);
 
     void empezarPartida(ColaNoBloqueante<SolicitudServer>* cola);
 

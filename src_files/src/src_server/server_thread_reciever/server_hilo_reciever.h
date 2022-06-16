@@ -13,7 +13,7 @@
 
 class HandlerCliente;
 
-class ServerHiloReciever {
+class ServerHiloReceiver {
 private:
     ColaNoBloqueante<SolicitudServer>* cola_solicitudes;
     ProtocoloServidor* protocolo;
@@ -26,14 +26,14 @@ private:
     void handleThread();
     void run();
     void recibirSolicitudSegunCodigo(uint8_t codigo);
-    void recibirSolicitudMenuSegunCodigo(uint8_t codigo);
+    void manejarSolicitudMenuSegunCodigo(uint8_t codigo);
     void armarComandoSegunInfo(InfoDTO& info);
 
-    void recibirSolicitudDeCreacion();
-    void recibirSolicitudDeUnion();
+    void manejarSolicitudCrearPartida();
+    void manejarSolicitudUnirseAPartida();
 
 public:
-    ServerHiloReciever(ProtocoloServidor* protocolo,
+    ServerHiloReceiver(ProtocoloServidor* protocolo,
                         YAML::Node* codigos,
                         HandlerCliente* cliente_asociado);
     
@@ -41,12 +41,12 @@ public:
 
     void stop();
 
-    ~ServerHiloReciever();
+    ~ServerHiloReceiver();
 
-    ServerHiloReciever(const ServerHiloReciever&) = delete;
-    ServerHiloReciever& operator=(const ServerHiloReciever&) = delete;
-    ServerHiloReciever(ServerHiloReciever&&);
-    ServerHiloReciever& operator=(ServerHiloReciever&&);
+    ServerHiloReceiver(const ServerHiloReceiver&) = delete;
+    ServerHiloReceiver& operator=(const ServerHiloReceiver&) = delete;
+    ServerHiloReceiver(ServerHiloReceiver&&);
+    ServerHiloReceiver& operator=(ServerHiloReceiver&&);
 };
 
 

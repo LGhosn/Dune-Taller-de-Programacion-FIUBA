@@ -31,13 +31,13 @@ struct StatusDTO {
     explicit StatusDTO(uint8_t status) : status(status) {}
 };
 
-struct SolicitudDeCreacion {
+struct SolicitudCrearPartida {
     const std::string nombre_partida;
     const std::string mapa;
     const std::string casa;
     const uint8_t jugadores_requeridos;
 
-    SolicitudDeCreacion(std::string& nombre_partida,
+    SolicitudCrearPartida(std::string& nombre_partida,
                         std::string& mapa,
                         std::string& casa,
                         uint8_t& jugadores_requeridos
@@ -48,11 +48,11 @@ struct SolicitudDeCreacion {
             jugadores_requeridos(jugadores_requeridos) {};
 };
 
-struct SolicitudDeUnion {
+struct SolicitudUnirseAPartidaDTO {
     const std::string nombre_partida;
     const std::string casa;
 
-    SolicitudDeUnion(std::string& nombre_partida, std::string& casa) :
+    SolicitudUnirseAPartidaDTO(std::string& nombre_partida, std::string& casa) :
             nombre_partida(std::move(nombre_partida)),
             casa(std::move(casa)) {}
 };

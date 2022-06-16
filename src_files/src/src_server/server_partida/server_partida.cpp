@@ -2,10 +2,11 @@
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../server_comandos/server_comando.h"
 
-Partida::Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos) :
-        nombre_partida(nombre_partida), jugadores_requeridos(jugadores_requeridos) {
-    this->jugadores_actuales = 1;  // El unico jugador es el que creó la partida.
-}
+Partida::Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos,
+                const std::string& nombre_mapa) :
+                nombre_partida(nombre_partida),
+                jugadores_requeridos(jugadores_requeridos),
+                nombre_mapa(nombre_mapa) {}
 
 bool Partida::estaCompleta() const {
     return (this->jugadores_actuales == this->jugadores_requeridos);

@@ -1,4 +1,5 @@
 #include "world_view.h"
+#include "../client_solicitudes/sol_crear_edificio.h"
 #include <functional>
 
 #define RUTA_MAPA_1 RESOURCE_PATH "/maps/mapa1.yaml"
@@ -16,9 +17,12 @@ void WorldView::seleccionarEdificio(EdificioSDL* edificio) {
 	edificios_seleccionados.push_back(edificio);
 }
 
-WorldView::WorldView() : 
+WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes) : 
 window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ANCHO_VENTANA, LARGO_VENTANA, 0),
-renderer(window, -1, SDL_RENDERER_ACCELERATED), zoom(ZOOM_INICIAL), mapa(renderer, RUTA_MAPA_1),
+renderer(window, -1, SDL_RENDERER_ACCELERATED),
+cola_solicitudes(cola_solicitudes),
+zoom(ZOOM_INICIAL),
+mapa(renderer, RUTA_MAPA_1),
 edificio_factory(renderer) {}
 
 void WorldView::moverMapaArriba() {

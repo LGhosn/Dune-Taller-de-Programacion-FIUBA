@@ -7,6 +7,8 @@
 #include "../../src_common/common_serializador.h"
 #include "../../src_common/common_socket.h"
 #include "../../src_common/common_coords.h"
+#include "../../src_common/common_DTO/dto_sol_crear_partida.h"
+#include "../../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "server_serializador.h"
 #include <memory>
 #include <string>
@@ -51,7 +53,7 @@ class ProtocoloServidor {
      * Si la partida se completa, el servidor lo informa
      * con un mensaje.
      * */
-    PartidaDTO recibirSolicitudDeUnion();
+    SolicitudUnirseAPartidaDTO recibirSolicitudUnirseAPartida();
     void enviarStatusDeUnion(bool el_jugador_se_unio);
     void enviarComienzoDePartida();
 
@@ -66,7 +68,7 @@ class ProtocoloServidor {
      * de si la partida fue o no creada, envía un status
      * al cliente
      * */
-    PartidaDTO recibirSolicitudDeCreacion();
+    SolicitudCrearPartidaDTO recibirSolicitudCrearPartida();
     void enviarStatusDeCreacion(bool la_partida_se_creo);
 
     void recibirCodigoDeOperacion(uint8_t& codigo);

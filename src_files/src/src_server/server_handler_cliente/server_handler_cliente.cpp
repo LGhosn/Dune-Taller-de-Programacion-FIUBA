@@ -9,17 +9,16 @@ HandlerCliente::HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos
                                 codigos(codigos),
                                 cola_comandos(new ColaBloqueante<ComandoServer>()) {
     this->hilo_sender = new ServerHiloSender(this->cola_comandos, &this->protocolo, codigos);        
-    this->hilo_reciever = new ServerHiloReciever(&this->protocolo, codigos, this);
+    this->hilo_reciever = new ServerHiloReceiver(&this->protocolo, codigos, this);
     //this->hilo = std::thread(&HandlerCliente::manejarHilo, this);
 }
 
-void HandlerCliente::unirsePartida(PartidaDTO& partida_a_unirse) {
+void HandlerCliente::unirsePartida(SolicitudUnirseAPartidaDTO& partida_a_unirse) {
     bool el_jugador_se_unio = lobby->unirAPartida(partida_a_unirse, this);
-    std::cout << "Llegue aca" << std::endl;
     protocolo.enviarStatusDeUnion(el_jugador_se_unio);
 }
 
-void HandlerCliente::crearPartida(PartidaDTO& partida_a_crear) {
+void HandlerCliente::crearPartida(SolicitudCrearPartidaDTO& partida_a_crear) {
     bool la_partida_se_creo = lobby->crearPartida(partida_a_crear, this);
     protocolo.enviarStatusDeCreacion(la_partida_se_creo);
 }

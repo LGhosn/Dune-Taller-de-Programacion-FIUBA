@@ -4,11 +4,13 @@ void Lobby::listarPartida(Partida& nueva_partida) {
     this->partidas_creadas.emplace(nueva_partida.getNombre(), std::move(nueva_partida));
 }
 
-bool Lobby::crearPartida(const PartidaDTO& partida_a_crear, HandlerCliente* cliente) {
+bool Lobby::crearPartida(const SolicitudCrearPartidaDTO& partida_a_crear, HandlerCliente* cliente) {
     std::lock_guard<std::mutex> lock(m);
     auto busqueda = this->partidas_creadas.find(partida_a_crear.nombre_partida);
     if (busqueda == this->partidas_creadas.end()) {
-        Partida partida_nueva(partida_a_crear.nombre_partida, partida_a_crear.jugadores_requeridos);
+        Partida partida_nueva(partida_a_crear.nombre_partida,
+                                partida_a_crear.jugadores_requeridos,
+                                partida_a_crear.mapa);
         partida_nueva.agregarJugador(cliente);
         this->listarPartida(partida_nueva);
         return true;
@@ -17,7 +19,7 @@ bool Lobby::crearPartida(const PartidaDTO& partida_a_crear, HandlerCliente* clie
     }
 }
 
-bool Lobby::unirAPartida(const PartidaDTO& partida_a_unirse, HandlerCliente* cliente) {
+bool Lobby::unirAPartida(const SolicitudUnirseAPartidaDTO& partida_a_unirse, HandlerCliente* cliente) {
     std::lock_guard<std::mutex> lock(m);
     auto partida = this->partidas_creadas.find(partida_a_unirse.nombre_partida);
     // Si el iterador llegó hasta el final del map,

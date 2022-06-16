@@ -4,6 +4,8 @@
 #include "server_DTO/partida_DTO.h"
 #include "server_partida/server_partida.h"
 #include "server_partida/server_partida_cmp.h"
+#include "../src_common/common_DTO/dto_sol_crear_partida.h"
+#include "../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include <map>
 #include <string>
 #include <iostream>
@@ -29,7 +31,7 @@ public:
      * Devuelve true en caso de poder crearse la partida (en tal
      * caso es listada), false en caso contrario.
      * */
-    bool crearPartida(const PartidaDTO& partida_a_crear, HandlerCliente* cliente);
+    bool crearPartida(const SolicitudCrearPartidaDTO& partida_a_crear, HandlerCliente* cliente);
 
     /*
      * Devuelve true en caso de poder unir un jugador a la partida
@@ -37,7 +39,7 @@ public:
      * partida, se imprime un mensaje que lo informa), false en 
      * caso contrario.
      * */
-    bool unirAPartida(const PartidaDTO& partida_a_unirse, HandlerCliente* cliente);
+    bool unirAPartida(const SolicitudUnirseAPartidaDTO& partida_a_unirse, HandlerCliente* cliente);
     
     /*
      * Devuelve un objeto DTO para enviarlo al protocolo.
