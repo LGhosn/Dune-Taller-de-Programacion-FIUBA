@@ -19,8 +19,12 @@ class Partida {
     std::string nombre_mapa;
     std::list<HandlerCliente*> clientes_conectados;
     ColaNoBloqueante<SolicitudServer>  cola_solicitudes;
+    std::vector<ColaBloqueante<ComandoServer>*> colas_sender;
 
     friend class Lobby;
+
+    std::string obtenerRutaMapa() const;
+
 public:
     Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos,
             const std::string& nombre_mapa);

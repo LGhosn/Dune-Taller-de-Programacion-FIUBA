@@ -1,6 +1,13 @@
 #include "server_partida.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../server_comandos/server_comando.h"
+#include <sstream>
+
+std::string Partida::obtenerRutaMapa() const {
+    std::stringstream ruta_mapa;
+    ruta_mapa << RESOURCE_PATH << "/maps/" << nombre_mapa << ".yaml";
+    return ruta_mapa.str();
+}
 
 Partida::Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos,
                 const std::string& nombre_mapa) :
@@ -14,18 +21,16 @@ bool Partida::estaCompleta() const {
 
 void Partida::agregarJugador(HandlerCliente* cliente) {
     this->clientes_conectados.push_back(cliente);
+    colas_sender.push_back(cliente->obtenerColaSender());
 }
 
 void Partida::empezar() {
-    std::vector<ColaBloqueante<ComandoServer>*> colas_sender;
     for (auto cliente : this->clientes_conectados) {
-        colas_sender.push_back(cliente->obtenerColaSender());
         cliente->empezarPartida(&this->cola_solicitudes);
     }
-    std::string ruta_mapa = "../../../assets/maps/mapa1.yaml";     // TODO: implementar ruta al mapa
+    std::string ruta_mapa = obtenerRutaMapa();
     HiloGameLoop hilo_gameloop(colas_sender, this->cola_solicitudes, ruta_mapa);
     hilo_gameloop.start();
-    std::cout << "Gameloop empezado" << std::endl;
 }
 
 std::string Partida::getNombre() const {

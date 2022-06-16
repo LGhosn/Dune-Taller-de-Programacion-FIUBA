@@ -54,8 +54,11 @@ bool HiloGameLoop::update(long iter) {
 }
 
 HiloGameLoop::HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_comandos,
-ColaNoBloqueante<SolicitudServer>& cola_solicitudes, std::string& ruta_mapa):
-cola_solicitudes(cola_solicitudes), game(colas_comandos) {}
+                                        ColaNoBloqueante<SolicitudServer>& cola_solicitudes,
+                                        std::string& ruta_mapa):
+                                        cola_solicitudes(cola_solicitudes),
+                                        colas_comandos(colas_comandos),
+                                        game(colas_comandos) {}
 
 void HiloGameLoop::start() {
     this->hilo = std::thread(&HiloGameLoop::manejarHilo, this);
@@ -71,11 +74,13 @@ HiloGameLoop& HiloGameLoop::operator=(HiloGameLoop&& otro) {
     if (this == &otro)
         return *this;
     this->cola_solicitudes = std::move(otro.cola_solicitudes);
+    this->colas_comandos = std::move(otro.colas_comandos);
     this->game = std::move(otro.game);
     this->hilo = std::move(otro.hilo);
     return *this;
 }
 HiloGameLoop::HiloGameLoop(HiloGameLoop &&otro) :
                             cola_solicitudes(otro.cola_solicitudes),
+                            colas_comandos(otro.colas_comandos),
                             game(std::move(otro.game)),
                             hilo(std::move(otro.hilo)) {}

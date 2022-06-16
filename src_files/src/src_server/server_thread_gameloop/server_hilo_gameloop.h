@@ -14,6 +14,7 @@
 
 class HiloGameLoop {
     ColaNoBloqueante<SolicitudServer>& cola_solicitudes;
+    std::vector<ColaBloqueante<ComandoServer>*>& colas_comandos;
     Game game;
     std::thread hilo;
 
