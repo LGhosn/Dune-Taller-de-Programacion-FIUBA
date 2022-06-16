@@ -16,10 +16,12 @@ class ClientHiloSender;
 class Client {
     Socket skt_cliente;
     ProtocoloCliente protocolo;
+    uint8_t id_jugador;
     ColaNoBloqueante<ComandoCliente> cola_comandos;
-    ClientHiloReciever* receiver;
     ColaBloqueante<SolicitudCliente> cola_solicitudes;
+    ClientHiloReciever* receiver;
     ClientHiloSender* sender;
+
 
     public:
     /*

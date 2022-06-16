@@ -18,7 +18,7 @@ public:
  * *****************************************************************/
 
     std::vector<uint8_t> serializarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio,
-    uint8_t tipo, const Coordenadas& coords) const;
+    uint8_t tipo, const Coordenadas& coords, uint8_t casa) const;
 
     SerializadorServer(const SerializadorServer& otro) = delete;
     SerializadorServer& operator=(const SerializadorServer& otro) = delete;

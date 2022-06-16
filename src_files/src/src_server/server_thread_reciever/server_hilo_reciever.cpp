@@ -1,42 +1,11 @@
 #include "server_hilo_reciever.h"
 
-void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
-    // switch (codigo) {
-    //     case 
-    // }
-    //codigos[codigo] 
-}
-
-void ServerHiloReceiver::manejarSolicitudMenuSegunCodigo(uint8_t codigo) {
-    switch (codigo) {
-        // Solicitan unirse a una partida.
-        case 1:
-        this->manejarSolicitudUnirseAPartida();
-        break;
-
-        // Solicitan crear una partida.
-        case 3:
-        this->manejarSolicitudCrearPartida();
-        break;
-    }
-}
-
-void ServerHiloReceiver::manejarSolicitudCrearPartida() {
-    SolicitudCrearPartidaDTO solicitud = this->protocolo->recibirSolicitudCrearPartida();
-    this->cliente_asociado->crearPartida(solicitud);
-}
-
-void ServerHiloReceiver::manejarSolicitudUnirseAPartida() {
-    SolicitudUnirseAPartidaDTO solicitud = protocolo->recibirSolicitudUnirseAPartida();
-    this->cliente_asociado->unirsePartida(solicitud);
-}
-
 ServerHiloReceiver::ServerHiloReceiver(ProtocoloServidor* protocolo, YAML::Node* codigos, HandlerCliente *cliente_asociado) :
-                                    protocolo(protocolo),
-                                    hay_que_seguir(true),
-                                    partida_comenzada(false),
-                                    codigos(codigos),
-                                    cliente_asociado(cliente_asociado) {
+        protocolo(protocolo),
+        hay_que_seguir(true),
+        partida_comenzada(false),
+        codigos(codigos),
+        cliente_asociado(cliente_asociado) {
     this->thread = std::thread(&ServerHiloReceiver::handleThread, this);
 }
 
@@ -44,7 +13,7 @@ void ServerHiloReceiver::handleThread() {
     try {
         this->run();
     } catch (const SocketError& e) {
-        
+
     } catch (const std::exception &e) {
         std::cerr << "Excepción encontrada en ServerHiloReceiver: " << e.what() << std::endl;
     } catch (...) {
@@ -54,16 +23,65 @@ void ServerHiloReceiver::handleThread() {
 
 void ServerHiloReceiver::run() {
     while (this->hay_que_seguir) {
-        uint8_t codigo;
-        protocolo->recibirCodigoDeOperacion(codigo);
+        uint8_t codigo = protocolo->recibirCodigoDeSolicitud();
         if (partida_comenzada) {
             this->recibirSolicitudSegunCodigo(codigo);
         } else {
-            std::cout << codigo << std::endl;
-            this->manejarSolicitudMenuSegunCodigo(codigo);
+            this->recibirSolicitudMenuSegunCodigo(codigo);
         }
     }
 }
+
+/* *****************************************************************
+ *              METODOS DE SOLICITUDES EN PARTIDA
+ * *****************************************************************/
+
+void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
+    switch (codigo) {
+        // Solicitan crear un edificio
+        case 5:
+            manejarSolicitudCrearEdificio();
+            break;
+    }
+}
+
+void ServerHiloReceiver::manejarSolicitudCrearEdificio() {
+    SolicitudCrearEdificioDTO solicitud = protocolo->recibirSolicitudCrearEdificio();
+    SolicitudServer *solicitud_server = new SoliCrearEdificioServer(solicitud);
+    cola_solicitudes->push(solicitud_server);
+}
+
+/* *****************************************************************
+ *              METODOS DE SOLICITUDES DEL MENÚ
+ * *****************************************************************/
+
+void ServerHiloReceiver::recibirSolicitudMenuSegunCodigo(uint8_t codigo) {
+    switch (codigo) {
+        // Solicitan unirse a una partida.
+        case 1:
+            recibirSolicitudDeUnion();
+            break;
+
+        // Solicitan crear una partida.
+        case 3:
+            recibirSolicitudDeCreacion();
+            break;
+    }
+}
+
+void ServerHiloReceiver::recibirSolicitudDeCreacion() {
+    // PartidaDTO solicitud = this->protocolo->recibirSolicitudDeCreacion();
+    // this->cliente_asociado->crearPartida(solicitud);
+}
+
+void ServerHiloReceiver::recibirSolicitudDeUnion() {
+    // PartidaDTO solicitud = protocolo->recibirSolicitudDeUnion();
+    // this->cliente_asociado->unirsePartida(solicitud);
+}
+
+/* *****************************************************************
+ *                 METODOS DE INICIO-FINALIZACIÓN
+ * *****************************************************************/
 
 void ServerHiloReceiver::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola_de_solicitudes) {
     this->cola_solicitudes = cola_de_solicitudes;
@@ -79,6 +97,10 @@ ServerHiloReceiver::~ServerHiloReceiver() {
         this->thread.join();
     }
 }
+
+/* *****************************************************************
+ *                          MOVE SEMANTICS
+ * *****************************************************************/
 
 ServerHiloReceiver::ServerHiloReceiver(ServerHiloReceiver&& otro):
                                         cola_solicitudes(otro.cola_solicitudes),

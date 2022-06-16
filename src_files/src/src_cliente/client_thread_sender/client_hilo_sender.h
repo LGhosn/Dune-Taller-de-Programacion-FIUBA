@@ -15,10 +15,12 @@ private:
     Client* cliente;
     ProtocoloCliente &protocolo;
     bool hay_que_seguir = true;
+    const uint8_t id_jugador;
     std::thread thread;
 
 public:
-    ClientHiloSender(ColaBloqueante<SolicitudCliente> &cola_comandos, Client* cliente);
+    ClientHiloSender(ColaBloqueante<SolicitudCliente> &cola_comandos, Client* cliente,
+                    uint8_t id_jugador);
     void handleThread();
     void run();
     void send(std::unique_ptr<SolicitudCliente>& solicitud);

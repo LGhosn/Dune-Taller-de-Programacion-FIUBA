@@ -24,12 +24,13 @@ class WorldView {
 	std::vector<EdificioSDL*> edificios_seleccionados;
 	EdificioFactorySDL edificio_factory;
 	long frame_anterior = 0;
+	uint8_t id_jugador;
 
 	void deseleccionarEdificios();
 	void seleccionarEdificio(EdificioSDL* edificio);
 
 public:
-	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes);
+	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador);
 
 	void moverMapaArriba();
 	void moverMapaIzquierda();
@@ -40,8 +41,8 @@ public:
 	void zoomIn();
 	void zoomOut();
 
-	void crearEdificio(uint16_t id_edificio, uint8_t id_jugador, uint8_t casa,
-						const Coordenadas& coords, uint8_t tipo);
+	void crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
+						const Coordenadas& coords, uint8_t tipo, uint8_t casa);
 
 	void click_en_mapa(int pos_x, int pos_y);
 

@@ -17,8 +17,7 @@ public:
     std::vector<uint8_t> serializarSolicitudCrearPartida(SolicitudCrearPartidaDTO& solicitud);
     std::vector<uint8_t> serializarSolicitudUnirseAPartida(SolicitudUnirseAPartidaDTO& solicitud);
 
-    std::vector<uint8_t> serializarSolicitudCrearEdificio(uint8_t id_jugador,
-                                                            Coordenadas& coords,
+    std::vector<uint8_t> serializarSolicitudCrearEdificio(Coordenadas& coords,
                                                             uint8_t tipo);
 };
 

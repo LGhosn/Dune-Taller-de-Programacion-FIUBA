@@ -10,11 +10,12 @@ class Game {
     bool finished = false;
     std::vector< ColaBloqueante<ComandoServer>* >& colas_comandos;
     Mapa mapa;
+    uint8_t conts_id_edificios = 0;
 
 public:
     Game(std::vector< ColaBloqueante<ComandoServer>* >& colas_comandos);
 
-    void crearEdificio(uint16_t id_jugador, uint16_t id_edificio, Coordenadas& coords);
+    void crearEdificio(uint16_t id_jugador, uint16_t id_edificio, const Coordenadas& coords);
 
     bool update(long iter);
 

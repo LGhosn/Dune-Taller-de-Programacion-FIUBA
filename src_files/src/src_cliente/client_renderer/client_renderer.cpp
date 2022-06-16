@@ -51,10 +51,11 @@ void ClientRenderer::game_loop() {
 }
 
 ClientRenderer::ClientRenderer(ColaNoBloqueante<ComandoCliente>& cola_comandos,
-								ColaBloqueante<SolicitudCliente>& cola_solicitudes) :
+								ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+								uint8_t id_jugador) :
 								cola_solicitudes(cola_solicitudes),
 								cola_comandos(cola_comandos),
-								world_view(cola_solicitudes) {}
+								world_view(cola_solicitudes, id_jugador) {}
 
 void ClientRenderer::start() {
 	try {

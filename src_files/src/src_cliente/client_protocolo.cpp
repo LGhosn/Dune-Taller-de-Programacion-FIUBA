@@ -2,6 +2,13 @@
 
 ProtocoloCliente::ProtocoloCliente(Socket& skt_cliente) :
 skt_cliente(skt_cliente) {}
+
+uint8_t ProtocoloCliente::obtenerId() const {
+    uint8_t id_jugador;
+    skt_cliente.recvall(&id_jugador, sizeof(id_jugador));
+    return id_jugador;
+}
+
 /* *****************************************************************
  *             METODOS REFERIDOS A UNIRSE A PARTIDAS
  * *****************************************************************/
@@ -23,9 +30,28 @@ void ProtocoloCliente::enviarSolicitudCrearPartida(SolicitudCrearPartidaDTO& sol
  *                METODOS REFERIDOS A CREAR EDIFICIOS
  * *****************************************************************/
 
-void ProtocoloCliente::enviarSolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords, uint8_t tipo) {
-    std::vector<uint8_t> buffer = serializador.serializarSolicitudCrearEdificio(id_jugador, coords, tipo);
+void ProtocoloCliente::enviarSolicitudCrearEdificio(Coordenadas& coords, uint8_t tipo) {
+    std::vector<uint8_t> buffer = serializador.serializarSolicitudCrearEdificio(coords, tipo);
     this->enviarBuffer(buffer);
+}
+
+ComandoCrearEdificioDTO ProtocoloCliente::recibirComandoCrearEdificio() {
+    uint8_t id_jugador;
+    skt_cliente.recvall(&id_jugador, sizeof(id_jugador));
+    uint8_t id_edificio;
+    skt_cliente.recvall(&id_edificio, sizeof(id_edificio));
+    uint8_t tipo;
+    skt_cliente.recvall(&tipo, sizeof(tipo));
+    uint8_t casa;
+    skt_cliente.recvall(&casa, sizeof(casa));
+    uint16_t x;
+    skt_cliente.recvall(&x, sizeof(x));
+    x = ntohs(x);
+    uint16_t y;
+    skt_cliente.recvall(&y, sizeof(y));
+    y = ntohs(y);
+    Coordenadas coords(x, y);
+    return ComandoCrearEdificioDTO(id_edificio, id_jugador, coords, tipo, casa);
 }
 
 /* *****************************************************************
@@ -70,7 +96,7 @@ void ProtocoloCliente::enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t&
 	this->skt_cliente.sendall(&y, sizeof(uint16_t));
 }
 
-void ProtocoloCliente::recibirCodigoDeOperacion(uint8_t& codigo) {
+void ProtocoloCliente::recibirCodigoDeComando(uint8_t& codigo) {
     this->skt_cliente.recvall(&codigo, sizeof(uint8_t));
 }
 

@@ -7,10 +7,10 @@ HandlerCliente::HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos
                                 lobby(lobby),
                                 protocolo(&this->socket, codigos),
                                 codigos(codigos),
-                                cola_comandos(new ColaBloqueante<ComandoServer>()) {
-    this->hilo_sender = new ServerHiloSender(this->cola_comandos, &this->protocolo, codigos);        
-    this->hilo_reciever = new ServerHiloReceiver(&this->protocolo, codigos, this);
-    //this->hilo = std::thread(&HandlerCliente::manejarHilo, this);
+                                cola_comandos(new ColaBloqueante<ComandoServer>()),
+                                hilo_sender(new ServerHiloSender(this->cola_comandos, &this->protocolo, codigos)),
+                                hilo_reciever(new ServerHiloReceiver(&this->protocolo, codigos, this)) {
+    protocolo.enviarId(id_cliente);
 }
 
 void HandlerCliente::unirsePartida(SolicitudUnirseAPartidaDTO& partida_a_unirse) {

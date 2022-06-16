@@ -30,7 +30,7 @@ private:
      * @param dimension_x: dimension en x del edificio
      * @param dimension_y: dimension en y del edificio
     */
-    bool hayColisiones(Coordenadas& coords, int dimension_x, int dimension_y);
+    bool hayColisiones(const Coordenadas& coords, int dimension_x, int dimension_y);
 
     /*
      * Edifica el edificio en el mapa en caso de ser posible
@@ -38,14 +38,14 @@ private:
      * @param pos_y: posicion en y de donde se quiere colocar el edificio 
      * @param propiedades_edif: propiedades del edificio a construir <dimension_x, dimension_y, tipo_edificio>
     */
-    void edificar(Coordenadas& coords, std::tuple<int, int, char> propiedades_edif);
+    void edificar(const Coordenadas& coords, std::tuple<int, int, char> propiedades_edif);
 
     /*
      * @brief Verifica que el terreno sea lo suficiente resistente para las construcciones
      * @param pos_x: posicion en x de donde se quiere colocar el edificio
      * @param pos_y: posicion en y de donde se quiere colocar el edificio 
     */
-    bool terrenoFirme(Coordenadas& coords);
+    bool terrenoFirme(const Coordenadas& coords);
 
 public:
     /*
@@ -62,7 +62,7 @@ public:
      * @param comando una tupla conformada por el edificio(uint8_t), la coordenada x(uint16_t) y la coordenada y(uint16_t)
      * @return un booleano indicando si se pudo construir o no.
      */
-    bool construirEdificio(uint16_t id_jugador, uint8_t edificio, Coordenadas& coords);
+    bool construirEdificio(uint16_t id_jugador, uint8_t edificio, const Coordenadas& coords);
 
     /*
      * Imprime el mapa en consola

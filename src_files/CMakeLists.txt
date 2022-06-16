@@ -54,10 +54,12 @@ add_executable(client
         src/src_cliente/client_solicitudes/sol_crear_partida.cpp
         src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp
         src/src_cliente/client_DTO/Status.cpp
+        src/src_cliente/client_DTO/dto_cmd_crear_edificio.h
         src/src_cliente/client_comandos/cmd_mover_mapa.cpp
         src/src_cliente/client_comandos/cmd_zoom.cpp
         src/src_cliente/client_comandos/cmd_salir.cpp
         src/src_cliente/client_comandos/cmd_click_en_mapa.cpp
+        src/src_cliente/client_comandos/cmd_crear_edificio.cpp
         src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
         src/src_cliente/client_comandos/client_comando.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile_factory.cpp
@@ -80,11 +82,13 @@ add_executable(client
         src/src_common/common_socket_error.cpp
         src/src_common/common_serializador.cpp
         assets/resources.qrc
+        src/src_cliente/client_solicitudes/client_sol_crear_edificio.cpp
         ${UIS_HEADERS})
 
 add_executable(server
         src/src_server/server_server.cpp
         src/src_server/server_comandos/cmd_crear_edificio.cpp
+        src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
         src/src_server/server_protocolo/server_protocolo.cpp
         src/src_server/server_protocolo/server_serializador.cpp
         src/src_server/server_DTO/partida_DTO.h

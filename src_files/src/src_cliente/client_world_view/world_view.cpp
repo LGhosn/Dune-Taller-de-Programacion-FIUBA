@@ -1,5 +1,5 @@
 #include "world_view.h"
-#include "../client_solicitudes/sol_crear_edificio.h"
+#include "../client_solicitudes/client_sol_crear_edificio.h"
 #include <functional>
 
 #define RUTA_MAPA_1 RESOURCE_PATH "/maps/mapa1.yaml"
@@ -17,13 +17,14 @@ void WorldView::seleccionarEdificio(EdificioSDL* edificio) {
 	edificios_seleccionados.push_back(edificio);
 }
 
-WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes) : 
+WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador) :
 window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ANCHO_VENTANA, LARGO_VENTANA, 0),
 renderer(window, -1, SDL_RENDERER_ACCELERATED),
 cola_solicitudes(cola_solicitudes),
 zoom(ZOOM_INICIAL),
 mapa(renderer, RUTA_MAPA_1),
-edificio_factory(renderer) {}
+edificio_factory(renderer),
+id_jugador(id_jugador) {}
 
 void WorldView::moverMapaArriba() {
 	this->mapa.moverArriba();
@@ -61,8 +62,8 @@ void WorldView::zoomOut() {
 	}
 }
 
-void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador, uint8_t casa,
-							const Coordenadas& coords, uint8_t tipo) {
+void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
+							const Coordenadas& coords, uint8_t tipo, uint8_t casa) {
 	EdificioSDL* edificio = edificio_factory.crearEdificio
 												(id_edificio, id_jugador, casa, tipo, coords);
 	Coordenadas dimensiones = edificio->obtenerDimensiones();
@@ -74,17 +75,13 @@ void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador, uint8_t 
 	}
 }
 
-// . . . .
-// . . . .
-// . . . .
-// . . . .
-
 void WorldView::click_en_mapa(int pos_x, int pos_y) {
 	Coordenadas coords = mapa.obtenerCoords(pos_x, pos_y);
 	if (edificios.find(coords) != edificios.end()) {
 		seleccionarEdificio(edificios.at(coords));
 	} else {
-		this->crearEdificio(1, 1, 0, coords, 0);	// temporal
+		SolicitudCrearEdificio* solicitud = new SolicitudCrearEdificio(coords, 0);
+		cola_solicitudes.push(solicitud);
 		deseleccionarEdificios();
 	}
 }
@@ -92,12 +89,6 @@ void WorldView::click_en_mapa(int pos_x, int pos_y) {
 void WorldView::salir() {
 
 }
-
-// void WorldView::crearEdificio(uint16_t id, uint8_t id_jugador,
-// const Coordenadas& coords, uint8_t tipo) {
-// 	this->edificios.emplace_back(this->renderer, id, id_jugador, coords, tipo);
-// }
-
 
 void WorldView::update(long frame_actual) {
 	long frames_transcurridos = frame_actual - this->frame_anterior;

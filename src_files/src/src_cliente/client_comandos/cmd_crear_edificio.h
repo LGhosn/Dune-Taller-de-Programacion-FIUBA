@@ -3,19 +3,21 @@
 
 #include <stdint.h>
 #include "../client_world_view/world_view.h"
+#include "../client_DTO/dto_cmd_crear_edificio.h"
 #include "../../src_common/common_coords.h"
 #include "client_comando.h"
 
-class CrearEdificio : public ComandoCliente {
-    uint16_t id;
+class ComandoCrearEdificio : public ComandoCliente {
+    uint8_t id_edificio;
+    uint8_t id_jugador;
     Coordenadas coords;
     uint8_t tipo;
-    uint8_t id_jugador;
+    uint8_t casa;
 public:
-    CrearEdificio(uint16_t id, uint8_t id_jugador, Coordenadas& coords, uint8_t tipo);
+    ComandoCrearEdificio(ComandoCrearEdificioDTO& dto);
     bool ejecutar(WorldView& worldView) const override;
 
-    ~CrearEdificio() = default;
+    ~ComandoCrearEdificio() = default;
 };
 
 

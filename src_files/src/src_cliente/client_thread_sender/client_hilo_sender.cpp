@@ -1,9 +1,11 @@
 #include "client_hilo_sender.h"
 
-ClientHiloSender::ClientHiloSender(ColaBloqueante<SolicitudCliente> &cola_comandos, Client* cliente) :
+ClientHiloSender::ClientHiloSender(ColaBloqueante<SolicitudCliente> &cola_comandos, Client* cliente,
+                                    uint8_t id_jugador) :
                                     cola_comandos(cola_comandos),
                                     cliente(cliente),
                                     protocolo(cliente->protocoloAsociado()),
+                                    id_jugador(id_jugador),
                                     thread(std::thread(&ClientHiloSender::handleThread, this)) {}
 
 void ClientHiloSender::handleThread() {

@@ -2,13 +2,11 @@
 #define SERVER_PROTOCOLO_H_
 
 #include "../server_DTO/partida_DTO.h"
-#include "../../src_common/common_infoDTO/infoDTO.h"
-#include "../../src_common/common_infoDTO/MovimientoDTO.h"
-#include "../../src_common/common_serializador.h"
 #include "../../src_common/common_socket.h"
 #include "../../src_common/common_coords.h"
 #include "../../src_common/common_DTO/dto_sol_crear_partida.h"
 #include "../../src_common/common_DTO/dto_sol_unirse_a_partida.h"
+#include "../server_DTO/dto_sol_crear_edificio.h"
 #include "server_serializador.h"
 #include <memory>
 #include <string>
@@ -21,14 +19,26 @@
 class PartidaDTO;
 
 class ProtocoloServidor {
-    private:
     Socket* skt_comunicador;
     SerializadorServer serializador;
     enum class Operaciones : uint8_t {unirse = 1, listar = 2, crear = 3};
 
+/* *****************************************************************
+ *                      METODOS AUXILIARES
+ * *****************************************************************/
+
+    /*
+     * Envia un vector de bytes al cliente.
+    */
     void enviarBuffer(const std::vector<uint8_t>& buffer) const;
 
-    public:
+    /*
+     * Recibe el largo del nombre que el cliente quiere enviar, en formato de 2 bytes,
+     * y luego recibe cada caracter del nombre de la partida/el mapa.
+    */
+    std::string recibirNombre() const;
+
+public:
     /*
      * Construye la clase, estableciendo un socket
      * válido como su atributo.
@@ -40,6 +50,8 @@ class ProtocoloServidor {
      * por el cliente.
      * */
     void recibirOperacion(uint8_t& codigo_operacion);
+
+    void enviarId(uint8_t id_cliente);
 
 /* *****************************************************************
  *             METODOS REFERIDOS A UNIRSE A PARTIDAS
@@ -71,8 +83,7 @@ class ProtocoloServidor {
     SolicitudCrearPartidaDTO recibirSolicitudCrearPartida();
     void enviarStatusDeCreacion(bool la_partida_se_creo);
 
-    void recibirCodigoDeOperacion(uint8_t& codigo);
-    std::unique_ptr<InfoDTO> recibirInfoSegunCodigo(uint8_t& codigo);
+    uint8_t recibirCodigoDeSolicitud();
 
 /* *****************************************************************
  *             METODOS REFERIDOS A MOVER UNIDADES
@@ -84,7 +95,9 @@ class ProtocoloServidor {
  *             METODOS REFERIDOS A CREAR EDIFICIOS
  * *****************************************************************/
 
-    void enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio, uint8_t tipo, const Coordenadas& coords) const;
+    void enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio, uint8_t tipo,
+                                    const Coordenadas& coords, uint8_t casa) const;
+    SolicitudCrearEdificioDTO recibirSolicitudCrearEdificio();
 
     /*
      * No tiene sentido copiar un ProtocoloServidor.

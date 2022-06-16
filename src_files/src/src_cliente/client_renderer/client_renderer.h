@@ -27,7 +27,8 @@ private:
 
 public:
     ClientRenderer(ColaNoBloqueante<ComandoCliente>& cola_comandos,
-					ColaBloqueante<SolicitudCliente>& cola_solicitudes);
+					ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+					uint8_t id_jugador);
 
 	void start();
 

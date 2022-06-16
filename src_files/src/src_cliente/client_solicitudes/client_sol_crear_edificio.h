@@ -1,5 +1,5 @@
-#ifndef SOL_CREAR_EDIFICIO_H
-#define SOL_CREAR_EDIFICIO_H
+#ifndef CLIENT_SOL_CREAR_EDIFICIO_H
+#define CLIENT_SOL_CREAR_EDIFICIO_H
 
 #include "cliente_solicitud.h"
 #include "../../src_common/common_coords.h"

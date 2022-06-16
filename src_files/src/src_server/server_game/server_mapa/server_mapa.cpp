@@ -44,7 +44,7 @@ std::tuple<int, int, char> Mapa::propiedadesEdificio(uint8_t edificio) {
     return std::make_tuple(dimension_x, dimension_y, tipo_edificio);
 }
 
-bool Mapa::hayColisiones(Coordenadas& coords, int dimension_x, int dimension_y) {
+bool Mapa::hayColisiones(const Coordenadas& coords, int dimension_x, int dimension_y) {
     bool colision = false;
     for (int i = coords.y; i < coords.y + dimension_y; i++){
         for (int j = coords.x; j < coords.x + dimension_x; j++){
@@ -64,7 +64,7 @@ bool Mapa::hayColisiones(Coordenadas& coords, int dimension_x, int dimension_y) 
     return colision;
 }
 
-void Mapa::edificar(Coordenadas& coords, std::tuple<int, int, char> propiedades) {
+void Mapa::edificar(const Coordenadas& coords, std::tuple<int, int, char> propiedades) {
     int dimension_x = 0, dimension_y = 0;
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades;
@@ -80,7 +80,7 @@ void Mapa::edificar(Coordenadas& coords, std::tuple<int, int, char> propiedades)
     }
 }
 
-bool Mapa::terrenoFirme(Coordenadas& coords) {
+bool Mapa::terrenoFirme(const Coordenadas& coords) {
     return this->mapa[coords.y][coords.x] == 'R' ? true : false;
 }
 
@@ -91,7 +91,7 @@ bool Mapa::terrenoFirme(Coordenadas& coords) {
 Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto),
 mapa(std::vector< std::vector<char> > (alto, std::vector<char>(ancho, 'A'))), camino(this->mapa) {}
 
-bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, Coordenadas& coords) {
+bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
     this->colisiones = std::vector< Coordenadas >();
     std::tuple<int, int, char> propiedades_del_edificio = propiedadesEdificio(tipo);
