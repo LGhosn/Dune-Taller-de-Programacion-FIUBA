@@ -8,8 +8,11 @@
 
 #define ALTO_HP 6
 #define ANCHO_HP 40
-#define OFFSET_HP_Y -15
+#define OFFSET_HP_Y -1
 #define PADDING_HP_X 4
+#define PADDING_HP_RECT 2 
+
+#define RATIO_LINEAS_LARGO 0.2
 
 class EdificioSDL {
 protected:
@@ -26,6 +29,11 @@ protected:
     int tam_actual_y = 0;
     long frame_anterior = 0;
     bool seleccionado = false;
+
+private:
+
+    void renderRectanguloSeleccion();
+    void renderHP();
 
 public:
     EdificioSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,

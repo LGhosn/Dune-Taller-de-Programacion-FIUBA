@@ -30,7 +30,9 @@ cola_solicitudes(cola_solicitudes),
 zoom(ZOOM_INICIAL),
 mapa(renderer, RUTA_MAPA_1),
 edificio_factory(renderer),
-id_jugador(id_jugador) {}
+id_jugador(id_jugador) {
+	renderer.SetDrawBlendMode(SDL_BLENDMODE_BLEND);
+}
 
 void WorldView::moverMapaArriba() {
 	this->mapa.moverArriba();
