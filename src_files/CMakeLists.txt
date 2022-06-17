@@ -64,7 +64,7 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile_factory.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_mapa.cpp
-        src/src_cliente/client_world_view/sdl_edificio/sdl_edificio.h
+        src/src_cliente/client_world_view/sdl_edificio/sdl_edificio.cpp
         src/src_cliente/client_world_view/sdl_edificio/sdl_edificio_factory.cpp
         src/src_cliente/client_world_view/sdl_edificio/sdl_centro.cpp
         src/src_cliente/client_world_view/world_view.cpp

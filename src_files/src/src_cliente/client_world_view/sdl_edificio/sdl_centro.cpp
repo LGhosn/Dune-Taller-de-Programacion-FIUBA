@@ -30,8 +30,7 @@ void CentroSDL::setearPosicionBrazo() {
 CentroSDL::CentroSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                     SDL2pp::Texture& textura, const Coordenadas& coords, uint16_t alto,
                     uint16_t ancho, uint8_t casa):
-                    id(id), id_jugador(id_jugador), renderer(renderer), textura(textura),
-                    coords(coords), alto(alto), ancho(ancho) {
+    EdificioSDL(id, id_jugador, renderer, textura, coords, alto, ancho, casa) {
     pos_en_tex_x = 0;
     switch (casa) {
         case HARKONNEN: {
@@ -49,21 +48,9 @@ CentroSDL::CentroSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
     pos_en_tex_brazo_y = pos_en_tex_y + ALTO_TEX_EDIFICIO;
 }
 
-Coordenadas CentroSDL::obtenerDimensiones() const {
-    return Coordenadas(ancho, alto);
-}
-
 void CentroSDL::cambiarHP(uint16_t hp_edificio) {
     if (hp_edificio < LIMITE_HP_DEBILITAR)
         pos_en_tex_x = ANCHO_TEX_EDIFICIO;
-}
-
-void CentroSDL::seleccionar() {
-    seleccionado = true;
-}
-
-void CentroSDL::deseleccionar() {
-    seleccionado = false;
 }
 
 void CentroSDL::update(uint32_t offset_x, uint32_t offset_y, long frame_actual) {
@@ -107,27 +94,4 @@ void CentroSDL::render() {
                         tam_actual_brazo_y
                     )
                 );
-    if (seleccionado) {
-        renderer.SetDrawColor(255, 255, 255);
-        renderer.DrawRect(
-            pos_actual_x,
-            pos_actual_y,
-            pos_actual_x + tam_actual_x,
-            pos_actual_y + tam_actual_y
-        );
-        renderer.SetDrawColor(90, 146, 22);
-        renderer.FillRect(
-            pos_actual_x + (tam_actual_x - ANCHO_HP) / 2,
-            pos_actual_y + OFFSET_HP_Y,
-            pos_actual_x + (tam_actual_x + ANCHO_HP) / 2,
-            pos_actual_y + OFFSET_HP_Y + ALTO_HP
-        );
-        renderer.SetDrawColor(0, 0, 0);
-        renderer.DrawRect(
-            pos_actual_x + (tam_actual_x - ANCHO_HP) / 2,
-            pos_actual_y + OFFSET_HP_Y,
-            pos_actual_x + (tam_actual_x + ANCHO_HP) / 2,
-            pos_actual_y + OFFSET_HP_Y + ALTO_HP
-        );
-    }
 }

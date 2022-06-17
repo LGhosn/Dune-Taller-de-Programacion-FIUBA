@@ -17,6 +17,12 @@ void WorldView::seleccionarEdificio(EdificioSDL* edificio) {
 	edificios_seleccionados.push_back(edificio);
 }
 
+void WorldView::renderUI() {
+	for (auto edificio : edificios_seleccionados) {
+		edificio->renderUI();
+	}
+}
+
 WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador) :
 window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ANCHO_VENTANA, LARGO_VENTANA, 0),
 renderer(window, -1, SDL_RENDERER_ACCELERATED),
@@ -106,6 +112,7 @@ void WorldView::render() {
 	this->mapa.render();
 	for (auto& edificio : this->edificios)
 		edificio.second->render();
+	this->renderUI();
 	this->renderer.Present();
 }
 

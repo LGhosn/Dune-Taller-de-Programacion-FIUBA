@@ -29,6 +29,8 @@ class WorldView {
 	void deseleccionarEdificios();
 	void seleccionarEdificio(EdificioSDL* edificio);
 
+	void renderUI();
+
 public:
 	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador);
 
