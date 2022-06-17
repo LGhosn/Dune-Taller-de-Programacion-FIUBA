@@ -1,9 +1,13 @@
 #include "cmd_crear_edificio.h"
 
-CrearEdificio::CrearEdificio(uint16_t id, uint8_t id_jugador, Coordenadas& coords, uint8_t tipo):
-id(id), id_jugador(id_jugador), coords(coords), tipo(tipo) {}
+ComandoCrearEdificio::ComandoCrearEdificio(ComandoCrearEdificioDTO &dto):
+                            id_edificio(dto.id_edificio),
+                            id_jugador(dto.id_jugador),
+                            coords(dto.coords),
+                            tipo(dto.tipo),
+                            casa(dto.casa) {}
 
-bool CrearEdificio::ejecutar(WorldView& world_view) const {
-    world_view.crearEdificio(id, id_jugador, coords, tipo);
+bool ComandoCrearEdificio::ejecutar(WorldView& world_view) const {
+    world_view.crearEdificio(id_edificio, id_jugador, coords, tipo, casa);
     return true;
 }

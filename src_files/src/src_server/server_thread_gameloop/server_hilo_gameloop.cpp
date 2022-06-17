@@ -15,29 +15,33 @@ void HiloGameLoop::manejarHilo() {
 }
 
 void HiloGameLoop::run() {
+    using namespace std::chrono;
     long iter = 0;
     bool running = true;
-    auto t1 = std::chrono::steady_clock::now();
+    time_point t1 = system_clock::now();
+    milliseconds tick_rate(1000 / TICKS_POR_SEGUNDO);
     while(running) {
-        auto t2 = std::chrono::steady_clock::now();
-		float tiempo_transcurrido = std::chrono::duration<float, std::milli>(t2 - t1).count();
-		t1 = t2;
         this->manejarSolicitudes();
         running = this->update(iter);
-        float rest = FRAME_RATE - tiempo_transcurrido;
-        if (rest < 0) {
-            float demora = - rest;
-            rest = FRAME_RATE - (int) demora % (int) FRAME_RATE;
-            float tiempo_perdido = demora + rest;
-            iter += tiempo_perdido / FRAME_RATE;
-        } else {
+        time_point t2 = system_clock::now();
+		milliseconds tiempo_transcurrido = duration_cast<milliseconds>(t2 - t1);
+		t1 = t2;
+        milliseconds rest;
+        if (tiempo_transcurrido.count() > tick_rate.count()) {
+			milliseconds demora = duration_cast<milliseconds>(tiempo_transcurrido - tick_rate);
+			rest = duration_cast<milliseconds>(demora % tick_rate);
+			milliseconds tiempo_perdido = demora + rest;
+			iter += tiempo_perdido.count() / tick_rate.count();
+		} else {
+			rest = duration_cast<milliseconds>(tick_rate - tiempo_transcurrido);
             iter++;
-        }
+		}
+        std::this_thread::sleep_for(rest);
     }
 }
 
 void HiloGameLoop::manejarSolicitudes() {
-    std::queue<std::unique_ptr<SolicitudServer>> solicitudes = this->cola_solicitudes.popAll();
+    std::queue<std::unique_ptr<SolicitudServer>> solicitudes = this->cola_solicitudes->popAll();
     while(!solicitudes.empty()) {
         std::unique_ptr<SolicitudServer> solicitud = std::move(solicitudes.front());
         solicitudes.pop();
@@ -49,12 +53,14 @@ bool HiloGameLoop::update(long iter) {
     return this->game.update(iter);
 }
 
-HiloGameLoop::HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_comandos,
-ColaNoBloqueante<SolicitudServer>& cola_solicitudes, std::string& ruta_mapa):
-cola_solicitudes(cola_solicitudes), game(colas_comandos) {}
+HiloGameLoop::HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>* colas_comandos,
+                                        ColaNoBloqueante<SolicitudServer>* cola_solicitudes,
+                                        const std::string& nombre_mapa):
+                                        cola_solicitudes(cola_solicitudes),
+                                        colas_comandos(colas_comandos),
+                                        game(colas_comandos, nombre_mapa) {}
 
-void HiloGameLoop::start(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender) {
-    this->colas_sender = colas_sender;
+void HiloGameLoop::start() {
     this->hilo = std::thread(&HiloGameLoop::manejarHilo, this);
 }
 
@@ -67,12 +73,17 @@ HiloGameLoop::~HiloGameLoop() {
 HiloGameLoop& HiloGameLoop::operator=(HiloGameLoop&& otro) {
     if (this == &otro)
         return *this;
-    this->cola_solicitudes = std::move(otro.cola_solicitudes);
+    this->cola_solicitudes = otro.cola_solicitudes;
+    this->colas_comandos = otro.colas_comandos;
     this->game = std::move(otro.game);
     this->hilo = std::move(otro.hilo);
+
+    otro.colas_comandos = nullptr;
+    otro.cola_solicitudes = nullptr;
     return *this;
 }
 HiloGameLoop::HiloGameLoop(HiloGameLoop &&otro) :
                             cola_solicitudes(otro.cola_solicitudes),
+                            colas_comandos(otro.colas_comandos),
                             game(std::move(otro.game)),
                             hilo(std::move(otro.hilo)) {}

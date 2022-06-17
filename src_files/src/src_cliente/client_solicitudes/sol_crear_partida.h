@@ -6,12 +6,12 @@
 #include <stdint.h>
 
 class SolicitudCrearPartida : public SolicitudCliente {
-    std::string casa;
     std::string nombre_partida;
     std::string mapa;
+    std::string casa;
     uint8_t jugadores_requeridos;
 public:
-    SolicitudCrearPartida(std::string casa, std::string nombre_partida, std::string mapa,
+    SolicitudCrearPartida(std::string& nombre_partida, std::string& mapa, std::string& casa,
     uint8_t jugadores_requeridos);
 
     void enviarSolicitud(ProtocoloCliente& protocolo);

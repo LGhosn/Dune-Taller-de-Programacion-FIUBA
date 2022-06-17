@@ -97,38 +97,66 @@ CMakeFiles/server.dir/src/src_server/server_server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_server.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_server.cpp" -o CMakeFiles/server.dir/src/src_server/server_server.cpp.s
 
-CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.o: CMakeFiles/server.dir/flags.make
-CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.o: ../src/src_server/server_protocolo.cpp
-CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo.cpp"
+CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.o: ../src/src_server/server_comandos/cmd_crear_edificio.cpp
+CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_comandos/cmd_crear_edificio.cpp"
 
-CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo.cpp" > CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.i
+CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_comandos/cmd_crear_edificio.cpp" > CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.i
 
-CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo.cpp" -o CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.s
+CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_comandos/cmd_crear_edificio.cpp" -o CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.s
 
-CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.o: CMakeFiles/server.dir/flags.make
-CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.o: ../src/src_server/server_DTO/PartidaDTO.cpp
-CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/PartidaDTO.cpp"
+CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o: ../src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
+CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp"
 
-CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/PartidaDTO.cpp" > CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.i
+CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp" > CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.i
 
-CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/PartidaDTO.cpp" -o CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.s
+CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp" -o CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.s
+
+CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.o: ../src/src_server/server_protocolo/server_protocolo.cpp
+CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_protocolo.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_protocolo.cpp" > CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_protocolo.cpp" -o CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.s
+
+CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o: ../src/src_server/server_protocolo/server_serializador.cpp
+CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_serializador.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_serializador.cpp" > CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_serializador.cpp" -o CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.s
 
 CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.o: ../src/src_server/server_DTO/MovimientoDTO.cpp
 CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/MovimientoDTO.cpp"
 
 CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.i: cmake_force
@@ -142,7 +170,7 @@ CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.s: cmake_force
 CMakeFiles/server.dir/src/src_server/server_lobby.cpp.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/src_server/server_lobby.cpp.o: ../src/src_server/server_lobby.cpp
 CMakeFiles/server.dir/src/src_server/server_lobby.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/server.dir/src/src_server/server_lobby.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/server.dir/src/src_server/server_lobby.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_lobby.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_lobby.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_lobby.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_lobby.cpp"
 
 CMakeFiles/server.dir/src/src_server/server_lobby.cpp.i: cmake_force
@@ -153,24 +181,122 @@ CMakeFiles/server.dir/src/src_server/server_lobby.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_lobby.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_lobby.cpp" -o CMakeFiles/server.dir/src/src_server/server_lobby.cpp.s
 
-CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o: CMakeFiles/server.dir/flags.make
-CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o: ../src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp
-CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp"
+CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.o: ../src/src_server/server_thread_sender/server_hilo_sender.cpp
+CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_sender/server_hilo_sender.cpp"
 
-CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp" > CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.i
+CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_sender/server_hilo_sender.cpp" > CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.i
 
-CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp" -o CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.s
+CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_sender/server_hilo_sender.cpp" -o CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.s
+
+CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o: ../src/src_server/server_thread_reciever/server_hilo_reciever.cpp
+CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_reciever/server_hilo_reciever.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_reciever/server_hilo_reciever.cpp" > CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_reciever/server_hilo_reciever.cpp" -o CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.s
+
+CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o: ../src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp
+CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp" > CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp" -o CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.s
+
+CMakeFiles/server.dir/src/src_server/server_game/game.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_game/game.cpp.o: ../src/src_server/server_game/game.cpp
+CMakeFiles/server.dir/src/src_server/server_game/game.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/server.dir/src/src_server/server_game/game.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_game/game.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_game/game.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_game/game.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/game.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_game/game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_game/game.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/game.cpp" > CMakeFiles/server.dir/src/src_server/server_game/game.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_game/game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_game/game.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/game.cpp" -o CMakeFiles/server.dir/src/src_server/server_game/game.cpp.s
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.o: ../src/src_server/server_game/server_mapa/server_mapa.cpp
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_mapa.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_mapa.cpp" > CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_mapa.cpp" -o CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.s
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.o: ../src/src_server/server_game/server_mapa/server_camino.cpp
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.cpp" > CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.cpp" -o CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.s
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o: ../src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp" > CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp" -o CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.s
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o: ../src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp" > CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp" -o CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.s
 
 CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.o: ../src/src_server/server_aceptador.cpp
 CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_aceptador.cpp"
 
 CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.i: cmake_force
@@ -181,10 +307,38 @@ CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_aceptador.cpp" -o CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.s
 
+CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.o: ../src/src_server/server_handler_cliente/server_handler_cliente.cpp
+CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_handler_cliente/server_handler_cliente.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_handler_cliente/server_handler_cliente.cpp" > CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_handler_cliente/server_handler_cliente.cpp" -o CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.s
+
+CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.o: ../src/src_server/server_partida/server_partida.cpp
+CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.o -MF CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.o.d -o CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_partida/server_partida.cpp"
+
+CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_partida/server_partida.cpp" > CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.i
+
+CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_partida/server_partida.cpp" -o CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.s
+
 CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o: ../src/src_common/common_resolver.cpp
 CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o -MF CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o.d -o CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_resolver.cpp"
 
 CMakeFiles/server.dir/src/src_common/common_resolver.cpp.i: cmake_force
@@ -198,7 +352,7 @@ CMakeFiles/server.dir/src/src_common/common_resolver.cpp.s: cmake_force
 CMakeFiles/server.dir/src/src_common/common_socket.cpp.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/src_common/common_socket.cpp.o: ../src/src_common/common_socket.cpp
 CMakeFiles/server.dir/src/src_common/common_socket.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/server.dir/src/src_common/common_socket.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/server.dir/src/src_common/common_socket.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_common/common_socket.cpp.o -MF CMakeFiles/server.dir/src/src_common/common_socket.cpp.o.d -o CMakeFiles/server.dir/src/src_common/common_socket.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket.cpp"
 
 CMakeFiles/server.dir/src/src_common/common_socket.cpp.i: cmake_force
@@ -212,7 +366,7 @@ CMakeFiles/server.dir/src/src_common/common_socket.cpp.s: cmake_force
 CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o: ../src/src_common/common_socket_error.cpp
 CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o -MF CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o.d -o CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket_error.cpp"
 
 CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.i: cmake_force
@@ -226,7 +380,7 @@ CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.s: cmake_force
 CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o: ../src/src_common/common_serializador.cpp
 CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o -MF CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o.d -o CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp"
 
 CMakeFiles/server.dir/src/src_common/common_serializador.cpp.i: cmake_force
@@ -237,10 +391,24 @@ CMakeFiles/server.dir/src/src_common/common_serializador.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_common/common_serializador.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp" -o CMakeFiles/server.dir/src/src_common/common_serializador.cpp.s
 
+CMakeFiles/server.dir/src/src_common/common_coords.cpp.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/src/src_common/common_coords.cpp.o: ../src/src_common/common_coords.cpp
+CMakeFiles/server.dir/src/src_common/common_coords.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/server.dir/src/src_common/common_coords.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/src_common/common_coords.cpp.o -MF CMakeFiles/server.dir/src/src_common/common_coords.cpp.o.d -o CMakeFiles/server.dir/src/src_common/common_coords.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.cpp"
+
+CMakeFiles/server.dir/src/src_common/common_coords.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/server.dir/src/src_common/common_coords.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.cpp" > CMakeFiles/server.dir/src/src_common/common_coords.cpp.i
+
+CMakeFiles/server.dir/src/src_common/common_coords.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/server.dir/src/src_common/common_coords.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.cpp" -o CMakeFiles/server.dir/src/src_common/common_coords.cpp.s
+
 CMakeFiles/server.dir/src/main_server.cpp.o: CMakeFiles/server.dir/flags.make
 CMakeFiles/server.dir/src/main_server.cpp.o: ../src/main_server.cpp
 CMakeFiles/server.dir/src/main_server.cpp.o: CMakeFiles/server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/server.dir/src/main_server.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/server.dir/src/main_server.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/server.dir/src/main_server.cpp.o -MF CMakeFiles/server.dir/src/main_server.cpp.o.d -o CMakeFiles/server.dir/src/main_server.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/main_server.cpp"
 
 CMakeFiles/server.dir/src/main_server.cpp.i: cmake_force
@@ -255,16 +423,28 @@ CMakeFiles/server.dir/src/main_server.cpp.s: cmake_force
 server_OBJECTS = \
 "CMakeFiles/server.dir/server_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/server.dir/src/src_server/server_server.cpp.o" \
-"CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.o" \
-"CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o" \
 "CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.o" \
 "CMakeFiles/server.dir/src/src_server/server_lobby.cpp.o" \
-"CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_game/game.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o" \
 "CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.o" \
+"CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.o" \
 "CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o" \
 "CMakeFiles/server.dir/src/src_common/common_socket.cpp.o" \
 "CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o" \
 "CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o" \
+"CMakeFiles/server.dir/src/src_common/common_coords.cpp.o" \
 "CMakeFiles/server.dir/src/main_server.cpp.o"
 
 # External object files for target server
@@ -272,20 +452,33 @@ server_EXTERNAL_OBJECTS =
 
 server: CMakeFiles/server.dir/server_autogen/mocs_compilation.cpp.o
 server: CMakeFiles/server.dir/src/src_server/server_server.cpp.o
-server: CMakeFiles/server.dir/src/src_server/server_protocolo.cpp.o
-server: CMakeFiles/server.dir/src/src_server/server_DTO/PartidaDTO.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_comandos/cmd_crear_edificio.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_protocolo/server_protocolo.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o
 server: CMakeFiles/server.dir/src/src_server/server_DTO/MovimientoDTO.cpp.o
 server: CMakeFiles/server.dir/src/src_server/server_lobby.cpp.o
-server: CMakeFiles/server.dir/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_thread_sender/server_hilo_sender.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_game/game.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_mapa.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp.o
 server: CMakeFiles/server.dir/src/src_server/server_aceptador.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_handler_cliente/server_handler_cliente.cpp.o
+server: CMakeFiles/server.dir/src/src_server/server_partida/server_partida.cpp.o
 server: CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o
 server: CMakeFiles/server.dir/src/src_common/common_socket.cpp.o
 server: CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o
 server: CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o
+server: CMakeFiles/server.dir/src/src_common/common_coords.cpp.o
 server: CMakeFiles/server.dir/src/main_server.cpp.o
 server: CMakeFiles/server.dir/build.make
+server: /usr/local/lib/libyaml-cpp.a
 server: CMakeFiles/server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX executable server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

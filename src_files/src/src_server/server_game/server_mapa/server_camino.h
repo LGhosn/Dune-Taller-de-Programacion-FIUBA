@@ -7,7 +7,7 @@
 #include <list>
 #include <unordered_map>
 
-#include "../src_common/common_coords.h"
+#include "../../../src_common/common_coords.h"
 
 class Camino {
 	std::vector< std::vector<char> >& mapa;

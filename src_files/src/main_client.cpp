@@ -10,8 +10,9 @@ int main(int argc, char *argv[]) {
     MenuDune menu(cliente);
     menu.show();
     int resultado = QApplication::exec();
-    if (resultado == 0) {
+    if (resultado == 0 && cliente.estaEnPartida()) {
         cliente.empezarPartida();
+        return 0;
     }
-    return 0;
+    return 1;
 }

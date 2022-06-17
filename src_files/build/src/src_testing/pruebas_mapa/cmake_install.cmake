@@ -1,4 +1,4 @@
-# Install script for directory: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_mapa
+# Install script for directory: /home/lautaro/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_mapa
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

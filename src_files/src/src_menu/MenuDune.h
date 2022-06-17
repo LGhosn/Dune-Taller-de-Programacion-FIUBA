@@ -28,5 +28,6 @@ private:
     Ui_Menu* ui;
     FormCreacion* formulario_creacion;
     FormUnion* formulario_union;
+    Client& cliente_asociado;
 };
 #endif // MENU_DUNE_H

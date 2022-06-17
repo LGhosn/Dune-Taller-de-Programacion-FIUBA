@@ -1,30 +1,42 @@
 #include "server_handler_cliente.h"
+#include <iostream>
 
-HandlerCliente::HandlerCliente(Socket& socket, Lobby& lobby) :
+HandlerCliente::HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos, uint8_t id_cliente) :
+                                id_cliente(id_cliente),
                                 socket(std::move(socket)),
                                 lobby(lobby),
-                                protocolo(this->socket),
-                                hilo_cliente_lobby(new HiloClienteLobby(this->protocolo, &this->lobby)),
-                                hilo_sender(this->cola_comandos, this->protocolo),
-                                hilo_reciever(this->protocolo) {}
+                                protocolo(&this->socket, codigos),
+                                codigos(codigos),
+                                cola_comandos(new ColaBloqueante<ComandoServer>()),
+                                hilo_sender(new ServerHiloSender(this->cola_comandos, &this->protocolo, codigos)),
+                                hilo_reciever(new ServerHiloReceiver(&this->protocolo, codigos, this)) {
+    protocolo.enviarId(id_cliente);
+}
 
-void HandlerCliente::lanzarHilos(ColaNoBloqueante<SolicitudServer>* cola) {
-    hilo_reciever.start(cola);
-    hilo_sender.start();
+void HandlerCliente::unirsePartida(SolicitudUnirseAPartidaDTO& partida_a_unirse) {
+    lobby->unirAPartida(partida_a_unirse, this);
+}
+
+void HandlerCliente::enviarStatusDeUnion(Status &status_de_union) {
+    protocolo.enviarStatusDeUnion(status_de_union);
+}
+
+void HandlerCliente::crearPartida(SolicitudCrearPartidaDTO& partida_a_crear) {
+    lobby->crearPartida(partida_a_crear, this);
+}
+
+void HandlerCliente::enviarStatusDeCreacion(Status &status_de_creacion) {
+    protocolo.enviarStatusDeCreacion(status_de_creacion);
 }
 
 void HandlerCliente::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola) {
-    this->lanzarHilos(cola);
-    this->notificarInicioDePartida();
-    hilo_cliente_lobby->cerrar_hilo();
-}
-
-void HandlerCliente::notificarInicioDePartida() {
-    protocolo.notificarComienzoDePartida();
+    this->hilo_reciever->empezarPartida(cola);
+    this->hilo_sender->start();
+    protocolo.enviarComienzoDePartida();
 }
 
 ColaBloqueante<ComandoServer>* HandlerCliente::obtenerColaSender() {
-    return &this->cola_comandos;
+    return this->cola_comandos;
 }
 
 bool HandlerCliente::haFinalizado() const {
@@ -32,11 +44,34 @@ bool HandlerCliente::haFinalizado() const {
 }
 
 void HandlerCliente::cerrar() {
-    delete this->hilo_cliente_lobby;
     this->socket.shutdown(2);
     this->socket.close();
 }
 
+uint8_t HandlerCliente::obtenerId() const {
+    return this->id_cliente;
+}
+
 HandlerCliente::~HandlerCliente() {
-    delete this->hilo_cliente_lobby;
+    delete cola_comandos;
+}
+
+HandlerCliente::HandlerCliente(HandlerCliente&& otro):
+                                socket(std::move(otro.socket)),
+                                protocolo(&this->socket, otro.codigos),
+                                cola_comandos(otro.cola_comandos),
+                                hilo_sender(std::move(otro.hilo_sender)),
+                                hilo_reciever(otro.hilo_reciever) {}
+
+HandlerCliente& HandlerCliente::operator=(HandlerCliente&& otro) {
+    if (this == &otro) {
+        return *this;
+    }
+    delete this->cola_comandos;
+    this->socket = std::move(otro.socket);
+    this->protocolo = ProtocoloServidor(&this->socket, otro.codigos);
+    this->cola_comandos = otro.cola_comandos;
+    this->hilo_sender = otro.hilo_sender;
+    this->hilo_reciever = otro.hilo_reciever;
+    return *this;
 }

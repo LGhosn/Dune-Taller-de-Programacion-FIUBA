@@ -7,103 +7,9 @@
 	"CMAKE_LIST_FILES" : 
 	[
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/CMakeLists.txt",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineSystem.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystem.cmake.in",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/3.22.3/CMakeSystem.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeUnixFindMake.cmake",
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCompilerIdDetection.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ADSP-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ARMCC-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ARMClang-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/AppleClang-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompilerInternal.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Borland-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Bruce-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompilerInternal.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Compaq-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Cray-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Embarcadero-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Fujitsu-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GHS-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/HP-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IAR-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Intel-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/MSVC-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/NVHPC-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/NVIDIA-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/PGI-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/PathScale-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SCO-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SDCC-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SunPro-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/TI-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Watcom-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XL-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XLClang-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/zOS-C-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeFindBinUtils.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-FindBinUtils.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCCompiler.cmake.in",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/3.22.3/CMakeCCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCXXCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-Determine-CXX.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCompilerIdDetection.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ADSP-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ARMCC-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ARMClang-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/AppleClang-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompilerInternal.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Borland-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompilerInternal.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Cray-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Embarcadero-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Fujitsu-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GHS-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/HP-CXX-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IAR-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Intel-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/MSVC-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/NVHPC-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/NVIDIA-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/PGI-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/PathScale-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SCO-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/TI-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Watcom-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XL-CXX-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeFindBinUtils.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-FindBinUtils.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXCompiler.cmake.in",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/3.22.3/CMakeCXXCompiler.cmake",
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake",
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake",
@@ -121,18 +27,6 @@
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake",
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake",
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCompilerCommon.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompilerABI.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseImplicitIncludeInfo.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseImplicitLinkInfo.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseLibraryArchitecture.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCompilerCommon.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCCompilerABI.c",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompileFeatures.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Internal/FeatureTesting.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCCompiler.cmake.in",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/3.22.3/CMakeCCompiler.cmake",
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake",
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake",
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake",
@@ -140,18 +34,6 @@
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake",
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake",
 		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCXXCompiler.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCompilerCommon.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompilerABI.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseImplicitIncludeInfo.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseImplicitLinkInfo.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseLibraryArchitecture.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCompilerCommon.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompileFeatures.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/Internal/FeatureTesting.cmake",
-		"/snap/clion/193/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXCompiler.cmake.in",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/CMakeFiles/3.22.3/CMakeCXXCompiler.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
@@ -193,14 +75,19 @@
 		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-config-version.cmake",
 		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-config.cmake",
 		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-targets.cmake",
-		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-targets-noconfig.cmake",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/assets/resources.qrc"
+		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-targets-noconfig.cmake"
 	],
 	"CMAKE_SOURCE_DIR" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files",
 	"DEP_FILE" : "",
 	"DEP_FILE_RULE_NAME" : "",
 	"HEADERS" : 
 	[
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h",
+			"Mu",
+			"ZX4T27ISJP/moc_common_coords.cpp",
+			null
+		],
 		[
 			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_resolver.h",
 			"Mu",
@@ -232,9 +119,9 @@
 			null
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/PartidaDTO.h",
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/partida_DTO.h",
 			"Mu",
-			"ZVYNUGQ5XI/moc_PartidaDTO.cpp",
+			"ZVYNUGQ5XI/moc_partida_DTO.cpp",
 			null
 		],
 		[
@@ -244,15 +131,69 @@
 			null
 		],
 		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_comandos/cmd_crear_edificio.h",
+			"Mu",
+			"U7XC22HTRN/moc_cmd_crear_edificio.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/game.h",
+			"Mu",
+			"73PCUXUZWX/moc_game.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.h",
+			"Mu",
+			"MLC3UHTTUH/moc_server_camino.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.h",
+			"Mu",
+			"MLC3UHTTUH/moc_server_camino_no_encontrado_exception.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.h",
+			"Mu",
+			"MLC3UHTTUH/moc_server_fuera_de_rango_exception.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_mapa.h",
+			"Mu",
+			"MLC3UHTTUH/moc_server_mapa.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_handler_cliente/server_handler_cliente.h",
+			"Mu",
+			"GB2WRT6BGU/moc_server_handler_cliente.cpp",
+			null
+		],
+		[
 			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_lobby.h",
 			"Mu",
 			"SWWEXVT3ET/moc_server_lobby.cpp",
 			null
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo.h",
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_partida/server_partida.h",
 			"Mu",
-			"SWWEXVT3ET/moc_server_protocolo.cpp",
+			"QL6JKIXX3T/moc_server_partida.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_protocolo.h",
+			"Mu",
+			"QHA32NSPN3/moc_server_protocolo.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_serializador.h",
+			"Mu",
+			"QHA32NSPN3/moc_server_serializador.cpp",
 			null
 		],
 		[
@@ -262,9 +203,27 @@
 			null
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.h",
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.h",
 			"Mu",
-			"54IURCFH76/moc_server_hilo_cliente_lobby.cpp",
+			"JJXUES7NN7/moc_sol_crear_edificio.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_gameloop/server_hilo_gameloop.h",
+			"Mu",
+			"L4MYLM2SVV/moc_server_hilo_gameloop.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_reciever/server_hilo_reciever.h",
+			"Mu",
+			"IW55SVEN5N/moc_server_hilo_reciever.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_sender/server_hilo_sender.h",
+			"Mu",
+			"AYDYJ2O4QR/moc_server_hilo_sender.cpp",
 			null
 		]
 	],
@@ -296,11 +255,11 @@
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug",
+		"/usr/local/include",
 		"/usr/include/c++/9",
 		"/usr/include/x86_64-linux-gnu/c++/9",
 		"/usr/include/c++/9/backward",
 		"/usr/lib/gcc/x86_64-linux-gnu/9/include",
-		"/usr/local/include",
 		"/usr/include/x86_64-linux-gnu",
 		"/usr/include"
 	],
@@ -339,6 +298,11 @@
 			null
 		],
 		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.cpp",
+			"Mu",
+			null
+		],
+		[
 			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_resolver.cpp",
 			"Mu",
 			null
@@ -364,12 +328,42 @@
 			null
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/PartidaDTO.cpp",
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_aceptador.cpp",
 			"Mu",
 			null
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_aceptador.cpp",
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_comandos/cmd_crear_edificio.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/game.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_mapa.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_handler_cliente/server_handler_cliente.cpp",
 			"Mu",
 			null
 		],
@@ -379,7 +373,17 @@
 			null
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo.cpp",
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_partida/server_partida.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_protocolo.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_serializador.cpp",
 			"Mu",
 			null
 		],
@@ -389,7 +393,22 @@
 			null
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp",
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_reciever/server_hilo_reciever.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_sender/server_hilo_sender.cpp",
 			"Mu",
 			null
 		]

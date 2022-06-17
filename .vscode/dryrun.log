@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA'
+make: Leaving directory '/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

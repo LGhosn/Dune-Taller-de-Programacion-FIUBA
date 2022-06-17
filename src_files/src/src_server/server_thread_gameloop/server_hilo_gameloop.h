@@ -6,15 +6,15 @@
 #include <string>
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
-#include "../server_solicitudes/server_solicitud.h"
+#include "../server_solicitudes/solicitud_juego/server_solicitud.h"
 #include "../server_comandos/server_comando.h"
 #include "../server_game/game.h"
 
-#define FRAME_RATE 33.0f
+#define TICKS_POR_SEGUNDO 60
 
 class HiloGameLoop {
-    std::vector<ColaBloqueante<ComandoServer>*> colas_sender;
-    ColaNoBloqueante<SolicitudServer>& cola_solicitudes;
+    ColaNoBloqueante<SolicitudServer>* cola_solicitudes;
+    std::vector<ColaBloqueante<ComandoServer>*>* colas_comandos;
     Game game;
     std::thread hilo;
 
@@ -28,10 +28,10 @@ class HiloGameLoop {
     bool update(long iter);
 
 public:
-    HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender,
-    ColaNoBloqueante<SolicitudServer>& sol_entrantes, std::string& ruta_mapa);
+    HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>* colas_sender,
+    ColaNoBloqueante<SolicitudServer>* sol_entrantes, const std::string& nombre_mapa);
 
-    void start(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender);
+    void start();
 
     ~HiloGameLoop();
 

@@ -16,10 +16,12 @@ class ClientHiloSender;
 class Client {
     Socket skt_cliente;
     ProtocoloCliente protocolo;
+    uint8_t id_jugador;
     ColaNoBloqueante<ComandoCliente> cola_comandos;
-    ClientHiloReciever* receiver;
     ColaBloqueante<SolicitudCliente> cola_solicitudes;
+    ClientHiloReciever* receiver;
     ClientHiloSender* sender;
+    bool partida_empezada = false;
 
     public:
     /*
@@ -39,6 +41,10 @@ class Client {
     void enviarSolicitud(SolicitudCliente* solicitud);
 
     void empezarPartida();
+
+    void establecerPartidaEmpezada();
+
+    bool estaEnPartida();
 
     /*
      * No tiene sentido copiar un cliente y tampoco moverlo (al menos por ahora).

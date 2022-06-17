@@ -1,5 +1,6 @@
 #include "client_sdl_evento.h"
 #include "../client_solicitudes/sol_mover_unidad.h"
+#include "../client_comandos/cmd_click_en_mapa.h"
 
 TeclaPresionada::TeclaPresionada(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
     cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
@@ -73,10 +74,11 @@ ClickPresionado::ClickPresionado(ColaBloqueante<SolicitudCliente>& cola_solicitu
 void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
     SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) mouseButtonEvent;
     switch (mouseEvent.button) {
-        case (SDL_BUTTON_LEFT):
-            // temporal crear un comando para soldado
+        case (SDL_BUTTON_LEFT): {
+            ClickEnMapa* comando = new ClickEnMapa(mouseEvent.x, mouseEvent.y);
+            cola_comandos.push(comando);
             break;
-        
+        }
         case (SDL_BUTTON_RIGHT): {
             uint16_t x = mouseButtonEvent.button.x;
             uint16_t y = mouseButtonEvent.button.y;

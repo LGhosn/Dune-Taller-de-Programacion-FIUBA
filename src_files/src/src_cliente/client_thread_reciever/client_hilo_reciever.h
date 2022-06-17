@@ -5,6 +5,8 @@
 #include "../client_protocolo.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
 #include "../client_comandos/client_comando.h"
+#include "../client_DTO/dto_cmd_crear_edificio.h"
+#include "../client_comandos/cmd_crear_edificio.h"
 #include <thread>
 
 class Client;
@@ -21,6 +23,7 @@ private:
     void handleThread();
     void push(ComandoCliente* comando_creado);
     void stop();
+    ComandoCliente *crearComandoSegunCodigo(uint8_t codigo_comando);
 
 public:
     ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, Client* cliente);

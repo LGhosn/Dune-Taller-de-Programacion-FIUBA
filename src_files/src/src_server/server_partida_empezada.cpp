@@ -19,7 +19,7 @@
 //     for (auto& jugador : jugadores) {
 //         this->colas_jugadores[jugadores] = ColaBloqueante<ComandoAEnviar>();
 //     }
-//     std::vector<ServerHiloReciever> hilos_reciever;
+//     std::vector<ServerHiloReceiver> hilos_reciever;
 //     std::vector<ServerHiloSender> hilos_sender;
 //     ColaNoBloqueante<Solicitud> cola_solicitudes;
 //     for (auto& jugador : jugadores) {

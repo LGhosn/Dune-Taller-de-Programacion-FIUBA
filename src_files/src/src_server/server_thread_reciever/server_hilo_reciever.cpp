@@ -1,44 +1,120 @@
 #include "server_hilo_reciever.h"
 
-ServerHiloReciever::ServerHiloReciever(ProtocoloServidor& protocolo) :
-                                    protocolo(protocolo) {}
+ServerHiloReceiver::ServerHiloReceiver(ProtocoloServidor* protocolo, YAML::Node* codigos, HandlerCliente *cliente_asociado) :
+        protocolo(protocolo),
+        hay_que_seguir(true),
+        partida_comenzada(false),
+        codigos(codigos),
+        cliente_asociado(cliente_asociado) {
+    this->thread = std::thread(&ServerHiloReceiver::handleThread, this);
+}
 
-void ServerHiloReciever::handleThread() {
+void ServerHiloReceiver::handleThread() {
     try {
         this->run();
+    } catch (const SocketError& e) {
+
     } catch (const std::exception &e) {
-        std::cerr << "Excepción encontrada en ServerHiloReciever: " << e.what() << std::endl;
+        std::cerr << "Excepción encontrada en ServerHiloReceiver: " << e.what() << std::endl;
     } catch (...) {
-        std::cerr << "Excepción encontrada en ServerHiloReciever: " << std::endl;
+        std::cerr << "Excepción encontrada en ServerHiloReceiver: " << std::endl;
     }
 }
 
-void ServerHiloReciever::run() {
+void ServerHiloReceiver::run() {
     while (this->hay_que_seguir) {
-        // Recibimos el código de operación.
-        uint8_t codigo;
-        //protocolo.recibirCodigoDeOperacion(codigo);
-
-        // En base a este código recibimos la info correspondiente.
-        //std::unique_ptr<InfoDTO> info = protocolo.recibirInfoSegunCodigo(codigo);
-
-        // Tomamos esa información y encolamos.
-        // Comando cmd = this->armarComandoSegunInfo(info);
-        // cola_eventos.push(&cmd);
+        uint8_t codigo = protocolo->recibirCodigoDeSolicitud();
+        if (partida_comenzada) {
+            this->recibirSolicitudSegunCodigo(codigo);
+        } else {
+            this->recibirSolicitudMenuSegunCodigo(codigo);
+        }
     }
 }
 
-void ServerHiloReciever::start(ColaNoBloqueante<SolicitudServer>* cola_de_solicitudes) {
-    this->cola_solicitudes = cola_de_solicitudes;
-    this->thread = std::thread(&ServerHiloReciever::handleThread, this);
+/* *****************************************************************
+ *              METODOS DE SOLICITUDES EN PARTIDA
+ * *****************************************************************/
+
+void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
+    switch (codigo) {
+        // Solicitan crear un edificio
+        case 5:
+            manejarSolicitudCrearEdificio();
+            break;
+        default:
+            throw std::runtime_error("Código de solicitud no reconocido");
+    }
 }
 
-void ServerHiloReciever::stop() {
+void ServerHiloReceiver::manejarSolicitudCrearEdificio() {
+    SolicitudCrearEdificioDTO solicitud = protocolo->recibirSolicitudCrearEdificio();
+    SolicitudServer *solicitud_server = new SoliCrearEdificioServer(solicitud);
+    cola_solicitudes->push(solicitud_server);
+}
+
+/* *****************************************************************
+ *              METODOS DE SOLICITUDES DEL MENÚ
+ * *****************************************************************/
+
+void ServerHiloReceiver::recibirSolicitudMenuSegunCodigo(uint8_t codigo) {
+    switch (codigo) {
+        // Solicitan unirse a una partida.
+        case 1:
+            recibirSolicitudDeUnion();
+            break;
+
+        // Solicitan crear una partida.
+        case 3:
+            recibirSolicitudDeCreacion();
+            break;
+    }
+}
+
+void ServerHiloReceiver::recibirSolicitudDeCreacion() {
+    SolicitudCrearPartidaDTO solicitud = protocolo->recibirSolicitudCrearPartida();
+    this->cliente_asociado->crearPartida(solicitud);
+}
+
+void ServerHiloReceiver::recibirSolicitudDeUnion() {
+    SolicitudUnirseAPartidaDTO solicitud = protocolo->recibirSolicitudUnirseAPartida();
+    this->cliente_asociado->unirsePartida(solicitud);
+}
+
+/* *****************************************************************
+ *                 METODOS DE INICIO-FINALIZACIÓN
+ * *****************************************************************/
+
+void ServerHiloReceiver::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola_de_solicitudes) {
+    this->cola_solicitudes = cola_de_solicitudes;
+    this->partida_comenzada = true;
+}
+
+void ServerHiloReceiver::stop() {
     this->hay_que_seguir = false;
 }
 
-ServerHiloReciever::~ServerHiloReciever() {
+ServerHiloReceiver::~ServerHiloReceiver() {
     if (this->thread.joinable()) {
         this->thread.join();
     }
+}
+
+/* *****************************************************************
+ *                          MOVE SEMANTICS
+ * *****************************************************************/
+
+ServerHiloReceiver::ServerHiloReceiver(ServerHiloReceiver&& otro):
+                                        cola_solicitudes(otro.cola_solicitudes),
+                                        protocolo(otro.protocolo),
+                                        thread(std::move(otro.thread)) {}
+
+ServerHiloReceiver& ServerHiloReceiver::operator=(ServerHiloReceiver&& otro) {
+    if (this == &otro) {
+        return *this;
+    }
+    this->cola_solicitudes = otro.cola_solicitudes;
+    this->protocolo = otro.protocolo;
+    this->thread = std::move(otro.thread);
+    return *this;
 }

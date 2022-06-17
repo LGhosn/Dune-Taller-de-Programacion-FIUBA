@@ -29,13 +29,12 @@ void FormCreacion::solicitudDeCreacion() {
             QMessageBox::information(this, "Error en los campos rellenados",
                                      "Recuerda rellenar el campo de nombre de partida, mapa, elegir una casa de las tres disponibles y una cantidad de jugadores requeridos para comenzar la partida.");
         } else {
-            SolicitudDeCreacion solicitud(nombre_partida, mapa, casa, jugadores_requeridos);
+            SolicitudCrearPartidaDTO solicitud(nombre_partida, mapa, casa, jugadores_requeridos);
             ProtocoloCliente& protocolo = cliente.protocoloAsociado();
-            protocolo.enviarSolicitudDeCreacion(solicitud);
+            protocolo.enviarSolicitudCrearPartida(solicitud);
             Status status_recibido = protocolo.recibirStatus();
             crearNotificacion(status_recibido);
-            protocolo.esperarAComienzoDePartida();
-            QApplication::exit();
+            //protocolo.esperarAComienzoDePartida();
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());
@@ -45,12 +44,21 @@ void FormCreacion::solicitudDeCreacion() {
 }
 
 void FormCreacion::crearNotificacion(Status& status) {
-    if (status.conexionEstablecida()) {
-        // Lanzamos hilos
-        QMessageBox::information(this, "Creacion Existosa", "Esperando jugadores restantes...");
+    ProtocoloCliente& protocolo = cliente.protocoloAsociado();
+    if (status.obtenerCodigoDeConexion() == CONEXION_EXITOSA) {
+        std::cout << "Creacion Existosa, esperando jugadores restantes..." << std::endl;
+        bool partida_comenzada = protocolo.esperarAComienzoDePartida();
+        if (partida_comenzada) {
+            // Cierro todas las ventanas y abro el juego
+            std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
+            //cliente.establecerPartidaEmpezada();
+            cliente.empezarPartida();
+            close();
+        }
     } else {
-        QMessageBox::information(this, "Creacion Fallida", "Existe otra partida con ese mismo nombre, por favor elegir otro.");
-        this->close();
+        if (status.obtenerCodigoDePartida() == PARTIDA_EXISTENTE) {
+            std::cout << "Creacion Fallida, existe otra partida con ese mismo nombre, por favor elegir otro...." << std::endl;
+        }
     }
 }
 

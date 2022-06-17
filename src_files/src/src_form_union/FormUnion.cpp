@@ -1,5 +1,4 @@
 #include "FormUnion.h"
-#include "../src_cliente/client_solicitudes/sol_unirse_a_partida.h"
 
 FormUnion::FormUnion(Client& cliente, QWidget *parent) :
                         QWidget(parent),
@@ -25,15 +24,13 @@ void FormUnion::solicitudDeUnion() {
         // se crea la solicitud hasta que dicho campo sea válido.
         if (algunParametroNoEsValido(casa, nombre_partida)) {
             QMessageBox::information(this, "Error en la casa o el nombre de partida elegidos",
-                                     "Recuerda elegir una casa de las tres disponibles y que rellenar el campo de nombre de partida.");
+                                    "Recuerda elegir una casa de las tres disponibles y que rellenar el campo de nombre de partida.");
         } else {
-            SolicitudDeUnion solicitud(nombre_partida, casa);
+            SolicitudUnirseAPartidaDTO solicitud(nombre_partida, casa);
             ProtocoloCliente& protocolo = cliente.protocoloAsociado();
-            protocolo.enviarSolicitudDeUnion(solicitud);
-            Status status = protocolo.recibirStatus();
-            unirseNotificacion(status);
-            protocolo.esperarAComienzoDePartida();
-            QApplication::exit();
+            protocolo.enviarSolicitudUnirseAPartida(solicitud);
+            Status status_recibido = protocolo.recibirStatus();
+            unirseNotificacion(protocolo, status_recibido);
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());
@@ -42,18 +39,23 @@ void FormUnion::solicitudDeUnion() {
     }
 }
 
-void FormUnion::unirseNotificacion(Status &status) {
-    if (status.conexionEstablecida()) {
-        // Lanzo hilos sender/reciever
-        if (status.esperandoJugadores()) {
-            QMessageBox::information(this, "Union Existosa", "Esperando jugadores restantes...");
-            this->close();
-        } else {
-            QMessageBox::information(this, "Union Existosa", "Comenzando partida...");
-            this->close();
+void FormUnion::unirseNotificacion(ProtocoloCliente &protocolo, Status &status) {
+    if (status.obtenerCodigoDeConexion() == CONEXION_EXITOSA) {
+        std::cout << "Union Existosa, esperando jugadores restantes..." << std::endl;
+        bool partida_comenzada = protocolo.esperarAComienzoDePartida();
+        if (partida_comenzada) {
+            // Cierro todas las ventanas y abro el juego
+            std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
+            //cliente.establecerPartidaEmpezada();
+            cliente.establecerPartidaEmpezada();
+            close();
         }
     } else {
-        QMessageBox::information(this, "Union Fallida", "Parece que esa partida no existe o ya que ha comenzado.");
+        if (status.obtenerCodigoDePartida() == PARTIDA_EXISTENTE) {
+            std::cout << "Union Fallida, parece que esa partida ya ha comenzado." << std::endl;
+        } else if (status.obtenerCodigoDePartida() == PARTIDA_NO_EXISTENTE) {
+            std::cout << "Union Fallida, parece que esa partida no existe." << std::endl;
+        }
     }
 }
 

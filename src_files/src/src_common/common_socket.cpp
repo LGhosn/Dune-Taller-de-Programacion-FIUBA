@@ -160,15 +160,14 @@ Socket::Socket(const char *servicename) : skt(-1), closed(true) {
 Socket::Socket(int skt) : skt(skt), closed(false) {
 }
 
-int Socket::recvsome(void *data, unsigned int sz, bool *was_closed) {
-    *was_closed = false;
+int Socket::recvsome(void *data, unsigned int sz) {
     int s = recv(this->skt, (char*)data, sz, 0);
     if (s == 0) {
         // Puede ser o no un error, dependera del protocolo.
         // Alguno protocolo podria decir "se reciben datos hasta
         // que la conexion se cierra" en cuyo caso el cierre del socket
         // no es un error sino algo esperado.
-        *was_closed = true;
+        this->closed = true;
         throw SocketError("La conexion fue cerrada del otro lado.\n");
     } else if (s < 0) {
         // 99% casi seguro que es un error real
@@ -178,12 +177,10 @@ int Socket::recvsome(void *data, unsigned int sz, bool *was_closed) {
     }
 }
 
-int Socket::sendsome(const void *data, unsigned int sz, bool *was_closed) {
-    *was_closed = false;
+int Socket::sendsome(const void *data, unsigned int sz) {
     int s = send(this->skt, (char*)data, sz, MSG_NOSIGNAL);
     if (s == 0) {
         // Puede o no ser un error (vease el comentario en recvsome())
-        *was_closed = true;
         return 0;
     } else if (s < 0) {
         // Este es un caso especial: cuando enviamos algo pero en el medio
@@ -197,8 +194,8 @@ int Socket::sendsome(const void *data, unsigned int sz, bool *was_closed) {
         // checkear y manejar la condicion mas elegantemente
         if (errno == EPIPE) {
             // Puede o no ser un error (vease el comentario en recvsome())
-            *was_closed = true;
-            return 0;
+            this->closed = true;
+            throw SocketError("La conexion fue cerrada del otro lado.\n");
         }
 
         // 99% casi seguro que es un error
@@ -208,12 +205,11 @@ int Socket::sendsome(const void *data, unsigned int sz, bool *was_closed) {
     }
 }
 
-int Socket::recvall(void *data, unsigned int sz, bool *was_closed) {
+int Socket::recvall(void *data, unsigned int sz) {
     unsigned int received = 0;
-    *was_closed = false;
 
     while (received < sz) {
-        int s = this->recvsome((char*)data + received, sz - received, was_closed);
+        int s = this->recvsome((char*)data + received, sz - received);
         if (s <= 0) {
             // Si el socket fue cerrado (s == 0) o hubo un error (s < 0)
             // el metodo Socket::recvsome ya deberia haber seteado was_closed
@@ -233,12 +229,11 @@ int Socket::recvall(void *data, unsigned int sz, bool *was_closed) {
 }
 
 
-int Socket::sendall(const void *data, unsigned int sz, bool *was_closed) {
+int Socket::sendall(const void *data, unsigned int sz) {
     unsigned int sent = 0;
-    *was_closed = false;
 
     while (sent < sz) {
-        int s = this->sendsome((char*)data + sent, sz - sent, was_closed);
+        int s = this->sendsome((char*)data + sent, sz - sent);
         if (s <= 0) {
             // Si el socket fue cerrado (s == 0) o hubo un error (s < 0)
             // el metodo Socket::sendall ya deberia haber seteado was_closed
@@ -306,7 +301,6 @@ Socket::Socket(Socket&& other) {
     //
     // Para Socket con esto alcanza (mirate Resolver)
     other.skt = -1;
-    other.closed = true;
 }
 
 Socket& Socket::operator=(Socket&& other) {

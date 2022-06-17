@@ -5,7 +5,7 @@
 		<Option title="Dune2000"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;CMake Files\..\..\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\..\..\usr\local\share\cmake\;CMake Files\..\..\..\..\..\..\..\..\usr\local\share\cmake\yaml-cpp\;CMake Files\assets\;CMake Files\src\;CMake Files\src\src_libs\;CMake Files\src\src_libs\SDL2pp\;CMake Files\src\src_libs\SDL2pp\cmake\;CMake Files\src\src_libs\SDL2pp\SDL2pp\;CMake Files\src\src_testing\;CMake Files\src\src_testing\pruebas_camino\;CMake Files\src\src_testing\pruebas_mapa\;CMake Files\src\src_testing\pruebas_serializador\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\_deps\;CMake Files\cmake-build-debug\_deps\googletest-src\;CMake Files\cmake-build-debug\_deps\googletest-src\googlemock\;CMake Files\cmake-build-debug\_deps\googletest-src\googlemock\cmake\;CMake Files\cmake-build-debug\_deps\googletest-src\googletest\;CMake Files\cmake-build-debug\_deps\googletest-src\googletest\cmake\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;CMake Files\..\..\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\..\..\usr\local\share\cmake\;CMake Files\..\..\..\..\..\..\..\..\usr\local\share\cmake\yaml-cpp\;CMake Files\src\;CMake Files\src\src_libs\;CMake Files\src\src_libs\SDL2pp\;CMake Files\src\src_libs\SDL2pp\cmake\;CMake Files\src\src_libs\SDL2pp\SDL2pp\;CMake Files\src\src_testing\;CMake Files\src\src_testing\pruebas_camino\;CMake Files\src\src_testing\pruebas_serializador\;CMake Files\cmake-build-debug\;CMake Files\cmake-build-debug\_deps\;CMake Files\cmake-build-debug\_deps\googletest-src\;CMake Files\cmake-build-debug\_deps\googletest-src\googlemock\;CMake Files\cmake-build-debug\_deps\googletest-src\googlemock\cmake\;CMake Files\cmake-build-debug\_deps\googletest-src\googletest\;CMake Files\cmake-build-debug\_deps\googletest-src\googletest\cmake\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug"/>
@@ -747,92 +747,6 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-build/googletest/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="mapa_tests">
-				<Option output="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/mapa_tests" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DRESOURCE_PATH=&quot;/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/assets&quot;"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/mapa_tests_autogen/include"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/SDL2pp/build"/>
-					<Add directory="/usr/local/include/SDL2"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-src/googletest/include"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 mapa_tests"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="mapa_tests/fast">
-				<Option output="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/mapa_tests" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add option="-DRESOURCE_PATH=&quot;/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/assets&quot;"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/mapa_tests_autogen/include"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/SDL2pp/build"/>
-					<Add directory="/usr/local/include/SDL2"/>
-					<Add directory="/usr/include/SDL2"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-src/googletest/include"/>
-					<Add directory="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-src/googletest"/>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 mapa_tests/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="mapa_tests_autogen">
-				<Option working_dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 mapa_tests_autogen"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sruizs/Escritorio/FIUBA/TALLER\ DE\ PROGRAMACION/TP\ FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="serializador_tests">
 				<Option output="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_serializador/serializador_tests" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_serializador"/>
@@ -920,9 +834,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/assets/resources.qrc">
-			<Option target="client"/>
-		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-build/googlemock/gmock_autogen/mocs_compilation.cpp">
 			<Option target="gmock"/>
 		</Unit>
@@ -947,12 +858,6 @@
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc">
 			<Option target="gtest_main"/>
 		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/client_autogen/GBFAFXFCVO/qrc_resources.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/client_autogen/GBFAFXFCVO/qrc_resources.cpp.rule">
-			<Option target="client"/>
-		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/client_autogen/mocs_compilation.cpp">
 			<Option target="client"/>
 		</Unit>
@@ -962,179 +867,27 @@
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_camino/camino_tests_autogen/mocs_compilation.cpp">
 			<Option target="camino_tests"/>
 		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_mapa/mapa_tests_autogen/mocs_compilation.cpp">
-			<Option target="mapa_tests"/>
-		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/src/src_testing/pruebas_serializador/serializador_tests_autogen/mocs_compilation.cpp">
 			<Option target="serializador_tests"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/ui_FormCreacion.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/ui_FormUnion.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/ui_MenuUi.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/main_client.cpp">
-			<Option target="client"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/main_server.cpp">
 			<Option target="server"/>
 		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_DTO/Status.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_DTO/Status.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_client.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_client.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_comandos/client_comando.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_comandos/client_comando.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_comandos/cmd_mover_mapa.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_comandos/cmd_mover_mapa.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_comandos/cmd_salir.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_comandos/cmd_salir.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_comandos/cmd_zoom.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_comandos/cmd_zoom.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_protocolo.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_protocolo.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_renderer/client_renderer.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_renderer/client_renderer.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_solicitudes/sol_crear_partida.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_solicitudes/sol_crear_partida.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_solicitudes/sol_mover_unidad.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_solicitudes/sol_mover_unidad.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_solicitudes/sol_unirse_a_partida.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_thread_reciever/client_hilo_reciever.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_thread_sdl/client_hilo_sdl.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_thread_sdl/client_sdl_evento.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_thread_sdl/client_sdl_evento.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_thread_sender/client_hilo_sender.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_thread_sender/client_hilo_sender.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_world_view/sdl_mapa.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_world_view/sdl_mapa.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_world_view/sdl_tile.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_world_view/sdl_tile.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_world_view/sdl_tile_factory.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_world_view/sdl_tile_factory.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_world_view/world_view.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/client_world_view/world_view.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/pix_a_coords.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente/pix_a_coords.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_colas/cola_bloqueante.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_colas/cola_bloqueante.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_colas/cola_no_bloqueante.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_colas/cola_no_bloqueante.h">
-			<Option target="client"/>
-		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.cpp">
-			<Option target="client"/>
+			<Option target="server"/>
 			<Option target="camino_tests"/>
-			<Option target="mapa_tests"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h">
-			<Option target="client"/>
+			<Option target="server"/>
 			<Option target="camino_tests"/>
-			<Option target="mapa_tests"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_resolver.cpp">
-			<Option target="client"/>
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_resolver.h">
-			<Option target="client"/>
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_serializador.cpp">
-			<Option target="client"/>
 			<Option target="server"/>
 			<Option target="serializador_tests"/>
 		</Unit>
@@ -1142,38 +895,16 @@
 			<Option target="serializador_tests"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket.cpp">
-			<Option target="client"/>
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket.h">
-			<Option target="client"/>
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket_error.cpp">
-			<Option target="client"/>
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_socket_error.h">
-			<Option target="client"/>
 			<Option target="server"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion/FormCreacion.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion/FormCreacion.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion/FormCreacion.ui">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union/FormUnion.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union/FormUnion.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union/FormUnion.ui">
-			<Option target="client"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/AudioDevice.cc">
 			<Option target="SDL2pp"/>
@@ -1316,25 +1047,13 @@
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/SDL2pp/Window.hh">
 			<Option target="SDL2pp"/>
 		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu/MenuDune.cpp">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu/MenuDune.h">
-			<Option target="client"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu/MenuUi.ui">
-			<Option target="client"/>
-		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/MovimientoDTO.cpp">
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/MovimientoDTO.h">
 			<Option target="server"/>
 		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/PartidaDTO.cpp">
-			<Option target="server"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/PartidaDTO.h">
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_DTO/partida_DTO.h">
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_aceptador.cpp">
@@ -1343,35 +1062,53 @@
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_aceptador.h">
 			<Option target="server"/>
 		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_comandos/cmd_crear_edificio.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_comandos/cmd_crear_edificio.h">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/game.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/game.h">
+			<Option target="server"/>
+		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.cpp">
+			<Option target="server"/>
 			<Option target="camino_tests"/>
-			<Option target="mapa_tests"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.h">
+			<Option target="server"/>
 			<Option target="camino_tests"/>
-			<Option target="mapa_tests"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp">
+			<Option target="server"/>
 			<Option target="camino_tests"/>
-			<Option target="mapa_tests"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.h">
+			<Option target="server"/>
 			<Option target="camino_tests"/>
-			<Option target="mapa_tests"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp">
+			<Option target="server"/>
 			<Option target="camino_tests"/>
-			<Option target="mapa_tests"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.h">
+			<Option target="server"/>
 			<Option target="camino_tests"/>
-			<Option target="mapa_tests"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_mapa.cpp">
-			<Option target="mapa_tests"/>
+			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_mapa.h">
-			<Option target="mapa_tests"/>
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_handler_cliente/server_handler_cliente.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_handler_cliente/server_handler_cliente.h">
+			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_lobby.cpp">
 			<Option target="server"/>
@@ -1379,10 +1116,22 @@
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_lobby.h">
 			<Option target="server"/>
 		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo.cpp">
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_partida/server_partida.cpp">
 			<Option target="server"/>
 		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo.h">
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_partida/server_partida.h">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_protocolo.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_protocolo.h">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_serializador.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_protocolo/server_serializador.h">
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_server.cpp">
@@ -1391,17 +1140,32 @@
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_server.h">
 			<Option target="server"/>
 		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.cpp">
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp">
 			<Option target="server"/>
 		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_client_lobby/server_hilo_cliente_lobby.h">
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.h">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_gameloop/server_hilo_gameloop.h">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_reciever/server_hilo_reciever.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_reciever/server_hilo_reciever.h">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_sender/server_hilo_sender.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_thread_sender/server_hilo_sender.h">
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/pruebas_camino.cpp">
 			<Option target="camino_tests"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_mapa/pruebas_mapa.cpp">
-			<Option target="mapa_tests"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/pruebas_serializador.cpp">
 			<Option target="serializador_tests"/>
@@ -1529,9 +1293,6 @@
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/../../../../../../../../usr/local/share/cmake/yaml-cpp/yaml-cpp-targets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\local\share\cmake\yaml-cpp\"/>
 		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/assets/resources.qrc">
-			<Option virtualFolder="CMake Files\assets\"/>
-		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\src\src_libs\SDL2pp\"/>
 		</Unit>
@@ -1555,9 +1316,6 @@
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\src\src_testing\pruebas_camino\"/>
-		</Unit>
-		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_mapa/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\src\src_testing\pruebas_mapa\"/>
 		</Unit>
 		<Unit filename="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_serializador/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\src\src_testing\pruebas_serializador\"/>

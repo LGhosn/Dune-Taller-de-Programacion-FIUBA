@@ -1,8 +1,8 @@
 #ifndef FORM_UNION_H
 #define FORM_UNION_H
 
-#include "../src_cliente/client_DTO/Status.h"
-#include "../src_cliente/client_DTO/SolicitudDeUnion.h"
+#include "../src_common/common_DTO/Status.h"
+#include "../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "../src_cliente/client_protocolo.h"
 #include "../src_cliente/client_client.h"
 #include "../src_common/common_serializador.h"
@@ -49,7 +49,7 @@ public:
     /* Muestra un QMessageBox indicando si la union solicitada fue
      * completada con o sin éxito.
      * */
-    void unirseNotificacion(Status& status);
+    void unirseNotificacion(ProtocoloCliente& protocolo, Status& status);
 
     /* Establece la casa elegida por el usuario como Atreides.
      * */

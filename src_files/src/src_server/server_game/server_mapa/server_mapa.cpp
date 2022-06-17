@@ -17,22 +17,21 @@ enum dimensiones {
 /* ******************************************************************
  *                        PRIVADAS
  * *****************************************************************/
-std::tuple<int, int, char> Mapa::propiedades_edificio(uint8_t edificio) {
+std::tuple<int, int, char> Mapa::propiedadesEdificio(uint8_t edificio) {
     int dimension_x = 0, dimension_y = 0;
     char tipo_edificio = 0;
-    const uint8_t torre = 0x01, cuartel = 0x02, silo = 0x03;
     switch (edificio) {
-        case torre:
+        case 0:
             dimension_x = tres_dimension;
             dimension_y = tres_dimension;
             tipo_edificio = TORRE_DE_AIRE;
             break;
-        case cuartel:
+        case 1:
             dimension_x = dos_dimensiones;
             dimension_y = tres_dimension;
             tipo_edificio = CUARTEL;
             break;
-        case silo:
+        case 2:
             dimension_x = una_dimension;
             dimension_y = una_dimension;
             tipo_edificio = SILO;
@@ -44,10 +43,10 @@ std::tuple<int, int, char> Mapa::propiedades_edificio(uint8_t edificio) {
     return std::make_tuple(dimension_x, dimension_y, tipo_edificio);
 }
 
-bool Mapa::hay_colisiones(uint16_t pos_x, uint16_t pos_y, int dimension_x, int dimension_y) {
+bool Mapa::hayColisiones(const Coordenadas& coords, int dimension_x, int dimension_y) {
     bool colision = false;
-    for (int i = pos_y; i < pos_y + dimension_y; i++){
-        for (int j = pos_x; j < pos_x + dimension_x; j++){
+    for (int i = coords.y; i < coords.y + dimension_y; i++){
+        for (int j = coords.x; j < coords.x + dimension_x; j++){
             // Verifico que el edificio no se salga del mapa
             if (j >= this->ancho || i >= this->alto){
                 this->colisiones.push_back(Coordenadas(j, i));
@@ -64,13 +63,13 @@ bool Mapa::hay_colisiones(uint16_t pos_x, uint16_t pos_y, int dimension_x, int d
     return colision;
 }
 
-void Mapa::edificar(uint16_t pos_x, uint16_t pos_y, std::tuple<int, int, char> propiedades) {
+void Mapa::edificar(const Coordenadas& coords, std::tuple<int, int, char> propiedades) {
     int dimension_x = 0, dimension_y = 0;
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades;
     if (this->colisiones.empty()){
-        for (int i = pos_y - DISTANCIA_EDIFICIOS; i < (pos_y + dimension_y + DISTANCIA_EDIFICIOS); i++){
-            for (int j = pos_x - DISTANCIA_EDIFICIOS; j < (pos_x + dimension_x + DISTANCIA_EDIFICIOS); j++){
+        for (int i = coords.y - DISTANCIA_EDIFICIOS; i < (coords.y + dimension_y + DISTANCIA_EDIFICIOS); i++){
+            for (int j = coords.x - DISTANCIA_EDIFICIOS; j < (coords.x + dimension_x + DISTANCIA_EDIFICIOS); j++){
                 if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || this->mapa[i][j] != 'R'){
                     continue;
                 }
@@ -80,8 +79,8 @@ void Mapa::edificar(uint16_t pos_x, uint16_t pos_y, std::tuple<int, int, char> p
     }
 }
 
-bool Mapa::terreno_firme(uint16_t pos_x, uint16_t pos_y) {
-    return this->mapa[pos_y][pos_x] == 'R' ? true : false;
+bool Mapa::terrenoFirme(const Coordenadas& coords) {
+    return this->mapa[coords.y][coords.x] == 'R' ? true : false;
 }
 
 /* ******************************************************************
@@ -91,22 +90,18 @@ bool Mapa::terreno_firme(uint16_t pos_x, uint16_t pos_y) {
 Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto),
 mapa(std::vector< std::vector<char> > (alto, std::vector<char>(ancho, 'A'))), camino(this->mapa) {}
 
-bool Mapa::construir_edificio(comando_t comando){
+bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
     this->colisiones = std::vector< Coordenadas >();
-
-    uint8_t edificio = 0;
-    uint16_t pos_x = 0, pos_y = 0;
-    std::tie(edificio, pos_x, pos_y) = comando;
-    std::tuple<int, int, char> propiedades_del_edificio = propiedades_edificio(edificio);
+    std::tuple<int, int, char> propiedades_del_edificio = propiedadesEdificio(tipo);
 
     int dimension_x = 0, dimension_y = 0;
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades_del_edificio;
-    if (!terreno_firme(pos_x, pos_y) || hay_colisiones(pos_x, pos_y, dimension_x, dimension_y)) {
+    if (!terrenoFirme(coords) || hayColisiones(coords, dimension_x, dimension_y)) {
         return false;
     }
-    edificar(pos_x, pos_y, propiedades_del_edificio);
+    edificar(coords, propiedades_del_edificio);
     return true;
 }
 
@@ -130,7 +125,7 @@ void Mapa::modificar_terreno(uint16_t pos_x, uint16_t pos_y, const char terreno)
 void Mapa::demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y) {
     int dimension_x = 0, dimension_y = 0;
     char tipo_edificio = 0;
-    std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades_edificio(edificio);
+    std::tie(dimension_x, dimension_y, tipo_edificio) = propiedadesEdificio(edificio);
     for (int i = pos_y - DISTANCIA_EDIFICIOS; i < (pos_y + dimension_y + DISTANCIA_EDIFICIOS); i++){
         for (int j = pos_x - DISTANCIA_EDIFICIOS; j < (pos_x + dimension_x + DISTANCIA_EDIFICIOS); j++){
             if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || this->mapa[i][j] != tipo_edificio){

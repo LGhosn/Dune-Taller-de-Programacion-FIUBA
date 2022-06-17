@@ -17,16 +17,26 @@ void ClientHiloReciever::handleThread() {
 
 void ClientHiloReciever::run() {
     while (this->hay_que_seguir) {
-        // Recibimos la info del server
-        // - Primero recibimos el codigo de la operacion
-        // - En función al codigo invocamos al metodo que recibe la info respectiva
-        uint8_t codigo;
-        protocolo.recibirCodigoDeOperacion(codigo);
-        // protocolo.recibirInfoSegunCodigo(codigo);
-        // Luego la traducimos a un comando
-        // Finalmente encolamos el comando
+        std::cout << "Reciever en el loop" << std::endl;
+        uint8_t codigo_comando;
+        protocolo.recibirCodigoDeComando(codigo_comando);
+        ComandoCliente* comando = this->crearComandoSegunCodigo(codigo_comando);
+        cola_eventos.push(comando);
     }
 }
+
+ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
+    switch (codigo) {
+        // Solicitan crear un edificio
+        case 5:{
+            ComandoCrearEdificioDTO comandoDTO = protocolo.recibirComandoCrearEdificio();
+            return new ComandoCrearEdificio(comandoDTO);
+        }
+        default:
+            throw std::runtime_error("ClientHiloReciever: Codigo de comando desconocido");
+    }
+}
+
 
 void ClientHiloReciever::start() {
     this->thread = std::thread(&ClientHiloReciever::handleThread, this);

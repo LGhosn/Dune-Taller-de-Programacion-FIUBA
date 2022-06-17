@@ -5,6 +5,7 @@ src/src_testing/pruebas_camino/CMakeFiles/camino_tests.dir/__/__/src_common/comm
 src/src_testing/pruebas_camino/CMakeFiles/camino_tests.dir/__/__/src_common/common_coords.cpp.o: ../src/src_common/common_coords.h
 
 src/src_testing/pruebas_camino/CMakeFiles/camino_tests.dir/__/__/src_server/server_game/server_mapa/server_camino.cpp.o: ../src/src_common/common_coords.h
+src/src_testing/pruebas_camino/CMakeFiles/camino_tests.dir/__/__/src_server/server_game/server_mapa/server_camino.cpp.o: ../src/src_common/common_coords.h
 src/src_testing/pruebas_camino/CMakeFiles/camino_tests.dir/__/__/src_server/server_game/server_mapa/server_camino.cpp.o: ../src/src_server/server_game/server_mapa/server_camino.cpp
 src/src_testing/pruebas_camino/CMakeFiles/camino_tests.dir/__/__/src_server/server_game/server_mapa/server_camino.cpp.o: ../src/src_server/server_game/server_mapa/server_camino.h
 src/src_testing/pruebas_camino/CMakeFiles/camino_tests.dir/__/__/src_server/server_game/server_mapa/server_camino.cpp.o: ../src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.h
