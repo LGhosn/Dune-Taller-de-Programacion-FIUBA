@@ -41,7 +41,7 @@ void HiloGameLoop::run() {
 }
 
 void HiloGameLoop::manejarSolicitudes() {
-    std::queue<std::unique_ptr<SolicitudServer>> solicitudes = this->cola_solicitudes.popAll();
+    std::queue<std::unique_ptr<SolicitudServer>> solicitudes = this->cola_solicitudes->popAll();
     while(!solicitudes.empty()) {
         std::unique_ptr<SolicitudServer> solicitud = std::move(solicitudes.front());
         solicitudes.pop();
@@ -53,12 +53,12 @@ bool HiloGameLoop::update(long iter) {
     return this->game.update(iter);
 }
 
-HiloGameLoop::HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_comandos,
-                                        ColaNoBloqueante<SolicitudServer>& cola_solicitudes,
-                                        std::string& ruta_mapa):
+HiloGameLoop::HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>* colas_comandos,
+                                        ColaNoBloqueante<SolicitudServer>* cola_solicitudes,
+                                        const std::string& nombre_mapa):
                                         cola_solicitudes(cola_solicitudes),
                                         colas_comandos(colas_comandos),
-                                        game(colas_comandos) {}
+                                        game(colas_comandos, nombre_mapa) {}
 
 void HiloGameLoop::start() {
     this->hilo = std::thread(&HiloGameLoop::manejarHilo, this);
@@ -73,10 +73,13 @@ HiloGameLoop::~HiloGameLoop() {
 HiloGameLoop& HiloGameLoop::operator=(HiloGameLoop&& otro) {
     if (this == &otro)
         return *this;
-    this->cola_solicitudes = std::move(otro.cola_solicitudes);
-    this->colas_comandos = std::move(otro.colas_comandos);
+    this->cola_solicitudes = otro.cola_solicitudes;
+    this->colas_comandos = otro.colas_comandos;
     this->game = std::move(otro.game);
     this->hilo = std::move(otro.hilo);
+
+    otro.colas_comandos = nullptr;
+    otro.cola_solicitudes = nullptr;
     return *this;
 }
 HiloGameLoop::HiloGameLoop(HiloGameLoop &&otro) :

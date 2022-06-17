@@ -13,8 +13,8 @@
 #define TICKS_POR_SEGUNDO 60
 
 class HiloGameLoop {
-    ColaNoBloqueante<SolicitudServer>& cola_solicitudes;
-    std::vector<ColaBloqueante<ComandoServer>*>& colas_comandos;
+    ColaNoBloqueante<SolicitudServer>* cola_solicitudes;
+    std::vector<ColaBloqueante<ComandoServer>*>* colas_comandos;
     Game game;
     std::thread hilo;
 
@@ -28,8 +28,8 @@ class HiloGameLoop {
     bool update(long iter);
 
 public:
-    HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>& colas_sender,
-    ColaNoBloqueante<SolicitudServer>& sol_entrantes, std::string& ruta_mapa);
+    HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>* colas_sender,
+    ColaNoBloqueante<SolicitudServer>* sol_entrantes, const std::string& nombre_mapa);
 
     void start();
 

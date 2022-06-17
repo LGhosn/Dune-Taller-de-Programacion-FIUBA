@@ -47,7 +47,7 @@ void FormUnion::unirseNotificacion(ProtocoloCliente &protocolo, Status &status) 
             // Cierro todas las ventanas y abro el juego
             std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
             //cliente.establecerPartidaEmpezada();
-            cliente.empezarPartida();
+            cliente.establecerPartidaEmpezada();
             close();
         }
     } else {

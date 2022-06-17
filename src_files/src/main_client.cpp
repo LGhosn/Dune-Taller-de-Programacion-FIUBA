@@ -9,7 +9,10 @@ int main(int argc, char *argv[]) {
     Client cliente(argv[1], argv[2]);
     MenuDune menu(cliente);
     menu.show();
-    QApplication::exec();
-    //int resultado = QApplication::exec();
-    return 0;
+    int resultado = QApplication::exec();
+    if (resultado == 0 && cliente.estaEnPartida()) {
+        cliente.empezarPartida();
+        return 0;
+    }
+    return 1;
 }
