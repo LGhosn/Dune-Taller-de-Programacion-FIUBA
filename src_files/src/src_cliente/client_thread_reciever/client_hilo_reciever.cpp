@@ -1,4 +1,5 @@
 #include "client_hilo_reciever.h"
+#include "../client_comandos/cmd_salir.h"
 
 ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, Client* cliente) :
                                         cliente(cliente),
@@ -8,6 +9,9 @@ ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_ev
 void ClientHiloReciever::handleThread() {
     try {
         this->run();
+    } catch (const SocketError& e) {
+        std::cerr << "Se cerro el Receiver" << std::endl;
+        cola_eventos.push(new ComandoSalir());
     } catch (const std::exception& e) {
         std::cerr << "Excepción encontrada en ClientHiloReceiver: " << e.what() << std::endl;
     } catch (...) {
@@ -17,7 +21,6 @@ void ClientHiloReciever::handleThread() {
 
 void ClientHiloReciever::run() {
     while (this->hay_que_seguir) {
-        std::cout << "Reciever en el loop" << std::endl;
         uint8_t codigo_comando;
         protocolo.recibirCodigoDeComando(codigo_comando);
         ComandoCliente* comando = this->crearComandoSegunCodigo(codigo_comando);
@@ -42,16 +45,14 @@ void ClientHiloReciever::start() {
     this->thread = std::thread(&ClientHiloReciever::handleThread, this);
 }
 
-void ClientHiloReciever::stop() {
-    this->hay_que_seguir = false;
-}
-
 void ClientHiloReciever::push(ComandoCliente* comando_creado) {
     this->cola_eventos.push(comando_creado);
 }
 
 ClientHiloReciever::~ClientHiloReciever() {
+    this->hay_que_seguir = false;
     if (this->thread.joinable()) {
         this->thread.join();
     }
+    std::cerr << "Destruyendo HiloReceiver\n";
 }

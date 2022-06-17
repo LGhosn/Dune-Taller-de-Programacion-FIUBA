@@ -11,4 +11,5 @@ void Server::iniciar() {
     do {
         std::cin >> entrada;
     } while (entrada != CENTINELA);
+    hilo_aceptador.terminar();
 }

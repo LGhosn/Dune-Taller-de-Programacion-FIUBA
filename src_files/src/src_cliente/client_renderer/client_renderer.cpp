@@ -27,7 +27,6 @@ void ClientRenderer::game_loop() {
 	long frame = 0;
 	time_point t1 = system_clock::now();
 	milliseconds frame_rate(1000 / FPS);
-	std::cout << "Frame rate: " << frame_rate.count() << std::endl;
 	while (running) {
 		running = this->manejar_comando();
 		this->update(frame);
@@ -65,4 +64,8 @@ void ClientRenderer::start() {
 	} catch (...) {
 		std::cerr << "Excepción desconocida en ClientHiloRenderer: " << std::endl;
 	}
+}
+
+ClientRenderer::~ClientRenderer() {
+	std::cerr << "Destruyendo ClientHiloRenderer\n";
 }

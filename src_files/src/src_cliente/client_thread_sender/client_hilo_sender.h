@@ -24,7 +24,6 @@ public:
     void handleThread();
     void run();
     void send(std::unique_ptr<SolicitudCliente>& solicitud);
-    void stop();
     ~ClientHiloSender();
 };
 #endif // CLIENT_HILO_SENDER_H

@@ -13,7 +13,7 @@ void ServerHiloReceiver::handleThread() {
     try {
         this->run();
     } catch (const SocketError& e) {
-
+        std::cerr << "Cerando Server Receiver\n"; 
     } catch (const std::exception &e) {
         std::cerr << "Excepción encontrada en ServerHiloReceiver: " << e.what() << std::endl;
     } catch (...) {
@@ -95,6 +95,7 @@ void ServerHiloReceiver::stop() {
 }
 
 ServerHiloReceiver::~ServerHiloReceiver() {
+    this->hay_que_seguir = false;
     if (this->thread.joinable()) {
         this->thread.join();
     }

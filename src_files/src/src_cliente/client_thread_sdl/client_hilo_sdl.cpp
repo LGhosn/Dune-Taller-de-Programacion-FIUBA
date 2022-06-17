@@ -33,6 +33,7 @@ std::unique_ptr<SDLEvento> ManejadorEventos::clasificarEvento(uint32_t eventType
         case SDL_MOUSEBUTTONUP:
             return std::unique_ptr<ClickLevantado>(new ClickLevantado(cola_solicitudes, cola_comandos));
         case SDL_QUIT:
+            this->hay_que_seguir = false;
             return std::unique_ptr<EventoSalir>(new EventoSalir(cola_solicitudes, cola_comandos));
         default:
             return nullptr;
@@ -44,4 +45,5 @@ ManejadorEventos::~ManejadorEventos() {
         this->hay_que_seguir = false;
         this->thread.join();
     }
+    std::cerr << "Destruyendo ManejadorEventos\n";
 }

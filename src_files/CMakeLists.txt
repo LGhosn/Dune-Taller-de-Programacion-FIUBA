@@ -3,7 +3,7 @@ project(Dune2000)
 find_package(Qt5Widgets)
 find_package(yaml-cpp REQUIRED)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -pedantic -std=c++17")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -ggdb -O0 -pedantic -std=c++17")
 
 message("[INFO] La raiz del proyecto es ${PROJECT_SOURCE_DIR}")
 

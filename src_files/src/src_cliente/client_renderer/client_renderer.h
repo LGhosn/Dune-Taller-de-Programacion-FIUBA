@@ -32,7 +32,7 @@ public:
 
 	void start();
 
-	~ClientRenderer() = default;
+	~ClientRenderer();
 };
 
 #endif

@@ -30,9 +30,12 @@ void Client::empezarPartida() {
     ClientRenderer renderer(cola_comandos, cola_solicitudes, id_jugador);
     ManejadorEventos manejador(cola_solicitudes, cola_comandos);
     renderer.start();
+    std::cerr << "Cliente cerrandose" << std::endl;
 }
 
 Client::~Client() {
+    skt_cliente.shutdown(2);
+    skt_cliente.close();
     delete this->receiver;
     delete this->sender;
 }

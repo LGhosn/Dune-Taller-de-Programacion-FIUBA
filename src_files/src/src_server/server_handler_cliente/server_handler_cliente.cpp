@@ -54,6 +54,8 @@ uint8_t HandlerCliente::obtenerId() const {
 
 HandlerCliente::~HandlerCliente() {
     delete cola_comandos;
+    delete hilo_sender;
+    delete hilo_reciever;
 }
 
 HandlerCliente::HandlerCliente(HandlerCliente&& otro):

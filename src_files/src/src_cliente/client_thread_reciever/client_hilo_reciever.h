@@ -22,7 +22,6 @@ private:
     void run();
     void handleThread();
     void push(ComandoCliente* comando_creado);
-    void stop();
     ComandoCliente *crearComandoSegunCodigo(uint8_t codigo_comando);
 
 public:

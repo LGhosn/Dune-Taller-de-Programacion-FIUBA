@@ -11,6 +11,8 @@ ClientHiloSender::ClientHiloSender(ColaBloqueante<SolicitudCliente> &cola_comand
 void ClientHiloSender::handleThread() {
     try {
         this->run();
+    } catch (const SocketError& e) {
+        std::cerr << "Cerrando Sender\n";
     } catch (const std::exception& e) {
         std::cerr << "Excepción encontrada en ClientHiloSender: " << e.what() << std::endl;
     } catch (...) {
@@ -26,15 +28,15 @@ void ClientHiloSender::run() {
 }
 
 void ClientHiloSender::send(std::unique_ptr<SolicitudCliente>& solicitud) {
-    solicitud->enviarSolicitud(this->protocolo);
-}
-
-void ClientHiloSender::stop() {
-    this->hay_que_seguir = false;
+    if (solicitud)
+        solicitud->enviarSolicitud(this->protocolo);
 }
 
 ClientHiloSender::~ClientHiloSender() {
+    this->hay_que_seguir = false;
+    this->cola_comandos.push(nullptr);
     if (this->thread.joinable()) {
         this->thread.join();
     }
+    std::cerr << "Destruyendo Sender\n";
 }
