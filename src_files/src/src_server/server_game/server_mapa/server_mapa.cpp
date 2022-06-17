@@ -68,8 +68,8 @@ void Mapa::edificar(const Coordenadas& coords, std::tuple<int, int, char> propie
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades;
     if (this->colisiones.empty()){
-        for (int i = coords.y - DISTANCIA_EDIFICIOS; i < (coords.y + dimension_y + DISTANCIA_EDIFICIOS); i++){
-            for (int j = coords.x - DISTANCIA_EDIFICIOS; j < (coords.x + dimension_x + DISTANCIA_EDIFICIOS); j++){
+        for (int i = coords.y; i < (coords.y + dimension_y); i++){
+            for (int j = coords.x; j < (coords.x + dimension_x); j++){
                 if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || this->mapa[i][j] != 'R'){
                     continue;
                 }
@@ -88,7 +88,7 @@ bool Mapa::terrenoFirme(const Coordenadas& coords) {
  * *****************************************************************/
 
 Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto),
-mapa(std::vector< std::vector<char> > (alto, std::vector<char>(ancho, 'A'))), camino(this->mapa) {}
+mapa(std::vector< std::vector<char> > (alto, std::vector<char>(ancho, 'R'))), camino(this->mapa) {}
 
 bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
