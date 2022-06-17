@@ -6,6 +6,7 @@
 #include "../../src_common/common_coords.h"
 #include "../../src_common/common_DTO/dto_sol_crear_partida.h"
 #include "../../src_common/common_DTO/dto_sol_unirse_a_partida.h"
+#include "../../src_common/common_DTO/Status.h"
 #include "../server_DTO/dto_sol_crear_edificio.h"
 #include "server_serializador.h"
 #include <memory>
@@ -17,6 +18,7 @@
 #include "yaml-cpp/yaml.h"
 
 class PartidaDTO;
+class Status;
 
 class ProtocoloServidor {
     Socket* skt_comunicador;
@@ -66,7 +68,7 @@ public:
      * con un mensaje.
      * */
     SolicitudUnirseAPartidaDTO recibirSolicitudUnirseAPartida();
-    void enviarStatusDeUnion(bool el_jugador_se_unio);
+    void enviarStatusDeUnion(Status &status_de_union);
     void enviarComienzoDePartida();
 
 /* *****************************************************************
@@ -81,7 +83,7 @@ public:
      * al cliente
      * */
     SolicitudCrearPartidaDTO recibirSolicitudCrearPartida();
-    void enviarStatusDeCreacion(bool la_partida_se_creo);
+    void enviarStatusDeCreacion(Status &status_de_creacion);
 
     uint8_t recibirCodigoDeSolicitud();
 

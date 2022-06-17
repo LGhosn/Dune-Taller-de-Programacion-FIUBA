@@ -64,9 +64,14 @@ void ProtocoloCliente::enviarBuffer(const std::vector<uint8_t>& buffer) const {
 }
 
 Status ProtocoloCliente::recibirStatus() {
-    uint8_t status;
-    this->skt_cliente.recvall(&status, sizeof(uint8_t));
-    return Status(status);
+    uint8_t status_conexion;
+    this->skt_cliente.recvall
+        (&status_conexion, sizeof(uint8_t));
+
+    uint8_t status_partida;
+    this->skt_cliente.recvall
+            (&status_partida, sizeof(uint8_t));
+    return Status(status_conexion, status_partida);
 }
 
 bool ProtocoloCliente::esperarAComienzoDePartida() {

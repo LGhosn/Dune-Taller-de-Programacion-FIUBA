@@ -1,7 +1,7 @@
 #ifndef FORM_CREACION_H
 #define FORM_CREACION_H
 
-#include "../src_cliente/client_DTO/Status.h"
+#include "../src_common/common_DTO/Status.h"
 #include "../src_common/common_DTO/dto_sol_crear_partida.h"
 #include "../src_cliente/client_protocolo.h"
 #include "../src_cliente/client_client.h"

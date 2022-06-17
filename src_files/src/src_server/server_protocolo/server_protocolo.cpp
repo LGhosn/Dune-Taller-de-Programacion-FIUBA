@@ -56,18 +56,13 @@ SolicitudCrearPartidaDTO ProtocoloServidor::recibirSolicitudCrearPartida() {
     return SolicitudCrearPartidaDTO(nombre_partida, nombre_mapa, casa_codigo, jugadores_requeridos);
 }
 
-void ProtocoloServidor::enviarStatusDeCreacion(bool la_partida_se_creo) {
-    if (la_partida_se_creo) {
-        std::cout << "Se creo la partida" << std::endl;
-        uint8_t status = 0;
-        this->skt_comunicador->sendall
-            (&status, sizeof(uint8_t));
-    } else {
-        std::cout << "No se pudo crear la partida" << std::endl;
-        uint8_t status = 1;
-        this->skt_comunicador->sendall
-            (&status, sizeof(uint8_t));
-    }
+void ProtocoloServidor::enviarStatusDeCreacion(Status &status_de_creacion) {
+    uint8_t status_conexion = status_de_creacion.obtenerCodigoDeConexion();
+    uint8_t status_partida = status_de_creacion.obtenerCodigoDePartida();
+    this->skt_comunicador->sendall
+            (&status_conexion, sizeof(uint8_t));
+    this->skt_comunicador->sendall
+            (&status_partida, sizeof(uint8_t));
 }
 
 /* *****************************************************************
@@ -83,16 +78,13 @@ SolicitudUnirseAPartidaDTO ProtocoloServidor::recibirSolicitudUnirseAPartida() {
     return SolicitudUnirseAPartidaDTO(nombre_partida, casa);
 }
 
-void ProtocoloServidor::enviarStatusDeUnion(bool el_jugador_se_unio) {
-    if (el_jugador_se_unio) {
-        uint8_t status = 0;
-        this->skt_comunicador->sendall
-            (&status, sizeof(uint8_t));
-    } else {
-        uint8_t status = 1;
-        this->skt_comunicador->sendall
-            (&status, sizeof(uint8_t));
-    }
+void ProtocoloServidor::enviarStatusDeUnion(Status &status_de_union) {
+    uint8_t status_conexion = status_de_union.obtenerCodigoDeConexion();
+    uint8_t status_partida = status_de_union.obtenerCodigoDePartida();
+    this->skt_comunicador->sendall
+            (&status_conexion, sizeof(uint8_t));
+    this->skt_comunicador->sendall
+            (&status_partida, sizeof(uint8_t));
 }
 
 /* *****************************************************************

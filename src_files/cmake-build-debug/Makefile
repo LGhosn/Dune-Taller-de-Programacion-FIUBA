@@ -382,30 +382,6 @@ serializador_tests_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests_autogen.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests_autogen.dir/build
 .PHONY : serializador_tests_autogen/fast
 
-client_autogen/GBFAFXFCVO/qrc_resources.o: client_autogen/GBFAFXFCVO/qrc_resources.cpp.o
-.PHONY : client_autogen/GBFAFXFCVO/qrc_resources.o
-
-# target to build an object file
-client_autogen/GBFAFXFCVO/qrc_resources.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_autogen/GBFAFXFCVO/qrc_resources.cpp.o
-.PHONY : client_autogen/GBFAFXFCVO/qrc_resources.cpp.o
-
-client_autogen/GBFAFXFCVO/qrc_resources.i: client_autogen/GBFAFXFCVO/qrc_resources.cpp.i
-.PHONY : client_autogen/GBFAFXFCVO/qrc_resources.i
-
-# target to preprocess a source file
-client_autogen/GBFAFXFCVO/qrc_resources.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_autogen/GBFAFXFCVO/qrc_resources.cpp.i
-.PHONY : client_autogen/GBFAFXFCVO/qrc_resources.cpp.i
-
-client_autogen/GBFAFXFCVO/qrc_resources.s: client_autogen/GBFAFXFCVO/qrc_resources.cpp.s
-.PHONY : client_autogen/GBFAFXFCVO/qrc_resources.s
-
-# target to generate assembly for a file
-client_autogen/GBFAFXFCVO/qrc_resources.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_autogen/GBFAFXFCVO/qrc_resources.cpp.s
-.PHONY : client_autogen/GBFAFXFCVO/qrc_resources.cpp.s
-
 client_autogen/mocs_compilation.o: client_autogen/mocs_compilation.cpp.o
 .PHONY : client_autogen/mocs_compilation.o
 
@@ -454,30 +430,6 @@ server_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/server_autogen/mocs_compilation.cpp.s
 .PHONY : server_autogen/mocs_compilation.cpp.s
 
-src/main_client.o: src/main_client.cpp.o
-.PHONY : src/main_client.o
-
-# target to build an object file
-src/main_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/main_client.cpp.o
-.PHONY : src/main_client.cpp.o
-
-src/main_client.i: src/main_client.cpp.i
-.PHONY : src/main_client.i
-
-# target to preprocess a source file
-src/main_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/main_client.cpp.i
-.PHONY : src/main_client.cpp.i
-
-src/main_client.s: src/main_client.cpp.s
-.PHONY : src/main_client.s
-
-# target to generate assembly for a file
-src/main_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/main_client.cpp.s
-.PHONY : src/main_client.cpp.s
-
 src/main_server.o: src/main_server.cpp.o
 .PHONY : src/main_server.o
 
@@ -502,540 +454,11 @@ src/main_server.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/main_server.cpp.s
 .PHONY : src/main_server.cpp.s
 
-src/src_cliente/client_DTO/Status.o: src/src_cliente/client_DTO/Status.cpp.o
-.PHONY : src/src_cliente/client_DTO/Status.o
-
-# target to build an object file
-src/src_cliente/client_DTO/Status.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_DTO/Status.cpp.o
-.PHONY : src/src_cliente/client_DTO/Status.cpp.o
-
-src/src_cliente/client_DTO/Status.i: src/src_cliente/client_DTO/Status.cpp.i
-.PHONY : src/src_cliente/client_DTO/Status.i
-
-# target to preprocess a source file
-src/src_cliente/client_DTO/Status.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_DTO/Status.cpp.i
-.PHONY : src/src_cliente/client_DTO/Status.cpp.i
-
-src/src_cliente/client_DTO/Status.s: src/src_cliente/client_DTO/Status.cpp.s
-.PHONY : src/src_cliente/client_DTO/Status.s
-
-# target to generate assembly for a file
-src/src_cliente/client_DTO/Status.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_DTO/Status.cpp.s
-.PHONY : src/src_cliente/client_DTO/Status.cpp.s
-
-src/src_cliente/client_client.o: src/src_cliente/client_client.cpp.o
-.PHONY : src/src_cliente/client_client.o
-
-# target to build an object file
-src/src_cliente/client_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_client.cpp.o
-.PHONY : src/src_cliente/client_client.cpp.o
-
-src/src_cliente/client_client.i: src/src_cliente/client_client.cpp.i
-.PHONY : src/src_cliente/client_client.i
-
-# target to preprocess a source file
-src/src_cliente/client_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_client.cpp.i
-.PHONY : src/src_cliente/client_client.cpp.i
-
-src/src_cliente/client_client.s: src/src_cliente/client_client.cpp.s
-.PHONY : src/src_cliente/client_client.s
-
-# target to generate assembly for a file
-src/src_cliente/client_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_client.cpp.s
-.PHONY : src/src_cliente/client_client.cpp.s
-
-src/src_cliente/client_comandos/client_comando.o: src/src_cliente/client_comandos/client_comando.cpp.o
-.PHONY : src/src_cliente/client_comandos/client_comando.o
-
-# target to build an object file
-src/src_cliente/client_comandos/client_comando.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/client_comando.cpp.o
-.PHONY : src/src_cliente/client_comandos/client_comando.cpp.o
-
-src/src_cliente/client_comandos/client_comando.i: src/src_cliente/client_comandos/client_comando.cpp.i
-.PHONY : src/src_cliente/client_comandos/client_comando.i
-
-# target to preprocess a source file
-src/src_cliente/client_comandos/client_comando.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/client_comando.cpp.i
-.PHONY : src/src_cliente/client_comandos/client_comando.cpp.i
-
-src/src_cliente/client_comandos/client_comando.s: src/src_cliente/client_comandos/client_comando.cpp.s
-.PHONY : src/src_cliente/client_comandos/client_comando.s
-
-# target to generate assembly for a file
-src/src_cliente/client_comandos/client_comando.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/client_comando.cpp.s
-.PHONY : src/src_cliente/client_comandos/client_comando.cpp.s
-
-src/src_cliente/client_comandos/cmd_mover_mapa.o: src/src_cliente/client_comandos/cmd_mover_mapa.cpp.o
-.PHONY : src/src_cliente/client_comandos/cmd_mover_mapa.o
-
-# target to build an object file
-src/src_cliente/client_comandos/cmd_mover_mapa.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/cmd_mover_mapa.cpp.o
-.PHONY : src/src_cliente/client_comandos/cmd_mover_mapa.cpp.o
-
-src/src_cliente/client_comandos/cmd_mover_mapa.i: src/src_cliente/client_comandos/cmd_mover_mapa.cpp.i
-.PHONY : src/src_cliente/client_comandos/cmd_mover_mapa.i
-
-# target to preprocess a source file
-src/src_cliente/client_comandos/cmd_mover_mapa.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/cmd_mover_mapa.cpp.i
-.PHONY : src/src_cliente/client_comandos/cmd_mover_mapa.cpp.i
-
-src/src_cliente/client_comandos/cmd_mover_mapa.s: src/src_cliente/client_comandos/cmd_mover_mapa.cpp.s
-.PHONY : src/src_cliente/client_comandos/cmd_mover_mapa.s
-
-# target to generate assembly for a file
-src/src_cliente/client_comandos/cmd_mover_mapa.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/cmd_mover_mapa.cpp.s
-.PHONY : src/src_cliente/client_comandos/cmd_mover_mapa.cpp.s
-
-src/src_cliente/client_comandos/cmd_salir.o: src/src_cliente/client_comandos/cmd_salir.cpp.o
-.PHONY : src/src_cliente/client_comandos/cmd_salir.o
-
-# target to build an object file
-src/src_cliente/client_comandos/cmd_salir.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/cmd_salir.cpp.o
-.PHONY : src/src_cliente/client_comandos/cmd_salir.cpp.o
-
-src/src_cliente/client_comandos/cmd_salir.i: src/src_cliente/client_comandos/cmd_salir.cpp.i
-.PHONY : src/src_cliente/client_comandos/cmd_salir.i
-
-# target to preprocess a source file
-src/src_cliente/client_comandos/cmd_salir.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/cmd_salir.cpp.i
-.PHONY : src/src_cliente/client_comandos/cmd_salir.cpp.i
-
-src/src_cliente/client_comandos/cmd_salir.s: src/src_cliente/client_comandos/cmd_salir.cpp.s
-.PHONY : src/src_cliente/client_comandos/cmd_salir.s
-
-# target to generate assembly for a file
-src/src_cliente/client_comandos/cmd_salir.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/cmd_salir.cpp.s
-.PHONY : src/src_cliente/client_comandos/cmd_salir.cpp.s
-
-src/src_cliente/client_comandos/cmd_zoom.o: src/src_cliente/client_comandos/cmd_zoom.cpp.o
-.PHONY : src/src_cliente/client_comandos/cmd_zoom.o
-
-# target to build an object file
-src/src_cliente/client_comandos/cmd_zoom.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/cmd_zoom.cpp.o
-.PHONY : src/src_cliente/client_comandos/cmd_zoom.cpp.o
-
-src/src_cliente/client_comandos/cmd_zoom.i: src/src_cliente/client_comandos/cmd_zoom.cpp.i
-.PHONY : src/src_cliente/client_comandos/cmd_zoom.i
-
-# target to preprocess a source file
-src/src_cliente/client_comandos/cmd_zoom.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/cmd_zoom.cpp.i
-.PHONY : src/src_cliente/client_comandos/cmd_zoom.cpp.i
-
-src/src_cliente/client_comandos/cmd_zoom.s: src/src_cliente/client_comandos/cmd_zoom.cpp.s
-.PHONY : src/src_cliente/client_comandos/cmd_zoom.s
-
-# target to generate assembly for a file
-src/src_cliente/client_comandos/cmd_zoom.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_comandos/cmd_zoom.cpp.s
-.PHONY : src/src_cliente/client_comandos/cmd_zoom.cpp.s
-
-src/src_cliente/client_protocolo.o: src/src_cliente/client_protocolo.cpp.o
-.PHONY : src/src_cliente/client_protocolo.o
-
-# target to build an object file
-src/src_cliente/client_protocolo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_protocolo.cpp.o
-.PHONY : src/src_cliente/client_protocolo.cpp.o
-
-src/src_cliente/client_protocolo.i: src/src_cliente/client_protocolo.cpp.i
-.PHONY : src/src_cliente/client_protocolo.i
-
-# target to preprocess a source file
-src/src_cliente/client_protocolo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_protocolo.cpp.i
-.PHONY : src/src_cliente/client_protocolo.cpp.i
-
-src/src_cliente/client_protocolo.s: src/src_cliente/client_protocolo.cpp.s
-.PHONY : src/src_cliente/client_protocolo.s
-
-# target to generate assembly for a file
-src/src_cliente/client_protocolo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_protocolo.cpp.s
-.PHONY : src/src_cliente/client_protocolo.cpp.s
-
-src/src_cliente/client_renderer/client_renderer.o: src/src_cliente/client_renderer/client_renderer.cpp.o
-.PHONY : src/src_cliente/client_renderer/client_renderer.o
-
-# target to build an object file
-src/src_cliente/client_renderer/client_renderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_renderer/client_renderer.cpp.o
-.PHONY : src/src_cliente/client_renderer/client_renderer.cpp.o
-
-src/src_cliente/client_renderer/client_renderer.i: src/src_cliente/client_renderer/client_renderer.cpp.i
-.PHONY : src/src_cliente/client_renderer/client_renderer.i
-
-# target to preprocess a source file
-src/src_cliente/client_renderer/client_renderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_renderer/client_renderer.cpp.i
-.PHONY : src/src_cliente/client_renderer/client_renderer.cpp.i
-
-src/src_cliente/client_renderer/client_renderer.s: src/src_cliente/client_renderer/client_renderer.cpp.s
-.PHONY : src/src_cliente/client_renderer/client_renderer.s
-
-# target to generate assembly for a file
-src/src_cliente/client_renderer/client_renderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_renderer/client_renderer.cpp.s
-.PHONY : src/src_cliente/client_renderer/client_renderer.cpp.s
-
-src/src_cliente/client_solicitudes/sol_crear_partida.o: src/src_cliente/client_solicitudes/sol_crear_partida.cpp.o
-.PHONY : src/src_cliente/client_solicitudes/sol_crear_partida.o
-
-# target to build an object file
-src/src_cliente/client_solicitudes/sol_crear_partida.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_solicitudes/sol_crear_partida.cpp.o
-.PHONY : src/src_cliente/client_solicitudes/sol_crear_partida.cpp.o
-
-src/src_cliente/client_solicitudes/sol_crear_partida.i: src/src_cliente/client_solicitudes/sol_crear_partida.cpp.i
-.PHONY : src/src_cliente/client_solicitudes/sol_crear_partida.i
-
-# target to preprocess a source file
-src/src_cliente/client_solicitudes/sol_crear_partida.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_solicitudes/sol_crear_partida.cpp.i
-.PHONY : src/src_cliente/client_solicitudes/sol_crear_partida.cpp.i
-
-src/src_cliente/client_solicitudes/sol_crear_partida.s: src/src_cliente/client_solicitudes/sol_crear_partida.cpp.s
-.PHONY : src/src_cliente/client_solicitudes/sol_crear_partida.s
-
-# target to generate assembly for a file
-src/src_cliente/client_solicitudes/sol_crear_partida.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_solicitudes/sol_crear_partida.cpp.s
-.PHONY : src/src_cliente/client_solicitudes/sol_crear_partida.cpp.s
-
-src/src_cliente/client_solicitudes/sol_mover_unidad.o: src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.o
-.PHONY : src/src_cliente/client_solicitudes/sol_mover_unidad.o
-
-# target to build an object file
-src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.o
-.PHONY : src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.o
-
-src/src_cliente/client_solicitudes/sol_mover_unidad.i: src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.i
-.PHONY : src/src_cliente/client_solicitudes/sol_mover_unidad.i
-
-# target to preprocess a source file
-src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.i
-.PHONY : src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.i
-
-src/src_cliente/client_solicitudes/sol_mover_unidad.s: src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.s
-.PHONY : src/src_cliente/client_solicitudes/sol_mover_unidad.s
-
-# target to generate assembly for a file
-src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.s
-.PHONY : src/src_cliente/client_solicitudes/sol_mover_unidad.cpp.s
-
-src/src_cliente/client_solicitudes/sol_unirse_a_partida.o: src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.o
-.PHONY : src/src_cliente/client_solicitudes/sol_unirse_a_partida.o
-
-# target to build an object file
-src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.o
-.PHONY : src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.o
-
-src/src_cliente/client_solicitudes/sol_unirse_a_partida.i: src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.i
-.PHONY : src/src_cliente/client_solicitudes/sol_unirse_a_partida.i
-
-# target to preprocess a source file
-src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.i
-.PHONY : src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.i
-
-src/src_cliente/client_solicitudes/sol_unirse_a_partida.s: src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.s
-.PHONY : src/src_cliente/client_solicitudes/sol_unirse_a_partida.s
-
-# target to generate assembly for a file
-src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.s
-.PHONY : src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp.s
-
-src/src_cliente/client_thread_reciever/client_hilo_reciever.o: src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.o
-.PHONY : src/src_cliente/client_thread_reciever/client_hilo_reciever.o
-
-# target to build an object file
-src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.o
-.PHONY : src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.o
-
-src/src_cliente/client_thread_reciever/client_hilo_reciever.i: src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.i
-.PHONY : src/src_cliente/client_thread_reciever/client_hilo_reciever.i
-
-# target to preprocess a source file
-src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.i
-.PHONY : src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.i
-
-src/src_cliente/client_thread_reciever/client_hilo_reciever.s: src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.s
-.PHONY : src/src_cliente/client_thread_reciever/client_hilo_reciever.s
-
-# target to generate assembly for a file
-src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.s
-.PHONY : src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp.s
-
-src/src_cliente/client_thread_sdl/client_hilo_sdl.o: src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.o
-.PHONY : src/src_cliente/client_thread_sdl/client_hilo_sdl.o
-
-# target to build an object file
-src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.o
-.PHONY : src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.o
-
-src/src_cliente/client_thread_sdl/client_hilo_sdl.i: src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.i
-.PHONY : src/src_cliente/client_thread_sdl/client_hilo_sdl.i
-
-# target to preprocess a source file
-src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.i
-.PHONY : src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.i
-
-src/src_cliente/client_thread_sdl/client_hilo_sdl.s: src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.s
-.PHONY : src/src_cliente/client_thread_sdl/client_hilo_sdl.s
-
-# target to generate assembly for a file
-src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.s
-.PHONY : src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp.s
-
-src/src_cliente/client_thread_sdl/client_sdl_evento.o: src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.o
-.PHONY : src/src_cliente/client_thread_sdl/client_sdl_evento.o
-
-# target to build an object file
-src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.o
-.PHONY : src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.o
-
-src/src_cliente/client_thread_sdl/client_sdl_evento.i: src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.i
-.PHONY : src/src_cliente/client_thread_sdl/client_sdl_evento.i
-
-# target to preprocess a source file
-src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.i
-.PHONY : src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.i
-
-src/src_cliente/client_thread_sdl/client_sdl_evento.s: src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.s
-.PHONY : src/src_cliente/client_thread_sdl/client_sdl_evento.s
-
-# target to generate assembly for a file
-src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.s
-.PHONY : src/src_cliente/client_thread_sdl/client_sdl_evento.cpp.s
-
-src/src_cliente/client_thread_sender/client_hilo_sender.o: src/src_cliente/client_thread_sender/client_hilo_sender.cpp.o
-.PHONY : src/src_cliente/client_thread_sender/client_hilo_sender.o
-
-# target to build an object file
-src/src_cliente/client_thread_sender/client_hilo_sender.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_sender/client_hilo_sender.cpp.o
-.PHONY : src/src_cliente/client_thread_sender/client_hilo_sender.cpp.o
-
-src/src_cliente/client_thread_sender/client_hilo_sender.i: src/src_cliente/client_thread_sender/client_hilo_sender.cpp.i
-.PHONY : src/src_cliente/client_thread_sender/client_hilo_sender.i
-
-# target to preprocess a source file
-src/src_cliente/client_thread_sender/client_hilo_sender.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_sender/client_hilo_sender.cpp.i
-.PHONY : src/src_cliente/client_thread_sender/client_hilo_sender.cpp.i
-
-src/src_cliente/client_thread_sender/client_hilo_sender.s: src/src_cliente/client_thread_sender/client_hilo_sender.cpp.s
-.PHONY : src/src_cliente/client_thread_sender/client_hilo_sender.s
-
-# target to generate assembly for a file
-src/src_cliente/client_thread_sender/client_hilo_sender.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_thread_sender/client_hilo_sender.cpp.s
-.PHONY : src/src_cliente/client_thread_sender/client_hilo_sender.cpp.s
-
-src/src_cliente/client_world_view/sdl_mapa.o: src/src_cliente/client_world_view/sdl_mapa.cpp.o
-.PHONY : src/src_cliente/client_world_view/sdl_mapa.o
-
-# target to build an object file
-src/src_cliente/client_world_view/sdl_mapa.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/sdl_mapa.cpp.o
-.PHONY : src/src_cliente/client_world_view/sdl_mapa.cpp.o
-
-src/src_cliente/client_world_view/sdl_mapa.i: src/src_cliente/client_world_view/sdl_mapa.cpp.i
-.PHONY : src/src_cliente/client_world_view/sdl_mapa.i
-
-# target to preprocess a source file
-src/src_cliente/client_world_view/sdl_mapa.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/sdl_mapa.cpp.i
-.PHONY : src/src_cliente/client_world_view/sdl_mapa.cpp.i
-
-src/src_cliente/client_world_view/sdl_mapa.s: src/src_cliente/client_world_view/sdl_mapa.cpp.s
-.PHONY : src/src_cliente/client_world_view/sdl_mapa.s
-
-# target to generate assembly for a file
-src/src_cliente/client_world_view/sdl_mapa.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/sdl_mapa.cpp.s
-.PHONY : src/src_cliente/client_world_view/sdl_mapa.cpp.s
-
-src/src_cliente/client_world_view/sdl_tile.o: src/src_cliente/client_world_view/sdl_tile.cpp.o
-.PHONY : src/src_cliente/client_world_view/sdl_tile.o
-
-# target to build an object file
-src/src_cliente/client_world_view/sdl_tile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/sdl_tile.cpp.o
-.PHONY : src/src_cliente/client_world_view/sdl_tile.cpp.o
-
-src/src_cliente/client_world_view/sdl_tile.i: src/src_cliente/client_world_view/sdl_tile.cpp.i
-.PHONY : src/src_cliente/client_world_view/sdl_tile.i
-
-# target to preprocess a source file
-src/src_cliente/client_world_view/sdl_tile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/sdl_tile.cpp.i
-.PHONY : src/src_cliente/client_world_view/sdl_tile.cpp.i
-
-src/src_cliente/client_world_view/sdl_tile.s: src/src_cliente/client_world_view/sdl_tile.cpp.s
-.PHONY : src/src_cliente/client_world_view/sdl_tile.s
-
-# target to generate assembly for a file
-src/src_cliente/client_world_view/sdl_tile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/sdl_tile.cpp.s
-.PHONY : src/src_cliente/client_world_view/sdl_tile.cpp.s
-
-src/src_cliente/client_world_view/sdl_tile_factory.o: src/src_cliente/client_world_view/sdl_tile_factory.cpp.o
-.PHONY : src/src_cliente/client_world_view/sdl_tile_factory.o
-
-# target to build an object file
-src/src_cliente/client_world_view/sdl_tile_factory.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/sdl_tile_factory.cpp.o
-.PHONY : src/src_cliente/client_world_view/sdl_tile_factory.cpp.o
-
-src/src_cliente/client_world_view/sdl_tile_factory.i: src/src_cliente/client_world_view/sdl_tile_factory.cpp.i
-.PHONY : src/src_cliente/client_world_view/sdl_tile_factory.i
-
-# target to preprocess a source file
-src/src_cliente/client_world_view/sdl_tile_factory.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/sdl_tile_factory.cpp.i
-.PHONY : src/src_cliente/client_world_view/sdl_tile_factory.cpp.i
-
-src/src_cliente/client_world_view/sdl_tile_factory.s: src/src_cliente/client_world_view/sdl_tile_factory.cpp.s
-.PHONY : src/src_cliente/client_world_view/sdl_tile_factory.s
-
-# target to generate assembly for a file
-src/src_cliente/client_world_view/sdl_tile_factory.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/sdl_tile_factory.cpp.s
-.PHONY : src/src_cliente/client_world_view/sdl_tile_factory.cpp.s
-
-src/src_cliente/client_world_view/world_view.o: src/src_cliente/client_world_view/world_view.cpp.o
-.PHONY : src/src_cliente/client_world_view/world_view.o
-
-# target to build an object file
-src/src_cliente/client_world_view/world_view.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/world_view.cpp.o
-.PHONY : src/src_cliente/client_world_view/world_view.cpp.o
-
-src/src_cliente/client_world_view/world_view.i: src/src_cliente/client_world_view/world_view.cpp.i
-.PHONY : src/src_cliente/client_world_view/world_view.i
-
-# target to preprocess a source file
-src/src_cliente/client_world_view/world_view.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/world_view.cpp.i
-.PHONY : src/src_cliente/client_world_view/world_view.cpp.i
-
-src/src_cliente/client_world_view/world_view.s: src/src_cliente/client_world_view/world_view.cpp.s
-.PHONY : src/src_cliente/client_world_view/world_view.s
-
-# target to generate assembly for a file
-src/src_cliente/client_world_view/world_view.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/client_world_view/world_view.cpp.s
-.PHONY : src/src_cliente/client_world_view/world_view.cpp.s
-
-src/src_cliente/pix_a_coords.o: src/src_cliente/pix_a_coords.cpp.o
-.PHONY : src/src_cliente/pix_a_coords.o
-
-# target to build an object file
-src/src_cliente/pix_a_coords.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/pix_a_coords.cpp.o
-.PHONY : src/src_cliente/pix_a_coords.cpp.o
-
-src/src_cliente/pix_a_coords.i: src/src_cliente/pix_a_coords.cpp.i
-.PHONY : src/src_cliente/pix_a_coords.i
-
-# target to preprocess a source file
-src/src_cliente/pix_a_coords.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/pix_a_coords.cpp.i
-.PHONY : src/src_cliente/pix_a_coords.cpp.i
-
-src/src_cliente/pix_a_coords.s: src/src_cliente/pix_a_coords.cpp.s
-.PHONY : src/src_cliente/pix_a_coords.s
-
-# target to generate assembly for a file
-src/src_cliente/pix_a_coords.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_cliente/pix_a_coords.cpp.s
-.PHONY : src/src_cliente/pix_a_coords.cpp.s
-
-src/src_common/common_colas/cola_bloqueante.o: src/src_common/common_colas/cola_bloqueante.cpp.o
-.PHONY : src/src_common/common_colas/cola_bloqueante.o
-
-# target to build an object file
-src/src_common/common_colas/cola_bloqueante.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_colas/cola_bloqueante.cpp.o
-.PHONY : src/src_common/common_colas/cola_bloqueante.cpp.o
-
-src/src_common/common_colas/cola_bloqueante.i: src/src_common/common_colas/cola_bloqueante.cpp.i
-.PHONY : src/src_common/common_colas/cola_bloqueante.i
-
-# target to preprocess a source file
-src/src_common/common_colas/cola_bloqueante.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_colas/cola_bloqueante.cpp.i
-.PHONY : src/src_common/common_colas/cola_bloqueante.cpp.i
-
-src/src_common/common_colas/cola_bloqueante.s: src/src_common/common_colas/cola_bloqueante.cpp.s
-.PHONY : src/src_common/common_colas/cola_bloqueante.s
-
-# target to generate assembly for a file
-src/src_common/common_colas/cola_bloqueante.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_colas/cola_bloqueante.cpp.s
-.PHONY : src/src_common/common_colas/cola_bloqueante.cpp.s
-
-src/src_common/common_colas/cola_no_bloqueante.o: src/src_common/common_colas/cola_no_bloqueante.cpp.o
-.PHONY : src/src_common/common_colas/cola_no_bloqueante.o
-
-# target to build an object file
-src/src_common/common_colas/cola_no_bloqueante.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_colas/cola_no_bloqueante.cpp.o
-.PHONY : src/src_common/common_colas/cola_no_bloqueante.cpp.o
-
-src/src_common/common_colas/cola_no_bloqueante.i: src/src_common/common_colas/cola_no_bloqueante.cpp.i
-.PHONY : src/src_common/common_colas/cola_no_bloqueante.i
-
-# target to preprocess a source file
-src/src_common/common_colas/cola_no_bloqueante.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_colas/cola_no_bloqueante.cpp.i
-.PHONY : src/src_common/common_colas/cola_no_bloqueante.cpp.i
-
-src/src_common/common_colas/cola_no_bloqueante.s: src/src_common/common_colas/cola_no_bloqueante.cpp.s
-.PHONY : src/src_common/common_colas/cola_no_bloqueante.s
-
-# target to generate assembly for a file
-src/src_common/common_colas/cola_no_bloqueante.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_colas/cola_no_bloqueante.cpp.s
-.PHONY : src/src_common/common_colas/cola_no_bloqueante.cpp.s
-
 src/src_common/common_coords.o: src/src_common/common_coords.cpp.o
 .PHONY : src/src_common/common_coords.o
 
 # target to build an object file
 src/src_common/common_coords.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_coords.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_coords.cpp.o
 .PHONY : src/src_common/common_coords.cpp.o
 
@@ -1044,7 +467,6 @@ src/src_common/common_coords.i: src/src_common/common_coords.cpp.i
 
 # target to preprocess a source file
 src/src_common/common_coords.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_coords.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_coords.cpp.i
 .PHONY : src/src_common/common_coords.cpp.i
 
@@ -1053,7 +475,6 @@ src/src_common/common_coords.s: src/src_common/common_coords.cpp.s
 
 # target to generate assembly for a file
 src/src_common/common_coords.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_coords.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_coords.cpp.s
 .PHONY : src/src_common/common_coords.cpp.s
 
@@ -1062,7 +483,6 @@ src/src_common/common_resolver.o: src/src_common/common_resolver.cpp.o
 
 # target to build an object file
 src/src_common/common_resolver.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_resolver.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o
 .PHONY : src/src_common/common_resolver.cpp.o
 
@@ -1071,7 +491,6 @@ src/src_common/common_resolver.i: src/src_common/common_resolver.cpp.i
 
 # target to preprocess a source file
 src/src_common/common_resolver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_resolver.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_resolver.cpp.i
 .PHONY : src/src_common/common_resolver.cpp.i
 
@@ -1080,7 +499,6 @@ src/src_common/common_resolver.s: src/src_common/common_resolver.cpp.s
 
 # target to generate assembly for a file
 src/src_common/common_resolver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_resolver.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_resolver.cpp.s
 .PHONY : src/src_common/common_resolver.cpp.s
 
@@ -1089,7 +507,6 @@ src/src_common/common_serializador.o: src/src_common/common_serializador.cpp.o
 
 # target to build an object file
 src/src_common/common_serializador.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_serializador.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_serializador.cpp.o
 .PHONY : src/src_common/common_serializador.cpp.o
 
@@ -1098,7 +515,6 @@ src/src_common/common_serializador.i: src/src_common/common_serializador.cpp.i
 
 # target to preprocess a source file
 src/src_common/common_serializador.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_serializador.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_serializador.cpp.i
 .PHONY : src/src_common/common_serializador.cpp.i
 
@@ -1107,7 +523,6 @@ src/src_common/common_serializador.s: src/src_common/common_serializador.cpp.s
 
 # target to generate assembly for a file
 src/src_common/common_serializador.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_serializador.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_serializador.cpp.s
 .PHONY : src/src_common/common_serializador.cpp.s
 
@@ -1116,7 +531,6 @@ src/src_common/common_socket.o: src/src_common/common_socket.cpp.o
 
 # target to build an object file
 src/src_common/common_socket.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_socket.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_socket.cpp.o
 .PHONY : src/src_common/common_socket.cpp.o
 
@@ -1125,7 +539,6 @@ src/src_common/common_socket.i: src/src_common/common_socket.cpp.i
 
 # target to preprocess a source file
 src/src_common/common_socket.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_socket.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_socket.cpp.i
 .PHONY : src/src_common/common_socket.cpp.i
 
@@ -1134,7 +547,6 @@ src/src_common/common_socket.s: src/src_common/common_socket.cpp.s
 
 # target to generate assembly for a file
 src/src_common/common_socket.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_socket.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_socket.cpp.s
 .PHONY : src/src_common/common_socket.cpp.s
 
@@ -1143,7 +555,6 @@ src/src_common/common_socket_error.o: src/src_common/common_socket_error.cpp.o
 
 # target to build an object file
 src/src_common/common_socket_error.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_socket_error.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.o
 .PHONY : src/src_common/common_socket_error.cpp.o
 
@@ -1152,7 +563,6 @@ src/src_common/common_socket_error.i: src/src_common/common_socket_error.cpp.i
 
 # target to preprocess a source file
 src/src_common/common_socket_error.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_socket_error.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.i
 .PHONY : src/src_common/common_socket_error.cpp.i
 
@@ -1161,81 +571,8 @@ src/src_common/common_socket_error.s: src/src_common/common_socket_error.cpp.s
 
 # target to generate assembly for a file
 src/src_common/common_socket_error.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_common/common_socket_error.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_common/common_socket_error.cpp.s
 .PHONY : src/src_common/common_socket_error.cpp.s
-
-src/src_form_creacion/FormCreacion.o: src/src_form_creacion/FormCreacion.cpp.o
-.PHONY : src/src_form_creacion/FormCreacion.o
-
-# target to build an object file
-src/src_form_creacion/FormCreacion.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_form_creacion/FormCreacion.cpp.o
-.PHONY : src/src_form_creacion/FormCreacion.cpp.o
-
-src/src_form_creacion/FormCreacion.i: src/src_form_creacion/FormCreacion.cpp.i
-.PHONY : src/src_form_creacion/FormCreacion.i
-
-# target to preprocess a source file
-src/src_form_creacion/FormCreacion.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_form_creacion/FormCreacion.cpp.i
-.PHONY : src/src_form_creacion/FormCreacion.cpp.i
-
-src/src_form_creacion/FormCreacion.s: src/src_form_creacion/FormCreacion.cpp.s
-.PHONY : src/src_form_creacion/FormCreacion.s
-
-# target to generate assembly for a file
-src/src_form_creacion/FormCreacion.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_form_creacion/FormCreacion.cpp.s
-.PHONY : src/src_form_creacion/FormCreacion.cpp.s
-
-src/src_form_union/FormUnion.o: src/src_form_union/FormUnion.cpp.o
-.PHONY : src/src_form_union/FormUnion.o
-
-# target to build an object file
-src/src_form_union/FormUnion.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_form_union/FormUnion.cpp.o
-.PHONY : src/src_form_union/FormUnion.cpp.o
-
-src/src_form_union/FormUnion.i: src/src_form_union/FormUnion.cpp.i
-.PHONY : src/src_form_union/FormUnion.i
-
-# target to preprocess a source file
-src/src_form_union/FormUnion.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_form_union/FormUnion.cpp.i
-.PHONY : src/src_form_union/FormUnion.cpp.i
-
-src/src_form_union/FormUnion.s: src/src_form_union/FormUnion.cpp.s
-.PHONY : src/src_form_union/FormUnion.s
-
-# target to generate assembly for a file
-src/src_form_union/FormUnion.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_form_union/FormUnion.cpp.s
-.PHONY : src/src_form_union/FormUnion.cpp.s
-
-src/src_menu/MenuDune.o: src/src_menu/MenuDune.cpp.o
-.PHONY : src/src_menu/MenuDune.o
-
-# target to build an object file
-src/src_menu/MenuDune.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_menu/MenuDune.cpp.o
-.PHONY : src/src_menu/MenuDune.cpp.o
-
-src/src_menu/MenuDune.i: src/src_menu/MenuDune.cpp.i
-.PHONY : src/src_menu/MenuDune.i
-
-# target to preprocess a source file
-src/src_menu/MenuDune.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_menu/MenuDune.cpp.i
-.PHONY : src/src_menu/MenuDune.cpp.i
-
-src/src_menu/MenuDune.s: src/src_menu/MenuDune.cpp.s
-.PHONY : src/src_menu/MenuDune.s
-
-# target to generate assembly for a file
-src/src_menu/MenuDune.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/src_menu/MenuDune.cpp.s
-.PHONY : src/src_menu/MenuDune.cpp.s
 
 src/src_server/server_DTO/MovimientoDTO.o: src/src_server/server_DTO/MovimientoDTO.cpp.o
 .PHONY : src/src_server/server_DTO/MovimientoDTO.o
@@ -1573,6 +910,30 @@ src/src_server/server_server.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_server.cpp.s
 .PHONY : src/src_server/server_server.cpp.s
 
+src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.o: src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o
+.PHONY : src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.o
+
+# target to build an object file
+src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o
+.PHONY : src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o
+
+src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.i: src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.i
+.PHONY : src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.i
+
+# target to preprocess a source file
+src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.i
+.PHONY : src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.i
+
+src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.s: src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.s
+.PHONY : src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.s
+
+# target to generate assembly for a file
+src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.s
+.PHONY : src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.s
+
 src/src_server/server_thread_gameloop/server_hilo_gameloop.o: src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o
 .PHONY : src/src_server/server_thread_gameloop/server_hilo_gameloop.o
 
@@ -1674,87 +1035,15 @@ help:
 	@echo "... gtest_main"
 	@echo "... serializador_tests"
 	@echo "... server"
-	@echo "... client_autogen/GBFAFXFCVO/qrc_resources.o"
-	@echo "... client_autogen/GBFAFXFCVO/qrc_resources.i"
-	@echo "... client_autogen/GBFAFXFCVO/qrc_resources.s"
 	@echo "... client_autogen/mocs_compilation.o"
 	@echo "... client_autogen/mocs_compilation.i"
 	@echo "... client_autogen/mocs_compilation.s"
 	@echo "... server_autogen/mocs_compilation.o"
 	@echo "... server_autogen/mocs_compilation.i"
 	@echo "... server_autogen/mocs_compilation.s"
-	@echo "... src/main_client.o"
-	@echo "... src/main_client.i"
-	@echo "... src/main_client.s"
 	@echo "... src/main_server.o"
 	@echo "... src/main_server.i"
 	@echo "... src/main_server.s"
-	@echo "... src/src_cliente/client_DTO/Status.o"
-	@echo "... src/src_cliente/client_DTO/Status.i"
-	@echo "... src/src_cliente/client_DTO/Status.s"
-	@echo "... src/src_cliente/client_client.o"
-	@echo "... src/src_cliente/client_client.i"
-	@echo "... src/src_cliente/client_client.s"
-	@echo "... src/src_cliente/client_comandos/client_comando.o"
-	@echo "... src/src_cliente/client_comandos/client_comando.i"
-	@echo "... src/src_cliente/client_comandos/client_comando.s"
-	@echo "... src/src_cliente/client_comandos/cmd_mover_mapa.o"
-	@echo "... src/src_cliente/client_comandos/cmd_mover_mapa.i"
-	@echo "... src/src_cliente/client_comandos/cmd_mover_mapa.s"
-	@echo "... src/src_cliente/client_comandos/cmd_salir.o"
-	@echo "... src/src_cliente/client_comandos/cmd_salir.i"
-	@echo "... src/src_cliente/client_comandos/cmd_salir.s"
-	@echo "... src/src_cliente/client_comandos/cmd_zoom.o"
-	@echo "... src/src_cliente/client_comandos/cmd_zoom.i"
-	@echo "... src/src_cliente/client_comandos/cmd_zoom.s"
-	@echo "... src/src_cliente/client_protocolo.o"
-	@echo "... src/src_cliente/client_protocolo.i"
-	@echo "... src/src_cliente/client_protocolo.s"
-	@echo "... src/src_cliente/client_renderer/client_renderer.o"
-	@echo "... src/src_cliente/client_renderer/client_renderer.i"
-	@echo "... src/src_cliente/client_renderer/client_renderer.s"
-	@echo "... src/src_cliente/client_solicitudes/sol_crear_partida.o"
-	@echo "... src/src_cliente/client_solicitudes/sol_crear_partida.i"
-	@echo "... src/src_cliente/client_solicitudes/sol_crear_partida.s"
-	@echo "... src/src_cliente/client_solicitudes/sol_mover_unidad.o"
-	@echo "... src/src_cliente/client_solicitudes/sol_mover_unidad.i"
-	@echo "... src/src_cliente/client_solicitudes/sol_mover_unidad.s"
-	@echo "... src/src_cliente/client_solicitudes/sol_unirse_a_partida.o"
-	@echo "... src/src_cliente/client_solicitudes/sol_unirse_a_partida.i"
-	@echo "... src/src_cliente/client_solicitudes/sol_unirse_a_partida.s"
-	@echo "... src/src_cliente/client_thread_reciever/client_hilo_reciever.o"
-	@echo "... src/src_cliente/client_thread_reciever/client_hilo_reciever.i"
-	@echo "... src/src_cliente/client_thread_reciever/client_hilo_reciever.s"
-	@echo "... src/src_cliente/client_thread_sdl/client_hilo_sdl.o"
-	@echo "... src/src_cliente/client_thread_sdl/client_hilo_sdl.i"
-	@echo "... src/src_cliente/client_thread_sdl/client_hilo_sdl.s"
-	@echo "... src/src_cliente/client_thread_sdl/client_sdl_evento.o"
-	@echo "... src/src_cliente/client_thread_sdl/client_sdl_evento.i"
-	@echo "... src/src_cliente/client_thread_sdl/client_sdl_evento.s"
-	@echo "... src/src_cliente/client_thread_sender/client_hilo_sender.o"
-	@echo "... src/src_cliente/client_thread_sender/client_hilo_sender.i"
-	@echo "... src/src_cliente/client_thread_sender/client_hilo_sender.s"
-	@echo "... src/src_cliente/client_world_view/sdl_mapa.o"
-	@echo "... src/src_cliente/client_world_view/sdl_mapa.i"
-	@echo "... src/src_cliente/client_world_view/sdl_mapa.s"
-	@echo "... src/src_cliente/client_world_view/sdl_tile.o"
-	@echo "... src/src_cliente/client_world_view/sdl_tile.i"
-	@echo "... src/src_cliente/client_world_view/sdl_tile.s"
-	@echo "... src/src_cliente/client_world_view/sdl_tile_factory.o"
-	@echo "... src/src_cliente/client_world_view/sdl_tile_factory.i"
-	@echo "... src/src_cliente/client_world_view/sdl_tile_factory.s"
-	@echo "... src/src_cliente/client_world_view/world_view.o"
-	@echo "... src/src_cliente/client_world_view/world_view.i"
-	@echo "... src/src_cliente/client_world_view/world_view.s"
-	@echo "... src/src_cliente/pix_a_coords.o"
-	@echo "... src/src_cliente/pix_a_coords.i"
-	@echo "... src/src_cliente/pix_a_coords.s"
-	@echo "... src/src_common/common_colas/cola_bloqueante.o"
-	@echo "... src/src_common/common_colas/cola_bloqueante.i"
-	@echo "... src/src_common/common_colas/cola_bloqueante.s"
-	@echo "... src/src_common/common_colas/cola_no_bloqueante.o"
-	@echo "... src/src_common/common_colas/cola_no_bloqueante.i"
-	@echo "... src/src_common/common_colas/cola_no_bloqueante.s"
 	@echo "... src/src_common/common_coords.o"
 	@echo "... src/src_common/common_coords.i"
 	@echo "... src/src_common/common_coords.s"
@@ -1770,15 +1059,6 @@ help:
 	@echo "... src/src_common/common_socket_error.o"
 	@echo "... src/src_common/common_socket_error.i"
 	@echo "... src/src_common/common_socket_error.s"
-	@echo "... src/src_form_creacion/FormCreacion.o"
-	@echo "... src/src_form_creacion/FormCreacion.i"
-	@echo "... src/src_form_creacion/FormCreacion.s"
-	@echo "... src/src_form_union/FormUnion.o"
-	@echo "... src/src_form_union/FormUnion.i"
-	@echo "... src/src_form_union/FormUnion.s"
-	@echo "... src/src_menu/MenuDune.o"
-	@echo "... src/src_menu/MenuDune.i"
-	@echo "... src/src_menu/MenuDune.s"
 	@echo "... src/src_server/server_DTO/MovimientoDTO.o"
 	@echo "... src/src_server/server_DTO/MovimientoDTO.i"
 	@echo "... src/src_server/server_DTO/MovimientoDTO.s"
@@ -1821,6 +1101,9 @@ help:
 	@echo "... src/src_server/server_server.o"
 	@echo "... src/src_server/server_server.i"
 	@echo "... src/src_server/server_server.s"
+	@echo "... src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.o"
+	@echo "... src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.i"
+	@echo "... src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.s"
 	@echo "... src/src_server/server_thread_gameloop/server_hilo_gameloop.o"
 	@echo "... src/src_server/server_thread_gameloop/server_hilo_gameloop.i"
 	@echo "... src/src_server/server_thread_gameloop/server_hilo_gameloop.s"

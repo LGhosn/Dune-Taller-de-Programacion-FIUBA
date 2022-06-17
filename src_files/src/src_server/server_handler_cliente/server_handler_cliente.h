@@ -39,7 +39,10 @@ public:
     HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos, uint8_t id_cliente);
 
     void unirsePartida(SolicitudUnirseAPartidaDTO& partida_a_unirse);
+    void enviarStatusDeUnion(Status &status_de_union);
+
     void crearPartida(SolicitudCrearPartidaDTO& partida_a_unirse);
+    void enviarStatusDeCreacion(Status &status_de_creacion);
 
     void empezarPartida(ColaNoBloqueante<SolicitudServer>* cola);
 

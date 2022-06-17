@@ -45,20 +45,20 @@ void FormCreacion::solicitudDeCreacion() {
 
 void FormCreacion::crearNotificacion(Status& status) {
     ProtocoloCliente& protocolo = cliente.protocoloAsociado();
-    if (status.conexionEstablecida()) {
-        //QMessageBox::information(this, "Union Existosa", "Esperando jugadores restantes...");
+    if (status.obtenerCodigoDeConexion() == CONEXION_EXITOSA) {
         std::cout << "Creacion Existosa, esperando jugadores restantes..." << std::endl;
         bool partida_comenzada = protocolo.esperarAComienzoDePartida();
         if (partida_comenzada) {
             // Cierro todas las ventanas y abro el juego
             std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
-            this->cliente.establecerPartidaEmpezada();
-            this->close();
+            //cliente.establecerPartidaEmpezada();
+            cliente.empezarPartida();
+            close();
         }
     } else {
-        std::cout << "Creacion Fallida, existe otra partida con ese mismo nombre, por favor elegir otro...." << std::endl;
-        //QMessageBox::information(this, "Creacion Fallida", "Existe otra partida con ese mismo nombre, por favor elegir otro.");
-        //this->close();
+        if (status.obtenerCodigoDePartida() == PARTIDA_EXISTENTE) {
+            std::cout << "Creacion Fallida, existe otra partida con ese mismo nombre, por favor elegir otro...." << std::endl;
+        }
     }
 }
 

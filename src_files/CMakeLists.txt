@@ -53,7 +53,6 @@ add_executable(client
         src/src_cliente/client_thread_sender/client_hilo_sender.cpp
         src/src_cliente/client_solicitudes/sol_crear_partida.cpp
         src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp
-        src/src_cliente/client_DTO/Status.cpp
         src/src_cliente/client_DTO/dto_cmd_crear_edificio.h
         src/src_cliente/client_comandos/cmd_mover_mapa.cpp
         src/src_cliente/client_comandos/cmd_zoom.cpp
@@ -69,6 +68,7 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_edificio/sdl_edificio_factory.cpp
         src/src_cliente/client_world_view/sdl_edificio/sdl_centro.cpp
         src/src_cliente/client_world_view/world_view.cpp
+        src/src_common/common_DTO/Status.cpp
         src/src_common/common_colas/cola_bloqueante.cpp
         src/src_common/common_colas/cola_no_bloqueante.cpp
         src/src_cliente/client_thread_sdl/client_hilo_sdl.cpp
@@ -105,6 +105,7 @@ add_executable(server
         src/src_server/server_aceptador.cpp
         src/src_server/server_handler_cliente/server_handler_cliente.cpp
         src/src_server/server_partida/server_partida.cpp
+        src/src_common/common_DTO/Status.cpp
         src/src_common/common_resolver.cpp
         src/src_common/common_socket.cpp
         src/src_common/common_socket_error.cpp

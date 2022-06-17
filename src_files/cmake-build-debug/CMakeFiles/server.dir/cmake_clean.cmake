@@ -44,6 +44,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/server.dir/src/src_server/server_protocolo/server_serializador.cpp.o.d"
   "CMakeFiles/server.dir/src/src_server/server_server.cpp.o"
   "CMakeFiles/server.dir/src/src_server/server_server.cpp.o.d"
+  "CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o"
+  "CMakeFiles/server.dir/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp.o.d"
   "CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o"
   "CMakeFiles/server.dir/src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp.o.d"
   "CMakeFiles/server.dir/src/src_server/server_thread_reciever/server_hilo_reciever.cpp.o"

@@ -75,8 +75,7 @@
 		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-config-version.cmake",
 		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-config.cmake",
 		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-targets.cmake",
-		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-targets-noconfig.cmake",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/assets/resources.qrc"
+		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-targets-noconfig.cmake"
 	],
 	"CMAKE_SOURCE_DIR" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files",
 	"DEP_FILE" : "",
@@ -201,6 +200,12 @@
 			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_server.h",
 			"Mu",
 			"SWWEXVT3ET/moc_server_server.cpp",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.h",
+			"Mu",
+			"JJXUES7NN7/moc_sol_crear_edificio.cpp",
 			null
 		],
 		[
@@ -384,6 +389,11 @@
 		],
 		[
 			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_server.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp",
 			"Mu",
 			null
 		],

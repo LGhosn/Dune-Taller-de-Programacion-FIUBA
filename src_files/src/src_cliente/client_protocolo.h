@@ -1,7 +1,7 @@
 #ifndef CLIENT_PROTOCOLO_H
 #define CLIENT_PROTOCOLO_H
 
-#include "client_DTO/Status.h"
+#include "../src_common/common_DTO/Status.h"
 #include "../src_common/common_DTO/dto_sol_crear_partida.h"
 #include "../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "client_DTO/dto_cmd_crear_edificio.h"

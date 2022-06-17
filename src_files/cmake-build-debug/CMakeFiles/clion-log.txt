@@ -13,6 +13,15 @@ CMake Deprecation Warning at src/src_libs/SDL2pp/CMakeLists.txt:4 (CMAKE_MINIMUM
 Agregando '/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug' como directorio de includes
 Headers generados: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/ui_MenuUi.h;/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/ui_FormCreacion.h;/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/ui_FormUnion.h
 -- Configuring done
+CMake Error at CMakeLists.txt:44 (add_executable):
+  Cannot find source file:
+
+    src/src_cliente/client_DTO/Status.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h
+  .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc
+
+
 CMake Warning (dev) at src/src_testing/pruebas_camino/CMakeLists.txt:19 (add_executable):
   Policy CMP0115 is not set: Source file extensions must be explicit.  Run
   "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
@@ -24,4 +33,4 @@ CMake Warning (dev) at src/src_testing/pruebas_camino/CMakeLists.txt:19 (add_exe
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 -- Generating done
--- Build files have been written to: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug
+CMake Generate step failed.  Build files cannot be regenerated correctly.

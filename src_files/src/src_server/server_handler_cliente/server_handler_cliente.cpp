@@ -14,13 +14,19 @@ HandlerCliente::HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos
 }
 
 void HandlerCliente::unirsePartida(SolicitudUnirseAPartidaDTO& partida_a_unirse) {
-    bool el_jugador_se_unio = lobby->unirAPartida(partida_a_unirse, this);
-    protocolo.enviarStatusDeUnion(el_jugador_se_unio);
+    lobby->unirAPartida(partida_a_unirse, this);
+}
+
+void HandlerCliente::enviarStatusDeUnion(Status &status_de_union) {
+    protocolo.enviarStatusDeUnion(status_de_union);
 }
 
 void HandlerCliente::crearPartida(SolicitudCrearPartidaDTO& partida_a_crear) {
-    bool la_partida_se_creo = lobby->crearPartida(partida_a_crear, this);
-    protocolo.enviarStatusDeCreacion(la_partida_se_creo);
+    lobby->crearPartida(partida_a_crear, this);
+}
+
+void HandlerCliente::enviarStatusDeCreacion(Status &status_de_creacion) {
+    protocolo.enviarStatusDeCreacion(status_de_creacion);
 }
 
 void HandlerCliente::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola) {
