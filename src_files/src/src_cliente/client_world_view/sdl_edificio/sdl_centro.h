@@ -15,7 +15,7 @@
 #define OFFSET_EDIFICIO_X 3
 
 #define OFFSET_BRAZO_X 2
-#define OFFSET_BRAZO_Y 25
+#define OFFSET_BRAZO_Y 30
 
 #define HARKONNEN 0 
 #define ATREIDES 1
@@ -24,12 +24,9 @@
 #define LIMITE_HP_DEBILITAR 1000
 
 class CentroSDL : public EdificioSDL {
-    int pos_en_tex_brazo_x, pos_en_tex_brazo_y;
     uint8_t frame_actual_brazo = 0;
-    int pos_actual_brazo_x = 0;
-    int pos_actual_brazo_y = 0;
-    int tam_actual_brazo_x = 0;
-    int tam_actual_brazo_y = 0;
+    SDL2pp::Rect origen_brazo;
+    SDL2pp::Rect destino_brazo;
 
     void actualizarFrameBrazo(long frame_actual);
     void setearPosicionBrazo();
@@ -40,7 +37,7 @@ public:
 
     void cambiarHP(uint16_t hp_edificio) override;
 
-    void update(uint32_t offset_x, uint32_t offset_y, long frame_actual) override;
+    void update(uint32_t offset_x, uint32_t offset_y, long frame_actual, float zoom) override;
 
     void render() override;
 

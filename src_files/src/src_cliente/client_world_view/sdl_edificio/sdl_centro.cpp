@@ -4,25 +4,25 @@ void CentroSDL::actualizarFrameBrazo(long frame_actual) {
     long cant_frames = (frame_actual - frame_anterior) / RATE_BRAZO;
     if (cant_frames > 0) {
         frame_actual_brazo = (frame_actual_brazo + cant_frames) % CANT_FRAMES_BRAZO;
-        pos_en_tex_brazo_x = frame_actual_brazo * ANCHO_TEX_BRAZO; 
+        origen_brazo.SetX(frame_actual_brazo * ANCHO_TEX_BRAZO); 
         frame_anterior = frame_actual;
     }
 }
 
 void CentroSDL::setearPosicionBrazo() {
-    pos_actual_brazo_y = pos_actual_y + OFFSET_BRAZO_Y;
+    destino_brazo.SetY(destino.GetY() + OFFSET_BRAZO_Y * zoom);
     switch (frame_actual_brazo) {
         case 0:
-            pos_actual_brazo_x = pos_actual_x + OFFSET_BRAZO_X - 1;
+            destino_brazo.SetX(destino.GetX() + (OFFSET_BRAZO_X - 1) * zoom);
             break;
         case 3:
-            pos_actual_brazo_x = pos_actual_x + OFFSET_BRAZO_X - 2;
+            destino_brazo.SetX(destino.GetX() + (OFFSET_BRAZO_X - 2) * zoom);
             break;
         case 4:
-            pos_actual_brazo_x = pos_actual_x + OFFSET_BRAZO_X - 2;
+            destino_brazo.SetX(destino.GetX() + (OFFSET_BRAZO_X - 2) * zoom);
             break;
         default:
-            pos_actual_brazo_x = pos_actual_x + OFFSET_BRAZO_X;
+            destino_brazo.SetX(destino.GetX() + OFFSET_BRAZO_X * zoom);
             break;
     }
 }
@@ -31,67 +31,46 @@ CentroSDL::CentroSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                     SDL2pp::Texture& textura, const Coordenadas& coords, uint16_t alto,
                     uint16_t ancho, uint8_t casa):
     EdificioSDL(id, id_jugador, renderer, textura, coords, alto, ancho, casa) {
-    pos_en_tex_x = 0;
+    origen.SetX(0);
     switch (casa) {
         case HARKONNEN: {
-            pos_en_tex_y = 0;
+            origen.SetY(0);
             break;
         } case ATREIDES: {
-            pos_en_tex_y = ALTO_TEX_EDIFICIO + ALTO_TEX_BRAZO + 1;
+            origen.SetY(ALTO_TEX_EDIFICIO + ALTO_TEX_BRAZO + 1);
             break;
         } case ORDOS: {
-            pos_en_tex_y = 2*(ALTO_TEX_EDIFICIO + ALTO_TEX_BRAZO) + 1;
+            origen.SetY(2*(ALTO_TEX_EDIFICIO + ALTO_TEX_BRAZO) + 1);
             break;
         }
     }
-    pos_en_tex_brazo_x = 0;
-    pos_en_tex_brazo_y = pos_en_tex_y + ALTO_TEX_EDIFICIO;
+    origen.SetW(ANCHO_TEX_EDIFICIO);
+    origen.SetH(ALTO_TEX_EDIFICIO);
+    origen_brazo.SetX(0);
+    origen_brazo.SetY(origen.GetY() + ALTO_TEX_EDIFICIO);
+    origen_brazo.SetW(ANCHO_TEX_BRAZO);
+    origen_brazo.SetH(ALTO_TEX_BRAZO);
 }
 
 void CentroSDL::cambiarHP(uint16_t hp_edificio) {
     if (hp_edificio < LIMITE_HP_DEBILITAR)
-        pos_en_tex_x = ANCHO_TEX_EDIFICIO;
+        origen.SetX(ANCHO_TEX_EDIFICIO);
 }
 
-void CentroSDL::update(uint32_t offset_x, uint32_t offset_y, long frame_actual) {
-    pos_actual_x = coords.x * LARGO_TILE - offset_x;
-    pos_actual_y = coords.y * LARGO_TILE - offset_y;
+void CentroSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_actual,
+                        float zoom) {
+    this->zoom = zoom;
+    destino.SetX(coords.x * LARGO_TILE * zoom - origen_movil_x);
+    destino.SetY((coords.y * LARGO_TILE + PADDING_EDIFICIO_Y) * zoom - origen_movil_y);
     actualizarFrameBrazo(frame_actual);
     setearPosicionBrazo();
-    tam_actual_x = LARGO_TILE * ancho;
-    tam_actual_y = LARGO_TILE * alto;
-    tam_actual_brazo_x = ANCHO_TEX_BRAZO;
-    tam_actual_brazo_y = ALTO_TEX_BRAZO;
+    destino.SetW(LARGO_TILE * ancho * zoom);
+    destino.SetH((LARGO_TILE * alto - 2 * PADDING_EDIFICIO_Y) * zoom);
+    destino_brazo.SetW(ANCHO_TEX_BRAZO * zoom);
+    destino_brazo.SetH(ALTO_TEX_BRAZO * zoom);
 }
 
 void CentroSDL::render() {
-    renderer.Copy(textura,
-                  SDL2pp::Rect(
-                    pos_en_tex_x,
-                    pos_en_tex_y,
-                    ANCHO_TEX_EDIFICIO,
-                    ALTO_TEX_EDIFICIO
-                  ),
-                  SDL2pp::Rect(
-                    pos_actual_x,
-                    pos_actual_y + PADDING_EDIFICIO_Y,
-                    tam_actual_x,
-                    tam_actual_y - 2 * PADDING_EDIFICIO_Y
-                  )
-                );
-
-    renderer.Copy(textura,
-                    SDL2pp::Rect(
-                        pos_en_tex_brazo_x,
-                        pos_en_tex_brazo_y,
-                        ANCHO_TEX_BRAZO,
-                        ALTO_TEX_BRAZO
-                    ),
-                    SDL2pp::Rect(
-                        pos_actual_brazo_x,
-                        pos_actual_brazo_y,
-                        tam_actual_brazo_x,
-                        tam_actual_brazo_y
-                    )
-                );
+    renderer.Copy(textura, origen, destino);
+    renderer.Copy(textura, origen_brazo, destino_brazo);
 }

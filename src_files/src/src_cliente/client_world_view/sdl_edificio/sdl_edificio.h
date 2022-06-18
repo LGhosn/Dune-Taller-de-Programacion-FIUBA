@@ -20,15 +20,14 @@ protected:
     uint8_t id_jugador;
     SDL2pp::Renderer& renderer;
     SDL2pp::Texture& textura;
+    SDL2pp::Rect origen;
+    SDL2pp::Rect destino;
     Coordenadas coords;
     uint16_t alto, ancho;
     int pos_en_tex_x, pos_en_tex_y;
-    int pos_actual_x = 0;
-    int pos_actual_y = 0;
-    int tam_actual_x = 0;
-    int tam_actual_y = 0;
     long frame_anterior = 0;
     bool seleccionado = false;
+    float zoom;
 
 private:
 
@@ -47,7 +46,7 @@ public:
     void seleccionar();
     void deseleccionar();
 
-    virtual void update(uint32_t offset_x, uint32_t offset_y, long frame_actual) = 0;
+    virtual void update(uint32_t offset_x, uint32_t offset_y, long frame_actual, float zoom) = 0;
 
     virtual void render() = 0;
 

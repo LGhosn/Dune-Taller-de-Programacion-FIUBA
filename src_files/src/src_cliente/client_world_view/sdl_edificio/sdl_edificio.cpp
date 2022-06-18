@@ -2,65 +2,65 @@
 
 void EdificioSDL::renderRectanguloSeleccion() {
     renderer.SetDrawColor(255, 255, 255);
-        int largo_lineas_seleccionado = tam_actual_x * RATIO_LINEAS_LARGO;
+        int largo_lineas_seleccionado = destino.GetW() * RATIO_LINEAS_LARGO;
 
         renderer.DrawLine(
-            pos_actual_x, pos_actual_y,
-            pos_actual_x + largo_lineas_seleccionado, pos_actual_y
+            destino.GetX(), destino.GetY(),
+            destino.GetX() + largo_lineas_seleccionado, destino.GetY()
         );
         renderer.DrawLine(
-            pos_actual_x, pos_actual_y,
-            pos_actual_x, pos_actual_y + largo_lineas_seleccionado
+            destino.GetX(), destino.GetY(),
+            destino.GetX(), destino.GetY() + largo_lineas_seleccionado
         );
         renderer.DrawLine(
-            pos_actual_x + tam_actual_x, pos_actual_y,
-            pos_actual_x + tam_actual_x - largo_lineas_seleccionado, pos_actual_y
+            destino.GetX() + destino.GetW(), destino.GetY(),
+            destino.GetX() + destino.GetW() - largo_lineas_seleccionado, destino.GetY()
         );
         renderer.DrawLine(
-            pos_actual_x + tam_actual_x, pos_actual_y,
-            pos_actual_x + tam_actual_x, pos_actual_y + largo_lineas_seleccionado
+            destino.GetX() + destino.GetW(), destino.GetY(),
+            destino.GetX() + destino.GetW(), destino.GetY() + largo_lineas_seleccionado
         );
         renderer.DrawLine(
-            pos_actual_x, pos_actual_y + tam_actual_y,
-            pos_actual_x, pos_actual_y + tam_actual_y - largo_lineas_seleccionado
+            destino.GetX(), destino.GetY() + destino.GetH(),
+            destino.GetX(), destino.GetY() + destino.GetH() - largo_lineas_seleccionado
         );
         renderer.DrawLine(
-            pos_actual_x, pos_actual_y + tam_actual_y,
-            pos_actual_x + largo_lineas_seleccionado, pos_actual_y + tam_actual_y
+            destino.GetX(), destino.GetY() + destino.GetH(),
+            destino.GetX() + largo_lineas_seleccionado, destino.GetY() + destino.GetH()
         );
         renderer.DrawLine(
-            pos_actual_x + tam_actual_x, pos_actual_y + tam_actual_y,
-            pos_actual_x + tam_actual_x, pos_actual_y + tam_actual_y - largo_lineas_seleccionado
+            destino.GetX() + destino.GetW(), destino.GetY() + destino.GetH(),
+            destino.GetX() + destino.GetW(), destino.GetY() + destino.GetH() - largo_lineas_seleccionado
         );
         renderer.DrawLine(
-            pos_actual_x + tam_actual_x, pos_actual_y + tam_actual_y,
-            pos_actual_x + tam_actual_x - largo_lineas_seleccionado, pos_actual_y + tam_actual_y
+            destino.GetX() + destino.GetW(), destino.GetY() + destino.GetH(),
+            destino.GetX() + destino.GetW() - largo_lineas_seleccionado, destino.GetY() + destino.GetH()
         );
 }
 
 void EdificioSDL::renderHP() {
     renderer.SetDrawColor(0, 0, 0, 150);
     renderer.FillRect(
-        pos_actual_x + PADDING_HP_X,
-        pos_actual_y + OFFSET_HP_Y - ALTO_HP,
-        pos_actual_x + tam_actual_x - PADDING_HP_X,
-        pos_actual_y + OFFSET_HP_Y
+        destino.GetX() + PADDING_HP_X * zoom,
+        destino.GetY() + (OFFSET_HP_Y - ALTO_HP) * zoom,
+        destino.GetX() + destino.GetW() - PADDING_HP_X * zoom,
+        destino.GetY() + OFFSET_HP_Y * zoom
     );
 
     renderer.SetDrawColor(90, 146, 22);
     renderer.FillRect(
-        pos_actual_x + PADDING_HP_X + PADDING_HP_RECT,
-        pos_actual_y + OFFSET_HP_Y - ALTO_HP + PADDING_HP_RECT,
-        pos_actual_x + tam_actual_x - PADDING_HP_X - PADDING_HP_RECT,
-        pos_actual_y + OFFSET_HP_Y - PADDING_HP_RECT
+        destino.GetX() + (PADDING_HP_X + PADDING_HP_RECT) * zoom,
+        destino.GetY() + (OFFSET_HP_Y - ALTO_HP + PADDING_HP_RECT) * zoom,
+        destino.GetX() + destino.GetW() - (PADDING_HP_X + PADDING_HP_RECT) * zoom,
+        destino.GetY() + (OFFSET_HP_Y - PADDING_HP_RECT) * zoom
     );
 
     renderer.SetDrawColor(0, 0, 0);
     renderer.DrawRect(
-        pos_actual_x + PADDING_HP_X,
-        pos_actual_y + OFFSET_HP_Y - ALTO_HP,
-        pos_actual_x + tam_actual_x - PADDING_HP_X,
-        pos_actual_y + OFFSET_HP_Y
+        destino.GetX() + PADDING_HP_X * zoom,
+        destino.GetY() + (OFFSET_HP_Y - ALTO_HP)  * zoom,
+        destino.GetX() + destino.GetW() - PADDING_HP_X * zoom,
+        destino.GetY() + OFFSET_HP_Y * zoom
     );
 }
 

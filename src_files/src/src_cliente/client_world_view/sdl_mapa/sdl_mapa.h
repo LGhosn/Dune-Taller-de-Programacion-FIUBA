@@ -12,12 +12,9 @@
 #define DERECHA 'D'
 #define ABAJO 'B'
 
-#define ANCHO_VENTANA 1024
-#define LARGO_VENTANA 768
-
 #define PADDING 100
 
-#define PASO 6
+#define VELOCIDAD 10
 
 class MapaSDL {
 	SDL2pp::Renderer& renderer;

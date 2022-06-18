@@ -21,14 +21,17 @@ void WorldView::renderUI() {
 	for (auto edificio : edificios_seleccionados) {
 		edificio->renderUI();
 	}
+	this->side_menu.render();
 }
 
 WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador) :
-window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ANCHO_VENTANA, LARGO_VENTANA, 0),
+window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ANCHO_VISTA_MAPA + ANCHO_MENU,
+LARGO_VISTA_MAPA, 0),
 renderer(window, -1, SDL_RENDERER_ACCELERATED),
 cola_solicitudes(cola_solicitudes),
 zoom(ZOOM_INICIAL),
 mapa(renderer, RUTA_MAPA_1),
+side_menu(renderer, 0),			// FIXME: hardcoded
 edificio_factory(renderer),
 id_jugador(id_jugador) {
 	renderer.SetDrawBlendMode(SDL_BLENDMODE_BLEND);
@@ -104,13 +107,14 @@ void WorldView::update(long frame_actual) {
 		this->mapa.update(this->zoom);
 	}
 	for (auto& edificio : this->edificios)
-		edificio.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(), frame_actual);
+		edificio.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(),
+								frame_actual, zoom);
 	this->frame_anterior = frame_actual;
 }
 
 void WorldView::render() {
 	this->renderer.Clear();
-	this->renderer.SetScale(this->zoom, this->zoom);
+	// this->renderer.SetScale(this->zoom, this->zoom);
 	this->mapa.render();
 	for (auto& edificio : this->edificios)
 		edificio.second->render();

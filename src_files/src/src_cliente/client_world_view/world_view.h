@@ -4,6 +4,7 @@
 #include "sdl_mapa/sdl_mapa.h"
 #include "sdl_edificio/sdl_edificio.h"
 #include "sdl_edificio/sdl_edificio_factory.h"
+#include "sdl_side_menu/sdl_side_menu.h"
 #include "../client_solicitudes/cliente_solicitud.h"
 #include "../../src_common/common_coords.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
@@ -20,6 +21,7 @@ class WorldView {
 	ColaBloqueante<SolicitudCliente>& cola_solicitudes;
 	float zoom;
 	MapaSDL mapa;
+	SideMenuSDL side_menu;
 	std::unordered_map<Coordenadas, EdificioSDL*, HashCoordenadas> edificios;
 	std::vector<EdificioSDL*> edificios_seleccionados;
 	EdificioFactorySDL edificio_factory;
