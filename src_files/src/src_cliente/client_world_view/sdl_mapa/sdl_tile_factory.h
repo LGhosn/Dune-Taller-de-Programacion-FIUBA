@@ -3,9 +3,8 @@
 
 #include <SDL2pp/SDL2pp.hh>
 #include "sdl_tile.h"
+#include "../sdl_texturas.h"
 #include <vector>
-
-#define TEX_BASE_PATH "/terrain/d2k_BLOXBASE.bmp"
 
 #define ROCA 'R'
 #define ARENA 'A'
@@ -16,7 +15,7 @@
 
 class TileFactorySDL {
     SDL2pp::Renderer& renderer;
-    SDL2pp::Texture textura_base;
+    SDL2pp::Texture& textura_base;
     uint32_t ancho, alto;
     std::vector<TileSDL> tiles;
 
@@ -30,7 +29,7 @@ class TileFactorySDL {
     void agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Coordenadas& coords);
 
 public:
-    TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa);
+    TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa, TexturasSDL& texturas);
 
     std::vector<TileSDL>& obtenerTiles();
 

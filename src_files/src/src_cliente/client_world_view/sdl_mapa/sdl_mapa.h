@@ -6,6 +6,7 @@
 #include <vector>
 #include "sdl_tile.h"
 #include "sdl_tile_factory.h"
+#include "../sdl_texturas.h"
 
 #define ARRIBA 'A'
 #define IZQUIERDA 'I'
@@ -23,7 +24,8 @@ class MapaSDL {
 	int ancho, alto;
 	int eje_movil_x = 0;
 	int eje_movil_y = 0;
-	bool moviendose_h, moviendose_v;
+	bool moviendose_h = false;
+	bool moviendose_v = false;
 	char direccion_h, direccion_v;
 	float zoom;
 
@@ -35,7 +37,7 @@ class MapaSDL {
 	void updateTiles();
 
 public:
-	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa);
+	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa, TexturasSDL& texturas);
 
 	void moverArriba();
 	void moverIzquierda();

@@ -24,10 +24,12 @@
 		}
 	}
 
-MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa) : renderer(renderer),
-tile_factory(renderer, ruta_mapa), tiles(tile_factory.obtenerTiles()), ancho(tile_factory.obtenerAncho()),
-alto(tile_factory.obtenerAlto()), moviendose_h(false), moviendose_v(false), direccion_h(IZQUIERDA),
-direccion_v(ARRIBA) {}
+MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa, TexturasSDL& texturas) :
+				renderer(renderer),
+				tile_factory(renderer, ruta_mapa, texturas),
+				tiles(tile_factory.obtenerTiles()),
+				ancho(tile_factory.obtenerAncho()),
+				alto(tile_factory.obtenerAlto()) {}
 void MapaSDL::moverArriba() {
 	if (eje_movil_y > this->limite_superior()) {
 		this->direccion_v = ARRIBA;

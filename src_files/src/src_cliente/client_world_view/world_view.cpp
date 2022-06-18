@@ -25,15 +25,16 @@ void WorldView::renderUI() {
 }
 
 WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador) :
-window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ANCHO_VISTA_MAPA + ANCHO_MENU,
-LARGO_VISTA_MAPA, 0),
-renderer(window, -1, SDL_RENDERER_ACCELERATED),
-cola_solicitudes(cola_solicitudes),
-zoom(ZOOM_INICIAL),
-mapa(renderer, RUTA_MAPA_1),
-side_menu(renderer, 0),			// FIXME: hardcoded
-edificio_factory(renderer),
-id_jugador(id_jugador) {
+					window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+							ANCHO_VISTA_MAPA + ANCHO_MENU, LARGO_VISTA_MAPA, 0),
+					renderer(window, -1, SDL_RENDERER_ACCELERATED),
+					texturas(renderer),
+					cola_solicitudes(cola_solicitudes),
+					zoom(ZOOM_INICIAL),
+					mapa(renderer, RUTA_MAPA_1, texturas),
+					side_menu(renderer, 0, texturas),			// FIXME: hardcoded
+					edificio_factory(renderer, texturas),
+					id_jugador(id_jugador) {
 	renderer.SetDrawBlendMode(SDL_BLENDMODE_BLEND);
 }
 

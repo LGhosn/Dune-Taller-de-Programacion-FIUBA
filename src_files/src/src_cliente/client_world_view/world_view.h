@@ -2,6 +2,7 @@
 #define WORLD_VIEW_H
 
 #include "sdl_mapa/sdl_mapa.h"
+#include "sdl_texturas.h"
 #include "sdl_edificio/sdl_edificio.h"
 #include "sdl_edificio/sdl_edificio_factory.h"
 #include "sdl_side_menu/sdl_side_menu.h"
@@ -18,6 +19,7 @@
 class WorldView {
 	SDL2pp::Window window;
 	SDL2pp::Renderer renderer;
+	TexturasSDL texturas;
 	ColaBloqueante<SolicitudCliente>& cola_solicitudes;
 	float zoom;
 	MapaSDL mapa;

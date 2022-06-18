@@ -69,6 +69,7 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_edificio/sdl_centro.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_side_menu.cpp
         src/src_cliente/client_world_view/world_view.cpp
+        src/src_cliente/client_world_view/sdl_texturas.cpp
         src/src_common/common_DTO/Status.cpp
         src/src_common/common_colas/cola_bloqueante.cpp
         src/src_common/common_colas/cola_no_bloqueante.cpp

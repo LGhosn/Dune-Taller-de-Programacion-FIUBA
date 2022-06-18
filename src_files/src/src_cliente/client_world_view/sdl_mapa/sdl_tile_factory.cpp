@@ -51,8 +51,10 @@ void TileFactorySDL::agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Co
     }
 }
 
-TileFactorySDL::TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa) :
-renderer(renderer), textura_base(renderer, RESOURCE_PATH "/terrain/d2k_BLOXBASE.bmp") {
+TileFactorySDL::TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa,
+                                TexturasSDL& texturas) :
+                                renderer(renderer),
+                                textura_base(texturas.obtenerTilesBase()) {
     YAML::Node mapa_config = YAML::LoadFile(ruta_mapa);
     this->ancho = mapa_config["Ancho"].as<uint16_t>();
     this->alto = mapa_config["Alto"].as<uint16_t>();
