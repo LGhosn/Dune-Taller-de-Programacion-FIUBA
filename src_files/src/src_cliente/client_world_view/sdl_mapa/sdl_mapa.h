@@ -38,7 +38,7 @@ class MapaSDL {
 	void updateTiles();
 
 public:
-	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa);
+	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string nombre_mapa);
 
 	void moverArriba();
 	void moverIzquierda();

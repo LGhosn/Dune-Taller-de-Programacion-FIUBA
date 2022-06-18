@@ -18,7 +18,6 @@ public:
 
 	std::unique_ptr<T> wait_and_pop() {
 		std::unique_lock<std::mutex> lock(this->mutex);
-		std::cout << "Emtramdp..." << std::endl;
 		while (this->cola.empty()) {
 			this->cv.wait(lock);
 		}

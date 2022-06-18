@@ -28,7 +28,8 @@ private:
 public:
     ClientRenderer(ColaNoBloqueante<ComandoCliente>& cola_comandos,
 					ColaBloqueante<SolicitudCliente>& cola_solicitudes,
-					uint8_t id_jugador);
+					uint8_t id_jugador,
+					std::string&  nombre_mapa);
 
 	void start();
 

@@ -14,6 +14,7 @@ class ClientHiloReciever;
 class ClientHiloSender;
 
 class Client {
+private:
     Socket skt_cliente;
     ProtocoloCliente protocolo;
     uint8_t id_jugador;
@@ -22,8 +23,9 @@ class Client {
     ClientHiloReciever* receiver;
     ClientHiloSender* sender;
     bool partida_empezada = false;
+    std::string nombre_mapa;
 
-    public:
+public:
     /*
      * Constructor de la clase donde se inicializan
      * el socket del cliente y el protocolo que va
@@ -45,6 +47,8 @@ class Client {
     void establecerPartidaEmpezada();
 
     bool estaEnPartida();
+
+    void setNombreMapa(std::string& nombre_mapa);
 
     /*
      * No tiene sentido copiar un cliente y tampoco moverlo (al menos por ahora).

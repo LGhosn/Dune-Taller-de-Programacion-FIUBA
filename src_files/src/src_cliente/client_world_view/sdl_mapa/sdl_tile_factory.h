@@ -30,7 +30,7 @@ class TileFactorySDL {
     void agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Coordenadas& coords);
 
 public:
-    TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa);
+    TileFactorySDL(SDL2pp::Renderer& renderer, std::string& nombre_mapa);
 
     std::vector<TileSDL>& obtenerTiles();
 

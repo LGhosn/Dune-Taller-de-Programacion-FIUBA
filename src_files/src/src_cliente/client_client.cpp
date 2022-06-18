@@ -25,9 +25,13 @@ bool Client::estaEnPartida() {
     return this->partida_empezada;
 }
 
+void Client::setNombreMapa(std::string& nombre_mapa) {
+    this->nombre_mapa = nombre_mapa;
+}
+
 void Client::empezarPartida() {
     receiver->start();
-    ClientRenderer renderer(cola_comandos, cola_solicitudes, id_jugador);
+    ClientRenderer renderer(cola_comandos, cola_solicitudes, id_jugador, nombre_mapa);
     ManejadorEventos manejador(cola_solicitudes, cola_comandos);
     renderer.start();
     std::cerr << "Cliente cerrandose" << std::endl;

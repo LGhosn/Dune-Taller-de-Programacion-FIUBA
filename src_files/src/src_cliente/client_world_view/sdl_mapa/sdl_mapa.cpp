@@ -2,30 +2,30 @@
 #include <functional>
 #include <iostream>
 
-	int MapaSDL::limite_superior() const {
-		return PASO;
-	}
+int MapaSDL::limite_superior() const {
+	return PASO;
+}
 
-	int MapaSDL::limite_inferior() const {
-		return (this->alto * LARGO_TILE) * zoom - LARGO_VENTANA / zoom;
-	}
+int MapaSDL::limite_inferior() const {
+	return (this->alto * LARGO_TILE) * zoom - LARGO_VENTANA / zoom;
+}
 
-	int MapaSDL::limite_izquierdo() const {
-		return PASO;
-	}
+int MapaSDL::limite_izquierdo() const {
+	return PASO;
+}
 
-	int MapaSDL::limite_derecho() const {
-		return (this->ancho * LARGO_TILE) * zoom  - ANCHO_VENTANA / zoom;
-	}
+int MapaSDL::limite_derecho() const {
+	return (this->ancho * LARGO_TILE) * zoom  - ANCHO_VENTANA / zoom;
+}
 
-	void MapaSDL::updateTiles() {
-		for (auto& tile : tiles) {
-			tile.update(this->eje_movil_x, this->eje_movil_y);
-		}
+void MapaSDL::updateTiles() {
+	for (auto& tile : tiles) {
+		tile.update(this->eje_movil_x, this->eje_movil_y);
 	}
+}
 
-MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa) : renderer(renderer),
-tile_factory(renderer, ruta_mapa), tiles(tile_factory.obtenerTiles()), ancho(tile_factory.obtenerAncho()),
+MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string nombre_mapa) : renderer(renderer),
+tile_factory(renderer, nombre_mapa), tiles(tile_factory.obtenerTiles()), ancho(tile_factory.obtenerAncho()),
 alto(tile_factory.obtenerAlto()), moviendose_h(false), moviendose_v(false), direccion_h(IZQUIERDA),
 direccion_v(ARRIBA) {}
 void MapaSDL::moverArriba() {

@@ -21,6 +21,21 @@ uint8_t id_edificio, uint8_t tipo, const Coordenadas& coords, uint8_t casa) cons
     return buffer;
 }
 
+std::vector<uint8_t> SerializadorServer::serializarString(std::string& string){
+    uint16_t largo_nombre = string.length();
+    std::vector<uint8_t> buffer(largo_nombre + 2);
+
+    uint16_t* ptr_16 = (uint16_t*)buffer.data();
+    ptr_16[0] = htons(largo_nombre);
+
+    for (int i = 0; i < largo_nombre; i++) {
+        buffer[i + 2] = string[i];
+    }
+
+    return buffer;
+}
+
+
 SerializadorServer::SerializadorServer(SerializadorServer&& otro) {
     this->codigos = otro.codigos;
 }

@@ -30,7 +30,7 @@ class WorldView {
 	void seleccionarEdificio(EdificioSDL* edificio);
 
 public:
-	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador);
+	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador, std::string& nombre_mapa);
 
 	void moverMapaArriba();
 	void moverMapaIzquierda();

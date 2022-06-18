@@ -44,7 +44,7 @@ public:
     void crearPartida(SolicitudCrearPartidaDTO& partida_a_unirse);
     void enviarStatusDeCreacion(Status &status_de_creacion);
 
-    void empezarPartida(ColaNoBloqueante<SolicitudServer>* cola);
+    void empezarPartida(ColaNoBloqueante<SolicitudServer>* cola, std::string& nombre_mapa);
 
     ColaBloqueante<ComandoServer>* obtenerColaSender();
 

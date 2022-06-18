@@ -29,10 +29,10 @@ void HandlerCliente::enviarStatusDeCreacion(Status &status_de_creacion) {
     protocolo.enviarStatusDeCreacion(status_de_creacion);
 }
 
-void HandlerCliente::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola) {
+void HandlerCliente::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola, std::string& nombre_mapa) {
     this->hilo_reciever->empezarPartida(cola);
     this->hilo_sender->start();
-    protocolo.enviarComienzoDePartida();
+    protocolo.enviarComienzoDePartida(nombre_mapa);
 }
 
 ColaBloqueante<ComandoServer>* HandlerCliente::obtenerColaSender() {

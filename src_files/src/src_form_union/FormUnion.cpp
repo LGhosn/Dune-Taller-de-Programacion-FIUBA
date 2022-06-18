@@ -42,7 +42,10 @@ void FormUnion::solicitudDeUnion() {
 void FormUnion::unirseNotificacion(ProtocoloCliente &protocolo, Status &status) {
     if (status.obtenerCodigoDeConexion() == CONEXION_EXITOSA) {
         std::cout << "Union Existosa, esperando jugadores restantes..." << std::endl;
-        bool partida_comenzada = protocolo.esperarAComienzoDePartida();
+        std::string nombre_mapa;
+        bool partida_comenzada = protocolo.esperarAComienzoDePartida(&nombre_mapa);
+        cliente.setNombreMapa(nombre_mapa);
+        std::cout << "Partida comenzada, nombre del mapa: " << nombre_mapa << std::endl;
         if (partida_comenzada) {
             // Cierro todas las ventanas y abro el juego
             std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
