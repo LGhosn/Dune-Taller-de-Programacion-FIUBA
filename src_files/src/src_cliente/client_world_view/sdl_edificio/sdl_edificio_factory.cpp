@@ -1,5 +1,6 @@
 #include "sdl_edificio_factory.h"
 #include "sdl_centro.h"
+#include "sdl_cuartel.h"
 
 EdificioFactorySDL::EdificioFactorySDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas):
                                     codigos_edificios(YAML::LoadFile(RUTA_CODIGOS_EDIFICIOS)),
@@ -14,6 +15,11 @@ EdificioSDL* EdificioFactorySDL::crearEdificio(uint8_t id_edificio, uint8_t id_j
             return new CentroSDL(id_edificio, id_jugador, renderer,
                                 texturas.obtenerTexEdificio(tipo_edificio),
                                 coords, 3, 3, casa);
+        }
+        case 1: {
+            return new CuartelSDL(id_edificio, id_jugador, renderer,
+                                 texturas.obtenerTexEdificio(tipo_edificio),
+                                 coords, 3, 2, casa);
         }
         default: {
             return new CentroSDL(id_edificio, id_jugador, renderer,

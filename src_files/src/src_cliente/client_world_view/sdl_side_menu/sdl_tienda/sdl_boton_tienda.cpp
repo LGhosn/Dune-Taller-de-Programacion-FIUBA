@@ -2,10 +2,11 @@
 #include "../../../client_solicitudes/client_sol_crear_edificio.h"
 
 BotonTiendaSDL::BotonTiendaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
-                                uint8_t casa, const SDL2pp::Rect destino) :
+                                uint8_t casa, uint8_t id_jugador, const SDL2pp::Rect destino) :
                                 renderer(renderer),
                                 tipo(tipo),
                                 casa(casa),
+                                id_jugador(id_jugador),
                                 logo(texturas.obtenerLogoEdificio(tipo, casa)),
                                 texto_listo(texturas.obtenerTextoTiendaListo()),
                                 origen(0,
@@ -63,9 +64,8 @@ SolicitudCliente* BotonTiendaSDL::clickEnMapa(Coordenadas& coords) {
     if (listo && seleccionado){
         seleccionado = false;
         // listo = false;
-        return new SolicitudCrearEdificio(0, coords, 0);    // TODO: desharcodear
+        return new SolicitudCrearEdificio(id_jugador, coords, tipo);    // TODO: desharcodear
     }
-        
     return nullptr;
 }
 

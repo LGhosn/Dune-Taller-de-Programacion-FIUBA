@@ -16,7 +16,8 @@ class SideMenuSDL {
     SDL2pp::Rect side_menu_rect;
 
 public:
-    SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas);
+    SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
+                uint8_t id_jugador);
 
     SolicitudCliente* click_en_menu(int pos_x, int pos_y);
     SolicitudCliente* clickEnMapa(Coordenadas& coords);

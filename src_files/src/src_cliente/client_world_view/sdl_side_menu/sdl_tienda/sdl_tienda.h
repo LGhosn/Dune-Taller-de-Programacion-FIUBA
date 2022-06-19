@@ -28,7 +28,8 @@ class TiendaSDL {
     std::list<BotonTiendaSDL> botones_unidades;
 
 public:
-    TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas);
+    TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
+                uint8_t id_jugador);
 
     bool contiene(int pos_x, int pos_y) const;
 

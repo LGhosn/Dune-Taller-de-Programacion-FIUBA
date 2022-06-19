@@ -32,7 +32,7 @@ WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t
 					cola_solicitudes(cola_solicitudes),
 					zoom(ZOOM_INICIAL),
 					mapa(renderer, RUTA_MAPA_1, texturas),
-					side_menu(renderer, 0, texturas),			// FIXME: hardcoded
+					side_menu(renderer, 0, texturas, id_jugador),			// FIXME: hardcoded
 					edificio_factory(renderer, texturas),
 					id_jugador(id_jugador) {
 	renderer.SetDrawBlendMode(SDL_BLENDMODE_BLEND);
@@ -101,7 +101,7 @@ void WorldView::click_en_mapa(int pos_x, int pos_y) {
 		}
 	} else {
 		SolicitudCliente* solicitud = side_menu.click_en_menu(pos_x, pos_y);
-		if (solicitud){
+		if (solicitud) {
 			cola_solicitudes.push(solicitud);
 			deseleccionarEdificios();
 		}
