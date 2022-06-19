@@ -1,0 +1,4 @@
+/home/sruizs/Escritorio/DuneMapEditor/build/CMakeFiles/rebuild_cache.dir
+/home/sruizs/Escritorio/DuneMapEditor/build/CMakeFiles/edit_cache.dir
+/home/sruizs/Escritorio/DuneMapEditor/build/CMakeFiles/editor.dir
+/home/sruizs/Escritorio/DuneMapEditor/build/CMakeFiles/editor_autogen.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++   -Werror -Wall -pedantic -std=c++17  -rdynamic CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.o CMakeFiles/editor.dir/DuneMapEditor.cpp.o CMakeFiles/editor.dir/main_editor.cpp.o  -o editor  /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8 
