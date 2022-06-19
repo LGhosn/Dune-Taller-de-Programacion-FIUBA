@@ -18,7 +18,25 @@
 #define RUTA_LOGO_HARKONNEN RESOURCE_PATH "/HarkonnenIcon.png"
 #define RUTA_LOGO_ORDOS RESOURCE_PATH "/OrdosIcon.png"
 
+#define RUTA_LOGO_CENTRO RESOURCE_PATH "/logos/edificios/centro_de_construccion_logo.gif"
+#define RUTA_LOGO_CUARTEL_ATREIDES RESOURCE_PATH "/logos/edificios/cuartel_atreides_logo.jpg"
+#define RUTA_LOGO_CUARTEL_HARKONNEN RESOURCE_PATH "/logos/edificios/cuartel_harkonnen_logo.jpg"
+#define RUTA_LOGO_CUARTEL_ORDOS RESOURCE_PATH "/logos/edificios/cuartel_ordos_logo.jpg"
+#define RUTA_LOGO_FABRICA_LIGERA RESOURCE_PATH "/logos/edificios/fabrica_ligera_logo.gif"
+#define RUTA_LOGO_FABRICA_PESADA RESOURCE_PATH "/logos/edificios/fabrica_pesada_logo.gif"
+#define RUTA_LOGO_PALACIO_ATREIDES RESOURCE_PATH "/logos/edificios/palacio_atreides_logo.jpg"
+#define RUTA_LOGO_PALACIO_HARKONNEN RESOURCE_PATH "/logos/edificios/palacio_harkonnen_logo.jpg"
+#define RUTA_LOGO_PALACIO_ORDOS RESOURCE_PATH "/logos/edificios/palacio_ordos_logo.jpg"
+#define RUTA_LOGO_REFINERIA RESOURCE_PATH "/logos/edificios/refineria_logo.gif"
+#define RUTA_LOGO_SILO RESOURCE_PATH "/logos/edificios/silo_logo.gif"
+#define RUTA_LOGO_TRAMPA_DE_AIRE RESOURCE_PATH "/logos/edificios/trampa_de_aire_logo.gif"
+
+#define RUTA_FONT_DUNE_2K RESOURCE_PATH "/fonts/Dune2k.ttf"
+
+#define TEXTO_LISTO "LISTO"
+
 class TexturasSDL {
+    SDL2pp::SDLTTF sdl_ttf;
     SDL2pp::Renderer& renderer;
     
     SDL2pp::Texture tiles_base;
@@ -36,12 +54,31 @@ class TexturasSDL {
     SDL2pp::Texture logo_harkonnen;
     SDL2pp::Texture logo_ordos;
 
+    SDL2pp::Texture logo_centro;
+    SDL2pp::Texture logo_cuartel_atreides;
+    SDL2pp::Texture logo_cuartel_harkonnen;
+    SDL2pp::Texture logo_cuartel_ordos;
+    SDL2pp::Texture logo_fabrica_ligera;
+    SDL2pp::Texture logo_fabrica_pesada;
+    SDL2pp::Texture logo_palacio_atreides;
+    SDL2pp::Texture logo_palacio_harkonnen;
+    SDL2pp::Texture logo_palacio_ordos;
+    SDL2pp::Texture logo_refineria;
+    SDL2pp::Texture logo_silo;
+    SDL2pp::Texture logo_trampa_de_aire;
+
+    std::string texto_listo;
+    SDL2pp::Font font_tienda;
+    SDL2pp::Texture texto_tienda;
+
 public:
     TexturasSDL(SDL2pp::Renderer& renderer);
 
     SDL2pp::Texture& obtenerTilesBase();
     SDL2pp::Texture& obtenerTexEdificio(uint8_t tipo);
     SDL2pp::Texture& obtenerLogoCasa(uint8_t casa);
+    SDL2pp::Texture& obtenerLogoEdificio(uint8_t tipo, uint8_t casa);
+    SDL2pp::Texture& obtenerTextoTiendaListo();
 };
 
 #endif // SDL_TEXTURAS_H

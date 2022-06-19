@@ -11,6 +11,10 @@
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
 
+#define ANCHO_MENU 300
+#define ANCHO_VISTA_MAPA 924
+#define LARGO_VISTA_MAPA 768
+
 class SDLEvento {
 public:
     SDLEvento() = default;
