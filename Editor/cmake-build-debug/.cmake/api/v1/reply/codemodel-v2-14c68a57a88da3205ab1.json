@@ -40,16 +40,16 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "editor::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-editor-Debug-0fa4f260e38afe8f1b5f.json",
-					"name" : "editor",
+					"id" : "DuneEditor::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DuneEditor-Debug-ab8a12a837b73ee3b7dc.json",
+					"name" : "DuneEditor",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "editor_autogen::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-editor_autogen-Debug-7b000ba26495c53e3c9f.json",
-					"name" : "editor_autogen",
+					"id" : "DuneEditor_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DuneEditor_autogen-Debug-6cb3ea28e73e62dded44.json",
+					"name" : "DuneEditor_autogen",
 					"projectIndex" : 0
 				}
 			]
@@ -58,8 +58,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/sruizs/Escritorio/DuneMapEditor/cmake-build-debug",
-		"source" : "/home/sruizs/Escritorio/DuneMapEditor"
+		"build" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/cmake-build-debug",
+		"source" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor"
 	},
 	"version" : 
 	{

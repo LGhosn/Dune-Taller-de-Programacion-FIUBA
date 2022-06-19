@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sruizs/Escritorio/DuneMapEditor
+CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sruizs/Escritorio/DuneMapEditor/build
+CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sruizs/Escritorio/DuneMapEditor/build/CMakeFiles /home/sruizs/Escritorio/DuneMapEditor/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build/CMakeFiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sruizs/Escritorio/DuneMapEditor/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -111,30 +111,57 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named editor
+# Target rules for targets named DuneEditor
 
 # Build rule for target.
-editor: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 editor
-.PHONY : editor
+DuneEditor: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DuneEditor
+.PHONY : DuneEditor
 
 # fast build rule for target.
-editor/fast:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/build
-.PHONY : editor/fast
+DuneEditor/fast:
+	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/build
+.PHONY : DuneEditor/fast
 
 #=============================================================================
-# Target rules for targets named editor_autogen
+# Target rules for targets named DuneEditor_autogen
 
 # Build rule for target.
-editor_autogen: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 editor_autogen
-.PHONY : editor_autogen
+DuneEditor_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DuneEditor_autogen
+.PHONY : DuneEditor_autogen
 
 # fast build rule for target.
-editor_autogen/fast:
-	$(MAKE) -f CMakeFiles/editor_autogen.dir/build.make CMakeFiles/editor_autogen.dir/build
-.PHONY : editor_autogen/fast
+DuneEditor_autogen/fast:
+	$(MAKE) -f CMakeFiles/DuneEditor_autogen.dir/build.make CMakeFiles/DuneEditor_autogen.dir/build
+.PHONY : DuneEditor_autogen/fast
+
+DuneEditor_autogen/mocs_compilation.o: DuneEditor_autogen/mocs_compilation.cpp.o
+
+.PHONY : DuneEditor_autogen/mocs_compilation.o
+
+# target to build an object file
+DuneEditor_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneEditor_autogen/mocs_compilation.cpp.o
+.PHONY : DuneEditor_autogen/mocs_compilation.cpp.o
+
+DuneEditor_autogen/mocs_compilation.i: DuneEditor_autogen/mocs_compilation.cpp.i
+
+.PHONY : DuneEditor_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+DuneEditor_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneEditor_autogen/mocs_compilation.cpp.i
+.PHONY : DuneEditor_autogen/mocs_compilation.cpp.i
+
+DuneEditor_autogen/mocs_compilation.s: DuneEditor_autogen/mocs_compilation.cpp.s
+
+.PHONY : DuneEditor_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+DuneEditor_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneEditor_autogen/mocs_compilation.cpp.s
+.PHONY : DuneEditor_autogen/mocs_compilation.cpp.s
 
 DuneMapEditor.o: DuneMapEditor.cpp.o
 
@@ -142,7 +169,7 @@ DuneMapEditor.o: DuneMapEditor.cpp.o
 
 # target to build an object file
 DuneMapEditor.cpp.o:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/DuneMapEditor.cpp.o
+	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneMapEditor.cpp.o
 .PHONY : DuneMapEditor.cpp.o
 
 DuneMapEditor.i: DuneMapEditor.cpp.i
@@ -151,7 +178,7 @@ DuneMapEditor.i: DuneMapEditor.cpp.i
 
 # target to preprocess a source file
 DuneMapEditor.cpp.i:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/DuneMapEditor.cpp.i
+	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneMapEditor.cpp.i
 .PHONY : DuneMapEditor.cpp.i
 
 DuneMapEditor.s: DuneMapEditor.cpp.s
@@ -160,35 +187,8 @@ DuneMapEditor.s: DuneMapEditor.cpp.s
 
 # target to generate assembly for a file
 DuneMapEditor.cpp.s:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/DuneMapEditor.cpp.s
+	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneMapEditor.cpp.s
 .PHONY : DuneMapEditor.cpp.s
-
-editor_autogen/mocs_compilation.o: editor_autogen/mocs_compilation.cpp.o
-
-.PHONY : editor_autogen/mocs_compilation.o
-
-# target to build an object file
-editor_autogen/mocs_compilation.cpp.o:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.o
-.PHONY : editor_autogen/mocs_compilation.cpp.o
-
-editor_autogen/mocs_compilation.i: editor_autogen/mocs_compilation.cpp.i
-
-.PHONY : editor_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-editor_autogen/mocs_compilation.cpp.i:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.i
-.PHONY : editor_autogen/mocs_compilation.cpp.i
-
-editor_autogen/mocs_compilation.s: editor_autogen/mocs_compilation.cpp.s
-
-.PHONY : editor_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-editor_autogen/mocs_compilation.cpp.s:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.s
-.PHONY : editor_autogen/mocs_compilation.cpp.s
 
 main_editor.o: main_editor.cpp.o
 
@@ -196,7 +196,7 @@ main_editor.o: main_editor.cpp.o
 
 # target to build an object file
 main_editor.cpp.o:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/main_editor.cpp.o
+	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/main_editor.cpp.o
 .PHONY : main_editor.cpp.o
 
 main_editor.i: main_editor.cpp.i
@@ -205,7 +205,7 @@ main_editor.i: main_editor.cpp.i
 
 # target to preprocess a source file
 main_editor.cpp.i:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/main_editor.cpp.i
+	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/main_editor.cpp.i
 .PHONY : main_editor.cpp.i
 
 main_editor.s: main_editor.cpp.s
@@ -214,7 +214,7 @@ main_editor.s: main_editor.cpp.s
 
 # target to generate assembly for a file
 main_editor.cpp.s:
-	$(MAKE) -f CMakeFiles/editor.dir/build.make CMakeFiles/editor.dir/main_editor.cpp.s
+	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/main_editor.cpp.s
 .PHONY : main_editor.cpp.s
 
 # Help Target
@@ -225,14 +225,14 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... editor"
-	@echo "... editor_autogen"
+	@echo "... DuneEditor"
+	@echo "... DuneEditor_autogen"
+	@echo "... DuneEditor_autogen/mocs_compilation.o"
+	@echo "... DuneEditor_autogen/mocs_compilation.i"
+	@echo "... DuneEditor_autogen/mocs_compilation.s"
 	@echo "... DuneMapEditor.o"
 	@echo "... DuneMapEditor.i"
 	@echo "... DuneMapEditor.s"
-	@echo "... editor_autogen/mocs_compilation.o"
-	@echo "... editor_autogen/mocs_compilation.i"
-	@echo "... editor_autogen/mocs_compilation.s"
 	@echo "... main_editor.o"
 	@echo "... main_editor.i"
 	@echo "... main_editor.s"

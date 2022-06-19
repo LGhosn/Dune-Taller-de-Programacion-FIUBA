@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sruizs/Escritorio/DuneMapEditor
+CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sruizs/Escritorio/DuneMapEditor/build
+CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build"
 
 # Utility rule file for editor_autogen.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/sruizs/Escritorio/DuneMapEditor/build
 include CMakeFiles/editor_autogen.dir/progress.make
 
 CMakeFiles/editor_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/sruizs/Escritorio/DuneMapEditor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target editor"
-	/usr/bin/cmake -E cmake_autogen /home/sruizs/Escritorio/DuneMapEditor/build/CMakeFiles/editor_autogen.dir/AutogenInfo.json ""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target editor"
+	/usr/bin/cmake -E cmake_autogen "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build/CMakeFiles/editor_autogen.dir/AutogenInfo.json" ""
 
 editor_autogen: CMakeFiles/editor_autogen
 editor_autogen: CMakeFiles/editor_autogen.dir/build.make
@@ -72,6 +72,6 @@ CMakeFiles/editor_autogen.dir/clean:
 .PHONY : CMakeFiles/editor_autogen.dir/clean
 
 CMakeFiles/editor_autogen.dir/depend:
-	cd /home/sruizs/Escritorio/DuneMapEditor/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sruizs/Escritorio/DuneMapEditor /home/sruizs/Escritorio/DuneMapEditor /home/sruizs/Escritorio/DuneMapEditor/build /home/sruizs/Escritorio/DuneMapEditor/build /home/sruizs/Escritorio/DuneMapEditor/build/CMakeFiles/editor_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build/CMakeFiles/editor_autogen.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/editor_autogen.dir/depend
 

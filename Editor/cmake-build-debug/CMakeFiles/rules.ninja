@@ -14,7 +14,7 @@
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__editor_Debug
+rule CXX_COMPILER__DuneEditor_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = /usr/bin/c++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,7 +24,7 @@ rule CXX_COMPILER__editor_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__editor_Debug
+rule CXX_EXECUTABLE_LINKER__DuneEditor_Debug
   command = $PRE_LINK && /usr/bin/c++ $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /snap/clion/193/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/sruizs/Escritorio/DuneMapEditor -B/home/sruizs/Escritorio/DuneMapEditor/cmake-build-debug
+  command = /snap/clion/193/bin/cmake/linux/bin/cmake --regenerate-during-build -S"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor" -B"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/cmake-build-debug"
   description = Re-running CMake...
   generator = 1
 

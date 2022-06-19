@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "editor"
+			"path" : "DuneEditor"
 		}
 	],
 	"backtrace" : 1,
@@ -75,11 +75,11 @@
 			[
 				{
 					"backtrace" : 0,
-					"path" : "/home/sruizs/Escritorio/DuneMapEditor/cmake-build-debug/editor_autogen/include"
+					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/cmake-build-debug/DuneEditor_autogen/include"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/sruizs/Escritorio/DuneMapEditor/cmake-build-debug"
+					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/cmake-build-debug"
 				},
 				{
 					"backtrace" : 2,
@@ -120,10 +120,10 @@
 	[
 		{
 			"backtrace" : 0,
-			"id" : "editor_autogen::@6890427a1f51a3e7e1df"
+			"id" : "DuneEditor_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "editor::@6890427a1f51a3e7e1df",
+	"id" : "DuneEditor::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -153,8 +153,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "editor",
-	"nameOnDisk" : "editor",
+	"name" : "DuneEditor",
+	"nameOnDisk" : "DuneEditor",
 	"paths" : 
 	{
 		"build" : ".",
@@ -187,7 +187,7 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/editor_autogen/mocs_compilation.cpp",
+			"path" : "cmake-build-debug/DuneEditor_autogen/mocs_compilation.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

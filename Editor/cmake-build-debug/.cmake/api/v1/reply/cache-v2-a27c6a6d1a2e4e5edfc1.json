@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/sruizs/Escritorio/DuneMapEditor/cmake-build-debug"
+			"value" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -591,7 +591,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/sruizs/Escritorio/DuneMapEditor"
+			"value" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1123,7 +1123,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/sruizs/Escritorio/DuneMapEditor/cmake-build-debug"
+			"value" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/cmake-build-debug"
 		},
 		{
 			"name" : "DuneMapEditor_IS_TOP_LEVEL",
@@ -1147,7 +1147,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/sruizs/Escritorio/DuneMapEditor"
+			"value" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor"
 		},
 		{
 			"name" : "Qt5Core_DIR",

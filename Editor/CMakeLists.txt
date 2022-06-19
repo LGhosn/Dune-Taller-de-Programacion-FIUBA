@@ -18,9 +18,9 @@ message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
 include_directories(${PROJECT_BINARY_DIR})
 message("Headers generados: ${UIS_HEADERS}")
 
-add_executable(editor
+add_executable(DuneEditor
         DuneMapEditor.cpp
         main_editor.cpp
         ${UIS_HEADERS})
 
-target_link_libraries(editor Qt5::Widgets Qt5::Core)
+target_link_libraries(DuneEditor Qt5::Widgets Qt5::Core)

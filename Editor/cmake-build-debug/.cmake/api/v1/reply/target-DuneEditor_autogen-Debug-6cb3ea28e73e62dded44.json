@@ -14,9 +14,9 @@
 			}
 		]
 	},
-	"id" : "editor_autogen::@6890427a1f51a3e7e1df",
+	"id" : "DuneEditor_autogen::@6890427a1f51a3e7e1df",
 	"isGeneratorProvided" : true,
-	"name" : "editor_autogen",
+	"name" : "DuneEditor_autogen",
 	"paths" : 
 	{
 		"build" : ".",
@@ -44,13 +44,13 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/editor_autogen",
+			"path" : "cmake-build-debug/CMakeFiles/DuneEditor_autogen",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/editor_autogen.rule",
+			"path" : "cmake-build-debug/CMakeFiles/DuneEditor_autogen.rule",
 			"sourceGroupIndex" : 1
 		}
 	],
