@@ -1,11 +1,15 @@
 #ifndef DUNE_EDITOR_H
 #define DUNE_EDITOR_H
 
+#include <vector>
 #include <cstdlib>
 #include <QMessageBox>
 #include <QMainWindow>
 #include <QScreen>
 #include "DuneMapEditor_ui.h"
+
+#define INITIAL_ROW_SIZE 250
+#define INITIAL_COLUMN_SIZE 250
 
 class DuneMapEditor: public QMainWindow {
 private:
@@ -13,9 +17,10 @@ private:
     std::string edition_mode = "-";
     std::string terrain_type = "-";
     std::string terrain_texture = "-";
-    uint8_t required_players = 0;
-    uint32_t map_rows = 250;
-    uint32_t map_columns = 250;
+    int required_players = 0;
+    int grid_map_rows = INITIAL_ROW_SIZE;
+    int grid_map_columns = INITIAL_COLUMN_SIZE;
+    std::vector<std::vector<char>> grid_map;
 
     /* *****************************************************************
      *             METODOS REFERIDOS A REINICIAR CAMPOS
@@ -83,5 +88,6 @@ private:
 
 public:
     explicit DuneMapEditor(QWidget *parent = nullptr);
+    void showGridMap();
 };
 #endif

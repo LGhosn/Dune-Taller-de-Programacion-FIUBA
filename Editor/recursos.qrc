@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="ArenaTextura">
+    <file>resources/Arena.png</file>
+  </qresource>
+</RCC>

@@ -85,6 +85,10 @@
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(114, 159, 207);
+</string>
+    </property>
     <property name="insertPolicy">
      <enum>QComboBox::NoInsert</enum>
     </property>
@@ -131,6 +135,9 @@
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(114, 159, 207);</string>
     </property>
     <item>
      <property name="text">
@@ -183,6 +190,9 @@
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(114, 159, 207);</string>
+    </property>
     <property name="minimum">
      <number>250</number>
     </property>
@@ -201,6 +211,9 @@
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(114, 159, 207);</string>
     </property>
     <property name="minimum">
      <number>250</number>
@@ -221,6 +234,9 @@
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(193, 125, 17);</string>
+    </property>
     <property name="text">
      <string>Previsualizar</string>
     </property>
@@ -237,6 +253,9 @@
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(193, 125, 17);</string>
+    </property>
     <property name="text">
      <string>Guardar</string>
     </property>
@@ -252,6 +271,9 @@
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(193, 125, 17);</string>
     </property>
     <property name="text">
      <string>Reestablecer</string>
@@ -278,6 +300,9 @@
       <width>251</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(114, 159, 207);</string>
     </property>
     <item>
      <property name="text">
@@ -331,6 +356,9 @@
       <width>251</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(114, 159, 207);</string>
     </property>
     <item>
      <property name="text">
@@ -434,7 +462,7 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="xLabel">
     <property name="geometry">
      <rect>
       <x>1160</x>

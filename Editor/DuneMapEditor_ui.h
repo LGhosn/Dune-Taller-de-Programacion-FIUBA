@@ -50,7 +50,7 @@ public:
     QFrame *DividingLine_4;
     QFrame *DividingLine_5;
     QFrame *DividingLine_6;
-    QLabel *label;
+    QLabel *xLabel;
 
     void setupUi(QMainWindow *DuneMapEditor)
     {
@@ -84,6 +84,8 @@ public:
         EditionModeComboBox->setObjectName(QString::fromUtf8("EditionModeComboBox"));
         EditionModeComboBox->setGeometry(QRect(1020, 40, 251, 25));
         EditionModeComboBox->setCursor(QCursor(Qt::PointingHandCursor));
+        EditionModeComboBox->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207);\n"
+""));
         EditionModeComboBox->setInsertPolicy(QComboBox::NoInsert);
         EditionModeComboBox->setMinimumContentsLength(2);
         RequiredPlayersLabel = new QLabel(centralwidget);
@@ -98,6 +100,7 @@ public:
         RequiredPlayersComboBox->setObjectName(QString::fromUtf8("RequiredPlayersComboBox"));
         RequiredPlayersComboBox->setGeometry(QRect(1190, 90, 51, 25));
         RequiredPlayersComboBox->setCursor(QCursor(Qt::PointingHandCursor));
+        RequiredPlayersComboBox->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207);"));
         DimentiosLabel = new QLabel(centralwidget);
         DimentiosLabel->setObjectName(QString::fromUtf8("DimentiosLabel"));
         DimentiosLabel->setGeometry(QRect(1020, 140, 241, 21));
@@ -105,26 +108,31 @@ public:
         RowsSpinBox->setObjectName(QString::fromUtf8("RowsSpinBox"));
         RowsSpinBox->setGeometry(QRect(1080, 160, 71, 26));
         RowsSpinBox->setCursor(QCursor(Qt::PointingHandCursor));
+        RowsSpinBox->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207);"));
         RowsSpinBox->setMinimum(250);
         RowsSpinBox->setMaximum(1000);
         ColumnsSpinBox = new QSpinBox(centralwidget);
         ColumnsSpinBox->setObjectName(QString::fromUtf8("ColumnsSpinBox"));
         ColumnsSpinBox->setGeometry(QRect(1180, 160, 71, 26));
         ColumnsSpinBox->setCursor(QCursor(Qt::PointingHandCursor));
+        ColumnsSpinBox->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207);"));
         ColumnsSpinBox->setMinimum(250);
         ColumnsSpinBox->setMaximum(1000);
         PreviewButton = new QPushButton(centralwidget);
         PreviewButton->setObjectName(QString::fromUtf8("PreviewButton"));
         PreviewButton->setGeometry(QRect(1070, 640, 141, 25));
         PreviewButton->setCursor(QCursor(Qt::PointingHandCursor));
+        PreviewButton->setStyleSheet(QString::fromUtf8("background-color: rgb(193, 125, 17);"));
         SaveButton = new QPushButton(centralwidget);
         SaveButton->setObjectName(QString::fromUtf8("SaveButton"));
         SaveButton->setGeometry(QRect(1070, 680, 141, 25));
         SaveButton->setCursor(QCursor(Qt::PointingHandCursor));
+        SaveButton->setStyleSheet(QString::fromUtf8("background-color: rgb(193, 125, 17);"));
         ResetButton = new QPushButton(centralwidget);
         ResetButton->setObjectName(QString::fromUtf8("ResetButton"));
         ResetButton->setGeometry(QRect(1070, 600, 141, 25));
         ResetButton->setCursor(QCursor(Qt::PointingHandCursor));
+        ResetButton->setStyleSheet(QString::fromUtf8("background-color: rgb(193, 125, 17);"));
         TerrainTypeLabel = new QLabel(centralwidget);
         TerrainTypeLabel->setObjectName(QString::fromUtf8("TerrainTypeLabel"));
         TerrainTypeLabel->setGeometry(QRect(1020, 210, 121, 21));
@@ -137,6 +145,7 @@ public:
         TerrainTypeComboBox->addItem(QString());
         TerrainTypeComboBox->setObjectName(QString::fromUtf8("TerrainTypeComboBox"));
         TerrainTypeComboBox->setGeometry(QRect(1020, 230, 251, 25));
+        TerrainTypeComboBox->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207);"));
         TerrainTextureLabel = new QLabel(centralwidget);
         TerrainTextureLabel->setObjectName(QString::fromUtf8("TerrainTextureLabel"));
         TerrainTextureLabel->setGeometry(QRect(1020, 280, 131, 21));
@@ -144,6 +153,7 @@ public:
         TerrainTextureComboBox->addItem(QString());
         TerrainTextureComboBox->setObjectName(QString::fromUtf8("TerrainTextureComboBox"));
         TerrainTextureComboBox->setGeometry(QRect(1020, 300, 251, 25));
+        TerrainTextureComboBox->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207);"));
         DividingLine = new QFrame(centralwidget);
         DividingLine->setObjectName(QString::fromUtf8("DividingLine"));
         DividingLine->setGeometry(QRect(1010, 70, 261, 16));
@@ -180,9 +190,9 @@ public:
         DividingLine_6->setStyleSheet(QString::fromUtf8("background-color: rgb(136, 138, 133);"));
         DividingLine_6->setFrameShape(QFrame::HLine);
         DividingLine_6->setFrameShadow(QFrame::Sunken);
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(1160, 170, 16, 17));
+        xLabel = new QLabel(centralwidget);
+        xLabel->setObjectName(QString::fromUtf8("xLabel"));
+        xLabel->setGeometry(QRect(1160, 170, 16, 17));
         DuneMapEditor->setCentralWidget(centralwidget);
 
         retranslateUi(DuneMapEditor);
@@ -220,7 +230,7 @@ public:
         TerrainTextureLabel->setText(QApplication::translate("DuneMapEditor", "Textura de terreno:", nullptr));
         TerrainTextureComboBox->setItemText(0, QApplication::translate("DuneMapEditor", "-", nullptr));
 
-        label->setText(QApplication::translate("DuneMapEditor", "x", nullptr));
+        xLabel->setText(QApplication::translate("DuneMapEditor", "x", nullptr));
     } // retranslateUi
 
 };

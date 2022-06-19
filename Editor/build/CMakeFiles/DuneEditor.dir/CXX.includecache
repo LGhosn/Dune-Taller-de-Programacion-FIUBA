@@ -7,10 +7,14 @@
 #IncludeRegexTransform: 
 
 /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.cpp
+iostream
+-
 DuneMapEditor.h
 /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.h
 
 /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.h
+vector
+-
 cstdlib
 -
 QMessageBox
@@ -45,12 +49,6 @@ QtWidgets/QSpinBox
 -
 QtWidgets/QWidget
 -
-
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/main_editor.cpp
-QApplication
--
-DuneMapEditor.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QList
 qlist.h
