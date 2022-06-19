@@ -34,6 +34,7 @@ void CuartelSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long f
     destino.SetY((coords.y * LARGO_TILE + PADDING_CUARTEL_Y) * zoom - origen_movil_y);
     destino.SetW(LARGO_TILE * ancho * zoom);
     destino.SetH((LARGO_TILE * alto - 2 * PADDING_CUARTEL_Y) * zoom);
+    setearPosicionUI(origen_movil_x, origen_movil_y);
 }
 
 void CuartelSDL::render() {

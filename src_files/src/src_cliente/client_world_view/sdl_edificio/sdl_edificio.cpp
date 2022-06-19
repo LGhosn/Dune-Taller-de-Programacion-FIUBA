@@ -1,40 +1,47 @@
 #include "sdl_edificio.h"
 
+void EdificioSDL::setearPosicionUI(uint32_t origen_movil_x, uint32_t origen_movil_y) {
+    destino_ui.SetX(coords.x * LARGO_TILE * zoom - origen_movil_x);
+    destino_ui.SetY(coords.y * LARGO_TILE * zoom - origen_movil_y);
+    destino_ui.SetW(LARGO_TILE * ancho * zoom);
+    destino_ui.SetH(LARGO_TILE * alto * zoom);
+}
+
 void EdificioSDL::renderRectanguloSeleccion() {
     renderer.SetDrawColor(255, 255, 255);
-        int largo_lineas_seleccionado = destino.GetW() * RATIO_LINEAS_LARGO;
+        int largo_lineas_seleccionado = destino_ui.GetW() * RATIO_LINEAS_LARGO;
 
         renderer.DrawLine(
-            destino.GetX(), destino.GetY(),
-            destino.GetX() + largo_lineas_seleccionado, destino.GetY()
+            destino_ui.GetX(), destino_ui.GetY(),
+            destino_ui.GetX() + largo_lineas_seleccionado, destino_ui.GetY()
         );
         renderer.DrawLine(
-            destino.GetX(), destino.GetY(),
-            destino.GetX(), destino.GetY() + largo_lineas_seleccionado
+            destino_ui.GetX(), destino_ui.GetY(),
+            destino_ui.GetX(), destino_ui.GetY() + largo_lineas_seleccionado
         );
         renderer.DrawLine(
-            destino.GetX() + destino.GetW(), destino.GetY(),
-            destino.GetX() + destino.GetW() - largo_lineas_seleccionado, destino.GetY()
+            destino_ui.GetX() + destino_ui.GetW(), destino_ui.GetY(),
+            destino_ui.GetX() + destino_ui.GetW() - largo_lineas_seleccionado, destino_ui.GetY()
         );
         renderer.DrawLine(
-            destino.GetX() + destino.GetW(), destino.GetY(),
-            destino.GetX() + destino.GetW(), destino.GetY() + largo_lineas_seleccionado
+            destino_ui.GetX() + destino_ui.GetW(), destino_ui.GetY(),
+            destino_ui.GetX() + destino_ui.GetW(), destino_ui.GetY() + largo_lineas_seleccionado
         );
         renderer.DrawLine(
-            destino.GetX(), destino.GetY() + destino.GetH(),
-            destino.GetX(), destino.GetY() + destino.GetH() - largo_lineas_seleccionado
+            destino_ui.GetX(), destino_ui.GetY() + destino_ui.GetH(),
+            destino_ui.GetX(), destino_ui.GetY() + destino_ui.GetH() - largo_lineas_seleccionado
         );
         renderer.DrawLine(
-            destino.GetX(), destino.GetY() + destino.GetH(),
-            destino.GetX() + largo_lineas_seleccionado, destino.GetY() + destino.GetH()
+            destino_ui.GetX(), destino_ui.GetY() + destino_ui.GetH(),
+            destino_ui.GetX() + largo_lineas_seleccionado, destino_ui.GetY() + destino_ui.GetH()
         );
         renderer.DrawLine(
-            destino.GetX() + destino.GetW(), destino.GetY() + destino.GetH(),
-            destino.GetX() + destino.GetW(), destino.GetY() + destino.GetH() - largo_lineas_seleccionado
+            destino_ui.GetX() + destino_ui.GetW(), destino_ui.GetY() + destino_ui.GetH(),
+            destino_ui.GetX() + destino_ui.GetW(), destino_ui.GetY() + destino_ui.GetH() - largo_lineas_seleccionado
         );
         renderer.DrawLine(
-            destino.GetX() + destino.GetW(), destino.GetY() + destino.GetH(),
-            destino.GetX() + destino.GetW() - largo_lineas_seleccionado, destino.GetY() + destino.GetH()
+            destino_ui.GetX() + destino_ui.GetW(), destino_ui.GetY() + destino_ui.GetH(),
+            destino_ui.GetX() + destino_ui.GetW() - largo_lineas_seleccionado, destino_ui.GetY() + destino_ui.GetH()
         );
 }
 

@@ -22,6 +22,7 @@ protected:
     SDL2pp::Texture& textura;
     SDL2pp::Rect origen;
     SDL2pp::Rect destino;
+    SDL2pp::Rect destino_ui;
     Coordenadas coords;
     uint16_t alto, ancho;
     int pos_en_tex_x, pos_en_tex_y;
@@ -29,8 +30,9 @@ protected:
     bool seleccionado = false;
     float zoom;
 
-private:
+    void setearPosicionUI(uint32_t origen_movil_x, uint32_t origen_movil_y);
 
+private:
     void renderRectanguloSeleccion();
     void renderHP();
 

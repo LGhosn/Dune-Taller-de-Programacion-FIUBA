@@ -62,6 +62,7 @@ void CentroSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long fr
     this->zoom = zoom;
     destino.SetX(coords.x * LARGO_TILE * zoom - origen_movil_x);
     destino.SetY((coords.y * LARGO_TILE + PADDING_EDIFICIO_Y) * zoom - origen_movil_y);
+    setearPosicionUI(origen_movil_x, origen_movil_y);
     actualizarFrameBrazo(frame_actual);
     setearPosicionBrazo();
     destino.SetW(LARGO_TILE * ancho * zoom);
