@@ -31,7 +31,6 @@ public:
 
 	void push(T* elem) {
 		std::unique_lock<std::mutex> lock(this->mutex);
-		std::cout << "Push" << std::endl;
 		this->cola.emplace(elem);
 	}
 

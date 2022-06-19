@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 
+#include "yaml-cpp/yaml.h"
 #include "server_mapa.h"
 
 #define DISTANCIA_EDIFICIOS 5
@@ -87,8 +89,21 @@ bool Mapa::terrenoFirme(const Coordenadas& coords) {
  *                        PUBLICAS
  * *****************************************************************/
 
-Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto),
-mapa(std::vector< std::vector<char> > (alto, std::vector<char>(ancho, 'R'))), camino(this->mapa) {}
+Mapa::Mapa(const std::string& nombre_mapa) : camino(this->mapa) {
+    std::stringstream ruta_mapa;
+    ruta_mapa << RESOURCE_PATH << "/maps/" << nombre_mapa << ".yaml";
+    YAML::Node mapa_config = YAML::LoadFile(ruta_mapa.str());
+
+    this->ancho = mapa_config["Ancho"].as<int>();
+    this->alto = mapa_config["Alto"].as<int>();
+    this->mapa = std::vector<std::vector<char>>(this->alto, std::vector<char>(this->ancho));
+    for (int i = 0; i < alto; i++) {
+		for (int j = 0; j < ancho; j++){
+            this->mapa[i][j] = mapa_config["TiposTerrenos"][i][j].as<char>();
+        }
+    }
+    this->camino = this->mapa;
+}
 
 bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
@@ -146,7 +161,7 @@ Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), mapa(otro.mapa), c
     otro.mapa = std::vector< std::vector<char> > (otro.alto);
 }
 
-Mapa& Mapa::operator=(Mapa&& mapa){
+Mapa& Mapa::operator=(Mapa&& mapa) {
     // Caso de querer moverse asi mismo.
     if (this == &mapa){
         return *this;

@@ -96,8 +96,6 @@ bool ProtocoloCliente::esperarAComienzoDePartida(std::string *nombre_mapa) {
     }
     std::string mapa = recibirNombre();
     *nombre_mapa = mapa;
-    std::cout << "Mapa: " << mapa << "\n";
-    std::cout << nombre_mapa << "\n";
     return true;
 }
 

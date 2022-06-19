@@ -10,6 +10,7 @@ class Game {
     bool finished = false;
     std::vector< ColaBloqueante<ComandoServer>* >* colas_comandos;
     Mapa mapa;
+    const std::string nombre_mapa;
     uint8_t conts_id_edificios = 0;
 
 public:

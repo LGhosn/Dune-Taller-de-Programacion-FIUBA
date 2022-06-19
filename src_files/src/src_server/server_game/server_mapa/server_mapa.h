@@ -53,7 +53,7 @@ public:
      *@param ancho Ancho del mapa
      *@param alto Alto del mapa
     */
-    Mapa(int ancho, int alto);
+    Mapa(const std::string& nombre_mapa);
 
     //Hago este typedef para no superar los 100 caracteres y que no haya problemas con cpplint
     typedef std::tuple<uint8_t, uint16_t, uint16_t> comando_t;
