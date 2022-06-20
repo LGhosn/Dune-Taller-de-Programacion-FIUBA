@@ -6,15 +6,14 @@
 #include "sdl_edificio.h"
 #include "../sdl_texturas.h"
 
-#define RUTA_CODIGOS_EDIFICIOS RESOURCE_PATH "/constantes/codigos_edificios.yaml"
-
 class EdificioFactorySDL {
-    YAML::Node codigos_edificios;
+    YAML::Node& constantes;
     SDL2pp::Renderer& renderer;
     TexturasSDL& texturas;
 
 public:
-    EdificioFactorySDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas);
+    EdificioFactorySDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas,
+                        YAML::Node& constantes);
 
     EdificioSDL* crearEdificio(uint8_t id_edificio, uint8_t id_jugador, uint8_t casa,
                                 uint8_t tipo_edificio, const Coordenadas& coords);

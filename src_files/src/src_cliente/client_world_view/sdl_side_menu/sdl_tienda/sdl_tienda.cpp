@@ -1,7 +1,8 @@
 #include "sdl_tienda.h"
 
 TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
-                        uint8_t id_jugador):
+                        uint8_t id_jugador, YAML::Node& constantes):
+                    constantes(constantes),
                     renderer(renderer),
                     casa(casa),
                     tienda_rect(ANCHO_VISTA_MAPA + PADDING_TIENDA,
@@ -13,50 +14,50 @@ TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& text
                             POS_INICIAL_BOTONES_TIENDA_X,
                             POS_INICIAL_BOTONES_TIENDA_Y,
                             ANCHO_BOTON,
-                            LARGO_BOTON)
-                        );
+                            LARGO_BOTON),
+                        constantes);
     botones_edificios.emplace_back(renderer, texturas, 2, casa, id_jugador,
                         SDL2pp::Rect(
                             POS_INICIAL_BOTONES_TIENDA_X,
                             POS_INICIAL_BOTONES_TIENDA_Y + LARGO_BOTON + PADDING_BOTONES,
                             ANCHO_BOTON,
-                            LARGO_BOTON)
-                        );
+                            LARGO_BOTON),
+                        constantes);
     botones_edificios.emplace_back(renderer, texturas, 3, casa, id_jugador,
                         SDL2pp::Rect(
                             POS_INICIAL_BOTONES_TIENDA_X,
                             POS_INICIAL_BOTONES_TIENDA_Y + 2 * (LARGO_BOTON + PADDING_BOTONES),
                             ANCHO_BOTON,
-                            LARGO_BOTON)
-                        );
+                            LARGO_BOTON),
+                        constantes);
     botones_edificios.emplace_back(renderer, texturas, 4, casa, id_jugador,
                         SDL2pp::Rect(
                             POS_INICIAL_BOTONES_TIENDA_X,
                             POS_INICIAL_BOTONES_TIENDA_Y + 3 * (LARGO_BOTON + PADDING_BOTONES),
                             ANCHO_BOTON,
-                            LARGO_BOTON)
-                        );
+                            LARGO_BOTON),
+                        constantes);
     botones_edificios.emplace_back(renderer, texturas, 5, casa, id_jugador,
                         SDL2pp::Rect(
                             POS_INICIAL_BOTONES_TIENDA_X + ANCHO_BOTON + PADDING_BOTONES,
                             POS_INICIAL_BOTONES_TIENDA_Y,
                             ANCHO_BOTON,
-                            LARGO_BOTON)
-                        );
+                            LARGO_BOTON),
+                        constantes);
     botones_edificios.emplace_back(renderer, texturas, 6, casa, id_jugador,
                         SDL2pp::Rect(
                             POS_INICIAL_BOTONES_TIENDA_X + ANCHO_BOTON + PADDING_BOTONES,
                             POS_INICIAL_BOTONES_TIENDA_Y + LARGO_BOTON + PADDING_BOTONES,
                             ANCHO_BOTON,
-                            LARGO_BOTON)
-                        );
+                            LARGO_BOTON),
+                        constantes);
     botones_edificios.emplace_back(renderer, texturas, 7, casa, id_jugador,
                         SDL2pp::Rect(
                             POS_INICIAL_BOTONES_TIENDA_X + ANCHO_BOTON + PADDING_BOTONES,
                             POS_INICIAL_BOTONES_TIENDA_Y + 2 * (LARGO_BOTON + PADDING_BOTONES),
                             ANCHO_BOTON,
-                            LARGO_BOTON)
-                        );
+                            LARGO_BOTON),
+                        constantes);
 }
 
  bool TiendaSDL::contiene(int pos_x, int pos_y) const {

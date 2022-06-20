@@ -2,6 +2,7 @@
 #define SDL_TEXTURAS_H
 
 #include <SDL2pp/SDL2pp.hh>
+#include "yaml-cpp/yaml.h"
 
 #define RUTA_TILES_BASE RESOURCE_PATH "/terrain/d2k_BLOXBASE.bmp"
 
@@ -36,6 +37,7 @@
 #define TEXTO_LISTO "LISTO"
 
 class TexturasSDL {
+    YAML::Node& constantes;
     SDL2pp::SDLTTF sdl_ttf;
     SDL2pp::Renderer& renderer;
     
@@ -72,7 +74,7 @@ class TexturasSDL {
     SDL2pp::Texture texto_tienda;
 
 public:
-    TexturasSDL(SDL2pp::Renderer& renderer);
+    TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes);
 
     SDL2pp::Texture& obtenerTilesBase();
     SDL2pp::Texture& obtenerTexEdificio(uint8_t tipo);

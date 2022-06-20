@@ -14,6 +14,7 @@
 #define FPS 60
 
 class BotonTiendaSDL {
+    YAML::Node& constantes;
     SDL2pp::Renderer& renderer;
     uint8_t tipo;
     uint8_t casa;
@@ -33,7 +34,8 @@ class BotonTiendaSDL {
     long frame_anterior = 0;
 public:
     BotonTiendaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
-                    uint8_t casa, uint8_t id_jugador, SDL2pp::Rect destino);
+                    uint8_t casa, uint8_t id_jugador, SDL2pp::Rect destino,
+                    YAML::Node& constantes);
 
     void habilitar();
     void deshabilitar();

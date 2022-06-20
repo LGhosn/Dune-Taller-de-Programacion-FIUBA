@@ -2,49 +2,49 @@
 
 FabricaPesadaSDL::FabricaPesadaSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                     SDL2pp::Texture& textura, const Coordenadas& coords, uint16_t alto,
-                    uint16_t ancho, uint8_t casa) :
-    EdificioSDL(id, id_jugador, renderer, textura, coords, alto, ancho, casa) {
-    origen.SetX(ANCHO_TEX_EDIFICIO_FP);
+                    uint16_t ancho, uint8_t casa, YAML::Node& constantes) :
+                    EdificioSDL(id, id_jugador, renderer, textura, coords, alto, ancho, casa,
+                                    constantes),
+                    ancho_edificio(constantes["WorldView"]["Edificios"]["FabricaPesada"]["Ancho"].as<uint32_t>()),
+                    alto_edificio(constantes["WorldView"]["Edificios"]["FabricaPesada"]["Alto"].as<uint32_t>()),
+                    padding_edificio_y(constantes["WorldView"]["Edificios"]["FabricaPesada"]["PaddingY"].as<uint32_t>()),
+                    limite_hp_debilitar(constantes["WorldView"]["Edificios"]["FabricaPesada"]["LimiteHPDebilitar"].as<uint32_t>()),
+                    offset_paredes_x(constantes["WorldView"]["Edificios"]["FabricaPesada"]["Paredes"]["OffsetX"].as<int32_t>()),
+                    offset_paredes_y(constantes["WorldView"]["Edificios"]["FabricaPesada"]["Paredes"]["OffsetY"].as<int32_t>()) {
+    origen.SetX(ancho_edificio);
     origen_paredes.SetX(0);
-    switch(casa) {
-        case 0: {
-            origen.SetY(0);
-            origen_paredes.SetY(0);
-            break;
-        }
-        case 1: {
-            origen.SetY(ALTO_TEX_EDIFICIO_FP);
-            origen_paredes.SetY(ALTO_TEX_EDIFICIO_FP);
-            break;
-        }
-        case 2: {
-            origen.SetY(ALTO_TEX_EDIFICIO_FP * 2);
-            origen_paredes.SetY(ALTO_TEX_EDIFICIO_FP * 2);
-            break;
-        }
-        default:
-            throw std::runtime_error("Casa no valida");   
+    if (casa == codigo_atreides) {
+         origen.SetY(0);
+        origen_paredes.SetY(0);
+    } else if (casa == codigo_harkonnen) {
+        origen.SetY(alto_edificio);
+        origen_paredes.SetY(alto_edificio);
+    } else if (casa == codigo_ordos) {
+        origen.SetY(alto_edificio * 2);
+        origen_paredes.SetY(alto_edificio * 2);
+    } else {
+        throw std::runtime_error("FabricaPesadaSDL: Casa no reconocida");
     }
-    origen.SetW(ANCHO_TEX_EDIFICIO_FP);
-    origen.SetH(ALTO_TEX_EDIFICIO_FP);
-    origen_paredes.SetW(ANCHO_TEX_EDIFICIO_FP);
-    origen_paredes.SetH(ALTO_TEX_EDIFICIO_FP);
+    origen.SetW(ancho_edificio);
+    origen.SetH(alto_edificio);
+    origen_paredes.SetW(ancho_edificio);
+    origen_paredes.SetH(alto_edificio);
 }
 
 void FabricaPesadaSDL::cambiarHP(uint16_t hp_edificio) {
-    if (hp_edificio < LIMITE_HP_DEBILITAR)
+    if (hp_edificio < limite_hp_debilitar)
         origen.SetX(origen.GetW());
 }
 
 void FabricaPesadaSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_actual,
                                 float zoom) {
     this->zoom = zoom;
-    destino.SetX(coords.x * LARGO_TILE * zoom - origen_movil_x);
-    destino.SetY((coords.y * LARGO_TILE + PADDING_EDIFICIO_FP_Y) * zoom - origen_movil_y);
-    destino.SetW(LARGO_TILE * ancho * zoom);
-    destino.SetH((LARGO_TILE * alto - 2 * PADDING_EDIFICIO_FP_Y) * zoom);
-    destino_paredes.SetX((coords.x * LARGO_TILE + OFFSET_PAREDES_FP_X) * zoom - origen_movil_x);
-    destino_paredes.SetY((coords.y * LARGO_TILE + OFFSET_PAREDES_FP_Y) * zoom - origen_movil_y);
+    destino.SetX(coords.x * ancho_tile * zoom - origen_movil_x);
+    destino.SetY((coords.y * largo_tile + padding_edificio_y) * zoom - origen_movil_y);
+    destino.SetW(ancho_tile * ancho * zoom);
+    destino.SetH((largo_tile * alto - 2 * padding_edificio_y) * zoom);
+    destino_paredes.SetX((coords.x * ancho_tile + offset_paredes_x) * zoom - origen_movil_x);
+    destino_paredes.SetY((coords.y * largo_tile + offset_paredes_y) * zoom - origen_movil_y);
     destino_paredes.SetW(destino.GetW());
     destino_paredes.SetH(destino.GetH());
     setearPosicionUI(origen_movil_x, origen_movil_y);

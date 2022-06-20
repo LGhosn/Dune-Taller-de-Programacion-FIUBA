@@ -28,12 +28,28 @@ class CentroSDL : public EdificioSDL {
     SDL2pp::Rect origen_brazo;
     SDL2pp::Rect destino_brazo;
 
+    // Constantes
+    const uint32_t ancho_edificio;
+    const uint32_t alto_edificio;
+    const uint32_t padding_edificio_y;
+    const int32_t offset_x_edificio;
+    const uint32_t limite_hp_debilitar;
+
+    const uint32_t ancho_brazo;
+    const uint32_t alto_brazo;
+    const uint8_t cant_frames_brazo;
+    const uint32_t rate_brazo;
+    const int32_t offset_x_brazo;
+    const int32_t offset_y_brazo;
+    
+
     void actualizarFrameBrazo(long frame_actual);
     void setearPosicionBrazo();
 
 public:
     CentroSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer, SDL2pp::Texture& textura,
-              const Coordenadas& coords, uint16_t alto, uint16_t ancho, uint8_t casa);
+              const Coordenadas& coords, uint16_t alto, uint16_t ancho, uint8_t casa,
+              YAML::Node& constantes);
 
     void cambiarHP(uint16_t hp_edificio) override;
 

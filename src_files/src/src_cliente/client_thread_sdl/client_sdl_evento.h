@@ -16,71 +16,68 @@
 #define LARGO_VISTA_MAPA 768
 
 class SDLEvento {
+protected:
+    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
+    ColaNoBloqueante<ComandoCliente>& cola_comandos;
+    YAML::Node& constantes;
 public:
-    SDLEvento() = default;
+    SDLEvento(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+            ColaNoBloqueante<ComandoCliente>& cola_comandos,
+            YAML::Node& constantes);
     virtual void ejecutar_evento(SDL_Event& keyEvent) = 0;
     virtual ~SDLEvento() = default;
 };
 
 class TeclaPresionada : public SDLEvento {
-private:
-    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
-    ColaNoBloqueante<ComandoCliente>& cola_comandos;
-
 public:
     TeclaPresionada(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
-    ColaNoBloqueante<ComandoCliente>& cola_comandos);
+    ColaNoBloqueante<ComandoCliente>& cola_comandos,
+    YAML::Node& constantes);
     virtual void ejecutar_evento(SDL_Event& keyEvent);
     ~TeclaPresionada() = default;
 };
 
 class TeclaLevantada : public SDLEvento {
-private:
-    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
-    ColaNoBloqueante<ComandoCliente>& cola_comandos;
-
 public:
-    TeclaLevantada(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
+    TeclaLevantada(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                    ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                    YAML::Node& constantes);
     virtual void ejecutar_evento(SDL_Event& keyEvent);
     ~TeclaLevantada() = default;
 };
 
 class Rueda : public SDLEvento {
-private:
-    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
-    ColaNoBloqueante<ComandoCliente>& cola_comandos;
 public:
-    Rueda(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
+    Rueda(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+            ColaNoBloqueante<ComandoCliente>& cola_comandos,
+            YAML::Node& constantes);
     virtual void ejecutar_evento(SDL_Event& wheelEvent);
     ~Rueda() = default;
 };
 
 class ClickPresionado : public SDLEvento {
-private:
-    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
-    ColaNoBloqueante<ComandoCliente>& cola_comandos;
 public:
-    ClickPresionado(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
+    ClickPresionado(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                    ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                    YAML::Node& constantes);
     virtual void ejecutar_evento(SDL_Event& mouseButtonEvent);
     ~ClickPresionado() = default;
 };
 
 class ClickLevantado : public SDLEvento {
-private:
-    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
-    ColaNoBloqueante<ComandoCliente>& cola_comandos;
 public:
-    ClickLevantado(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
+    ClickLevantado(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                    ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                    YAML::Node& constantes);
     virtual void ejecutar_evento(SDL_Event& mouseButtonEvent);
     ~ClickLevantado() = default;
 };
 
 class EventoSalir : public SDLEvento {
-private:
-    ColaBloqueante<SolicitudCliente>& cola_solicitudes;
-    ColaNoBloqueante<ComandoCliente>& cola_comandos;
 public:
-    EventoSalir(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
+    EventoSalir(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                YAML::Node& constantes);
     virtual void ejecutar_evento(SDL_Event& quitEvent);
     ~EventoSalir() = default;
 };

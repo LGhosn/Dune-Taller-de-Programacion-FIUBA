@@ -3,23 +3,17 @@
 
 #include "sdl_edificio.h"
 
-#define ANCHO_TEX_EDIFICIO_ATREIDES 73
-#define ANCHO_TEX_EDIFICIO_OTROS 64
-#define ALTO_TEX_EDIFICIO_CUARTEL 76
-
-#define PADDING_CUARTEL_Y 10
-
-#define HARKONNEN 0 
-#define ATREIDES 1
-#define ORDOS 2
-
-#define LIMITE_HP_DEBILITAR 1000
-
 class CuartelSDL : public EdificioSDL {
+    const uint32_t ancho_edificio_atreides;
+    const uint32_t ancho_edificio_otros;
+    const uint32_t alto_edificio;
+    const uint32_t padding_y;
+    const uint32_t limite_hp_debilitar;
+
 public:
     CuartelSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                 SDL2pp::Texture& textura, const Coordenadas& coords, uint16_t alto,
-                uint16_t ancho, uint8_t casa);
+                uint16_t ancho, uint8_t casa, YAML::Node& constantes);
 
     void cambiarHP(uint16_t hp_edificio) override;
 

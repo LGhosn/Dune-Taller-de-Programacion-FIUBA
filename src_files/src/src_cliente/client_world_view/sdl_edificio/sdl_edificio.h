@@ -2,17 +2,8 @@
 #define SDL_EDIFICIO_H
 
 #include <SDL2pp/SDL2pp.hh>
+#include "yaml-cpp/yaml.h"
 #include "../../../src_common/common_coords.h"
-
-#define LARGO_TILE 32
-
-#define ALTO_HP 6
-#define ANCHO_HP 40
-#define OFFSET_HP_Y -1
-#define PADDING_HP_X 4
-#define PADDING_HP_RECT 2 
-
-#define RATIO_LINEAS_LARGO 0.2
 
 class EdificioSDL {
 protected:
@@ -30,6 +21,20 @@ protected:
     bool seleccionado = false;
     float zoom;
 
+    // Constantes
+    const int alto_hp;
+    const int ancho_hp;
+    const int offset_x_hp;
+    const int offset_y_hp;
+    const int padding_x_hp;
+    const int padding_rect_hp;
+    const float relacion_lineas_largo;
+    const int ancho_tile;
+    const int largo_tile;
+    const uint8_t codigo_atreides;
+    const uint8_t codigo_harkonnen;
+    const uint8_t codigo_ordos;
+
     void setearPosicionUI(uint32_t origen_movil_x, uint32_t origen_movil_y);
 
 private:
@@ -39,7 +44,7 @@ private:
 public:
     EdificioSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                 SDL2pp::Texture& textura, const Coordenadas& coords,
-                uint16_t alto, uint16_t ancho, uint8_t casa);
+                uint16_t alto, uint16_t ancho, uint8_t casa, YAML::Node& constantes);
 
     Coordenadas obtenerDimensiones() const;
     

@@ -1,15 +1,16 @@
 #include "sdl_edificio.h"
+#include <iostream>
 
 void EdificioSDL::setearPosicionUI(uint32_t origen_movil_x, uint32_t origen_movil_y) {
-    destino_ui.SetX(coords.x * LARGO_TILE * zoom - origen_movil_x);
-    destino_ui.SetY(coords.y * LARGO_TILE * zoom - origen_movil_y);
-    destino_ui.SetW(LARGO_TILE * ancho * zoom);
-    destino_ui.SetH(LARGO_TILE * alto * zoom);
+    destino_ui.SetX(coords.x * ancho_tile * zoom - origen_movil_x);
+    destino_ui.SetY(coords.y * largo_tile * zoom - origen_movil_y);
+    destino_ui.SetW(ancho_tile * ancho * zoom);
+    destino_ui.SetH(largo_tile * alto * zoom);
 }
 
 void EdificioSDL::renderRectanguloSeleccion() {
     renderer.SetDrawColor(255, 255, 255);
-        int largo_lineas_seleccionado = destino_ui.GetW() * RATIO_LINEAS_LARGO;
+        int largo_lineas_seleccionado = destino_ui.GetW() * relacion_lineas_largo;
 
         renderer.DrawLine(
             destino_ui.GetX(), destino_ui.GetY(),
@@ -48,34 +49,46 @@ void EdificioSDL::renderRectanguloSeleccion() {
 void EdificioSDL::renderHP() {
     renderer.SetDrawColor(0, 0, 0, 150);
     renderer.FillRect(
-        destino.GetX() + PADDING_HP_X * zoom,
-        destino.GetY() + (OFFSET_HP_Y - ALTO_HP) * zoom,
-        destino.GetX() + destino.GetW() - PADDING_HP_X * zoom,
-        destino.GetY() + OFFSET_HP_Y * zoom
+        destino.GetX() + padding_x_hp * zoom,
+        destino.GetY() + (offset_y_hp - alto_hp) * zoom,
+        destino.GetX() + destino.GetW() - padding_x_hp * zoom,
+        destino.GetY() + offset_y_hp * zoom
     );
 
     renderer.SetDrawColor(90, 146, 22);
     renderer.FillRect(
-        destino.GetX() + (PADDING_HP_X + PADDING_HP_RECT) * zoom,
-        destino.GetY() + (OFFSET_HP_Y - ALTO_HP + PADDING_HP_RECT) * zoom,
-        destino.GetX() + destino.GetW() - (PADDING_HP_X + PADDING_HP_RECT) * zoom,
-        destino.GetY() + (OFFSET_HP_Y - PADDING_HP_RECT) * zoom
+        destino.GetX() + (padding_x_hp + padding_rect_hp) * zoom,
+        destino.GetY() + (offset_y_hp - alto_hp + padding_rect_hp) * zoom,
+        destino.GetX() + destino.GetW() - (padding_x_hp + padding_rect_hp) * zoom,
+        destino.GetY() + (offset_y_hp - padding_rect_hp) * zoom
     );
 
     renderer.SetDrawColor(0, 0, 0);
     renderer.DrawRect(
-        destino.GetX() + PADDING_HP_X * zoom,
-        destino.GetY() + (OFFSET_HP_Y - ALTO_HP)  * zoom,
-        destino.GetX() + destino.GetW() - PADDING_HP_X * zoom,
-        destino.GetY() + OFFSET_HP_Y * zoom
+        destino.GetX() + padding_x_hp * zoom,
+        destino.GetY() + (offset_y_hp - alto_hp)  * zoom,
+        destino.GetX() + destino.GetW() - padding_x_hp * zoom,
+        destino.GetY() + offset_y_hp * zoom
     );
 }
 
 EdificioSDL::EdificioSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
-                SDL2pp::Texture& textura, const Coordenadas& coords,
-                uint16_t alto, uint16_t ancho, uint8_t casa) :
-                id(id), id_jugador(id_jugador), renderer(renderer), textura(textura),
-                coords(coords), alto(alto), ancho(ancho) {}
+                        SDL2pp::Texture& textura, const Coordenadas& coords,
+                        uint16_t alto, uint16_t ancho, uint8_t casa, YAML::Node& constantes) :
+        id(id), id_jugador(id_jugador), renderer(renderer),
+        textura(textura), coords(coords), alto(alto), ancho(ancho),
+        alto_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["Alto"].as<int>()),
+        ancho_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["Ancho"].as<int>()),
+        offset_x_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["OffsetX"].as<int>()),
+        offset_y_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["OffsetY"].as<int>()),
+        padding_x_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["PaddingX"].as<int>()),
+        padding_rect_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["PaddingRect"].as<int>()),
+        relacion_lineas_largo(constantes["WorldView"]["Edificios"]["UI"]["RelacionLineasLargo"].as<float>()),
+        ancho_tile(constantes["WorldView"]["Mapa"]["Tiles"]["Largo"].as<int>()),
+        largo_tile(constantes["WorldView"]["Mapa"]["Tiles"]["Largo"].as<int>()),
+        codigo_atreides(constantes["Casas"]["Atreides"].as<uint8_t>()),
+        codigo_harkonnen(constantes["Casas"]["Harkonnen"].as<uint8_t>()),
+        codigo_ordos(constantes["Casas"]["Ordos"].as<uint8_t>()) {}
 
 Coordenadas EdificioSDL::obtenerDimensiones() const {
     return Coordenadas(ancho, alto);

@@ -7,6 +7,7 @@
 #include "../../client_solicitudes/cliente_solicitud.h"
 
 class SideMenuSDL {
+    YAML::Node& constantes;
     SDL2pp::Renderer& renderer;
     uint8_t casa;
     TiendaSDL tienda;
@@ -17,7 +18,7 @@ class SideMenuSDL {
 
 public:
     SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
-                uint8_t id_jugador);
+                uint8_t id_jugador, YAML::Node& constantes);
 
     SolicitudCliente* click_en_menu(int pos_x, int pos_y);
     SolicitudCliente* clickEnMapa(Coordenadas& coords);

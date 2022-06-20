@@ -21,6 +21,7 @@
 #define POS_INICIAL_BOTONES_TIENDA_Y POS_TIENDA + PADDING_TIENDA
 
 class TiendaSDL {
+    YAML::Node& constantes;
     SDL2pp::Renderer& renderer;
     uint8_t casa;
     SDL2pp::Rect tienda_rect;
@@ -29,7 +30,7 @@ class TiendaSDL {
 
 public:
     TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
-                uint8_t id_jugador);
+                uint8_t id_jugador, YAML::Node& constantes);
 
     bool contiene(int pos_x, int pos_y) const;
 

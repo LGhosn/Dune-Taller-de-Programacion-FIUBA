@@ -1,0 +1,104 @@
+---
+
+FPS: 60
+
+Casas:
+  Atreides: 0
+  Harkonnen: 1
+  Ordos: 2
+
+Edificios:
+  CentroDeConstruccion: 0
+  Cuartel: 1
+  FabricaLigera: 2
+  FabricaPesada: 3
+  Palacio: 4
+  Refineria: 5
+  Silo: 6
+  TrampaDeAire: 7
+
+WorldView:
+  Ventana:
+    Ancho: 1024
+    Alto: 768 
+  Edificios:
+    UI:
+      HP:
+        Alto: 6
+        Ancho: 40
+        OffsetX: 4
+        OffsetY: -1
+        PaddingX: 4
+        PaddingRect: 2
+      RelacionLineasLargo: 0.2
+    Centro:
+      Ancho: 97
+      Alto: 86
+      PaddingY: 8
+      OffsetX: 3
+      LimiteHPDebilitar: 1000
+      Brazo:
+        Ancho: 52
+        Alto: 65
+        CantidadFrames: 14
+        Rate: 5
+        OffsetX: 2
+        OffsetY: 30
+    Cuartel:
+      AnchoAtreides: 73
+      AnchoOtros: 64
+      Alto: 76
+      PaddingY: 10
+      LimiteHPDebilitar: 1000
+    FabricaLigera:
+      Ancho: 94
+      Alto: 63
+      PaddingY: 16
+      Paredes:
+        OffsetX: 6
+        OffsetY: 16
+      LimiteHPDebilitar: 1000
+    FabricaPesada:
+      Ancho: 96
+      Alto: 85
+      PaddingY: 7
+      Paredes:
+        OffsetX: 6
+        OffsetY: 16
+      LimiteHPDebilitar: 1000
+  Mapa:
+    Direcciones:
+      Arriba: 'A'
+      Izquierda: 'I'
+      Abajo: 'B'
+      Derecha: 'D'
+      DejarDeMoverHorizontal: 'H'
+      DejarDeMoverVertical: 'V'
+    Velocidad: 10
+    Tiles:
+      Ancho: 32
+      Largo: 32
+      Tipos:
+        Roca: 'R'
+        Arena: 'A'
+        Precipicio: 'P'
+        Cima: 'C'
+        Duna: 'D'
+        Especia: 'E'
+  SideMenu:
+    Ancho: 300
+    Tienda:
+      OffsetY: 300
+      Padding: 10
+      Botones:
+        Padding: 16
+        RelacionAnchoLargo: 1.27
+        PaddingTexto: 30
+        TamTexto: 20
+        Texto: "Listo"
+  Zoom: 
+    Inicial: 3.0
+    Maximo: 4.0
+    Minimo: 2.0
+    Velocidad: 0.1
+    

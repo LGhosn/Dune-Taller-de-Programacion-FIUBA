@@ -1,6 +1,7 @@
 #ifndef WORLD_VIEW_H
 #define WORLD_VIEW_H
 
+#include "yaml-cpp/yaml.h"
 #include "sdl_mapa/sdl_mapa.h"
 #include "sdl_texturas.h"
 #include "sdl_edificio/sdl_edificio.h"
@@ -17,6 +18,7 @@
 #define ZOOM_PASO 0.1f
 
 class WorldView {
+	YAML::Node& constantes;
 	SDL2pp::Window window;
 	SDL2pp::Renderer renderer;
 	TexturasSDL texturas;
@@ -36,7 +38,8 @@ class WorldView {
 	void renderUI();
 
 public:
-	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador);
+	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador,
+				YAML::Node& constantes);
 
 	void moverMapaArriba();
 	void moverMapaIzquierda();

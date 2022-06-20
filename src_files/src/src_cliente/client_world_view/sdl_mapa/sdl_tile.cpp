@@ -1,7 +1,8 @@
 #include "sdl_tile.h"
 
 TileSDL::TileSDL(SDL2pp::Renderer& renderer, SDL2pp::Texture& textura, Coordenadas& coords,
-                int pos_tex_x, int pos_tex_y) :
+                int pos_tex_x, int pos_tex_y, YAML::Node& constantes) :
+                constantes(constantes),
                 renderer(renderer),
                 textura(textura),
                 origen(pos_tex_x, pos_tex_y, LARGO_TILE, LARGO_TILE),

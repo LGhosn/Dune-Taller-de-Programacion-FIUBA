@@ -1,10 +1,11 @@
 #include "sdl_side_menu.h"
 
 SideMenuSDL::SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
-                            uint8_t id_jugador) :
+                            uint8_t id_jugador, YAML::Node& constantes) :
+                            constantes(constantes),
                             renderer(renderer),
                             casa(casa),
-                            tienda(renderer, casa, texturas, id_jugador),
+                            tienda(renderer, casa, texturas, id_jugador, constantes),
                             logo_casa(texturas.obtenerLogoCasa(casa)),
                             origen_logo_casa(0,0,logo_casa.GetWidth(),logo_casa.GetWidth()),
                             destino_logo_casa(ANCHO_VISTA_MAPA + PADDING_TIENDA,

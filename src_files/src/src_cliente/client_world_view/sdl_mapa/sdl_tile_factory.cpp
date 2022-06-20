@@ -3,27 +3,27 @@
 #include <exception>
 
 void TileFactorySDL::agregarTileDeRoca(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 7, 15);
+    tiles.emplace_back(renderer, textura_base, coords, 96, 216, constantes);
 }
 
 void TileFactorySDL::agregarTileDeArena(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 8, 8);
+    tiles.emplace_back(renderer, textura_base, coords, 8, 8, constantes);
 }
 
 void TileFactorySDL::agregarTileDePrecipicio(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 0, 7);
+    tiles.emplace_back(renderer, textura_base, coords, 0, 7, constantes);
 }
 
 void TileFactorySDL::agregarTileDeCima(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 0, 9);
+    tiles.emplace_back(renderer, textura_base, coords, 0, 9, constantes);
 }
 
 void TileFactorySDL::agregarTileDeDuna(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 3, 16);
+    tiles.emplace_back(renderer, textura_base, coords, 3, 16, constantes);
 }
 
 void TileFactorySDL::agregarTileDeEspecia(uint16_t tipo_textura, Coordenadas &coords) {
-    tiles.emplace_back(renderer, textura_base, coords, 3, 18);
+    tiles.emplace_back(renderer, textura_base, coords, 3, 18, constantes);
 }
 
 void TileFactorySDL::agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Coordenadas& coords) {
@@ -52,7 +52,8 @@ void TileFactorySDL::agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Co
 }
 
 TileFactorySDL::TileFactorySDL(SDL2pp::Renderer& renderer, std::string& ruta_mapa,
-                                TexturasSDL& texturas) :
+                                TexturasSDL& texturas,YAML::Node& constantes) :
+                                constantes(constantes),
                                 renderer(renderer),
                                 textura_base(texturas.obtenerTilesBase()) {
     YAML::Node mapa_config = YAML::LoadFile(ruta_mapa);

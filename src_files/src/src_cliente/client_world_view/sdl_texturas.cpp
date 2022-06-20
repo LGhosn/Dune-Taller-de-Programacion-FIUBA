@@ -1,6 +1,7 @@
 #include "sdl_texturas.h"
 
-TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer) :
+TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
+                        constantes(constantes),
                         renderer(renderer),
                         tiles_base(renderer, RUTA_TILES_BASE),
                         edificio_centro(renderer, RUTA_CENTRO),

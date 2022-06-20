@@ -4,8 +4,9 @@
 #include "sdl_fabrica_ligera.h"
 #include "sdl_fabrica_pesada.h"
 
-EdificioFactorySDL::EdificioFactorySDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas):
-                                    codigos_edificios(YAML::LoadFile(RUTA_CODIGOS_EDIFICIOS)),
+EdificioFactorySDL::EdificioFactorySDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas,
+                                        YAML::Node& constantes):
+                                    constantes(constantes),
                                     renderer(renderer),
                                     texturas(texturas) {}
 
@@ -16,27 +17,27 @@ EdificioSDL* EdificioFactorySDL::crearEdificio(uint8_t id_edificio, uint8_t id_j
         case 0: {
             return new CentroSDL(id_edificio, id_jugador, renderer,
                                 texturas.obtenerTexEdificio(tipo_edificio),
-                                coords, 3, 3, casa);
+                                coords, 3, 3, casa, constantes);
         }
         case 1: {
             return new CuartelSDL(id_edificio, id_jugador, renderer,
                                  texturas.obtenerTexEdificio(tipo_edificio),
-                                 coords, 3, 2, casa);
+                                 coords, 3, 2, casa, constantes);
         }
         case 2: {
             return new FabricaLigeraSDL(id_edificio, id_jugador, renderer,
                                         texturas.obtenerTexEdificio(tipo_edificio),
-                                        coords, 3, 3, casa);
+                                        coords, 3, 3, casa, constantes);
         }
         case 3: {
             return new FabricaPesadaSDL(id_edificio, id_jugador, renderer,
                                         texturas.obtenerTexEdificio(tipo_edificio),
-                                        coords, 4, 4, casa);
+                                        coords, 4, 4, casa, constantes);
         }
         default: {
             return new CentroSDL(id_edificio, id_jugador, renderer,
                                 texturas.obtenerTexEdificio(tipo_edificio),
-                                coords, 3, 3, casa);        // TODO: Fix
+                                coords, 3, 3, casa, constantes);        // TODO: Fix
         }
     }
 

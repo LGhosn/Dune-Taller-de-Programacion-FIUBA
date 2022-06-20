@@ -2,6 +2,7 @@
 #define SDL_MAPA_H
 
 #include <SDL2pp/SDL2pp.hh>
+#include "yaml-cpp/yaml.h"
 #include <string>
 #include <vector>
 #include "sdl_tile.h"
@@ -18,6 +19,7 @@
 #define VELOCIDAD 10
 
 class MapaSDL {
+	YAML::Node& constantes;
 	SDL2pp::Renderer& renderer;
 	TileFactorySDL tile_factory;
 	std::vector<TileSDL>& tiles;
@@ -29,6 +31,12 @@ class MapaSDL {
 	char direccion_h, direccion_v;
 	float zoom;
 
+	// // Constantes
+	// const uint8_t arriba;
+	// const uint8_t izquierda;
+	// const uint8_t derecha;
+	// const uint8_t abajo;
+
 	int limite_superior() const;
 	int limite_inferior() const;
 	int limite_izquierdo() const;
@@ -37,7 +45,8 @@ class MapaSDL {
 	void updateTiles();
 
 public:
-	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa, TexturasSDL& texturas);
+	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa, TexturasSDL& texturas,
+					YAML::Node& constantes);
 
 	void moverArriba();
 	void moverIzquierda();

@@ -2,7 +2,9 @@
 #include "../../../client_solicitudes/client_sol_crear_edificio.h"
 
 BotonTiendaSDL::BotonTiendaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
-                                uint8_t casa, uint8_t id_jugador, const SDL2pp::Rect destino) :
+                                uint8_t casa, uint8_t id_jugador, const SDL2pp::Rect destino,
+                                YAML::Node& constantes) :
+                                constantes(constantes),
                                 renderer(renderer),
                                 tipo(tipo),
                                 casa(casa),
