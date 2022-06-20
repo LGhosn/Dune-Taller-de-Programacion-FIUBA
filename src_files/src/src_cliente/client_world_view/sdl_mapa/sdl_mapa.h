@@ -45,8 +45,8 @@ class MapaSDL {
 	void updateTiles();
 
 public:
-	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string nombre_mapa, TexturasSDL& texturas,
-					YAML::Node& constantes);
+	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string& nombre_mapa,
+					TexturasSDL& texturas, YAML::Node& constantes);
 
 	void moverArriba();
 	void moverIzquierda();
