@@ -16,6 +16,7 @@ private:
     std::vector< std::vector<char> > mapa;
     std::vector< Coordenadas > colisiones;
     Camino camino;
+    bool primera_construccion = true;
 
     /*
      * Dado un edificio, devuelve la cantidad de casillas que ocupa y el tipo de edificio que es 
@@ -46,6 +47,8 @@ private:
      * @param pos_y: posicion en y de donde se quiere colocar el edificio 
     */
     bool terrenoFirme(const Coordenadas& coords);
+
+    bool construccionLejana(const Coordenadas &coords);
 
 public:
     /*
