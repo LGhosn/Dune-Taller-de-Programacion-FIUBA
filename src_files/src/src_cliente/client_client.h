@@ -1,6 +1,8 @@
 #ifndef CLIENT_CLIENT_H_
 #define CLIENT_CLIENT_H_
 
+#include "yaml-cpp/yaml.h"
+
 #include "../src_common/common_socket.h"
 #include "client_protocolo.h"
 #include "client_thread_sender/client_hilo_sender.h"
@@ -10,6 +12,8 @@
 #include "client_comandos/client_comando.h"
 #include "client_solicitudes/cliente_solicitud.h"
 
+#define RUTA_CONSTANTES RESOURCE_PATH "/constantes/client_constantes.yaml"
+
 class ClientHiloReciever;
 class ClientHiloSender;
 
@@ -18,6 +22,8 @@ private:
     Socket skt_cliente;
     ProtocoloCliente protocolo;
     uint8_t id_jugador;
+    YAML::Node constantes;
+
     ColaNoBloqueante<ComandoCliente> cola_comandos;
     ColaBloqueante<SolicitudCliente> cola_solicitudes;
     ClientHiloReciever* receiver;

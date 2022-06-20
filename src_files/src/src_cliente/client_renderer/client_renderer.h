@@ -6,6 +6,7 @@
 #include <SDL2pp/SDL2pp.hh>
 #include <SDL2pp/Music.hh>
 #include <SDL2pp/Mixer.hh>
+#include "yaml-cpp/yaml.h"
 #include "../client_world_view/sdl_mapa/sdl_mapa.h"
 #include "../client_world_view/world_view.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
@@ -29,7 +30,8 @@ public:
     ClientRenderer(ColaNoBloqueante<ComandoCliente>& cola_comandos,
 					ColaBloqueante<SolicitudCliente>& cola_solicitudes,
 					uint8_t id_jugador,
-					std::string&  nombre_mapa);
+					std::string& nombre_mapa,
+					YAML::Node& constantes);
 
 	void start();
 
