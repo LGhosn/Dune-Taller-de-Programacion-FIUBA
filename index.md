@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Remake Dune 2000
 
 You can use the [editor on GitHub](https://github.com/LGhosn/Dune-Taller-de-Programacion-FIUBA/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
