@@ -12,7 +12,8 @@
 
 class ManejadorEventos {
 private:
-    bool hay_que_seguir;
+    YAML::Node& constantes;
+    bool hay_que_seguir = true;
     std::thread thread;
     SDL_Event event;
     SDLEvento *evento_ocurrido;
@@ -20,7 +21,9 @@ private:
     ColaNoBloqueante<ComandoCliente>& cola_comandos;
 
 public:
-    ManejadorEventos(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos);
+    ManejadorEventos(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                    ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                    YAML::Node& constantes);
     void manejar_evento();
     std::unique_ptr<SDLEvento> clasificarEvento(uint32_t eventType);
     void manejar_tecla(SDL_KeyboardEvent& keyEvent);

@@ -1,9 +1,12 @@
 #ifndef WORLD_VIEW_H
 #define WORLD_VIEW_H
 
+#include "yaml-cpp/yaml.h"
 #include "sdl_mapa/sdl_mapa.h"
+#include "sdl_texturas.h"
 #include "sdl_edificio/sdl_edificio.h"
 #include "sdl_edificio/sdl_edificio_factory.h"
+#include "sdl_side_menu/sdl_side_menu.h"
 #include "../client_solicitudes/cliente_solicitud.h"
 #include "../../src_common/common_coords.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
@@ -15,11 +18,14 @@
 #define ZOOM_PASO 0.1f
 
 class WorldView {
+	YAML::Node& constantes;
 	SDL2pp::Window window;
 	SDL2pp::Renderer renderer;
+	TexturasSDL texturas;
 	ColaBloqueante<SolicitudCliente>& cola_solicitudes;
 	float zoom;
 	MapaSDL mapa;
+	SideMenuSDL side_menu;
 	std::unordered_map<Coordenadas, EdificioSDL*, HashCoordenadas> edificios;
 	std::vector<EdificioSDL*> edificios_seleccionados;
 	EdificioFactorySDL edificio_factory;
@@ -29,8 +35,11 @@ class WorldView {
 	void deseleccionarEdificios();
 	void seleccionarEdificio(EdificioSDL* edificio);
 
+	void renderUI();
+
 public:
-	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador);
+	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador,
+				std::string& nombre_mapa, YAML::Node& constantes);
 
 	void moverMapaArriba();
 	void moverMapaIzquierda();

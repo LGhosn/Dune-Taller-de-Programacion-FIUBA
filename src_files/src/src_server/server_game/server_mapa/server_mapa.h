@@ -16,6 +16,7 @@ private:
     std::vector< std::vector<char> > mapa;
     std::vector< Coordenadas > colisiones;
     Camino camino;
+    bool primera_construccion = true;
 
     /*
      * Dado un edificio, devuelve la cantidad de casillas que ocupa y el tipo de edificio que es 
@@ -47,13 +48,15 @@ private:
     */
     bool terrenoFirme(const Coordenadas& coords);
 
+    bool construccionLejana(const Coordenadas &coords);
+
 public:
     /*
      * Construye un mapa de ancho x alto
      *@param ancho Ancho del mapa
      *@param alto Alto del mapa
     */
-    Mapa(int ancho, int alto);
+    Mapa(const std::string& nombre_mapa);
 
     //Hago este typedef para no superar los 100 caracteres y que no haya problemas con cpplint
     typedef std::tuple<uint8_t, uint16_t, uint16_t> comando_t;

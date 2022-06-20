@@ -30,7 +30,7 @@ void Partida::agregarJugador(HandlerCliente* cliente) {
 void Partida::empezar() {
     for (auto cliente : this->clientes_conectados) {
         colas_sender->push_back(cliente->obtenerColaSender());
-        cliente->empezarPartida(this->cola_solicitudes);
+        cliente->empezarPartida(this->cola_solicitudes, this->nombre_mapa);
     }
     std::string ruta_mapa = obtenerRutaMapa();
     hilo_gameloop.start();
@@ -55,6 +55,7 @@ Partida& Partida::operator=(Partida&& otra) {
     this->nombre_partida = otra.nombre_partida;
     this->jugadores_actuales = otra.jugadores_actuales;
     this->jugadores_requeridos = otra.jugadores_requeridos;
+    this->nombre_mapa = otra.nombre_mapa;
     this->clientes_conectados = std::move(otra.clientes_conectados);
     this->colas_sender = otra.colas_sender;
     this->cola_solicitudes = otra.cola_solicitudes;
@@ -65,6 +66,7 @@ Partida::Partida(Partida&& otra) :
         nombre_partida(std::move(otra.nombre_partida)),
         jugadores_actuales(otra.jugadores_actuales),
         jugadores_requeridos(otra.jugadores_requeridos),
+        nombre_mapa(std::move(otra.nombre_mapa)),
         clientes_conectados(std::move(otra.clientes_conectados)),
         cola_solicitudes(otra.cola_solicitudes),
         colas_sender(otra.colas_sender),

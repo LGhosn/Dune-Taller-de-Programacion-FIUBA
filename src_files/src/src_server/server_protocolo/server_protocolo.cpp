@@ -1,5 +1,8 @@
 #include "server_protocolo.h"
 
+#define SIZEOF_BYTE 1
+#define SIZEOF_TWO_BYTES 2
+
 /* *****************************************************************
  *                      METODOS AUXILIARES
  * *****************************************************************/
@@ -10,7 +13,7 @@ void ProtocoloServidor::enviarBuffer(const std::vector<uint8_t>& buffer) const {
 
 std::string ProtocoloServidor::recibirNombre() const {
     uint16_t largo_nombre;
-    this->skt_comunicador->recvall(&largo_nombre, sizeof(uint16_t));
+    this->skt_comunicador->recvall(&largo_nombre, SIZEOF_TWO_BYTES);
     largo_nombre = ntohs(largo_nombre);
 
     std::vector<uint8_t> buffer_nombre(largo_nombre);
@@ -22,19 +25,19 @@ std::string ProtocoloServidor::recibirNombre() const {
 ProtocoloServidor::ProtocoloServidor(Socket* comunicador, YAML::Node* codigos):
 skt_comunicador(comunicador), serializador(codigos) {}
 
-void ProtocoloServidor::recibirOperacion
-(uint8_t& codigo_operacion) {
-        this->skt_comunicador->recvall
-        (&codigo_operacion, sizeof(codigo_operacion));
+void ProtocoloServidor::recibirOperacion(uint8_t& codigo_operacion) {
+    this->skt_comunicador->recvall(&codigo_operacion, SIZEOF_BYTE);
 }
 
 void ProtocoloServidor::enviarId(uint8_t id_cliente) {
-    this->skt_comunicador->sendall(&id_cliente, sizeof(id_cliente));
+    this->skt_comunicador->sendall(&id_cliente, SIZEOF_BYTE);
 }
 
-void ProtocoloServidor::enviarComienzoDePartida() {
+void ProtocoloServidor::enviarComienzoDePartida(std::string &nombre_mapa) {
     uint8_t codigo_comienzo = 0;
-    this->skt_comunicador->sendall(&codigo_comienzo, sizeof(codigo_comienzo));
+    this->skt_comunicador->sendall(&codigo_comienzo, SIZEOF_BYTE);
+    std::vector<uint8_t> buffer_nombre = serializador.serializarString(nombre_mapa);
+    enviarBuffer(buffer_nombre);
 }
 
 
@@ -45,10 +48,10 @@ void ProtocoloServidor::enviarComienzoDePartida() {
 
 SolicitudCrearPartidaDTO ProtocoloServidor::recibirSolicitudCrearPartida() {
     uint8_t casa_codigo;
-    this->skt_comunicador->recvall(&casa_codigo, sizeof(uint8_t));
+    this->skt_comunicador->recvall(&casa_codigo, SIZEOF_BYTE);
 
     uint8_t jugadores_requeridos;
-    this->skt_comunicador->recvall(&jugadores_requeridos, sizeof(uint8_t));
+    this->skt_comunicador->recvall(&jugadores_requeridos, SIZEOF_BYTE);
 
     std::string nombre_partida = this->recibirNombre();
 
@@ -59,10 +62,8 @@ SolicitudCrearPartidaDTO ProtocoloServidor::recibirSolicitudCrearPartida() {
 void ProtocoloServidor::enviarStatusDeCreacion(Status &status_de_creacion) {
     uint8_t status_conexion = status_de_creacion.obtenerCodigoDeConexion();
     uint8_t status_partida = status_de_creacion.obtenerCodigoDePartida();
-    this->skt_comunicador->sendall
-            (&status_conexion, sizeof(uint8_t));
-    this->skt_comunicador->sendall
-            (&status_partida, sizeof(uint8_t));
+    this->skt_comunicador->sendall(&status_conexion, SIZEOF_BYTE);
+    this->skt_comunicador->sendall(&status_partida, SIZEOF_BYTE);
 }
 
 /* *****************************************************************
@@ -71,7 +72,7 @@ void ProtocoloServidor::enviarStatusDeCreacion(Status &status_de_creacion) {
 
 SolicitudUnirseAPartidaDTO ProtocoloServidor::recibirSolicitudUnirseAPartida() {
     uint8_t casa;
-    this->skt_comunicador->recvall(&casa, sizeof(uint8_t));
+    this->skt_comunicador->recvall(&casa, SIZEOF_BYTE);
 
     std::string nombre_partida = recibirNombre();
 
@@ -81,10 +82,8 @@ SolicitudUnirseAPartidaDTO ProtocoloServidor::recibirSolicitudUnirseAPartida() {
 void ProtocoloServidor::enviarStatusDeUnion(Status &status_de_union) {
     uint8_t status_conexion = status_de_union.obtenerCodigoDeConexion();
     uint8_t status_partida = status_de_union.obtenerCodigoDePartida();
-    this->skt_comunicador->sendall
-            (&status_conexion, sizeof(uint8_t));
-    this->skt_comunicador->sendall
-            (&status_partida, sizeof(uint8_t));
+    this->skt_comunicador->sendall(&status_conexion, SIZEOF_BYTE);
+    this->skt_comunicador->sendall(&status_partida, SIZEOF_BYTE);
 }
 
 /* *****************************************************************
@@ -95,7 +94,7 @@ void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16
 
 uint8_t ProtocoloServidor::recibirCodigoDeSolicitud() {
     uint8_t codigo;
-    this->skt_comunicador->recvall(&codigo, sizeof(uint8_t));
+    this->skt_comunicador->recvall(&codigo, SIZEOF_BYTE);
     return codigo;
 }
 
@@ -112,13 +111,13 @@ void ProtocoloServidor::enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t i
 
 SolicitudCrearEdificioDTO ProtocoloServidor::recibirSolicitudCrearEdificio() {
     uint8_t id_jugador;
-    this->skt_comunicador->recvall(&id_jugador, sizeof(uint8_t));
+    this->skt_comunicador->recvall(&id_jugador, SIZEOF_BYTE);
     uint8_t tipo;
-    this->skt_comunicador->recvall(&tipo, sizeof(uint8_t));
+    this->skt_comunicador->recvall(&tipo, SIZEOF_BYTE);
     uint16_t x;
-    this->skt_comunicador->recvall(&x, sizeof(uint16_t));
+    this->skt_comunicador->recvall(&x, SIZEOF_TWO_BYTES);
     uint16_t y;
-    this->skt_comunicador->recvall(&y, sizeof(uint16_t));
+    this->skt_comunicador->recvall(&y, SIZEOF_TWO_BYTES);
     x = ntohs(x);
     y = ntohs(y);
     Coordenadas coords(x, y);

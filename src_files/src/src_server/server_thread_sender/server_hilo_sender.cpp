@@ -22,7 +22,6 @@ void ServerHiloSender::handleThread() {
 
 void ServerHiloSender::run() {
     while (this->hay_que_seguir) {
-        std::cout << "Sender en el loop" << std::endl;
         std::unique_ptr<ComandoServer> comando = this->cola_comandos->wait_and_pop();
         this->send(std::move(comando));
     }

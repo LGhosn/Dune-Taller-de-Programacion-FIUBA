@@ -19,13 +19,14 @@
 #define CODIGO_COMIENZO_PARTIDA 0
 
 class ProtocoloCliente {
-    private:
+private:
     Socket& skt_cliente;
     SerializadorCliente serializador;
 
     void enviarBuffer(const std::vector<uint8_t>& buffer) const;
+    std::string recibirNombre() const;
 
-    public:
+public:
     explicit ProtocoloCliente(Socket& skt_cliente);
 
     uint8_t obtenerId() const;
@@ -47,7 +48,7 @@ class ProtocoloCliente {
      * será usado por el cliente para imprimir un mensaje.
      * */
     Status recibirStatus();
-    bool esperarAComienzoDePartida();
+    bool esperarAComienzoDePartida(std::string *nombre_mapa);
 
     /*
      * No tiene sentido copiar un ProtocoloCliente, tampoco moverlo.

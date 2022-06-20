@@ -2,8 +2,17 @@
 #include "../client_solicitudes/sol_mover_unidad.h"
 #include "../client_comandos/cmd_click_en_mapa.h"
 
-TeclaPresionada::TeclaPresionada(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
-    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
+SDLEvento::SDLEvento(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                    ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                    YAML::Node& constantes) :
+                        cola_solicitudes(cola_solicitudes),
+                        cola_comandos(cola_comandos),
+                        constantes(constantes) {}
+
+TeclaPresionada::TeclaPresionada(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                                ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                                YAML::Node& constantes) :
+                                SDLEvento(cola_solicitudes, cola_comandos, constantes) {}
 
 void TeclaPresionada::ejecutar_evento(SDL_Event& keyEvent) {
     SDL_KeyboardEvent& teclaEvent = (SDL_KeyboardEvent&) keyEvent;
@@ -37,8 +46,9 @@ void TeclaPresionada::ejecutar_evento(SDL_Event& keyEvent) {
 }
 
 TeclaLevantada::TeclaLevantada(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
-    ColaNoBloqueante<ComandoCliente>& cola_comandos) :
-    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
+                                ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                                YAML::Node& constantes) :
+                                SDLEvento(cola_solicitudes, cola_comandos, constantes) {}
 
 void TeclaLevantada::ejecutar_evento(SDL_Event& keyEvent) {
     SDL_KeyboardEvent& teclaEvent = (SDL_KeyboardEvent&) keyEvent;
@@ -68,8 +78,10 @@ void TeclaLevantada::ejecutar_evento(SDL_Event& keyEvent) {
 }
 
 
-ClickPresionado::ClickPresionado(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
-    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
+ClickPresionado::ClickPresionado(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                                ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                                YAML::Node& constantes) :
+                                SDLEvento(cola_solicitudes, cola_comandos, constantes) {}
 
 void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
     SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) mouseButtonEvent;
@@ -91,15 +103,18 @@ void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
     }
 }
 
-ClickLevantado::ClickLevantado(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
-    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
+ClickLevantado::ClickLevantado(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                                ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                                YAML::Node& constantes) :
+                                SDLEvento(cola_solicitudes, cola_comandos, constantes) {}
 
 void ClickLevantado::ejecutar_evento(SDL_Event &clickEvent) {
-    
 }
 
-Rueda::Rueda(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
-    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
+Rueda::Rueda(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+            ColaNoBloqueante<ComandoCliente>& cola_comandos,
+            YAML::Node& constantes) :
+            SDLEvento(cola_solicitudes, cola_comandos, constantes) {}
 
 void Rueda::ejecutar_evento(SDL_Event &ruedaEvent) {
     if (ruedaEvent.wheel.y > 0) {
@@ -111,8 +126,10 @@ void Rueda::ejecutar_evento(SDL_Event &ruedaEvent) {
     }
 }
 
-EventoSalir::EventoSalir(ColaBloqueante<SolicitudCliente>& cola_solicitudes, ColaNoBloqueante<ComandoCliente>& cola_comandos) :
-    cola_solicitudes(cola_solicitudes), cola_comandos(cola_comandos) {}
+EventoSalir::EventoSalir(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                        ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                        YAML::Node& constantes) :
+                        SDLEvento(cola_solicitudes, cola_comandos, constantes) {}
 
 void EventoSalir::ejecutar_evento(SDL_Event &quitEvent) {
     ComandoCliente* comando = new ComandoSalir();

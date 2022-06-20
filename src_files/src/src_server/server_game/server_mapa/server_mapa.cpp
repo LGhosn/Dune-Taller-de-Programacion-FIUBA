@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 
+#include "yaml-cpp/yaml.h"
 #include "server_mapa.h"
 
 #define DISTANCIA_EDIFICIOS 5
@@ -68,8 +70,8 @@ void Mapa::edificar(const Coordenadas& coords, std::tuple<int, int, char> propie
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades;
     if (this->colisiones.empty()){
-        for (int i = coords.y - DISTANCIA_EDIFICIOS; i < (coords.y + dimension_y + DISTANCIA_EDIFICIOS); i++){
-            for (int j = coords.x - DISTANCIA_EDIFICIOS; j < (coords.x + dimension_x + DISTANCIA_EDIFICIOS); j++){
+        for (int i = coords.y; i < (coords.y + dimension_y); i++){
+            for (int j = coords.x; j < (coords.x + dimension_x); j++){
                 if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || this->mapa[i][j] != 'R'){
                     continue;
                 }
@@ -83,12 +85,44 @@ bool Mapa::terrenoFirme(const Coordenadas& coords) {
     return this->mapa[coords.y][coords.x] == 'R' ? true : false;
 }
 
+bool Mapa::construccionLejana(const Coordenadas& coords) {
+    if (this->primera_construccion){
+        this->primera_construccion = false;
+        return false;
+    }
+    for (int i = (coords.y - DISTANCIA_EDIFICIOS); i < (coords.y + DISTANCIA_EDIFICIOS); i++){
+        if (i < 0 || i >= this->alto) continue;
+
+        for (int j = (coords.x - DISTANCIA_EDIFICIOS); j < (coords.x + DISTANCIA_EDIFICIOS); j++){
+            if (0 > j || j >= this->ancho) continue;
+            if (this->mapa[i][j] == TORRE_DE_AIRE || this->mapa[i][j] == CUARTEL || this->mapa[i][j] == SILO){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
 /* ******************************************************************
  *                        PUBLICAS
  * *****************************************************************/
 
-Mapa::Mapa(int ancho, int alto) : ancho(ancho), alto(alto),
-mapa(std::vector< std::vector<char> > (alto, std::vector<char>(ancho, 'A'))), camino(this->mapa) {}
+Mapa::Mapa(const std::string& nombre_mapa) : camino(this->mapa) {
+    std::stringstream ruta_mapa;
+    ruta_mapa << RESOURCE_PATH << "/maps/" << nombre_mapa << ".yaml";
+    YAML::Node mapa_config = YAML::LoadFile(ruta_mapa.str());
+
+    this->ancho = mapa_config["Ancho"].as<int>();
+    this->alto = mapa_config["Alto"].as<int>();
+    this->mapa = std::vector<std::vector<char>>(this->alto, std::vector<char>(this->ancho));
+    for (int i = 0; i < alto; i++) {
+		for (int j = 0; j < ancho; j++){
+            this->mapa[i][j] = mapa_config["TiposTerrenos"][i][j].as<char>();
+        }
+    }
+    this->camino = this->mapa;
+}
 
 bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
@@ -98,7 +132,10 @@ bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenada
     int dimension_x = 0, dimension_y = 0;
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades_del_edificio;
-    if (!terrenoFirme(coords) || hayColisiones(coords, dimension_x, dimension_y)) {
+
+    std::cout << "Coords: " << coords.x << " " << coords.y << std::endl;
+    
+    if (!terrenoFirme(coords) || hayColisiones(coords, dimension_x, dimension_y) || construccionLejana(coords)) {
         return false;
     }
     edificar(coords, propiedades_del_edificio);
@@ -126,8 +163,8 @@ void Mapa::demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y) {
     int dimension_x = 0, dimension_y = 0;
     char tipo_edificio = 0;
     std::tie(dimension_x, dimension_y, tipo_edificio) = propiedadesEdificio(edificio);
-    for (int i = pos_y - DISTANCIA_EDIFICIOS; i < (pos_y + dimension_y + DISTANCIA_EDIFICIOS); i++){
-        for (int j = pos_x - DISTANCIA_EDIFICIOS; j < (pos_x + dimension_x + DISTANCIA_EDIFICIOS); j++){
+    for (int i = pos_y; i < (pos_y + dimension_y); i++){
+        for (int j = pos_x; j < (pos_x + dimension_x); j++){
             if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || this->mapa[i][j] != tipo_edificio){
                 continue;
             }
@@ -146,7 +183,7 @@ Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), mapa(otro.mapa), c
     otro.mapa = std::vector< std::vector<char> > (otro.alto);
 }
 
-Mapa& Mapa::operator=(Mapa&& mapa){
+Mapa& Mapa::operator=(Mapa&& mapa) {
     // Caso de querer moverse asi mismo.
     if (this == &mapa){
         return *this;

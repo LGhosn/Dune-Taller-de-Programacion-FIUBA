@@ -2,32 +2,37 @@
 #include <functional>
 #include <iostream>
 
-	int MapaSDL::limite_superior() const {
-		return PASO;
-	}
+int MapaSDL::limite_superior() const {
+	return 0;
+}
 
-	int MapaSDL::limite_inferior() const {
-		return (this->alto * LARGO_TILE) * zoom - LARGO_VENTANA / zoom;
-	}
+int MapaSDL::limite_inferior() const {
+	return (this->alto * LARGO_TILE) * zoom - LARGO_VISTA_MAPA;
+}
 
-	int MapaSDL::limite_izquierdo() const {
-		return PASO;
-	}
+int MapaSDL::limite_izquierdo() const {
+	return 0;
+}
 
-	int MapaSDL::limite_derecho() const {
-		return (this->ancho * LARGO_TILE) * zoom  - ANCHO_VENTANA / zoom;
-	}
+int MapaSDL::limite_derecho() const {
+	return (this->ancho * LARGO_TILE) * zoom - ANCHO_VISTA_MAPA;
+}
 
-	void MapaSDL::updateTiles() {
-		for (auto& tile : tiles) {
-			tile.update(this->eje_movil_x, this->eje_movil_y);
-		}
+void MapaSDL::updateTiles() {
+	for (auto& tile : tiles) {
+		tile.update(this->eje_movil_x, this->eje_movil_y, zoom);
 	}
+}
 
-MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string ruta_mapa) : renderer(renderer),
-tile_factory(renderer, ruta_mapa), tiles(tile_factory.obtenerTiles()), ancho(tile_factory.obtenerAncho()),
-alto(tile_factory.obtenerAlto()), moviendose_h(false), moviendose_v(false), direccion_h(IZQUIERDA),
-direccion_v(ARRIBA) {}
+MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string& nombre_mapa, TexturasSDL& texturas,
+				YAML::Node& constantes) :
+				constantes(constantes),
+				renderer(renderer),
+				tile_factory(renderer, nombre_mapa, texturas, constantes),
+				tiles(tile_factory.obtenerTiles()),
+				ancho(tile_factory.obtenerAncho()),
+				alto(tile_factory.obtenerAlto()) {}
+
 void MapaSDL::moverArriba() {
 	if (eje_movil_y > this->limite_superior()) {
 		this->direccion_v = ARRIBA;
@@ -85,8 +90,8 @@ int MapaSDL::obtener_offset_y() const {
 // . . . . . . . . . . .
 
 Coordenadas MapaSDL::obtenerCoords(int pos_movil_x, int pos_movil_y) const {
-	uint16_t coord_x = (pos_movil_x / zoom + this->eje_movil_x) / LARGO_TILE;
-	uint16_t coord_y = (pos_movil_y / zoom + this->eje_movil_y) / LARGO_TILE;
+	uint16_t coord_x = (pos_movil_x+ this->eje_movil_x) / (LARGO_TILE * zoom);
+	uint16_t coord_y = (pos_movil_y + this->eje_movil_y) / (LARGO_TILE * zoom);
 	return Coordenadas(coord_x, coord_y);
 }
 
@@ -95,15 +100,15 @@ void MapaSDL::update(float zoom) {
 	if (this->moviendose_h) {
 		switch(this->direccion_h) {
 			case IZQUIERDA:
-				if (this->eje_movil_x > this->limite_izquierdo()) {
-					this->eje_movil_x -= PASO;
+				if (this->eje_movil_x > this->limite_izquierdo() + VELOCIDAD) {
+					this->eje_movil_x -= VELOCIDAD;
 				} else {
 					this->dejarDeMoverseHorizontalmente();
 				}
 				break;
 			case DERECHA:
-				if (this->eje_movil_x < this->limite_derecho()) {
-					this->eje_movil_x += PASO;
+				if (this->eje_movil_x < this->limite_derecho() - VELOCIDAD) {
+					this->eje_movil_x += VELOCIDAD;
 				} else {
 					this->dejarDeMoverseHorizontalmente();
 				}
@@ -113,20 +118,30 @@ void MapaSDL::update(float zoom) {
 	if (this->moviendose_v) {
 		switch(this->direccion_v) {
 			case ARRIBA:
-				if (this->eje_movil_y > this->limite_superior()) {
-					this->eje_movil_y -= PASO;
+				if (this->eje_movil_y > this->limite_superior() + VELOCIDAD) {
+					this->eje_movil_y -= VELOCIDAD;
 				} else {
 					this->dejarDeMoverseVerticalmente();
 				}
 				break;
 			case ABAJO:
-				if (this->eje_movil_y < this->limite_inferior()) {
-					this->eje_movil_y += PASO;
+				if (this->eje_movil_y < this->limite_inferior() - VELOCIDAD) {
+					this->eje_movil_y += VELOCIDAD;
 				} else {
 					this->dejarDeMoverseVerticalmente();
 				}
 				break;
 		}
+	}
+	if (this->eje_movil_x < this->limite_izquierdo()) {
+		this->eje_movil_x = this->limite_izquierdo();
+	} else if (this->eje_movil_x > this->limite_derecho()) {
+		this->eje_movil_x = this->limite_derecho();
+	}
+	if (this->eje_movil_y < this->limite_superior()) {
+		this->eje_movil_y = this->limite_superior();
+	} else if (this->eje_movil_y > this->limite_inferior()) {
+		this->eje_movil_y = this->limite_inferior();
 	}
 	this->updateTiles();
 }

@@ -18,11 +18,9 @@ public:
 
 	std::unique_ptr<T> wait_and_pop() {
 		std::unique_lock<std::mutex> lock(this->mutex);
-		std::cout << "Emtramdp..." << std::endl;
 		while (this->cola.empty()) {
 			this->cv.wait(lock);
 		}
-		std::cout << "Desencolando..." << std::endl;
 		std::unique_ptr<T> elem = std::move(this->cola.front());
 		this->cola.pop();
 		return elem;
@@ -30,7 +28,6 @@ public:
 
 	void push(T* elem) {
 		std::unique_lock<std::mutex> lock(this->mutex);
-		std::cout << "Pushing cola bloqueante" << std::endl;
 		this->cola.emplace(elem);
 		this->cv.notify_all();
 	}

@@ -17,14 +17,28 @@ void WorldView::seleccionarEdificio(EdificioSDL* edificio) {
 	edificios_seleccionados.push_back(edificio);
 }
 
-WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador) :
-window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, ANCHO_VENTANA, LARGO_VENTANA, 0),
-renderer(window, -1, SDL_RENDERER_ACCELERATED),
-cola_solicitudes(cola_solicitudes),
-zoom(ZOOM_INICIAL),
-mapa(renderer, RUTA_MAPA_1),
-edificio_factory(renderer),
-id_jugador(id_jugador) {}
+void WorldView::renderUI() {
+	for (auto edificio : edificios_seleccionados) {
+		edificio->renderUI();
+	}
+	this->side_menu.render();
+}
+
+WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador,
+					std::string& nombre_mapa, YAML::Node& constantes) :
+						constantes(constantes),
+						window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+								ANCHO_VISTA_MAPA + ANCHO_MENU, LARGO_VISTA_MAPA, 0),
+						renderer(window, -1, SDL_RENDERER_ACCELERATED),
+						texturas(renderer, constantes),
+						cola_solicitudes(cola_solicitudes),
+						zoom(ZOOM_INICIAL),
+						mapa(renderer, nombre_mapa, texturas, constantes),
+						side_menu(renderer, 0, texturas, id_jugador, constantes),	// FIXME: hardcoded
+						edificio_factory(renderer, texturas, constantes),
+						id_jugador(id_jugador) {
+	renderer.SetDrawBlendMode(SDL_BLENDMODE_BLEND);
+}
 
 void WorldView::moverMapaArriba() {
 	this->mapa.moverArriba();
@@ -76,13 +90,23 @@ void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 }
 
 void WorldView::click_en_mapa(int pos_x, int pos_y) {
-	Coordenadas coords = mapa.obtenerCoords(pos_x, pos_y);
-	if (edificios.find(coords) != edificios.end()) {
-		seleccionarEdificio(edificios.at(coords));
+	if (pos_x < ANCHO_VISTA_MAPA) {
+		Coordenadas coords = mapa.obtenerCoords(pos_x, pos_y);
+		if (edificios.find(coords) != edificios.end()) {
+			seleccionarEdificio(edificios.at(coords));
+		} else {
+			if (side_menu.tieneBotonSeleccionado()) {
+				SolicitudCliente* solicitud = side_menu.clickEnMapa(coords);
+				cola_solicitudes.push(solicitud);
+			}
+			deseleccionarEdificios();
+		}
 	} else {
-		SolicitudCrearEdificio* solicitud = new SolicitudCrearEdificio(id_jugador, coords, 0);
-		cola_solicitudes.push(solicitud);
-		deseleccionarEdificios();
+		SolicitudCliente* solicitud = side_menu.click_en_menu(pos_x, pos_y);
+		if (solicitud) {
+			cola_solicitudes.push(solicitud);
+			deseleccionarEdificios();
+		}
 	}
 }
 
@@ -96,16 +120,20 @@ void WorldView::update(long frame_actual) {
 		this->mapa.update(this->zoom);
 	}
 	for (auto& edificio : this->edificios)
-		edificio.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(), frame_actual);
+		edificio.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(),
+								frame_actual, zoom);
+	
+	this->side_menu.update(frame_actual);
 	this->frame_anterior = frame_actual;
 }
 
 void WorldView::render() {
 	this->renderer.Clear();
-	this->renderer.SetScale(this->zoom, this->zoom);
+	// this->renderer.SetScale(this->zoom, this->zoom);
 	this->mapa.render();
 	for (auto& edificio : this->edificios)
 		edificio.second->render();
+	this->renderUI();
 	this->renderer.Present();
 }
 

@@ -6,6 +6,7 @@ Client::Client(const char *hostname, const char *servicename) :
                 skt_cliente(hostname, servicename),
                 protocolo(skt_cliente),
                 id_jugador(protocolo.obtenerId()),
+                constantes(YAML::LoadFile(RUTA_CONSTANTES)),
                 receiver(new ClientHiloReciever(cola_comandos, this)),
                 sender(new ClientHiloSender(cola_solicitudes, this, id_jugador)) {}
 
@@ -25,10 +26,14 @@ bool Client::estaEnPartida() {
     return this->partida_empezada;
 }
 
+void Client::setNombreMapa(std::string& nombre_mapa) {
+    this->nombre_mapa = nombre_mapa;
+}
+
 void Client::empezarPartida() {
     receiver->start();
-    ClientRenderer renderer(cola_comandos, cola_solicitudes, id_jugador);
-    ManejadorEventos manejador(cola_solicitudes, cola_comandos);
+    ClientRenderer renderer(cola_comandos, cola_solicitudes, id_jugador, nombre_mapa, constantes);
+    ManejadorEventos manejador(cola_solicitudes, cola_comandos, constantes);
     renderer.start();
     std::cerr << "Cliente cerrandose" << std::endl;
 }

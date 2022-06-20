@@ -69,7 +69,7 @@ public:
      * */
     SolicitudUnirseAPartidaDTO recibirSolicitudUnirseAPartida();
     void enviarStatusDeUnion(Status &status_de_union);
-    void enviarComienzoDePartida();
+    void enviarComienzoDePartida(std::string& nombre_mapa);
 
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR PARTIDAS
