@@ -1,13 +1,11 @@
 cmake_minimum_required(VERSION 3.00)
-project(DuneMapEditor)
+project(DuneEditorDeMapas)
 find_package(Qt5Widgets)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -pedantic -std=c++17")
 
 qt5_wrap_ui(UIS_HEADERS
-        src/src_menu/MenuUi.ui
-        src/src_form_creacion/FormCreacion.ui
-        src/src_form_union/FormUnion.ui
+        src/src_editor/DuneEditorDeMapasUi.ui
         )
 # Habilito el automoc para poder hacer autoconnect de señales
 set(CMAKE_AUTOMOC on)
@@ -18,9 +16,9 @@ message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
 include_directories(${PROJECT_BINARY_DIR})
 message("Headers generados: ${UIS_HEADERS}")
 
-add_executable(DuneEditor
-        DuneMapEditor.cpp
+add_executable(DuneEditorDeMapas
+        src/src_editor/DuneEditorDeMapas.cpp
         main_editor.cpp
         ${UIS_HEADERS})
 
-target_link_libraries(DuneEditor Qt5::Widgets Qt5::Core)
+target_link_libraries(DuneEditorDeMapas Qt5::Widgets Qt5::Core)

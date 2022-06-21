@@ -1,5 +1,5 @@
 <RCC>
-  <qresource prefix="ArenaTextura">
+  <qresource prefix="prefijoNuevo">
     <file>resources/Arena.png</file>
   </qresource>
 </RCC>

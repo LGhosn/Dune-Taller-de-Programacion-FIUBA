@@ -6,16 +6,22 @@
 
 #IncludeRegexTransform: 
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.cpp
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/src/src_editor/DuneEditorDeMapas.cpp
 iostream
 -
-DuneMapEditor.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.h
+QDir
+-
+DuneEditorDeMapas.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/src/src_editor/DuneEditorDeMapas.h
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/src/src_editor/DuneEditorDeMapas.h
 vector
 -
 cstdlib
+-
+QString
+-
+QInputDialog
 -
 QMessageBox
 -
@@ -23,10 +29,10 @@ QMainWindow
 -
 QScreen
 -
-DuneMapEditor_ui.h
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor_ui.h
+DuneEditorDeMapasUi.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/src/src_editor/DuneEditorDeMapasUi.h
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor_ui.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/src/src_editor/DuneEditorDeMapasUi.h
 QtCore/QVariant
 -
 QtWidgets/QApplication
@@ -50,6 +56,10 @@ QtWidgets/QSpinBox
 QtWidgets/QWidget
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtCore/QDir
+qdir.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h
+
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QList
 qlist.h
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h
@@ -69,6 +79,10 @@ qsize.h
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QSizeF
 qsize.h
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qsize.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/QString
+qstring.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant
 qvariant.h
@@ -238,6 +252,16 @@ map
 utility
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h
+QtCore/qstring.h
+-
+QtCore/qfileinfo.h
+-
+QtCore/qstringlist.h
+-
+QtCore/qshareddata.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h
 QtCore/qobject.h
 -
@@ -254,6 +278,16 @@ stdio.h
 QtCore/qiodevice.h
 -
 QtCore/qstring.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h
+QtCore/qfile.h
+-
+QtCore/qlist.h
+-
+QtCore/qshareddata.h
+-
+QtCore/qmetatype.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qflags.h
@@ -1034,6 +1068,14 @@ QtGui/qcolor.h
 QtGui/qbrush.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpen.h
+QtGui/qtguiglobal.h
+-
+QtGui/qcolor.h
+-
+QtGui/qbrush.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixelformat.h
 QtGui/qtguiglobal.h
 -
@@ -1106,6 +1148,46 @@ QtCore/QSizeF
 QtGui/QTransform
 -
 QtCore/qnamespace.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextcursor.h
+QtGui/qtguiglobal.h
+-
+QtCore/qstring.h
+-
+QtCore/qshareddata.h
+-
+QtGui/qtextformat.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h
+QtGui/qtguiglobal.h
+-
+QtGui/qcolor.h
+-
+QtGui/qfont.h
+-
+QtCore/qshareddata.h
+-
+QtCore/qvector.h
+-
+QtCore/qvariant.h
+-
+QtGui/qpen.h
+-
+QtGui/qbrush.h
+-
+QtGui/qtextoption.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h
+QtGui/qtguiglobal.h
+-
+QtCore/qnamespace.h
+-
+QtCore/qchar.h
+-
+QtCore/qmetatype.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h
@@ -1193,6 +1275,10 @@ qframe.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGridLayout
 qgridlayout.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgridlayout.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QInputDialog
+qinputdialog.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qinputdialog.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLabel
 qlabel.h
@@ -1342,6 +1428,16 @@ QtWidgets/qwidget.h
 limits.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qinputdialog.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtCore/qstring.h
+-
+QtWidgets/qlineedit.h
+-
+QtWidgets/qdialog.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlabel.h
 QtWidgets/qtwidgetsglobal.h
 -
@@ -1376,6 +1472,18 @@ QtWidgets/qsizepolicy.h
 QtCore/qrect.h
 -
 limits.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlineedit.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qframe.h
+-
+QtGui/qtextcursor.h
+-
+QtCore/qstring.h
+-
+QtCore/qmargins.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlistview.h

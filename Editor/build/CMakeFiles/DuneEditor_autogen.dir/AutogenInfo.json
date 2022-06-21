@@ -8,9 +8,9 @@
 	"HEADERS" : 
 	[
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.h",
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/src/src_editor/DuneEditorDeMapas.h",
 			"Mu",
-			"EWIEGA46WW/moc_DuneMapEditor.cpp"
+			"U42WMAKM2G/moc_DuneEditorDeMapas.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -64,11 +64,11 @@
 	"SOURCES" : 
 	[
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.cpp",
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/main_editor.cpp",
 			"Mu"
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/main_editor.cpp",
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/src/src_editor/DuneEditorDeMapas.cpp",
 			"Mu"
 		]
 	],

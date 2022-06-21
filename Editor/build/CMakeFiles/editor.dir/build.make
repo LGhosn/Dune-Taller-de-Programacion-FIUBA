@@ -70,18 +70,18 @@ CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build/editor_autogen/mocs_compilation.cpp" -o CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.s
 
-CMakeFiles/editor.dir/DuneMapEditor.cpp.o: CMakeFiles/editor.dir/flags.make
-CMakeFiles/editor.dir/DuneMapEditor.cpp.o: ../DuneMapEditor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/editor.dir/DuneMapEditor.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/editor.dir/DuneMapEditor.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.cpp"
+CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.o: CMakeFiles/editor.dir/flags.make
+CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.o: ../DuneEditorDeMapas.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneEditorDeMapas.cpp"
 
-CMakeFiles/editor.dir/DuneMapEditor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/editor.dir/DuneMapEditor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.cpp" > CMakeFiles/editor.dir/DuneMapEditor.cpp.i
+CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneEditorDeMapas.cpp" > CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.i
 
-CMakeFiles/editor.dir/DuneMapEditor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/editor.dir/DuneMapEditor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.cpp" -o CMakeFiles/editor.dir/DuneMapEditor.cpp.s
+CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneEditorDeMapas.cpp" -o CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.s
 
 CMakeFiles/editor.dir/main_editor.cpp.o: CMakeFiles/editor.dir/flags.make
 CMakeFiles/editor.dir/main_editor.cpp.o: ../main_editor.cpp
@@ -99,14 +99,14 @@ CMakeFiles/editor.dir/main_editor.cpp.s: cmake_force
 # Object files for target editor
 editor_OBJECTS = \
 "CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/editor.dir/DuneMapEditor.cpp.o" \
+"CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.o" \
 "CMakeFiles/editor.dir/main_editor.cpp.o"
 
 # External object files for target editor
 editor_EXTERNAL_OBJECTS =
 
 editor: CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.o
-editor: CMakeFiles/editor.dir/DuneMapEditor.cpp.o
+editor: CMakeFiles/editor.dir/DuneEditorDeMapas.cpp.o
 editor: CMakeFiles/editor.dir/main_editor.cpp.o
 editor: CMakeFiles/editor.dir/build.make
 editor: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.12.8

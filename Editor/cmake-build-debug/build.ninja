@@ -57,13 +57,13 @@ build CMakeFiles/DuneEditor.dir/DuneEditor_autogen/mocs_compilation.cpp.o: CXX_C
   OBJECT_DIR = CMakeFiles/DuneEditor.dir
   OBJECT_FILE_DIR = CMakeFiles/DuneEditor.dir/DuneEditor_autogen
 
-build CMakeFiles/DuneEditor.dir/DuneMapEditor.cpp.o: CXX_COMPILER__DuneEditor_Debug /home/sruizs/Escritorio/FIUBA/TALLER$ DE$ PROGRAMACION/TP$ FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/DuneMapEditor.cpp || cmake_object_order_depends_target_DuneEditor
+build CMakeFiles/DuneEditor.dir/src/src_editor/DuneMapEditor.cpp.o: CXX_COMPILER__DuneEditor_Debug /home/sruizs/Escritorio/FIUBA/TALLER$ DE$ PROGRAMACION/TP$ FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/src/src_editor/DuneMapEditor.cpp || cmake_object_order_depends_target_DuneEditor
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
-  DEP_FILE = CMakeFiles/DuneEditor.dir/DuneMapEditor.cpp.o.d
+  DEP_FILE = CMakeFiles/DuneEditor.dir/src/src_editor/DuneMapEditor.cpp.o.d
   FLAGS = -Werror -Wall -pedantic -std=c++17 -g -fPIC
   INCLUDES = -I"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/cmake-build-debug/DuneEditor_autogen/include" -I"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/cmake-build-debug" -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
   OBJECT_DIR = CMakeFiles/DuneEditor.dir
-  OBJECT_FILE_DIR = CMakeFiles/DuneEditor.dir
+  OBJECT_FILE_DIR = CMakeFiles/DuneEditor.dir/src/src_editor
 
 build CMakeFiles/DuneEditor.dir/main_editor.cpp.o: CXX_COMPILER__DuneEditor_Debug /home/sruizs/Escritorio/FIUBA/TALLER$ DE$ PROGRAMACION/TP$ FINAL/Dune-Taller-de-Programacion-FIUBA/Editor/main_editor.cpp || cmake_object_order_depends_target_DuneEditor
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
@@ -81,7 +81,7 @@ build CMakeFiles/DuneEditor.dir/main_editor.cpp.o: CXX_COMPILER__DuneEditor_Debu
 #############################################
 # Link the executable DuneEditor
 
-build DuneEditor: CXX_EXECUTABLE_LINKER__DuneEditor_Debug CMakeFiles/DuneEditor.dir/DuneEditor_autogen/mocs_compilation.cpp.o CMakeFiles/DuneEditor.dir/DuneMapEditor.cpp.o CMakeFiles/DuneEditor.dir/main_editor.cpp.o | /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8 || DuneEditor_autogen
+build DuneEditor: CXX_EXECUTABLE_LINKER__DuneEditor_Debug CMakeFiles/DuneEditor.dir/DuneEditor_autogen/mocs_compilation.cpp.o CMakeFiles/DuneEditor.dir/src/src_editor/DuneMapEditor.cpp.o CMakeFiles/DuneEditor.dir/main_editor.cpp.o | /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8 || DuneEditor_autogen
   FLAGS = -Werror -Wall -pedantic -std=c++17 -g
   LINK_FLAGS = -rdynamic
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.12.8  /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.12.8  /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8

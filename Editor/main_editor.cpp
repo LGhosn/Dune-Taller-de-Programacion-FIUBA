@@ -1,9 +1,9 @@
 #include <QApplication>
-#include "DuneMapEditor.h"
+#include "src/src_editor/DuneEditorDeMapas.h"
 
 int main (int argc, char** argv) {
     QApplication app(argc, argv);
-    DuneMapEditor editor;
+    DuneEditorDeMapas editor;
     editor.show();
     return app.exec();
 }

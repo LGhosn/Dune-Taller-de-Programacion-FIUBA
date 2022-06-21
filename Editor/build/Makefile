@@ -111,84 +111,57 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DuneEditor
+# Target rules for targets named DuneEditorDeMapas
 
 # Build rule for target.
-DuneEditor: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 DuneEditor
-.PHONY : DuneEditor
+DuneEditorDeMapas: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DuneEditorDeMapas
+.PHONY : DuneEditorDeMapas
 
 # fast build rule for target.
-DuneEditor/fast:
-	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/build
-.PHONY : DuneEditor/fast
+DuneEditorDeMapas/fast:
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas.dir/build.make CMakeFiles/DuneEditorDeMapas.dir/build
+.PHONY : DuneEditorDeMapas/fast
 
 #=============================================================================
-# Target rules for targets named DuneEditor_autogen
+# Target rules for targets named DuneEditorDeMapas_autogen
 
 # Build rule for target.
-DuneEditor_autogen: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 DuneEditor_autogen
-.PHONY : DuneEditor_autogen
+DuneEditorDeMapas_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DuneEditorDeMapas_autogen
+.PHONY : DuneEditorDeMapas_autogen
 
 # fast build rule for target.
-DuneEditor_autogen/fast:
-	$(MAKE) -f CMakeFiles/DuneEditor_autogen.dir/build.make CMakeFiles/DuneEditor_autogen.dir/build
-.PHONY : DuneEditor_autogen/fast
+DuneEditorDeMapas_autogen/fast:
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas_autogen.dir/build.make CMakeFiles/DuneEditorDeMapas_autogen.dir/build
+.PHONY : DuneEditorDeMapas_autogen/fast
 
-DuneEditor_autogen/mocs_compilation.o: DuneEditor_autogen/mocs_compilation.cpp.o
+DuneEditorDeMapas_autogen/mocs_compilation.o: DuneEditorDeMapas_autogen/mocs_compilation.cpp.o
 
-.PHONY : DuneEditor_autogen/mocs_compilation.o
-
-# target to build an object file
-DuneEditor_autogen/mocs_compilation.cpp.o:
-	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneEditor_autogen/mocs_compilation.cpp.o
-.PHONY : DuneEditor_autogen/mocs_compilation.cpp.o
-
-DuneEditor_autogen/mocs_compilation.i: DuneEditor_autogen/mocs_compilation.cpp.i
-
-.PHONY : DuneEditor_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-DuneEditor_autogen/mocs_compilation.cpp.i:
-	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneEditor_autogen/mocs_compilation.cpp.i
-.PHONY : DuneEditor_autogen/mocs_compilation.cpp.i
-
-DuneEditor_autogen/mocs_compilation.s: DuneEditor_autogen/mocs_compilation.cpp.s
-
-.PHONY : DuneEditor_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-DuneEditor_autogen/mocs_compilation.cpp.s:
-	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneEditor_autogen/mocs_compilation.cpp.s
-.PHONY : DuneEditor_autogen/mocs_compilation.cpp.s
-
-DuneMapEditor.o: DuneMapEditor.cpp.o
-
-.PHONY : DuneMapEditor.o
+.PHONY : DuneEditorDeMapas_autogen/mocs_compilation.o
 
 # target to build an object file
-DuneMapEditor.cpp.o:
-	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneMapEditor.cpp.o
-.PHONY : DuneMapEditor.cpp.o
+DuneEditorDeMapas_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas.dir/build.make CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.o
+.PHONY : DuneEditorDeMapas_autogen/mocs_compilation.cpp.o
 
-DuneMapEditor.i: DuneMapEditor.cpp.i
+DuneEditorDeMapas_autogen/mocs_compilation.i: DuneEditorDeMapas_autogen/mocs_compilation.cpp.i
 
-.PHONY : DuneMapEditor.i
+.PHONY : DuneEditorDeMapas_autogen/mocs_compilation.i
 
 # target to preprocess a source file
-DuneMapEditor.cpp.i:
-	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneMapEditor.cpp.i
-.PHONY : DuneMapEditor.cpp.i
+DuneEditorDeMapas_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas.dir/build.make CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.i
+.PHONY : DuneEditorDeMapas_autogen/mocs_compilation.cpp.i
 
-DuneMapEditor.s: DuneMapEditor.cpp.s
+DuneEditorDeMapas_autogen/mocs_compilation.s: DuneEditorDeMapas_autogen/mocs_compilation.cpp.s
 
-.PHONY : DuneMapEditor.s
+.PHONY : DuneEditorDeMapas_autogen/mocs_compilation.s
 
 # target to generate assembly for a file
-DuneMapEditor.cpp.s:
-	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/DuneMapEditor.cpp.s
-.PHONY : DuneMapEditor.cpp.s
+DuneEditorDeMapas_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas.dir/build.make CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.s
+.PHONY : DuneEditorDeMapas_autogen/mocs_compilation.cpp.s
 
 main_editor.o: main_editor.cpp.o
 
@@ -196,7 +169,7 @@ main_editor.o: main_editor.cpp.o
 
 # target to build an object file
 main_editor.cpp.o:
-	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/main_editor.cpp.o
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas.dir/build.make CMakeFiles/DuneEditorDeMapas.dir/main_editor.cpp.o
 .PHONY : main_editor.cpp.o
 
 main_editor.i: main_editor.cpp.i
@@ -205,7 +178,7 @@ main_editor.i: main_editor.cpp.i
 
 # target to preprocess a source file
 main_editor.cpp.i:
-	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/main_editor.cpp.i
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas.dir/build.make CMakeFiles/DuneEditorDeMapas.dir/main_editor.cpp.i
 .PHONY : main_editor.cpp.i
 
 main_editor.s: main_editor.cpp.s
@@ -214,8 +187,35 @@ main_editor.s: main_editor.cpp.s
 
 # target to generate assembly for a file
 main_editor.cpp.s:
-	$(MAKE) -f CMakeFiles/DuneEditor.dir/build.make CMakeFiles/DuneEditor.dir/main_editor.cpp.s
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas.dir/build.make CMakeFiles/DuneEditorDeMapas.dir/main_editor.cpp.s
 .PHONY : main_editor.cpp.s
+
+src/src_editor/DuneEditorDeMapas.o: src/src_editor/DuneEditorDeMapas.cpp.o
+
+.PHONY : src/src_editor/DuneEditorDeMapas.o
+
+# target to build an object file
+src/src_editor/DuneEditorDeMapas.cpp.o:
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas.dir/build.make CMakeFiles/DuneEditorDeMapas.dir/src/src_editor/DuneEditorDeMapas.cpp.o
+.PHONY : src/src_editor/DuneEditorDeMapas.cpp.o
+
+src/src_editor/DuneEditorDeMapas.i: src/src_editor/DuneEditorDeMapas.cpp.i
+
+.PHONY : src/src_editor/DuneEditorDeMapas.i
+
+# target to preprocess a source file
+src/src_editor/DuneEditorDeMapas.cpp.i:
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas.dir/build.make CMakeFiles/DuneEditorDeMapas.dir/src/src_editor/DuneEditorDeMapas.cpp.i
+.PHONY : src/src_editor/DuneEditorDeMapas.cpp.i
+
+src/src_editor/DuneEditorDeMapas.s: src/src_editor/DuneEditorDeMapas.cpp.s
+
+.PHONY : src/src_editor/DuneEditorDeMapas.s
+
+# target to generate assembly for a file
+src/src_editor/DuneEditorDeMapas.cpp.s:
+	$(MAKE) -f CMakeFiles/DuneEditorDeMapas.dir/build.make CMakeFiles/DuneEditorDeMapas.dir/src/src_editor/DuneEditorDeMapas.cpp.s
+.PHONY : src/src_editor/DuneEditorDeMapas.cpp.s
 
 # Help Target
 help:
@@ -225,17 +225,17 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... DuneEditor"
-	@echo "... DuneEditor_autogen"
-	@echo "... DuneEditor_autogen/mocs_compilation.o"
-	@echo "... DuneEditor_autogen/mocs_compilation.i"
-	@echo "... DuneEditor_autogen/mocs_compilation.s"
-	@echo "... DuneMapEditor.o"
-	@echo "... DuneMapEditor.i"
-	@echo "... DuneMapEditor.s"
+	@echo "... DuneEditorDeMapas"
+	@echo "... DuneEditorDeMapas_autogen"
+	@echo "... DuneEditorDeMapas_autogen/mocs_compilation.o"
+	@echo "... DuneEditorDeMapas_autogen/mocs_compilation.i"
+	@echo "... DuneEditorDeMapas_autogen/mocs_compilation.s"
 	@echo "... main_editor.o"
 	@echo "... main_editor.i"
 	@echo "... main_editor.s"
+	@echo "... src/src_editor/DuneEditorDeMapas.o"
+	@echo "... src/src_editor/DuneEditorDeMapas.i"
+	@echo "... src/src_editor/DuneEditorDeMapas.s"
 .PHONY : help
 
 
