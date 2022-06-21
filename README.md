@@ -1,7 +1,3 @@
-# Dune Remake
+# [Remake Dune 2000](https://lghosn.github.io/Dune-Taller-de-Programacion-FIUBA/)
 
-| Integrantes                   | Padrón        |
-| ----------------------------- | ------------- |
-| Santiago Nahuel Ruiz Sugliani | 106768        |
-| Joaquín Velazquez             | 105980        |
-| Lautaro Gabriel Ghosn          | 106998        |
+Trabajo Práctico final de la matería **Taller de Programación** de la **Facultad de Ingeniería, Universidad de Buenos Aires.**
