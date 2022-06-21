@@ -1,10 +1,10 @@
-## Integrantes
-| Integrantes                   | Padrón        |
-| ----------------------------- | ------------- |
-| Santiago Nahuel Ruiz Sugliani | 106768        |
-| Joaquín Velazquez             | 105980        |
-| Lautaro Gabriel Ghosn          | 106998        |
+## Equipo de desarrollo
 
+| Nombre y apellido | Padrón | Mail | GitHub |
+|-------------------|--------|------|--------|
+| Santiago Nahuel Ruiz Sugliani | 106768 | sruizs@fi.uba.ar | [ruizsugliani](https://github.com/ruizsugliani) |
+| Joaquín Velazquez | 105980 | jvelazquez@fi.uba.ar | [jm-velazquez](https://github.com/jm-velazquez) |
+| Lautaro Gabriel Ghosn | 106998 | lghosn@fi.uba.ar | [LGhosn](https://github.com/LGhosn) |
 
 ## Sistema operativo
 **Ubuntu 20.04 LTS**
