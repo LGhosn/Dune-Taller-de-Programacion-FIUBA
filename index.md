@@ -1,4 +1,10 @@
-## Remake Dune 2000
+## Integrantes
+| Integrantes                   | Padrón        |
+| ----------------------------- | ------------- |
+| Santiago Nahuel Ruiz Sugliani | 106768        |
+| Joaquín Velazquez             | 105980        |
+| Lautaro Gabriel Ghosn          | 106998        |
+
 
 ## Sistema operativo
 **Ubuntu 20.04 LTS**
