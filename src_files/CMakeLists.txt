@@ -25,6 +25,7 @@ include_directories(${PROJECT_SOURCE_DIR}/src
         ${PROJECT_SOURCE_DIR}/src/src_cliente
         ${PROJECT_SOURCE_DIR}/src/src_server
         ${PROJECT_SOURCE_DIR}/src/src_common
+        ${PROJECT_SOURCE_DIR}/src/src_editor
         )
 
 qt5_wrap_ui(UIS_HEADERS
@@ -124,6 +125,7 @@ add_executable(server
 add_subdirectory(src/src_testing/pruebas_camino)
 #add_subdirectory(src/src_testing/pruebas_mapa)
 add_subdirectory(src/src_testing/pruebas_serializador)
+add_subdirectory(src/src_editor)
 
 target_link_libraries(client Qt5::Widgets Qt5::Core ${SDL2PP_LIBRARIES} pthread yaml-cpp)
 target_link_libraries(server pthread yaml-cpp)
