@@ -6,10 +6,12 @@
 
 #IncludeRegexTransform: 
 
-/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/main_editor.cpp
-QApplication
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.cpp
+iostream
 -
-src_editor/DuneEditorDeMapas.h
+QDir
+-
+DuneEditorDeMapas.h
 /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.h
 
 /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.h
@@ -53,6 +55,10 @@ QtWidgets/QSpinBox
 -
 QtWidgets/QWidget
 -
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/QDir
+qdir.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QList
 qlist.h
@@ -246,6 +252,16 @@ map
 utility
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h
+QtCore/qstring.h
+-
+QtCore/qfileinfo.h
+-
+QtCore/qstringlist.h
+-
+QtCore/qshareddata.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h
 QtCore/qobject.h
 -
@@ -262,6 +278,16 @@ stdio.h
 QtCore/qiodevice.h
 -
 QtCore/qstring.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h
+QtCore/qfile.h
+-
+QtCore/qlist.h
+-
+QtCore/qshareddata.h
+-
+QtCore/qmetatype.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qflags.h

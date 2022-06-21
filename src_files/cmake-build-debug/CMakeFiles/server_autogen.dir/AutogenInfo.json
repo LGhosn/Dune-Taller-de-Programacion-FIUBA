@@ -75,13 +75,20 @@
 		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-config-version.cmake",
 		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-config.cmake",
 		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-targets.cmake",
-		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-targets-noconfig.cmake"
+		"/usr/local/share/cmake/yaml-cpp/yaml-cpp-targets-noconfig.cmake",
+		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/assets/resources.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files",
 	"DEP_FILE" : "",
 	"DEP_FILE_RULE_NAME" : "",
 	"HEADERS" : 
 	[
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_DTO/Status.h",
+			"Mu",
+			"GQWCWOYKCR/moc_Status.cpp",
+			null
+		],
 		[
 			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h",
 			"Mu",
@@ -254,6 +261,7 @@
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common",
+		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug",
 		"/usr/local/include",
 		"/usr/include/c++/9",
@@ -278,6 +286,7 @@
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : 
 	[
+		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/ui_DuneEditorDeMapasUi.h",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/ui_FormCreacion.h",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/ui_FormUnion.h",
 		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug/ui_MenuUi.h"
@@ -294,6 +303,11 @@
 	[
 		[
 			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/main_server.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_DTO/Status.cpp",
 			"Mu",
 			null
 		],

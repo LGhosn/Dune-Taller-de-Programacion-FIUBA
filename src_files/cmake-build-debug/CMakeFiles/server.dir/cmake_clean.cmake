@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/server.dir/server_autogen/mocs_compilation.cpp.o.d"
   "CMakeFiles/server.dir/src/main_server.cpp.o"
   "CMakeFiles/server.dir/src/main_server.cpp.o.d"
+  "CMakeFiles/server.dir/src/src_common/common_DTO/Status.cpp.o"
+  "CMakeFiles/server.dir/src/src_common/common_DTO/Status.cpp.o.d"
   "CMakeFiles/server.dir/src/src_common/common_coords.cpp.o"
   "CMakeFiles/server.dir/src/src_common/common_coords.cpp.o.d"
   "CMakeFiles/server.dir/src/src_common/common_resolver.cpp.o"

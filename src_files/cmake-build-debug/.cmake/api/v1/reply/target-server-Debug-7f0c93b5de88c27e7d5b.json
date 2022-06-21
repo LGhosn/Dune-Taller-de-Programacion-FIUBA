@@ -27,13 +27,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 80,
+				"line" : 97,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 112,
+				"line" : 137,
 				"parent" : 0
 			},
 			{
@@ -57,7 +57,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 41,
+				"line" : 43,
 				"parent" : 0
 			}
 		]
@@ -68,7 +68,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -Werror -Wall -pedantic -std=c++17 -g"
+					"fragment" : " -Werror -Wall -ggdb -O0 -pedantic -std=c++17 -g"
 				}
 			],
 			"defines" : 
@@ -129,6 +129,10 @@
 					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common"
 				},
 				{
+					"backtrace" : 5,
+					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor"
+				},
+				{
 					"backtrace" : 6,
 					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug"
 				}
@@ -141,7 +145,7 @@
 				2,
 				3,
 				4,
-				6,
+				5,
 				7,
 				8,
 				9,
@@ -159,7 +163,9 @@
 				21,
 				22,
 				23,
-				24
+				24,
+				25,
+				26
 			]
 		}
 	],
@@ -176,7 +182,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-Werror -Wall -pedantic -std=c++17 -g",
+				"fragment" : "-Werror -Wall -ggdb -O0 -pedantic -std=c++17 -g",
 				"role" : "flags"
 			},
 			{
@@ -214,7 +220,7 @@
 				2,
 				3,
 				4,
-				6,
+				5,
 				7,
 				8,
 				9,
@@ -232,14 +238,16 @@
 				21,
 				22,
 				23,
-				24
+				24,
+				25,
+				26
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				5
+				6
 			]
 		}
 	],
@@ -262,6 +270,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/src_server/server_comandos/cmd_crear_edificio.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -357,6 +371,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/src_server/server_partida/server_partida.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_common/common_DTO/Status.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

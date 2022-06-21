@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "../CMakeLists.txt"
+  "../assets/resources.qrc"
   "CMakeFiles/3.22.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.22.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.3/CMakeSystem.cmake"
@@ -125,7 +126,9 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/client_autogen.dir/AutogenInfo.json"
+  "CMakeFiles/client_autogen.dir/AutoRcc_resources_GBFAFXFCVO_Info.json"
   "CMakeFiles/server_autogen.dir/AutogenInfo.json"
+  "CMakeFiles/DuneEditorDeMapas_autogen.dir/AutogenInfo.json"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "SDL2pp/build/SDL2pp/Config.hh"
   "SDL2pp/build/SDL2pp/Export.hh"
@@ -154,8 +157,10 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/client.dir/DependInfo.cmake"
   "CMakeFiles/server.dir/DependInfo.cmake"
+  "CMakeFiles/DuneEditorDeMapas.dir/DependInfo.cmake"
   "CMakeFiles/client_autogen.dir/DependInfo.cmake"
   "CMakeFiles/server_autogen.dir/DependInfo.cmake"
+  "CMakeFiles/DuneEditorDeMapas_autogen.dir/DependInfo.cmake"
   "SDL2pp/build/CMakeFiles/SDL2pp.dir/DependInfo.cmake"
   "src/src_testing/pruebas_camino/CMakeFiles/camino_tests.dir/DependInfo.cmake"
   "src/src_testing/pruebas_camino/CMakeFiles/camino_tests_autogen.dir/DependInfo.cmake"

@@ -8,12 +8,71 @@ DuneEditorDeMapas::DuneEditorDeMapas(QWidget* parent) : ui(new Ui_DuneMapEditor)
     move(QGuiApplication::screens().at(0)->geometry().center() - frameGeometry().center());
     connect(ui->SaveButton, &QPushButton::clicked, this, &DuneEditorDeMapas::guardarMapa);
     connect(ui->ResetButton, &QPushButton::clicked, this, &DuneEditorDeMapas::reestablecer);
-    mostrarMapa();
+    connect(ui->TerrainTypeComboBox, &QComboBox::currentTextChanged, this, &DuneEditorDeMapas::ofrecerTexturasSegunTipoDeTerreno);
+    //mostrarMapa();
 }
 
 /* *****************************************************************
  *             METODOS REFERIDOS A EDITAR MAPAS
  * *****************************************************************/
+
+void DuneEditorDeMapas::ofrecerTexturasSegunTipoDeTerreno() {
+    QString terreno = ui->TerrainTypeComboBox->currentText();
+    if (terreno == "-") {
+        ui->TerrainTextureComboBox->clear();
+    } else if (terreno == "Arena") {
+        mostrarTexturasDeArena();
+    } else if (terreno == "Duna") {
+        mostrarTexturasDeDuna();
+    } else if (terreno == "Roca") {
+        mostrarTexturasDeRoca();
+    } else if (terreno == "Cima") {
+        mostrarTexturasDeCima();
+    } else if (terreno == "Precipicio") {
+        mostrarTexturasDePrecipicio();
+    }
+}
+
+void DuneEditorDeMapas::mostrarTexturasDePrecipicio() {
+    ui->TerrainTextureComboBox->clear();
+    ui->TerrainTextureComboBox->addItem("-");
+    ui->TerrainTextureComboBox->addItem("Precipicio01");
+    ui->TerrainTextureComboBox->addItem("Precipicio02");
+    ui->TerrainTextureComboBox->addItem("Precipicio03");
+}
+
+void DuneEditorDeMapas::mostrarTexturasDeCima() {
+    ui->TerrainTextureComboBox->clear();
+    ui->TerrainTextureComboBox->addItem("-");
+    ui->TerrainTextureComboBox->addItem("Cima01");
+    ui->TerrainTextureComboBox->addItem("Cima02");
+    ui->TerrainTextureComboBox->addItem("Cima03");
+}
+
+void DuneEditorDeMapas::mostrarTexturasDeRoca() {
+    ui->TerrainTextureComboBox->clear();
+    ui->TerrainTextureComboBox->addItem("-");
+    ui->TerrainTextureComboBox->addItem("Roca01");
+    ui->TerrainTextureComboBox->addItem("Roca02");
+    ui->TerrainTextureComboBox->addItem("Roca03");
+}
+
+void DuneEditorDeMapas::mostrarTexturasDeDuna() {
+    ui->TerrainTextureComboBox->clear();
+    ui->TerrainTextureComboBox->addItem("-");
+    ui->TerrainTextureComboBox->addItem("Duna01");
+    ui->TerrainTextureComboBox->addItem("Duna02");
+    ui->TerrainTextureComboBox->addItem("Duna03");
+}
+
+void DuneEditorDeMapas::mostrarTexturasDeArena() {
+    ui->TerrainTextureComboBox->clear();
+    ui->TerrainTextureComboBox->addItem("-");
+    ui->TerrainTextureComboBox->addItem("Arena01");
+    ui->TerrainTextureComboBox->addItem("Arena02");
+    ui->TerrainTextureComboBox->addItem("Arena03");
+}
+
 void DuneEditorDeMapas::mostrarMapa() {
     for (int i = 0; i < cantidad_filas_mapa; i++) {
         for (int j = 0; j < cantidad_columnas_mapa; j++) {
@@ -78,8 +137,8 @@ void DuneEditorDeMapas::guardarMapa() {
 void DuneEditorDeMapas::establecerCampos() {
     modo_de_edicion = ui->EditionModeComboBox->currentText().toStdString();
     jugadores_requeridos = ui->RequiredPlayersComboBox->currentText().toInt();
-    //cantidad_filas_mapa = ui->RowsSpinBox->currentText();
-    //cantidad_columnas_mapa = ui->RowsSpinBox->currentText();
+    cantidad_filas_mapa = ui->RowsSpinBox->value();
+    cantidad_columnas_mapa = ui->RowsSpinBox->value();
 }
 
 void DuneEditorDeMapas::chequearSiAlgunCampoNoEstaCompleto() {

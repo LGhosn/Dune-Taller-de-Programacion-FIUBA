@@ -22,10 +22,12 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						3,
-						4,
-						15,
-						16
+						0,
+						1,
+						5,
+						6,
+						17,
+						18
 					]
 				},
 				{
@@ -40,7 +42,7 @@
 					"source" : "src/src_libs/SDL2pp",
 					"targetIndexes" : 
 					[
-						0
+						2
 					]
 				},
 				{
@@ -60,8 +62,8 @@
 					"source" : "src/src_testing/pruebas_camino",
 					"targetIndexes" : 
 					[
-						1,
-						2
+						3,
+						4
 					]
 				},
 				{
@@ -87,7 +89,7 @@
 						5
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-_deps.googletest-build.googlemock-Debug-9112203f597378427596.json",
+					"jsonFile" : "directory-_deps.googletest-build.googlemock-Debug-7f2d4dcc45ed95211a84.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "2.8.12"
@@ -97,16 +99,16 @@
 					"source" : "cmake-build-debug/_deps/googletest-src/googlemock",
 					"targetIndexes" : 
 					[
-						5,
-						6,
 						7,
-						8
+						8,
+						9,
+						10
 					]
 				},
 				{
 					"build" : "_deps/googletest-build/googletest",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-_deps.googletest-build.googletest-Debug-4de96d35c4a92c2b6c73.json",
+					"jsonFile" : "directory-_deps.googletest-build.googletest-Debug-aa9e81ab8aaeb2d4b757.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "2.8.12"
@@ -116,10 +118,10 @@
 					"source" : "cmake-build-debug/_deps/googletest-src/googletest",
 					"targetIndexes" : 
 					[
-						9,
-						10,
 						11,
-						12
+						12,
+						13,
+						14
 					]
 				},
 				{
@@ -134,8 +136,8 @@
 					"source" : "src/src_testing/pruebas_serializador",
 					"targetIndexes" : 
 					[
-						13,
-						14
+						15,
+						16
 					]
 				}
 			],
@@ -156,10 +158,12 @@
 					"name" : "Dune2000",
 					"targetIndexes" : 
 					[
-						3,
-						4,
-						15,
-						16
+						0,
+						1,
+						5,
+						6,
+						17,
+						18
 					]
 				},
 				{
@@ -171,7 +175,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						0
+						2
 					]
 				},
 				{
@@ -187,8 +191,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						1,
-						2
+						3,
+						4
 					]
 				},
 				{
@@ -216,10 +220,10 @@
 					"parentIndex" : 3,
 					"targetIndexes" : 
 					[
-						5,
-						6,
 						7,
-						8
+						8,
+						9,
+						10
 					]
 				},
 				{
@@ -231,10 +235,10 @@
 					"parentIndex" : 4,
 					"targetIndexes" : 
 					[
-						9,
-						10,
 						11,
-						12
+						12,
+						13,
+						14
 					]
 				},
 				{
@@ -246,24 +250,38 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						13,
-						14
+						15,
+						16
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
+					"directoryIndex" : 0,
+					"id" : "DuneEditorDeMapas::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DuneEditorDeMapas-Debug-be1e17de7e2783b81fe5.json",
+					"name" : "DuneEditorDeMapas",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "DuneEditorDeMapas_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DuneEditorDeMapas_autogen-Debug-6d51015e359040e94b77.json",
+					"name" : "DuneEditorDeMapas_autogen",
+					"projectIndex" : 0
+				},
+				{
 					"directoryIndex" : 1,
 					"id" : "SDL2pp::@5294c835cb04e2b60d48",
-					"jsonFile" : "target-SDL2pp-Debug-2c9f50a9ca514c1e78cd.json",
+					"jsonFile" : "target-SDL2pp-Debug-384477cd7ec86ee0fbc1.json",
 					"name" : "SDL2pp",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "camino_tests::@96a13d363dd1a15e8b6a",
-					"jsonFile" : "target-camino_tests-Debug-8b71998cd35ed6d36108.json",
+					"jsonFile" : "target-camino_tests-Debug-2c97f2c0663e9af19582.json",
 					"name" : "camino_tests",
 					"projectIndex" : 2
 				},
@@ -277,7 +295,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "client::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-client-Debug-f39a5a7ca86550f1c4c5.json",
+					"jsonFile" : "target-client-Debug-0fcb893da0124a6fb07a.json",
 					"name" : "client",
 					"projectIndex" : 0
 				},
@@ -291,7 +309,7 @@
 				{
 					"directoryIndex" : 4,
 					"id" : "gmock::@0f7bb11d64f3678238c7",
-					"jsonFile" : "target-gmock-Debug-2a5fecff6fe8c561c011.json",
+					"jsonFile" : "target-gmock-Debug-23b3d5f7f588263df969.json",
 					"name" : "gmock",
 					"projectIndex" : 4
 				},
@@ -305,7 +323,7 @@
 				{
 					"directoryIndex" : 4,
 					"id" : "gmock_main::@0f7bb11d64f3678238c7",
-					"jsonFile" : "target-gmock_main-Debug-5b13ad11121b7c1a8560.json",
+					"jsonFile" : "target-gmock_main-Debug-320d5198d171d2f51be2.json",
 					"name" : "gmock_main",
 					"projectIndex" : 4
 				},
@@ -319,7 +337,7 @@
 				{
 					"directoryIndex" : 5,
 					"id" : "gtest::@1ea2dfc0605fe3ab2a3f",
-					"jsonFile" : "target-gtest-Debug-c4e4f2cb92a636789afd.json",
+					"jsonFile" : "target-gtest-Debug-92327d8606fa18fbdf2f.json",
 					"name" : "gtest",
 					"projectIndex" : 5
 				},
@@ -333,7 +351,7 @@
 				{
 					"directoryIndex" : 5,
 					"id" : "gtest_main::@1ea2dfc0605fe3ab2a3f",
-					"jsonFile" : "target-gtest_main-Debug-582c46bf4541af4347a0.json",
+					"jsonFile" : "target-gtest_main-Debug-718bd27d4ed1353ec402.json",
 					"name" : "gtest_main",
 					"projectIndex" : 5
 				},
@@ -347,7 +365,7 @@
 				{
 					"directoryIndex" : 6,
 					"id" : "serializador_tests::@7a652f142dc1e700579d",
-					"jsonFile" : "target-serializador_tests-Debug-72fa2112eb31bad34f5e.json",
+					"jsonFile" : "target-serializador_tests-Debug-de237fe8faa7f4330837.json",
 					"name" : "serializador_tests",
 					"projectIndex" : 6
 				},
@@ -361,7 +379,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "server::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-server-Debug-8c12c557a1a3f85ce992.json",
+					"jsonFile" : "target-server-Debug-7f0c93b5de88c27e7d5b.json",
 					"name" : "server",
 					"projectIndex" : 0
 				},

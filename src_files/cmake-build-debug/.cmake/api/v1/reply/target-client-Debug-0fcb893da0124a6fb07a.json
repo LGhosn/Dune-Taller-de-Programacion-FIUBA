@@ -27,13 +27,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 44,
+				"line" : 46,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 111,
+				"line" : 136,
 				"parent" : 0
 			},
 			{
@@ -57,7 +57,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 41,
+				"line" : 43,
 				"parent" : 0
 			}
 		]
@@ -68,7 +68,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -Werror -Wall -pedantic -std=c++17 -g"
+					"fragment" : " -Werror -Wall -ggdb -O0 -pedantic -std=c++17 -g"
 				},
 				{
 					"backtrace" : 2,
@@ -145,6 +145,10 @@
 					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common"
 				},
 				{
+					"backtrace" : 5,
+					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor"
+				},
+				{
 					"backtrace" : 6,
 					"path" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/cmake-build-debug"
 				},
@@ -188,7 +192,6 @@
 				8,
 				9,
 				10,
-				11,
 				12,
 				13,
 				14,
@@ -209,7 +212,22 @@
 				29,
 				30,
 				31,
-				36
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				47,
+				52
 			]
 		}
 	],
@@ -230,7 +248,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-Werror -Wall -pedantic -std=c++17 -g",
+				"fragment" : "-Werror -Wall -ggdb -O0 -pedantic -std=c++17 -g",
 				"role" : "flags"
 			},
 			{
@@ -319,7 +337,6 @@
 				8,
 				9,
 				10,
-				11,
 				12,
 				13,
 				14,
@@ -340,33 +357,51 @@
 				29,
 				30,
 				31,
-				36
-			]
-		},
-		{
-			"name" : "",
-			"sourceIndexes" : 
-			[
 				32,
+				33,
+				34,
+				35,
+				36,
 				37,
 				38,
-				39
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				47,
+				52
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				33,
-				34,
-				35
+				11,
+				48,
+				49,
+				50,
+				51
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				46,
+				53,
+				54,
+				55,
+				56
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				40
+				57
 			]
 		}
 	],
@@ -406,6 +441,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_serializador.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -435,9 +476,8 @@
 		},
 		{
 			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/src_cliente/client_DTO/Status.cpp",
-			"sourceGroupIndex" : 0
+			"path" : "src/src_cliente/client_DTO/dto_cmd_crear_edificio.h",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
@@ -460,6 +500,18 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_comandos/cmd_click_en_mapa.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_comandos/cmd_crear_edificio.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "src/src_cliente/client_solicitudes/sol_mover_unidad.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -472,25 +524,91 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/src_cliente/client_world_view/sdl_tile_factory.cpp",
+			"path" : "src/src_cliente/client_world_view/sdl_mapa/sdl_tile_factory.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/src_cliente/client_world_view/sdl_tile.cpp",
+			"path" : "src/src_cliente/client_world_view/sdl_mapa/sdl_tile.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/src_cliente/client_world_view/sdl_mapa.cpp",
+			"path" : "src/src_cliente/client_world_view/sdl_mapa/sdl_mapa.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_world_view/sdl_edificio/sdl_edificio.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_world_view/sdl_edificio/sdl_edificio_factory.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_world_view/sdl_edificio/sdl_centro.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_world_view/sdl_edificio/sdl_cuartel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_world_view/sdl_edificio/sdl_fabrica_ligera.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_world_view/sdl_edificio/sdl_fabrica_pesada.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_world_view/sdl_side_menu/sdl_side_menu.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_tienda.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_tienda.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/src_cliente/client_world_view/world_view.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_world_view/sdl_texturas.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_common/common_DTO/Status.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -568,25 +686,37 @@
 		{
 			"backtrace" : 1,
 			"path" : "assets/resources.qrc",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/src_cliente/client_solicitudes/client_sol_crear_edificio.cpp",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"isGenerated" : true,
 			"path" : "cmake-build-debug/ui_MenuUi.h",
-			"sourceGroupIndex" : 2
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
 			"isGenerated" : true,
 			"path" : "cmake-build-debug/ui_FormCreacion.h",
-			"sourceGroupIndex" : 2
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
 			"isGenerated" : true,
 			"path" : "cmake-build-debug/ui_FormUnion.h",
-			"sourceGroupIndex" : 2
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/ui_DuneEditorDeMapasUi.h",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
@@ -598,17 +728,22 @@
 		{
 			"backtrace" : 0,
 			"path" : "src/src_menu/MenuUi.ui",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,
 			"path" : "src/src_form_creacion/FormCreacion.ui",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,
 			"path" : "src/src_form_union/FormUnion.ui",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"path" : "src/src_editor/DuneEditorDeMapasUi.ui",
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,

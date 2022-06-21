@@ -93,9 +93,25 @@ private:
 /* *****************************************************************
 *         METODOS REFERIDOS A LA PREVISUALIZACIÓN DE MAPAS
 * *****************************************************************/
+    /*
+     * Según el tipo de terreno obtenido por el QComboBox de los tipos de terreno
+     * se mostrarán las opciones a elegir en el QComboBox de las texturas del terreno.
+     */
+    void ofrecerTexturasSegunTipoDeTerreno();
+
     void mostrarMapa();
 
 public:
     explicit DuneEditorDeMapas(QWidget *parent = nullptr);
+
+    void mostrarTexturasDeArena();
+
+    void mostrarTexturasDeDuna();
+
+    void mostrarTexturasDeRoca();
+
+    void mostrarTexturasDeCima();
+
+    void mostrarTexturasDePrecipicio();
 };
 #endif
