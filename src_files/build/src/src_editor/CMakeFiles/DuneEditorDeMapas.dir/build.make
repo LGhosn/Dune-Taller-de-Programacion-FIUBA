@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files
+CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build
+CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build"
 
 # Include any dependencies generated for this target.
 include src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/depend.make
@@ -59,16 +59,16 @@ include src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/flags.make
 
 src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.o: src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/flags.make
 src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.o: src/src_editor/DuneEditorDeMapas_autogen/mocs_compilation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.o"
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.o -c /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor/DuneEditorDeMapas_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.o"
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.o -c "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor/DuneEditorDeMapas_autogen/mocs_compilation.cpp"
 
 src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.i"
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor/DuneEditorDeMapas_autogen/mocs_compilation.cpp > CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.i
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor/DuneEditorDeMapas_autogen/mocs_compilation.cpp" > CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.i
 
 src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.s"
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor/DuneEditorDeMapas_autogen/mocs_compilation.cpp -o CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.s
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor/DuneEditorDeMapas_autogen/mocs_compilation.cpp" -o CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.s
 
 # Object files for target DuneEditorDeMapas
 DuneEditorDeMapas_OBJECTS = \
@@ -83,8 +83,8 @@ src/src_editor/DuneEditorDeMapas: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.1
 src/src_editor/DuneEditorDeMapas: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.12.8
 src/src_editor/DuneEditorDeMapas: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8
 src/src_editor/DuneEditorDeMapas: src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable DuneEditorDeMapas"
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DuneEditorDeMapas.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable DuneEditorDeMapas"
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DuneEditorDeMapas.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build: src/src_editor/DuneEditorDeMapas
@@ -92,10 +92,10 @@ src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build: src/src_editor/DuneEditor
 .PHONY : src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build
 
 src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/clean:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor && $(CMAKE_COMMAND) -P CMakeFiles/DuneEditorDeMapas.dir/cmake_clean.cmake
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor" && $(CMAKE_COMMAND) -P CMakeFiles/DuneEditorDeMapas.dir/cmake_clean.cmake
 .PHONY : src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/clean
 
 src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/depend:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/depend
 

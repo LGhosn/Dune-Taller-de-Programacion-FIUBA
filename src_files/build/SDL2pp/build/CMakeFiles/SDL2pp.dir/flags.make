@@ -6,5 +6,5 @@ CXX_FLAGS =  -Werror -Wall -ggdb -O0 -pedantic -std=c++17 -std=c++11  -Wall -Wex
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build -I/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp -isystem /usr/include/SDL2 
+CXX_INCLUDES = -I"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build" -I"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp" -isystem /usr/local/include/SDL2 -isystem /usr/include/SDL2 
 

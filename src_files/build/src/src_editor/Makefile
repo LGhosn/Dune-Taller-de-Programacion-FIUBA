@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files
+CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build
+CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor/CMakeFiles/progress.marks
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles 0
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_editor/CMakeFiles/progress.marks"
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/clean
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/preinstall
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/preinstall
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/rule:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/rule
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/rule
 .PHONY : src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/rule
 
 # Convenience name for target.
@@ -168,12 +168,12 @@ DuneEditorDeMapas: src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/rule
 
 # fast build rule for target.
 DuneEditorDeMapas/fast:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build.make src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build.make src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build
 .PHONY : DuneEditorDeMapas/fast
 
 # Convenience name for target.
 src/src_editor/CMakeFiles/DuneEditorDeMapas_autogen.dir/rule:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/CMakeFiles/DuneEditorDeMapas_autogen.dir/rule
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_editor/CMakeFiles/DuneEditorDeMapas_autogen.dir/rule
 .PHONY : src/src_editor/CMakeFiles/DuneEditorDeMapas_autogen.dir/rule
 
 # Convenience name for target.
@@ -183,7 +183,7 @@ DuneEditorDeMapas_autogen: src/src_editor/CMakeFiles/DuneEditorDeMapas_autogen.d
 
 # fast build rule for target.
 DuneEditorDeMapas_autogen/fast:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_editor/CMakeFiles/DuneEditorDeMapas_autogen.dir/build.make src/src_editor/CMakeFiles/DuneEditorDeMapas_autogen.dir/build
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_editor/CMakeFiles/DuneEditorDeMapas_autogen.dir/build.make src/src_editor/CMakeFiles/DuneEditorDeMapas_autogen.dir/build
 .PHONY : DuneEditorDeMapas_autogen/fast
 
 DuneEditorDeMapas_autogen/mocs_compilation.o: DuneEditorDeMapas_autogen/mocs_compilation.cpp.o
@@ -192,7 +192,7 @@ DuneEditorDeMapas_autogen/mocs_compilation.o: DuneEditorDeMapas_autogen/mocs_com
 
 # target to build an object file
 DuneEditorDeMapas_autogen/mocs_compilation.cpp.o:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build.make src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.o
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build.make src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.o
 .PHONY : DuneEditorDeMapas_autogen/mocs_compilation.cpp.o
 
 DuneEditorDeMapas_autogen/mocs_compilation.i: DuneEditorDeMapas_autogen/mocs_compilation.cpp.i
@@ -201,7 +201,7 @@ DuneEditorDeMapas_autogen/mocs_compilation.i: DuneEditorDeMapas_autogen/mocs_com
 
 # target to preprocess a source file
 DuneEditorDeMapas_autogen/mocs_compilation.cpp.i:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build.make src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.i
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build.make src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.i
 .PHONY : DuneEditorDeMapas_autogen/mocs_compilation.cpp.i
 
 DuneEditorDeMapas_autogen/mocs_compilation.s: DuneEditorDeMapas_autogen/mocs_compilation.cpp.s
@@ -210,7 +210,7 @@ DuneEditorDeMapas_autogen/mocs_compilation.s: DuneEditorDeMapas_autogen/mocs_com
 
 # target to generate assembly for a file
 DuneEditorDeMapas_autogen/mocs_compilation.cpp.s:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build.make src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.s
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/build.make src/src_editor/CMakeFiles/DuneEditorDeMapas.dir/DuneEditorDeMapas_autogen/mocs_compilation.cpp.s
 .PHONY : DuneEditorDeMapas_autogen/mocs_compilation.cpp.s
 
 # Help Target
@@ -241,6 +241,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

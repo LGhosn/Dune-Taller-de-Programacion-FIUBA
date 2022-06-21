@@ -32,6 +32,7 @@ qt5_wrap_ui(UIS_HEADERS
         src/src_menu/MenuUi.ui
         src/src_form_creacion/FormCreacion.ui
         src/src_form_union/FormUnion.ui
+        src/src_editor/DuneEditorDeMapasUi.ui
         )
 # Habilito el automoc para poder hacer autoconnect de señales
 set(CMAKE_AUTOMOC on)
@@ -122,10 +123,16 @@ add_executable(server
         src/main_server.cpp
         )
 
+add_executable(DuneEditorDeMapas
+        src/src_editor/DuneEditorDeMapas.cpp
+        src/main_editor.cpp
+        ${UIS_HEADERS})
+
 add_subdirectory(src/src_testing/pruebas_camino)
 #add_subdirectory(src/src_testing/pruebas_mapa)
 add_subdirectory(src/src_testing/pruebas_serializador)
-add_subdirectory(src/src_editor)
+
 
 target_link_libraries(client Qt5::Widgets Qt5::Core ${SDL2PP_LIBRARIES} pthread yaml-cpp)
 target_link_libraries(server pthread yaml-cpp)
+target_link_libraries(DuneEditorDeMapas Qt5::Widgets Qt5::Core)

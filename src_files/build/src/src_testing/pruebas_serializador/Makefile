@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files
+CMAKE_SOURCE_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build
+CMAKE_BINARY_DIR = "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_serializador/CMakeFiles/progress.marks
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles 0
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_serializador/CMakeFiles/progress.marks"
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/clean
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/preinstall
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/preinstall
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/rule:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/rule
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/rule
 .PHONY : src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/rule
 
 # Convenience name for target.
@@ -168,12 +168,12 @@ serializador_tests: src/src_testing/pruebas_serializador/CMakeFiles/serializador
 
 # fast build rule for target.
 serializador_tests/fast:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build
 .PHONY : serializador_tests/fast
 
 # Convenience name for target.
 src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests_autogen.dir/rule:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests_autogen.dir/rule
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f CMakeFiles/Makefile2 src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests_autogen.dir/rule
 .PHONY : src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests_autogen.dir/rule
 
 # Convenience name for target.
@@ -183,7 +183,7 @@ serializador_tests_autogen: src/src_testing/pruebas_serializador/CMakeFiles/seri
 
 # fast build rule for target.
 serializador_tests_autogen/fast:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests_autogen.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests_autogen.dir/build
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests_autogen.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests_autogen.dir/build
 .PHONY : serializador_tests_autogen/fast
 
 __/__/src_common/common_serializador.o: __/__/src_common/common_serializador.cpp.o
@@ -192,7 +192,7 @@ __/__/src_common/common_serializador.o: __/__/src_common/common_serializador.cpp
 
 # target to build an object file
 __/__/src_common/common_serializador.cpp.o:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/__/__/src_common/common_serializador.cpp.o
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/__/__/src_common/common_serializador.cpp.o
 .PHONY : __/__/src_common/common_serializador.cpp.o
 
 __/__/src_common/common_serializador.i: __/__/src_common/common_serializador.cpp.i
@@ -201,7 +201,7 @@ __/__/src_common/common_serializador.i: __/__/src_common/common_serializador.cpp
 
 # target to preprocess a source file
 __/__/src_common/common_serializador.cpp.i:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/__/__/src_common/common_serializador.cpp.i
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/__/__/src_common/common_serializador.cpp.i
 .PHONY : __/__/src_common/common_serializador.cpp.i
 
 __/__/src_common/common_serializador.s: __/__/src_common/common_serializador.cpp.s
@@ -210,7 +210,7 @@ __/__/src_common/common_serializador.s: __/__/src_common/common_serializador.cpp
 
 # target to generate assembly for a file
 __/__/src_common/common_serializador.cpp.s:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/__/__/src_common/common_serializador.cpp.s
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/__/__/src_common/common_serializador.cpp.s
 .PHONY : __/__/src_common/common_serializador.cpp.s
 
 pruebas_serializador.o: pruebas_serializador.cpp.o
@@ -219,7 +219,7 @@ pruebas_serializador.o: pruebas_serializador.cpp.o
 
 # target to build an object file
 pruebas_serializador.cpp.o:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/pruebas_serializador.cpp.o
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/pruebas_serializador.cpp.o
 .PHONY : pruebas_serializador.cpp.o
 
 pruebas_serializador.i: pruebas_serializador.cpp.i
@@ -228,7 +228,7 @@ pruebas_serializador.i: pruebas_serializador.cpp.i
 
 # target to preprocess a source file
 pruebas_serializador.cpp.i:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/pruebas_serializador.cpp.i
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/pruebas_serializador.cpp.i
 .PHONY : pruebas_serializador.cpp.i
 
 pruebas_serializador.s: pruebas_serializador.cpp.s
@@ -237,7 +237,7 @@ pruebas_serializador.s: pruebas_serializador.cpp.s
 
 # target to generate assembly for a file
 pruebas_serializador.cpp.s:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/pruebas_serializador.cpp.s
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/pruebas_serializador.cpp.s
 .PHONY : pruebas_serializador.cpp.s
 
 serializador_tests_autogen/mocs_compilation.o: serializador_tests_autogen/mocs_compilation.cpp.o
@@ -246,7 +246,7 @@ serializador_tests_autogen/mocs_compilation.o: serializador_tests_autogen/mocs_c
 
 # target to build an object file
 serializador_tests_autogen/mocs_compilation.cpp.o:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.o
 .PHONY : serializador_tests_autogen/mocs_compilation.cpp.o
 
 serializador_tests_autogen/mocs_compilation.i: serializador_tests_autogen/mocs_compilation.cpp.i
@@ -255,7 +255,7 @@ serializador_tests_autogen/mocs_compilation.i: serializador_tests_autogen/mocs_c
 
 # target to preprocess a source file
 serializador_tests_autogen/mocs_compilation.cpp.i:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.i
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.i
 .PHONY : serializador_tests_autogen/mocs_compilation.cpp.i
 
 serializador_tests_autogen/mocs_compilation.s: serializador_tests_autogen/mocs_compilation.cpp.s
@@ -264,7 +264,7 @@ serializador_tests_autogen/mocs_compilation.s: serializador_tests_autogen/mocs_c
 
 # target to generate assembly for a file
 serializador_tests_autogen/mocs_compilation.cpp.s:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.s
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(MAKE) -f src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/build.make src/src_testing/pruebas_serializador/CMakeFiles/serializador_tests.dir/serializador_tests_autogen/mocs_compilation.cpp.s
 .PHONY : serializador_tests_autogen/mocs_compilation.cpp.s
 
 # Help Target
@@ -301,6 +301,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

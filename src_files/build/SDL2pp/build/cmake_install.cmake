@@ -1,4 +1,4 @@
-# Install script for directory: /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp
+# Install script for directory: /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
