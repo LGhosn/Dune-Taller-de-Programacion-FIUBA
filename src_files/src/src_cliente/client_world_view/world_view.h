@@ -19,6 +19,16 @@
 
 class WorldView {
 	YAML::Node& constantes;
+
+	// Constantes
+	const uint32_t ancho_ventana;
+	const uint32_t largo_ventana;
+	const uint32_t ancho_menu;
+	const float zoom_inicial;
+	const float zoom_minimo;
+	const float zoom_maximo;
+	const float velocidad_zoom;
+
 	SDL2pp::Window window;
 	SDL2pp::Renderer renderer;
 	TexturasSDL texturas;
@@ -31,6 +41,7 @@ class WorldView {
 	EdificioFactorySDL edificio_factory;
 	long frame_anterior = 0;
 	uint8_t id_jugador;
+	InfoPartidaDTO info_partida;
 
 	void deseleccionarEdificios();
 	void seleccionarEdificio(EdificioSDL* edificio);
@@ -39,7 +50,7 @@ class WorldView {
 
 public:
 	WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador,
-				std::string& nombre_mapa, YAML::Node& constantes);
+				InfoPartidaDTO& info_partida, YAML::Node& constantes);
 
 	void moverMapaArriba();
 	void moverMapaIzquierda();
@@ -53,7 +64,7 @@ public:
 	void crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 						const Coordenadas& coords, uint8_t tipo, uint8_t casa);
 
-	void click_en_mapa(int pos_x, int pos_y);
+	void click_en_mapa(uint32_t pos_x, uint32_t pos_y);
 
 	void salir();
 

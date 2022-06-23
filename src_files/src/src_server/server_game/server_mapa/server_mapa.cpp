@@ -6,14 +6,21 @@
 #include "server_mapa.h"
 
 #define DISTANCIA_EDIFICIOS 5
-#define TORRE_DE_AIRE 'T'
+#define CODIGO_CENTRO 0
+#define CENTRO 'D'
 #define CUARTEL 'C'
+#define FABRICA_LIGERA 'F'
+#define FABRICA_PESADA 'H'
+#define PALACIO 'P'
+#define REFINERIA 'R'
 #define SILO 'S'
+#define TRAMPA_DE_AIRE 'T'
 
 enum dimensiones {
     una_dimension = 1,
     dos_dimensiones = 2,
-    tres_dimension = 3
+    tres_dimension = 3,
+    cuatro_dimension = 4
 };
 
 /* ******************************************************************
@@ -26,7 +33,7 @@ std::tuple<int, int, char> Mapa::propiedadesEdificio(uint8_t edificio) {
         case 0:
             dimension_x = tres_dimension;
             dimension_y = tres_dimension;
-            tipo_edificio = TORRE_DE_AIRE;
+            tipo_edificio = CENTRO;
             break;
         case 1:
             dimension_x = dos_dimensiones;
@@ -34,9 +41,34 @@ std::tuple<int, int, char> Mapa::propiedadesEdificio(uint8_t edificio) {
             tipo_edificio = CUARTEL;
             break;
         case 2:
+            dimension_x = tres_dimension;
+            dimension_y = tres_dimension;
+            tipo_edificio = FABRICA_LIGERA;
+            break;
+        case 3:
+            dimension_x = cuatro_dimension;
+            dimension_y = cuatro_dimension;
+            tipo_edificio = FABRICA_PESADA;
+            break;
+        case 4:
+            dimension_x = tres_dimension;
+            dimension_y = tres_dimension;
+            tipo_edificio = PALACIO;
+            break;
+        case 5:
+            dimension_x = tres_dimension;
+            dimension_y = tres_dimension;
+            tipo_edificio = REFINERIA;
+            break;
+        case 6:
             dimension_x = una_dimension;
             dimension_y = una_dimension;
             tipo_edificio = SILO;
+            break;
+        case 7:
+            dimension_x = tres_dimension;
+            dimension_y = tres_dimension;
+            tipo_edificio = TRAMPA_DE_AIRE;
             break;
         default:
             std::cout << "Error: edificio no reconocido" << std::endl;
@@ -56,7 +88,7 @@ bool Mapa::hayColisiones(const Coordenadas& coords, int dimension_x, int dimensi
                 continue;
             }
             // temporal hasta implementar los edificios
-            if (this->mapa[i][j] == TORRE_DE_AIRE || this->mapa[i][j] == CUARTEL || this->mapa[i][j] == SILO){
+            if (this->mapa[i][j] == TRAMPA_DE_AIRE || this->mapa[i][j] == CUARTEL || this->mapa[i][j] == SILO){
                 this->colisiones.push_back(Coordenadas(j, i));
                 colision = true;
             }
@@ -95,7 +127,7 @@ bool Mapa::construccionLejana(const Coordenadas& coords) {
 
         for (int j = (coords.x - DISTANCIA_EDIFICIOS); j < (coords.x + DISTANCIA_EDIFICIOS); j++){
             if (0 > j || j >= this->ancho) continue;
-            if (this->mapa[i][j] == TORRE_DE_AIRE || this->mapa[i][j] == CUARTEL || this->mapa[i][j] == SILO){
+            if (this->mapa[i][j] == TRAMPA_DE_AIRE || this->mapa[i][j] == CUARTEL || this->mapa[i][j] == SILO){
                 return false;
             }
         }
@@ -121,10 +153,22 @@ Mapa::Mapa(const std::string& nombre_mapa) : camino(this->mapa) {
             this->mapa[i][j] = mapa_config["TiposTerrenos"][i][j].as<char>();
         }
     }
-    this->camino = this->mapa;
+    // YAML::Node centros = mapa_config["CentrosDeConstruccion"];
+    // for (const auto& centro : centros) {
+    //     uint16_t x = centro["PosX"].as<uint16_t>();
+    //     uint16_t y = centro.second.as<uint16_t>();
+    //     coords_centros.emplace_back(x, y);
+    // }
+    uint16_t x = mapa_config["CentrosDeConstruccion"]["Centro1"]["PosX"].as<uint16_t>();
+    uint16_t y = mapa_config["CentrosDeConstruccion"]["Centro1"]["PosY"].as<uint16_t>();
+    coords_centros.emplace_back(x, y);
+    x = mapa_config["CentrosDeConstruccion"]["Centro2"]["PosX"].as<uint16_t>();
+    y = mapa_config["CentrosDeConstruccion"]["Centro2"]["PosY"].as<uint16_t>();
+    coords_centros.emplace_back(x, y);
+    this->camino = this->mapa;      // TODO: ver
 }
 
-bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
+bool Mapa::  construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
     this->colisiones = std::vector< Coordenadas >();
     std::tuple<int, int, char> propiedades_del_edificio = propiedadesEdificio(tipo);
@@ -142,6 +186,17 @@ bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenada
     return true;
 }
 
+void Mapa::construirCentro(uint16_t id_jugador, const Coordenadas& coords) {
+    std::tuple<int, int, char> propiedades_del_edificio = propiedadesEdificio(CODIGO_CENTRO);
+    int dimension_x = 0, dimension_y = 0;
+    char tipo_edificio = 0;
+    std::tie(dimension_x, dimension_y, tipo_edificio) = propiedades_del_edificio;
+    if (!terrenoFirme(coords) || hayColisiones(coords, dimension_x, dimension_y)) {
+        throw std::runtime_error("Coordenadas del centro invalidas");
+    }
+    edificar(coords, propiedades_del_edificio);
+}
+
 void Mapa::imprimir() {
     for (int i = 0; i < this->alto; i++){
         for (int j = 0; j < this->ancho; j++){
@@ -149,6 +204,10 @@ void Mapa::imprimir() {
         }
         std::cout << std::endl;
     }
+}
+
+std::list<Coordenadas> Mapa::obtenerCoordsCentros() const {
+    return this->coords_centros;
 }
 
 std::vector< Coordenadas > Mapa::ver_colisiones() {

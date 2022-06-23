@@ -6,6 +6,7 @@
 #include "../server_thread_gameloop/server_hilo_gameloop.h"
 #include "../server_solicitudes/solicitud_juego/server_solicitud.h"
 #include <list>
+#include <stack>
 #include <string>
 #include <map>
 
@@ -19,7 +20,6 @@ class Partida {
     std::string nombre_mapa;
     std::list<HandlerCliente*> clientes_conectados;
     ColaNoBloqueante<SolicitudServer>*  cola_solicitudes;
-    std::vector<ColaBloqueante<ComandoServer>*>* colas_sender;
     HiloGameLoop hilo_gameloop;
 
     friend class Lobby;
@@ -30,7 +30,7 @@ public:
     Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos,
             const std::string& nombre_mapa);
     void empezar();
-    void agregarJugador(HandlerCliente* cliente);
+    void agregarJugador(HandlerCliente* cliente, uint8_t casa);
     bool estaCompleta() const;
     std::string getNombre() const;
 

@@ -27,27 +27,20 @@ void TileFactorySDL::agregarTileDeEspecia(uint16_t tipo_textura, Coordenadas &co
 }
 
 void TileFactorySDL::agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Coordenadas& coords) {
-    switch (tipo_terreno) {
-        case ROCA:
-            agregarTileDeRoca(tipo_textura, coords);
-            break;
-        case ARENA:
-            agregarTileDeArena(tipo_textura, coords);
-            break;
-        case PRECIPICIO:
-            agregarTileDePrecipicio(tipo_textura, coords);
-            break;
-        case CIMA:
-            agregarTileDeCima(tipo_textura, coords);
-            break;
-        case DUNA:
-            agregarTileDeDuna(tipo_textura, coords);
-            break;
-        case ESPECIA:
-            agregarTileDeEspecia(tipo_textura, coords);
-            break;
-        default:
-            throw std::runtime_error("Tipo de terreno invalido.");
+    if (tipo_terreno == roca) {
+        agregarTileDeRoca(tipo_textura, coords);
+    } else if (tipo_terreno == arena) {
+        agregarTileDeArena(tipo_textura, coords);
+    } else if (tipo_terreno == precipicio) {
+        agregarTileDePrecipicio(tipo_textura, coords);
+    } else if (tipo_terreno == cima) {
+        agregarTileDeCima(tipo_textura, coords);
+    } else if (tipo_terreno == duna) {
+        agregarTileDeDuna(tipo_textura, coords);
+    } else if (tipo_terreno == especia) {
+        agregarTileDeEspecia(tipo_textura, coords);
+    } else {
+        throw std::runtime_error("Tipo de terreno invalido");
     }
 }
 
@@ -55,23 +48,24 @@ TileFactorySDL::TileFactorySDL(SDL2pp::Renderer& renderer, std::string& nombre_m
                                 TexturasSDL& texturas,YAML::Node& constantes) :
                                 constantes(constantes),
                                 renderer(renderer),
-                                textura_base(texturas.obtenerTilesBase()) {
+                                textura_base(texturas.obtenerTilesBase()),
+                                roca(constantes["WorldView"]["Mapa"]["Tiles"]["Tipos"]["Roca"].as<uint8_t>()),
+                                arena(constantes["WorldView"]["Mapa"]["Tiles"]["Tipos"]["Arena"].as<uint8_t>()),
+                                precipicio(constantes["WorldView"]["Mapa"]["Tiles"]["Tipos"]["Precipicio"].as<uint8_t>()),
+                                cima(constantes["WorldView"]["Mapa"]["Tiles"]["Tipos"]["Cima"].as<uint8_t>()),
+                                duna(constantes["WorldView"]["Mapa"]["Tiles"]["Tipos"]["Duna"].as<uint8_t>()),
+                                especia(constantes["WorldView"]["Mapa"]["Tiles"]["Tipos"]["Especia"].as<uint8_t>()) {
     std::stringstream ruta_mapa;
     ruta_mapa << RESOURCE_PATH << "/maps/" << nombre_mapa << ".yaml";
     YAML::Node mapa_config = YAML::LoadFile(ruta_mapa.str());
     this->ancho = mapa_config["Ancho"].as<uint16_t>();
     this->alto = mapa_config["Alto"].as<uint16_t>();
-    // this->ancho = 100;
-    // this->alto = 100;
     this->tiles = std::vector<TileSDL>();
     for (uint32_t i = 0; i < alto; i++) {
 		for (uint32_t j = 0; j < ancho; j++){
 			Coordenadas coords(j, i);
-            // TODO: implementar YAML
             uint8_t tipo_terreno = mapa_config["TiposTerrenos"][i][j].as<char>();
             uint16_t tipo_textura = mapa_config["TiposTexturas"][i][j].as<uint16_t>();
-            // uint8_t tipo_terreno = 'A';
-            // uint16_t tipo_textura = 0;
             agregarTile(tipo_terreno, tipo_textura, coords);
 		}
 	}

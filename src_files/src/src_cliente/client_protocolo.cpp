@@ -1,4 +1,5 @@
 #include "client_protocolo.h"
+#include <map>
 
 #define SIZEOF_BYTE 1
 #define SIZEOF_TWO_BYTES 2
@@ -73,8 +74,32 @@ std::string ProtocoloCliente::recibirNombre() const {
     return nombre_partida;
 }
 
+Coordenadas ProtocoloCliente::recibirCoordenadas()const {
+    uint16_t x, y;
+    this->skt_cliente.recvall(&x, SIZEOF_TWO_BYTES);
+    this->skt_cliente.recvall(&y, SIZEOF_TWO_BYTES);
+    x = ntohs(x);
+    y = ntohs(y);
+    return Coordenadas(x, y);
+}
+
 void ProtocoloCliente::enviarBuffer(const std::vector<uint8_t>& buffer) const {
     this->skt_cliente.sendall(buffer.data(), buffer.size());
+}
+
+std::map<uint8_t, std::pair<uint8_t, std::string>> ProtocoloCliente::recibirInfoJugadores() {
+    uint8_t cantidad_jugadores;
+    this->skt_cliente.recvall(&cantidad_jugadores, SIZEOF_BYTE);
+    std::map<uint8_t, std::pair<uint8_t, std::string>> info_jugadores;
+    for (uint8_t i = 0; i < cantidad_jugadores; i++) {
+        uint8_t id_jugador;
+        this->skt_cliente.recvall(&id_jugador, SIZEOF_BYTE);
+        uint8_t casa;
+        this->skt_cliente.recvall(&id_jugador, SIZEOF_BYTE);
+        std::string nombre = this->recibirNombre();
+        info_jugadores[id_jugador] = std::pair<uint8_t, std::string>(casa, nombre);
+    }
+    return info_jugadores;
 }
 
 Status ProtocoloCliente::recibirStatus() {
@@ -86,17 +111,17 @@ Status ProtocoloCliente::recibirStatus() {
     return Status(status_conexion, status_partida);
 }
 
-bool ProtocoloCliente::esperarAComienzoDePartida(std::string *nombre_mapa) {
-    std::cout << "Esperando comienzo de partida\n";
+InfoPartidaDTO ProtocoloCliente::recibirInfoComienzoDePartida() {
+    std::cerr << "Esperando comienzo de partida\n";
     uint8_t codigo_comienzo;
     this->skt_cliente.recvall(&codigo_comienzo, SIZEOF_BYTE);
     if (codigo_comienzo != CODIGO_COMIENZO_PARTIDA) {
         throw std::runtime_error("No se recibió el comienzo de la partida.");
-        return false;
     }
-    std::string mapa = recibirNombre();
-    *nombre_mapa = mapa;
-    return true;
+    Coordenadas coords_iniciales = recibirCoordenadas();
+    std::string nombre_mapa = recibirNombre();
+    std::map<uint8_t, std::pair<uint8_t, std::string>> info_jugadores = recibirInfoJugadores();
+    return InfoPartidaDTO(nombre_mapa, info_jugadores, coords_iniciales);                                                     
 }
 
 

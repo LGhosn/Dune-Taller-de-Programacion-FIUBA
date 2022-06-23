@@ -2,61 +2,73 @@
 
 TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
                         uint8_t id_jugador, YAML::Node& constantes):
-                    constantes(constantes),
                     renderer(renderer),
                     casa(casa),
-                    tienda_rect(ANCHO_VISTA_MAPA + PADDING_TIENDA,
-                                        POS_TIENDA,
-                                        ANCHO_TIENDA,
-                                        LARGO_TIENDA) {
+                    ancho_menu(constantes["WorldView"]["SideMenu"]["Ancho"].as<uint32_t>()),
+                    ancho_ventana(constantes["WorldView"]["Ventana"]["Ancho"].as<uint32_t>()),
+                    largo_ventana(constantes["WorldView"]["Ventana"]["Alto"].as<uint32_t>()),
+                    pos_y(constantes["WorldView"]["SideMenu"]["Tienda"]["OffsetY"].as<uint32_t>()),
+                    padding(constantes["WorldView"]["SideMenu"]["Tienda"]["Padding"].as<uint32_t>()),
+                    ancho(ancho_menu - 2 * padding),
+                    largo(largo_ventana - pos_y - 2 * padding),
+                    padding_botones(constantes["WorldView"]["SideMenu"]["Tienda"]["Botones"]["Padding"].as<uint32_t>()),
+                    largo_boton(constantes["WorldView"]["SideMenu"]["Tienda"]["Botones"]["Alto"].as<uint32_t>()),
+                    relacion_ancho_largo_boton(constantes["WorldView"]["SideMenu"]["Tienda"]["Botones"]["RelacionAnchoLargo"].as<float>()),
+                    ancho_boton(largo_boton * relacion_ancho_largo_boton),
+                    pos_inicial_botones_x(ancho_ventana - ancho + padding + padding_botones),
+                    pos_inicial_botones_y(pos_y + padding),
+                    tienda_rect(ancho_ventana - ancho + padding,
+                                        pos_y,
+                                        ancho,
+                                        largo) {
     botones_edificios.emplace_back(renderer, texturas, 1, casa, id_jugador,
                         SDL2pp::Rect(
-                            POS_INICIAL_BOTONES_TIENDA_X,
-                            POS_INICIAL_BOTONES_TIENDA_Y,
-                            ANCHO_BOTON,
-                            LARGO_BOTON),
+                            pos_inicial_botones_x,
+                            pos_inicial_botones_y,
+                            ancho_boton,
+                            largo_boton),
                         constantes);
     botones_edificios.emplace_back(renderer, texturas, 2, casa, id_jugador,
                         SDL2pp::Rect(
-                            POS_INICIAL_BOTONES_TIENDA_X,
-                            POS_INICIAL_BOTONES_TIENDA_Y + LARGO_BOTON + PADDING_BOTONES,
-                            ANCHO_BOTON,
-                            LARGO_BOTON),
+                            pos_inicial_botones_x,
+                            pos_inicial_botones_y + largo_boton + padding_botones,
+                            ancho_boton,
+                            largo_boton),
                         constantes);
     botones_edificios.emplace_back(renderer, texturas, 3, casa, id_jugador,
                         SDL2pp::Rect(
-                            POS_INICIAL_BOTONES_TIENDA_X,
-                            POS_INICIAL_BOTONES_TIENDA_Y + 2 * (LARGO_BOTON + PADDING_BOTONES),
-                            ANCHO_BOTON,
-                            LARGO_BOTON),
+                            pos_inicial_botones_x,
+                            pos_inicial_botones_y + 2 * (largo_boton + padding_botones),
+                            ancho_boton,
+                            largo_boton),
                         constantes);
     botones_edificios.emplace_back(renderer, texturas, 4, casa, id_jugador,
                         SDL2pp::Rect(
-                            POS_INICIAL_BOTONES_TIENDA_X,
-                            POS_INICIAL_BOTONES_TIENDA_Y + 3 * (LARGO_BOTON + PADDING_BOTONES),
-                            ANCHO_BOTON,
-                            LARGO_BOTON),
+                            pos_inicial_botones_x,
+                            pos_inicial_botones_y + 3 * (largo_boton + padding_botones),
+                            ancho_boton,
+                            largo_boton),
                         constantes);
     botones_edificios.emplace_back(renderer, texturas, 5, casa, id_jugador,
                         SDL2pp::Rect(
-                            POS_INICIAL_BOTONES_TIENDA_X + ANCHO_BOTON + PADDING_BOTONES,
-                            POS_INICIAL_BOTONES_TIENDA_Y,
-                            ANCHO_BOTON,
-                            LARGO_BOTON),
+                            pos_inicial_botones_x + ancho_boton + padding_botones,
+                            pos_inicial_botones_y,
+                            ancho_boton,
+                            largo_boton),
                         constantes);
     botones_edificios.emplace_back(renderer, texturas, 6, casa, id_jugador,
                         SDL2pp::Rect(
-                            POS_INICIAL_BOTONES_TIENDA_X + ANCHO_BOTON + PADDING_BOTONES,
-                            POS_INICIAL_BOTONES_TIENDA_Y + LARGO_BOTON + PADDING_BOTONES,
-                            ANCHO_BOTON,
-                            LARGO_BOTON),
+                            pos_inicial_botones_x + ancho_boton + padding_botones,
+                            pos_inicial_botones_y + largo_boton + padding_botones,
+                            ancho_boton,
+                            largo_boton),
                         constantes);
     botones_edificios.emplace_back(renderer, texturas, 7, casa, id_jugador,
                         SDL2pp::Rect(
-                            POS_INICIAL_BOTONES_TIENDA_X + ANCHO_BOTON + PADDING_BOTONES,
-                            POS_INICIAL_BOTONES_TIENDA_Y + 2 * (LARGO_BOTON + PADDING_BOTONES),
-                            ANCHO_BOTON,
-                            LARGO_BOTON),
+                            pos_inicial_botones_x + ancho_boton + padding_botones,
+                            pos_inicial_botones_y + 2 * (largo_boton + padding_botones),
+                            ancho_boton,
+                            largo_boton),
                         constantes);
 }
 

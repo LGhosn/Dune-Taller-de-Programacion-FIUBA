@@ -3,7 +3,9 @@
 
 #include <vector>
 #include "../../src_common/common_coords.h"
+#include "../../src_common/common_DTO/dto_info_partida.h"
 #include "yaml-cpp/yaml.h"
+#include <cstdint>
 
 #define RUTA_CODIGOS "codigos.yaml"
 
@@ -11,19 +13,29 @@ class SerializadorServer {
 private:
     YAML::Node* codigos;
 
+/* *****************************************************************
+ *                          METODOS AUXILIARES
+ * *****************************************************************/
+
+    void concatenarBuffers(std::vector<uint8_t> buffer_destino,
+                            std::vector<uint8_t> buffer_origen) const;
+
 public:
-    SerializadorServer(YAML::Node* codigos);
+    explicit SerializadorServer(YAML::Node* codigos);
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR EDIFICIOS
  * *****************************************************************/
+
+    std::vector<uint8_t> serializarString(const std::string& string) const;
 
     std::vector<uint8_t> serializarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio,
     uint8_t tipo, const Coordenadas& coords, uint8_t casa) const;
 
 /* *****************************************************************
- *             METODOS REFERIDOS A SERIALIZAR STRING
+ *             METODOS REFERIDOS A EMPEZAR PARTIDAS
  * *****************************************************************/
-    std::vector<uint8_t> serializarString(std::string& string);
+
+    std::vector<uint8_t> serializarComienzoDePartida(const InfoPartidaDTO& info_partida) const;
 
     SerializadorServer(const SerializadorServer& otro) = delete;
     SerializadorServer& operator=(const SerializadorServer& otro) = delete;

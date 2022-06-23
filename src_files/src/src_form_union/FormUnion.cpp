@@ -1,4 +1,5 @@
 #include "FormUnion.h"
+#include "../src_common/common_DTO/dto_info_partida.h"
 
 FormUnion::FormUnion(Client& cliente, QWidget *parent) :
                         QWidget(parent),
@@ -42,16 +43,13 @@ void FormUnion::solicitudDeUnion() {
 void FormUnion::unirseNotificacion(ProtocoloCliente &protocolo, Status &status) {
     if (status.obtenerCodigoDeConexion() == CONEXION_EXITOSA) {
         std::cout << "Union Existosa, esperando jugadores restantes..." << std::endl;
-        std::string nombre_mapa;
-        bool partida_comenzada = protocolo.esperarAComienzoDePartida(&nombre_mapa);
-        cliente.setNombreMapa(nombre_mapa);
-        if (partida_comenzada) {
-            // Cierro todas las ventanas y abro el juego
-            std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
-            //cliente.establecerPartidaEmpezada();
-            cliente.establecerPartidaEmpezada();
-            close();
-        }
+        InfoPartidaDTO info_partida = protocolo.recibirInfoComienzoDePartida();
+        cliente.setInfoPartida(info_partida);
+        // Cierro todas las ventanas y abro el juego
+        std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
+        cliente.establecerPartidaEmpezada();
+        close();
+        cliente.empezarPartida();
     } else {
         if (status.obtenerCodigoDePartida() == PARTIDA_EXISTENTE) {
             std::cout << "Union Fallida, parece que esa partida ya ha comenzado." << std::endl;

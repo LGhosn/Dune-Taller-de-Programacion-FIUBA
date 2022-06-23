@@ -27,8 +27,8 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                         logo_refineria(renderer, RUTA_LOGO_REFINERIA),
                         logo_silo(renderer, RUTA_LOGO_SILO),
                         logo_trampa_de_aire(renderer, RUTA_LOGO_TRAMPA_DE_AIRE),
-                        texto_listo(TEXTO_LISTO),
-                        font_tienda(RUTA_FONT_DUNE_2K, 12),
+                        texto_listo(constantes["WorldView"]["SideMenu"]["Tienda"]["Botones"]["Texto"].as<std::string>()),
+                        font_tienda(RUTA_FONT_DUNE_2K, 20),
                         texto_tienda(renderer, font_tienda.RenderText_Blended(
                                                                 texto_listo,
                                                                 SDL_Color{90, 146, 22, 255}

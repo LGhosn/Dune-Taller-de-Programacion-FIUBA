@@ -2,6 +2,7 @@
 #define MAPA_H
 
 #include <vector>
+#include <list>
 #include <tuple>
 #include <memory>
 #include <stack>
@@ -17,6 +18,7 @@ private:
     std::vector< Coordenadas > colisiones;
     Camino camino;
     bool primera_construccion = true;
+    std::list<Coordenadas> coords_centros;
 
     /*
      * Dado un edificio, devuelve la cantidad de casillas que ocupa y el tipo de edificio que es 
@@ -65,12 +67,20 @@ public:
      * @param comando una tupla conformada por el edificio(uint8_t), la coordenada x(uint16_t) y la coordenada y(uint16_t)
      * @return un booleano indicando si se pudo construir o no.
      */
-    bool construirEdificio(uint16_t id_jugador, uint8_t edificio, const Coordenadas& coords);
+    bool construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords);
+
+    /*
+     * Construye un centro de construccion para el jugador con la id dada, en
+     * las coordenadas pasadas por parametro.
+    */
+    void construirCentro(uint16_t id_jugador, const Coordenadas& coords);
 
     /*
      * Imprime el mapa en consola
     */
     void imprimir();
+
+    std::list<Coordenadas> obtenerCoordsCentros() const;
 
     std::vector< Coordenadas > ver_colisiones();
 

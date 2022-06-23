@@ -95,6 +95,7 @@ add_executable(client
 add_executable(server
         src/src_server/server_server.cpp
         src/src_server/server_comandos/cmd_crear_edificio.cpp
+        src/src_server/server_comandos/cmd_empezar_partida.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
         src/src_server/server_protocolo/server_protocolo.cpp
         src/src_server/server_protocolo/server_serializador.cpp

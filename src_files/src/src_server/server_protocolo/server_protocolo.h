@@ -8,6 +8,7 @@
 #include "../../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "../../src_common/common_DTO/Status.h"
 #include "../server_DTO/dto_sol_crear_edificio.h"
+#include "../../src_common/common_DTO/dto_info_partida.h"
 #include "server_serializador.h"
 #include <memory>
 #include <string>
@@ -69,7 +70,7 @@ public:
      * */
     SolicitudUnirseAPartidaDTO recibirSolicitudUnirseAPartida();
     void enviarStatusDeUnion(Status &status_de_union);
-    void enviarComienzoDePartida(std::string& nombre_mapa);
+    void enviarComienzoDePartida(const InfoPartidaDTO& info_partida);
 
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR PARTIDAS

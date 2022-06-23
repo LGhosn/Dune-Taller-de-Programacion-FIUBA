@@ -6,25 +6,14 @@
 #include "../../../client_solicitudes/cliente_solicitud.h"
 #include "../../../../src_common/common_coords.h"
 
-#define RATIO_ANCHO_LARGO_BOTON 1.27f
-
-#define PADDING_TEXTO_X 30
-#define TAM_TEXTO_Y 20
-
-#define FPS 60
-
 class BotonTiendaSDL {
-    YAML::Node& constantes;
     SDL2pp::Renderer& renderer;
     uint8_t tipo;
     uint8_t casa;
     uint8_t id_jugador;
     SDL2pp::Texture& logo;
     SDL2pp::Texture& texto_listo;
-    SDL2pp::Rect origen;
-    SDL2pp::Rect destino;
-    SDL2pp::Rect destino_construyendo;
-    SDL2pp::Rect destino_texto;
+    
     bool habilitado = true;     // temporal
     bool seleccionado = false;
     bool construyendo = false;
@@ -32,6 +21,18 @@ class BotonTiendaSDL {
     long frames_para_construir = 0;
     long frames_restantes_construccion = 0;
     long frame_anterior = 0;
+
+    // Constantes
+    const float relacion_ancho_largo;
+    const uint32_t padding_texto_x;
+    const uint32_t tam_texto_y;
+    const uint8_t fps;
+
+    SDL2pp::Rect origen;
+    SDL2pp::Rect destino;
+    SDL2pp::Rect destino_construyendo;
+    SDL2pp::Rect destino_texto;
+
 public:
     BotonTiendaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
                     uint8_t casa, uint8_t id_jugador, SDL2pp::Rect destino,

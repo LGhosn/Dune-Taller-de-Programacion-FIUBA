@@ -14,7 +14,6 @@
 
 class HiloGameLoop {
     ColaNoBloqueante<SolicitudServer>* cola_solicitudes;
-    std::vector<ColaBloqueante<ComandoServer>*>* colas_comandos;
     Game game;
     std::thread hilo;
 
@@ -28,8 +27,11 @@ class HiloGameLoop {
     bool update(long iter);
 
 public:
-    HiloGameLoop(std::vector<ColaBloqueante<ComandoServer>*>* colas_sender,
-    ColaNoBloqueante<SolicitudServer>* sol_entrantes, const std::string& nombre_mapa);
+    HiloGameLoop(ColaNoBloqueante<SolicitudServer>* sol_entrantes,
+                    const std::string& nombre_mapa);
+
+    void agregarJugador(ColaBloqueante<ComandoServer>* cola_comando,
+                        uint8_t id_jugador, uint8_t casa, std::string& nombre);
 
     void start();
 

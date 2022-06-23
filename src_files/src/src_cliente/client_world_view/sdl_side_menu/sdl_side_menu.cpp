@@ -6,16 +6,22 @@ SideMenuSDL::SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& 
                             renderer(renderer),
                             casa(casa),
                             tienda(renderer, casa, texturas, id_jugador, constantes),
-                            logo_casa(texturas.obtenerLogoCasa(casa)),
-                            origen_logo_casa(0,0,logo_casa.GetWidth(),logo_casa.GetWidth()),
-                            destino_logo_casa(ANCHO_VISTA_MAPA + PADDING_TIENDA,
-                                                PADDING_TIENDA,
-                                                ANCHO_MENU - 2 * PADDING_TIENDA,
-                                                ANCHO_MENU - 2 * PADDING_TIENDA),
-                            side_menu_rect(ANCHO_VISTA_MAPA,
-                                            0,
-                                            ANCHO_MENU,
-                                            LARGO_VISTA_MAPA) {}
+                            logo_casa(texturas.obtenerLogoCasa(casa)) {
+    uint32_t ancho_menu = constantes["WorldView"]["SideMenu"]["Ancho"].as<uint32_t>();
+    uint32_t ancho_ventana = constantes["WorldView"]["Ventana"]["Ancho"].as<uint32_t>();
+    uint32_t largo_ventana = constantes["WorldView"]["Ventana"]["Alto"].as<uint32_t>();
+    uint32_t padding_tienda = constantes["WorldView"]["SideMenu"]["Tienda"]["Padding"].as<uint32_t>();
+
+    origen_logo_casa = SDL2pp::Rect(0,0,logo_casa.GetWidth(),logo_casa.GetWidth());
+    destino_logo_casa = SDL2pp::Rect(ancho_ventana - ancho_menu + padding_tienda,
+                                    padding_tienda,
+                                    ancho_menu - 2 * padding_tienda,
+                                    ancho_menu - 2 * padding_tienda);
+    side_menu_rect = SDL2pp::Rect(ancho_ventana - ancho_menu,
+                                    0,
+                                    ancho_menu,
+                                    largo_ventana);
+}
 
 SolicitudCliente* SideMenuSDL::click_en_menu(int pos_x, int pos_y) {
     if (tienda.contiene(pos_x, pos_y)) {

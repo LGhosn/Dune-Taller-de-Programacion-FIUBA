@@ -4,23 +4,26 @@
 BotonTiendaSDL::BotonTiendaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
                                 uint8_t casa, uint8_t id_jugador, const SDL2pp::Rect destino,
                                 YAML::Node& constantes) :
-                                constantes(constantes),
                                 renderer(renderer),
                                 tipo(tipo),
                                 casa(casa),
                                 id_jugador(id_jugador),
                                 logo(texturas.obtenerLogoEdificio(tipo, casa)),
                                 texto_listo(texturas.obtenerTextoTiendaListo()),
+                                relacion_ancho_largo(constantes["WorldView"]["SideMenu"]["Tienda"]["Botones"]["RelacionAnchoLargo"].as<float>()),
+                                padding_texto_x(constantes["WorldView"]["SideMenu"]["Tienda"]["Botones"]["PaddingTexto"].as<uint32_t>()),
+                                tam_texto_y(constantes["WorldView"]["SideMenu"]["Tienda"]["Botones"]["TamTexto"].as<uint32_t>()),
+                                fps(constantes["FPS"].as<uint8_t>()),
                                 origen(0,
                                         0,
-                                        logo.GetHeight() * RATIO_ANCHO_LARGO_BOTON,
+                                        logo.GetHeight() * relacion_ancho_largo,
                                         logo.GetHeight()),
                                 destino(destino), destino_construyendo(destino),
                                 destino_texto(
-                                    destino.GetX() + PADDING_TEXTO_X,
-                                    destino.GetY() + (destino.GetH() - TAM_TEXTO_Y) / 2,
-                                    destino.GetW() - 2 * PADDING_TEXTO_X,
-                                    TAM_TEXTO_Y
+                                    destino.GetX() + padding_texto_x,
+                                    destino.GetY() + (destino.GetH() - tam_texto_y) / 2,
+                                    destino.GetW() - 2 * padding_texto_x,
+                                    tam_texto_y
                                 ) {}
 
 void BotonTiendaSDL::habilitar() {
@@ -38,7 +41,7 @@ bool BotonTiendaSDL::estaSeleccionado() const {
 
 void BotonTiendaSDL::empezarConstruccion(int milisegundos_para_construir) {
     construyendo = true;
-    frames_para_construir = milisegundos_para_construir * FPS / 1000;
+    frames_para_construir = milisegundos_para_construir * fps / 1000;
     frames_restantes_construccion = frames_para_construir;
 }
 

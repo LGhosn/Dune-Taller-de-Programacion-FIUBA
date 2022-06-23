@@ -19,7 +19,6 @@
 #define VELOCIDAD 10
 
 class MapaSDL {
-	YAML::Node& constantes;
 	SDL2pp::Renderer& renderer;
 	TileFactorySDL tile_factory;
 	std::vector<TileSDL>& tiles;
@@ -28,25 +27,44 @@ class MapaSDL {
 	int eje_movil_y = 0;
 	bool moviendose_h = false;
 	bool moviendose_v = false;
-	char direccion_h, direccion_v;
+	char direccion_h = 0;
+	char direccion_v = 0;
 	float zoom;
 
-	// // Constantes
-	// const uint8_t arriba;
-	// const uint8_t izquierda;
-	// const uint8_t derecha;
-	// const uint8_t abajo;
+	// Constantes
+	const uint8_t arriba;
+	const uint8_t izquierda;
+	const uint8_t derecha;
+	const uint8_t abajo;
+	const int32_t velocidad_camara;
+	const uint32_t ancho_tile;
+	const uint32_t largo_tile;
+	const uint32_t ancho_vista_mapa;
+	const uint32_t largo_vista_mapa;
 
 	int limite_superior() const;
 	int limite_inferior() const;
 	int limite_izquierdo() const;
 	int limite_derecho() const;
 
+	/*
+	 * Ajusta la posicion del eje movil en caso de que se haya ido de los
+	 * limites permitidos.
+	*/
+	void ajustarPosicion();
+
 	void updateTiles();
+
+	/*
+	 * Determina la posicion del eje movil en base a la coordenadas donde
+	 * deberia empezar la camara del cliente.
+	*/
+	void determinarPosicionInicial(Coordenadas& coords_iniciales);
 
 public:
 	explicit MapaSDL(SDL2pp::Renderer& renderer, std::string& nombre_mapa,
-					TexturasSDL& texturas, YAML::Node& constantes);
+					TexturasSDL& texturas, YAML::Node& constantes,
+					Coordenadas& coords_iniciales, float zoom_inicial);
 
 	void moverArriba();
 	void moverIzquierda();

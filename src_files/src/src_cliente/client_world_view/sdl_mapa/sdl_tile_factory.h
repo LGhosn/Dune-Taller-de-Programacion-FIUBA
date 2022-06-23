@@ -7,19 +7,20 @@
 #include "../sdl_texturas.h"
 #include <vector>
 
-#define ROCA 'R'
-#define ARENA 'A'
-#define PRECIPICIO 'P'
-#define CIMA 'C'
-#define DUNA 'D'
-#define ESPECIA 'E'
-
 class TileFactorySDL {
     YAML::Node& constantes;
     SDL2pp::Renderer& renderer;
     SDL2pp::Texture& textura_base;
     uint32_t ancho, alto;
     std::vector<TileSDL> tiles;
+
+    // Constantes
+    const uint8_t roca;
+    const uint8_t arena;
+    const uint8_t precipicio;
+    const uint8_t cima;
+    const uint8_t duna;
+    const uint8_t especia;
 
     void agregarTileDeRoca(uint16_t tipo_textura, Coordenadas& coords);
     void agregarTileDeArena(uint16_t tipo_textura, Coordenadas& coords);
