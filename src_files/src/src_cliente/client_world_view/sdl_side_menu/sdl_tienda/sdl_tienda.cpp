@@ -1,8 +1,9 @@
 #include "sdl_tienda.h"
 
 TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
-                        uint8_t id_jugador, YAML::Node& constantes):
+                        uint8_t id_jugador, YAML::Node& constantes, ColorSDL& color):
                     renderer(renderer),
+                    color(color),
                     casa(casa),
                     ancho_menu(constantes["WorldView"]["SideMenu"]["Ancho"].as<uint32_t>()),
                     ancho_ventana(constantes["WorldView"]["Ventana"]["Ancho"].as<uint32_t>()),
@@ -116,7 +117,7 @@ void TiendaSDL::update(long frame_actual) {
 }
 
 void TiendaSDL::render() {
-    renderer.SetDrawColor(26, 1, 17);
+    renderer.SetDrawColor(color.obtenerOscuro());
     renderer.FillRect(tienda_rect);
     for(auto& boton : botones_edificios) {
         boton.render();

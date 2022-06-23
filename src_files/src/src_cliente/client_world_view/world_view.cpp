@@ -16,8 +16,8 @@ void WorldView::seleccionarEdificio(EdificioSDL* edificio) {
 }
 
 void WorldView::renderUI() {
-	for (auto edificio : edificios_seleccionados) {
-		edificio->renderUI();
+	for (auto edificio : edificios) {
+		edificio.second->renderUI();
 	}
 	this->side_menu.render();
 }
@@ -46,8 +46,9 @@ WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t
 						info_partida.coords_iniciales,
 						zoom_inicial
 					),
-					side_menu(renderer, 0, texturas, id_jugador, constantes),	// FIXME: hardcoded
-					edificio_factory(renderer, texturas, constantes),
+					side_menu(renderer, 0, texturas, id_jugador, constantes,
+								colores.obtenerColor(id_jugador)),	// FIXME: casa hardcodeada
+					edificio_factory(renderer, texturas, constantes, colores),
 					id_jugador(id_jugador),
 					info_partida(info_partida) {
 	renderer.SetDrawBlendMode(SDL_BLENDMODE_BLEND);

@@ -74,6 +74,8 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_tienda.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_tienda.cpp
         src/src_cliente/client_world_view/world_view.cpp
+        src/src_cliente/client_world_view/sdl_color/sdl_color.cpp
+        src/src_cliente/client_world_view/sdl_color/sdl_colores.cpp
         src/src_cliente/client_world_view/sdl_texturas.cpp
         src/src_common/common_DTO/Status.cpp
         src/src_common/common_colas/cola_bloqueante.cpp

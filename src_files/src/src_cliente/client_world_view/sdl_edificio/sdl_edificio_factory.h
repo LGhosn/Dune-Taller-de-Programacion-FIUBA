@@ -5,15 +5,17 @@
 #include "yaml-cpp/yaml.h"
 #include "sdl_edificio.h"
 #include "../sdl_texturas.h"
+#include "../sdl_color/sdl_colores.h"
 
 class EdificioFactorySDL {
     YAML::Node& constantes;
     SDL2pp::Renderer& renderer;
     TexturasSDL& texturas;
+    ColoresSDL& colores;
 
 public:
     EdificioFactorySDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas,
-                        YAML::Node& constantes);
+                        YAML::Node& constantes, ColoresSDL& colores);
 
     EdificioSDL* crearEdificio(uint8_t id_edificio, uint8_t id_jugador, uint8_t casa,
                                 uint8_t tipo_edificio, const Coordenadas& coords);

@@ -3,6 +3,7 @@
 
 #include "yaml-cpp/yaml.h"
 #include "sdl_mapa/sdl_mapa.h"
+#include "sdl_color/sdl_colores.h"
 #include "sdl_texturas.h"
 #include "sdl_edificio/sdl_edificio.h"
 #include "sdl_edificio/sdl_edificio_factory.h"
@@ -19,6 +20,7 @@
 
 class WorldView {
 	YAML::Node& constantes;
+	ColoresSDL colores;
 
 	// Constantes
 	const uint32_t ancho_ventana;

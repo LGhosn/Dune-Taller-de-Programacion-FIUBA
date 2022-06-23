@@ -4,6 +4,7 @@
 #include <SDL2pp/SDL2pp.hh>
 #include "yaml-cpp/yaml.h"
 #include "../../../src_common/common_coords.h"
+#include "../sdl_color/sdl_color.h"
 
 class EdificioSDL {
 protected:
@@ -11,6 +12,7 @@ protected:
     uint8_t id_jugador;
     SDL2pp::Renderer& renderer;
     SDL2pp::Texture& textura;
+    ColorSDL& color;
     SDL2pp::Rect origen;
     SDL2pp::Rect destino;
     SDL2pp::Rect destino_ui;
@@ -44,7 +46,8 @@ private:
 public:
     EdificioSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                 SDL2pp::Texture& textura, const Coordenadas& coords,
-                uint16_t alto, uint16_t ancho, uint8_t casa, YAML::Node& constantes);
+                uint16_t alto, uint16_t ancho, uint8_t casa, YAML::Node& constantes,
+                ColorSDL& color);
 
     Coordenadas obtenerDimensiones() const;
     

@@ -2,6 +2,7 @@
 #define SDL_TIENDA_H
 
 #include "sdl_boton_tienda.h"
+#include "../../sdl_color/sdl_color.h"
 #include "../../../client_solicitudes/cliente_solicitud.h"
 #include <list>
 
@@ -22,6 +23,7 @@
 
 class TiendaSDL {
     SDL2pp::Renderer& renderer;
+    ColorSDL& color;
     uint8_t casa;
     std::list<BotonTiendaSDL> botones_edificios;
     std::list<BotonTiendaSDL> botones_unidades;
@@ -46,7 +48,7 @@ class TiendaSDL {
 
 public:
     TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
-                uint8_t id_jugador, YAML::Node& constantes);
+                uint8_t id_jugador, YAML::Node& constantes, ColorSDL& color);
 
     bool contiene(int pos_x, int pos_y) const;
 

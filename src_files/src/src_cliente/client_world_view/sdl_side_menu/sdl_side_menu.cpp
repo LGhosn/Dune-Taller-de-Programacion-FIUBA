@@ -1,11 +1,12 @@
 #include "sdl_side_menu.h"
 
 SideMenuSDL::SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
-                            uint8_t id_jugador, YAML::Node& constantes) :
+                            uint8_t id_jugador, YAML::Node& constantes, ColorSDL& color) :
                             constantes(constantes),
                             renderer(renderer),
+                            color(color),
                             casa(casa),
-                            tienda(renderer, casa, texturas, id_jugador, constantes),
+                            tienda(renderer, casa, texturas, id_jugador, constantes, color),
                             logo_casa(texturas.obtenerLogoCasa(casa)) {
     uint32_t ancho_menu = constantes["WorldView"]["SideMenu"]["Ancho"].as<uint32_t>();
     uint32_t ancho_ventana = constantes["WorldView"]["Ventana"]["Ancho"].as<uint32_t>();
@@ -43,7 +44,7 @@ void SideMenuSDL::update(long frame_actual) {
 }
 
 void SideMenuSDL::render() {
-    renderer.SetDrawColor(78, 15, 0);
+    renderer.SetDrawColor(color.obtenerSecundario());
     renderer.FillRect(side_menu_rect);
     renderer.Copy(logo_casa, origen_logo_casa, destino_logo_casa);
     tienda.render();

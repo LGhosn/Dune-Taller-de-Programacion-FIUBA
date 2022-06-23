@@ -19,8 +19,8 @@ Edificios:
 
 WorldView:
   Ventana:
-    Ancho: 1024
-    Alto: 768 
+    Ancho: 1224
+    Alto: 768
   Edificios:
     UI:
       HP:
@@ -67,38 +67,40 @@ WorldView:
         OffsetY: 16
       LimiteHPDebilitar: 1000
   Mapa:
+    Ancho: 924
     Direcciones:
-      Arriba: 'A'
-      Izquierda: 'I'
-      Abajo: 'B'
-      Derecha: 'D'
-      DejarDeMoverHorizontal: 'H'
-      DejarDeMoverVertical: 'V'
+      Arriba: 0
+      Izquierda: 1
+      Abajo: 2
+      Derecha: 3
+      DejarDeMoverHorizontal: 4
+      DejarDeMoverVertical: 5
     Velocidad: 10
     Tiles:
       Ancho: 32
       Largo: 32
       Tipos:
-        Roca: 'R'
-        Arena: 'A'
-        Precipicio: 'P'
-        Cima: 'C'
-        Duna: 'D'
-        Especia: 'E'
+        Roca: 82 #'R'
+        Arena: 65 #'A'
+        Precipicio: 80 #'P'
+        Cima: 67 #'C'
+        Duna: 68 #'D'
+        Especia: 69 #'E'
   SideMenu:
     Ancho: 300
     Tienda:
       OffsetY: 300
       Padding: 10
       Botones:
+        Alto: 92
         Padding: 16
         RelacionAnchoLargo: 1.27
         PaddingTexto: 30
         TamTexto: 20
-        Texto: "Listo"
+        Texto: "LISTO"
   Zoom: 
-    Inicial: 3.0
-    Maximo: 4.0
-    Minimo: 2.0
+    Inicial: 1.5
+    Maximo: 2.5
+    Minimo: 1.5
     Velocidad: 0.1
     

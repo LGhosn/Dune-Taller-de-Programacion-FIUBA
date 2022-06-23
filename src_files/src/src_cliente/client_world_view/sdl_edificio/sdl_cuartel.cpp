@@ -2,9 +2,9 @@
 
 CuartelSDL::CuartelSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                        SDL2pp::Texture& textura, const Coordenadas& coords, uint16_t alto,
-                       uint16_t ancho, uint8_t casa,YAML::Node& constantes) :
+                       uint16_t ancho, uint8_t casa,YAML::Node& constantes, ColorSDL& color) :
                     EdificioSDL(id, id_jugador, renderer, textura, coords, alto, ancho,
-                                casa, constantes),
+                                casa, constantes, color),
                     ancho_edificio_atreides(constantes["WorldView"]["Edificios"]["Cuartel"]["AnchoAtreides"].as<uint32_t>()),
                     ancho_edificio_otros(constantes["WorldView"]["Edificios"]["Cuartel"]["AnchoOtros"].as<uint32_t>()),
                     alto_edificio(constantes["WorldView"]["Edificios"]["Cuartel"]["Alto"].as<uint32_t>()),

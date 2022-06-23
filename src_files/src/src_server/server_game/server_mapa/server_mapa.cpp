@@ -135,6 +135,16 @@ bool Mapa::construccionLejana(const Coordenadas& coords) {
     return true;
 }
 
+void Mapa::cargarCentrosDeConstruccion(YAML::Node& mapa_config) {
+    const YAML::Node& centros = mapa_config["CentrosDeConstruccion"];
+    for (YAML::const_iterator it = centros.begin(); it != centros.end(); it++) {
+        const YAML::Node& centro = *it;
+        uint16_t x = centro["x"].as<uint16_t>();
+        uint16_t y = centro["y"].as<uint16_t>();
+        coords_centros.emplace_back(x, y);
+    }
+}
+
 
 /* ******************************************************************
  *                        PUBLICAS
@@ -153,18 +163,7 @@ Mapa::Mapa(const std::string& nombre_mapa) : camino(this->mapa) {
             this->mapa[i][j] = mapa_config["TiposTerrenos"][i][j].as<char>();
         }
     }
-    // YAML::Node centros = mapa_config["CentrosDeConstruccion"];
-    // for (const auto& centro : centros) {
-    //     uint16_t x = centro["PosX"].as<uint16_t>();
-    //     uint16_t y = centro.second.as<uint16_t>();
-    //     coords_centros.emplace_back(x, y);
-    // }
-    uint16_t x = mapa_config["CentrosDeConstruccion"]["Centro1"]["PosX"].as<uint16_t>();
-    uint16_t y = mapa_config["CentrosDeConstruccion"]["Centro1"]["PosY"].as<uint16_t>();
-    coords_centros.emplace_back(x, y);
-    x = mapa_config["CentrosDeConstruccion"]["Centro2"]["PosX"].as<uint16_t>();
-    y = mapa_config["CentrosDeConstruccion"]["Centro2"]["PosY"].as<uint16_t>();
-    coords_centros.emplace_back(x, y);
+    cargarCentrosDeConstruccion(mapa_config);
     this->camino = this->mapa;      // TODO: ver
 }
 

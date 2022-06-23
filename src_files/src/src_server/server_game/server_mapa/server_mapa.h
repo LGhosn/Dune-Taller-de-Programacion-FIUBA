@@ -52,6 +52,8 @@ private:
 
     bool construccionLejana(const Coordenadas &coords);
 
+    void cargarCentrosDeConstruccion(YAML::Node& mapa_config);
+
 public:
     /*
      * Construye un mapa de ancho x alto

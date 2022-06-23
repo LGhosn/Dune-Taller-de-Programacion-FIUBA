@@ -55,7 +55,7 @@ void EdificioSDL::renderHP() {
         destino.GetY() + offset_y_hp * zoom
     );
 
-    renderer.SetDrawColor(90, 146, 22);
+    renderer.SetDrawColor(color.obtenerPrimario());
     renderer.FillRect(
         destino.GetX() + (padding_x_hp + padding_rect_hp) * zoom,
         destino.GetY() + (offset_y_hp - alto_hp + padding_rect_hp) * zoom,
@@ -74,9 +74,10 @@ void EdificioSDL::renderHP() {
 
 EdificioSDL::EdificioSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                         SDL2pp::Texture& textura, const Coordenadas& coords,
-                        uint16_t alto, uint16_t ancho, uint8_t casa, YAML::Node& constantes) :
+                        uint16_t alto, uint16_t ancho, uint8_t casa, YAML::Node& constantes,
+                        ColorSDL& color) :
         id(id), id_jugador(id_jugador), renderer(renderer),
-        textura(textura), coords(coords), alto(alto), ancho(ancho),
+        textura(textura), color(color), coords(coords), alto(alto), ancho(ancho),
         alto_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["Alto"].as<int>()),
         ancho_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["Ancho"].as<int>()),
         offset_x_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["OffsetX"].as<int>()),
@@ -97,8 +98,8 @@ Coordenadas EdificioSDL::obtenerDimensiones() const {
 void EdificioSDL::renderUI() {
     if (seleccionado) {
         renderRectanguloSeleccion();
-        renderHP();
     }
+    renderHP();
 }
 
 void EdificioSDL::seleccionar() {
