@@ -33,11 +33,27 @@ void ProtocoloServidor::enviarId(uint8_t id_cliente) {
     this->skt_comunicador->sendall(&id_cliente, SIZEOF_BYTE);
 }
 
-void ProtocoloServidor::enviarComienzoDePartida(std::string &nombre_mapa) {
-    uint8_t codigo_comienzo = 0;
-    this->skt_comunicador->sendall(&codigo_comienzo, SIZEOF_BYTE);
-    std::vector<uint8_t> buffer_nombre = serializador.serializarString(nombre_mapa);
-    enviarBuffer(buffer_nombre);
+void ProtocoloServidor::enviarComienzoDePartida(const InfoPartidaDTO& info_partida) {
+    // std::vector<uint8_t> buffer = serializador.serializarComienzoDePartida(info_partida);
+    // enviarBuffer(buffer);
+    uint8_t codigo = 0;
+    this->skt_comunicador->sendall(&codigo, SIZEOF_BYTE);
+    uint16_t x = htons(info_partida.coords_iniciales.x);
+    uint16_t y = htons(info_partida.coords_iniciales.y);
+    this->skt_comunicador->sendall(&x, SIZEOF_TWO_BYTES);
+    this->skt_comunicador->sendall(&y, SIZEOF_TWO_BYTES);
+    std::vector<uint8_t> buffer_mapa = serializador.serializarString(info_partida.nombre_mapa);
+    enviarBuffer(buffer_mapa);
+    uint8_t cant_jugadores = info_partida.info_jugadores.size();
+    this->skt_comunicador->sendall(&cant_jugadores, SIZEOF_BYTE);
+    for (auto& jugador: info_partida.info_jugadores) {
+        uint8_t id = jugador.first;
+        this->skt_comunicador->sendall(&id, SIZEOF_BYTE);
+        uint8_t casa = std::get<0>(jugador.second);
+        this->skt_comunicador->sendall(&casa, SIZEOF_BYTE);
+        std::vector<uint8_t> buffer_nombre = serializador.serializarString(std::get<1>(jugador.second));
+        enviarBuffer(buffer_nombre);
+    }
 }
 
 

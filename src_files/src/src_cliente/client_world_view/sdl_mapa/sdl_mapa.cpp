@@ -7,7 +7,7 @@ int MapaSDL::limite_superior() const {
 }
 
 int MapaSDL::limite_inferior() const {
-	return (this->alto * LARGO_TILE) * zoom - LARGO_VISTA_MAPA;
+	return (this->alto * largo_tile) * zoom - largo_vista_mapa;
 }
 
 int MapaSDL::limite_izquierdo() const {
@@ -15,7 +15,20 @@ int MapaSDL::limite_izquierdo() const {
 }
 
 int MapaSDL::limite_derecho() const {
-	return (this->ancho * LARGO_TILE) * zoom - ANCHO_VISTA_MAPA;
+	return (this->ancho * ancho_tile) * zoom - ancho_vista_mapa;
+}
+
+void MapaSDL::ajustarPosicion() {
+	if (this->eje_movil_x < this->limite_izquierdo()) {
+		this->eje_movil_x = this->limite_izquierdo();
+	} else if (this->eje_movil_x > this->limite_derecho()) {
+		this->eje_movil_x = this->limite_derecho();
+	}
+	if (this->eje_movil_y < this->limite_superior()) {
+		this->eje_movil_y = this->limite_superior();
+	} else if (this->eje_movil_y > this->limite_inferior()) {
+		this->eje_movil_y = this->limite_inferior();
+	}
 }
 
 void MapaSDL::updateTiles() {
@@ -24,39 +37,56 @@ void MapaSDL::updateTiles() {
 	}
 }
 
+void MapaSDL::determinarPosicionInicial(Coordenadas& coords_iniciales) {
+	this->eje_movil_x = coords_iniciales.x * ancho_tile - ancho_vista_mapa / 2;
+	this->eje_movil_y = coords_iniciales.y * largo_tile - largo_vista_mapa / 2;
+	ajustarPosicion();
+}
+
 MapaSDL::MapaSDL(SDL2pp::Renderer& renderer, std::string& nombre_mapa, TexturasSDL& texturas,
-				YAML::Node& constantes) :
-				constantes(constantes),
+				YAML::Node& constantes, Coordenadas& coords_iniciales, float zoom_inicial) :
 				renderer(renderer),
 				tile_factory(renderer, nombre_mapa, texturas, constantes),
 				tiles(tile_factory.obtenerTiles()),
 				ancho(tile_factory.obtenerAncho()),
-				alto(tile_factory.obtenerAlto()) {}
+				alto(tile_factory.obtenerAlto()),
+				zoom(zoom_inicial),
+				arriba(constantes["WorldView"]["Mapa"]["Direcciones"]["Arriba"].as<uint8_t>()),
+				izquierda(constantes["WorldView"]["Mapa"]["Direcciones"]["Izquierda"].as<uint8_t>()),
+				derecha(constantes["WorldView"]["Mapa"]["Direcciones"]["Derecha"].as<uint8_t>()),
+				abajo(constantes["WorldView"]["Mapa"]["Direcciones"]["Abajo"].as<uint8_t>()),
+				velocidad_camara(constantes["WorldView"]["Mapa"]["Velocidad"].as<int32_t>()),
+				ancho_tile(constantes["WorldView"]["Mapa"]["Tiles"]["Ancho"].as<uint32_t>()),
+				largo_tile(constantes["WorldView"]["Mapa"]["Tiles"]["Largo"].as<uint32_t>()),
+				ancho_vista_mapa(constantes["WorldView"]["Mapa"]["Ancho"].as<uint32_t>()),
+				largo_vista_mapa(constantes["WorldView"]["Ventana"]["Alto"].as<uint32_t>()) {
+	determinarPosicionInicial(coords_iniciales);
+}
 
 void MapaSDL::moverArriba() {
 	if (eje_movil_y > this->limite_superior()) {
-		this->direccion_v = ARRIBA;
+		this->direccion_v = arriba;
 		this->moviendose_v = true;
 	}
 }
 
 void MapaSDL::moverIzquierda() {
 	if (eje_movil_x > this->limite_izquierdo()) {
-		this->direccion_h = IZQUIERDA;
+		this->direccion_h = izquierda;
 		this->moviendose_h = true;
 	}
 }
 
 void MapaSDL::moverAbajo() {
 	if (eje_movil_y < this->limite_inferior()) {
-		this->direccion_v = ABAJO;
+		this->direccion_v = abajo;
 		this->moviendose_v = true;
 	}
 }
 
 void MapaSDL::moverDerecha() {
 	if (eje_movil_x < this->limite_derecho()) {
-		this->direccion_h = DERECHA;
+		this->direccion_h = derecha;
 		this->moviendose_h = true;
 	}
 }
@@ -77,72 +107,45 @@ int MapaSDL::obtener_offset_y() const {
 	return this->eje_movil_y;
 }
 
-// . . . . . . . . . . .
-// . . . . . . . . . . .
-// . . . . . . . . . . .
-// . . . x . . . . . x x
-// . . . . . . o . . . .
-// . . . . . . . . . . .
-// . . . . . . . . . . .
-// . . . x . . . . . x .
-// . . . x . . . . . . x
-// . . . . . . . . . . .
-// . . . . . . . . . . .
-
 Coordenadas MapaSDL::obtenerCoords(int pos_movil_x, int pos_movil_y) const {
-	uint16_t coord_x = (pos_movil_x+ this->eje_movil_x) / (LARGO_TILE * zoom);
-	uint16_t coord_y = (pos_movil_y + this->eje_movil_y) / (LARGO_TILE * zoom);
+	uint16_t coord_x = (pos_movil_x + this->eje_movil_x) / (ancho_tile * zoom);
+	uint16_t coord_y = (pos_movil_y + this->eje_movil_y) / (largo_tile * zoom);
 	return Coordenadas(coord_x, coord_y);
 }
 
 void MapaSDL::update(float zoom) {
 	this->zoom = zoom;
-	if (this->moviendose_h) {
-		switch(this->direccion_h) {
-			case IZQUIERDA:
-				if (this->eje_movil_x > this->limite_izquierdo() + VELOCIDAD) {
-					this->eje_movil_x -= VELOCIDAD;
-				} else {
-					this->dejarDeMoverseHorizontalmente();
-				}
-				break;
-			case DERECHA:
-				if (this->eje_movil_x < this->limite_derecho() - VELOCIDAD) {
-					this->eje_movil_x += VELOCIDAD;
-				} else {
-					this->dejarDeMoverseHorizontalmente();
-				}
-				break;
+	if (moviendose_h) {
+		if (direccion_h == izquierda) {
+			if (this->eje_movil_x > this->limite_izquierdo() + velocidad_camara) {
+				this->eje_movil_x -= velocidad_camara;
+			} else {
+				this->dejarDeMoverseHorizontalmente();
+			}
+		} else if (direccion_h == derecha) {
+			if (this->eje_movil_x < this->limite_derecho() - velocidad_camara) {
+				this->eje_movil_x += velocidad_camara;
+			} else {
+				this->dejarDeMoverseHorizontalmente();
+			}
 		}
 	}
-	if (this->moviendose_v) {
-		switch(this->direccion_v) {
-			case ARRIBA:
-				if (this->eje_movil_y > this->limite_superior() + VELOCIDAD) {
-					this->eje_movil_y -= VELOCIDAD;
-				} else {
-					this->dejarDeMoverseVerticalmente();
-				}
-				break;
-			case ABAJO:
-				if (this->eje_movil_y < this->limite_inferior() - VELOCIDAD) {
-					this->eje_movil_y += VELOCIDAD;
-				} else {
-					this->dejarDeMoverseVerticalmente();
-				}
-				break;
+	if (moviendose_v) {
+		if (direccion_v == arriba) {
+			if (this->eje_movil_y > this->limite_superior() + velocidad_camara) {
+				this->eje_movil_y -= velocidad_camara;
+			} else {
+				this->dejarDeMoverseVerticalmente();
+			}
+		} else if (direccion_v == abajo) {
+			if (this->eje_movil_y < this->limite_inferior() - velocidad_camara) {
+				this->eje_movil_y += velocidad_camara;
+			} else {
+				this->dejarDeMoverseVerticalmente();
+			}
 		}
 	}
-	if (this->eje_movil_x < this->limite_izquierdo()) {
-		this->eje_movil_x = this->limite_izquierdo();
-	} else if (this->eje_movil_x > this->limite_derecho()) {
-		this->eje_movil_x = this->limite_derecho();
-	}
-	if (this->eje_movil_y < this->limite_superior()) {
-		this->eje_movil_y = this->limite_superior();
-	} else if (this->eje_movil_y > this->limite_inferior()) {
-		this->eje_movil_y = this->limite_inferior();
-	}
+	this->ajustarPosicion();
 	this->updateTiles();
 }
 

@@ -4,6 +4,7 @@
 #include "../src_common/common_DTO/Status.h"
 #include "../src_common/common_DTO/dto_sol_crear_partida.h"
 #include "../src_common/common_DTO/dto_sol_unirse_a_partida.h"
+#include "../src_common/common_DTO/dto_info_partida.h"
 #include "client_DTO/dto_cmd_crear_edificio.h"
 #include "client_serializador.h"
 #include "../src_common/common_serializador.h"
@@ -12,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <utility>
 #include <iostream>
 #include <fstream>
 #include <netinet/in.h>
@@ -25,6 +27,8 @@ private:
 
     void enviarBuffer(const std::vector<uint8_t>& buffer) const;
     std::string recibirNombre() const;
+    Coordenadas recibirCoordenadas() const;
+    std::map<uint8_t, std::pair<uint8_t, std::string>> recibirInfoJugadores();
 
 public:
     explicit ProtocoloCliente(Socket& skt_cliente);
@@ -48,7 +52,7 @@ public:
      * será usado por el cliente para imprimir un mensaje.
      * */
     Status recibirStatus();
-    bool esperarAComienzoDePartida(std::string *nombre_mapa);
+    InfoPartidaDTO recibirInfoComienzoDePartida();
 
     /*
      * No tiene sentido copiar un ProtocoloCliente, tampoco moverlo.

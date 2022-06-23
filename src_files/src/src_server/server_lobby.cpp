@@ -11,7 +11,7 @@ void Lobby::crearPartida(const SolicitudCrearPartidaDTO& partida_a_crear, Handle
         Partida partida_nueva(partida_a_crear.nombre_partida,
                                 partida_a_crear.jugadores_requeridos,
                                 partida_a_crear.mapa);
-        partida_nueva.agregarJugador(cliente);
+        partida_nueva.agregarJugador(cliente, partida_a_crear.casa_codigo);
         this->listarPartida(partida_nueva);
         Status status(CONEXION_EXITOSA, PARTIDA_NO_EXISTENTE);
         cliente->enviarStatusDeCreacion(status);
@@ -36,7 +36,7 @@ void Lobby::unirAPartida(const SolicitudUnirseAPartidaDTO& partida_a_unirse, Han
             Status status(CONEXION_FALLIDA, PARTIDA_EXISTENTE);
             cliente->enviarStatusDeUnion(status);
         } else {
-            partida->second.agregarJugador(cliente);
+            partida->second.agregarJugador(cliente, partida_a_unirse.casa_codigo);
             partida->second.jugadores_actuales++;
             Status status(CONEXION_EXITOSA, PARTIDA_EXISTENTE);
             cliente->enviarStatusDeUnion(status);

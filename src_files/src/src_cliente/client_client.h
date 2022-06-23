@@ -9,6 +9,7 @@
 #include "client_thread_reciever/client_hilo_reciever.h"
 #include "../src_common/common_colas/cola_no_bloqueante.h"
 #include "../src_common/common_colas/cola_bloqueante.h"
+#include "../src_common/common_DTO/dto_info_partida.h"
 #include "client_comandos/client_comando.h"
 #include "client_solicitudes/cliente_solicitud.h"
 
@@ -29,7 +30,7 @@ private:
     ClientHiloReciever* receiver;
     ClientHiloSender* sender;
     bool partida_empezada = false;
-    std::string nombre_mapa;
+    InfoPartidaDTO info_partida;
 
 public:
     /*
@@ -54,7 +55,7 @@ public:
 
     bool estaEnPartida();
 
-    void setNombreMapa(std::string& nombre_mapa);
+    void setInfoPartida(InfoPartidaDTO& info_partida);
 
     /*
      * No tiene sentido copiar un cliente y tampoco moverlo (al menos por ahora).

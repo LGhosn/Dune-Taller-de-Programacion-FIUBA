@@ -23,6 +23,7 @@ class ServerHiloSender;
 
 class HandlerCliente {
     uint8_t id_cliente;
+    std::string nombre;
     Socket socket;
     Lobby *lobby;
     ProtocoloServidor protocolo;
@@ -44,7 +45,7 @@ public:
     void crearPartida(SolicitudCrearPartidaDTO& partida_a_unirse);
     void enviarStatusDeCreacion(Status &status_de_creacion);
 
-    void empezarPartida(ColaNoBloqueante<SolicitudServer>* cola, std::string& nombre_mapa);
+    void empezarPartida(ColaNoBloqueante<SolicitudServer>* cola);
 
     ColaBloqueante<ComandoServer>* obtenerColaSender();
 
@@ -53,6 +54,8 @@ public:
     void cerrar();
 
     uint8_t obtenerId() const;
+
+    std::string& obtenerNombre();
 
     ~HandlerCliente();
 

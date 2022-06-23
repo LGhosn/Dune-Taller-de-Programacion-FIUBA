@@ -2,6 +2,8 @@
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../server_comandos/server_comando.h"
 #include <sstream>
+#include <algorithm>
+#include <random>
 
 std::string Partida::obtenerRutaMapa() const {
     std::stringstream ruta_mapa;
@@ -15,25 +17,32 @@ Partida::Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos
                 jugadores_requeridos(jugadores_requeridos),
                 nombre_mapa(nombre_mapa),
                 cola_solicitudes(new ColaNoBloqueante<SolicitudServer>()),
-                colas_sender(new std::vector<ColaBloqueante<ComandoServer>*>()),
-                hilo_gameloop(colas_sender, cola_solicitudes, nombre_mapa) {}
+                hilo_gameloop(cola_solicitudes, nombre_mapa) {}
 
 bool Partida::estaCompleta() const {
     return (this->jugadores_actuales == this->jugadores_requeridos);
 }
 
-void Partida::agregarJugador(HandlerCliente* cliente) {
+void Partida::agregarJugador(HandlerCliente* cliente, uint8_t casa) {
     this->clientes_conectados.push_back(cliente);
+    this->hilo_gameloop.agregarJugador(cliente->obtenerColaSender(),
+                                        cliente->obtenerId(),
+                                        casa,
+                                        cliente->obtenerNombre());
     // colas_sender->push_back(cliente->obtenerColaSender());
 }
 
 void Partida::empezar() {
-    for (auto cliente : this->clientes_conectados) {
-        colas_sender->push_back(cliente->obtenerColaSender());
-        cliente->empezarPartida(this->cola_solicitudes, this->nombre_mapa);
-    }
-    std::string ruta_mapa = obtenerRutaMapa();
+    // std::map<uint8_t, Coordenadas> centros_por_jugador = sortearCentros();
+    // for (auto& cliente : this->clientes_conectados) {
+    //     cliente->empezarPartida(this->cola_solicitudes, this->nombre_mapa);
+    // }
+    // std::string ruta_mapa = obtenerRutaMapa();
+    std::cout << "Empezando partida..." << std::endl;
     hilo_gameloop.start();
+    for (auto& cliente : this->clientes_conectados) {
+        cliente->empezarPartida(this->cola_solicitudes);
+    }
 }
 
 std::string Partida::getNombre() const {
@@ -43,9 +52,6 @@ std::string Partida::getNombre() const {
 Partida::~Partida() {
     if (this->cola_solicitudes != nullptr) {
         delete this->cola_solicitudes;
-    }
-    if (this->colas_sender != nullptr) {
-        delete this->colas_sender;
     }
 }
 
@@ -57,8 +63,8 @@ Partida& Partida::operator=(Partida&& otra) {
     this->jugadores_requeridos = otra.jugadores_requeridos;
     this->nombre_mapa = otra.nombre_mapa;
     this->clientes_conectados = std::move(otra.clientes_conectados);
-    this->colas_sender = otra.colas_sender;
     this->cola_solicitudes = otra.cola_solicitudes;
+    std::cout << "Partida movida" << std::endl;
     return *this;
 }
 
@@ -69,8 +75,7 @@ Partida::Partida(Partida&& otra) :
         nombre_mapa(std::move(otra.nombre_mapa)),
         clientes_conectados(std::move(otra.clientes_conectados)),
         cola_solicitudes(otra.cola_solicitudes),
-        colas_sender(otra.colas_sender),
         hilo_gameloop(std::move(otra.hilo_gameloop)) {
-    otra.colas_sender = nullptr;
     otra.cola_solicitudes = nullptr;
+    std::cout << "Partida movida" << std::endl;
 }

@@ -1,0 +1,132 @@
+---
+
+0:
+  Primario:
+    R: 139
+    G: 195
+    B: 74
+  Secundario:
+    R: 90
+    G: 146
+    B: 22
+  Oscuro:
+    R: 0
+    G: 61
+    B: 0
+1:
+  Primario:
+    R: 156
+    G: 39
+    B: 176
+  Secundario:
+    R: 106
+    G: 0
+    B: 128
+  Oscuro:
+    R: 18
+    G: 0
+    B: 94
+2:
+  Primario:
+    R: 41
+    G: 182
+    B: 246
+  Secundario:
+    R: 0
+    G: 134
+    B: 195
+  Oscuro:
+    R: 0
+    G: 47
+    B: 108
+3:
+  Primario:
+    R: 244
+    G: 67
+    B: 54
+  Secundario:
+    R: 186
+    G: 0
+    B: 13
+  Oscuro:
+    R: 127
+    G: 0
+    B: 0
+4:
+  Primario:
+    R: 121
+    G: 85
+    B: 72
+  Secundario:
+    R: 75
+    G: 44
+    B: 32
+  Oscuro:
+    R: 27
+    G: 0
+    B: 0
+5:
+  Primario:
+    R: 96
+    G: 125
+    B: 139
+  Secundario:
+    R: 52
+    G: 81
+    B: 94
+  Oscuro:
+    R: 16
+    G: 32
+    B: 39
+6:
+  Primario:
+    R: 255
+    G: 179
+    B: 0
+  Secundario:
+    R: 198
+    G: 132
+    B: 0
+  Oscuro:
+    R: 196
+    G: 62
+    B: 0
+7:
+  Primario:
+    R: 0
+    G: 150
+    B: 136
+  Secundario:
+    R: 0
+    G: 103
+    B: 91
+  Oscuro:
+    R: 0
+    G: 37
+    B: 26
+8:
+  Primario:
+    R: 236
+    G: 64
+    B: 122
+  Secundario:
+    R: 180
+    G: 0
+    B: 78
+  Oscuro:
+    R: 86
+    G: 0
+    B: 39
+9:
+  Primario:
+    R: 205
+    G: 220
+    B: 57
+  Secundario:
+    R: 153
+    G: 170
+    B: 0
+  Oscuro:
+    R: 82
+    G: 76
+    B: 0

@@ -1,5 +1,6 @@
 #include "FormCreacion.h"
 #include "../src_cliente/client_solicitudes/sol_crear_partida.h"
+#include "../src_common/common_DTO/dto_info_partida.h"
 
 FormCreacion::FormCreacion(Client& cliente, QWidget* parent) :
                             QWidget(parent),
@@ -34,7 +35,6 @@ void FormCreacion::solicitudDeCreacion() {
             protocolo.enviarSolicitudCrearPartida(solicitud);
             Status status_recibido = protocolo.recibirStatus();
             crearNotificacion(status_recibido);
-            //protocolo.esperarAComienzoDePartida();
         }
     } catch (const std::exception &e) {
         syslog(LOG_CRIT, "Error detectado: %s", e.what());
@@ -47,16 +47,13 @@ void FormCreacion::crearNotificacion(Status& status) {
     ProtocoloCliente& protocolo = cliente.protocoloAsociado();
     if (status.obtenerCodigoDeConexion() == CONEXION_EXITOSA) {
         std::cout << "Creacion Existosa, esperando jugadores restantes..." << std::endl;
-        std::string nombre_mapa;
-        bool partida_comenzada = protocolo.esperarAComienzoDePartida(&nombre_mapa);
-        cliente.setNombreMapa(nombre_mapa);
-        if (partida_comenzada) {
-            // Cierro todas las ventanas y abro el juego
-            std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
-            //cliente.establecerPartidaEmpezada();
-            close();
-            cliente.empezarPartida();
-        }
+        InfoPartidaDTO info_partida = protocolo.recibirInfoComienzoDePartida();
+        cliente.setInfoPartida(info_partida);
+        // Cierro todas las ventanas y abro el juego
+        std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
+        cliente.establecerPartidaEmpezada();
+        close();
+        cliente.empezarPartida();
     } else {
         if (status.obtenerCodigoDePartida() == PARTIDA_EXISTENTE) {
             std::cout << "Creacion Fallida, existe otra partida con ese mismo nombre, por favor elegir otro...." << std::endl;

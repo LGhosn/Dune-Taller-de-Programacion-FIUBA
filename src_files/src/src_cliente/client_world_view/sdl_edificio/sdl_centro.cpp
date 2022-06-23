@@ -29,9 +29,9 @@ void CentroSDL::setearPosicionBrazo() {
 
 CentroSDL::CentroSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                     SDL2pp::Texture& textura, const Coordenadas& coords, uint16_t alto,
-                    uint16_t ancho, uint8_t casa, YAML::Node& constantes):
+                    uint16_t ancho, uint8_t casa, YAML::Node& constantes, ColorSDL& color):
                     EdificioSDL(id, id_jugador, renderer, textura, coords, alto, ancho, casa,
-                                constantes),
+                                constantes, color),
                     ancho_edificio(constantes["WorldView"]["Edificios"]["Centro"]["Ancho"].as<uint32_t>()),
                     alto_edificio(constantes["WorldView"]["Edificios"]["Centro"]["Alto"].as<uint32_t>()),
                     padding_edificio_y(constantes["WorldView"]["Edificios"]["Centro"]["PaddingY"].as<uint32_t>()),

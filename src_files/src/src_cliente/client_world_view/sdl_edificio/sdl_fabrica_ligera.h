@@ -18,7 +18,7 @@ class FabricaLigeraSDL : public EdificioSDL {
 public:
     FabricaLigeraSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                 SDL2pp::Texture& textura, const Coordenadas& coords, uint16_t alto,
-                uint16_t ancho, uint8_t casa, YAML::Node& constantes);
+                uint16_t ancho, uint8_t casa, YAML::Node& constantes, ColorSDL& color);
 
     void cambiarHP(uint16_t hp_edificio) override;
 

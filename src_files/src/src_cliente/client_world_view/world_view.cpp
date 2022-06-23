@@ -2,8 +2,6 @@
 #include "../client_solicitudes/client_sol_crear_edificio.h"
 #include <functional>
 
-#define RUTA_MAPA_1 RESOURCE_PATH "/maps/mapa1.yaml"
-
 void WorldView::deseleccionarEdificios() {
 	for (auto edificio : edificios_seleccionados) {
 		edificio->deseleccionar();
@@ -18,25 +16,41 @@ void WorldView::seleccionarEdificio(EdificioSDL* edificio) {
 }
 
 void WorldView::renderUI() {
-	for (auto edificio : edificios_seleccionados) {
-		edificio->renderUI();
+	for (auto edificio : edificios) {
+		edificio.second->renderUI();
 	}
 	this->side_menu.render();
 }
 
 WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t id_jugador,
-					std::string& nombre_mapa, YAML::Node& constantes) :
-						constantes(constantes),
-						window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-								ANCHO_VISTA_MAPA + ANCHO_MENU, LARGO_VISTA_MAPA, 0),
-						renderer(window, -1, SDL_RENDERER_ACCELERATED),
-						texturas(renderer, constantes),
-						cola_solicitudes(cola_solicitudes),
-						zoom(ZOOM_INICIAL),
-						mapa(renderer, nombre_mapa, texturas, constantes),
-						side_menu(renderer, 0, texturas, id_jugador, constantes),	// FIXME: hardcoded
-						edificio_factory(renderer, texturas, constantes),
-						id_jugador(id_jugador) {
+					InfoPartidaDTO& info_partida, YAML::Node& constantes) :
+					constantes(constantes),
+					ancho_ventana(constantes["WorldView"]["Ventana"]["Ancho"].as<uint32_t>()),
+					largo_ventana(constantes["WorldView"]["Ventana"]["Alto"].as<uint32_t>()),
+					ancho_menu(constantes["WorldView"]["SideMenu"]["Ancho"].as<uint32_t>()),
+					zoom_inicial(constantes["WorldView"]["Zoom"]["Inicial"].as<float>()),
+					zoom_minimo(constantes["WorldView"]["Zoom"]["Minimo"].as<float>()),
+					zoom_maximo(constantes["WorldView"]["Zoom"]["Maximo"].as<float>()),
+					velocidad_zoom(constantes["WorldView"]["Zoom"]["Velocidad"].as<float>()),
+					window("Dune 2000", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+							ancho_ventana, largo_ventana, 0),
+					renderer(window, -1, SDL_RENDERER_ACCELERATED),
+					texturas(renderer, constantes),
+					cola_solicitudes(cola_solicitudes),
+					zoom(zoom_inicial),
+					mapa(
+						renderer,
+						info_partida.nombre_mapa,
+						texturas,
+						constantes,
+						info_partida.coords_iniciales,
+						zoom_inicial
+					),
+					side_menu(renderer, 0, texturas, id_jugador, constantes,
+								colores.obtenerColor(id_jugador)),	// FIXME: casa hardcodeada
+					edificio_factory(renderer, texturas, constantes, colores),
+					id_jugador(id_jugador),
+					info_partida(info_partida) {
 	renderer.SetDrawBlendMode(SDL_BLENDMODE_BLEND);
 }
 
@@ -65,14 +79,14 @@ void WorldView::dejarDeMoverMapaVerticalmente() {
 }
 
 void WorldView::zoomIn() {
-	if (this->zoom < ZOOM_MAXIMO) {
-		this->zoom += ZOOM_PASO;
+	if (this->zoom < zoom_maximo) {
+		this->zoom += velocidad_zoom;
 	}
 }
 
 void WorldView::zoomOut() {
-	if (this->zoom > ZOOM_MINIMO) {
-		this->zoom -= ZOOM_PASO;
+	if (this->zoom > zoom_minimo) {
+		this->zoom -= velocidad_zoom;
 	}
 }
 
@@ -89,8 +103,8 @@ void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 	}
 }
 
-void WorldView::click_en_mapa(int pos_x, int pos_y) {
-	if (pos_x < ANCHO_VISTA_MAPA) {
+void WorldView::click_en_mapa(uint32_t pos_x, uint32_t pos_y) {
+	if (pos_x < ancho_ventana - ancho_menu) {
 		Coordenadas coords = mapa.obtenerCoords(pos_x, pos_y);
 		if (edificios.find(coords) != edificios.end()) {
 			seleccionarEdificio(edificios.at(coords));

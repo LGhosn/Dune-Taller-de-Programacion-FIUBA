@@ -1,5 +1,6 @@
 #include "server_handler_cliente.h"
 #include <iostream>
+#include <sstream>
 
 HandlerCliente::HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos, uint8_t id_cliente) :
                                 id_cliente(id_cliente),
@@ -10,6 +11,10 @@ HandlerCliente::HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos
                                 cola_comandos(new ColaBloqueante<ComandoServer>()),
                                 hilo_sender(new ServerHiloSender(this->cola_comandos, &this->protocolo, codigos)),
                                 hilo_reciever(new ServerHiloReceiver(&this->protocolo, codigos, this)) {
+    std::stringstream stream;
+    int id = (int) id_cliente;
+    stream << "Jugador " << id;
+    nombre = stream.str();
     protocolo.enviarId(id_cliente);
 }
 
@@ -29,10 +34,9 @@ void HandlerCliente::enviarStatusDeCreacion(Status &status_de_creacion) {
     protocolo.enviarStatusDeCreacion(status_de_creacion);
 }
 
-void HandlerCliente::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola, std::string& nombre_mapa) {
+void HandlerCliente::empezarPartida(ColaNoBloqueante<SolicitudServer>* cola) {
     this->hilo_reciever->empezarPartida(cola);
     this->hilo_sender->start();
-    protocolo.enviarComienzoDePartida(nombre_mapa);
 }
 
 ColaBloqueante<ComandoServer>* HandlerCliente::obtenerColaSender() {
@@ -50,6 +54,10 @@ void HandlerCliente::cerrar() {
 
 uint8_t HandlerCliente::obtenerId() const {
     return this->id_cliente;
+}
+
+std::string& HandlerCliente::obtenerNombre() {
+    return this->nombre;
 }
 
 HandlerCliente::~HandlerCliente() {

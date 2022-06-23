@@ -5,19 +5,17 @@
 #include "yaml-cpp/yaml.h"
 #include "../../../src_common/common_coords.h"
 
-#define LARGO_TILE 32
-#define PADDING 100
-
-#define ANCHO_VISTA_MAPA 924
-#define LARGO_VISTA_MAPA 768
-
 class TileSDL {
-    YAML::Node& constantes;
     SDL2pp::Renderer& renderer;
     SDL2pp::Texture& textura;
-    SDL2pp::Rect origen;
     SDL2pp::Rect destino;
     Coordenadas coords;
+
+    // Constantes
+    const uint8_t ancho_tile;
+    const uint8_t largo_tile;
+
+    SDL2pp::Rect origen;
 
 public:
     TileSDL(SDL2pp::Renderer& renderer, SDL2pp::Texture& textura, Coordenadas& coords,
