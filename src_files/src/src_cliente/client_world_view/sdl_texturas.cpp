@@ -1,9 +1,14 @@
 #include "sdl_texturas.h"
 
+uint8_t TexturasSDL::obtenerCantidadTexturas(std::filesystem::path ruta) {
+    return std::distance(std::filesystem::directory_iterator{ruta},
+                        std::filesystem::directory_iterator{});
+}
+
 TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                         constantes(constantes),
                         renderer(renderer),
-                        tiles_base(renderer, RUTA_TILES_BASE),
+                        slab(renderer, RUTA_TILES_SLAB),
                         edificio_centro(renderer, RUTA_CENTRO),
                         edificio_cuartel(renderer, RUTA_CUARTEL),
                         edificio_fabrica_ligera(renderer, RUTA_FABRICA_LIGERA),
@@ -33,10 +38,78 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                                                                 texto_listo,
                                                                 SDL_Color{90, 146, 22, 255}
                                                         )
-                                            ) {}
+                                            ) {
+    uint8_t cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_ARENA);
+    for (uint8_t i = 0; i < cantidad_texturas; i++) {
+        std::stringstream stream;
+        stream << RUTA_TILES_ARENA << "arena" << (int) i << ".bmp";
+        tiles_arena.emplace_back(renderer, stream.str());
+    }
 
-SDL2pp::Texture& TexturasSDL::obtenerTilesBase() {
-    return tiles_base;
+    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_CIMAS);
+    for (uint8_t i = 0; i < cantidad_texturas; i++) {
+        std::stringstream stream;
+        stream << RUTA_TILES_CIMAS << "cima" << (int) i << ".bmp";
+        tiles_cima.emplace_back(renderer, stream.str());
+    }
+    
+    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_DUNAS);
+    for (uint8_t i = 0; i < cantidad_texturas; i++) {
+        std::stringstream stream;
+        stream << RUTA_TILES_DUNAS << "duna" << (int) i << ".bmp";
+        tiles_duna.emplace_back(renderer, stream.str());
+    }
+
+    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_ESPECIA_ABUNDANTE);
+    for (uint8_t i = 0; i < cantidad_texturas; i++) {
+        std::stringstream stream;
+        stream << RUTA_TILES_ESPECIA_ABUNDANTE << "especia_abundante" << (int) i << ".bmp";
+        tiles_especia_abundante.emplace_back(renderer, stream.str());
+    }
+
+    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_ESPECIA_ESCASA);
+    for (uint8_t i = 0; i < cantidad_texturas; i++) {
+        std::stringstream stream;
+        stream << RUTA_TILES_ESPECIA_ESCASA << "especia_escasa" << (int) i << ".bmp";
+        tiles_especia_escasa.emplace_back(renderer, stream.str());
+    }
+
+    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_PRECIPICIO);
+    for (uint8_t i = 0; i < cantidad_texturas; i++) {
+        std::stringstream stream;
+        stream << RUTA_TILES_PRECIPICIO << "precipicio" << (int) i << ".bmp";
+        tiles_precipicio.emplace_back(renderer, stream.str());
+    }
+
+    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_ROCA);
+    for (uint8_t i = 0; i < cantidad_texturas; i++) {
+        std::stringstream stream;
+        stream << RUTA_TILES_ROCA << "roca" << (int) i << ".bmp";
+        tiles_roca.emplace_back(renderer, stream.str());
+    }
+}
+
+// SDL2pp::Texture& TexturasSDL::obtenerTilesBase() {
+//     return tiles_base;
+// }
+
+SDL2pp::Texture& TexturasSDL::obtenerTexTile(uint8_t tipo_tile, uint8_t tipo_textura) {
+    switch (tipo_tile) {
+        case 'A':
+            return tiles_arena[tipo_textura];
+        case 'C':
+            return tiles_cima[tipo_textura];
+        case 'D':
+            return tiles_duna[tipo_textura];
+        case 'E':
+            return tiles_especia_abundante[tipo_textura];
+        case 'P':
+            return tiles_precipicio[tipo_textura];
+        case 'R':
+            return tiles_roca[tipo_textura];
+        default:
+            throw std::runtime_error("Texturas: Tipo de tile no reconocido.");
+    }
 }
 
 SDL2pp::Texture& TexturasSDL::obtenerTexEdificio(uint8_t tipo) {

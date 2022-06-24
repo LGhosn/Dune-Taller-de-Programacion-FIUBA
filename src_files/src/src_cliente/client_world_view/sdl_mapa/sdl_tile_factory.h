@@ -10,24 +10,9 @@
 class TileFactorySDL {
     YAML::Node& constantes;
     SDL2pp::Renderer& renderer;
-    SDL2pp::Texture& textura_base;
+    TexturasSDL& texturas;
     uint32_t ancho, alto;
     std::vector<TileSDL> tiles;
-
-    // Constantes
-    const uint8_t roca;
-    const uint8_t arena;
-    const uint8_t precipicio;
-    const uint8_t cima;
-    const uint8_t duna;
-    const uint8_t especia;
-
-    void agregarTileDeRoca(uint16_t tipo_textura, Coordenadas& coords);
-    void agregarTileDeArena(uint16_t tipo_textura, Coordenadas& coords);
-    void agregarTileDePrecipicio(uint16_t tipo_textura, Coordenadas& coords);
-    void agregarTileDeCima(uint16_t tipo_textura, Coordenadas& coords);
-    void agregarTileDeDuna(uint16_t tipo_textura, Coordenadas& coords);
-    void agregarTileDeEspecia(uint16_t tipo_textura, Coordenadas& coords);
 
     void agregarTile(uint8_t tipo_terreno, uint16_t tipo_textura, Coordenadas& coords);
 

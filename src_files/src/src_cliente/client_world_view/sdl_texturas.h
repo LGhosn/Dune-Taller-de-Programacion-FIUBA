@@ -1,10 +1,20 @@
 #ifndef SDL_TEXTURAS_H
 #define SDL_TEXTURAS_H
 
+#include <vector>
+#include <filesystem>
 #include <SDL2pp/SDL2pp.hh>
 #include "yaml-cpp/yaml.h"
 
-#define RUTA_TILES_BASE RESOURCE_PATH "/terrain/d2k_BLOXBASE.bmp"
+#define RUTA_TILES_ARENA RESOURCE_PATH "/terrenos/arena/"
+#define RUTA_TILES_CIMAS RESOURCE_PATH "/terrenos/cimas/"
+#define RUTA_TILES_DUNAS RESOURCE_PATH "/terrenos/dunas/"
+#define RUTA_TILES_ESPECIA_ABUNDANTE RESOURCE_PATH "/terrenos/especia_abundante/"
+#define RUTA_TILES_ESPECIA_ESCASA RESOURCE_PATH "/terrenos/especia_escasa/"
+#define RUTA_TILES_PRECIPICIO RESOURCE_PATH "/terrenos/precipicio/"
+#define RUTA_TILES_ROCA RESOURCE_PATH "/terrenos/roca/"
+
+#define RUTA_TILES_SLAB RESOURCE_PATH "/terrenos/slab.bmp"
 
 #define RUTA_CENTRO RESOURCE_PATH "/buildings/centro_de_construccion.png"
 #define RUTA_CUARTEL RESOURCE_PATH "/buildings/cuartel.png"
@@ -41,7 +51,14 @@ class TexturasSDL {
     SDL2pp::SDLTTF sdl_ttf;
     SDL2pp::Renderer& renderer;
     
-    SDL2pp::Texture tiles_base;
+    std::vector<SDL2pp::Texture> tiles_arena;
+    std::vector<SDL2pp::Texture> tiles_cima;
+    std::vector<SDL2pp::Texture> tiles_duna;
+    std::vector<SDL2pp::Texture> tiles_especia_abundante;
+    std::vector<SDL2pp::Texture> tiles_especia_escasa;
+    std::vector<SDL2pp::Texture> tiles_precipicio;
+    std::vector<SDL2pp::Texture> tiles_roca;
+    SDL2pp::Texture slab;
 
     SDL2pp::Texture edificio_centro;
     SDL2pp::Texture edificio_cuartel;
@@ -73,10 +90,13 @@ class TexturasSDL {
     SDL2pp::Font font_tienda;
     SDL2pp::Texture texto_tienda;
 
+    uint8_t obtenerCantidadTexturas(std::filesystem::path ruta);
+
 public:
     TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes);
 
-    SDL2pp::Texture& obtenerTilesBase();
+    // SDL2pp::Texture& obtenerTilesBase();
+    SDL2pp::Texture& obtenerTexTile(uint8_t tipo_tile, uint8_t tipo_textura);
     SDL2pp::Texture& obtenerTexEdificio(uint8_t tipo);
     SDL2pp::Texture& obtenerLogoCasa(uint8_t casa);
     SDL2pp::Texture& obtenerLogoEdificio(uint8_t tipo, uint8_t casa);

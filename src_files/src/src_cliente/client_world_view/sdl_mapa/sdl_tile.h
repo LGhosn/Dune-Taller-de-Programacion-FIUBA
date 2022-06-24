@@ -8,6 +8,7 @@
 class TileSDL {
     SDL2pp::Renderer& renderer;
     SDL2pp::Texture& textura;
+    SDL2pp::Rect origen;
     SDL2pp::Rect destino;
     Coordenadas coords;
 
@@ -15,11 +16,9 @@ class TileSDL {
     const uint8_t ancho_tile;
     const uint8_t largo_tile;
 
-    SDL2pp::Rect origen;
-
 public:
     TileSDL(SDL2pp::Renderer& renderer, SDL2pp::Texture& textura, Coordenadas& coords,
-    int pos_tex_x, int pos_tex_y, YAML::Node& constantes);
+            YAML::Node& constantes);
 
     void update(uint32_t offset_x, uint32_t offset_y, float zoom);
 

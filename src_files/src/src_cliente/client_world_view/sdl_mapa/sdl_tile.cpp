@@ -1,13 +1,13 @@
 #include "sdl_tile.h"
 
 TileSDL::TileSDL(SDL2pp::Renderer& renderer, SDL2pp::Texture& textura, Coordenadas& coords,
-                int pos_tex_x, int pos_tex_y, YAML::Node& constantes) :
+                YAML::Node& constantes) :
                 renderer(renderer),
                 textura(textura),
+                origen(0, 0, textura.GetWidth(), textura.GetHeight()),
                 coords(coords),
                 ancho_tile(constantes["WorldView"]["Mapa"]["Tiles"]["Ancho"].as<uint8_t>()),
-                largo_tile(constantes["WorldView"]["Mapa"]["Tiles"]["Largo"].as<uint8_t>()),
-                origen(pos_tex_x, pos_tex_y, ancho_tile, largo_tile) {}
+                largo_tile(constantes["WorldView"]["Mapa"]["Tiles"]["Largo"].as<uint8_t>()) {}
 
 void TileSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, float zoom) {
     destino.SetX(coords.x * ancho_tile * zoom - origen_movil_x);
