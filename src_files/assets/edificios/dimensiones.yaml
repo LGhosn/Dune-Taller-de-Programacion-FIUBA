@@ -1,0 +1,31 @@
+Silo:
+  - DimensionX: 1
+  - DimensionY: 1
+
+Cuartel:
+  - DimensionX: 2
+  - DimensionY: 2
+
+FabricaLigera:
+  - DimensionX: 3
+  - DimensionY: 3
+
+FabricaPesada:
+  - DimensionX: 4
+  - DimensionY: 4
+
+Palacio:
+  - DimensionX: 5
+  - DimensionY: 5
+
+Refineria:
+  - DimensionX: 6
+  - DimensionY: 6
+
+TrampaDeAire:
+  - DimensionX: 7
+  - DimensionY: 7
+
+CentroDeConstructo:
+  - DimensionX: 8
+  - DimensionY: 8

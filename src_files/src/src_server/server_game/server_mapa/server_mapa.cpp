@@ -145,6 +145,29 @@ void Mapa::cargarCentrosDeConstruccion(YAML::Node& mapa_config) {
     }
 }
 
+std::unique_ptr<Edificio> Mapa::clasificarEdificio(char tipo_edificio, YAML::Node& edificio_config) {
+    switch (tipo_edificio) {
+        case CENTRO:
+            return std::unique_ptr<Edificio>(new CentroDeConstruccion(edificio_config));
+        case CUARTEL:
+            return std::unique_ptr<Edificio>(new Cuartel(edificio_config));
+        case FABRICA_LIGERA:
+            return std::unique_ptr<Edificio>(new FabricaLigera(edificio_config));
+        case FABRICA_PESADA:
+            return std::unique_ptr<Edificio>(new FabricaPesada(edificio_config));
+        case PALACIO:
+            return std::unique_ptr<Edificio>(new Palacio(edificio_config));
+        case REFINERIA:
+            return std::unique_ptr<Edificio>(new Refineria(edificio_config));
+        case SILO:
+            return std::unique_ptr<Edificio>(new Silo(edificio_config));
+        case TRAMPA_DE_AIRE:
+            return std::unique_ptr<Edificio>(new TrampaDeAire(edificio_config));
+        default:
+            return std::unique_ptr<Edificio>(new EdificioNulo());
+    }
+}
+
 
 /* ******************************************************************
  *                        PUBLICAS
@@ -155,12 +178,17 @@ Mapa::Mapa(const std::string& nombre_mapa) : camino(this->mapa) {
     ruta_mapa << RESOURCE_PATH << "/maps/" << nombre_mapa << ".yaml";
     YAML::Node mapa_config = YAML::LoadFile(ruta_mapa.str());
 
+    std::stringstream ruta_dimensiones;
+    ruta_dimensiones << RESOURCE_PATH << "/edificios/dimensiones.yaml";
+    this->edificio_config = YAML::LoadFile(ruta_dimensiones.str());
+
     this->ancho = mapa_config["Ancho"].as<int>();
     this->alto = mapa_config["Alto"].as<int>();
     this->mapa = std::vector<std::vector<char>>(this->alto, std::vector<char>(this->ancho));
     for (int i = 0; i < alto; i++) {
 		for (int j = 0; j < ancho; j++){
-            this->mapa[i][j] = mapa_config["TiposTerrenos"][i][j].as<char>();
+            std::unique_ptr<Edificio> edi = clasificarEdificio(mapa_config["TiposTerrenos"][i][j].as<char>(), edificio_config);
+            // this->mapa[i][j] = edi; 
         }
     }
     cargarCentrosDeConstruccion(mapa_config);

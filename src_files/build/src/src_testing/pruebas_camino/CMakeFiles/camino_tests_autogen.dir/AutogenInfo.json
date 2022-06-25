@@ -1,39 +1,39 @@
 {
-	"BUILD_DIR" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/camino_tests_autogen",
-	"CMAKE_BINARY_DIR" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino",
+	"BUILD_DIR" : "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/camino_tests_autogen",
+	"CMAKE_BINARY_DIR" : "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
-	"CMAKE_SOURCE_DIR" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files",
+	"CMAKE_SOURCE_DIR" : "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files",
 	"HEADERS" : 
 	[
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h",
+			"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.h",
 			"Mu",
 			"IYI4IAJID5/moc_common_coords.cpp"
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.h",
+			"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.h",
 			"Mu",
 			"APDZ7JIAC5/moc_server_camino.cpp"
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.h",
+			"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.h",
 			"Mu",
 			"APDZ7JIAC5/moc_server_camino_no_encontrado_exception.cpp"
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.h",
+			"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.h",
 			"Mu",
 			"APDZ7JIAC5/moc_server_fuera_de_rango_exception.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/camino_tests_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/camino_tests_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/camino_tests_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/camino_tests_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
-		"RESOURCE_PATH=\"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/assets\""
+		"RESOURCE_PATH=\"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/assets\""
 	],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -44,21 +44,20 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build",
-		"/usr/local/include/SDL2",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_libs/SDL2pp",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/SDL2pp/build",
 		"/usr/include/SDL2",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googletest/include",
-		"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googletest",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_menu",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_creacion",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_form_union",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_cliente",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googletest/include",
+		"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/_deps/googletest-src/googletest",
 		"/usr/include/c++/9",
 		"/usr/include/x86_64-linux-gnu/c++/9",
 		"/usr/include/c++/9/backward",
@@ -78,36 +77,36 @@
 		"-c",
 		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/camino_tests_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/camino_tests_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
-	"PARSE_CACHE_FILE" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/CMakeFiles/camino_tests_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/CMakeFiles/camino_tests_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
 	"QT_UIC_EXECUTABLE" : "",
 	"QT_VERSION_MAJOR" : 5,
-	"SETTINGS_FILE" : "/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/CMakeFiles/camino_tests_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/src/src_testing/pruebas_camino/CMakeFiles/camino_tests_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.cpp",
+			"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_common/common_coords.cpp",
 			"Mu"
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.cpp",
+			"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino.cpp",
 			"Mu"
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp",
+			"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp",
 			"Mu"
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp",
+			"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp",
 			"Mu"
 		],
 		[
-			"/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/pruebas_camino.cpp",
+			"/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_testing/pruebas_camino/pruebas_camino.cpp",
 			"Mu"
 		]
 	],

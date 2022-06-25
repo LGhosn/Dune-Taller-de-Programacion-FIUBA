@@ -9,6 +9,7 @@
 
 #include "../../../src_common/common_coords.h"
 #include "server_camino.h"
+#include "edificios/edificios.h"
 
 class Mapa {
 private:
@@ -19,6 +20,7 @@ private:
     Camino camino;
     bool primera_construccion = true;
     std::list<Coordenadas> coords_centros;
+    YAML::Node edificio_config;
 
     /*
      * Dado un edificio, devuelve la cantidad de casillas que ocupa y el tipo de edificio que es 
@@ -53,6 +55,8 @@ private:
     bool construccionLejana(const Coordenadas &coords);
 
     void cargarCentrosDeConstruccion(YAML::Node& mapa_config);
+
+    std::unique_ptr<Edificio> clasificarEdificio(char tipo, YAML::Node& edificio_config);
 
 public:
     /*
