@@ -4,65 +4,58 @@ void CentroSDL::actualizarFrameBrazo(long frame_actual) {
     long cant_frames = (frame_actual - frame_anterior) / rate_brazo;
     if (cant_frames > 0) {
         frame_actual_brazo = (frame_actual_brazo + cant_frames) % cant_frames_brazo;
-        origen_brazo.SetX(frame_actual_brazo * ancho_brazo); 
         frame_anterior = frame_actual;
     }
 }
 
 void CentroSDL::setearPosicionBrazo() {
-    destino_brazo.SetY(destino.GetY() + offset_y_brazo * zoom);
     switch (frame_actual_brazo) {
-        case 0:
-            destino_brazo.SetX(destino.GetX() + (offset_x_brazo - 1) * zoom);
+        case 0: case 13: {
+            destino_brazo.SetX(destino.GetX() + (offset_x_brazo - 45) * zoom);
+            destino_brazo.SetY(destino.GetY() + (offset_y_brazo - 46) * zoom);
             break;
-        case 3:
-            destino_brazo.SetX(destino.GetX() + (offset_x_brazo - 2) * zoom);
+        }
+        case 1: case 5: case 6: {
+            destino_brazo.SetX(destino.GetX() + (offset_x_brazo - 45) * zoom);
+            destino_brazo.SetY(destino.GetY() + (offset_y_brazo - 47) * zoom);
             break;
-        case 4:
-            destino_brazo.SetX(destino.GetX() + (offset_x_brazo - 2) * zoom);
+        }
+        case 2: {
+            destino_brazo.SetX(destino.GetX() + (offset_x_brazo - 47) * zoom);
+            destino_brazo.SetY(destino.GetY() + (offset_y_brazo - 49) * zoom);
             break;
-        default:
-            destino_brazo.SetX(destino.GetX() + offset_x_brazo * zoom);
+        }
+        case 3: case 4: {
+            destino_brazo.SetX(destino.GetX() + (offset_x_brazo - 51) * zoom);
+            destino_brazo.SetY(destino.GetY() + (offset_y_brazo - 46) * zoom);
             break;
+        }
+        case 7: case 8: case 9: case 10: case 11: case 12: {
+            destino_brazo.SetX(destino.GetX() + (offset_x_brazo - 45) * zoom);
+            destino_brazo.SetY(destino.GetY() + (offset_y_brazo - 45) * zoom);
+            break;
+        }
     }
 }
 
 CentroSDL::CentroSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
-                    SDL2pp::Texture& textura, const Coordenadas& coords, uint16_t alto,
+                    TexturasSDL& texturas, const Coordenadas& coords, uint16_t alto,
                     uint16_t ancho, uint8_t casa, YAML::Node& constantes, ColorSDL& color):
-                    EdificioSDL(id, id_jugador, renderer, textura, coords, alto, ancho, casa,
-                                constantes, color),
-                    ancho_edificio(constantes["WorldView"]["Edificios"]["Centro"]["Ancho"].as<uint32_t>()),
-                    alto_edificio(constantes["WorldView"]["Edificios"]["Centro"]["Alto"].as<uint32_t>()),
+                    EdificioSDL(id, id_jugador, renderer, texturas.obtenerEdificio(0, casa, false),
+                    texturas.obtenerEdificio(0, casa, true), coords, alto, ancho, casa,
+                    constantes, color, texturas.obtenerSlab()),
+                    frames_brazo(texturas.obtenerFramesBrazoCentro(casa)),
                     padding_edificio_y(constantes["WorldView"]["Edificios"]["Centro"]["PaddingY"].as<uint32_t>()),
                     offset_x_edificio(constantes["WorldView"]["Edificios"]["Centro"]["OffsetX"].as<int32_t>()),
                     limite_hp_debilitar(constantes["WorldView"]["Edificios"]["Centro"]["LimiteHPDebilitar"].as<uint32_t>()),
-                    ancho_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["Ancho"].as<uint32_t>()),
-                    alto_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["Alto"].as<uint32_t>()),
                     cant_frames_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["CantidadFrames"].as<uint8_t>()),
                     rate_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["Rate"].as<uint32_t>()),
                     offset_x_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["OffsetX"].as<int32_t>()),
-                    offset_y_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["OffsetY"].as<int32_t>()){
-    origen.SetX(0);
-    if (casa == codigo_atreides)
-        origen.SetY(0);
-    else if (casa == codigo_harkonnen)
-        origen.SetY(alto_edificio + alto_brazo + 1);
-    else if (casa == codigo_ordos)
-        origen.SetY(2 * (alto_edificio + alto_brazo) + 1);
-    else
-        throw std::runtime_error("CentroSDL: casa no reconocida");
-    origen.SetW(ancho_edificio);
-    origen.SetH(alto_edificio);
-    origen_brazo.SetX(0);
-    origen_brazo.SetY(origen.GetY() + alto_edificio);
-    origen_brazo.SetW(ancho_edificio);
-    origen_brazo.SetH(alto_edificio);
-}
+                    offset_y_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["OffsetY"].as<int32_t>()){}
 
 void CentroSDL::cambiarHP(uint16_t hp_edificio) {
     if (hp_edificio < limite_hp_debilitar)
-        origen.SetX(ancho_edificio);
+        debilitado = true;
 }
 
 void CentroSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_actual,
@@ -75,11 +68,16 @@ void CentroSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long fr
     setearPosicionBrazo();
     destino.SetW(ancho_tile * ancho * zoom);
     destino.SetH((largo_tile * alto - 2 * padding_edificio_y) * zoom);
-    destino_brazo.SetW(ancho_brazo * zoom);
-    destino_brazo.SetH(alto_brazo * zoom);
+    destino_brazo.SetW(frames_brazo[frame_actual_brazo].GetWidth() * zoom);
+    destino_brazo.SetH(frames_brazo[frame_actual_brazo].GetHeight() * zoom);
 }
 
 void CentroSDL::render() {
-    renderer.Copy(textura, origen, destino);
-    renderer.Copy(textura, origen_brazo, destino_brazo);
+    renderCimientos();
+    if (debilitado)
+        renderer.Copy(textura_debilitado, SDL2pp::NullOpt, destino);
+    else
+        renderer.Copy(textura, SDL2pp::NullOpt, destino);
+    
+    renderer.Copy(frames_brazo[frame_actual_brazo], SDL2pp::NullOpt, destino_brazo);
 }

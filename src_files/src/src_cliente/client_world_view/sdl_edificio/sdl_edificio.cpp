@@ -8,6 +8,23 @@ void EdificioSDL::setearPosicionUI(uint32_t origen_movil_x, uint32_t origen_movi
     destino_ui.SetH(largo_tile * alto * zoom);
 }
 
+void EdificioSDL::renderCimientos() {
+    for (uint8_t i = 0; i < ancho; i++) {
+        for (uint8_t j = 0; j < alto; j++) {
+            renderer.Copy(
+                textura_slab,
+                SDL2pp::NullOpt,
+                SDL2pp::Rect(
+                    destino_ui.GetX() + i * ancho_tile * zoom,
+                    destino_ui.GetY() + j * largo_tile * zoom,
+                    ancho_tile * zoom,
+                    largo_tile * zoom
+                )
+            );
+        }
+    }
+}
+
 void EdificioSDL::renderRectanguloSeleccion() {
     renderer.SetDrawColor(255, 255, 255);
         int largo_lineas_seleccionado = destino_ui.GetW() * relacion_lineas_largo;
@@ -73,11 +90,13 @@ void EdificioSDL::renderHP() {
 }
 
 EdificioSDL::EdificioSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
-                        SDL2pp::Texture& textura, const Coordenadas& coords,
-                        uint16_t alto, uint16_t ancho, uint8_t casa, YAML::Node& constantes,
-                        ColorSDL& color) :
+                        SDL2pp::Texture& textura, SDL2pp::Texture& textura_debilitado,
+                        const Coordenadas& coords, uint16_t alto, uint16_t ancho,
+                        uint8_t casa, YAML::Node& constantes, ColorSDL& color,
+                        SDL2pp::Texture& textura_slab) :
         id(id), id_jugador(id_jugador), renderer(renderer),
-        textura(textura), color(color), coords(coords), alto(alto), ancho(ancho),
+        textura(textura),textura_debilitado(textura_debilitado), textura_slab(textura_slab),
+        color(color), coords(coords), alto(alto), ancho(ancho),
         alto_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["Alto"].as<int>()),
         ancho_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["Ancho"].as<int>()),
         offset_x_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["OffsetX"].as<int>()),

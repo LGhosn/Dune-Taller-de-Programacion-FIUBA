@@ -108,7 +108,31 @@ ClickLevantado::ClickLevantado(ColaBloqueante<SolicitudCliente>& cola_solicitude
                                 YAML::Node& constantes) :
                                 SDLEvento(cola_solicitudes, cola_comandos, constantes) {}
 
-void ClickLevantado::ejecutar_evento(SDL_Event &clickEvent) {
+void ClickLevantado::ejecutar_evento(SDL_Event& mouseEvent) {}
+
+MouseMovido::MouseMovido(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                        ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                        YAML::Node& constantes) :
+                        SDLEvento(cola_solicitudes, cola_comandos, constantes) {}
+
+void MouseMovido::ejecutar_evento(SDL_Event& mouseEvent) {
+    SDL_MouseMotionEvent& mouseMotionEvent = (SDL_MouseMotionEvent&) mouseEvent;
+    if (mouseMotionEvent.x < PADDING_MOVER) {
+        ComandoCliente* comando = new MoverMapa(IZQUIERDA);
+        cola_comandos.push(comando);
+    } else if (mouseMotionEvent.x > ANCHO_VISTA_MAPA - PADDING_MOVER &&
+                mouseMotionEvent.x < ANCHO_VISTA_MAPA) {
+        ComandoCliente *comando = new MoverMapa(DERECHA);
+        cola_comandos.push(comando);
+    }
+    
+    if (mouseMotionEvent.y < PADDING_MOVER) {
+        ComandoCliente *comando = new MoverMapa(ARRIBA);
+        cola_comandos.push(comando);
+    } else if (mouseMotionEvent.y > LARGO_VISTA_MAPA - PADDING_MOVER) {
+        ComandoCliente *comando = new MoverMapa(ABAJO);
+        cola_comandos.push(comando);
+    }
 }
 
 Rueda::Rueda(ColaBloqueante<SolicitudCliente>& cola_solicitudes,

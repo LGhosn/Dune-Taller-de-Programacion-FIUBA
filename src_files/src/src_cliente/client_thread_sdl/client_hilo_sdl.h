@@ -10,6 +10,8 @@
 #include "../client_comandos/client_comando.h"
 #include "../client_solicitudes/cliente_solicitud.h"
 
+#define TICKS_POR_SEGUNDO 120
+
 class ManejadorEventos {
 private:
     YAML::Node& constantes;

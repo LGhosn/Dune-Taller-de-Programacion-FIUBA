@@ -19,7 +19,6 @@ void ManejadorEventos::manejar_evento() {
         std::unique_ptr<SDLEvento> evento = this->clasificarEvento(this->event.type);
         if (evento)
             evento->ejecutar_evento(this->event);
-
     }// fin while
 }
 
@@ -40,6 +39,9 @@ std::unique_ptr<SDLEvento> ManejadorEventos::clasificarEvento(uint32_t eventType
         case SDL_MOUSEBUTTONUP:
             return std::unique_ptr<ClickLevantado>(
                 new ClickLevantado(cola_solicitudes, cola_comandos, constantes));
+        // case SDL_MOUSEMOTION:
+        //     return std::unique_ptr<MouseMovido>(
+        //         new MouseMovido(cola_solicitudes, cola_comandos, constantes));
         case SDL_QUIT:
             this->hay_que_seguir = false;
             return std::unique_ptr<EventoSalir>(

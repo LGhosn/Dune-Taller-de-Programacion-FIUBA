@@ -72,6 +72,10 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_edificio/sdl_cuartel.cpp
         src/src_cliente/client_world_view/sdl_edificio/sdl_fabrica_ligera.cpp
         src/src_cliente/client_world_view/sdl_edificio/sdl_fabrica_pesada.cpp
+        src/src_cliente/client_world_view/sdl_edificio/sdl_palacio.cpp
+        src/src_cliente/client_world_view/sdl_edificio/sdl_refineria.cpp
+        src/src_cliente/client_world_view/sdl_edificio/sdl_silo.cpp
+        src/src_cliente/client_world_view/sdl_edificio/sdl_trampa.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_side_menu.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_tienda.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_tienda.cpp

@@ -36,36 +36,40 @@ WorldView:
       Alto: 86
       PaddingY: 8
       OffsetX: 3
-      LimiteHPDebilitar: 1000
+      LimiteHPDebilitar: 750
       Brazo:
-        Ancho: 52
-        Alto: 65
         CantidadFrames: 14
         Rate: 5
-        OffsetX: 2
-        OffsetY: 30
+        OffsetX: 50
+        OffsetY: 61
     Cuartel:
-      AnchoAtreides: 73
-      AnchoOtros: 64
-      Alto: 76
       PaddingY: 10
-      LimiteHPDebilitar: 1000
+      LimiteHPDebilitar: 75
     FabricaLigera:
-      Ancho: 94
-      Alto: 63
       PaddingY: 16
-      Paredes:
-        OffsetX: 6
-        OffsetY: 16
-      LimiteHPDebilitar: 1000
+      LimiteHPDebilitar: 125
     FabricaPesada:
-      Ancho: 96
-      Alto: 85
       PaddingY: 7
       Paredes:
-        OffsetX: 6
-        OffsetY: 16
-      LimiteHPDebilitar: 1000
+        OffsetX: -3
+        OffsetY: 56
+        OffsetTamX: -16
+      LimiteHPDebilitar: 375
+    Palacio:
+      OffsetY: 0
+      LimiteHPDebilitar: 250
+    Refineria:
+      PaddingY: 17
+      LimiteHPDebilitar: 250
+    Silo:
+      LimiteHPDebilitar: 50
+    Trampa:
+      LimiteHPDebilitar: 125
+      Luces:
+        CantidadFrames: 5
+        Rate: 5
+        OffsetX: 13
+        OffsetY: 11
   Mapa:
     Ancho: 924
     Direcciones:

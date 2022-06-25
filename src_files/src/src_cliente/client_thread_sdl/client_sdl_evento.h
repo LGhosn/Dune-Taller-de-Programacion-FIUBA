@@ -14,6 +14,7 @@
 #define ANCHO_MENU 300
 #define ANCHO_VISTA_MAPA 924
 #define LARGO_VISTA_MAPA 768
+#define PADDING_MOVER 100
 
 class SDLEvento {
 protected:
@@ -71,6 +72,15 @@ public:
                     YAML::Node& constantes);
     virtual void ejecutar_evento(SDL_Event& mouseButtonEvent);
     ~ClickLevantado() = default;
+};
+
+class MouseMovido : public SDLEvento {
+public:
+    MouseMovido(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                YAML::Node& constantes);
+    virtual void ejecutar_evento(SDL_Event& mouseEvent);
+    ~MouseMovido() = default;
 };
 
 class EventoSalir : public SDLEvento {

@@ -5,6 +5,7 @@
 #include "yaml-cpp/yaml.h"
 #include "../../../src_common/common_coords.h"
 #include "../sdl_color/sdl_color.h"
+#include "../sdl_texturas.h"
 
 class EdificioSDL {
 protected:
@@ -12,6 +13,8 @@ protected:
     uint8_t id_jugador;
     SDL2pp::Renderer& renderer;
     SDL2pp::Texture& textura;
+    SDL2pp::Texture& textura_debilitado;
+    SDL2pp::Texture& textura_slab;
     ColorSDL& color;
     SDL2pp::Rect origen;
     SDL2pp::Rect destino;
@@ -22,6 +25,7 @@ protected:
     long frame_anterior = 0;
     bool seleccionado = false;
     float zoom;
+    bool debilitado = false;
 
     // Constantes
     const int alto_hp;
@@ -39,15 +43,18 @@ protected:
 
     void setearPosicionUI(uint32_t origen_movil_x, uint32_t origen_movil_y);
 
+    void renderCimientos();
+
 private:
     void renderRectanguloSeleccion();
     void renderHP();
 
 public:
     EdificioSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
-                SDL2pp::Texture& textura, const Coordenadas& coords,
-                uint16_t alto, uint16_t ancho, uint8_t casa, YAML::Node& constantes,
-                ColorSDL& color);
+                SDL2pp::Texture& textura, SDL2pp::Texture& textura_debilitado,
+                const Coordenadas& coords, uint16_t alto, uint16_t ancho,
+                uint8_t casa, YAML::Node& constantes, ColorSDL& color,
+                SDL2pp::Texture& textura_slab);
 
     Coordenadas obtenerDimensiones() const;
     
