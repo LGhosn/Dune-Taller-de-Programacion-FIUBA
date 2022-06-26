@@ -9,13 +9,15 @@
 
 #include "../../../src_common/common_coords.h"
 #include "server_camino.h"
-#include "edificios/edificios.h"
+#include "entidades/edificios/edificios.h"
+#include "entidades/terrenos/terrenos.h"
+#include "entidades/unidades/unidades.h"
 
 class Mapa {
 private:
     int ancho;
     int alto;
-    std::vector< std::vector<char> > mapa;
+    std::vector< std::vector<std::unique_ptr<Entidades> > > mapa;
     std::vector< Coordenadas > colisiones;
     Camino camino;
     bool primera_construccion = true;
@@ -35,7 +37,7 @@ private:
      * @param dimension_x: dimension en x del edificio
      * @param dimension_y: dimension en y del edificio
     */
-    bool hayColisiones(const Coordenadas& coords, int dimension_x, int dimension_y);
+    bool hayColisiones(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio);
 
     /*
      * Edifica el edificio en el mapa en caso de ser posible
@@ -43,7 +45,7 @@ private:
      * @param pos_y: posicion en y de donde se quiere colocar el edificio 
      * @param propiedades_edif: propiedades del edificio a construir <dimension_x, dimension_y, tipo_edificio>
     */
-    void edificar(const Coordenadas& coords, std::tuple<int, int, char> propiedades_edif);
+    void edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio);
 
     /*
      * @brief Verifica que el terreno sea lo suficiente resistente para las construcciones
@@ -56,7 +58,9 @@ private:
 
     void cargarCentrosDeConstruccion(YAML::Node& mapa_config);
 
-    std::unique_ptr<Edificio> clasificarEdificio(char tipo, YAML::Node& edificio_config);
+    std::unique_ptr<Edificio> clasificarEdificio(char tipo, YAML::Node& edificio_config, uint16_t id_jugador);
+
+    std::unique_ptr<Entidades> clasificarTerreno(char tipo);
 
 public:
     /*
