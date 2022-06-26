@@ -37,6 +37,7 @@ class WorldView {
 	ColaBloqueante<SolicitudCliente>& cola_solicitudes;
 	float zoom;
 	MapaSDL mapa;
+	uint8_t casa;
 	SideMenuSDL side_menu;
 	std::unordered_map<Coordenadas, EdificioSDL*, HashCoordenadas> edificios;
 	std::vector<EdificioSDL*> edificios_seleccionados;
@@ -67,6 +68,8 @@ public:
 						const Coordenadas& coords, uint8_t tipo, uint8_t casa);
 
 	void click_en_mapa(uint32_t pos_x, uint32_t pos_y);
+
+	void modificarEspecia(uint16_t cantidad_especia);
 
 	void salir();
 

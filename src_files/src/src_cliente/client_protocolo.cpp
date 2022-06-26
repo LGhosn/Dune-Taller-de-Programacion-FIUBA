@@ -140,6 +140,13 @@ void ProtocoloCliente::enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t&
 	this->skt_cliente.sendall(&y, SIZEOF_TWO_BYTES);
 }
 
+uint16_t ProtocoloCliente::recibirComandoModificarEspecia() {
+    uint16_t cantidad_especia;
+    this->skt_cliente.recvall(&cantidad_especia, SIZEOF_TWO_BYTES);
+    cantidad_especia = ntohs(cantidad_especia);
+    return cantidad_especia;
+}
+
 void ProtocoloCliente::recibirCodigoDeComando(uint8_t& codigo) {
     this->skt_cliente.recvall(&codigo, SIZEOF_BYTE);
 }

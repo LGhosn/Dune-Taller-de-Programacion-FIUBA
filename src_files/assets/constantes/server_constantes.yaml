@@ -1,0 +1,28 @@
+---
+
+Game:
+  Precios:
+    Edificios:
+      Cuartel: 300
+      FabricaLigera: 800
+      FabricaPesada: 1500
+      Palacio: 2000
+      Refineria: 500
+      Silo: 200
+      Trampa: 800
+      FraccionDemoler: 0.4
+    Unidades:
+      Infanteria:
+        Fremen: 100
+        InfanteriaLigera: 50
+        InfanteriaPesada: 70
+        Sardaukar: 100
+      Vehiculos:
+        Cosechadora: 300
+        Desviador: 400
+        Devastador: 400
+        Raider: 100
+        Tanque: 300
+        Trike: 100
+  Especia:
+    ValorInicial: 800

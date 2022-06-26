@@ -46,8 +46,9 @@ WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes, uint8_t
 						info_partida.coords_iniciales,
 						zoom_inicial
 					),
-					side_menu(renderer, 0, texturas, id_jugador, constantes,
-								colores.obtenerColor(id_jugador)),	// FIXME: casa hardcodeada
+					casa(info_partida.info_jugadores[id_jugador].first),
+					side_menu(renderer, casa, texturas, id_jugador, constantes,
+								colores.obtenerColor(id_jugador)),
 					edificio_factory(renderer, texturas, constantes, colores),
 					id_jugador(id_jugador),
 					info_partida(info_partida) {
@@ -122,6 +123,10 @@ void WorldView::click_en_mapa(uint32_t pos_x, uint32_t pos_y) {
 			deseleccionarEdificios();
 		}
 	}
+}
+
+void WorldView::modificarEspecia(uint16_t cantidad_especia) {
+	side_menu.modificarEspecia(cantidad_especia);
 }
 
 void WorldView::salir() {

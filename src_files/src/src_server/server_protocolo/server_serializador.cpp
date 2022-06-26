@@ -44,28 +44,16 @@ void SerializadorServer::concatenarBuffers(std::vector<uint8_t> buffer_destino,
     }
 }
 
-std::vector<uint8_t> SerializadorServer::serializarComienzoDePartida(const InfoPartidaDTO& info_partida) const {
-    std::vector<uint8_t> buffer(5);
-    buffer[0] = 0;
+/* *****************************************************************
+ *             METODOS REFERIDOS A ACTUALIZAR ESPECIA
+ * *****************************************************************/
+
+std::vector<uint8_t> SerializadorServer::serializarComandoModificarEspecia(uint16_t cantidad_especia) {
+    std::vector<uint8_t> buffer(3);
+    // buffer[0] = (*codigos)["ModificarEspecia"].as<uint8_t>();
+    buffer[0] = 20;
     uint16_t* aux = (uint16_t*) (buffer.data() + 1);
-    aux[0] = htons(info_partida.coords_iniciales.x);
-    aux[1] = htons(info_partida.coords_iniciales.y);
-    std::cout << "Size antes de mapa: " << buffer.size() << std::endl;
-    std::vector<uint8_t> buffer_mapa = serializarString(info_partida.nombre_mapa);
-    std::cout << "Size buffer mapa: " << buffer_mapa.size() << std::endl;
-    concatenarBuffers(buffer, buffer_mapa);
-    std::cout << std::endl;
-    std::cout << "Size despues de mapa: " << buffer.size() << std::endl;
-    uint8_t cantidad_jugadores = info_partida.info_jugadores.size();
-    buffer.emplace_back(cantidad_jugadores);
-    for(auto& jugador: info_partida.info_jugadores) {
-        std::vector<uint8_t> buffer_jugador(2);
-        buffer_jugador[0] = jugador.first;
-        buffer_jugador[1] = std::get<0>(jugador);
-        std::vector<uint8_t> buffer_nombre = serializarString(std::get<1>(jugador.second));
-        concatenarBuffers(buffer_jugador, buffer_nombre);
-        concatenarBuffers(buffer, buffer_jugador);
-    }
+    aux[0] = htons(cantidad_especia);
     return buffer;
 }
 

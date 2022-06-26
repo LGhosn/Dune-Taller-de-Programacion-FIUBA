@@ -130,6 +130,8 @@ public:
     SDL2pp::Texture& obtenerLogoCasa(uint8_t casa);
     SDL2pp::Texture& obtenerLogoEdificio(uint8_t tipo, uint8_t casa);
     SDL2pp::Texture& obtenerTextoTiendaListo();
+
+    SDL2pp::Font& obtenerFontDune2000();
 };
 
 #endif // SDL_TEXTURAS_H

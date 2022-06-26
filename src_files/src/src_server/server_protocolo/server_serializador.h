@@ -32,10 +32,10 @@ public:
     uint8_t tipo, const Coordenadas& coords, uint8_t casa) const;
 
 /* *****************************************************************
- *             METODOS REFERIDOS A EMPEZAR PARTIDAS
+ *             METODOS REFERIDOS A ACTUALIZAR ESPECIA
  * *****************************************************************/
 
-    std::vector<uint8_t> serializarComienzoDePartida(const InfoPartidaDTO& info_partida) const;
+    std::vector<uint8_t> serializarComandoModificarEspecia(uint16_t cantidad_especia);
 
     SerializadorServer(const SerializadorServer& otro) = delete;
     SerializadorServer& operator=(const SerializadorServer& otro) = delete;

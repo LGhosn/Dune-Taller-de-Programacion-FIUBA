@@ -102,6 +102,12 @@ public:
                                     const Coordenadas& coords, uint8_t casa) const;
     SolicitudCrearEdificioDTO recibirSolicitudCrearEdificio();
 
+/* *****************************************************************
+ *             METODOS REFERIDOS A ACTUALIZAR ESPECIA
+ * *****************************************************************/
+
+    void enviarComandoModificarEspecia(uint16_t cantidad_especia);
+
     /*
      * No tiene sentido copiar un ProtocoloServidor.
      * */
