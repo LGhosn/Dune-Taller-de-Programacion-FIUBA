@@ -37,6 +37,12 @@ public:
 
     std::vector<uint8_t> serializarComienzoDePartida(const InfoPartidaDTO& info_partida) const;
 
+/* *****************************************************************
+ *             METODOS REFERIDOS A ACTUALIZAR ESPECIA
+ * *****************************************************************/
+
+    std::vector<uint8_t> serializarComandoModificarEspecia(uint16_t cantidad_especia);
+
     SerializadorServer(const SerializadorServer& otro) = delete;
     SerializadorServer& operator=(const SerializadorServer& otro) = delete;
     SerializadorServer(SerializadorServer&& otro);

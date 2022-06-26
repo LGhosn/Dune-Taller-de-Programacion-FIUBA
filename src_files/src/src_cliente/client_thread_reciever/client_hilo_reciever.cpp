@@ -1,5 +1,6 @@
 #include "client_hilo_reciever.h"
 #include "../client_comandos/cmd_salir.h"
+#include "../client_comandos/cmd_modificar_especia.h"
 
 ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, Client* cliente) :
                                         cliente(cliente),
@@ -34,6 +35,10 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
         case 5:{
             ComandoCrearEdificioDTO comandoDTO = protocolo.recibirComandoCrearEdificio();
             return new ComandoCrearEdificio(comandoDTO);
+        }
+        case 20: {
+            uint16_t cantidad_especia = protocolo.recibirComandoModificarEspecia();
+            return new CmdModificarEspeciaServer(cantidad_especia);
         }
         default:
             throw std::runtime_error("ClientHiloReciever: Codigo de comando desconocido");

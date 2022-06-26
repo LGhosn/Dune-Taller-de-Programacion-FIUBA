@@ -139,6 +139,16 @@ SolicitudCrearEdificioDTO ProtocoloServidor::recibirSolicitudCrearEdificio() {
     Coordenadas coords(x, y);
     return SolicitudCrearEdificioDTO(id_jugador, tipo, coords);
 }
+
+/* *****************************************************************
+ *             METODOS REFERIDOS A ACTUALIZAR ESPECIA
+ * *****************************************************************/
+
+void ProtocoloServidor::enviarComandoModificarEspecia(uint16_t cantidad_especia) {
+    std::vector<uint8_t> buffer = serializador.serializarComandoModificarEspecia(cantidad_especia);
+    enviarBuffer(buffer);
+}
+
 /* *****************************************************************
  *                          MOVE SEMANTICS
  * *****************************************************************/

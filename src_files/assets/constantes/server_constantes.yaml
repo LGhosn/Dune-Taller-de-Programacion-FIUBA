@@ -10,6 +10,7 @@ Game:
       Refineria: 500
       Silo: 200
       Trampa: 800
+      FraccionDemoler: 0.4
     Unidades:
       Infanteria:
         Fremen: 100

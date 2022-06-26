@@ -404,3 +404,7 @@ SDL2pp::Texture& TexturasSDL::obtenerLogoEdificio(uint8_t tipo, uint8_t casa) {
 SDL2pp::Texture& TexturasSDL::obtenerTextoTiendaListo() {
     return texto_tienda;
 }
+
+SDL2pp::Font& TexturasSDL::obtenerFontDune2000() {
+    return font_tienda;
+}

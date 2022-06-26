@@ -69,6 +69,18 @@ std::vector<uint8_t> SerializadorServer::serializarComienzoDePartida(const InfoP
     return buffer;
 }
 
+/* *****************************************************************
+ *             METODOS REFERIDOS A ACTUALIZAR ESPECIA
+ * *****************************************************************/
+
+std::vector<uint8_t> SerializadorServer::serializarComandoModificarEspecia(uint16_t cantidad_especia) {
+    std::vector<uint8_t> buffer(3);
+    buffer[0] = (*codigos)["ModificarEspecia"].as<uint8_t>();
+    uint16_t* aux = (uint16_t*) (buffer.data() + 1);
+    aux[0] = htons(cantidad_especia);
+    return buffer;
+}
+
 SerializadorServer::SerializadorServer(SerializadorServer&& otro) {
     this->codigos = otro.codigos;
 }

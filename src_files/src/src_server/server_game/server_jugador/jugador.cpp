@@ -1,9 +1,11 @@
 #include "jugador.h"
 
-Jugador::Jugador(uint8_t id, uint8_t casa, std::string& nombre) :
+Jugador::Jugador(uint8_t id, uint8_t casa, std::string& nombre,
+                ColaBloqueante<ComandoServer>& cola_comandos) :
                 id(id),
                 casa(casa),
-                nombre(nombre) {}
+                nombre(nombre),
+                cola_comandos(cola_comandos) {}
 
 uint8_t Jugador::obtenerId() const {
     return id;
