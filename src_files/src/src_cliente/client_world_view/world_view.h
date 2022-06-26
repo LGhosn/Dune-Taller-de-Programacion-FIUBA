@@ -37,6 +37,7 @@ class WorldView {
 	ColaBloqueante<SolicitudCliente>& cola_solicitudes;
 	float zoom;
 	MapaSDL mapa;
+	uint8_t casa;
 	SideMenuSDL side_menu;
 	std::unordered_map<Coordenadas, EdificioSDL*, HashCoordenadas> edificios;
 	std::vector<EdificioSDL*> edificios_seleccionados;

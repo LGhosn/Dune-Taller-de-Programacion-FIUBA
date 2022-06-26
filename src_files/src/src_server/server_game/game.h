@@ -6,7 +6,10 @@
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../server_comandos/server_comando.h"
 #include "server_mapa/server_mapa.h"
-#include "jugador.h"
+#include "server_jugador/jugador.h"
+#include "yaml-cpp/yaml.h"
+
+#define RUTA_CONSTANTES RESOURCE_PATH "/assets/constantes/server_constantes.yaml"
 
 class Game {
     bool finished = false;
@@ -15,6 +18,7 @@ class Game {
     Mapa mapa;
     std::string nombre_mapa;
     uint8_t conts_id_edificios = 0;
+    YAML::Node constantes;
 
     std::map<uint8_t, Coordenadas> sortearCentros() const;
 
