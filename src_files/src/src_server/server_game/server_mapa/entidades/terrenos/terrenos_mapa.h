@@ -1,7 +1,7 @@
 #ifndef TERRENOS_H
 #define TERRENOS_H
 
-#include "../entidades.h"
+#include "../entidades_mapa.h"
 
 class Terrenos : public Entidades {
 public:

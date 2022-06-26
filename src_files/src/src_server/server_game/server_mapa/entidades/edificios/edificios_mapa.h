@@ -2,7 +2,7 @@
 #define SERVER_EDIFICIOS_H
 
 #include "yaml-cpp/yaml.h"
-#include "../entidades.h"
+#include "../entidades_mapa.h"
 
 class Edificio : public Entidades {
 protected:

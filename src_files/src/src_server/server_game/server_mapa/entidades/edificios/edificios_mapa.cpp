@@ -1,4 +1,4 @@
-#include "edificios.h"
+#include "edificios_mapa.h"
 
 /* ******************************************************************
  *                        EDIFICIOS

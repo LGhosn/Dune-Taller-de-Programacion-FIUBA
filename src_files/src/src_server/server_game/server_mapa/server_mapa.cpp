@@ -29,10 +29,8 @@ inline bool instaciaDe(const T&) {
     return std::is_base_of<Base, T>::value;
 }
 
-bool Mapa::hayColisiones(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio) {
+bool Mapa::hayColisiones(const Coordenadas& coords, int dimension_x, int dimension_y) {
     bool colision = false;
-    int dimension_x = edificio->obtenerDimensionX();
-    int dimension_y = edificio->obtenerDimensionY();
     for (int i = coords.y; i < coords.y + dimension_y; i++){
         for (int j = coords.x; j < coords.x + dimension_x; j++){
             // Verifico que el edificio no se salga del mapa
@@ -74,11 +72,14 @@ bool Mapa::terrenoFirme(const Coordenadas& coords) {
     return tipo == ROCA;
 }
 
-bool Mapa::construccionLejana(const Coordenadas& coords) {
-    if (this->primera_construccion){
-        this->primera_construccion = false;
+bool Mapa::construccionLejana(const Coordenadas& coords, uint16_t id_jugador) {
+    std::list<uint16_t>::iterator it;
+    it = std::find(this->primera_construccion.begin(), this->primera_construccion.end(), id_jugador);
+    if (it == this->primera_construccion.end()){
         return false;
     }
+    this->primera_construccion.push_front(id_jugador);
+
     for (int i = (coords.y - DISTANCIA_EDIFICIOS); i < (coords.y + DISTANCIA_EDIFICIOS); i++){
         if (i < 0 || i >= this->alto) continue;
 
@@ -149,7 +150,7 @@ std::unique_ptr<Entidades> Mapa::clasificarTerreno(char tipo) {
  *                        PUBLICAS
  * *****************************************************************/
 
-Mapa::Mapa(const std::string& nombre_mapa) : camino(this->mapa) {
+Mapa::Mapa(const std::string& nombre_mapa) {
     std::stringstream ruta_mapa;
     ruta_mapa << RESOURCE_PATH << "/maps/" << nombre_mapa << ".yaml";
     YAML::Node mapa_config = YAML::LoadFile(ruta_mapa.str());
@@ -167,16 +168,18 @@ Mapa::Mapa(const std::string& nombre_mapa) : camino(this->mapa) {
         }
     }
     cargarCentrosDeConstruccion(mapa_config);
-    this->camino = this->mapa;      // TODO: ver
+    this->camino.start(&this->mapa);
 }
 
-bool Mapa::  construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
+bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
     this->colisiones = std::vector< Coordenadas >();
 
     std::unique_ptr<Edificio> edif = clasificarEdificio(tipo, this->edificio_config, id_jugador);
-    
-    if (!terrenoFirme(coords) || hayColisiones(coords, edif) || construccionLejana(coords)) {
+    int dimension_x = edif->obtenerDimensionX();
+    int dimension_y = edif->obtenerDimensionY();
+
+    if (!terrenoFirme(coords) || hayColisiones(coords, dimension_x, dimension_y) || construccionLejana(coords, id_jugador)) {
         return false;
     }
     edificar(coords, edif);
@@ -185,19 +188,29 @@ bool Mapa::  construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordena
 
 void Mapa::construirCentro(uint16_t id_jugador, const Coordenadas& coords) {
     std::unique_ptr<Edificio> centro = std::unique_ptr<Edificio>(new CentroDeConstruccion(this->edificio_config, id_jugador));
-    if (!terrenoFirme(coords) || hayColisiones(coords, centro)) {
+    int dimension_x = centro->obtenerDimensionX();
+    int dimension_y = centro->obtenerDimensionY();
+    if (!terrenoFirme(coords) || hayColisiones(coords, dimension_x, dimension_y)) {
         throw std::runtime_error("Coordenadas del centro invalidas");
     }
     edificar(coords, centro);
 }
 
-void Mapa::imprimir() {
-    for (int i = 0; i < this->alto; i++){
-        for (int j = 0; j < this->ancho; j++){
-            std::cout << this->mapa[i][j];
-        }
-        std::cout << std::endl;
+void Mapa::moverUnidad(uint16_t id_jugador, const Coordenadas& coords_actual, const Coordenadas& coords_nueva) {
+    std::unique_ptr<Entidades>& entidad = this->mapa[coords_actual.y][coords_actual.x];
+    if (!entidad) {
+        throw std::runtime_error("No se encontro la unidad en la posicion actual");
     }
+    if (hayColisiones(coords_nueva, 1, 1)) {
+        throw std::runtime_error("Coordenadas de movimiento invalidas");
+    }
+    std::unique_ptr<Unidades>& unidad = (std::unique_ptr<Unidades>&)entidad;
+    char terreno = unidad->obtenerTerrenoQueEstaParada();
+
+    this->mapa[coords_actual.y][coords_actual.x] = clasificarTerreno(terreno);
+
+    char terreno_nuevo = this->mapa[coords_nueva.y][coords_nueva.x]->obtenerTipo();
+    this->mapa[coords_nueva.y][coords_nueva.x] = std::unique_ptr<Entidades>(new Unidades(terreno_nuevo));
 }
 
 std::list<Coordenadas> Mapa::obtenerCoordsCentros() const {
@@ -233,7 +246,7 @@ std::stack<Coordenadas> Mapa::obtener_camino(const Coordenadas& origen,
     return this->camino.obtener_camino(origen, destino, terrenos_no_accesibles, penalizacion_terreno);
 }
 
-Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), mapa(otro.mapa), camino(mapa) {
+Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), mapa(otro.mapa), camino(otro.camino) {
     otro.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (otro.alto);
 }
 
@@ -247,7 +260,7 @@ Mapa& Mapa::operator=(Mapa&& mapa) {
     this->ancho = mapa.ancho;
     this->alto = mapa.alto;
     this->mapa = mapa.mapa;
-    this->camino = Camino(this->mapa);
+    this->camino = Camino();
 
     // Limpio el otro mapa.
     mapa.alto = -1;

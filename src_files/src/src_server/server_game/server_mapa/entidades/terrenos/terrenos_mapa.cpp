@@ -1,4 +1,4 @@
-#include "terrenos.h"
+#include "terrenos_mapa.h"
 
 #define ROCA 'R'
 #define CIMA 'I'
