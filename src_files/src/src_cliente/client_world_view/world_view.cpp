@@ -125,6 +125,10 @@ void WorldView::click_en_mapa(uint32_t pos_x, uint32_t pos_y) {
 	}
 }
 
+void WorldView::modificarEspecia(uint16_t cantidad_especia) {
+	side_menu.modificarEspecia(cantidad_especia);
+}
+
 void WorldView::salir() {
 
 }

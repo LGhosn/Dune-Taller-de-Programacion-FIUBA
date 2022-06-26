@@ -32,12 +32,6 @@ public:
     uint8_t tipo, const Coordenadas& coords, uint8_t casa) const;
 
 /* *****************************************************************
- *             METODOS REFERIDOS A EMPEZAR PARTIDAS
- * *****************************************************************/
-
-    std::vector<uint8_t> serializarComienzoDePartida(const InfoPartidaDTO& info_partida) const;
-
-/* *****************************************************************
  *             METODOS REFERIDOS A ACTUALIZAR ESPECIA
  * *****************************************************************/
 

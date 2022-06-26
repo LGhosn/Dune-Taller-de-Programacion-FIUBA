@@ -59,7 +59,7 @@ void Game::crearEdificio(uint16_t id_jugador, uint16_t tipo, const Coordenadas& 
 void Game::agregarJugador(ColaBloqueante<ComandoServer>* cola_comando,
                             uint8_t id_jugador, uint8_t casa, std::string& nombre) {
     colas_comandos[id_jugador] = cola_comando;
-    jugadores.emplace_back(id_jugador, casa, nombre);
+    jugadores.emplace_back(id_jugador, casa, nombre, cola_comando, constantes);
 }
 
 void Game::empezarPartida() {
@@ -76,6 +76,8 @@ void Game::empezarPartida() {
         cola_jugador.second->push(comando);
     }
     crearCentrosDeConstruccion(centros_sorteados);
+    for (auto& jugador: jugadores)
+        jugador.empezarPartida();
 }
 
 bool Game::update(long iter) {
@@ -87,7 +89,8 @@ Game::Game(Game&& game) :
             colas_comandos(std::move(game.colas_comandos)),
             jugadores(std::move(game.jugadores)),
             mapa(game.nombre_mapa),
-            nombre_mapa(game.nombre_mapa) {}
+            nombre_mapa(game.nombre_mapa),
+            constantes(std::move(game.constantes)) {}
 
 Game& Game::operator=(Game&& game) {
     if (this == &game)
@@ -97,5 +100,6 @@ Game& Game::operator=(Game&& game) {
     this->jugadores = std::move(game.jugadores);
     this->mapa = Mapa(game.nombre_mapa);
     this->nombre_mapa = std::move(game.nombre_mapa);
+    this->constantes = std::move(game.constantes);
     return *this;
 }

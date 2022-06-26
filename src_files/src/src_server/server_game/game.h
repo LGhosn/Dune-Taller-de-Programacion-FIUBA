@@ -9,7 +9,7 @@
 #include "server_jugador/jugador.h"
 #include "yaml-cpp/yaml.h"
 
-#define RUTA_CONSTANTES RESOURCE_PATH "/assets/constantes/server_constantes.yaml"
+#define RUTA_CONSTANTES RESOURCE_PATH "/constantes/server_constantes.yaml"
 
 class Game {
     bool finished = false;

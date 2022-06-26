@@ -61,6 +61,7 @@ add_executable(client
         src/src_cliente/client_comandos/cmd_salir.cpp
         src/src_cliente/client_comandos/cmd_click_en_mapa.cpp
         src/src_cliente/client_comandos/cmd_crear_edificio.cpp
+        src/src_cliente/client_comandos/cmd_modificar_especia.cpp
         src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
         src/src_cliente/client_comandos/client_comando.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile_factory.cpp
@@ -79,6 +80,7 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_side_menu/sdl_side_menu.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_tienda.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_tienda.cpp
+        src/src_cliente/client_world_view/sdl_side_menu/sdl_especia.cpp
         src/src_cliente/client_world_view/world_view.cpp
         src/src_cliente/client_world_view/sdl_color/sdl_color.cpp
         src/src_cliente/client_world_view/sdl_color/sdl_colores.cpp
@@ -104,6 +106,7 @@ add_executable(server
         src/src_server/server_server.cpp
         src/src_server/server_comandos/cmd_crear_edificio.cpp
         src/src_server/server_comandos/cmd_empezar_partida.cpp
+        src/src_server/server_comandos/cmd_modificar_especia.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
         src/src_server/server_protocolo/server_protocolo.cpp
         src/src_server/server_protocolo/server_serializador.cpp
@@ -118,6 +121,8 @@ add_executable(server
         src/src_server/server_game/server_mapa/server_camino.cpp
         src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp
         src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp
+        src/src_server/server_game/server_jugador/jugador.cpp
+        src/src_server/server_game/server_jugador/especia_acumulada.cpp
         src/src_server/server_aceptador.cpp
         src/src_server/server_handler_cliente/server_handler_cliente.cpp
         src/src_server/server_partida/server_partida.cpp

@@ -7,6 +7,7 @@ SideMenuSDL::SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& 
                             color(color),
                             casa(casa),
                             tienda(renderer, casa, texturas, id_jugador, constantes, color),
+                            especia(renderer, texturas, constantes),
                             logo_casa(texturas.obtenerLogoCasa(casa)) {
     uint32_t ancho_menu = constantes["WorldView"]["SideMenu"]["Ancho"].as<uint32_t>();
     uint32_t ancho_ventana = constantes["WorldView"]["Ventana"]["Ancho"].as<uint32_t>();
@@ -35,6 +36,10 @@ SolicitudCliente* SideMenuSDL::clickEnMapa(Coordenadas& coords) {
     return tienda.clickEnMapa(coords);
 }
 
+void SideMenuSDL::modificarEspecia(uint16_t cantidad_especia) {
+    especia.modificarEspecia(cantidad_especia);
+}
+
 bool SideMenuSDL::tieneBotonSeleccionado() const {
     return tienda.tieneBotonSeleccionado();
 }
@@ -48,4 +53,5 @@ void SideMenuSDL::render() {
     renderer.FillRect(side_menu_rect);
     renderer.Copy(logo_casa, origen_logo_casa, destino_logo_casa);
     tienda.render();
+    especia.render();
 }

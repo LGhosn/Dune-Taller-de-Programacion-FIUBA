@@ -8,14 +8,14 @@
 #include "../../server_comandos/server_comando.h"
 
 class EspeciaAcumulada {
-    ColaBloqueante<ComandoServer>& cola_comandos;
+    ColaBloqueante<ComandoServer>* cola_comandos;
     uint16_t cantidad_especia;
     std::vector<bool> edificios_comprables;
     std::vector<bool> unidades_comprables;
     std::vector<uint16_t> costo_edificios;
     std::vector<uint16_t> costo_unidades;
 
-    const float fraccion_demoler;
+    float fraccion_demoler;
 
     void actualizarEdificiosComprables();
     void actualizarUnidadesComprables();
@@ -23,8 +23,10 @@ class EspeciaAcumulada {
     void enviarNuevaCantidadEspecia();
 
 public:
-    EspeciaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
+    EspeciaAcumulada(ColaBloqueante<ComandoServer>* cola_comandos,
                     YAML::Node& constantes);
+
+    void empezarPartida();
 
     const std::vector<bool>& obtenerEdificiosComprables() const;
     const std::vector<bool>& obtenerUnidadesComprables() const;
@@ -34,6 +36,13 @@ public:
     bool comprarUnidad(uint8_t tipo);
 
     void aumentarEspecia(uint16_t cantidad);
+
+    EspeciaAcumulada& operator=(const EspeciaAcumulada& otra) = delete;
+    EspeciaAcumulada(const EspeciaAcumulada& otra) = delete;
+
+    EspeciaAcumulada& operator=(EspeciaAcumulada&& otra);
+    EspeciaAcumulada(EspeciaAcumulada&& otra);
+
 };
 
 #endif // SERVER_ESPECIA_ACUMULADA_H

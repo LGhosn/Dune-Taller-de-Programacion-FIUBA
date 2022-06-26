@@ -69,6 +69,8 @@ public:
 
 	void click_en_mapa(uint32_t pos_x, uint32_t pos_y);
 
+	void modificarEspecia(uint16_t cantidad_especia);
+
 	void salir();
 
 	// void crearEdificio(uint16_t id, uint8_t id_jugador, const Coordenadas& coords, uint8_t tipo);
