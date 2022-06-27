@@ -94,9 +94,9 @@ public:
  *             METODOS REFERIDOS A MOVER UNIDADES
  * *****************************************************************/
 
-    void enviarInstruccionMoverUnidad(uint16_t id_unidad, uint16_t x, uint16_t y);
+    void enviarInstruccionMoverUnidad(uint16_t id_unidad, char direccion);
 
-    SolicitudMoverUnidadDTO recibirSolicitudMoverUnidad(); // TODO: implementar
+    SolicitudMoverUnidadDTO recibirSolicitudMoverUnidad();
 
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR EDIFICIOS

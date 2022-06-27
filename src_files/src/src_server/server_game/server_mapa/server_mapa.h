@@ -12,6 +12,7 @@
 #include "entidades/edificios/edificios_mapa.h"
 #include "entidades/terrenos/terrenos_mapa.h"
 #include "entidades/unidades/unidades_mapa.h"
+#include "../../server_DTO/dto_unidad_info.h"
 
 class Mapa {
 private:
@@ -62,6 +63,8 @@ private:
 
     std::unique_ptr<Entidades> clasificarTerreno(char tipo);
 
+    char obtenerDireccion(const Coordenadas& coords_actual,const Coordenadas& coords_nueva);
+
 public:
     /*
      * Construye un mapa de ancho x alto
@@ -98,7 +101,7 @@ public:
 
     void demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y);
 
-    bool moverUnidad(uint16_t id_jugador, uint8_t tipo_unidad, const Coordenadas& desde, const Coordenadas& hasta);
+    char moverUnidad(const Coordenadas& desde, const Coordenadas& hasta);
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.
@@ -111,9 +114,7 @@ public:
      * En caso de que no pueda encontrar un camino, se lanzara una excepcion de tipo CaminoNoEncontradoException. Si las
      * coordenadas de origen y/o destino no son validas o estan en un terreno no accesible, lanzara una FueraDeRangoException.
     */
-    std::stack<Coordenadas> obtenerCamino(const Coordenadas& origen,
-        const Coordenadas& destino, std::vector<char>& terrenos_no_accesibles,
-        const std::unordered_map<char, float>& penalizacion_terreno) const;
+    std::stack<Coordenadas> obtenerCamino(UnidadInfoDTO& unidad_info) const;
 
 
     // Destructor del mapa

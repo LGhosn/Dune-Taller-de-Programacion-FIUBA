@@ -24,6 +24,7 @@ public:
     uint8_t obtenerId() const;
     uint8_t obtenerCasa() const;
     const std::string& obtenerNombre() const;
+    bool comprarUnidad(uint8_t tipo_unidad);
 
     bool operator==(const uint8_t& id_jugador) const;
 

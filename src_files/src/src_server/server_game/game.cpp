@@ -4,6 +4,7 @@
 #include "../server_comandos/cmd_empezar_partida.h"
 #include "../server_comandos/cmd_comprar_unidad.h"
 #include "../server_comandos/cmd_mover_unidad.h"
+#include "../server_DTO/dto_unidad_info.h"
 
 std::map<uint8_t, Coordenadas> Game::sortearCentros() const {
     std::list<Coordenadas> centros = mapa.obtenerCoordsCentros();
@@ -58,26 +59,43 @@ void Game::crearEdificio(uint16_t id_jugador, uint16_t tipo, const Coordenadas& 
     }
 }
 
-void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unida) {
+void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
     Jugador* jugador = encontrarJugador(id_jugador);
+    if(!jugador->comprarUnidad(tipo_unidad)){
+        throw std::runtime_error("Game: No se pudo comprar unidad"); // TODO: implementar cmd de dinero insuficiente
+    }
+
+    this->unidades.emplace(this->conts_id_unidad++, clasificarUnidad(tipo_unidad, jugador)); //TODO: Implementar clasificarUnidad
     for (auto& cola : colas_comandos) {
-        CmdComprarUnidadServer* comando = // falta verificacion de que pueda comprar
-            new CmdComprarUnidadServer(id_jugador, tipo_unida);
+        CmdComprarUnidadServer* comando =
+            new CmdComprarUnidadServer(id_jugador, tipo_unidad);
         cola.second->push(comando);
         conts_id_edificios++;
     }
 }
 
-void Game::moverUnidad(uint16_t id_jugador, uint8_t tipo_unidad, const Coordenadas& origen, const Coordenadas& destino) {
-    Jugador* jugador = encontrarJugador(id_jugador);
-    // std::stack<Coordenadas> camino = mapa.obtenerCamino(origen, destino);
-    // bool resultado = mapa.moverUnidad(id_jugador, tipo_unidad, origen, destino);
-    //TODO: modificar para poder mandar el paso a paso del camino
-    for (auto& cola : colas_comandos) {
-        CmdMoverUnidadServer* solicitud =
-            new CmdMoverUnidadServer(id_jugador, 0, 0);
-        cola.second->push(solicitud);
+void Game::moverUnidad(uint16_t id_unidad, const Coordenadas& destino) {
+    std::unique_ptr<Unidad>& unidad = this->unidades.at(id_unidad);
+    Jugador& jugador = unidad->obtenerJugador();
+
+    UnidadInfoDTO unidad_info = unidad->obtenerInfo(destino);
+    const Coordenadas& origen = unidad_info.origen;
+
+    std::stack<Coordenadas> camino = mapa.obtenerCamino(unidad_info);
+    int tam_camino = camino.size();
+    for (int i = 0; i < tam_camino; i++) {
+        Coordenadas paso_actual = camino.top();
+        camino.pop();
+        char direccion = mapa.moverUnidad(origen, paso_actual);
+
+        for (auto& cola : colas_comandos) {
+            CmdMoverUnidadServer* comando =
+                new CmdMoverUnidadServer(jugador.obtenerId(), direccion);
+            cola.second->push(comando);
+        }
+        (Coordenadas&)origen = paso_actual;
     }
+
 }
 
 

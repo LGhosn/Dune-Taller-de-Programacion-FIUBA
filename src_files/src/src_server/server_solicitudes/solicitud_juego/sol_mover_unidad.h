@@ -1,5 +1,5 @@
-#ifndef SOL_MOVER_UNIDAD_H
-#define SOL_MOVER_UNIDAD_H
+#ifndef SOL_MOVER_UNIDAD_SERVER_H
+#define SOL_MOVER_UNIDAD_SERVER_H
 
 #include "server_solicitud.h"
 #include "../../../src_common/common_coords.h"
@@ -7,10 +7,8 @@
 
 class SolicitudMoverUnidad : public SolicitudServer {
 private:
-    uint16_t id_jugador;
-    uint16_t tipo_unidad;
-    Coordenadas& origen;
-    Coordenadas& destino;
+    uint16_t id_unidad;
+    const Coordenadas& destino;
 
 public:
     SolicitudMoverUnidad(SolicitudMoverUnidadDTO& dto);

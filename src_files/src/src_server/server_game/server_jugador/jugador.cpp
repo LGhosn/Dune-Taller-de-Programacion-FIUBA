@@ -25,6 +25,10 @@ const std::string& Jugador::obtenerNombre() const {
     return nombre;
 }
 
+bool Jugador::comprarUnidad(uint8_t tipo_unidad) {
+    return especia.comprarUnidad(tipo_unidad);
+}
+
 bool Jugador::operator==(const uint8_t& id_jugador) const {
     return id_jugador == id;
 }

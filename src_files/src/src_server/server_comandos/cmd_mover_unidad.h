@@ -6,10 +6,10 @@
 class CmdMoverUnidadServer : public ComandoServer {
 private:
     uint16_t id_jugador;
-    uint16_t x;
-    uint16_t y;
+    char direccion;
+
 public:
-    CmdMoverUnidadServer(uint16_t id_jugador, uint16_t x, uint16_t y);
+    CmdMoverUnidadServer(uint16_t id_jugador, char direccion);
     virtual void enviarComando(ProtocoloServidor& protocolo) const override;
     virtual ~CmdMoverUnidadServer() = default;
 };

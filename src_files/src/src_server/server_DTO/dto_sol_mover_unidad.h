@@ -4,15 +4,11 @@
 #include "../../src_common/common_coords.h"
 
 struct SolicitudMoverUnidadDTO {
-    uint16_t id_jugador;
-    uint8_t tipo_unidad;
-    Coordenadas& origen;
-    Coordenadas& destino;
+    uint8_t id_unidad;
+    const Coordenadas& destino;
 
-    SolicitudMoverUnidadDTO(uint16_t id_jugador, uint8_t tipo_unidad, Coordenadas& origen, Coordenadas& destino) :
-                                 id_jugador(id_jugador),
-                                 tipo_unidad(tipo_unidad),
-                                 origen(origen),
+    SolicitudMoverUnidadDTO(uint8_t id_unidad, const Coordenadas& destino) :
+                                 id_unidad(id_unidad),
                                  destino(destino) {};
 };
 

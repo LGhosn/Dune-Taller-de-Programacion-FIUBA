@@ -9,6 +9,7 @@
 
 #include "../../../src_common/common_coords.h"
 #include "entidades/entidades_mapa.h"
+#include "../../server_DTO/dto_unidad_info.h"
 
 class Camino {
 	std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa;
@@ -38,8 +39,7 @@ public:
 
 	void start(std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa);
 
-	std::stack<Coordenadas> obtener_camino(const Coordenadas& origen, const Coordenadas& destino,
-		std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const;
+	std::stack<Coordenadas> obtener_camino(UnidadInfoDTO& unidad_info) const;
 
 	Camino(const Camino&);
     Camino& operator=(const Camino&);
