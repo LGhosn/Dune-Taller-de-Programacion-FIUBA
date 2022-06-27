@@ -6,8 +6,12 @@
 #include "../server_protocolo/server_protocolo.h"
 #include "../server_handler_cliente/server_handler_cliente.h"
 #include "../server_DTO/dto_sol_crear_edificio.h"
+#include "../server_DTO/dto_sol_comprar_unidad.h"
+#include "../server_DTO/dto_sol_mover_unidad.h"
 #include "../server_solicitudes/solicitud_juego/server_solicitud.h"
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
+#include "../server_solicitudes/solicitud_juego/sol_comprar_unidad.h"
+#include "../server_solicitudes/solicitud_juego/sol_mover_unidad.h"
 #include "../server_solicitudes/solicitud_menu/server_solicitud_menu.h"
 #include "yaml-cpp/yaml.h"
 #include <thread>
@@ -35,6 +39,8 @@ private:
     void recibirSolicitudDeUnion();
 
     void manejarSolicitudCrearEdificio();
+    void manejarSolicitudComprarUnidad();
+    void manejarSolicitudMoverUnidad();
 
 public:
     ServerHiloReceiver(ProtocoloServidor* protocolo,

@@ -36,6 +36,10 @@ public:
 
     void crearEdificio(uint16_t id_jugador, uint16_t id_edificio, const Coordenadas& coords);
 
+    void comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad);
+
+    void moverUnidad(uint16_t id_jugador, uint8_t tipo_unidad, const Coordenadas& origen, const Coordenadas& destino);
+
     void agregarJugador(ColaBloqueante<ComandoServer>* cola_comando, uint8_t id_jugador, 
                         uint8_t casa, std::string& nombre);
 

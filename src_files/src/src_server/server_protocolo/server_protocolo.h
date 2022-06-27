@@ -8,6 +8,8 @@
 #include "../../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "../../src_common/common_DTO/Status.h"
 #include "../server_DTO/dto_sol_crear_edificio.h"
+#include "../server_DTO/dto_sol_comprar_unidad.h"
+#include "../server_DTO/dto_sol_mover_unidad.h"
 #include "../../src_common/common_DTO/dto_info_partida.h"
 #include "server_serializador.h"
 #include <memory>
@@ -92,7 +94,9 @@ public:
  *             METODOS REFERIDOS A MOVER UNIDADES
  * *****************************************************************/
 
-    void enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y);
+    void enviarInstruccionMoverUnidad(uint16_t id_unidad, uint16_t x, uint16_t y);
+
+    SolicitudMoverUnidadDTO recibirSolicitudMoverUnidad(); // TODO: implementar
 
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR EDIFICIOS
@@ -101,6 +105,14 @@ public:
     void enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio, uint8_t tipo,
                                     const Coordenadas& coords, uint8_t casa) const;
     SolicitudCrearEdificioDTO recibirSolicitudCrearEdificio();
+
+/* *****************************************************************
+ *             METODOS REFERIDOS A COMPRAS
+ * *****************************************************************/
+
+    SolicitudComprarUnidadDTO recibirSolicitudComprarUnidad(); //TODO: implementar
+
+    void enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad); // TODO: implementar
 
 /* *****************************************************************
  *             METODOS REFERIDOS A ACTUALIZAR ESPECIA

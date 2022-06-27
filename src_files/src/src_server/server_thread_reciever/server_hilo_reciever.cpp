@@ -42,6 +42,10 @@ void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
         case 5:
             manejarSolicitudCrearEdificio();
             break;
+        case 100000: // TODO: determinar codigo
+            manejarSolicitudComprarUnidad();
+        case 100001: // TODO: determinar codigo
+            manejarSolicitudMoverUnidad();
         default:
             throw std::runtime_error("Código de solicitud no reconocido");
     }
@@ -49,7 +53,19 @@ void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
 
 void ServerHiloReceiver::manejarSolicitudCrearEdificio() {
     SolicitudCrearEdificioDTO solicitud = protocolo->recibirSolicitudCrearEdificio();
-    SolicitudServer *solicitud_server = new SoliCrearEdificioServer(solicitud);
+    SolicitudServer *solicitud_server = new SolicitudCrearEdificioServer(solicitud);
+    cola_solicitudes->push(solicitud_server);
+}
+
+void ServerHiloReceiver::manejarSolicitudComprarUnidad() {
+    SolicitudComprarUnidadDTO solicitud = protocolo->recibirSolicitudComprarUnidad();
+    SolicitudServer *solicitud_server = new SolicitudComprarUnidad(solicitud);
+    cola_solicitudes->push(solicitud_server);
+}
+
+void ServerHiloReceiver::manejarSolicitudMoverUnidad() {
+    SolicitudMoverUnidadDTO solicitud = protocolo->recibirSolicitudMoverUnidad();
+    SolicitudServer *solicitud_server = new SolicitudMoverUnidad(solicitud);
     cola_solicitudes->push(solicitud_server);
 }
 

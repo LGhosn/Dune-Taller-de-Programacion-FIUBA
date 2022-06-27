@@ -196,13 +196,13 @@ void Mapa::construirCentro(uint16_t id_jugador, const Coordenadas& coords) {
     edificar(coords, centro);
 }
 
-void Mapa::moverUnidad(uint16_t id_jugador, const Coordenadas& coords_actual, const Coordenadas& coords_nueva) {
+bool Mapa::moverUnidad(uint16_t id_jugador, uint8_t tipo_unidad, const Coordenadas& coords_actual, const Coordenadas& coords_nueva) {
     std::unique_ptr<Entidades>& entidad = this->mapa[coords_actual.y][coords_actual.x];
     if (!entidad) {
-        throw std::runtime_error("No se encontro la unidad en la posicion actual");
+        return false;
     }
     if (hayColisiones(coords_nueva, 1, 1)) {
-        throw std::runtime_error("Coordenadas de movimiento invalidas");
+        return false;
     }
     std::unique_ptr<Unidades>& unidad = (std::unique_ptr<Unidades>&)entidad;
     char terreno = unidad->obtenerTerrenoQueEstaParada();
@@ -211,6 +211,7 @@ void Mapa::moverUnidad(uint16_t id_jugador, const Coordenadas& coords_actual, co
 
     char terreno_nuevo = this->mapa[coords_nueva.y][coords_nueva.x]->obtenerTipo();
     this->mapa[coords_nueva.y][coords_nueva.x] = std::unique_ptr<Entidades>(new Unidades(terreno_nuevo));
+    return true;
 }
 
 std::list<Coordenadas> Mapa::obtenerCoordsCentros() const {
@@ -240,7 +241,7 @@ void Mapa::demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y) {
     }
 }
 
-std::stack<Coordenadas> Mapa::obtener_camino(const Coordenadas& origen,
+std::stack<Coordenadas> Mapa::obtenerCamino(const Coordenadas& origen,
         const Coordenadas& destino, std::vector<char>& terrenos_no_accesibles,
         const std::unordered_map<char, float>& penalizacion_terreno) const {
     return this->camino.obtener_camino(origen, destino, terrenos_no_accesibles, penalizacion_terreno);

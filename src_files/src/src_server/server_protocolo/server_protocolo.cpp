@@ -106,7 +106,7 @@ void ProtocoloServidor::enviarStatusDeUnion(Status &status_de_union) {
  *             METODOS REFERIDOS A MOVER UNIDADES
  * *****************************************************************/
 
-void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y) {}
+void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t id_unidad, uint16_t x, uint16_t y) {}
 
 uint8_t ProtocoloServidor::recibirCodigoDeSolicitud() {
     uint8_t codigo;

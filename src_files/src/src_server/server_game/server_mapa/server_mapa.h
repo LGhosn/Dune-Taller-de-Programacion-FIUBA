@@ -98,7 +98,7 @@ public:
 
     void demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y);
 
-    void moverUnidad(uint16_t id_jugador, const Coordenadas& desde, const Coordenadas& hasta);
+    bool moverUnidad(uint16_t id_jugador, uint8_t tipo_unidad, const Coordenadas& desde, const Coordenadas& hasta);
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.
@@ -111,7 +111,7 @@ public:
      * En caso de que no pueda encontrar un camino, se lanzara una excepcion de tipo CaminoNoEncontradoException. Si las
      * coordenadas de origen y/o destino no son validas o estan en un terreno no accesible, lanzara una FueraDeRangoException.
     */
-    std::stack<Coordenadas> obtener_camino(const Coordenadas& origen,
+    std::stack<Coordenadas> obtenerCamino(const Coordenadas& origen,
         const Coordenadas& destino, std::vector<char>& terrenos_no_accesibles,
         const std::unordered_map<char, float>& penalizacion_terreno) const;
 

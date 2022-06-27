@@ -2,6 +2,8 @@
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
 #include "../server_comandos/cmd_crear_edificio.h"
 #include "../server_comandos/cmd_empezar_partida.h"
+#include "../server_comandos/cmd_comprar_unidad.h"
+#include "../server_comandos/cmd_mover_unidad.h"
 
 std::map<uint8_t, Coordenadas> Game::sortearCentros() const {
     std::list<Coordenadas> centros = mapa.obtenerCoordsCentros();
@@ -55,6 +57,29 @@ void Game::crearEdificio(uint16_t id_jugador, uint16_t tipo, const Coordenadas& 
         conts_id_edificios++;
     }
 }
+
+void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unida) {
+    Jugador* jugador = encontrarJugador(id_jugador);
+    for (auto& cola : colas_comandos) {
+        CmdComprarUnidadServer* comando = // falta verificacion de que pueda comprar
+            new CmdComprarUnidadServer(id_jugador, tipo_unida);
+        cola.second->push(comando);
+        conts_id_edificios++;
+    }
+}
+
+void Game::moverUnidad(uint16_t id_jugador, uint8_t tipo_unidad, const Coordenadas& origen, const Coordenadas& destino) {
+    Jugador* jugador = encontrarJugador(id_jugador);
+    // std::stack<Coordenadas> camino = mapa.obtenerCamino(origen, destino);
+    // bool resultado = mapa.moverUnidad(id_jugador, tipo_unidad, origen, destino);
+    //TODO: modificar para poder mandar el paso a paso del camino
+    for (auto& cola : colas_comandos) {
+        CmdMoverUnidadServer* solicitud =
+            new CmdMoverUnidadServer(id_jugador, 0, 0);
+        cola.second->push(solicitud);
+    }
+}
+
 
 void Game::agregarJugador(ColaBloqueante<ComandoServer>* cola_comando,
                             uint8_t id_jugador, uint8_t casa, std::string& nombre) {
