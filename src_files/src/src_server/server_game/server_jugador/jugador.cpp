@@ -28,6 +28,8 @@ const std::string& Jugador::obtenerNombre() const {
 
 bool Jugador::comprarUnidad(uint8_t tipo_unidad) {
     return especia.comprarUnidad(tipo_unidad);
+}
+
 bool Jugador::comprarEdificio(uint8_t tipo_edificio) {
     return especia.comprarEdificio(tipo_edificio);
 }
