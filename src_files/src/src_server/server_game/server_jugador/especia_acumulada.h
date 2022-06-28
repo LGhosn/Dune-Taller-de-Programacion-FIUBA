@@ -26,12 +26,26 @@ public:
     EspeciaAcumulada(ColaBloqueante<ComandoServer>* cola_comandos,
                     YAML::Node& constantes);
 
+    /*
+     * Le envia al cliente los edificios que se pueden comprar, como asi
+     * la especia disponible inicialmente.
+    */
     void empezarPartida();
 
-    const std::vector<bool>& obtenerEdificiosComprables() const;
-    const std::vector<bool>& obtenerUnidadesComprables() const;
-
+    /*
+     * Recibe el tipo de edificio a comprar, y, si es posible comprarlo,
+     * resta el valor del edificio a la cantidad de especia actual, actualiza
+     * los edificios comprables al cliente, y el nuevo valor de la especia.
+     * De no ser posible comprar el edificio, simplemente devuelve false.
+    */
     bool comprarEdificio(uint8_t tipo);
+
+    /*
+     * Recibe el tipo de edificio a demoler, y suma la cantidad de especia
+     * correspondiente. A su vez, le envia al cliente la lista actualizada
+     * de edificios que se pueden comprar con la especia disponible, como a
+     * su vez el nuevo monto en forma de comandos.
+    */
     void demolerEdificio(uint8_t tipo);
     bool comprarUnidad(uint8_t tipo);
 

@@ -72,14 +72,6 @@ void EspeciaAcumulada::empezarPartida() {
     actualizarEdificiosComprables();
 }
 
-const std::vector<bool>& EspeciaAcumulada::obtenerEdificiosComprables() const {
-    return edificios_comprables;
-}
-
-const std::vector<bool>& EspeciaAcumulada::obtenerUnidadesComprables() const {
-    return unidades_comprables;
-}
-
 bool EspeciaAcumulada::comprarEdificio(uint8_t tipo) {
     if (cantidad_especia >= costo_edificios[tipo]) {
         cantidad_especia -= costo_edificios[tipo];
