@@ -242,6 +242,7 @@ void DuneEditorDeMapas::mostrarTexturaSegunTipoDeTerreno() {
 }
 
 void DuneEditorDeMapas::mostrarCentroDeConstruccionSeleccionado() {
+    ui->TerrainTextureComboBox->clear();
     path_textura_seleccionada = RESOURCE_PATH"/terrenos/cuartel.png";
     ui->MostradorTexturaLabel->setPixmap(QPixmap(path_textura_seleccionada));
     terreno_seleccionado = 'X';
