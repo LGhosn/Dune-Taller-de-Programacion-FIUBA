@@ -162,7 +162,7 @@
     </item>
     <item>
      <property name="text">
-      <string>CUARTEL</string>
+      <string>Centro</string>
      </property>
     </item>
    </widget>
@@ -312,9 +312,9 @@
    <widget class="QLabel" name="CantFilasLabel">
     <property name="geometry">
      <rect>
-      <x>1100</x>
+      <x>1110</x>
       <y>140</y>
-      <width>51</width>
+      <width>41</width>
       <height>17</height>
      </rect>
     </property>

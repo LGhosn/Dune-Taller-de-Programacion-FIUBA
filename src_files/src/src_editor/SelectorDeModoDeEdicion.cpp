@@ -18,14 +18,37 @@ SelectorDeModoDeEdicion::SelectorDeModoDeEdicion(QWidget* parent) : ui(new Ui_Se
 void SelectorDeModoDeEdicion::finalizarSeleccion() {
     if (unModoDeEdicionFueSeleccionado()) {
         if (modo_de_edicion == "crear") {
-            editor = new DuneEditorDeMapas(nullptr, ui->FilasSpinBox->value(), ui->ColumnasSpinBox->value(), ui->JugadoresSpinBox->value());
+            mostrarInterfazAlUsuario();
         } else {
-            editor = new DuneEditorDeMapas(nullptr, RESOURCE_PATH"/maps/hola.yaml");
+            pedirNombreDelMapaAlUsuario(this);
         }
-        editor->show();
-        close();
     } else {
         QMessageBox::information(this, "No se selecciono el modo de edicion", "Recuerda elegir uno entre crear un nuevo mapa y editar uno existente.");
+    }
+}
+
+void SelectorDeModoDeEdicion::mostrarInterfazAlUsuario() {
+    editor = new DuneEditorDeMapas(nullptr, ui->FilasSpinBox->value(), ui->ColumnasSpinBox->value(), ui->JugadoresSpinBox->value());
+    editor->show();
+    close();
+}
+
+void SelectorDeModoDeEdicion::pedirNombreDelMapaAlUsuario(QWidget* parent) {
+    bool ok;
+    QString map_name = QInputDialog::getText(parent, tr("Ingresar nombre del mapa a editar"),
+                                             tr("Nombre del archivo (sin .yaml):"), QLineEdit::Normal,
+                                             "", &ok);
+    if (ok && map_name.isEmpty()) {
+        QMessageBox::information(parent, "Error al editar", "Recuerda elegir el nombre del archivo a editar.");
+    } else if (ok && !map_name.isEmpty()) {
+        if (!std::filesystem::exists(RESOURCE_PATH"/maps/" + map_name.toStdString() + ".yaml")) {
+            QMessageBox::information(this, "Error al editar", "No existe un archivo con ese nombre, por favor, elegir uno existente.");
+        } else {
+            std::string path = RESOURCE_PATH"/maps/" + map_name.toStdString() + ".yaml";
+            editor = new DuneEditorDeMapas(nullptr, path);
+            editor->show();
+            close();
+        }
     }
 }
 
@@ -55,7 +78,7 @@ bool SelectorDeModoDeEdicion::unModoDeEdicionFueSeleccionado() {
     return modo_de_edicion != "";
 }
 
-void SelectorDeModoDeEdicion::agregarMapasDisponibles(std::string &path) {
+/*void SelectorDeModoDeEdicion::agregarMapasDisponibles(std::string &path) {
     std::vector<std::string> mapas_encontrados;
     for (auto &file: std::filesystem::directory_iterator(path)) {
         std::string mapa_path = file.path();
@@ -66,4 +89,4 @@ void SelectorDeModoDeEdicion::agregarMapasDisponibles(std::string &path) {
     for (auto &mapa: mapas_encontrados) {
         //ui->MapasEncontradosComboBox->addItem(QString::fromStdString(mapa));
     }
-}
+}*/

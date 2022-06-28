@@ -21,6 +21,9 @@ public:
     void creacionSeleccionada();
     void edicionSeleccionada();
     bool unModoDeEdicionFueSeleccionado();
-    void agregarMapasDisponibles(std::string &path)
+    void agregarMapasDisponibles(std::string &path);
+    void pedirNombreDelMapaAlUsuario(QWidget* parent);
+
+    void mostrarInterfazAlUsuario();
 };
 #endif

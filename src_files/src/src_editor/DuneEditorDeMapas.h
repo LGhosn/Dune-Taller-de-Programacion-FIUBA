@@ -1,6 +1,7 @@
 #ifndef DUNE_EDITOR_H
 #define DUNE_EDITOR_H
 
+#include <tuple>
 #include <fstream>
 #include <vector>
 #include <cstdlib>
@@ -20,9 +21,6 @@
 #include "ClickableLabel.h"
 #include "yaml-cpp/yaml.h"
 
-#define TIPO_TEXTURA_DEFAULT 9
-#define TIPO_TERRENO_DEFAULT 'A'
-
 class DuneEditorDeMapas: public QMainWindow {
 private:
     Ui_DuneEditorDeMapas* ui;
@@ -38,16 +36,28 @@ private:
     uint8_t textura_seleccionada = TIPO_TEXTURA_DEFAULT;
     std::vector<std::vector<char>>* grilla_terrenos = nullptr;
     std::vector<std::vector<uint8_t>>* grilla_texturas = nullptr;
+    std::vector<std::tuple<int, int>> centros_ubicados;
 
 /* *****************************************************************
  *             METODOS REFERIDOS AL GUARDADO DE MAPAS
  * *****************************************************************/
 
     /*
-     * Guarda el mapa creado/editado.
+     * El primer método es el principal a la hora de guardar un mapa,
+     * los que le siguen complementan dicho código.
      */
     void guardarMapa();
     void pedirNombreDelMapaAlUsuario(QWidget* parent);
+    void escribirDatosDeMapa(YAML::Emitter &out);
+    void escribirTiposDeTerreno(YAML::Emitter &out);
+    void escribirTiposDeTexturas(YAML::Emitter &out);
+    void escribirCentrosDeConstruccion(YAML::Emitter &out);
+    void guardarArchivoMapa(const QString &nombre_archivo, const YAML::Emitter &out);
+    bool faltanEstablecerCentros();
+    int obtenerCantidadDeCentrosUbicados();
+    int obtenerCantidadDeCentrosNecesarios();
+    void establecerRocaBajoCuarteles();
+    void escribirArchivoMapa(QString &nombre_archivo);
 
 /* *****************************************************************
 *         METODOS REFERIDOS A LA PREVISUALIZACIÓN DE MAPAS
@@ -75,19 +85,20 @@ private:
     void mostrarCimaSeleccionada();
     void mostrarPrecipicioSeleccionada();
     void mostrarEspeciaSeleccionada();
-    void mostrarCuartelSeleccionado();
+    void mostrarCentroDeConstruccionSeleccionado();
+    void agregarTexturas(std::string &path);
+    void seleccionarTextura(const char* path, const char &tipo_terreno, const uint8_t &tipo_textura);
+
 
     void cargarMapaDefault();
     void establecerDatosDeCreacionDeMapa(int cant_jugadores, int cant_filas, int cant_columnas);
     void establecerDatosDeEdicionDeMapa(std::string &path_mapa);
 public:
     DuneEditorDeMapas(QWidget *parent, int cant_filas, int cant_columnas, int cant_jugadores);
-    DuneEditorDeMapas(QWidget* parent, const char *path_mapa);
-    void agregarTexturas(std::string &path);
-    void seleccionarTextura(const char* path, const char &tipo_terreno, const uint8_t &tipo_textura);
+    DuneEditorDeMapas(QWidget* parent, std::string &path_mapa);
 
     void establecerGrillaEstandar();
-    void escribirArchivoMapa(QString &nombre_archivo);
+    static std::string obtenerPathSegunInfo(const char &terreno_editado, std::string &textura_editada);
 
     DuneEditorDeMapas(const DuneEditorDeMapas&) = delete;
     DuneEditorDeMapas& operator=(const DuneEditorDeMapas&) = delete;

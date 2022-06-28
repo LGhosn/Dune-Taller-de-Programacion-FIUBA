@@ -88,6 +88,7 @@ public:
         TerrainTypeComboBox->addItem(QString());
         TerrainTypeComboBox->addItem(QString());
         TerrainTypeComboBox->addItem(QString());
+        TerrainTypeComboBox->addItem(QString());
         TerrainTypeComboBox->setObjectName(QString::fromUtf8("TerrainTypeComboBox"));
         TerrainTypeComboBox->setGeometry(QRect(1020, 210, 251, 25));
         TerrainTypeComboBox->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207);"));
@@ -141,7 +142,7 @@ public:
         xLabel->setGeometry(QRect(1160, 140, 16, 17));
         CantFilasLabel = new QLabel(centralwidget);
         CantFilasLabel->setObjectName(QString::fromUtf8("CantFilasLabel"));
-        CantFilasLabel->setGeometry(QRect(1100, 140, 51, 17));
+        CantFilasLabel->setGeometry(QRect(1110, 140, 41, 17));
         CantColumnasLabel = new QLabel(centralwidget);
         CantColumnasLabel->setObjectName(QString::fromUtf8("CantColumnasLabel"));
         CantColumnasLabel->setGeometry(QRect(1180, 140, 81, 17));
@@ -183,6 +184,7 @@ public:
         TerrainTypeComboBox->setItemText(4, QApplication::translate("DuneEditorDeMapas", "Cima", nullptr));
         TerrainTypeComboBox->setItemText(5, QApplication::translate("DuneEditorDeMapas", "Precipicio", nullptr));
         TerrainTypeComboBox->setItemText(6, QApplication::translate("DuneEditorDeMapas", "Especia", nullptr));
+        TerrainTypeComboBox->setItemText(7, QApplication::translate("DuneEditorDeMapas", "Centro", nullptr));
 
         TerrainTextureLabel->setText(QApplication::translate("DuneEditorDeMapas", "Textura de terreno:", nullptr));
         TerrainTextureComboBox->setItemText(0, QApplication::translate("DuneEditorDeMapas", "-", nullptr));

@@ -73,6 +73,7 @@ public:
         FilasSpinBox->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207);"));
         FilasSpinBox->setMinimum(50);
         FilasSpinBox->setMaximum(250);
+        FilasSpinBox->setValue(50);
         FilasLabel = new QLabel(SelectorDeModoDeEdicion);
         FilasLabel->setObjectName(QString::fromUtf8("FilasLabel"));
         FilasLabel->setGeometry(QRect(340, 220, 41, 31));
