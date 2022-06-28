@@ -29,7 +29,7 @@ void ClientHiloSender::run() {
 
 void ClientHiloSender::send(std::unique_ptr<SolicitudCliente>& solicitud) {
     if (solicitud)
-        solicitud->enviarSolicitud(this->protocolo);
+        solicitud->enviarSolicitud(this->protocolo, id_jugador);
 }
 
 ClientHiloSender::~ClientHiloSender() {

@@ -8,6 +8,7 @@
 #include "../../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "../../src_common/common_DTO/Status.h"
 #include "../server_DTO/dto_sol_crear_edificio.h"
+#include "../server_DTO/dto_sol_comprar_edificio.h"
 #include "../../src_common/common_DTO/dto_info_partida.h"
 #include "server_serializador.h"
 #include <memory>
@@ -98,6 +99,10 @@ public:
  *             METODOS REFERIDOS A CREAR EDIFICIOS
  * *****************************************************************/
 
+    void enviarComandoEmpezarConstruccionEdificio(uint8_t tipo_edificio,
+                                                uint16_t tiempo_construccion);
+    SolComprarEdificioDTO recibirSolicitudComprarEdificio();
+
     void enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio, uint8_t tipo,
                                     const Coordenadas& coords, uint8_t casa) const;
     SolicitudCrearEdificioDTO recibirSolicitudCrearEdificio();
@@ -107,6 +112,14 @@ public:
  * *****************************************************************/
 
     void enviarComandoModificarEspecia(uint16_t cantidad_especia);
+
+/* *****************************************************************
+ * METODOS REFERIDOS A ACTUALIZAR ESTADO COMPRA EDIFICIOS Y UNIDADES
+ * *****************************************************************/
+
+    void enviarComandoActualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
+
+    void enviarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables);
 
     /*
      * No tiene sentido copiar un ProtocoloServidor.

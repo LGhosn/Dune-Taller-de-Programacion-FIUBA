@@ -25,7 +25,7 @@ include_directories(${PROJECT_SOURCE_DIR}/src
         ${PROJECT_SOURCE_DIR}/src/src_cliente
         ${PROJECT_SOURCE_DIR}/src/src_server
         ${PROJECT_SOURCE_DIR}/src/src_common
-        ${PROJECT_SOURCE_DIR}/src/src_editor
+        # ${PROJECT_SOURCE_DIR}/src/src_editor
         )
 
 qt5_wrap_ui(UIS_HEADERS
@@ -61,8 +61,11 @@ add_executable(client
         src/src_cliente/client_comandos/cmd_salir.cpp
         src/src_cliente/client_comandos/cmd_click_en_mapa.cpp
         src/src_cliente/client_comandos/cmd_crear_edificio.cpp
+        src/src_cliente/client_comandos/cmd_actualizar_tienda_edificios.cpp
         src/src_cliente/client_comandos/cmd_modificar_especia.cpp
+        src/src_cliente/client_comandos/cmd_empezar_construccion_edificio.cpp
         src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
+        src/src_cliente/client_solicitudes/sol_comprar_edificio.cpp
         src/src_cliente/client_comandos/client_comando.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile_factory.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile.cpp
@@ -107,7 +110,11 @@ add_executable(server
         src/src_server/server_comandos/cmd_crear_edificio.cpp
         src/src_server/server_comandos/cmd_empezar_partida.cpp
         src/src_server/server_comandos/cmd_modificar_especia.cpp
+        src/src_server/server_comandos/cmd_actualizar_tienda_edificios.cpp
+        src/src_server/server_comandos/cmd_actualizar_tienda_unidades.cpp
+        src/src_server/server_comandos//cmd_empezar_construccion_edificio.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
+        src/src_server/server_solicitudes/solicitud_juego/sol_comprar_edificio.cpp
         src/src_server/server_protocolo/server_protocolo.cpp
         src/src_server/server_protocolo/server_serializador.cpp
         src/src_server/server_DTO/partida_DTO.h
@@ -135,10 +142,10 @@ add_executable(server
         src/main_server.cpp
         )
 
-add_executable(DuneEditorDeMapas
-        src/src_editor/DuneEditorDeMapas.cpp
-        src/main_editor.cpp
-        ${UIS_HEADERS})
+# add_executable(DuneEditorDeMapas
+#         src/src_editor/DuneEditorDeMapas.cpp
+#         src/main_editor.cpp
+#         ${UIS_HEADERS})
 
 add_subdirectory(src/src_testing/pruebas_camino)
 #add_subdirectory(src/src_testing/pruebas_mapa)
@@ -147,4 +154,4 @@ add_subdirectory(src/src_testing/pruebas_serializador)
 
 target_link_libraries(client Qt5::Widgets Qt5::Core ${SDL2PP_LIBRARIES} pthread yaml-cpp)
 target_link_libraries(server pthread yaml-cpp)
-target_link_libraries(DuneEditorDeMapas Qt5::Widgets Qt5::Core)
+# target_link_libraries(DuneEditorDeMapas Qt5::Widgets Qt5::Core)

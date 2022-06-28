@@ -14,6 +14,9 @@ class Jugador {
     ColaBloqueante<ComandoServer>* cola_comandos;
     EspeciaAcumulada especia;
 
+    // Constantes
+    uint16_t tiempo_construccion_base;
+
 public:
     Jugador(uint8_t id, uint8_t casa, std::string& nombre,
             ColaBloqueante<ComandoServer>* cola_comandos,
@@ -24,6 +27,10 @@ public:
     uint8_t obtenerId() const;
     uint8_t obtenerCasa() const;
     const std::string& obtenerNombre() const;
+
+    bool comprarEdificio(uint8_t tipo_edificio);
+
+    uint16_t obtenerTiempoConstruccion();
 
     bool operator==(const uint8_t& id_jugador) const;
 

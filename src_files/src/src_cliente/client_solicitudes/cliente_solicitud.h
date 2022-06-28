@@ -5,7 +5,7 @@
 
 class SolicitudCliente {
 public:
-	virtual void enviarSolicitud(ProtocoloCliente& protocolo) = 0;
+	virtual void enviarSolicitud(ProtocoloCliente& protocolo, uint8_t id_jugador) = 0;
 
 	virtual ~SolicitudCliente() = default;
 };

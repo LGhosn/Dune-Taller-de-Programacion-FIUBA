@@ -5,6 +5,18 @@
 
 SerializadorServer::SerializadorServer(YAML::Node* codigos): codigos(codigos) {}
 
+std::vector<uint8_t> SerializadorServer::serializarComandoEmpezarConstruccionEdificio(
+                                                            uint8_t tipo_edificio,
+                                                            uint16_t tiempo_construccion) {
+    std::vector<uint8_t> buffer(4);
+    uint8_t codigo = 25;
+    buffer[0] = codigo;
+    buffer[1] = tipo_edificio;
+    uint16_t* aux = (uint16_t*) (buffer.data() + 2);
+    aux[0] = htons(tiempo_construccion);
+    return buffer;
+}
+
 std::vector<uint8_t> SerializadorServer::serializarComandoCrearEdificio(uint8_t id_jugador,
 uint8_t id_edificio, uint8_t tipo, const Coordenadas& coords, uint8_t casa) const {
     std::vector<uint8_t> buffer(9);
@@ -54,6 +66,25 @@ std::vector<uint8_t> SerializadorServer::serializarComandoModificarEspecia(uint1
     buffer[0] = 20;
     uint16_t* aux = (uint16_t*) (buffer.data() + 1);
     aux[0] = htons(cantidad_especia);
+    return buffer;
+}
+
+/* *****************************************************************
+ * METODOS REFERIDOS A ACTUALIZAR ESTADO COMPRA EDIFICIOS Y UNIDADES
+ * *****************************************************************/
+
+std::vector<uint8_t> SerializadorServer::serializarComandoActualizarTiendaEdificios(const std::vector<bool>& edificios_comprables) {
+    std::vector<uint8_t> buffer(edificios_comprables.size() + 1);
+    buffer[0] = 21;
+    for (uint8_t i = 0; i < edificios_comprables.size(); i++)
+        buffer[i + 1] = edificios_comprables[i];
+    return buffer;
+}
+std::vector<uint8_t> SerializadorServer::serializarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables) {
+    std::vector<uint8_t> buffer(unidades_comprables.size() + 1);
+    buffer[0] = 21;
+    for (uint8_t i = 0; i < unidades_comprables.size(); i++)
+        buffer[i + 1] = unidades_comprables[i];
     return buffer;
 }
 

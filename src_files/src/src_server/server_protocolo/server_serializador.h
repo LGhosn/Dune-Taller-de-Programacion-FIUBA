@@ -28,6 +28,9 @@ public:
 
     std::vector<uint8_t> serializarString(const std::string& string) const;
 
+    std::vector<uint8_t> serializarComandoEmpezarConstruccionEdificio(uint8_t tipo_edificio,
+                                                            uint16_t tiempo_construccion);
+
     std::vector<uint8_t> serializarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio,
     uint8_t tipo, const Coordenadas& coords, uint8_t casa) const;
 
@@ -36,6 +39,13 @@ public:
  * *****************************************************************/
 
     std::vector<uint8_t> serializarComandoModificarEspecia(uint16_t cantidad_especia);
+
+/* *****************************************************************
+ * METODOS REFERIDOS A ACTUALIZAR ESTADO COMPRA EDIFICIOS Y UNIDADES
+ * *****************************************************************/
+
+    std::vector<uint8_t> serializarComandoActualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
+    std::vector<uint8_t> serializarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables);
 
     SerializadorServer(const SerializadorServer& otro) = delete;
     SerializadorServer& operator=(const SerializadorServer& otro) = delete;

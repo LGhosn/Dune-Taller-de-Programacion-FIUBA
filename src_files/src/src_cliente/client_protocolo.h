@@ -6,6 +6,7 @@
 #include "../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "../src_common/common_DTO/dto_info_partida.h"
 #include "client_DTO/dto_cmd_crear_edificio.h"
+#include "client_DTO/dto_cmd_empezar_construccion_edificio.h"
 #include "client_serializador.h"
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_socket.h"
@@ -37,7 +38,8 @@ public:
 
     void enviarSolicitudCrearPartida(SolicitudCrearPartidaDTO& solicitud);
     void enviarSolicitudUnirseAPartida(SolicitudUnirseAPartidaDTO& solicitud);
-    void enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y);
+    void enviarSolicitudMoverUnidad(uint8_t id_jugador, uint16_t& id_unidad,
+                                    uint16_t& x, uint16_t& y);
 
     void recibirCodigoDeComando(uint8_t& codigo);
     void recibirInfoSegunCodigo(uint8_t& codigo);
@@ -55,6 +57,20 @@ public:
      * */
     Status recibirStatus();
     InfoPartidaDTO recibirInfoComienzoDePartida();
+
+/* *****************************************************************
+ * METODOS REFERIDOS A COMPRA DE EDIFICIOS Y UNIDADES
+ * *****************************************************************/
+
+    std::vector<bool> recibirComandoActualizarTiendaEdificios();
+    std::vector<bool> recibirComandoActualizarTiendaUnidades();
+
+    void enviarSolicitudComprarEdificio(uint8_t id_jugador, uint8_t tipo);
+    CmdEmpezarConstruccionEdificioDTO recibirComandoEmpezarConstruccionEdificio();
+
+/* *****************************************************************
+ *                         MOVE SEMANTICS
+ * *****************************************************************/
 
     /*
      * No tiene sentido copiar un ProtocoloCliente, tampoco moverlo.

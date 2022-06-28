@@ -1,5 +1,7 @@
 #include "especia_acumulada.h"
 #include "../../server_comandos/cmd_modificar_especia.h"
+#include "../../server_comandos/cmd_actualizar_tienda_edificios.h"
+#include "../../server_comandos/cmd_actualizar_tienda_unidades.h"
 
 void EspeciaAcumulada::actualizarEdificiosComprables() {
     edificios_comprables[1] = cantidad_especia >= costo_edificios[1] ? true : false;
@@ -9,6 +11,9 @@ void EspeciaAcumulada::actualizarEdificiosComprables() {
     edificios_comprables[5] = cantidad_especia >= costo_edificios[5] ? true : false;
     edificios_comprables[6] = cantidad_especia >= costo_edificios[6] ? true : false;
     edificios_comprables[7] = cantidad_especia >= costo_edificios[7] ? true : false;
+    CmdActualizarTiendaEdificiosServer* comando =
+                    new CmdActualizarTiendaEdificiosServer(edificios_comprables);
+    cola_comandos->push(comando);
 }
 
 void EspeciaAcumulada::actualizarUnidadesComprables() {
@@ -23,6 +28,9 @@ void EspeciaAcumulada::actualizarUnidadesComprables() {
     unidades_comprables[8] = cantidad_especia >= costo_unidades[8] ? true : false;
     unidades_comprables[9] = cantidad_especia >= costo_unidades[9] ? true : false;
     unidades_comprables[10] = cantidad_especia >= costo_unidades[10] ? true : false;
+    CmdActualizarTiendaUnidadesServer* comando =
+                    new CmdActualizarTiendaUnidadesServer(unidades_comprables);
+    cola_comandos->push(comando);
 }
 
 void EspeciaAcumulada::enviarNuevaCantidadEspecia() {
@@ -60,8 +68,8 @@ EspeciaAcumulada::EspeciaAcumulada(ColaBloqueante<ComandoServer>* cola_comandos,
 }
 
 void EspeciaAcumulada::empezarPartida() {
-    CmdModificarEspeciaServer* comando = new CmdModificarEspeciaServer(cantidad_especia);
-    cola_comandos->push(comando);
+    enviarNuevaCantidadEspecia();
+    actualizarEdificiosComprables();
 }
 
 const std::vector<bool>& EspeciaAcumulada::obtenerEdificiosComprables() const {
@@ -76,7 +84,8 @@ bool EspeciaAcumulada::comprarEdificio(uint8_t tipo) {
     if (cantidad_especia >= costo_edificios[tipo]) {
         cantidad_especia -= costo_edificios[tipo];
         actualizarEdificiosComprables();
-        actualizarUnidadesComprables();
+        // actualizarUnidadesComprables();
+        enviarNuevaCantidadEspecia();
         return true;
     } else {
         return false;
@@ -85,13 +94,15 @@ bool EspeciaAcumulada::comprarEdificio(uint8_t tipo) {
 
 void EspeciaAcumulada::demolerEdificio(uint8_t tipo) {
     cantidad_especia += costo_edificios[tipo] * fraccion_demoler;
+    enviarNuevaCantidadEspecia();
 }
 
 bool EspeciaAcumulada::comprarUnidad(uint8_t tipo) {
     if (cantidad_especia >= costo_unidades[tipo]) {
         cantidad_especia -= costo_unidades[tipo];
         actualizarEdificiosComprables();
-        actualizarUnidadesComprables();
+        // actualizarUnidadesComprables();
+        enviarNuevaCantidadEspecia();
         return true;
     } else {
         return false;
@@ -100,6 +111,7 @@ bool EspeciaAcumulada::comprarUnidad(uint8_t tipo) {
 
 void EspeciaAcumulada::aumentarEspecia(uint16_t cantidad) {
     cantidad_especia += cantidad;
+    enviarNuevaCantidadEspecia();
 }
 
 EspeciaAcumulada& EspeciaAcumulada::operator=(EspeciaAcumulada&& otra) {

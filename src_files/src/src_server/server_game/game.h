@@ -34,7 +34,9 @@ class Game {
 public:
     Game(const std::string& nombre_mapa);
 
-    void crearEdificio(uint16_t id_jugador, uint16_t id_edificio, const Coordenadas& coords);
+    void crearEdificio(uint8_t id_jugador, uint8_t id_edificio, const Coordenadas& coords);
+
+    void comprarEdificio(uint8_t id_jugador, uint8_t id_edificio);
 
     void agregarJugador(ColaBloqueante<ComandoServer>* cola_comando, uint8_t id_jugador, 
                         uint8_t casa, std::string& nombre);

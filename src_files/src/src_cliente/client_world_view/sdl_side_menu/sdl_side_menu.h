@@ -24,14 +24,22 @@ public:
     SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
                 uint8_t id_jugador, YAML::Node& constantes, ColorSDL& color);
 
-    SolicitudCliente* click_en_menu(int pos_x, int pos_y);
+    SolicitudCliente* clickEnMenu(int pos_x, int pos_y);
     SolicitudCliente* clickEnMapa(Coordenadas& coords);
 
     void modificarEspecia(uint16_t cantidad_especia);
 
-    bool tieneBotonSeleccionado() const;
+    void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
 
-    void update(long frame_actual);
+    void actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
+
+    /*
+     * Le informa al boton del tipo de edificio que fue creado acerca de la construccion del
+     * nuevo edificio.
+    */
+    void edificioCreado(uint8_t tipo);
+
+    void update(long frames_transcurridos);
 
     void render();
 };

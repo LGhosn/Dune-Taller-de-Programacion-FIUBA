@@ -250,7 +250,7 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                         logo_harkonnen(renderer, RUTA_LOGO_HARKONNEN),
                         logo_ordos(renderer, RUTA_LOGO_ORDOS),
                         texto_listo(constantes["WorldView"]["SideMenu"]["Tienda"]["Botones"]["Texto"].as<std::string>()),
-                        font_tienda(RUTA_FONT_DUNE_2K, 20),
+                        font_tienda(RUTA_FONT_DUNE_2K, 50),
                         texto_tienda(renderer, font_tienda.RenderText_Blended(
                                                                 texto_listo,
                                                                 SDL_Color{90, 146, 22, 255}

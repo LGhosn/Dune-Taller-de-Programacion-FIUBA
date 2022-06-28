@@ -73,47 +73,48 @@ TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& text
                         constantes);
 }
 
- bool TiendaSDL::contiene(int pos_x, int pos_y) const {
-    for (auto& boton : botones_edificios) {
-        if (boton.contiene(pos_x, pos_y)) {
-            return true;
+void TiendaSDL::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion) {
+    botones_edificios[tipo - 1].empezarConstruccion(tiempo_construccion);
+}
+
+void TiendaSDL::actualizarEdificios(const std::vector<bool>& edificios_comprables) {
+    for (uint8_t i = 0; i < edificios_comprables.size(); i++) {
+        if (edificios_comprables[i + 1]) {
+            botones_edificios[i].habilitar();
+        } else {
+            botones_edificios[i].deshabilitar();
         }
     }
-    return false;
- }
+}
 
- bool TiendaSDL::tieneBotonSeleccionado() const {
+void TiendaSDL::edificioCreado(uint8_t tipo) {
+    botones_edificios[tipo - 1].edificioCreado();
+}
+
+SolicitudCliente* TiendaSDL::click(int pos_x, int pos_y) {
+    SolicitudCliente* solicitud = nullptr;
     for (auto& boton : botones_edificios) {
-        if (boton.estaSeleccionado()) {
-            return true;
-        }
+        solicitud = boton.click(pos_x, pos_y);
+        if (solicitud)
+            break;
     }
-    return false;
- }
+    return solicitud;
+}
 
- SolicitudCliente* TiendaSDL::click(int pos_x, int pos_y) {
-    for (auto& boton : botones_edificios) {
-        if (boton.contiene(pos_x, pos_y)) {
-            return boton.click();
-        }
-    }
-    return nullptr;
- }
-
- SolicitudCliente* TiendaSDL::clickEnMapa(Coordenadas& coords) {
+SolicitudCliente* TiendaSDL::clickEnMapa(Coordenadas& coords) {
     SolicitudCliente* solicitud = nullptr;
     for (auto& boton : botones_edificios) {
         solicitud = boton.clickEnMapa(coords);
         if (solicitud)
             break;
-    }
+        }
     return solicitud;
- }
+}
 
-void TiendaSDL::update(long frame_actual) {
-    for (auto& boton : botones_edificios) {
-        boton.update(frame_actual);
-    }
+void TiendaSDL::update(long frames_transcurridos) {
+for (auto& boton : botones_edificios) {
+    boton.update(frames_transcurridos);
+}
 }
 
 void TiendaSDL::render() {
