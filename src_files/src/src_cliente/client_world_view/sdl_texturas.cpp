@@ -7,7 +7,6 @@ uint8_t TexturasSDL::obtenerCantidadTexturas(std::filesystem::path ruta) {
 }
 
 void TexturasSDL::cargarLogos() {
-    std::cout << "Llegue aca" << std::endl;
     for (const std::string& casa : casas) {
         std::stringstream stream;
         stream << RUTA_LOGOS << "edificios/cuartel_" << casa << "_logo.bmp";
@@ -52,21 +51,21 @@ void TexturasSDL::cargarLogos() {
 }
 
 void TexturasSDL::cargarTiles() {
-    uint8_t cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_ARENA);
+    uint8_t cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_ARENA) - 1;
     for (uint8_t i = 0; i < cantidad_texturas; i++) {
         std::stringstream stream;
         stream << RUTA_TILES_ARENA << "arena" << (int) i << ".bmp";
         tiles_arena.emplace_back(renderer, stream.str());
     }
 
-    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_CIMAS);
+    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_CIMAS) - 1;
     for (uint8_t i = 0; i < cantidad_texturas; i++) {
         std::stringstream stream;
         stream << RUTA_TILES_CIMAS << "cima" << (int) i << ".bmp";
         tiles_cima.emplace_back(renderer, stream.str());
     }
     
-    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_DUNAS);
+    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_DUNAS) - 1;
     for (uint8_t i = 0; i < cantidad_texturas; i++) {
         std::stringstream stream;
         stream << RUTA_TILES_DUNAS << "duna" << (int) i << ".bmp";
@@ -87,14 +86,14 @@ void TexturasSDL::cargarTiles() {
         tiles_especia_escasa.emplace_back(renderer, stream.str());
     }
 
-    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_PRECIPICIO);
+    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_PRECIPICIO) - 1;
     for (uint8_t i = 0; i < cantidad_texturas; i++) {
         std::stringstream stream;
         stream << RUTA_TILES_PRECIPICIO << "precipicio" << (int) i << ".bmp";
         tiles_precipicio.emplace_back(renderer, stream.str());
     }
 
-    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_ROCA);
+    cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_ROCA) - 1;
     for (uint8_t i = 0; i < cantidad_texturas; i++) {
         std::stringstream stream;
         stream << RUTA_TILES_ROCA << "roca" << (int) i << ".bmp";

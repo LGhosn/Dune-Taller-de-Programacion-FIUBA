@@ -13,11 +13,6 @@
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include <list>
 
-#define ZOOM_INICIAL 3.0f
-#define ZOOM_MAXIMO 4.0f
-#define ZOOM_MINIMO 2.0f
-#define ZOOM_PASO 0.1f
-
 class WorldView {
 	YAML::Node& constantes;
 	ColoresSDL colores;
