@@ -6,6 +6,7 @@
 #include "../../src_common/common_coords.h"
 #include "../../src_common/common_DTO/dto_sol_crear_partida.h"
 #include "../../src_common/common_DTO/dto_sol_unirse_a_partida.h"
+#include "../server_DTO/dto_sol_comprar_edificio.h"
 #include "../../src_common/common_DTO/Status.h"
 #include "../server_DTO/dto_sol_crear_edificio.h"
 #include "../server_DTO/dto_sol_comprar_edificio.h"
