@@ -106,7 +106,24 @@ void ProtocoloServidor::enviarStatusDeUnion(Status &status_de_union) {
  *             METODOS REFERIDOS A MOVER UNIDADES
  * *****************************************************************/
 
-void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y) {}
+SolicitudMoverUnidadDTO ProtocoloServidor::recibirSolicitudMoverUnidad() {
+    uint8_t id_unidad;
+    this->skt_comunicador->recvall(&id_unidad, SIZEOF_BYTE);
+
+    uint16_t x;
+    this->skt_comunicador->recvall(&x, SIZEOF_TWO_BYTES);
+    x = ntohs(x);
+
+    uint16_t y;
+    this->skt_comunicador->recvall(&y, SIZEOF_TWO_BYTES);
+    y = ntohs(y);
+
+    const Coordenadas coords(x,y);
+    return SolicitudMoverUnidadDTO(id_unidad, coords);
+}
+
+
+void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t id_unidad, char direccion) {}
 
 uint8_t ProtocoloServidor::recibirCodigoDeSolicitud() {
     uint8_t codigo;
@@ -154,6 +171,12 @@ SolicitudCrearEdificioDTO ProtocoloServidor::recibirSolicitudCrearEdificio() {
     Coordenadas coords(x, y);
     return SolicitudCrearEdificioDTO(id_jugador, tipo, coords);
 }
+
+SolicitudComprarUnidadDTO ProtocoloServidor::recibirSolicitudComprarUnidad() {
+    return SolicitudComprarUnidadDTO(0,0);
+}
+
+void ProtocoloServidor::enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {}
 
 /* *****************************************************************
  *             METODOS REFERIDOS A ACTUALIZAR ESPECIA

@@ -96,7 +96,7 @@ void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
             uint16_t y = mouseButtonEvent.button.y;
 
             PixACoords coords_normalizadas(x, y);
-            SolicitudMoverUnidad* solicitud = new SolicitudMoverUnidad(1, coords_normalizadas.get_x(), coords_normalizadas.get_y());
+            SolicitudMoverUnidad* solicitud = new SolicitudMoverUnidad(1, coords_normalizadas.get_x(), coords_normalizadas.get_y()); //TODO: ver id unidad
             this->cola_solicitudes.push(solicitud);
             break;
         }

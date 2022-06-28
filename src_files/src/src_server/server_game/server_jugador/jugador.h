@@ -42,6 +42,7 @@ public:
      * Devuelve una refencia al nombre del jugador.
     */
     const std::string& obtenerNombre() const;
+    bool comprarUnidad(uint8_t tipo_unidad);
 
     /*
      * Recibe el tipo de edificio a comprar, y, si es posible comprarlo,

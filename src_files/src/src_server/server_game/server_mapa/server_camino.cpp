@@ -113,8 +113,12 @@ void Camino::start(std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa
     this->mapa = mapa;
 }
 
-std::stack<Coordenadas> Camino::obtener_camino(const Coordenadas& origen, const Coordenadas& destino,
-    std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const {
+std::stack<Coordenadas> Camino::obtener_camino(UnidadInfoDTO& unidad_info) const {
+    const Coordenadas& origen = unidad_info.origen;
+    const Coordenadas& destino = unidad_info.destino;
+    std::vector<char>& terrenos_no_accesibles = unidad_info.terrenos_no_accesibles;
+    const std::unordered_map<char, float>& penalizacion_terreno = unidad_info.penalizacion_terreno;
+
     if (!posicion_es_valida(origen, terrenos_no_accesibles) || 
         !posicion_es_valida(destino, terrenos_no_accesibles)) {
         throw FueraDeRangoException("La posicion de origen y/o destino no es valida");

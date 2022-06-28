@@ -2,6 +2,9 @@
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
 #include "../server_comandos/cmd_crear_edificio.h"
 #include "../server_comandos/cmd_empezar_partida.h"
+#include "../server_comandos/cmd_comprar_unidad.h"
+#include "../server_comandos/cmd_mover_unidad.h"
+#include "../server_DTO/dto_unidad_info.h"
 #include "../server_comandos/cmd_empezar_construccion_edificio.h"
 
 std::map<uint8_t, Coordenadas> Game::sortearCentros() const {
@@ -56,6 +59,50 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
         conts_id_edificios++;
     }
 }
+
+std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador) {
+    return nullptr;
+}
+
+void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
+    Jugador* jugador = encontrarJugador(id_jugador);
+    if(!jugador->comprarUnidad(tipo_unidad)){
+        throw std::runtime_error("Game: No se pudo comprar unidad"); // TODO: implementar cmd de dinero insuficiente
+    }
+
+    // this->unidades.emplace(this->conts_id_unidad++, clasificarUnidad(tipo_unidad, jugador)); //TODO: Implementar clasificarUnidad
+    for (auto& cola : colas_comandos) {
+        CmdComprarUnidadServer* comando =
+            new CmdComprarUnidadServer(id_jugador, tipo_unidad);
+        cola.second->push(comando);
+        conts_id_edificios++;
+    }
+}
+
+void Game::moverUnidad(uint16_t id_unidad, const Coordenadas& destino) {
+    std::unique_ptr<Unidad>& unidad = this->unidades.at(id_unidad);
+    Jugador& jugador = unidad->obtenerJugador();
+
+    UnidadInfoDTO unidad_info = unidad->obtenerInfo(destino);
+    const Coordenadas& origen = unidad_info.origen;
+
+    std::stack<Coordenadas> camino = mapa.obtenerCamino(unidad_info);
+    int tam_camino = camino.size();
+    for (int i = 0; i < tam_camino; i++) {
+        Coordenadas paso_actual = camino.top();
+        camino.pop();
+        char direccion = mapa.moverUnidad(origen, paso_actual);
+
+        for (auto& cola : colas_comandos) {
+            CmdMoverUnidadServer* comando =
+                new CmdMoverUnidadServer(jugador.obtenerId(), direccion);
+            cola.second->push(comando);
+        }
+        (Coordenadas&)origen = paso_actual;
+    }
+
+}
+
 
 void Game::comprarEdificio(uint8_t id_jugador, uint8_t tipo) {
     Jugador* jugador = encontrarJugador(id_jugador);
