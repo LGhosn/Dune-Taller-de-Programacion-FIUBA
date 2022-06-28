@@ -2,6 +2,7 @@
 #define CMD_MOVER_UNIDAD_H
 
 #include "server_comando.h"
+#include "../server_protocolo/server_protocolo.h"
 
 class CmdMoverUnidadServer : public ComandoServer {
 private:

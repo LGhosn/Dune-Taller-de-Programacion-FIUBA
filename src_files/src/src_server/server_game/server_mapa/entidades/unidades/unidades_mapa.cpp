@@ -1,11 +1,11 @@
 #include "unidades_mapa.h"
 
-Unidades::Unidades(char parada_sobre) : parada_sobre(parada_sobre) {}
+UnidadesMapa::UnidadesMapa(char parada_sobre) : parada_sobre(parada_sobre) {}
 
-char Unidades::obtenerTipo() {
+char UnidadesMapa::obtenerTipo() {
     return 'U';
 }
 
-char Unidades::obtenerTerrenoQueEstaParada() {
+char UnidadesMapa::obtenerTerrenoQueEstaParada() {
     return parada_sobre;
 }

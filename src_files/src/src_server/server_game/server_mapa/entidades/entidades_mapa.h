@@ -8,7 +8,7 @@ protected:
 public:
     Entidades() = default;
     virtual char obtenerTipo() = 0;
-    virtual ~Entidades();
+    virtual ~Entidades() = default;
 };
 
 #endif // ENTIDADES_H

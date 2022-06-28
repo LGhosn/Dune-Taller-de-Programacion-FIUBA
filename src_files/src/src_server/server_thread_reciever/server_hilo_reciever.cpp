@@ -42,9 +42,9 @@ void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
         case 5:
             manejarSolicitudCrearEdificio();
             break;
-        case 100000: // TODO: determinar codigo
+        case 11: // TODO: determinar codigo
             manejarSolicitudComprarUnidad();
-        case 100001: // TODO: determinar codigo
+        case 12: // TODO: determinar codigo
             manejarSolicitudMoverUnidad();
         default:
             throw std::runtime_error("Código de solicitud no reconocido");

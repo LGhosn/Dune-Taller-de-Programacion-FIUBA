@@ -1,7 +1,3 @@
-#include <algorithm>
-#include <iostream>
-#include <sstream>
-
 #include "yaml-cpp/yaml.h"
 #include "server_mapa.h"
 
@@ -158,6 +154,7 @@ char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destin
         }
         return izquierda;
     }
+    return ' ';
 }
 
 /* ******************************************************************
@@ -175,7 +172,11 @@ Mapa::Mapa(const std::string& nombre_mapa) {
 
     this->ancho = mapa_config["Ancho"].as<int>();
     this->alto = mapa_config["Alto"].as<int>();
-    this->mapa = std::vector<std::vector<std::unique_ptr<Entidades> > >(this->alto, std::vector<std::unique_ptr<Entidades> >(this->ancho));
+    // this->mapa = std::vector<std::vector<std::unique_ptr<Entidades> > >(this->alto, std::vector<std::unique_ptr<Entidades> >(this->ancho));
+    this->mapa.resize(this->alto);
+    for (int i = 0; i < this->alto; i++){
+        this->mapa[i].resize(this->ancho);
+    }
     for (int i = 0; i < alto; i++) {
 		for (int j = 0; j < ancho; j++){
             this->mapa[i][j] = clasificarTerreno(mapa_config["TiposTerrenos"][i][j].as<char>());
@@ -213,10 +214,10 @@ void Mapa::construirCentro(uint16_t id_jugador, const Coordenadas& coords) {
 char Mapa::moverUnidad(const Coordenadas& coords_actual, const Coordenadas& coords_nueva) {
     std::unique_ptr<Entidades>& entidad = this->mapa[coords_actual.y][coords_actual.x];
     if (!entidad) {
-        std::runtime_error("No hay unidad en esa coordenada");
+        throw std::runtime_error("No se encontro la unidad en la posicion actual");
     }
     if (hayColisiones(coords_nueva, 1, 1)) {
-        std::runtime_error("No se puede mover a esa coordenada");
+        throw std::runtime_error("Coordenadas de movimiento invalidas");
     }
     std::unique_ptr<UnidadesMapa>& unidad = (std::unique_ptr<UnidadesMapa>&)entidad;
     char terreno = unidad->obtenerTerrenoQueEstaParada();
@@ -259,8 +260,8 @@ std::stack<Coordenadas> Mapa::obtenerCamino(UnidadInfoDTO& unidad_info) const {
     return this->camino.obtener_camino(unidad_info);
 }
 
-Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), mapa(otro.mapa), camino(otro.camino) {
-    otro.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (otro.alto);
+Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), camino(otro.camino) {
+    // otro.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (otro.alto);
 }
 
 Mapa& Mapa::operator=(Mapa&& mapa) {
@@ -272,13 +273,13 @@ Mapa& Mapa::operator=(Mapa&& mapa) {
     // Transfiero los recursos del otro mapa al nuestro.
     this->ancho = mapa.ancho;
     this->alto = mapa.alto;
-    this->mapa = mapa.mapa;
+    // this->mapa = mapa.mapa;
     this->camino = Camino();
 
     // Limpio el otro mapa.
     mapa.alto = -1;
     mapa.ancho = -1;
-    mapa.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (mapa.alto);
+    // mapa.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (mapa.alto);
     
     return *this;
 }

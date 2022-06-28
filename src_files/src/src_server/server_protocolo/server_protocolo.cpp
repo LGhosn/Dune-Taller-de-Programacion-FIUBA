@@ -157,6 +157,12 @@ SolicitudCrearEdificioDTO ProtocoloServidor::recibirSolicitudCrearEdificio() {
     return SolicitudCrearEdificioDTO(id_jugador, tipo, coords);
 }
 
+SolicitudComprarUnidadDTO ProtocoloServidor::recibirSolicitudComprarUnidad() {
+    return SolicitudComprarUnidadDTO(0,0);
+}
+
+void ProtocoloServidor::enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {}
+
 /* *****************************************************************
  *             METODOS REFERIDOS A ACTUALIZAR ESPECIA
  * *****************************************************************/

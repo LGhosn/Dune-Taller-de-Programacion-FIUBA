@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <stack>
 #include <list>
+#include <memory>
 #include <unordered_map>
 
 #include "../../../src_common/common_coords.h"

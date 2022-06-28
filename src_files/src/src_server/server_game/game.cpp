@@ -59,13 +59,17 @@ void Game::crearEdificio(uint16_t id_jugador, uint16_t tipo, const Coordenadas& 
     }
 }
 
+std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador) {
+    return nullptr;
+}
+
 void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
     Jugador* jugador = encontrarJugador(id_jugador);
     if(!jugador->comprarUnidad(tipo_unidad)){
         throw std::runtime_error("Game: No se pudo comprar unidad"); // TODO: implementar cmd de dinero insuficiente
     }
 
-    this->unidades.emplace(this->conts_id_unidad++, clasificarUnidad(tipo_unidad, jugador)); //TODO: Implementar clasificarUnidad
+    // this->unidades.emplace(this->conts_id_unidad++, clasificarUnidad(tipo_unidad, jugador)); //TODO: Implementar clasificarUnidad
     for (auto& cola : colas_comandos) {
         CmdComprarUnidadServer* comando =
             new CmdComprarUnidadServer(id_jugador, tipo_unidad);

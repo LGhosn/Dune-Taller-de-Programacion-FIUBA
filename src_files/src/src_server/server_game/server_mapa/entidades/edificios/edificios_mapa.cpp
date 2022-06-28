@@ -16,6 +16,16 @@ char Edificio::obtenerTipo() {
 }
 
 /* ******************************************************************
+ *                        CENTRO DE CONSTRUCCION
+ * *****************************************************************/
+CentroDeConstruccion::CentroDeConstruccion(YAML::Node& edificio_config, uint16_t id_jugador) {
+    this->dimension_x = edificio_config["CentroDeConstruccion"]["DimensionX"].as<int>();
+    this->dimension_y = edificio_config["CentroDeConstruccion"]["DimensionY"].as<int>();
+    this->id_jugador = id_jugador;
+    this->tipo = edificio_config["CentroDeConstruccion"]["Tipo"].as<char>();
+}
+
+/* ******************************************************************
  *                        CUARTEL
  * *****************************************************************/
 Cuartel::Cuartel(YAML::Node& edificio_config, uint16_t id_jugador) {
