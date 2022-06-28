@@ -7,37 +7,37 @@ class Terrenos : public Entidades {
 public:
     Terrenos() = default;
     virtual char obtenerTipo();
-    virtual ~Terrenos();
+    virtual ~Terrenos() = default;
 };
 
 class Arena : public Terrenos {
 public:
-    Arena() = default;
-    virtual ~Arena();
+    Arena();
+    virtual ~Arena() = default;
 };
 
 class Duna : public Terrenos {
 public:
-    Duna() = default;
-    virtual ~Duna();
+    Duna();
+    virtual ~Duna() = default;
 };
 
 class Roca : public Terrenos {
 public:
-    Roca() = default;
-    virtual ~Roca();
+    Roca();
+    virtual ~Roca() = default;
 };
 
 class Cima : public Terrenos {
 public:
-    Cima() = default;
-    virtual ~Cima();
+    Cima();
+    virtual ~Cima() = default;
 };
 
 class Precipicio : public Terrenos {
 public:
-    Precipicio() = default;
-    virtual ~Precipicio();
+    Precipicio();
+    virtual ~Precipicio() = default;
 };
 
 

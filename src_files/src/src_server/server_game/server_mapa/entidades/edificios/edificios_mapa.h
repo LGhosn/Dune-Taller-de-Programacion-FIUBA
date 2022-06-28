@@ -16,55 +16,55 @@ public:
     virtual int obtenerDimensionX();
     virtual int obtenerDimensionY();
     virtual char obtenerTipo();
-    virtual ~Edificio();
+    virtual ~Edificio() = default;
 };
 
 class Silo: public Edificio {
 public:
     Silo(YAML::Node& edificio_config, uint16_t id_jugador);
-    ~Silo();
+    virtual ~Silo() = default;
 };
 
 class FabricaLigera: public Edificio {
 public:
     FabricaLigera(YAML::Node& edificio_config, uint16_t id_jugador);
-    ~FabricaLigera();
+    virtual ~FabricaLigera() = default;
 };
 
 class FabricaPesada: public Edificio {
 public:
     FabricaPesada(YAML::Node& edificio_config, uint16_t id_jugador);
-    ~FabricaPesada();
+    virtual ~FabricaPesada() = default;
 };
 
 class Palacio: public Edificio {
 public:
     Palacio(YAML::Node& edificio_config, uint16_t id_jugador);
-    ~Palacio();
+    virtual ~Palacio() = default;
 };
 
 class Refineria: public Edificio {
 public:
     Refineria(YAML::Node& edificio_config, uint16_t id_jugador);
-    ~Refineria();
+    virtual ~Refineria() = default;
 };
 
 class Cuartel: public Edificio {
 public:
     Cuartel(YAML::Node& edificio_config, uint16_t id_jugador);
-    ~Cuartel();
+    virtual ~Cuartel() = default;
 };
 
 class TrampaDeAire: public Edificio {
 public:
     TrampaDeAire(YAML::Node& edificio_config, uint16_t id_jugador);
-    ~TrampaDeAire();
+    virtual ~TrampaDeAire() = default;
 };
 
 class CentroDeConstruccion: public Edificio {
 public:
     CentroDeConstruccion(YAML::Node& edificio_config, uint16_t id_jugador);
-    ~CentroDeConstruccion();
+    virtual ~CentroDeConstruccion() = default;
 };
 
 #endif //SERVER_EDIFICIOS_H

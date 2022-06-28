@@ -6,6 +6,9 @@
 #include <tuple>
 #include <memory>
 #include <stack>
+#include <algorithm>
+#include <sstream>
+
 
 #include "../../../src_common/common_coords.h"
 #include "server_camino.h"
