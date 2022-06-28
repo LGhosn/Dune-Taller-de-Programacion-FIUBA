@@ -1,7 +1,3 @@
-#include <algorithm>
-#include <iostream>
-#include <sstream>
-
 #include "yaml-cpp/yaml.h"
 #include "server_mapa.h"
 
@@ -161,7 +157,11 @@ Mapa::Mapa(const std::string& nombre_mapa) {
 
     this->ancho = mapa_config["Ancho"].as<int>();
     this->alto = mapa_config["Alto"].as<int>();
-    this->mapa = std::vector<std::vector<std::unique_ptr<Entidades> > >(this->alto, std::vector<std::unique_ptr<Entidades> >(this->ancho));
+    // this->mapa = std::vector<std::vector<std::unique_ptr<Entidades> > >(this->alto, std::vector<std::unique_ptr<Entidades> >(this->ancho));
+    this->mapa.resize(this->alto);
+    for (int i = 0; i < this->alto; i++){
+        this->mapa[i].resize(this->ancho);
+    }
     for (int i = 0; i < alto; i++) {
 		for (int j = 0; j < ancho; j++){
             this->mapa[i][j] = clasificarTerreno(mapa_config["TiposTerrenos"][i][j].as<char>());
@@ -246,8 +246,8 @@ std::stack<Coordenadas> Mapa::obtener_camino(const Coordenadas& origen,
     return this->camino.obtener_camino(origen, destino, terrenos_no_accesibles, penalizacion_terreno);
 }
 
-Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), mapa(otro.mapa), camino(otro.camino) {
-    otro.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (otro.alto);
+Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), camino(otro.camino) {
+    // otro.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (otro.alto);
 }
 
 Mapa& Mapa::operator=(Mapa&& mapa) {
@@ -259,13 +259,13 @@ Mapa& Mapa::operator=(Mapa&& mapa) {
     // Transfiero los recursos del otro mapa al nuestro.
     this->ancho = mapa.ancho;
     this->alto = mapa.alto;
-    this->mapa = mapa.mapa;
+    // this->mapa = mapa.mapa;
     this->camino = Camino();
 
     // Limpio el otro mapa.
     mapa.alto = -1;
     mapa.ancho = -1;
-    mapa.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (mapa.alto);
+    // mapa.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (mapa.alto);
     
     return *this;
 }

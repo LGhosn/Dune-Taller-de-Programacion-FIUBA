@@ -14,7 +14,7 @@ public:
     Unidades(char parada_sobre);
     virtual char obtenerTipo();
     virtual char obtenerTerrenoQueEstaParada();
-    virtual ~Unidades();
+    virtual ~Unidades() = default;
 };
 
 #endif // UNIDADES_H

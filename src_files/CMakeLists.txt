@@ -124,6 +124,9 @@ add_executable(server
         src/src_server/server_thread_reciever/server_hilo_reciever.cpp
         src/src_server/server_thread_gameloop/server_hilo_gameloop.cpp
         src/src_server/server_game/game.cpp
+        src/src_server/server_game/server_mapa/entidades/edificios/edificios_mapa.cpp
+        src/src_server/server_game/server_mapa/entidades/terrenos/terrenos_mapa.cpp
+        src/src_server/server_game/server_mapa/entidades/unidades/unidades_mapa.cpp
         src/src_server/server_game/server_mapa/server_mapa.cpp
         src/src_server/server_game/server_mapa/server_camino.cpp
         src/src_server/server_game/server_mapa/server_fuera_de_rango_exception.cpp
@@ -147,7 +150,7 @@ add_executable(server
 #         src/main_editor.cpp
 #         ${UIS_HEADERS})
 
-add_subdirectory(src/src_testing/pruebas_camino)
+# add_subdirectory(src/src_testing/pruebas_camino)
 #add_subdirectory(src/src_testing/pruebas_mapa)
 add_subdirectory(src/src_testing/pruebas_serializador)
 
