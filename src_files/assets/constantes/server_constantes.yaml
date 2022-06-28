@@ -11,6 +11,7 @@ Game:
       Silo: 200
       Trampa: 800
       FraccionDemoler: 0.4
+      TiempoConstruccionBase: 5000
     Unidades:
       Infanteria:
         Fremen: 100
@@ -23,6 +24,7 @@ Game:
         Devastador: 400
         Raider: 100
         Tanque: 300
+        TanqueSonico: 300
         Trike: 100
   Especia:
     ValorInicial: 800

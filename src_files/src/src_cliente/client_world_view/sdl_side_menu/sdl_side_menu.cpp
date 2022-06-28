@@ -7,7 +7,7 @@ SideMenuSDL::SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& 
                             color(color),
                             casa(casa),
                             tienda(renderer, casa, texturas, id_jugador, constantes, color),
-                            especia(renderer, texturas, constantes),
+                            especia(renderer, texturas, constantes, color),
                             logo_casa(texturas.obtenerLogoCasa(casa)) {
     uint32_t ancho_menu = constantes["WorldView"]["SideMenu"]["Ancho"].as<uint32_t>();
     uint32_t ancho_ventana = constantes["WorldView"]["Ventana"]["Ancho"].as<uint32_t>();
@@ -25,11 +25,9 @@ SideMenuSDL::SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& 
                                     largo_ventana);
 }
 
-SolicitudCliente* SideMenuSDL::click_en_menu(int pos_x, int pos_y) {
-    if (tienda.contiene(pos_x, pos_y)) {
-        return tienda.click(pos_x, pos_y);
-    }
-    return nullptr;
+SolicitudCliente* SideMenuSDL::clickEnMenu(int pos_x, int pos_y) {
+    SolicitudCliente* solicitud = tienda.click(pos_x, pos_y);
+    return solicitud;
 }
 
 SolicitudCliente* SideMenuSDL::clickEnMapa(Coordenadas& coords) {
@@ -40,12 +38,20 @@ void SideMenuSDL::modificarEspecia(uint16_t cantidad_especia) {
     especia.modificarEspecia(cantidad_especia);
 }
 
-bool SideMenuSDL::tieneBotonSeleccionado() const {
-    return tienda.tieneBotonSeleccionado();
+void SideMenuSDL::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion) {
+    tienda.empezarConstruccionEdificio(tipo, tiempo_construccion);
 }
 
-void SideMenuSDL::update(long frame_actual) {
-    tienda.update(frame_actual);
+void SideMenuSDL::actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables) {
+    tienda.actualizarEdificios(edificios_comprables);
+}
+
+void SideMenuSDL::edificioCreado(uint8_t tipo) {
+    tienda.edificioCreado(tipo);
+}
+
+void SideMenuSDL::update(long frames_transcurridos) {
+    tienda.update(frames_transcurridos);
 }
 
 void SideMenuSDL::render() {

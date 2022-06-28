@@ -7,7 +7,8 @@ Jugador::Jugador(uint8_t id, uint8_t casa, std::string& nombre,
                 casa(casa),
                 nombre(nombre),
                 cola_comandos(cola_comandos),
-                especia(cola_comandos, constantes) {}
+                especia(cola_comandos, constantes),
+                tiempo_construccion_base(constantes["Game"]["Precios"]["Edificios"]["TiempoConstruccionBase"].as<uint16_t>()) {}
 
 void Jugador::empezarPartida() {
     especia.empezarPartida();
@@ -27,6 +28,12 @@ const std::string& Jugador::obtenerNombre() const {
 
 bool Jugador::comprarUnidad(uint8_t tipo_unidad) {
     return especia.comprarUnidad(tipo_unidad);
+bool Jugador::comprarEdificio(uint8_t tipo_edificio) {
+    return especia.comprarEdificio(tipo_edificio);
+}
+
+uint16_t Jugador::obtenerTiempoConstruccion() {
+    return tiempo_construccion_base;
 }
 
 bool Jugador::operator==(const uint8_t& id_jugador) const {
@@ -41,6 +48,7 @@ Jugador& Jugador::operator=(Jugador&& otro) {
     nombre = otro.nombre;
     cola_comandos = otro.cola_comandos;
     especia = std::move(otro.especia);
+    tiempo_construccion_base = otro.tiempo_construccion_base;
     otro.cola_comandos = nullptr;
     return *this;
 }
@@ -50,7 +58,8 @@ Jugador::Jugador(Jugador&& otro) :
             casa(otro.casa),
             nombre(otro.nombre),
             cola_comandos(otro.cola_comandos),
-            especia(std::move(otro.especia)) {
+            especia(std::move(otro.especia)),
+            tiempo_construccion_base(otro.tiempo_construccion_base) {
     if (this != &otro)
         otro.cola_comandos = nullptr;
 }

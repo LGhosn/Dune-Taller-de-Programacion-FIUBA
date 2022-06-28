@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <sstream>
 
+
 #include "../../../src_common/common_coords.h"
 #include "server_camino.h"
 #include "entidades/edificios/edificios_mapa.h"

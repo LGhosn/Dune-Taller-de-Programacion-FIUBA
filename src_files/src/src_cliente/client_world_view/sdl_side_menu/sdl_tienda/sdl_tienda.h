@@ -4,29 +4,14 @@
 #include "sdl_boton_tienda.h"
 #include "../../sdl_color/sdl_color.h"
 #include "../../../client_solicitudes/cliente_solicitud.h"
-#include <list>
-
-#define ANCHO_MENU 300
-#define ANCHO_VISTA_MAPA 924
-#define LARGO_VISTA_MAPA 768
-
-#define POS_TIENDA 300
-#define PADDING_TIENDA 10
-#define ANCHO_TIENDA ANCHO_MENU - 2 * PADDING_TIENDA
-#define LARGO_TIENDA LARGO_VISTA_MAPA - POS_TIENDA - 2 * PADDING_TIENDA
-#define PADDING_BOTONES 16
-
-#define LARGO_BOTON 92 
-#define ANCHO_BOTON LARGO_BOTON * RATIO_ANCHO_LARGO_BOTON
-#define POS_INICIAL_BOTONES_TIENDA_X ANCHO_VISTA_MAPA + PADDING_TIENDA + PADDING_BOTONES
-#define POS_INICIAL_BOTONES_TIENDA_Y POS_TIENDA + PADDING_TIENDA
+#include <vector>
 
 class TiendaSDL {
     SDL2pp::Renderer& renderer;
     ColorSDL& color;
     uint8_t casa;
-    std::list<BotonTiendaSDL> botones_edificios;
-    std::list<BotonTiendaSDL> botones_unidades;
+    std::vector<BotonTiendaSDL> botones_edificios;
+    std::vector<BotonTiendaSDL> botones_unidades;
 
     // Constantes
     const uint32_t ancho_menu;
@@ -50,14 +35,20 @@ public:
     TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
                 uint8_t id_jugador, YAML::Node& constantes, ColorSDL& color);
 
-    bool contiene(int pos_x, int pos_y) const;
+    void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
 
-    bool tieneBotonSeleccionado() const;
+    void actualizarEdificios(const std::vector<bool>& edificios_comprables);
+
+    /*
+     * Le informa al boton del tipo de edificio que fue creado acerca de la construccion del
+     * nuevo edificio.
+    */
+    void edificioCreado(uint8_t tipo);
 
     SolicitudCliente* click(int pos_x, int pos_y);
     SolicitudCliente* clickEnMapa(Coordenadas& coords);
 
-    void update(long frame_actual);
+    void update(long frames_transcurridos);
     void render();
 };
 

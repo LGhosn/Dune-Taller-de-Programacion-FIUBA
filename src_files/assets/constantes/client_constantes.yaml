@@ -102,6 +102,11 @@ WorldView:
         PaddingTexto: 30
         TamTexto: 20
         Texto: "LISTO"
+    Especia:
+      Ancho: 140
+      Alto: 40
+      PaddingTextoX: 10
+      PaddingTextoY: 5
   Zoom: 
     Inicial: 1.5
     Maximo: 2.5

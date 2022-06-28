@@ -125,7 +125,8 @@ InfoPartidaDTO ProtocoloCliente::recibirInfoComienzoDePartida() {
 }
 
 
-void ProtocoloCliente::enviarSolicitudMoverUnidad(uint16_t& id_unidad, uint16_t& x, uint16_t& y){
+void ProtocoloCliente::enviarSolicitudMoverUnidad(uint8_t id_jugador, uint16_t& id_unidad,
+                                                    uint16_t& x, uint16_t& y){
 	Serializador s;
     std::string operacion = "mover";
 	uint8_t codigo = s.obtenerCodigoOperacion(operacion);
@@ -146,6 +147,50 @@ uint16_t ProtocoloCliente::recibirComandoModificarEspecia() {
     cantidad_especia = ntohs(cantidad_especia);
     return cantidad_especia;
 }
+
+/* *****************************************************************
+ * METODOS REFERIDOS A COMPRA DE EDIFICIOS Y UNIDADES
+ * *****************************************************************/
+
+std::vector<bool> ProtocoloCliente::recibirComandoActualizarTiendaEdificios() {
+    std::vector<bool> buffer(8);
+    for (uint8_t i = 0; i < buffer.size(); i++) {
+        uint8_t estado;
+        skt_cliente.recvall(&estado, SIZEOF_BYTE);
+        buffer[i] = (bool) estado;
+    }
+    return buffer;
+}
+
+std::vector<bool> ProtocoloCliente::recibirComandoActualizarTiendaUnidades() {
+    std::vector<bool> buffer(11);
+    for (uint8_t i = 0; i < buffer.size(); i++) {
+        uint8_t estado;
+        skt_cliente.recvall(&estado, SIZEOF_BYTE);
+        buffer[i] = estado;
+    }
+    return buffer;
+}
+
+void ProtocoloCliente::enviarSolicitudComprarEdificio(uint8_t id_jugador, uint8_t tipo) {
+    uint8_t codigo = 25;
+    this->skt_cliente.sendall(&codigo, SIZEOF_BYTE);
+    this->skt_cliente.sendall(&id_jugador, SIZEOF_BYTE);
+    this->skt_cliente.sendall(&tipo, SIZEOF_BYTE);
+}
+
+CmdEmpezarConstruccionEdificioDTO ProtocoloCliente::recibirComandoEmpezarConstruccionEdificio() {
+    uint8_t tipo;
+    this->skt_cliente.recvall(&tipo, SIZEOF_BYTE);
+    uint16_t tiempo_construccion;
+    this->skt_cliente.recvall(&tiempo_construccion, SIZEOF_TWO_BYTES);
+    tiempo_construccion = ntohs(tiempo_construccion);
+    return CmdEmpezarConstruccionEdificioDTO(tipo, tiempo_construccion);
+}
+
+/* *****************************************************************
+ *                          METODOS AUXILIARES
+ * *****************************************************************/
 
 void ProtocoloCliente::recibirCodigoDeComando(uint8_t& codigo) {
     this->skt_cliente.recvall(&codigo, SIZEOF_BYTE);

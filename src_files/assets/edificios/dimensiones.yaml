@@ -1,31 +1,39 @@
 Silo:
-  - DimensionX: 1
-  - DimensionY: 1
+  DimensionX: 1
+  DimensionY: 1
+  Tipo: 'S'
 
 Cuartel:
-  - DimensionX: 2
-  - DimensionY: 2
+  DimensionX: 2
+  DimensionY: 3
+  Tipo: 'C'
 
 FabricaLigera:
-  - DimensionX: 3
-  - DimensionY: 3
+  DimensionX: 3
+  DimensionY: 3
+  Tipo: 'F'
 
 FabricaPesada:
-  - DimensionX: 4
-  - DimensionY: 4
+  DimensionX: 4
+  DimensionY: 4
+  Tipo: 'H'
 
 Palacio:
-  - DimensionX: 5
-  - DimensionY: 5
+  DimensionX: 3
+  DimensionY: 3
+  Tipo: 'P'
 
 Refineria:
-  - DimensionX: 6
-  - DimensionY: 6
+  DimensionX: 3
+  DimensionY: 3
+  Tipo: 'R'
 
 TrampaDeAire:
-  - DimensionX: 7
-  - DimensionY: 7
+  DimensionX: 3
+  DimensionY: 3
+  Tipo: 'T'
 
-CentroDeConstructo:
-  - DimensionX: 8
-  - DimensionY: 8
+CentroDeConstruccion:
+  DimensionX: 3
+  DimensionY: 3
+  Tipo: 'D'

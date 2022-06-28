@@ -2,15 +2,14 @@
 #include "server_mapa.h"
 
 #define DISTANCIA_EDIFICIOS 5
-#define CODIGO_CENTRO 0
-#define CENTRO 'D'
-#define CUARTEL 'C'
-#define FABRICA_LIGERA 'F'
-#define FABRICA_PESADA 'H'
-#define PALACIO 'P'
-#define REFINERIA 'R'
-#define SILO 'S'
-#define TRAMPA_DE_AIRE 'T'
+#define CENTRO 0
+#define CUARTEL 1
+#define FABRICA_LIGERA 2
+#define FABRICA_PESADA 3
+#define PALACIO 4
+#define REFINERIA 5
+#define SILO 6
+#define TRAMPA_DE_AIRE 7
 #define ROCA 'R'
 #define CIMA 'I'
 #define ARENA 'A'

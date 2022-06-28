@@ -11,7 +11,7 @@ class SolicitudMoverUnidad : public SolicitudCliente {
 
 public:
     SolicitudMoverUnidad(uint16_t id_unidad, uint16_t x, uint16_t y);
-    virtual void enviarSolicitud(ProtocoloCliente& protocolo);
+    virtual void enviarSolicitud(ProtocoloCliente& protocolo, uint8_t id_jugador);
     virtual ~SolicitudMoverUnidad() = default;
 };
 

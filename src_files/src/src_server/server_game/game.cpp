@@ -5,6 +5,7 @@
 #include "../server_comandos/cmd_comprar_unidad.h"
 #include "../server_comandos/cmd_mover_unidad.h"
 #include "../server_DTO/dto_unidad_info.h"
+#include "../server_comandos/cmd_empezar_construccion_edificio.h"
 
 std::map<uint8_t, Coordenadas> Game::sortearCentros() const {
     std::list<Coordenadas> centros = mapa.obtenerCoordsCentros();
@@ -46,7 +47,7 @@ Game::Game(const std::string& nombre_mapa) :
             constantes(YAML::LoadFile(RUTA_CONSTANTES)) {}
 
 
-void Game::crearEdificio(uint16_t id_jugador, uint16_t tipo, const Coordenadas& coords) {
+void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     bool resultado = mapa.construirEdificio(id_jugador, tipo, coords);
     if (resultado) {
         Jugador* jugador = encontrarJugador(id_jugador);
@@ -102,6 +103,17 @@ void Game::moverUnidad(uint16_t id_unidad, const Coordenadas& destino) {
 
 }
 
+
+void Game::comprarEdificio(uint8_t id_jugador, uint8_t tipo) {
+    Jugador* jugador = encontrarJugador(id_jugador);
+    bool resultado = jugador->comprarEdificio(tipo);
+    if (resultado) {
+        uint16_t tiempo_construccion = jugador->obtenerTiempoConstruccion();
+        CmdEmpezarConstruccionEdificioServer* comando =
+                        new CmdEmpezarConstruccionEdificioServer(tipo, tiempo_construccion);
+        colas_comandos[id_jugador]->push(comando);
+    }
+}
 
 void Game::agregarJugador(ColaBloqueante<ComandoServer>* cola_comando,
                             uint8_t id_jugador, uint8_t casa, std::string& nombre) {

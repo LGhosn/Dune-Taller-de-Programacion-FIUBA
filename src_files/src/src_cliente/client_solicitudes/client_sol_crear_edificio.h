@@ -9,9 +9,9 @@ class SolicitudCrearEdificio : public SolicitudCliente {
     Coordenadas coords;
     uint8_t tipo;
 public:
-    SolicitudCrearEdificio(uint8_t id_jugador, Coordenadas& coords, uint8_t tipo);
+    SolicitudCrearEdificio(Coordenadas& coords, uint8_t tipo);
 
-    void enviarSolicitud(ProtocoloCliente& protocolo);
+    void enviarSolicitud(ProtocoloCliente& protocolo, uint8_t id_jugador);
 
     ~SolicitudCrearEdificio() = default;
 };

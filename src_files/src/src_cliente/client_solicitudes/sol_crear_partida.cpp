@@ -8,7 +8,7 @@ SolicitudCrearPartida::SolicitudCrearPartida(std::string& nombre_partida, std::s
                                                  casa(casa),
                                                  jugadores_requeridos(jugadores_requeridos) {}
 
-void SolicitudCrearPartida::enviarSolicitud(ProtocoloCliente& protocolo) {
+void SolicitudCrearPartida::enviarSolicitud(ProtocoloCliente& protocolo, uint8_t id_jugador) {
     SolicitudCrearPartidaDTO solicitud(nombre_partida, mapa, casa, jugadores_requeridos);
     protocolo.enviarSolicitudCrearPartida(solicitud);
 }

@@ -91,6 +91,10 @@ void WorldView::zoomOut() {
 	}
 }
 
+void WorldView::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion) {
+	side_menu.empezarConstruccionEdificio(tipo, tiempo_construccion);
+}
+
 void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 							const Coordenadas& coords, uint8_t tipo, uint8_t casa) {
 	EdificioSDL* edificio = edificio_factory.crearEdificio
@@ -102,22 +106,22 @@ void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 			edificios.insert(std::make_pair(coord_actual, edificio));
 		}
 	}
+	side_menu.edificioCreado(tipo);
 }
 
-void WorldView::click_en_mapa(uint32_t pos_x, uint32_t pos_y) {
+void WorldView::click(uint32_t pos_x, uint32_t pos_y) {
 	if (pos_x < ancho_ventana - ancho_menu) {
 		Coordenadas coords = mapa.obtenerCoords(pos_x, pos_y);
 		if (edificios.find(coords) != edificios.end()) {
 			seleccionarEdificio(edificios.at(coords));
 		} else {
-			if (side_menu.tieneBotonSeleccionado()) {
-				SolicitudCliente* solicitud = side_menu.clickEnMapa(coords);
+			SolicitudCliente* solicitud = side_menu.clickEnMapa(coords);
+			if (solicitud)
 				cola_solicitudes.push(solicitud);
-			}
 			deseleccionarEdificios();
 		}
 	} else {
-		SolicitudCliente* solicitud = side_menu.click_en_menu(pos_x, pos_y);
+		SolicitudCliente* solicitud = side_menu.clickEnMenu(pos_x, pos_y);
 		if (solicitud) {
 			cola_solicitudes.push(solicitud);
 			deseleccionarEdificios();
@@ -127,6 +131,10 @@ void WorldView::click_en_mapa(uint32_t pos_x, uint32_t pos_y) {
 
 void WorldView::modificarEspecia(uint16_t cantidad_especia) {
 	side_menu.modificarEspecia(cantidad_especia);
+}
+
+void WorldView::actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables) {
+	side_menu.actualizarTiendaEdificios(edificios_comprables);
 }
 
 void WorldView::salir() {
@@ -142,7 +150,7 @@ void WorldView::update(long frame_actual) {
 		edificio.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(),
 								frame_actual, zoom);
 	
-	this->side_menu.update(frame_actual);
+	this->side_menu.update(frames_transcurridos);
 	this->frame_anterior = frame_actual;
 }
 

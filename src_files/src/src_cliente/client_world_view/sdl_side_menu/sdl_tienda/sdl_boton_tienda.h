@@ -14,13 +14,12 @@ class BotonTiendaSDL {
     SDL2pp::Texture& logo;
     SDL2pp::Texture& texto_listo;
     
-    bool habilitado = true;     // temporal
+    bool habilitado = false;
     bool seleccionado = false;
     bool construyendo = false;
-    bool listo = true;          // temporal
-    long frames_para_construir = 0;
-    long frames_restantes_construccion = 0;
-    long frame_anterior = 0;
+    bool listo = false;
+    uint16_t frames_para_construir = 0;
+    uint16_t frames_restantes_construccion = 0;
 
     // Constantes
     const float relacion_ancho_largo;
@@ -33,6 +32,8 @@ class BotonTiendaSDL {
     SDL2pp::Rect destino_construyendo;
     SDL2pp::Rect destino_texto;
 
+    bool contiene(int pos_x, int pos_y) const;
+
 public:
     BotonTiendaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
                     uint8_t casa, uint8_t id_jugador, SDL2pp::Rect destino,
@@ -41,16 +42,19 @@ public:
     void habilitar();
     void deshabilitar();
 
+    /*
+     * Quita el texto "listo" del boton debido a que ya se creo el edificio.
+    */
+    void edificioCreado();
+
     bool estaSeleccionado() const;
 
-    void empezarConstruccion(int milisegundos_para_construir);
+    void empezarConstruccion(uint16_t milisegundos_para_construir);
 
-    bool contiene(int pos_x, int pos_y) const;
-
-    SolicitudCliente* click();
+    SolicitudCliente* click(int pos_x, int pos_y);
     SolicitudCliente* clickEnMapa(Coordenadas& coords);
 
-    void update(long frame_actual);
+    void update(long frames_transcurridos);
     void render();
 
     ~BotonTiendaSDL() = default;

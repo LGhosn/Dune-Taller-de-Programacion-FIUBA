@@ -9,7 +9,7 @@ class SolicitudUnirseAPartida : public SolicitudCliente {
 public:
     SolicitudUnirseAPartida(std::string casa, std::string nombre_partida);
 
-    void enviarSolicitud(ProtocoloCliente& protocolo);
+    void enviarSolicitud(ProtocoloCliente& protocolo, uint8_t id_jugador);
 
     ~SolicitudUnirseAPartida() = default;
 };

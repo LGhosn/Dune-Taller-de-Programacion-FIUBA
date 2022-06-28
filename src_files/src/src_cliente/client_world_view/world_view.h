@@ -13,11 +13,6 @@
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include <list>
 
-#define ZOOM_INICIAL 3.0f
-#define ZOOM_MAXIMO 4.0f
-#define ZOOM_MINIMO 2.0f
-#define ZOOM_PASO 0.1f
-
 class WorldView {
 	YAML::Node& constantes;
 	ColoresSDL colores;
@@ -64,12 +59,16 @@ public:
 	void zoomIn();
 	void zoomOut();
 
+	void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
+
 	void crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 						const Coordenadas& coords, uint8_t tipo, uint8_t casa);
 
-	void click_en_mapa(uint32_t pos_x, uint32_t pos_y);
+	void click(uint32_t pos_x, uint32_t pos_y);
 
 	void modificarEspecia(uint16_t cantidad_especia);
+
+	void actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
 
 	void salir();
 

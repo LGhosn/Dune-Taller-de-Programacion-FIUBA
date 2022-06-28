@@ -135,6 +135,21 @@ uint8_t ProtocoloServidor::recibirCodigoDeSolicitud() {
  *             METODOS REFERIDOS A CREAR EDIFICIOS
  * *****************************************************************/
 
+void ProtocoloServidor::enviarComandoEmpezarConstruccionEdificio(uint8_t tipo_edificio,
+                                                uint16_t tiempo_construccion) {
+    std::vector<uint8_t> buffer = serializador.serializarComandoEmpezarConstruccionEdificio(
+                                        tipo_edificio, tiempo_construccion);
+    enviarBuffer(buffer);
+}
+
+SolComprarEdificioDTO ProtocoloServidor::recibirSolicitudComprarEdificio() {
+    uint8_t id_jugador;
+    this->skt_comunicador->recvall(&id_jugador, SIZEOF_BYTE);
+    uint8_t tipo;
+    this->skt_comunicador->recvall(&tipo, SIZEOF_BYTE);
+    return SolComprarEdificioDTO(id_jugador, tipo);
+}
+
 void ProtocoloServidor::enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio, 
                                             uint8_t tipo, const Coordenadas& coords,
                                             uint8_t casa) const {
@@ -170,6 +185,18 @@ void ProtocoloServidor::enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t 
 void ProtocoloServidor::enviarComandoModificarEspecia(uint16_t cantidad_especia) {
     std::vector<uint8_t> buffer = serializador.serializarComandoModificarEspecia(cantidad_especia);
     enviarBuffer(buffer);
+}
+
+/* *****************************************************************
+ * METODOS REFERIDOS A ACTUALIZAR ESTADO COMPRA EDIFICIOS Y UNIDADES
+ * *****************************************************************/
+
+void ProtocoloServidor::enviarComandoActualizarTiendaEdificios(const std::vector<bool>& edificios_comprables) {
+    enviarBuffer(serializador.serializarComandoActualizarTiendaEdificios(edificios_comprables));
+}
+
+void ProtocoloServidor::enviarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables) {
+    enviarBuffer(serializador.serializarComandoActualizarTiendaUnidades(unidades_comprables));
 }
 
 /* *****************************************************************

@@ -1,9 +1,9 @@
 #include <QApplication>
-#include "src_editor/DuneEditorDeMapas.h"
+#include "src_editor/SelectorDeModoDeEdicion.h"
 
 int main (int argc, char** argv) {
     QApplication app(argc, argv);
-    DuneEditorDeMapas editor;
-    editor.show();
+    SelectorDeModoDeEdicion selector;
+    selector.show();
     return app.exec();
 }
