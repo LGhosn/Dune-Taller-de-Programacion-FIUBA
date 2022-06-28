@@ -7,7 +7,7 @@
 #include "../src_common/common_DTO/dto_sol_crear_partida.h"
 #include "../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "../src_common/common_DTO/Status.h"
-#include <map>
+#include <list>
 #include <string>
 #include <iostream>
 #include <cstdlib>
@@ -18,15 +18,10 @@ class Partida;
 class Status;
 
 class Lobby {
-    std::map<std::string, Partida, PartidaCmp> partidas_creadas;
+    std::list<Partida> partidas_creadas;
     std::mutex m;
 
-    /*
-     * Lista una partida si y solo si dicha partida no
-     * fue creada anteriormente, es decir, no existe una
-     * partida con el mismo nombre en la lista de partidas.
-     * */
-    void listarPartida(Partida& nueva_partida);
+    Partida* encontrarPartida(const std::string& nombre);
 
 public:
     /*
