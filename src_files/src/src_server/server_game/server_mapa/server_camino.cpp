@@ -6,6 +6,7 @@
 #include <cmath>
 #include <functional>
 #include <algorithm>
+#include <memory>
 
 /* ******************************************************************
  *                        PRIVADAS
@@ -58,11 +59,11 @@ void Camino::a_star(const Coordenadas& origen, const Coordenadas& destino,
 }
 
 char Camino::get_tipo_de_terreno(const Coordenadas& pos) const {
-    return this->mapa[pos.y][pos.x];
+    return (*this->mapa)[pos.y][pos.x]->obtenerTipo();
 }
 
 bool Camino::posicion_es_valida(const Coordenadas& pos, std::vector<char>& terr_no_accesibles) const {
-    if (pos.x < mapa[0].size() && pos.y < mapa.size()) {
+    if (pos.x < this->mapa[0].size() && pos.y < mapa->size()) {
         char terreno = get_tipo_de_terreno(pos);
         return std::find(terr_no_accesibles.begin(), terr_no_accesibles.end(), terreno) == terr_no_accesibles.end();
     }
@@ -96,7 +97,7 @@ std::stack<Coordenadas> Camino::construir_camino
  *                        PUBLICAS
  * *****************************************************************/
 
-Camino::Camino(std::vector< std::vector<char> >& mapa) : mapa(mapa) {
+Camino::Camino() : mapa(nullptr) {
     this->vecinos_posibles.reserve(8);
     this->vecinos_posibles.emplace_back(1, 0);
     this->vecinos_posibles.emplace_back(0, 1);
@@ -106,6 +107,10 @@ Camino::Camino(std::vector< std::vector<char> >& mapa) : mapa(mapa) {
     this->vecinos_posibles.emplace_back(1, -1);
     this->vecinos_posibles.emplace_back(-1, 0);
     this->vecinos_posibles.emplace_back(0, -1);
+}
+
+void Camino::start(std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa) {
+    this->mapa = mapa;
 }
 
 std::stack<Coordenadas> Camino::obtener_camino(const Coordenadas& origen, const Coordenadas& destino,

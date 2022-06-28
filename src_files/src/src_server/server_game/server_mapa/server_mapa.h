@@ -9,16 +9,20 @@
 
 #include "../../../src_common/common_coords.h"
 #include "server_camino.h"
+#include "entidades/edificios/edificios_mapa.h"
+#include "entidades/terrenos/terrenos_mapa.h"
+#include "entidades/unidades/unidades_mapa.h"
 
 class Mapa {
 private:
     int ancho;
     int alto;
-    std::vector< std::vector<char> > mapa;
+    std::vector< std::vector<std::unique_ptr<Entidades> > > mapa;
     std::vector< Coordenadas > colisiones;
     Camino camino;
-    bool primera_construccion = true;
+    std::list<uint16_t> primera_construccion;
     std::list<Coordenadas> coords_centros;
+    YAML::Node edificio_config;
 
     /*
      * Dado un edificio, devuelve la cantidad de casillas que ocupa y el tipo de edificio que es 
@@ -41,7 +45,7 @@ private:
      * @param pos_y: posicion en y de donde se quiere colocar el edificio 
      * @param propiedades_edif: propiedades del edificio a construir <dimension_x, dimension_y, tipo_edificio>
     */
-    void edificar(const Coordenadas& coords, std::tuple<int, int, char> propiedades_edif);
+    void edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio);
 
     /*
      * @brief Verifica que el terreno sea lo suficiente resistente para las construcciones
@@ -50,9 +54,13 @@ private:
     */
     bool terrenoFirme(const Coordenadas& coords);
 
-    bool construccionLejana(const Coordenadas &coords);
+    bool construccionLejana(const Coordenadas &coords, uint16_t id_jugador);
 
     void cargarCentrosDeConstruccion(YAML::Node& mapa_config);
+
+    std::unique_ptr<Edificio> clasificarEdificio(char tipo, YAML::Node& edificio_config, uint16_t id_jugador);
+
+    std::unique_ptr<Entidades> clasificarTerreno(char tipo);
 
 public:
     /*
@@ -89,6 +97,8 @@ public:
     void modificar_terreno(uint16_t pos_x, uint16_t pos_y, char terreno);
 
     void demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y);
+
+    void moverUnidad(uint16_t id_jugador, const Coordenadas& desde, const Coordenadas& hasta);
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.

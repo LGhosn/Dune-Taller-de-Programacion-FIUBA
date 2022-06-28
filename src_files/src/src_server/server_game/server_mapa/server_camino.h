@@ -8,9 +8,10 @@
 #include <unordered_map>
 
 #include "../../../src_common/common_coords.h"
+#include "entidades/entidades_mapa.h"
 
 class Camino {
-	std::vector< std::vector<char> >& mapa;
+	std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa;
 	std::vector<Coordenadas> vecinos_posibles;
 
 	float distancia(const Coordenadas& origen, const Coordenadas& destino) const;
@@ -33,7 +34,9 @@ class Camino {
 		const Coordenadas& origen, const Coordenadas& destino) const;
 
 public:
-	Camino(std::vector< std::vector<char> >& mapa);
+	Camino();
+
+	void start(std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa);
 
 	std::stack<Coordenadas> obtener_camino(const Coordenadas& origen, const Coordenadas& destino,
 		std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const;
