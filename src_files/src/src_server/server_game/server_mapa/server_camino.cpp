@@ -59,7 +59,7 @@ void Camino::a_star(const Coordenadas& origen, const Coordenadas& destino,
 }
 
 char Camino::get_tipo_de_terreno(const Coordenadas& pos) const {
-    return (*this->mapa)[pos.y][pos.x]->obtenerTipo();
+    return (*this->mapa)[pos.y][pos.x]->obtenerIdentificador();
 }
 
 bool Camino::posicion_es_valida(const Coordenadas& pos, std::vector<char>& terr_no_accesibles) const {

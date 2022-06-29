@@ -1,5 +1,7 @@
 #include "yaml-cpp/yaml.h"
 #include "server_mapa.h"
+#include <iostream>
+#include <typeinfo>
 
 #define DISTANCIA_EDIFICIOS 5
 #define CENTRO 0
@@ -19,62 +21,64 @@
 /* ******************************************************************
  *                        PRIVADAS
  * *****************************************************************/
-template<typename Base, typename T>
-inline bool instaciaDe(const T&) {
-    return std::is_base_of<Base, T>::value;
-}
+// template<typename Base, typename T>
+// inline bool instaciaDe(const T&) {
+//     return std::is_base_of<Base, T>::value;
+// }
 
 bool Mapa::hayColisiones(const Coordenadas& coords, int dimension_x, int dimension_y) {
-    bool colision = false;
     for (int i = coords.y; i < coords.y + dimension_y; i++){
+        // Verifico que el edificio no se salga del mapa
+        if (i < 0 || i >= this->alto) return true;
+
         for (int j = coords.x; j < coords.x + dimension_x; j++){
             // Verifico que el edificio no se salga del mapa
-            if (j >= this->ancho || i >= this->alto){
-                // this->colisiones.push_back(Coordenadas(j, i));
-                colision = true;
-                continue;
-            }
+            if (j >= this->ancho || j < 0) return true;
+
             std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
 
-            if (instaciaDe<Edificio>(entidad) || instaciaDe<UnidadesMapa>(entidad)){
-                // this->colisiones.push_back(Coordenadas(j, i));
-                colision = true;
+            char tipo_entidad = entidad->obtenerTipoDeEntidad();
+            if (tipo_entidad == 'E' || tipo_entidad == 'U'){
+                return true;
             }
         }
     }
-    return colision;
+    return false;
 }
 
-void Mapa::edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio) {
+void Mapa::edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio, uint16_t id_jugador) {
+    char tipo_edificio = edificio->obtenerIdentificador();
     int dimension_x = edificio->obtenerDimensionX();
     int dimension_y = edificio->obtenerDimensionY();
-    if (this->colisiones.empty()){
-        for (int i = coords.y; i < (coords.y + dimension_y); i++){
-            for (int j = coords.x; j < (coords.x + dimension_x); j++){
-                std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
-                if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || entidad->obtenerTipo() != 'R'){
-                    continue;
-                }
-                this->mapa[i][j] = std::move(edificio); //todo implementar move                
-            }
+    for (int i = coords.y; i < (coords.y + dimension_y); i++){
+        for (int j = coords.x; j < (coords.x + dimension_x); j++){
+            this->mapa[i][j] = clasificarEdificio(tipo_edificio, this->edificio_config, id_jugador);
+            // std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
+            // std::cout << "Tipo de entidad: " << entidad->obtenerTipoDeEntidad() << std::endl;
+            // std::cout << "Tipo de id jugador: " << entidad->obtenerIdJugador() << std::endl;
+            // std::cout << "Tipo de identificador: " << entidad->obtenerIdentificador() << std::endl;
+
         }
     }
 }
 
-bool Mapa::terrenoFirme(const Coordenadas& coords) {
-    std::unique_ptr<Entidades>& entidad = this->mapa[coords.y][coords.x];
-    char tipo = entidad->obtenerTipo();
-    return tipo == ROCA;
+bool Mapa::terrenoFirme(const Coordenadas& coords, int dimension_x, int dimension_y) {
+    for (int i = coords.y; i < (coords.y + dimension_y); i++){
+        if (0 > i || i >= this->alto) return false;
+
+        for (int j = coords.x; j < (coords.x + dimension_x); j++){
+            if (0 > j || j >= this->ancho) return false;
+
+            std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
+            if (entidad->obtenerIdentificador() != ROCA){
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 bool Mapa::construccionLejana(const Coordenadas& coords, uint16_t id_jugador) {
-    std::list<uint16_t>::iterator it;
-    it = std::find(this->primera_construccion.begin(), this->primera_construccion.end(), id_jugador);
-    if (it == this->primera_construccion.end()){
-        return false;
-    }
-    this->primera_construccion.push_front(id_jugador);
-
     for (int i = (coords.y - DISTANCIA_EDIFICIOS); i < (coords.y + DISTANCIA_EDIFICIOS); i++){
         if (i < 0 || i >= this->alto) continue;
 
@@ -82,8 +86,13 @@ bool Mapa::construccionLejana(const Coordenadas& coords, uint16_t id_jugador) {
             if (0 > j || j >= this->ancho) continue;
             std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
 
-            if (instaciaDe<Edificio>(entidad)){
-                return false;
+            char tipo_entidad = entidad->obtenerTipoDeEntidad();
+            std::cout << "tipo_entidad: " << tipo_entidad << std::endl;
+            if (tipo_entidad == 'E'){
+                uint16_t id_actual_jugador = entidad->obtenerIdJugador();
+                if (id_actual_jugador == id_jugador){
+                    return false;
+                }
             }
         }
     }
@@ -193,10 +202,10 @@ bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenada
     int dimension_x = edif->obtenerDimensionX();
     int dimension_y = edif->obtenerDimensionY();
 
-    if (!terrenoFirme(coords) || hayColisiones(coords, dimension_x, dimension_y) || construccionLejana(coords, id_jugador)) {
+    if (!terrenoFirme(coords, dimension_x, dimension_y) || hayColisiones(coords, dimension_x, dimension_y) || construccionLejana(coords, id_jugador)) {
         return false;
     }
-    edificar(coords, edif);
+    edificar(coords, edif, id_jugador);
     return true;
 }
 
@@ -204,10 +213,10 @@ void Mapa::construirCentro(uint16_t id_jugador, const Coordenadas& coords) {
     std::unique_ptr<Edificio> centro = std::unique_ptr<Edificio>(new CentroDeConstruccion(this->edificio_config, id_jugador));
     int dimension_x = centro->obtenerDimensionX();
     int dimension_y = centro->obtenerDimensionY();
-    if (!terrenoFirme(coords) || hayColisiones(coords, dimension_x, dimension_y)) {
+    if (!terrenoFirme(coords, dimension_x, dimension_y) || hayColisiones(coords, dimension_x, dimension_y)) {
         throw std::runtime_error("Coordenadas del centro invalidas");
     }
-    edificar(coords, centro);
+    edificar(coords, centro, id_jugador);
 }
 
 char Mapa::moverUnidad(const Coordenadas& coords_actual, const Coordenadas& coords_nueva) {
@@ -223,7 +232,7 @@ char Mapa::moverUnidad(const Coordenadas& coords_actual, const Coordenadas& coor
 
     this->mapa[coords_actual.y][coords_actual.x] = clasificarTerreno(terreno);
 
-    char terreno_nuevo = this->mapa[coords_nueva.y][coords_nueva.x]->obtenerTipo();
+    char terreno_nuevo = this->mapa[coords_nueva.y][coords_nueva.x]->obtenerIdentificador();
     this->mapa[coords_nueva.y][coords_nueva.x] = std::unique_ptr<Entidades>(new UnidadesMapa(terreno_nuevo));
     return obtenerDireccion(coords_actual, coords_nueva);
 }
@@ -247,7 +256,7 @@ void Mapa::demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y) {
     for (int i = pos_y; i < (pos_y + dimension_y); i++){
         for (int j = pos_x; j < (pos_x + dimension_x); j++){
             std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
-            if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || entidad->obtenerTipo() != edif->obtenerTipo()){
+            if (0 > j || j >= this->ancho || 0 > i || i >= this->alto || entidad->obtenerIdentificador() != edif->obtenerIdentificador()){
                 continue;
             }
             this->mapa[i][j] = std::unique_ptr<Entidades>(new Roca());                
