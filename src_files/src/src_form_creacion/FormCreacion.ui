@@ -111,22 +111,6 @@
     <string>Nombre de partida</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="CantLine">
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>230</y>
-     <width>161</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="placeholderText">
-    <string>Jugadores requeridos</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="CrearButton">
    <property name="geometry">
     <rect>
@@ -157,22 +141,6 @@
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; font-style:italic; color:#eeeeec;&quot;&gt;Mapa:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="MapaLine">
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>200</y>
-     <width>161</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="placeholderText">
-    <string>Mapa elegido</string>
    </property>
   </widget>
   <widget class="QPushButton" name="AtreidesButton">
@@ -231,6 +199,34 @@
    <property name="text">
     <string/>
    </property>
+  </widget>
+  <widget class="QSpinBox" name="JugadoresSpinBox">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>230</y>
+     <width>48</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>2</number>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="MapaComboBox">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>200</y>
+     <width>161</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>-</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources>

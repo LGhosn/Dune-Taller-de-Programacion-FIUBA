@@ -12,6 +12,10 @@
 #include <QWidget>
 #include <QScreen>
 #include <QMessageBox>
+#include <filesystem>
+#include <list>
+#include <QList>
+#include <QCloseEvent>
 
 class Ui_FromCrear;
 
@@ -30,6 +34,16 @@ public:
      * la creación se dio con o sin éxito.
      * */
     void solicitudDeCreacion();
+
+    /*
+     * Establece los mapas disponibles en la QComboBox.
+     */
+    void establecerMapas();
+
+    /*
+     * Establece los jugadores disponibles en la SpinBox.
+     */
+    void establecerJugadores();
 
     /* Muestra un QMessageBox indicando si la union solicitada fue
      * completada con o sin éxito.
@@ -84,5 +98,6 @@ private:
     Client& cliente;
     Ui_FromCrear* ui;
     std::set<std::string> casas_elegibles = {"Atreides", "Harkonnen", "Ordos"};
+    std::list<std::string> mapas_encontrados;
 };
 #endif // FORM_CREACION_H

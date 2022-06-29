@@ -7,20 +7,42 @@ FormCreacion::FormCreacion(Client& cliente, QWidget* parent) :
                             cliente(cliente),
                             ui(new Ui_FromCrear) {
     ui->setupUi(this);
+    establecerMapas();
     move(QGuiApplication::screens().at(0)->geometry().center() - frameGeometry().center());
     connect(ui->CrearButton, &QPushButton::clicked, this, &FormCreacion::solicitudDeCreacion);
     connect(ui->AtreidesButton, &QPushButton::clicked, this, &FormCreacion::elegirCasaAtreides);
     connect(ui->HarkonnenButton, &QPushButton::clicked, this, &FormCreacion::elegirCasaHarkonnen);
     connect(ui->OrdosButton, &QPushButton::clicked, this, &FormCreacion::elegirCasaOrdos);
+    connect(ui->MapaComboBox, &QComboBox::currentTextChanged, this, &FormCreacion::establecerJugadores);
+}
+
+void FormCreacion::establecerMapas() {
+    for (auto &file: std::filesystem::directory_iterator(RESOURCE_PATH"/maps/")) {
+        std::string mapa_path = file.path();
+        std::string mapa = mapa_path.substr(mapa_path.find_last_of('/') + 1);
+        mapa = mapa.substr(0, mapa.find_first_of('.'));
+        mapas_encontrados.push_back(mapa);
+    }
+
+    for (auto &mapa : mapas_encontrados) {
+        ui->MapaComboBox->addItem(QString::fromStdString(mapa));
+    }
+}
+
+void FormCreacion::establecerJugadores() {
+    YAML::Node config = YAML::LoadFile(RESOURCE_PATH"/maps/" + ui->MapaComboBox->currentText().toStdString() + ".yaml");
+    int jugadores_maximos = config["Jugadores"].as<int>();
+    ui->JugadoresSpinBox->setMinimum(2);
+    ui->JugadoresSpinBox->setMaximum(jugadores_maximos);
 }
 
 void FormCreacion::solicitudDeCreacion() {
     try {
         // Tomamos de cada campo rellenado por el usuario.
         std::string nombre_partida = ui->NombreLine->text().toStdString();
-        std::string mapa = ui->MapaLine->text().toStdString();
+        std::string mapa = ui->MapaComboBox->currentText().toStdString();
         std::string casa = ui->CasaLine->text().toStdString();
-        uint8_t jugadores_requeridos = ui->CantLine->text().toInt();
+        uint8_t jugadores_requeridos = ui->JugadoresSpinBox->value();
 
         // Validamos que el nombre de la partida y mapa no sean un string vacío,
         // la casa y el número de jugadores requeridos en caso de no serlo se
@@ -54,6 +76,7 @@ void FormCreacion::crearNotificacion(Status& status) {
         cliente.establecerPartidaEmpezada();
         close();
         cliente.empezarPartida();
+        //cliente_en_partida = true;
     } else {
         if (status.obtenerCodigoDePartida() == PARTIDA_EXISTENTE) {
             std::cout << "Creacion Fallida, existe otra partida con ese mismo nombre, por favor elegir otro...." << std::endl;
