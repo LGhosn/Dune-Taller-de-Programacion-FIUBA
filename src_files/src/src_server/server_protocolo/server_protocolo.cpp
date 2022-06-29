@@ -123,7 +123,7 @@ SolicitudMoverUnidadDTO ProtocoloServidor::recibirSolicitudMoverUnidad() {
 }
 
 
-void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t id_unidad, char direccion) {}
+void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t id_unidad, char direccion, long tiempo) {}
 
 uint8_t ProtocoloServidor::recibirCodigoDeSolicitud() {
     uint8_t codigo;

@@ -7,6 +7,8 @@
 #include "../server_DTO/dto_unidad_info.h"
 #include "../server_comandos/cmd_empezar_construccion_edificio.h"
 
+#define CODIGO_CENTRO 0
+
 std::map<uint8_t, Coordenadas> Game::sortearCentros() const {
     std::list<Coordenadas> centros = mapa.obtenerCoordsCentros();
     std::map<uint8_t, Coordenadas> centros_sorteados;
@@ -62,8 +64,13 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
     }
 }
 
-std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador) {
-    return nullptr;
+std::unique_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador, uint8_t id_unidad) {
+    switch (tipo_unidad) {
+        case 1:
+            // return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa));
+        default:
+            throw std::runtime_error("Game: Tipo de unidad no reconocido");
+    }
 }
 
 void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
@@ -79,26 +86,7 @@ void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
 
 void Game::moverUnidad(uint16_t id_unidad, const Coordenadas& destino) {
     std::unique_ptr<Unidad>& unidad = this->unidades.at(id_unidad);
-    Jugador& jugador = unidad->obtenerJugador();
-
-    UnidadInfoDTO unidad_info = unidad->obtenerInfo(destino);
-    const Coordenadas& origen = unidad_info.origen;
-
-    std::stack<Coordenadas> camino = mapa.obtenerCamino(unidad_info);
-    int tam_camino = camino.size();
-    for (int i = 0; i < tam_camino; i++) {
-        Coordenadas paso_actual = camino.top();
-        camino.pop();
-        char direccion = mapa.moverUnidad(origen, paso_actual);
-
-        for (auto& cola : colas_comandos) {
-            CmdMoverUnidadServer* comando =
-                new CmdMoverUnidadServer(jugador.obtenerId(), direccion);
-            cola.second->push(comando);
-        }
-        (Coordenadas&)origen = paso_actual;
-    }
-
+    unidad->empezarMovimiento(destino);
 }
 
 
@@ -137,7 +125,27 @@ void Game::empezarPartida() {
         jugador.empezarPartida();
 }
 
+void Game::updateUnidad(long iter) {
+    long tiempo = -1;
+    char direccion = ' ';
+    for (auto& unidades_jugador: unidades) {
+        unidades_jugador.second->update(iter, &tiempo, &direccion);
+
+        if (tiempo != -1){
+            for (auto& cola: colas_comandos) {
+                CmdMoverUnidadServer* comando =
+                    new CmdMoverUnidadServer(unidades_jugador.first, direccion, tiempo);
+                cola.second->push(comando);
+            }
+            tiempo = -1;
+            direccion = ' ';
+        }
+        
+    }
+}
+
 bool Game::update(long iter) {
+    updateUnidad(iter);
     return true;
 }
 

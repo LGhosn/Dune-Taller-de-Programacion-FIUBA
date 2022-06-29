@@ -11,9 +11,11 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,13 +28,13 @@ public:
     QLabel *NombreLabel;
     QLineEdit *CasaLine;
     QLineEdit *NombreLine;
-    QLineEdit *CantLine;
     QPushButton *CrearButton;
     QLabel *MapaLabel;
-    QLineEdit *MapaLine;
     QPushButton *AtreidesButton;
     QPushButton *HarkonnenButton;
     QPushButton *OrdosButton;
+    QSpinBox *JugadoresSpinBox;
+    QComboBox *MapaComboBox;
 
     void setupUi(QWidget *FromCrear)
     {
@@ -63,10 +65,6 @@ public:
         NombreLine->setObjectName(QString::fromUtf8("NombreLine"));
         NombreLine->setGeometry(QRect(380, 170, 161, 25));
         NombreLine->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
-        CantLine = new QLineEdit(FromCrear);
-        CantLine->setObjectName(QString::fromUtf8("CantLine"));
-        CantLine->setGeometry(QRect(380, 230, 161, 25));
-        CantLine->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         CrearButton = new QPushButton(FromCrear);
         CrearButton->setObjectName(QString::fromUtf8("CrearButton"));
         CrearButton->setGeometry(QRect(240, 280, 89, 25));
@@ -75,10 +73,6 @@ public:
         MapaLabel->setObjectName(QString::fromUtf8("MapaLabel"));
         MapaLabel->setGeometry(QRect(20, 200, 191, 31));
         MapaLabel->setStyleSheet(QString::fromUtf8(""));
-        MapaLine = new QLineEdit(FromCrear);
-        MapaLine->setObjectName(QString::fromUtf8("MapaLine"));
-        MapaLine->setGeometry(QRect(380, 200, 161, 25));
-        MapaLine->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         AtreidesButton = new QPushButton(FromCrear);
         AtreidesButton->setObjectName(QString::fromUtf8("AtreidesButton"));
         AtreidesButton->setGeometry(QRect(220, 10, 91, 101));
@@ -94,6 +88,14 @@ public:
         OrdosButton->setGeometry(QRect(450, 10, 89, 101));
         OrdosButton->setCursor(QCursor(Qt::PointingHandCursor));
         OrdosButton->setStyleSheet(QString::fromUtf8("border-image: url(:/Logo/OrdosIcon.png)"));
+        JugadoresSpinBox = new QSpinBox(FromCrear);
+        JugadoresSpinBox->setObjectName(QString::fromUtf8("JugadoresSpinBox"));
+        JugadoresSpinBox->setGeometry(QRect(380, 230, 48, 26));
+        JugadoresSpinBox->setMinimum(2);
+        MapaComboBox = new QComboBox(FromCrear);
+        MapaComboBox->addItem(QString());
+        MapaComboBox->setObjectName(QString::fromUtf8("MapaComboBox"));
+        MapaComboBox->setGeometry(QRect(380, 200, 161, 25));
 
         retranslateUi(FromCrear);
 
@@ -108,13 +110,13 @@ public:
         NombreLabel->setText(QApplication::translate("FromCrear", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600; font-style:italic; color:#eeeeec;\">Nombre de Partida:</span></p></body></html>", nullptr));
         CasaLine->setPlaceholderText(QApplication::translate("FromCrear", "Casa elegida", nullptr));
         NombreLine->setPlaceholderText(QApplication::translate("FromCrear", "Nombre de partida", nullptr));
-        CantLine->setPlaceholderText(QApplication::translate("FromCrear", "Jugadores requeridos", nullptr));
         CrearButton->setText(QApplication::translate("FromCrear", "Crear", nullptr));
         MapaLabel->setText(QApplication::translate("FromCrear", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600; font-style:italic; color:#eeeeec;\">Mapa:</span></p></body></html>", nullptr));
-        MapaLine->setPlaceholderText(QApplication::translate("FromCrear", "Mapa elegido", nullptr));
         AtreidesButton->setText(QString());
         HarkonnenButton->setText(QString());
         OrdosButton->setText(QString());
+        MapaComboBox->setItemText(0, QApplication::translate("FromCrear", "-", nullptr));
+
     } // retranslateUi
 
 };
