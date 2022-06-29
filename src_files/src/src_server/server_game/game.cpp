@@ -2,7 +2,7 @@
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
 #include "../server_comandos/cmd_crear_edificio.h"
 #include "../server_comandos/cmd_empezar_partida.h"
-#include "../server_comandos/cmd_comprar_unidad.h"
+#include "../server_comandos/cmd_empezar_entrenamiento.h"
 #include "../server_comandos/cmd_mover_unidad.h"
 #include "../server_DTO/dto_unidad_info.h"
 #include "../server_comandos/cmd_empezar_construccion_edificio.h"
@@ -22,9 +22,10 @@ void Game::crearCentro(uint16_t id_jugador, const Coordenadas& coords) {
     Jugador* jugador = encontrarJugador(id_jugador);
     for (auto& cola : colas_comandos) {
         CmdCrearEdificioServer* comando =
-                    new CmdCrearEdificioServer(id_jugador, conts_id_edificios, 0, coords, jugador->obtenerCasa());
+                new CmdCrearEdificioServer(id_jugador, conts_id_edificios, CODIGO_CENTRO, coords, jugador->obtenerCasa());
         cola.second->push(comando);
     }
+    jugador->edificioCreado(CODIGO_CENTRO);
     conts_id_edificios++;
 }
 
@@ -57,6 +58,7 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
             cola.second->push(comando);
         }
         conts_id_edificios++;
+        jugador->edificioCreado(tipo);
     }
 }
 
@@ -66,16 +68,12 @@ std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador) 
 
 void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
     Jugador* jugador = encontrarJugador(id_jugador);
-    if(!jugador->comprarUnidad(tipo_unidad)){
-        throw std::runtime_error("Game: No se pudo comprar unidad"); // TODO: implementar cmd de dinero insuficiente
-    }
-
-    // this->unidades.emplace(this->conts_id_unidad++, clasificarUnidad(tipo_unidad, jugador)); //TODO: Implementar clasificarUnidad
-    for (auto& cola : colas_comandos) {
-        CmdComprarUnidadServer* comando =
-            new CmdComprarUnidadServer(id_jugador, tipo_unidad);
-        cola.second->push(comando);
-        conts_id_edificios++;
+    bool resultado = jugador->comprarUnidad(tipo_unidad);
+    if (resultado) {
+        uint16_t tiempo_construccion = jugador->obtenerTiempoConstruccionUnidad(tipo_unidad);
+        CmdEmpezarEntrenamientoServer* comando =
+                        new CmdEmpezarEntrenamientoServer(tipo_unidad, tiempo_construccion);
+        colas_comandos[id_jugador]->push(comando);
     }
 }
 
@@ -108,7 +106,7 @@ void Game::comprarEdificio(uint8_t id_jugador, uint8_t tipo) {
     Jugador* jugador = encontrarJugador(id_jugador);
     bool resultado = jugador->comprarEdificio(tipo);
     if (resultado) {
-        uint16_t tiempo_construccion = jugador->obtenerTiempoConstruccion();
+        uint16_t tiempo_construccion = jugador->obtenerTiempoConstruccionEdificio();
         CmdEmpezarConstruccionEdificioServer* comando =
                         new CmdEmpezarConstruccionEdificioServer(tipo, tiempo_construccion);
         colas_comandos[id_jugador]->push(comando);

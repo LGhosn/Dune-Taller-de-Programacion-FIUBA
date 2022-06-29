@@ -12,7 +12,6 @@
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
 #include "../server_solicitudes/solicitud_juego/sol_comprar_unidad.h"
 #include "../server_solicitudes/solicitud_juego/sol_mover_unidad.h"
-#include "../server_solicitudes/solicitud_menu/server_solicitud_menu.h"
 #include "yaml-cpp/yaml.h"
 #include <thread>
 #include <atomic>

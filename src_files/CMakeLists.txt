@@ -112,6 +112,8 @@ add_executable(server
         src/src_server/server_comandos/cmd_modificar_especia.cpp
         src/src_server/server_comandos/cmd_comprar_unidad.cpp
         src/src_server/server_comandos/cmd_mover_unidad.cpp
+        src/src_server/server_comandos/cmd_empezar_entrenamiento.cpp
+        src/src_server/server_comandos/cmd_modificar_energia.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_comprar_unidad.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_mover_unidad.cpp
@@ -138,6 +140,7 @@ add_executable(server
         src/src_server/server_game/server_mapa/server_camino_no_encontrado_exception.cpp
         src/src_server/server_game/server_jugador/jugador.cpp
         src/src_server/server_game/server_jugador/especia_acumulada.cpp
+        src/src_server/server_game/server_jugador/energia_acumulada.cpp
         src/src_server/server_aceptador.cpp
         src/src_server/server_handler_cliente/server_handler_cliente.cpp
         src/src_server/server_partida/server_partida.cpp

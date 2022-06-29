@@ -179,11 +179,17 @@ SolicitudComprarUnidadDTO ProtocoloServidor::recibirSolicitudComprarUnidad() {
 void ProtocoloServidor::enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {}
 
 /* *****************************************************************
- *             METODOS REFERIDOS A ACTUALIZAR ESPECIA
+ *             METODOS REFERIDOS A ACTUALIZAR ESPECIA Y ENERGIA
  * *****************************************************************/
 
 void ProtocoloServidor::enviarComandoModificarEspecia(uint16_t cantidad_especia) {
     std::vector<uint8_t> buffer = serializador.serializarComandoModificarEspecia(cantidad_especia);
+    enviarBuffer(buffer);
+}
+
+void ProtocoloServidor::enviarComandoModificarEnergia(int16_t cantidad_energia,
+                                                        uint16_t tope_energia) {
+    std::vector<uint8_t> buffer = serializador.serializarComandoModificarEnergia(cantidad_energia, tope_energia);
     enviarBuffer(buffer);
 }
 
@@ -197,6 +203,11 @@ void ProtocoloServidor::enviarComandoActualizarTiendaEdificios(const std::vector
 
 void ProtocoloServidor::enviarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables) {
     enviarBuffer(serializador.serializarComandoActualizarTiendaUnidades(unidades_comprables));
+}
+
+void ProtocoloServidor::enviarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion) {
+    std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(tipo_unidad, tiempo_construccion);
+    enviarBuffer(buffer);
 }
 
 /* *****************************************************************

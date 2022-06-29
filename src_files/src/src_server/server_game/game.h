@@ -11,6 +11,7 @@
 #include "yaml-cpp/yaml.h"
 
 #define RUTA_CONSTANTES RESOURCE_PATH "/constantes/server_constantes.yaml"
+#define CODIGO_CENTRO 0
 
 class Game {
     bool finished = false;
