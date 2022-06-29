@@ -69,6 +69,5 @@ TiposTexturas:
   - [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 CentrosDeConstruccion:
-  - {x: 1, y: 10}
   - {x: 11, y: 11}
   - {x: 1, y: 1}

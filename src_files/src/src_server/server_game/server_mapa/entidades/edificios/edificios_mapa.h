@@ -11,6 +11,7 @@ protected:
     uint16_t id_jugador;
     uint8_t tipo_entidad;
 
+
 public:
     Edificio() = default;
     virtual int obtenerDimensionX();

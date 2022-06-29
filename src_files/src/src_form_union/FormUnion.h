@@ -12,6 +12,7 @@
 #include <QWidget>
 #include <QScreen>
 #include <QMessageBox>
+#include <QCloseEvent>
 
 class Ui_FormUnir;
 

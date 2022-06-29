@@ -11,6 +11,7 @@ MenuDune::MenuDune(Client& cliente, QWidget *parent) :
     move(QGuiApplication::screens().at(0)->geometry().center() - frameGeometry().center());
     connect(ui->CrearLabel, &QPushButton::clicked, this, &MenuDune::mostrarVentanaDeCreacion);
     connect(ui->UnirseLabel, &QPushButton::clicked, this, &MenuDune::mostrarVentanaDeUnion);
+    //esperarInicioDePartida();
 }
 
 void MenuDune::mostrarVentanaDeCreacion() {
