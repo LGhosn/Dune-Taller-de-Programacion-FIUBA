@@ -19,9 +19,9 @@ TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& text
                     pos_inicial_botones_x(ancho_ventana - ancho + padding + padding_botones),
                     pos_inicial_botones_y(pos_y + padding),
                     tienda_rect(ancho_ventana - ancho + padding,
-                                        pos_y,
-                                        ancho,
-                                        largo) {
+                                    pos_y,
+                                    ancho,
+                                    largo) {
     botones_edificios.emplace_back(renderer, texturas, 1, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
@@ -71,6 +71,34 @@ TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& text
                             ancho_boton,
                             largo_boton),
                         constantes);
+    uint32_t largo_boton_pagina =
+        constantes["WorldView"]["SideMenu"]["Tienda"]["BotonesPagina"]["Alto"].as<uint32_t>();
+    
+    uint32_t padding_boton_pagina =
+        constantes["WorldView"]["SideMenu"]["Tienda"]["BotonesPagina"]["Padding"].as<uint32_t>();
+
+    botones_paginas.emplace_back(renderer, SDL2pp::Rect(
+        pos_inicial_botones_x + ancho_boton + padding_botones,
+        pos_inicial_botones_y + 3 * (largo_boton + padding_botones),
+        ancho_boton,
+        largo_boton_pagina
+    ), texturas.obtenerTextoEdificios(), constantes);
+
+    botones_paginas.emplace_back(renderer, SDL2pp::Rect(
+        pos_inicial_botones_x + ancho_boton + padding_botones,
+        pos_inicial_botones_y + 3 * (largo_boton + padding_botones) +
+                                largo_boton_pagina + padding_boton_pagina,
+        ancho_boton,
+        largo_boton_pagina
+    ), texturas.obtenerTextoInfanteria(), constantes);
+
+    botones_paginas.emplace_back(renderer, SDL2pp::Rect(
+        pos_inicial_botones_x + ancho_boton + padding_botones,
+        pos_inicial_botones_y + 3 * (largo_boton + padding_botones) +
+                                2 * (largo_boton_pagina + padding_boton_pagina),
+        ancho_boton,
+        largo_boton_pagina
+    ), texturas.obtenerTextoVehiculos(), constantes);
 }
 
 void TiendaSDL::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion) {
@@ -125,6 +153,9 @@ void TiendaSDL::render() {
     renderer.SetDrawColor(color.obtenerOscuro());
     renderer.FillRect(tienda_rect);
     for(auto& boton : botones_edificios) {
+        boton.render();
+    }
+    for (auto& boton : botones_paginas) {
         boton.render();
     }
 }

@@ -2,6 +2,7 @@
 #define SDL_TIENDA_H
 
 #include "sdl_boton_edificio.h"
+#include "sdl_boton_paginas.h"
 #include "../../sdl_color/sdl_color.h"
 #include "../../../client_solicitudes/cliente_solicitud.h"
 #include <vector>
@@ -12,6 +13,7 @@ class TiendaSDL {
     uint8_t casa;
     std::vector<BotonEdificioSDL> botones_edificios;
     std::vector<BotonEdificioSDL> botones_unidades;
+    std::vector<BotonPaginasSDL> botones_paginas;
 
     // Constantes
     const uint32_t ancho_menu;

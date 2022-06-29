@@ -4,6 +4,7 @@
 #include "../client_comandos/cmd_actualizar_tienda_edificios.h"
 #include "../client_comandos/cmd_empezar_construccion_edificio.h"
 #include "../client_comandos/cmd_empezar_entrenamiento.h"
+#include "../client_comandos/cmd_modificar_energia.h"
 #include "../client_DTO/dto_cmd_empezar_construccion_edificio.h"
 
 
@@ -57,6 +58,10 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
             CmdEmpezarConstruccionEdificioDTO comando_dto = protocolo.recibirComandoEmpezarConstruccionEdificio();
             return new CmdEmpezarConstruccionEdificioCliente(comando_dto.tipo,
                                                             comando_dto.tiempo_construccion);
+        }
+        case 30: {
+            CmdModificarEnergiaDTO comando_dto = protocolo.recibirComandoModificarEnergia();
+            return new CmdModificarEnergiaCliente(comando_dto.cantidad_energia, comando_dto.tope_energia);
         }
         default:
             throw std::runtime_error("ClientHiloReciever: Codigo de comando desconocido");

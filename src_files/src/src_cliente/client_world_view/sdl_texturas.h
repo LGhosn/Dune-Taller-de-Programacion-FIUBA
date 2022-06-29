@@ -106,6 +106,10 @@ class TexturasSDL {
     SDL2pp::Font font_tienda;
     SDL2pp::Texture texto_tienda;
 
+    SDL2pp::Texture texto_edificios;
+    SDL2pp::Texture texto_infanteria;
+    SDL2pp::Texture texto_vehiculos; 
+
     uint8_t obtenerCantidadTexturas(std::filesystem::path ruta);
 
     void cargarLogos();
@@ -132,6 +136,9 @@ public:
     SDL2pp::Texture& obtenerTextoTiendaListo();
 
     SDL2pp::Font& obtenerFontDune2000();
+    SDL2pp::Texture& obtenerTextoEdificios();
+    SDL2pp::Texture& obtenerTextoInfanteria();
+    SDL2pp::Texture& obtenerTextoVehiculos();
 };
 
 #endif // SDL_TEXTURAS_H

@@ -87,6 +87,7 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_tienda.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_edificio.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_unidad.cpp
+        src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_paginas.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_especia.cpp
         src/src_cliente/client_world_view/world_view.cpp
         src/src_cliente/client_world_view/sdl_color/sdl_color.cpp

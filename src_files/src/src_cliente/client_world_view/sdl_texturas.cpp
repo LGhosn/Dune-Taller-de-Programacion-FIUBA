@@ -254,7 +254,16 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                                                                 texto_listo,
                                                                 SDL_Color{90, 146, 22, 255}
                                                         )
-                                            ) {
+                                            ),
+                        texto_edificios(renderer,
+                            font_tienda.RenderText_Blended("Edificios", SDL_Color{255, 255, 255, 255}
+                        )),
+                        texto_infanteria(renderer,
+                            font_tienda.RenderText_Blended("Infanteria", SDL_Color{255, 255, 255, 255}
+                        )),
+                        texto_vehiculos(renderer,
+                            font_tienda.RenderText_Blended("Vehiculos", SDL_Color{255, 255, 255, 255}
+                        )) {
     casas.emplace_back("atreides");
     casas.emplace_back("harkonnen");
     casas.emplace_back("ordos");
@@ -406,4 +415,16 @@ SDL2pp::Texture& TexturasSDL::obtenerTextoTiendaListo() {
 
 SDL2pp::Font& TexturasSDL::obtenerFontDune2000() {
     return font_tienda;
+}
+
+SDL2pp::Texture& TexturasSDL::obtenerTextoEdificios() {
+    return texto_edificios;
+}
+
+SDL2pp::Texture& TexturasSDL::obtenerTextoInfanteria() {
+    return texto_infanteria;
+}
+
+SDL2pp::Texture& TexturasSDL::obtenerTextoVehiculos() {
+    return texto_vehiculos;
 }

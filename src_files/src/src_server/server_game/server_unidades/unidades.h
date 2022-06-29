@@ -19,7 +19,7 @@ public:
     Unidad();
     Unidad(uint16_t id, uint16_t x, uint16_t y, Jugador& duenio);
     virtual Jugador& obtenerJugador();
-    virtual void mover(uint16_t x, uint16_t y);
+    virtual void mover(Coordenadas& destino);
     virtual void atacar(Unidad& unidad);
     virtual UnidadInfoDTO obtenerInfo(const Coordenadas& destino) const;
     // virtual void atacar(Edificio& edificio) = 0;
