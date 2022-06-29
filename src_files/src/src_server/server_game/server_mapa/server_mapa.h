@@ -24,7 +24,6 @@ private:
     std::vector< std::vector<std::unique_ptr<Entidades> > > mapa;
     std::vector< Coordenadas > colisiones;
     Camino camino;
-    std::list<uint16_t> primera_construccion;
     std::list<Coordenadas> coords_centros;
     YAML::Node edificio_config;
 
@@ -49,14 +48,14 @@ private:
      * @param pos_y: posicion en y de donde se quiere colocar el edificio 
      * @param propiedades_edif: propiedades del edificio a construir <dimension_x, dimension_y, tipo_edificio>
     */
-    void edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio);
+    void edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio, uint16_t id_jugador);
 
     /*
      * @brief Verifica que el terreno sea lo suficiente resistente para las construcciones
      * @param pos_x: posicion en x de donde se quiere colocar el edificio
      * @param pos_y: posicion en y de donde se quiere colocar el edificio 
     */
-    bool terrenoFirme(const Coordenadas& coords);
+    bool terrenoFirme(const Coordenadas& coords, int dimension_x, int dimension_y);
 
     bool construccionLejana(const Coordenadas &coords, uint16_t id_jugador);
 

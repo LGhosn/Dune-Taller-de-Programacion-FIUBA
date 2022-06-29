@@ -1,4 +1,5 @@
 #include "terrenos_mapa.h"
+#include <iostream>
 
 #define ROCA 'R'
 #define CIMA 'I'
@@ -10,8 +11,16 @@
 /* ******************************************************************
  *                        TERRENOS
  * *****************************************************************/
-char Terrenos::obtenerTipo() {
+char Terrenos::obtenerIdentificador() {
     return this->tipo;
+}
+
+char Terrenos::obtenerTipoDeEntidad() {
+    return this->tipo_entidad;
+}
+
+uint16_t Terrenos::obtenerIdJugador() {
+    return this->id_jugador;
 }
 
 /* ******************************************************************
@@ -19,6 +28,7 @@ char Terrenos::obtenerTipo() {
  * *****************************************************************/
 Arena::Arena() {
     this->tipo = ARENA;
+    this->tipo_entidad = 'T';
 }
 
 /* ******************************************************************
@@ -26,6 +36,7 @@ Arena::Arena() {
  * *****************************************************************/
 Duna::Duna() {
     this->tipo = DUNA;
+    this->tipo_entidad = 'T';
 }
 
 /* ******************************************************************
@@ -33,6 +44,7 @@ Duna::Duna() {
  * *****************************************************************/
 Cima::Cima() {
     this->tipo = CIMA;
+    this->tipo_entidad = 'T';
 }
 
 /* ******************************************************************
@@ -40,6 +52,7 @@ Cima::Cima() {
  * *****************************************************************/
 Roca::Roca() {
     this->tipo = ROCA;
+    this->tipo_entidad = 'T';
 }
 
 /* ******************************************************************
@@ -47,4 +60,5 @@ Roca::Roca() {
  * *****************************************************************/
 Precipicio::Precipicio() {
     this->tipo = PRECIPICIO;
+    this->tipo_entidad = 'T';
 }

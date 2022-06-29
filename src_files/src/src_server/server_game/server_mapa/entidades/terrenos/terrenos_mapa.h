@@ -1,12 +1,19 @@
 #ifndef TERRENOS_H
 #define TERRENOS_H
 
+#include <cstdint>
+
 #include "../entidades_mapa.h"
 
 class Terrenos : public Entidades {
+protected:
+    char tipo_entidad;
+    uint16_t id_jugador = 0;
 public:
     Terrenos() = default;
-    virtual char obtenerTipo();
+    virtual char obtenerIdentificador();
+    virtual char obtenerTipoDeEntidad();
+    virtual uint16_t obtenerIdJugador();
     virtual ~Terrenos() = default;
 };
 

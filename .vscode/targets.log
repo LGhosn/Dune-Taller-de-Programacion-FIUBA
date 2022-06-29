@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun 27 23:05:38 2022
+# Make data base, printed on Wed Jun 29 11:10:32 2022
 
 # Variables
 
@@ -39,7 +41,7 @@ GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/lautaro/Dune-Taller-de-Programacion-FIUBA
+CURDIR := /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA
 # makefile
 SHELL = /bin/sh
 # environment
@@ -47,7 +49,7 @@ VSCODE_NLS_CONFIG = {"locale":"es-419","availableLanguages":{},"_languagePackSup
 # environment
 _ = /usr/share/code/code
 # environment
-JOURNAL_STREAM = 8:35640
+JOURNAL_STREAM = 8:36496
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile
@@ -65,11 +67,11 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1077
+MANAGERPID = 1087
 # environment
 P9K_SSH = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-58408a50-e6a6-41de-8954-253f44ed6180.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-df0eaf85-b2d4-404e-8a68-ad46f0fcd3dd.sock
 # environment
 VSCODE_CWD = /home/lautaro
 # default
@@ -79,7 +81,7 @@ PATH = /home/lautaro/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bi
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/lautaro:@/tmp/.ICE-unix/1391,unix/lautaro:/tmp/.ICE-unix/1391
+SESSION_MANAGER = local/lautaro:@/tmp/.ICE-unix/1352,unix/lautaro:/tmp/.ICE-unix/1352
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -89,7 +91,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 06264337a20a49deb817cb38ea25d30e
+INVOCATION_ID = a9db640659de40f5a22dc0e6a3659752
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -97,7 +99,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 44613
+GIO_LAUNCHED_DESKTOP_FILE_PID = 8124
 # automatic
 %F = $(notdir $%)
 # environment
@@ -105,11 +107,11 @@ DISPLAY = :0
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /home/lautaro/Dune-Taller-de-Programacion-FIUBA
+PWD = /home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1348
+SSH_AGENT_PID = 1318
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -123,7 +125,7 @@ VSCODE_CODE_CACHE_PATH = /home/lautaro/.config/Code/CachedData/30d9c6cd9483b2cc5
 # environment
 LOGNAME = lautaro
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -177,8 +179,6 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
-NO_AT_BRIDGE = 1
-# environment
 QT_ACCESSIBILITY = 1
 # default
 MAKEFILES := 
@@ -205,9 +205,9 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 44613
+VSCODE_PID = 8124
 # variable set hash-table stats:
-# Load=98/1024=10%, Rehash=0, Collisions=12/120=10%
+# Load=97/1024=9%, Rehash=0, Collisions=12/119=10%
 
 # Pattern-specific Variable Values
 
@@ -215,9 +215,9 @@ VSCODE_PID = 44613
 
 # Directories
 
-# . (device 2067, inode 1590267): 10 files, no impossibilities.
+# . (device 2067, inode 1835529): 11 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -267,14 +267,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 161 B / avg = 8 B
-# current buf: size = 8162 B / used = 161 B / count = 18 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 19 / storage = 167 B / avg = 8 B
+# current buf: size = 8162 B / used = 167 B / count = 19 / avg = 8 B
 
-# strcache performance: lookups = 21 / hit rate = 14%
+# strcache performance: lookups = 22 / hit rate = 13%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Mon Jun 27 23:05:38 2022
+# Load=19/8192=0%, Rehash=0, Collisions=1/22=5%
+# Finished Make data base on Wed Jun 29 11:10:32 2022
 
  
-make: *** No rule to make target 'all'.  Stop.
-

@@ -9,14 +9,21 @@ protected:
     int dimension_x;
     int dimension_y;
     uint16_t id_jugador;
-    uint16_t hp;
+    char tipo_entidad;
 
 public:
     Edificio() = default;
     virtual int obtenerDimensionX();
     virtual int obtenerDimensionY();
-    virtual char obtenerTipo();
+    virtual char obtenerIdentificador();
+    virtual uint16_t obtenerIdJugador();
+    virtual char obtenerTipoDeEntidad();
     virtual ~Edificio() = default;
+
+    Edificio &operator=(const Edificio &edificio) = delete;
+    Edificio(const Edificio &edificio) = delete;
+    Edificio &operator=(Edificio &&edificio);
+    Edificio(Edificio &&edificio); 
 };
 
 class Silo: public Edificio {
