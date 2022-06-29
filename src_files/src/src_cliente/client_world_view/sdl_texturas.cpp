@@ -48,6 +48,18 @@ void TexturasSDL::cargarLogos() {
         stream << RUTA_LOGOS << "edificios/trampa_" << casa << "_logo.bmp";
         logos_trampa_de_aire.emplace_back(renderer, stream.str());
     }
+
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_FREMEN);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_INFANTERIA_LIGERA);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_INFANTERIA_PESADA);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_SARDAUKAR);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_COSECHADORA);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_DESVIADOR);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_DEVASTADOR);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_RAIDER);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_TANQUE);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_TANQUE_SONICO);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_TRIKE);
 }
 
 void TexturasSDL::cargarTiles() {
@@ -254,7 +266,16 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                                                                 texto_listo,
                                                                 SDL_Color{90, 146, 22, 255}
                                                         )
-                                            ) {
+                                            ),
+                        texto_edificios(renderer,
+                            font_tienda.RenderText_Blended("Edificios", SDL_Color{255, 255, 255, 255}
+                        )),
+                        texto_infanteria(renderer,
+                            font_tienda.RenderText_Blended("Infanteria", SDL_Color{255, 255, 255, 255}
+                        )),
+                        texto_vehiculos(renderer,
+                            font_tienda.RenderText_Blended("Vehiculos", SDL_Color{255, 255, 255, 255}
+                        )) {
     casas.emplace_back("atreides");
     casas.emplace_back("harkonnen");
     casas.emplace_back("ordos");
@@ -400,10 +421,26 @@ SDL2pp::Texture& TexturasSDL::obtenerLogoEdificio(uint8_t tipo, uint8_t casa) {
     }
 }
 
+SDL2pp::Texture& TexturasSDL::obtenerLogoUnidad(uint8_t tipo) {
+    return logos_unidades[tipo];
+}
+
 SDL2pp::Texture& TexturasSDL::obtenerTextoTiendaListo() {
     return texto_tienda;
 }
 
 SDL2pp::Font& TexturasSDL::obtenerFontDune2000() {
     return font_tienda;
+}
+
+SDL2pp::Texture& TexturasSDL::obtenerTextoEdificios() {
+    return texto_edificios;
+}
+
+SDL2pp::Texture& TexturasSDL::obtenerTextoInfanteria() {
+    return texto_infanteria;
+}
+
+SDL2pp::Texture& TexturasSDL::obtenerTextoVehiculos() {
+    return texto_vehiculos;
 }

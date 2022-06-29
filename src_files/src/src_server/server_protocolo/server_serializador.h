@@ -9,6 +9,8 @@
 
 #define RUTA_CODIGOS "codigos.yaml"
 
+#define CODIGO_EMPEZAR_ENTRENAMIENTO 11
+
 class SerializadorServer {
 private:
     YAML::Node* codigos;
@@ -46,6 +48,11 @@ public:
 
     std::vector<uint8_t> serializarComandoActualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
     std::vector<uint8_t> serializarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables);
+    std::vector<uint8_t> serializarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion);
+
+/* *****************************************************************
+ *                          MOVE SEMANTICS
+ * *****************************************************************/
 
     SerializadorServer(const SerializadorServer& otro) = delete;
     SerializadorServer& operator=(const SerializadorServer& otro) = delete;

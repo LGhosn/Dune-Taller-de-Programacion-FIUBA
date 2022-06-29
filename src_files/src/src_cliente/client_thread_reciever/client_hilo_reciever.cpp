@@ -3,7 +3,10 @@
 #include "../client_comandos/cmd_modificar_especia.h"
 #include "../client_comandos/cmd_actualizar_tienda_edificios.h"
 #include "../client_comandos/cmd_empezar_construccion_edificio.h"
+#include "../client_comandos/cmd_empezar_entrenamiento.h"
+#include "../client_comandos/cmd_modificar_energia.h"
 #include "../client_DTO/dto_cmd_empezar_construccion_edificio.h"
+
 
 ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, Client* cliente) :
                                         cliente(cliente),
@@ -39,6 +42,10 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
             ComandoCrearEdificioDTO comandoDTO = protocolo.recibirComandoCrearEdificio();
             return new ComandoCrearEdificio(comandoDTO);
         }
+        case 11: {
+            CmdEmpezarEntrenamientoClienteDTO comandoDTO = protocolo.recibirComandoEmpezarEntrenamientoUnidad();
+            return new CmdEmpezarEntrenamientoCliente(comandoDTO);
+        }
         case 20: {
             uint16_t cantidad_especia = protocolo.recibirComandoModificarEspecia();
             return new CmdModificarEspeciaServer(cantidad_especia);
@@ -51,6 +58,10 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
             CmdEmpezarConstruccionEdificioDTO comando_dto = protocolo.recibirComandoEmpezarConstruccionEdificio();
             return new CmdEmpezarConstruccionEdificioCliente(comando_dto.tipo,
                                                             comando_dto.tiempo_construccion);
+        }
+        case 30: {
+            int16_t cantidad_energia = protocolo.recibirComandoModificarEnergia();
+            return new CmdModificarEnergiaCliente(cantidad_energia);
         }
         default:
             throw std::runtime_error("ClientHiloReciever: Codigo de comando desconocido");

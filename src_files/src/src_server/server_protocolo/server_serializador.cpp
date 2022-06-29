@@ -88,6 +88,20 @@ std::vector<uint8_t> SerializadorServer::serializarComandoActualizarTiendaUnidad
     return buffer;
 }
 
+std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad,
+                                                                            uint16_t tiempo_construccion) {
+    std::vector<uint8_t> buffer(4);
+    buffer[0] = CODIGO_EMPEZAR_ENTRENAMIENTO;
+    buffer[1] = tipo_unidad;
+    uint16_t* aux = (uint16_t*) (buffer.data() + 2);
+    aux[0] = htons(tiempo_construccion);
+    return buffer;
+}
+
+/* *****************************************************************
+ *                          MOVE SEMANTICS
+ * *****************************************************************/
+
 SerializadorServer::SerializadorServer(SerializadorServer&& otro) {
     this->codigos = otro.codigos;
 }

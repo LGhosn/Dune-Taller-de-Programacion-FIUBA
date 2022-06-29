@@ -6,6 +6,7 @@
 #include "../../../src_common/common_colas/cola_bloqueante.h"
 #include "../../server_comandos/server_comando.h"
 #include "especia_acumulada.h"
+#include "energia_acumulada.h"
 
 class Jugador {
     uint8_t id;
@@ -13,9 +14,13 @@ class Jugador {
     std::string nombre;
     ColaBloqueante<ComandoServer>* cola_comandos;
     EspeciaAcumulada especia;
+    EnergiaAcumulada energia;
+    std::vector<uint8_t> cantidad_edificios;
 
     // Constantes
     uint16_t tiempo_construccion_base;
+
+    float obtenerMultiplicadorPorEdificios(uint8_t tipo_unidad);
 
 public:
     Jugador(uint8_t id, uint8_t casa, std::string& nombre,
@@ -52,7 +57,14 @@ public:
     */
     bool comprarEdificio(uint8_t tipo_edificio);
 
-    uint16_t obtenerTiempoConstruccion();
+    /*
+     * Aumenta/disminuye la energia disponible dependiendo del tipo de edificio, y envia la info
+     * al cliente.
+    */
+    void edificioCreado(uint8_t tipo_edificio);
+
+    uint16_t obtenerTiempoConstruccionEdificio();
+    uint16_t obtenerTiempoConstruccionUnidad(uint8_t tipo_unidad);
 
     bool operator==(const uint8_t& id_jugador) const;
 

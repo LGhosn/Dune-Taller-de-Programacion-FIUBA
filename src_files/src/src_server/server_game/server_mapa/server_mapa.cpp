@@ -109,24 +109,24 @@ void Mapa::cargarCentrosDeConstruccion(YAML::Node& mapa_config) {
     }
 }
 
-std::unique_ptr<Edificio> Mapa::clasificarEdificio(char tipo_edificio, YAML::Node& edificio_config, uint16_t id_jugador) {
+std::unique_ptr<Entidades> Mapa::clasificarEdificio(char tipo_edificio, YAML::Node& edificio_config, uint16_t id_jugador) {
     switch (tipo_edificio) {
         case CENTRO:
-            return std::unique_ptr<Edificio>(new CentroDeConstruccion(edificio_config, id_jugador));
+            return std::unique_ptr<Entidades>(new CentroDeConstruccion(edificio_config, id_jugador));
         case CUARTEL:
-            return std::unique_ptr<Edificio>(new Cuartel(edificio_config, id_jugador));
+            return std::unique_ptr<Entidades>(new Cuartel(edificio_config, id_jugador));
         case FABRICA_LIGERA:
-            return std::unique_ptr<Edificio>(new FabricaLigera(edificio_config, id_jugador));
+            return std::unique_ptr<Entidades>(new FabricaLigera(edificio_config, id_jugador));
         case FABRICA_PESADA:
-            return std::unique_ptr<Edificio>(new FabricaPesada(edificio_config, id_jugador));
+            return std::unique_ptr<Entidades>(new FabricaPesada(edificio_config, id_jugador));
         case PALACIO:
-            return std::unique_ptr<Edificio>(new Palacio(edificio_config, id_jugador));
+            return std::unique_ptr<Entidades>(new Palacio(edificio_config, id_jugador));
         case REFINERIA:
-            return std::unique_ptr<Edificio>(new Refineria(edificio_config, id_jugador));
+            return std::unique_ptr<Entidades>(new Refineria(edificio_config, id_jugador));
         case SILO:
-            return std::unique_ptr<Edificio>(new Silo(edificio_config, id_jugador));
+            return std::unique_ptr<Entidades>(new Silo(edificio_config, id_jugador));
         case TRAMPA_DE_AIRE:
-            return std::unique_ptr<Edificio>(new TrampaDeAire(edificio_config, id_jugador));
+            return std::unique_ptr<Entidades>(new TrampaDeAire(edificio_config, id_jugador));
         default:
             return nullptr;
     }
@@ -165,6 +165,10 @@ char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destin
     return ' ';
 }
 
+bool Mapa::esCoordenadaValida(const Coordenadas& posicion) {
+    return this->mapa[posicion.y][posicion.x]->obtenerTipoDeEntidad() == 'T';
+}
+
 /* ******************************************************************
  *                        PUBLICAS
  * *****************************************************************/
@@ -198,7 +202,9 @@ bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenada
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
     this->colisiones = std::vector< Coordenadas >();
 
-    std::unique_ptr<Edificio> edif = clasificarEdificio(tipo, this->edificio_config, id_jugador);
+    std::unique_ptr<Entidades> entidad = clasificarEdificio(tipo, this->edificio_config, id_jugador);
+    std::unique_ptr<Edificio>& edif = ((std::unique_ptr<Edificio>&)entidad);
+
     int dimension_x = edif->obtenerDimensionX();
     int dimension_y = edif->obtenerDimensionY();
 
@@ -210,7 +216,8 @@ bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenada
 }
 
 void Mapa::construirCentro(uint16_t id_jugador, const Coordenadas& coords) {
-    std::unique_ptr<Edificio> centro = std::unique_ptr<Edificio>(new CentroDeConstruccion(this->edificio_config, id_jugador));
+    std::unique_ptr<Entidades> entidad = std::unique_ptr<Entidades>(new CentroDeConstruccion(this->edificio_config, id_jugador));
+    std::unique_ptr<Edificio>& centro = ((std::unique_ptr<Edificio>&)entidad);
     int dimension_x = centro->obtenerDimensionX();
     int dimension_y = centro->obtenerDimensionY();
     if (!terrenoFirme(coords, dimension_x, dimension_y) || hayColisiones(coords, dimension_x, dimension_y)) {
@@ -250,7 +257,9 @@ void Mapa::modificar_terreno(uint16_t pos_x, uint16_t pos_y, const char terreno)
 }
 
 void Mapa::demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y) {
-    std::unique_ptr<Edificio> edif = clasificarEdificio(edificio, this->edificio_config, 0);
+    std::unique_ptr<Entidades> entidad = clasificarEdificio(edificio, this->edificio_config, 0);
+    std::unique_ptr<Edificio>& edif = ((std::unique_ptr<Edificio>&)entidad);
+
     int dimension_x = edif->obtenerDimensionX();
     int dimension_y = edif->obtenerDimensionY();
     for (int i = pos_y; i < (pos_y + dimension_y); i++){

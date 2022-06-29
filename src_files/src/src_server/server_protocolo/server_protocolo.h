@@ -95,7 +95,7 @@ public:
  *             METODOS REFERIDOS A MOVER UNIDADES
  * *****************************************************************/
 
-    void enviarInstruccionMoverUnidad(uint16_t id_unidad, char direccion);
+    void enviarInstruccionMoverUnidad(uint16_t id_unidad, char direccion, long tiempo);
 
     SolicitudMoverUnidadDTO recibirSolicitudMoverUnidad();
 
@@ -125,6 +125,8 @@ public:
 
     void enviarComandoModificarEspecia(uint16_t cantidad_especia);
 
+    void enviarComandoModificarEnergia(int16_t cantidad_energia);
+
 /* *****************************************************************
  * METODOS REFERIDOS A ACTUALIZAR ESTADO COMPRA EDIFICIOS Y UNIDADES
  * *****************************************************************/
@@ -132,6 +134,8 @@ public:
     void enviarComandoActualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
 
     void enviarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables);
+
+    void enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion);
 
     /*
      * No tiene sentido copiar un ProtocoloServidor.

@@ -28,3 +28,27 @@ Game:
         Trike: 100
   Especia:
     ValorInicial: 800
+    Capacidad:
+      Centro: 0
+      Cuartel: 0
+      FabricaLigera: 0
+      FabricaPesada: 0
+      Palacio: 0
+      Refineria: 5000
+      Silo: 1000
+      Trampa: 0
+  Energia:
+    ValorInicial: 0
+    TopeInicial: 200
+    MultiplicadorEnergiaPositiva: 1
+    DivisorEnergiaNegativa: 1000
+    ValorBaseEnergiaNegativa: 2
+    Valor:
+      Centro: 0
+      Cuartel: 100
+      FabricaLigera: 500
+      FabricaPesada: 800
+      Palacio: 800
+      Refineria: 400
+      Silo: 100
+      Trampa: -500

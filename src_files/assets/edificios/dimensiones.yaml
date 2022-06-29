@@ -1,39 +1,39 @@
 Silo:
   DimensionX: 1
   DimensionY: 1
-  Tipo: 'S'
+  Tipo: 6
 
 Cuartel:
   DimensionX: 2
   DimensionY: 3
-  Tipo: 'C'
+  Tipo: 1
 
 FabricaLigera:
   DimensionX: 3
   DimensionY: 3
-  Tipo: 'F'
+  Tipo: 2
 
 FabricaPesada:
   DimensionX: 4
   DimensionY: 4
-  Tipo: 'H'
+  Tipo: 3
 
 Palacio:
   DimensionX: 3
   DimensionY: 3
-  Tipo: 'P'
+  Tipo: 4
 
 Refineria:
   DimensionX: 3
   DimensionY: 3
-  Tipo: 'R'
+  Tipo: 5
 
 TrampaDeAire:
   DimensionX: 3
   DimensionY: 3
-  Tipo: 'T'
+  Tipo: 7
 
 CentroDeConstruccion:
   DimensionX: 3
   DimensionY: 3
-  Tipo: 'D'
+  Tipo: 0

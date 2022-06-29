@@ -11,7 +11,6 @@
 #include "yaml-cpp/yaml.h"
 
 #define RUTA_CONSTANTES RESOURCE_PATH "/constantes/server_constantes.yaml"
-
 class Game {
     bool finished = false;
     std::map< uint8_t, ColaBloqueante<ComandoServer>* > colas_comandos;
@@ -34,7 +33,9 @@ class Game {
     */
     Jugador* encontrarJugador(uint8_t id_jugador);
     
-    std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador);
+    std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador, uint8_t id_unidad);
+    
+    void updateUnidad(long iter);
 
 public:
     Game(const std::string& nombre_mapa);

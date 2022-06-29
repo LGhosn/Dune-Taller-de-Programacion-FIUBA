@@ -7,6 +7,8 @@
 #include "../src_common/common_DTO/dto_info_partida.h"
 #include "client_DTO/dto_cmd_crear_edificio.h"
 #include "client_DTO/dto_cmd_empezar_construccion_edificio.h"
+#include "client_DTO/dto_cmd_empezar_entrenamiento_unidad.h"
+#include "client_DTO/dto_cmd_modificar_energia.h"
 #include "client_serializador.h"
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_socket.h"
@@ -18,6 +20,7 @@
 #include <iostream>
 #include <fstream>
 #include <netinet/in.h>
+#include <map>
 
 #define CODIGO_COMIENZO_PARTIDA 0
 
@@ -59,14 +62,24 @@ public:
     InfoPartidaDTO recibirInfoComienzoDePartida();
 
 /* *****************************************************************
- * METODOS REFERIDOS A COMPRA DE EDIFICIOS Y UNIDADES
+ *          METODOS REFERIDOS A COMPRA DE EDIFICIOS
+ * *****************************************************************/
+    void enviarSolicitudComprarEdificio(uint8_t id_jugador, uint8_t tipo);
+    std::vector<bool> recibirComandoActualizarTiendaEdificios();
+    CmdEmpezarConstruccionEdificioDTO recibirComandoEmpezarConstruccionEdificio();
+
+/* *****************************************************************
+ *          METODOS REFERIDOS A COMPRA DE UNIDADES
+ * *****************************************************************/
+    void enviarSolicitudComprarUnidad(uint8_t id_jugador, uint8_t tipo);
+    std::vector<bool> recibirComandoActualizarTiendaUnidades();
+    CmdEmpezarEntrenamientoClienteDTO recibirComandoEmpezarEntrenamientoUnidad();
+    
+/* *****************************************************************
+ *                  METODOS REFERIDOS A ENERGIA
  * *****************************************************************/
 
-    std::vector<bool> recibirComandoActualizarTiendaEdificios();
-    std::vector<bool> recibirComandoActualizarTiendaUnidades();
-
-    void enviarSolicitudComprarEdificio(uint8_t id_jugador, uint8_t tipo);
-    CmdEmpezarConstruccionEdificioDTO recibirComandoEmpezarConstruccionEdificio();
+    int16_t recibirComandoModificarEnergia();
 
 /* *****************************************************************
  *                         MOVE SEMANTICS

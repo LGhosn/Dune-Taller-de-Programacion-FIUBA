@@ -61,7 +61,7 @@ private:
 
     void cargarCentrosDeConstruccion(YAML::Node& mapa_config);
 
-    std::unique_ptr<Edificio> clasificarEdificio(char tipo, YAML::Node& edificio_config, uint16_t id_jugador);
+    std::unique_ptr<Entidades> clasificarEdificio(char tipo, YAML::Node& edificio_config, uint16_t id_jugador);
 
     std::unique_ptr<Entidades> clasificarTerreno(char tipo);
 
@@ -104,6 +104,8 @@ public:
     void demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y);
 
     char moverUnidad(const Coordenadas& desde, const Coordenadas& hasta);
+
+    bool esCoordenadaValida(const Coordenadas& coords);
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.

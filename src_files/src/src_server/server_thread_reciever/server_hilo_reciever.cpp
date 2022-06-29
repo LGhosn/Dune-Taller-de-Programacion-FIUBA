@@ -1,6 +1,5 @@
 #include "server_hilo_reciever.h"
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
-#include "../server_solicitudes/solicitud_menu/server_solicitud_menu.h"
 #include "../server_solicitudes/solicitud_juego/sol_comprar_edificio.h"
 
 ServerHiloReceiver::ServerHiloReceiver(ProtocoloServidor* protocolo, YAML::Node* codigos, HandlerCliente *cliente_asociado) :

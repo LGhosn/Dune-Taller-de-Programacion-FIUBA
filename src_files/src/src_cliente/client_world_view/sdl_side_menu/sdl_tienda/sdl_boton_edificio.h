@@ -1,12 +1,12 @@
-#ifndef SDL_BOTON_TIENDA_H
-#define SDL_BOTON_TIENDA_H
+#ifndef SDL_BOTON_EDIFICIO_H
+#define SDL_BOTON_EDIFICIO_H
 
 #include <SDL2pp/SDL2pp.hh>
 #include "../../sdl_texturas.h"
 #include "../../../client_solicitudes/cliente_solicitud.h"
 #include "../../../../src_common/common_coords.h"
 
-class BotonTiendaSDL {
+class BotonEdificioSDL {
     SDL2pp::Renderer& renderer;
     uint8_t tipo;
     uint8_t casa;
@@ -35,7 +35,7 @@ class BotonTiendaSDL {
     bool contiene(int pos_x, int pos_y) const;
 
 public:
-    BotonTiendaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
+    BotonEdificioSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
                     uint8_t casa, uint8_t id_jugador, SDL2pp::Rect destino,
                     YAML::Node& constantes);
 
@@ -57,7 +57,7 @@ public:
     void update(long frames_transcurridos);
     void render();
 
-    ~BotonTiendaSDL() = default;
+    ~BotonEdificioSDL() = default;
 };
 
 #endif

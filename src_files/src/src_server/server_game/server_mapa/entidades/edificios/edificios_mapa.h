@@ -9,7 +9,8 @@ protected:
     int dimension_x;
     int dimension_y;
     uint16_t id_jugador;
-    char tipo_entidad;
+    uint8_t tipo_entidad;
+
 
 public:
     Edificio() = default;

@@ -31,7 +31,7 @@ CentroDeConstruccion::CentroDeConstruccion(YAML::Node& edificio_config, uint16_t
     this->dimension_x = edificio_config["CentroDeConstruccion"]["DimensionX"].as<int>();
     this->dimension_y = edificio_config["CentroDeConstruccion"]["DimensionY"].as<int>();
     this->id_jugador = id_jugador;
-    this->tipo = edificio_config["CentroDeConstruccion"]["Tipo"].as<char>();
+    this->tipo = edificio_config["CentroDeConstruccion"]["Tipo"].as<uint8_t>();
     this->tipo_entidad = 'E';
 }
 
@@ -42,7 +42,7 @@ Cuartel::Cuartel(YAML::Node& edificio_config, uint16_t id_jugador) {
     this->dimension_x = edificio_config["Cuartel"]["DimensionX"].as<int>();
     this->dimension_y = edificio_config["Cuartel"]["DimensionY"].as<int>();
     this->id_jugador = id_jugador;
-    this->tipo = edificio_config["Cuartel"]["Tipo"].as<char>();
+    this->tipo = edificio_config["Cuartel"]["Tipo"].as<uint8_t>();
     this->tipo_entidad = 'E';
 }
 
@@ -54,7 +54,7 @@ FabricaLigera::FabricaLigera(YAML::Node& edificio_config, uint16_t id_jugador) {
     this->dimension_x = edificio_config["FabricaLigera"]["DimensionX"].as<int>();
     this->dimension_y = edificio_config["FabricaLigera"]["DimensionY"].as<int>();
     this->id_jugador = id_jugador;
-    this->tipo = edificio_config["FabricaLigera"]["Tipo"].as<char>();
+    this->tipo = edificio_config["FabricaLigera"]["Tipo"].as<uint8_t>();
     this->tipo_entidad = 'E';
 }
 
@@ -66,7 +66,7 @@ FabricaPesada::FabricaPesada(YAML::Node& edificio_config, uint16_t id_jugador) {
     this->dimension_x = edificio_config["FabricaPesada"]["DimensionX"].as<int>();
     this->dimension_y = edificio_config["FabricaPesada"]["DimensionY"].as<int>();
     this->id_jugador = id_jugador;
-    this->tipo = edificio_config["FabricaPesada"]["Tipo"].as<char>();
+    this->tipo = edificio_config["FabricaPesada"]["Tipo"].as<uint8_t>();
     this->tipo_entidad = 'E';
 }
 
@@ -77,7 +77,7 @@ Palacio::Palacio(YAML::Node& edificio_config, uint16_t id_jugador) {
     this->dimension_x = edificio_config["Palacio"]["DimensionX"].as<int>();
     this->dimension_y = edificio_config["Palacio"]["DimensionY"].as<int>();
     this->id_jugador = id_jugador;
-    this->tipo = edificio_config["Palacio"]["Tipo"].as<char>();
+    this->tipo = edificio_config["Palacio"]["Tipo"].as<uint8_t>();
     this->tipo_entidad = 'E';
 }
 
@@ -88,7 +88,7 @@ Refineria::Refineria(YAML::Node& edificio_config, uint16_t id_jugador) {
     this->dimension_x = edificio_config["Refineria"]["DimensionX"].as<int>();
     this->dimension_y = edificio_config["Refineria"]["DimensionY"].as<int>();
     this->id_jugador = id_jugador;
-    this->tipo = edificio_config["Refineria"]["Tipo"].as<char>();
+    this->tipo = edificio_config["Refineria"]["Tipo"].as<uint8_t>();
     this->tipo_entidad = 'E';
 }
 
@@ -99,7 +99,7 @@ Silo::Silo(YAML::Node& edificio_config, uint16_t id_jugador) {
     this->dimension_x = edificio_config["Silo"]["DimensionX"].as<int>();
     this->dimension_y = edificio_config["Silo"]["DimensionY"].as<int>();
     this->id_jugador = id_jugador;
-    this->tipo = edificio_config["Silo"]["Tipo"].as<char>();
+    this->tipo = edificio_config["Silo"]["Tipo"].as<uint8_t>();
     this->tipo_entidad = 'E';
 }
 
@@ -110,7 +110,7 @@ TrampaDeAire::TrampaDeAire(YAML::Node& edificio_config, uint16_t id_jugador) {
     this->dimension_x = edificio_config["TrampaDeAire"]["DimensionX"].as<int>();
     this->dimension_y = edificio_config["TrampaDeAire"]["DimensionY"].as<int>();
     this->id_jugador = id_jugador;
-    this->tipo = edificio_config["TrampaDeAire"]["Tipo"].as<char>();
+    this->tipo = edificio_config["TrampaDeAire"]["Tipo"].as<uint8_t>();
     this->tipo_entidad = 'E';
 }
 

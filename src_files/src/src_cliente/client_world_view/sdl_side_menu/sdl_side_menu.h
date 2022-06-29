@@ -5,6 +5,7 @@
 #include "../sdl_texturas.h"
 #include "sdl_tienda/sdl_tienda.h"
 #include "sdl_especia.h"
+#include "sdl_energia.h"
 #include "../../client_solicitudes/cliente_solicitud.h"
 #include "../sdl_color/sdl_color.h"
 
@@ -15,6 +16,7 @@ class SideMenuSDL {
     uint8_t casa;
     TiendaSDL tienda;
     EspeciaSDL especia;
+    EnergiaSDL energia;
     SDL2pp::Texture& logo_casa;
     SDL2pp::Rect origen_logo_casa;
     SDL2pp::Rect destino_logo_casa;
@@ -28,8 +30,11 @@ public:
     SolicitudCliente* clickEnMapa(Coordenadas& coords);
 
     void modificarEspecia(uint16_t cantidad_especia);
+    void modificarEnergia(int16_t cantidad_energia);
 
     void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
+
+    void empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion);
 
     void actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
 

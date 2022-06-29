@@ -2,10 +2,12 @@
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
 #include "../server_comandos/cmd_crear_edificio.h"
 #include "../server_comandos/cmd_empezar_partida.h"
-#include "../server_comandos/cmd_comprar_unidad.h"
+#include "../server_comandos/cmd_empezar_entrenamiento.h"
 #include "../server_comandos/cmd_mover_unidad.h"
 #include "../server_DTO/dto_unidad_info.h"
 #include "../server_comandos/cmd_empezar_construccion_edificio.h"
+
+#define CODIGO_CENTRO 0
 
 std::map<uint8_t, Coordenadas> Game::sortearCentros() const {
     std::list<Coordenadas> centros = mapa.obtenerCoordsCentros();
@@ -22,9 +24,10 @@ void Game::crearCentro(uint16_t id_jugador, const Coordenadas& coords) {
     Jugador* jugador = encontrarJugador(id_jugador);
     for (auto& cola : colas_comandos) {
         CmdCrearEdificioServer* comando =
-                    new CmdCrearEdificioServer(id_jugador, conts_id_edificios, 0, coords, jugador->obtenerCasa());
+                new CmdCrearEdificioServer(id_jugador, conts_id_edificios, CODIGO_CENTRO, coords, jugador->obtenerCasa());
         cola.second->push(comando);
     }
+    jugador->edificioCreado(CODIGO_CENTRO);
     conts_id_edificios++;
 }
 
@@ -57,50 +60,33 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
             cola.second->push(comando);
         }
         conts_id_edificios++;
+        jugador->edificioCreado(tipo);
     }
 }
 
-std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador) {
-    return nullptr;
+std::unique_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador, uint8_t id_unidad) {
+    switch (tipo_unidad) {
+        case 1:
+            // return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa));
+        default:
+            throw std::runtime_error("Game: Tipo de unidad no reconocido");
+    }
 }
 
 void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
     Jugador* jugador = encontrarJugador(id_jugador);
-    if(!jugador->comprarUnidad(tipo_unidad)){
-        throw std::runtime_error("Game: No se pudo comprar unidad"); // TODO: implementar cmd de dinero insuficiente
-    }
-
-    // this->unidades.emplace(this->conts_id_unidad++, clasificarUnidad(tipo_unidad, jugador)); //TODO: Implementar clasificarUnidad
-    for (auto& cola : colas_comandos) {
-        CmdComprarUnidadServer* comando =
-            new CmdComprarUnidadServer(id_jugador, tipo_unidad);
-        cola.second->push(comando);
-        conts_id_edificios++;
+    bool resultado = jugador->comprarUnidad(tipo_unidad);
+    if (resultado) {
+        uint16_t tiempo_construccion = jugador->obtenerTiempoConstruccionUnidad(tipo_unidad);
+        CmdEmpezarEntrenamientoServer* comando =
+                        new CmdEmpezarEntrenamientoServer(tipo_unidad, tiempo_construccion);
+        colas_comandos[id_jugador]->push(comando);
     }
 }
 
 void Game::moverUnidad(uint16_t id_unidad, const Coordenadas& destino) {
     std::unique_ptr<Unidad>& unidad = this->unidades.at(id_unidad);
-    Jugador& jugador = unidad->obtenerJugador();
-
-    UnidadInfoDTO unidad_info = unidad->obtenerInfo(destino);
-    const Coordenadas& origen = unidad_info.origen;
-
-    std::stack<Coordenadas> camino = mapa.obtenerCamino(unidad_info);
-    int tam_camino = camino.size();
-    for (int i = 0; i < tam_camino; i++) {
-        Coordenadas paso_actual = camino.top();
-        camino.pop();
-        char direccion = mapa.moverUnidad(origen, paso_actual);
-
-        for (auto& cola : colas_comandos) {
-            CmdMoverUnidadServer* comando =
-                new CmdMoverUnidadServer(jugador.obtenerId(), direccion);
-            cola.second->push(comando);
-        }
-        (Coordenadas&)origen = paso_actual;
-    }
-
+    unidad->empezarMovimiento(destino);
 }
 
 
@@ -108,7 +94,7 @@ void Game::comprarEdificio(uint8_t id_jugador, uint8_t tipo) {
     Jugador* jugador = encontrarJugador(id_jugador);
     bool resultado = jugador->comprarEdificio(tipo);
     if (resultado) {
-        uint16_t tiempo_construccion = jugador->obtenerTiempoConstruccion();
+        uint16_t tiempo_construccion = jugador->obtenerTiempoConstruccionEdificio();
         CmdEmpezarConstruccionEdificioServer* comando =
                         new CmdEmpezarConstruccionEdificioServer(tipo, tiempo_construccion);
         colas_comandos[id_jugador]->push(comando);
@@ -139,7 +125,27 @@ void Game::empezarPartida() {
         jugador.empezarPartida();
 }
 
+void Game::updateUnidad(long iter) {
+    long tiempo = -1;
+    char direccion = ' ';
+    for (auto& unidades_jugador: unidades) {
+        unidades_jugador.second->update(iter, &tiempo, &direccion);
+
+        if (tiempo != -1){
+            for (auto& cola: colas_comandos) {
+                CmdMoverUnidadServer* comando =
+                    new CmdMoverUnidadServer(unidades_jugador.first, direccion, tiempo);
+                cola.second->push(comando);
+            }
+            tiempo = -1;
+            direccion = ' ';
+        }
+        
+    }
+}
+
 bool Game::update(long iter) {
+    updateUnidad(iter);
     return true;
 }
 
