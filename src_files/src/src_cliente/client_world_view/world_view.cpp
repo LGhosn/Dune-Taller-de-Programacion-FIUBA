@@ -95,6 +95,10 @@ void WorldView::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_constr
 	side_menu.empezarConstruccionEdificio(tipo, tiempo_construccion);
 }
 
+void WorldView::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion) {
+	side_menu.empezarEntrenamiento(tipo, tiempo_construccion);
+}
+
 void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 							const Coordenadas& coords, uint8_t tipo, uint8_t casa) {
 	EdificioSDL* edificio = edificio_factory.crearEdificio
@@ -131,6 +135,10 @@ void WorldView::click(uint32_t pos_x, uint32_t pos_y) {
 
 void WorldView::modificarEspecia(uint16_t cantidad_especia) {
 	side_menu.modificarEspecia(cantidad_especia);
+}
+
+void WorldView::modificarEnergia(int16_t cantidad_energia, uint16_t tope_energia) {
+
 }
 
 void WorldView::actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables) {

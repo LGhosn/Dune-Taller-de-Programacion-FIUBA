@@ -135,7 +135,7 @@ public:
 
     void enviarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables);
 
-    void enviarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion);
+    void enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion);
 
     /*
      * No tiene sentido copiar un ProtocoloServidor.

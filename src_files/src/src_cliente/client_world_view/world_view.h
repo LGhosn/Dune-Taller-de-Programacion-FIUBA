@@ -61,12 +61,16 @@ public:
 
 	void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
 
+	void empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion);
+
 	void crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 						const Coordenadas& coords, uint8_t tipo, uint8_t casa);
 
 	void click(uint32_t pos_x, uint32_t pos_y);
 
 	void modificarEspecia(uint16_t cantidad_especia);
+
+	void modificarEnergia(int16_t cantidad_energia, uint16_t tope_energia);
 
 	void actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
 

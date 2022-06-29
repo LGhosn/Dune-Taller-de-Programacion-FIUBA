@@ -63,9 +63,12 @@ add_executable(client
         src/src_cliente/client_comandos/cmd_crear_edificio.cpp
         src/src_cliente/client_comandos/cmd_actualizar_tienda_edificios.cpp
         src/src_cliente/client_comandos/cmd_modificar_especia.cpp
+        src/src_cliente/client_comandos/cmd_modificar_energia.cpp
         src/src_cliente/client_comandos/cmd_empezar_construccion_edificio.cpp
+        src/src_cliente/client_comandos/cmd_empezar_entrenamiento.cpp
         src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
         src/src_cliente/client_solicitudes/sol_comprar_edificio.cpp
+        src/src_cliente/client_solicitudes/sol_comprar_unidad.cpp
         src/src_cliente/client_comandos/client_comando.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile_factory.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile.cpp
@@ -82,7 +85,8 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_edificio/sdl_trampa.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_side_menu.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_tienda.cpp
-        src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_tienda.cpp
+        src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_edificio.cpp
+        src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_unidad.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_especia.cpp
         src/src_cliente/client_world_view/world_view.cpp
         src/src_cliente/client_world_view/sdl_color/sdl_color.cpp
@@ -119,7 +123,7 @@ add_executable(server
         src/src_server/server_solicitudes/solicitud_juego/sol_mover_unidad.cpp
         src/src_server/server_comandos/cmd_actualizar_tienda_edificios.cpp
         src/src_server/server_comandos/cmd_actualizar_tienda_unidades.cpp
-        src/src_server/server_comandos//cmd_empezar_construccion_edificio.cpp
+        src/src_server/server_comandos/cmd_empezar_construccion_edificio.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_comprar_edificio.cpp
         src/src_server/server_protocolo/server_protocolo.cpp

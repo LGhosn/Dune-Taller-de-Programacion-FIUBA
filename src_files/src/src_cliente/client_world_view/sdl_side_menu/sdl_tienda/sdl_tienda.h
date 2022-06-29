@@ -1,7 +1,7 @@
 #ifndef SDL_TIENDA_H
 #define SDL_TIENDA_H
 
-#include "sdl_boton_tienda.h"
+#include "sdl_boton_edificio.h"
 #include "../../sdl_color/sdl_color.h"
 #include "../../../client_solicitudes/cliente_solicitud.h"
 #include <vector>
@@ -10,8 +10,8 @@ class TiendaSDL {
     SDL2pp::Renderer& renderer;
     ColorSDL& color;
     uint8_t casa;
-    std::vector<BotonTiendaSDL> botones_edificios;
-    std::vector<BotonTiendaSDL> botones_unidades;
+    std::vector<BotonEdificioSDL> botones_edificios;
+    std::vector<BotonEdificioSDL> botones_unidades;
 
     // Constantes
     const uint32_t ancho_menu;
@@ -36,6 +36,8 @@ public:
                 uint8_t id_jugador, YAML::Node& constantes, ColorSDL& color);
 
     void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
+
+    void empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion);
 
     void actualizarEdificios(const std::vector<bool>& edificios_comprables);
 

@@ -31,6 +31,8 @@ public:
 
     void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
 
+    void empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion);
+
     void actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
 
     /*

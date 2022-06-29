@@ -77,6 +77,10 @@ void TiendaSDL::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_constr
     botones_edificios[tipo - 1].empezarConstruccion(tiempo_construccion);
 }
 
+void TiendaSDL::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion) {
+    
+}
+
 void TiendaSDL::actualizarEdificios(const std::vector<bool>& edificios_comprables) {
     for (uint8_t i = 0; i < edificios_comprables.size(); i++) {
         if (edificios_comprables[i + 1]) {

@@ -173,7 +173,11 @@ SolicitudCrearEdificioDTO ProtocoloServidor::recibirSolicitudCrearEdificio() {
 }
 
 SolicitudComprarUnidadDTO ProtocoloServidor::recibirSolicitudComprarUnidad() {
-    return SolicitudComprarUnidadDTO(0,0);
+    uint8_t id_jugador;
+    this->skt_comunicador->recvall(&id_jugador, SIZEOF_BYTE);
+    uint8_t tipo;
+    this->skt_comunicador->recvall(&tipo, SIZEOF_BYTE);
+    return SolicitudComprarUnidadDTO(id_jugador,tipo);
 }
 
 void ProtocoloServidor::enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {}
@@ -205,7 +209,7 @@ void ProtocoloServidor::enviarComandoActualizarTiendaUnidades(const std::vector<
     enviarBuffer(serializador.serializarComandoActualizarTiendaUnidades(unidades_comprables));
 }
 
-void ProtocoloServidor::enviarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion) {
+void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion) {
     std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(tipo_unidad, tiempo_construccion);
     enviarBuffer(buffer);
 }

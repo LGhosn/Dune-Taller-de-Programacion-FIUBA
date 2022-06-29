@@ -1,5 +1,4 @@
 #include "client_protocolo.h"
-#include <map>
 
 #define SIZEOF_BYTE 1
 #define SIZEOF_TWO_BYTES 2
@@ -149,8 +148,15 @@ uint16_t ProtocoloCliente::recibirComandoModificarEspecia() {
 }
 
 /* *****************************************************************
- * METODOS REFERIDOS A COMPRA DE EDIFICIOS Y UNIDADES
+ *          METODOS REFERIDOS A COMPRA DE EDIFICIOS
  * *****************************************************************/
+
+void ProtocoloCliente::enviarSolicitudComprarEdificio(uint8_t id_jugador, uint8_t tipo) {
+    uint8_t codigo = 25;
+    this->skt_cliente.sendall(&codigo, SIZEOF_BYTE);
+    this->skt_cliente.sendall(&id_jugador, SIZEOF_BYTE);
+    this->skt_cliente.sendall(&tipo, SIZEOF_BYTE);
+}
 
 std::vector<bool> ProtocoloCliente::recibirComandoActualizarTiendaEdificios() {
     std::vector<bool> buffer(8);
@@ -160,6 +166,24 @@ std::vector<bool> ProtocoloCliente::recibirComandoActualizarTiendaEdificios() {
         buffer[i] = (bool) estado;
     }
     return buffer;
+}
+
+CmdEmpezarConstruccionEdificioDTO ProtocoloCliente::recibirComandoEmpezarConstruccionEdificio() {
+    uint8_t tipo;
+    this->skt_cliente.recvall(&tipo, SIZEOF_BYTE);
+    uint16_t tiempo_construccion;
+    this->skt_cliente.recvall(&tiempo_construccion, SIZEOF_TWO_BYTES);
+    tiempo_construccion = ntohs(tiempo_construccion);
+    return CmdEmpezarConstruccionEdificioDTO(tipo, tiempo_construccion);
+}
+
+/* *****************************************************************
+ *          METODOS REFERIDOS A COMPRA DE UNIDADES
+ * *****************************************************************/
+
+void ProtocoloCliente::enviarSolicitudComprarUnidad(uint8_t id_jugador, uint8_t tipo) {
+    std::vector<uint8_t> buffer = serializador.serializarSolicitudComprarUnidad(id_jugador, tipo);
+    enviarBuffer(buffer);
 }
 
 std::vector<bool> ProtocoloCliente::recibirComandoActualizarTiendaUnidades() {
@@ -172,20 +196,25 @@ std::vector<bool> ProtocoloCliente::recibirComandoActualizarTiendaUnidades() {
     return buffer;
 }
 
-void ProtocoloCliente::enviarSolicitudComprarEdificio(uint8_t id_jugador, uint8_t tipo) {
-    uint8_t codigo = 25;
-    this->skt_cliente.sendall(&codigo, SIZEOF_BYTE);
-    this->skt_cliente.sendall(&id_jugador, SIZEOF_BYTE);
-    this->skt_cliente.sendall(&tipo, SIZEOF_BYTE);
+CmdEmpezarEntrenamientoClienteDTO ProtocoloCliente::recibirComandoEmpezarEntrenamientoUnidad() {
+    uint8_t tipo_unidad;
+    this->skt_cliente.recvall(&tipo_unidad, SIZEOF_BYTE);
+    uint16_t tiempo_de_entrenamiento;
+    this->skt_cliente.recvall(&tiempo_de_entrenamiento, SIZEOF_TWO_BYTES);
+    tiempo_de_entrenamiento = ntohs(tiempo_de_entrenamiento);
+    return CmdEmpezarEntrenamientoClienteDTO(tipo_unidad, tiempo_de_entrenamiento);
 }
 
-CmdEmpezarConstruccionEdificioDTO ProtocoloCliente::recibirComandoEmpezarConstruccionEdificio() {
-    uint8_t tipo;
-    this->skt_cliente.recvall(&tipo, SIZEOF_BYTE);
-    uint16_t tiempo_construccion;
-    this->skt_cliente.recvall(&tiempo_construccion, SIZEOF_TWO_BYTES);
-    tiempo_construccion = ntohs(tiempo_construccion);
-    return CmdEmpezarConstruccionEdificioDTO(tipo, tiempo_construccion);
+/* *****************************************************************
+ *                  METODOS REFERIDOS A ENERGIA
+ * *****************************************************************/
+
+CmdModificarEnergiaDTO ProtocoloCliente::recibirComandoModificarEnergia() {
+    int16_t cantidad_energia;
+    this->skt_cliente.recvall(&cantidad_energia, SIZEOF_TWO_BYTES);
+    uint16_t tope_energia;
+    this->skt_cliente.recvall(&tope_energia, SIZEOF_TWO_BYTES);
+    return CmdModificarEnergiaDTO(cantidad_energia, tope_energia);
 }
 
 /* *****************************************************************

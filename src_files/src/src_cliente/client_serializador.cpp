@@ -69,3 +69,11 @@ std::vector<uint8_t> SerializadorCliente::serializarSolicitudCrearEdificio(uint8
     ptr_16[1] = y;
     return buffer;
 }
+
+std::vector<uint8_t> SerializadorCliente::serializarSolicitudComprarUnidad(uint8_t id_jugador, uint8_t tipo) {
+    std::vector<uint8_t> buffer(3);
+    buffer[0] = CODIGO_SOLICITUD_COMPRAR_UNIDAD;
+    buffer[1] = id_jugador;
+    buffer[2] = tipo;
+    return buffer;
+}
