@@ -11,7 +11,6 @@ class BotonUnidadSDL {
     uint8_t id_jugador;
     SDL2pp::Texture& logo;
     bool habilitado = false;
-    bool seleccionado = false;
     bool construyendo = false;
     uint16_t frames_para_construir = 0;
     uint16_t frames_restantes_construccion = 0;
@@ -21,8 +20,7 @@ class BotonUnidadSDL {
     uint32_t padding_texto_x;
     uint32_t tam_texto_y;
     uint8_t fps;
-
-    SDL2pp::Rect origen;
+    
     SDL2pp::Rect destino;
     SDL2pp::Rect destino_construyendo;
 

@@ -102,6 +102,10 @@ WorldView:
         PaddingTexto: 30
         TamTexto: 20
         Texto: "LISTO"
+      BotonesPagina:
+        Alto: 21
+        Padding: 3
+        PaddingTexto: 2
     Especia:
       Ancho: 140
       Alto: 40

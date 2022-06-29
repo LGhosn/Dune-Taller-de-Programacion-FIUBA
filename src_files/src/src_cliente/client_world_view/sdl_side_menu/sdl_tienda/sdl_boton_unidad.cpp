@@ -7,9 +7,8 @@ BotonUnidadSDL::BotonUnidadSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas
                     tipo(tipo),
                     casa(casa),
                     id_jugador(id_jugador),
-                    logo(texturas.obtenerSlab()) {}
-
-                        
+                    logo(texturas.obtenerLogoUnidad(tipo)),
+                    destino(destino) {}
 
 bool BotonUnidadSDL::contiene(int pos_x, int pos_y) const {
     return destino.Contains(pos_x, pos_y);
@@ -54,7 +53,7 @@ void BotonUnidadSDL::update(long frames_transcurridos) {
 }
 
 void BotonUnidadSDL::render() {
-    renderer.Copy(logo, origen, destino);
+    renderer.Copy(logo, SDL2pp::NullOpt, destino);
     if (!habilitado && !construyendo) {
         renderer.SetDrawColor(0, 0, 0, 150);
         renderer.FillRect(destino);

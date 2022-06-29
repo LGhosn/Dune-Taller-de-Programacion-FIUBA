@@ -48,6 +48,18 @@ void TexturasSDL::cargarLogos() {
         stream << RUTA_LOGOS << "edificios/trampa_" << casa << "_logo.bmp";
         logos_trampa_de_aire.emplace_back(renderer, stream.str());
     }
+
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_FREMEN);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_INFANTERIA_LIGERA);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_INFANTERIA_PESADA);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_SARDAUKAR);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_COSECHADORA);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_DESVIADOR);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_DEVASTADOR);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_RAIDER);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_TANQUE);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_TANQUE_SONICO);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_TRIKE);
 }
 
 void TexturasSDL::cargarTiles() {
@@ -407,6 +419,10 @@ SDL2pp::Texture& TexturasSDL::obtenerLogoEdificio(uint8_t tipo, uint8_t casa) {
         default:
             throw std::runtime_error("Tipo de edificio invalido");
     }
+}
+
+SDL2pp::Texture& TexturasSDL::obtenerLogoUnidad(uint8_t tipo) {
+    return logos_unidades[tipo];
 }
 
 SDL2pp::Texture& TexturasSDL::obtenerTextoTiendaListo() {

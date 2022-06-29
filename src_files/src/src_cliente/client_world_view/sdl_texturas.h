@@ -30,6 +30,19 @@
 #define RUTA_LOGO_ORDOS RESOURCE_PATH "/OrdosIcon.png"
 
 #define RUTA_LOGOS RESOURCE_PATH "/logos/"
+
+#define RUTA_LOGO_FREMEN RUTA_LOGOS "unidades/infanteria/fremen_logo.bmp"
+#define RUTA_LOGO_INFANTERIA_LIGERA RUTA_LOGOS "unidades/infanteria/infanteria_ligera_logo.bmp"
+#define RUTA_LOGO_INFANTERIA_PESADA RUTA_LOGOS "unidades/infanteria/infanteria_pesada_logo.bmp"
+#define RUTA_LOGO_SARDAUKAR RUTA_LOGOS "unidades/infanteria/sardaukar_logo.bmp"
+#define RUTA_LOGO_COSECHADORA RUTA_LOGOS "unidades/vehiculos/cosechadora_logo.bmp"
+#define RUTA_LOGO_DESVIADOR RUTA_LOGOS "unidades/vehiculos/desviador_logo.bmp"
+#define RUTA_LOGO_DEVASTADOR RUTA_LOGOS "unidades/vehiculos/devastador_logo.bmp"
+#define RUTA_LOGO_RAIDER RUTA_LOGOS "unidades/vehiculos/raider_logo.bmp"
+#define RUTA_LOGO_TANQUE RUTA_LOGOS "unidades/vehiculos/tanque_logo.bmp"
+#define RUTA_LOGO_TANQUE_SONICO RUTA_LOGOS "unidades/vehiculos/tanque_sonico_logo.bmp"
+#define RUTA_LOGO_TRIKE RUTA_LOGOS "unidades/vehiculos/trike_logo.bmp"
+
 #define RUTA_EDIFICIOS RESOURCE_PATH "/edificios/"
 #define CANT_FRAMES_BRAZO 14
 #define CANT_FRAMES_SILO 4
@@ -102,6 +115,8 @@ class TexturasSDL {
     std::vector<SDL2pp::Texture> logos_silo;
     std::vector<SDL2pp::Texture> logos_trampa_de_aire;
 
+    std::vector<SDL2pp::Texture> logos_unidades;
+
     std::string texto_listo;
     SDL2pp::Font font_tienda;
     SDL2pp::Texture texto_tienda;
@@ -133,6 +148,7 @@ public:
     
     SDL2pp::Texture& obtenerLogoCasa(uint8_t casa);
     SDL2pp::Texture& obtenerLogoEdificio(uint8_t tipo, uint8_t casa);
+    SDL2pp::Texture& obtenerLogoUnidad(uint8_t tipo);
     SDL2pp::Texture& obtenerTextoTiendaListo();
 
     SDL2pp::Font& obtenerFontDune2000();
