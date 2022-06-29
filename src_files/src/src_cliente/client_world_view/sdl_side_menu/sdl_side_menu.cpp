@@ -8,6 +8,7 @@ SideMenuSDL::SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& 
                             casa(casa),
                             tienda(renderer, casa, texturas, id_jugador, constantes, color),
                             especia(renderer, texturas, constantes, color),
+                            energia(renderer, texturas, constantes, color),
                             logo_casa(texturas.obtenerLogoCasa(casa)) {
     uint32_t ancho_menu = constantes["WorldView"]["SideMenu"]["Ancho"].as<uint32_t>();
     uint32_t ancho_ventana = constantes["WorldView"]["Ventana"]["Ancho"].as<uint32_t>();
@@ -38,6 +39,10 @@ void SideMenuSDL::modificarEspecia(uint16_t cantidad_especia) {
     especia.modificarEspecia(cantidad_especia);
 }
 
+void SideMenuSDL::modificarEnergia(int16_t cantidad_energia) {
+    energia.modificarEnergia(cantidad_energia);
+}
+
 void SideMenuSDL::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion) {
     tienda.empezarConstruccionEdificio(tipo, tiempo_construccion);
 }
@@ -64,4 +69,5 @@ void SideMenuSDL::render() {
     renderer.Copy(logo_casa, origen_logo_casa, destino_logo_casa);
     tienda.render();
     especia.render();
+    energia.render();
 }

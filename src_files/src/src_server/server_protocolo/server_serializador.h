@@ -51,12 +51,6 @@ public:
     std::vector<uint8_t> serializarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion);
 
 /* *****************************************************************
- *                  METODOS REFERIDOS A ENERGIA
- * *****************************************************************/
-
-    std::vector<uint8_t> serializarComandoModificarEnergia(int16_t cantidad_energia, uint16_t tope_energia);
-
-/* *****************************************************************
  *                          MOVE SEMANTICS
  * *****************************************************************/
 

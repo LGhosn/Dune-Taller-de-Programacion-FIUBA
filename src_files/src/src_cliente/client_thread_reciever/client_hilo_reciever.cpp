@@ -60,8 +60,8 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
                                                             comando_dto.tiempo_construccion);
         }
         case 30: {
-            CmdModificarEnergiaDTO comando_dto = protocolo.recibirComandoModificarEnergia();
-            return new CmdModificarEnergiaCliente(comando_dto.cantidad_energia, comando_dto.tope_energia);
+            int16_t cantidad_energia = protocolo.recibirComandoModificarEnergia();
+            return new CmdModificarEnergiaCliente(cantidad_energia);
         }
         default:
             throw std::runtime_error("ClientHiloReciever: Codigo de comando desconocido");

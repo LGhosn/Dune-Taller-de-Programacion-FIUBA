@@ -99,21 +99,6 @@ std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(ui
 }
 
 /* *****************************************************************
- *                  METODOS REFERIDOS A ENERGIA
- * *****************************************************************/
-
-std::vector<uint8_t> SerializadorServer::serializarComandoModificarEnergia(int16_t cantidad_energia,
-                                                                            uint16_t tope_energia) {
-    std::vector<uint8_t> buffer(5);
-    buffer[0] = 30;
-    int16_t* aux = (int16_t*) (buffer.data() + 1);
-    aux[0] = cantidad_energia;
-    uint16_t* aux2 = (uint16_t*) (buffer.data() + 3);
-    aux2[0] = tope_energia; 
-    return buffer;
-}
-
-/* *****************************************************************
  *                          MOVE SEMANTICS
  * *****************************************************************/
 

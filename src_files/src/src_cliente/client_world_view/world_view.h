@@ -70,7 +70,7 @@ public:
 
 	void modificarEspecia(uint16_t cantidad_especia);
 
-	void modificarEnergia(int16_t cantidad_energia, uint16_t tope_energia);
+	void modificarEnergia(int16_t cantidad_energia);
 
 	void actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
 

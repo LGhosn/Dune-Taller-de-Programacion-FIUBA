@@ -5,9 +5,8 @@
 
 class CmdModificarEnergiaServer : public ComandoServer {
     int16_t cantidad_energia;
-    uint16_t tope_energia;
 public:
-    CmdModificarEnergiaServer(int16_t cantidad_energia, uint16_t tope_energia);
+    CmdModificarEnergiaServer(int16_t cantidad_energia);
 
     virtual void enviarComando(ProtocoloServidor& protocolo) const;
 

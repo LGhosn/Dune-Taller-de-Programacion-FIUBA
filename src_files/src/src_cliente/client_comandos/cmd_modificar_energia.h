@@ -5,9 +5,8 @@
 
 class CmdModificarEnergiaCliente : public ComandoCliente {
     int16_t cantidad_energia;
-    uint16_t tope_energia;
 public:
-    CmdModificarEnergiaCliente(int16_t cantidad_energia, uint16_t tope_energia);
+    CmdModificarEnergiaCliente(int16_t cantidad_energia);
 
     virtual bool ejecutar(WorldView& worldView) const override;
 

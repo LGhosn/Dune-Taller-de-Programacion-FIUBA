@@ -191,10 +191,11 @@ void ProtocoloServidor::enviarComandoModificarEspecia(uint16_t cantidad_especia)
     enviarBuffer(buffer);
 }
 
-void ProtocoloServidor::enviarComandoModificarEnergia(int16_t cantidad_energia,
-                                                        uint16_t tope_energia) {
-    std::vector<uint8_t> buffer = serializador.serializarComandoModificarEnergia(cantidad_energia, tope_energia);
-    enviarBuffer(buffer);
+void ProtocoloServidor::enviarComandoModificarEnergia(int16_t cantidad_energia) {
+    uint8_t codigo = 30;
+    this->skt_comunicador->sendall(&codigo, SIZEOF_BYTE);
+    cantidad_energia = htons(cantidad_energia);
+    this->skt_comunicador->sendall(&cantidad_energia, SIZEOF_TWO_BYTES);
 }
 
 /* *****************************************************************

@@ -10,7 +10,6 @@
 class EnergiaAcumulada {
     ColaBloqueante<ComandoServer>* cola_comandos;
     int16_t cantidad_energia;
-    uint16_t tope_energia;
 
     // Constantes
     const int16_t energia_centro;

@@ -3,9 +3,7 @@
 
 void EnergiaAcumulada::actualizarEnergia(int16_t diferencia) {
     cantidad_energia -= diferencia;
-    if (diferencia < 0)
-        tope_energia += - diferencia;
-    CmdModificarEnergiaServer* comando = new CmdModificarEnergiaServer(cantidad_energia, tope_energia);
+    CmdModificarEnergiaServer* comando = new CmdModificarEnergiaServer(cantidad_energia);
     cola_comandos->push(comando);
 }
 
@@ -13,7 +11,6 @@ EnergiaAcumulada::EnergiaAcumulada(ColaBloqueante<ComandoServer>* cola_comandos,
                                     YAML::Node& constantes) :
 			cola_comandos(cola_comandos),
             cantidad_energia(constantes["Game"]["Energia"]["ValorInicial"].as<int16_t>()),
-            tope_energia(constantes["Game"]["Energia"]["TopeInicial"].as<uint16_t>()),
             energia_centro(constantes["Game"]["Energia"]["Valor"]["Centro"].as<int16_t>()),
             energia_cuartel(constantes["Game"]["Energia"]["Valor"]["Cuartel"].as<int16_t>()),
             energia_fabrica_ligera(constantes["Game"]["Energia"]["Valor"]["FabricaLigera"].as<int16_t>()),
@@ -58,6 +55,6 @@ float EnergiaAcumulada::obtenerMultiplicadorDeudaEnergetica() const {
 }
 
 void EnergiaAcumulada::empezarPartida() {
-	CmdModificarEnergiaServer* comando = new CmdModificarEnergiaServer(cantidad_energia, tope_energia);
+	CmdModificarEnergiaServer* comando = new CmdModificarEnergiaServer(cantidad_energia);
     cola_comandos->push(comando);
 }

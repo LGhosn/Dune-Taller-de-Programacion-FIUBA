@@ -137,8 +137,8 @@ void WorldView::modificarEspecia(uint16_t cantidad_especia) {
 	side_menu.modificarEspecia(cantidad_especia);
 }
 
-void WorldView::modificarEnergia(int16_t cantidad_energia, uint16_t tope_energia) {
-
+void WorldView::modificarEnergia(int16_t cantidad_energia) {
+	side_menu.modificarEnergia(cantidad_energia);
 }
 
 void WorldView::actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables) {

@@ -79,7 +79,7 @@ public:
  *                  METODOS REFERIDOS A ENERGIA
  * *****************************************************************/
 
-    CmdModificarEnergiaDTO recibirComandoModificarEnergia();
+    int16_t recibirComandoModificarEnergia();
 
 /* *****************************************************************
  *                         MOVE SEMANTICS

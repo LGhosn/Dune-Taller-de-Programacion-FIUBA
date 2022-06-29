@@ -209,12 +209,10 @@ CmdEmpezarEntrenamientoClienteDTO ProtocoloCliente::recibirComandoEmpezarEntrena
  *                  METODOS REFERIDOS A ENERGIA
  * *****************************************************************/
 
-CmdModificarEnergiaDTO ProtocoloCliente::recibirComandoModificarEnergia() {
+int16_t ProtocoloCliente::recibirComandoModificarEnergia() {
     int16_t cantidad_energia;
     this->skt_cliente.recvall(&cantidad_energia, SIZEOF_TWO_BYTES);
-    uint16_t tope_energia;
-    this->skt_cliente.recvall(&tope_energia, SIZEOF_TWO_BYTES);
-    return CmdModificarEnergiaDTO(cantidad_energia, tope_energia);
+    return ntohs(cantidad_energia);
 }
 
 /* *****************************************************************

@@ -125,7 +125,7 @@ public:
 
     void enviarComandoModificarEspecia(uint16_t cantidad_especia);
 
-    void enviarComandoModificarEnergia(int16_t cantidad_energia, uint16_t tope_energia);
+    void enviarComandoModificarEnergia(int16_t cantidad_energia);
 
 /* *****************************************************************
  * METODOS REFERIDOS A ACTUALIZAR ESTADO COMPRA EDIFICIOS Y UNIDADES
