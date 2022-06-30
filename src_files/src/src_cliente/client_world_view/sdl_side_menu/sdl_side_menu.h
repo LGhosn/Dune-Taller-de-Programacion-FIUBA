@@ -3,6 +3,8 @@
 
 #include <SDL2pp/SDL2pp.hh>
 #include "../sdl_texturas.h"
+#include "../sdl_sonidos/sdl_mixer.h"
+#include "../sdl_sonidos/sdl_sonidos.h"
 #include "sdl_tienda/sdl_tienda.h"
 #include "sdl_especia.h"
 #include "sdl_energia.h"
@@ -23,8 +25,9 @@ class SideMenuSDL {
     SDL2pp::Rect side_menu_rect;
 
 public:
-    SideMenuSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
-                uint8_t id_jugador, YAML::Node& constantes, ColorSDL& color);
+    SideMenuSDL(SDL2pp::Renderer& renderer, MixerSDL& mixer,
+                uint8_t casa, TexturasSDL& texturas, uint8_t id_jugador,
+                YAML::Node& constantes, ColorSDL& color);
 
     SolicitudCliente* clickEnMenu(int pos_x, int pos_y);
     SolicitudCliente* clickEnMapa(Coordenadas& coords);

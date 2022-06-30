@@ -94,7 +94,7 @@ std::map<uint8_t, std::pair<uint8_t, std::string>> ProtocoloCliente::recibirInfo
         uint8_t id_jugador;
         this->skt_cliente.recvall(&id_jugador, SIZEOF_BYTE);
         uint8_t casa;
-        this->skt_cliente.recvall(&id_jugador, SIZEOF_BYTE);
+        this->skt_cliente.recvall(&casa, SIZEOF_BYTE);
         std::string nombre = this->recibirNombre();
         info_jugadores[id_jugador] = std::pair<uint8_t, std::string>(casa, nombre);
     }

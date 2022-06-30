@@ -3,6 +3,8 @@
 
 #include "yaml-cpp/yaml.h"
 #include "sdl_mapa/sdl_mapa.h"
+#include "sdl_sonidos/sdl_mixer.h"
+#include "sdl_sonidos/sdl_sonidos.h"
 #include "sdl_color/sdl_colores.h"
 #include "sdl_texturas.h"
 #include "sdl_edificio/sdl_edificio.h"
@@ -12,10 +14,12 @@
 #include "../../src_common/common_coords.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include <list>
+#include <SDL2pp/SDLMixer.hh>
 
 class WorldView {
 	YAML::Node& constantes;
 	ColoresSDL colores;
+	uint8_t casa;
 
 	// Constantes
 	const uint32_t ancho_ventana;
@@ -26,13 +30,15 @@ class WorldView {
 	const float zoom_maximo;
 	const float velocidad_zoom;
 
+	SDL2pp::SDL biblioteca_sdl;
+	SDL2pp::SDLMixer biblioteca_sdl_mixer;
 	SDL2pp::Window window;
 	SDL2pp::Renderer renderer;
+	MixerSDL mixer;
 	TexturasSDL texturas;
 	ColaBloqueante<SolicitudCliente>& cola_solicitudes;
 	float zoom;
 	MapaSDL mapa;
-	uint8_t casa;
 	SideMenuSDL side_menu;
 	std::unordered_map<Coordenadas, EdificioSDL*, HashCoordenadas> edificios;
 	std::vector<EdificioSDL*> edificios_seleccionados;

@@ -6,10 +6,12 @@ bool BotonEdificioSDL::contiene(int pos_x, int pos_y) const {
     return destino.Contains(pos_x, pos_y);
 }
 
-BotonEdificioSDL::BotonEdificioSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
+BotonEdificioSDL::BotonEdificioSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas,
+                                MixerSDL& mixer, uint8_t tipo,
                                 uint8_t casa, uint8_t id_jugador, const SDL2pp::Rect destino,
                                 YAML::Node& constantes) :
                                 renderer(renderer),
+                                mixer(mixer),
                                 tipo(tipo),
                                 casa(casa),
                                 id_jugador(id_jugador),
@@ -53,6 +55,7 @@ void BotonEdificioSDL::empezarConstruccion(uint16_t milisegundos_para_construir)
     construyendo = true;
     frames_para_construir = milisegundos_para_construir * fps / 1000;
     frames_restantes_construccion = frames_para_construir;
+    mixer.reproducirMensajeConstruyendo();
 }
 
 SolicitudCliente* BotonEdificioSDL::click(int pos_x, int pos_y) {
@@ -91,6 +94,7 @@ void BotonEdificioSDL::update(long frames_transcurridos) {
         } else {
             construyendo = false;
             listo = true;
+            mixer.reproducirMensajeEdificioConstruido();
         }
     }
 }
