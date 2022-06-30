@@ -213,8 +213,8 @@ void ProtocoloServidor::enviarComandoActualizarTiendaUnidades(const std::vector<
     enviarBuffer(serializador.serializarComandoActualizarTiendaUnidades(unidades_comprables));
 }
 
-void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion) {
-    std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(tipo_unidad, tiempo_construccion);
+void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn) {
+    std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(tipo_unidad, tiempo_construccion, coords_spawn);
     enviarBuffer(buffer);
 }
 

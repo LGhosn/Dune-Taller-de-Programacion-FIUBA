@@ -34,8 +34,8 @@ public:
 
     void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
 
-    void empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_construccion);
-    void empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_construccion);
+    void empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
+    void empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
 
     void actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
 

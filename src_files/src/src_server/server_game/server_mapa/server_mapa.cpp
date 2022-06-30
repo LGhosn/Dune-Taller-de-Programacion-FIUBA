@@ -169,6 +169,36 @@ bool Mapa::esCoordenadaValida(const Coordenadas& posicion) {
     return this->mapa[posicion.y][posicion.x]->obtenerTipoDeEntidad() == 'T';
 }
 
+Coordenadas& Mapa::coordenadaLibreMasCercana(Coordenadas& posicion) {
+    for (int i = posicion.y; i > (posicion.y - DISTANCIA_EDIFICIOS); i--){
+        if (i < 0 || i >= this->alto) continue;
+        for (int j = posicion.x; j > (posicion.x - DISTANCIA_EDIFICIOS); j--){
+            if (0 > j || j >= this->ancho) continue;
+
+            if (this->mapa[i][j]->obtenerTipoDeEntidad() == 'T'){
+                posicion.x = j;
+                posicion.y = i;
+                return posicion;
+            }
+        }
+    }
+    for (int i = posicion.y; i < (posicion.y + DISTANCIA_EDIFICIOS); i++){
+        if (i < 0 || i >= this->alto) continue;
+        for (int j = posicion.x; j < (posicion.x + DISTANCIA_EDIFICIOS); j++){
+            if (0 > j || j >= this->ancho) continue;
+
+            if (this->mapa[i][j]->obtenerTipoDeEntidad() == 'T'){
+                posicion.x = j;
+                posicion.y = i;
+                return posicion;
+            }
+        }
+    }
+    posicion.x = 0;
+    posicion.y = 0;
+    return posicion;
+}
+
 /* ******************************************************************
  *                        PUBLICAS
  * *****************************************************************/
@@ -275,6 +305,16 @@ void Mapa::demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y) {
 
 std::stack<Coordenadas> Mapa::obtenerCamino(UnidadInfoDTO& unidad_info) const {
     return this->camino.obtener_camino(unidad_info);
+}
+
+Coordenadas& Mapa::obtenerCoordenadasSpawn(uint8_t id_jugador) {
+    for (auto& coordenada : this->coords_centros) {
+        std::unique_ptr<Entidades>& entidad = this->mapa[coordenada.y][coordenada.x];
+        if (entidad->obtenerIdJugador() == id_jugador) {
+            return coordenadaLibreMasCercana(coordenada);
+        }
+    }
+    throw std::runtime_error("No se encontro spawn para el jugador");
 }
 
 Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), camino(otro.camino) {

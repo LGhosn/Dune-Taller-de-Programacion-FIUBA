@@ -5,7 +5,7 @@
 
 class TanqueSonico : public Unidad {
 public:
-    TanqueSonico(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad);
+    TanqueSonico(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad, Coordenadas& coords_spawn);
     // virtual void atacar(Unidad& unidad);
     virtual ~TanqueSonico() = default;
 };

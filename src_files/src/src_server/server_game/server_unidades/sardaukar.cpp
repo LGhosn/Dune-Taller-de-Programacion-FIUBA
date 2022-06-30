@@ -1,6 +1,6 @@
 #include "sardaukar.h"
 
-Sardaukar::Sardaukar(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad) : Unidad(duenio, mapa, Coordenadas(0, 0)) {
+Sardaukar::Sardaukar(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad, Coordenadas& coords_spawn) : Unidad(duenio, mapa, coords_spawn) {
     this->id = id;
     this->tipo_unidad = INFANTERIA;
 

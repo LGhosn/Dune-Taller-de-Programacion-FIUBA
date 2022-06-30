@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <list>
+#include <unordered_map>
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../server_comandos/server_comando.h"
 #include "server_unidades/unidades.h"
@@ -17,7 +18,7 @@ class Game {
     bool finished = false;
     std::map< uint8_t, ColaBloqueante<ComandoServer>* > colas_comandos;
     std::list<Jugador> jugadores;
-    std::map<uint8_t, std::unique_ptr<Unidad> > unidades;
+    std::unordered_map<uint8_t, std::unique_ptr<Unidad> > unidades;
     Mapa mapa;
     std::string nombre_mapa;
     uint8_t conts_id_edificios = 0;
@@ -34,9 +35,9 @@ class Game {
      * Encuentra un Jugador en base a la id dada. Si no se encuentra el jugador, se
      * lanza una excepcion de tipo runtime_error.
     */
-    Jugador* encontrarJugador(uint8_t id_jugador);
+    Jugador& encontrarJugador(uint8_t id_jugador);
     
-    std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador, uint8_t id_unidad);
+    std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador, uint8_t id_unidad, Coordenadas& coords_spawn);
     
     void updateUnidad(long iter);
 

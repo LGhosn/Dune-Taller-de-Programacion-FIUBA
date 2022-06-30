@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun 30 10:48:32 2022
+# Make data base, printed on Thu Jun 30 17:44:53 2022
 
 # Variables
 
@@ -71,7 +71,7 @@ MANAGERPID = 1098
 # environment
 P9K_SSH = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-edd7e20c-b6c7-4a5c-bbd5-712aa8df7502.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b888024a-00ef-4531-9f3b-c49451292588.sock
 # environment
 VSCODE_CWD = /home/lautaro
 # default
@@ -99,7 +99,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 3218
+GIO_LAUNCHED_DESKTOP_FILE_PID = 39468
 # automatic
 %F = $(notdir $%)
 # environment
@@ -121,6 +121,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/lautaro
 # environment
+ 
 VSCODE_CODE_CACHE_PATH = /home/lautaro/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
 LOGNAME = lautaro
@@ -205,7 +206,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3218
+VSCODE_PID = 39468
 # variable set hash-table stats:
 # Load=97/1024=9%, Rehash=0, Collisions=12/119=10%
 
@@ -273,6 +274,6 @@ GNUmakefile:
 # strcache performance: lookups = 22 / hit rate = 13%
 # hash-table stats:
 # Load=19/8192=0%, Rehash=0, Collisions=1/22=5%
-# Finished Make data base on Thu Jun 30 10:48:32 2022
+# Finished Make data base on Thu Jun 30 17:44:53 2022
 
  

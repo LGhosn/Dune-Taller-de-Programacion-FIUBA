@@ -49,7 +49,7 @@ public:
 
     std::vector<uint8_t> serializarComandoActualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
     std::vector<uint8_t> serializarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables);
-    std::vector<uint8_t> serializarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion);
+    std::vector<uint8_t> serializarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
 
 /* *****************************************************************
  *               METODOS REFERIDOS A MOVER UNIDAD

@@ -5,7 +5,7 @@
 
 class Desviador : public Unidad {
 public:
-    Desviador(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad);
+    Desviador(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad, Coordenadas& coords_spawn);
     // virtual void atacar(Unidad& unidad);
     virtual ~Desviador() = default;
 };

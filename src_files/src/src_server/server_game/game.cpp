@@ -1,4 +1,5 @@
 #include "game.h"
+#include <utility>
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
 #include "../server_comandos/cmd_crear_edificio.h"
 #include "../server_comandos/cmd_empezar_partida.h"
@@ -6,6 +7,18 @@
 #include "../server_comandos/cmd_mover_unidad.h"
 #include "../server_DTO/dto_unidad_info.h"
 #include "../server_comandos/cmd_empezar_construccion_edificio.h"
+//unidades
+#include "server_unidades/cosechadora.h"
+#include "server_unidades/desviador.h"
+#include "server_unidades/devastador.h"
+#include "server_unidades/fremen.h"
+#include "server_unidades/infanteriaLigera.h"
+#include "server_unidades/infanteriaPesada.h"
+#include "server_unidades/raider.h"
+#include "server_unidades/sardaukar.h"
+#include "server_unidades/tanque.h"
+#include "server_unidades/tanqueSonico.h"
+#include "server_unidades/trike.h"
 
 #define CODIGO_CENTRO 0
 
@@ -21,20 +34,20 @@ std::map<uint8_t, Coordenadas> Game::sortearCentros() const {
 
 void Game::crearCentro(uint16_t id_jugador, const Coordenadas& coords) {
     mapa.construirCentro(id_jugador, coords);
-    Jugador* jugador = encontrarJugador(id_jugador);
+    Jugador& jugador = encontrarJugador(id_jugador);
     for (auto& cola : colas_comandos) {
         CmdCrearEdificioServer* comando =
-                new CmdCrearEdificioServer(id_jugador, conts_id_edificios, CODIGO_CENTRO, coords, jugador->obtenerCasa());
+                new CmdCrearEdificioServer(id_jugador, conts_id_edificios, CODIGO_CENTRO, coords, jugador.obtenerCasa());
         cola.second->push(comando);
     }
-    jugador->edificioCreado(CODIGO_CENTRO);
+    jugador.edificioCreado(CODIGO_CENTRO);
     conts_id_edificios++;
 }
 
-Jugador* Game::encontrarJugador(uint8_t id_jugador) {
+Jugador& Game::encontrarJugador(uint8_t id_jugador) {
     for (Jugador& jugador: jugadores)
         if (jugador == id_jugador)
-            return &jugador;
+            return jugador;
     throw std::runtime_error("Game: Jugador no encontrado");
 }
 
@@ -54,33 +67,58 @@ Game::Game(const std::string& nombre_mapa) :
 void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     bool resultado = mapa.construirEdificio(id_jugador, tipo, coords);
     if (resultado) {
-        Jugador* jugador = encontrarJugador(id_jugador);
+        Jugador& jugador = encontrarJugador(id_jugador);
         for (auto& cola : colas_comandos) {
             CmdCrearEdificioServer* comando =
-                new CmdCrearEdificioServer(id_jugador, conts_id_edificios, tipo, coords, jugador->obtenerCasa());
+                new CmdCrearEdificioServer(id_jugador, conts_id_edificios, tipo, coords, jugador.obtenerCasa());
             cola.second->push(comando);
         }
         conts_id_edificios++;
-        jugador->edificioCreado(tipo);
+        jugador.edificioCreado(tipo);
     }
 }
 
-std::unique_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador, uint8_t id_unidad) {
+std::unique_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador, uint8_t id_unidad, Coordenadas& coords_spawn) {
     switch (tipo_unidad) {
         case 1:
-            // return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa, this->atributos_unidades));
+            return std::unique_ptr<Unidad>(new Cosechadora(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 2:
+            return std::unique_ptr<Unidad>(new Desviador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 3:
+            return std::unique_ptr<Unidad>(new Devastador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 4:
+            return std::unique_ptr<Unidad>(new Fremen(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 5:
+            return std::unique_ptr<Unidad>(new InfanteriaLigera(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 6:
+            return std::unique_ptr<Unidad>(new InfanteriaPesada(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 7:
+            return std::unique_ptr<Unidad>(new Raider(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 8:
+            return std::unique_ptr<Unidad>(new Sardaukar(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 9:
+            return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 10:
+            return std::unique_ptr<Unidad>(new TanqueSonico(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 11:
+            return std::unique_ptr<Unidad>(new Trike(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
         default:
             throw std::runtime_error("Game: Tipo de unidad no reconocido");
     }
 }
 
 void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
-    Jugador* jugador = encontrarJugador(id_jugador);
-    bool resultado = jugador->comprarUnidad(tipo_unidad);
+    Jugador& jugador = encontrarJugador(id_jugador);
+    bool resultado = jugador.comprarUnidad(tipo_unidad);
     if (resultado) {
-        uint16_t tiempo_construccion = jugador->obtenerTiempoConstruccionUnidad(tipo_unidad);
+        uint8_t id_uni = this->conts_id_unidad++;
+        Coordenadas& coords_spawn = this->mapa.obtenerCoordenadasSpawn(id_jugador);
+        std::unique_ptr<Unidad> uni = this->clasificarUnidad(tipo_unidad, jugador, id_uni, coords_spawn);
+        this->unidades.insert(std::make_pair(id_uni, std::move(uni)));
+
+        uint16_t tiempo_construccion = jugador.obtenerTiempoConstruccionUnidad(tipo_unidad);
         CmdEmpezarEntrenamientoServer* comando =
-                        new CmdEmpezarEntrenamientoServer(tipo_unidad, tiempo_construccion);
+                        new CmdEmpezarEntrenamientoServer(tipo_unidad, tiempo_construccion, coords_spawn);
         colas_comandos[id_jugador]->push(comando);
     }
 }
@@ -92,10 +130,10 @@ void Game::moverUnidad(uint16_t id_unidad, const Coordenadas& destino) {
 
 
 void Game::comprarEdificio(uint8_t id_jugador, uint8_t tipo) {
-    Jugador* jugador = encontrarJugador(id_jugador);
-    bool resultado = jugador->comprarEdificio(tipo);
+    Jugador& jugador = encontrarJugador(id_jugador);
+    bool resultado = jugador.comprarEdificio(tipo);
     if (resultado) {
-        uint16_t tiempo_construccion = jugador->obtenerTiempoConstruccionEdificio();
+        uint16_t tiempo_construccion = jugador.obtenerTiempoConstruccionEdificio();
         CmdEmpezarConstruccionEdificioServer* comando =
                         new CmdEmpezarConstruccionEdificioServer(tipo, tiempo_construccion);
         colas_comandos[id_jugador]->push(comando);
@@ -133,12 +171,8 @@ void Game::updateUnidad(long iter) {
         unidades_jugador.second->update(iter, &tiempo, &direccion);
 
         if (tiempo != -1){
-            // uint8_t id_jugador_actual = unidades_jugador.second->obtenerIdJugador();
-            for (auto& cola: colas_comandos) {
-                CmdMoverUnidadServer* comando =
-                    new CmdMoverUnidadServer(unidades_jugador.first, direccion, tiempo);
-                cola.second->push(comando);
-            }
+            uint8_t id_jugador_actual = unidades_jugador.second->obtenerIdJugador();
+            colas_comandos[id_jugador_actual]->push(new CmdMoverUnidadServer(unidades_jugador.first, tiempo, direccion));
             tiempo = -1;
             direccion = ' ';
         }

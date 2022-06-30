@@ -1,8 +1,8 @@
 #include "devastador.h"
 
-Devastador::Devastador(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad) : Unidad(duenio, mapa, Coordenadas(0, 0)) {
+Devastador::Devastador(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad, Coordenadas& coords_spawn) : Unidad(duenio, mapa, coords_spawn) {
     this->id = id;
-    this->tipo_unidad = VEHICULO;
+    this->tipo_unidad = INFANTERIA;
 
     this->armas = atributos_unidad["Devastador"]["Arma"].as<std::vector<std::string>>();
     this->rango = atributos_unidad["Devastador"]["Rango"].as<uint8_t>();

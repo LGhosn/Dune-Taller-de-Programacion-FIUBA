@@ -95,11 +95,11 @@ void WorldView::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_constr
 	side_menu.empezarConstruccionEdificio(tipo, tiempo_construccion);
 }
 
-void WorldView::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion) {
+void WorldView::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn) {
 	if (tipo < 4) {
-		side_menu.empezarEntrenamientoInfanteria(tipo, tiempo_construccion);
+		side_menu.empezarEntrenamientoInfanteria(tipo, tiempo_construccion, coords_spawn);
 	} else {
-		side_menu.empezarEntrenamientoVehiculo(tipo, tiempo_construccion);
+		side_menu.empezarEntrenamientoVehiculo(tipo, tiempo_construccion, coords_spawn);
 	}
 }
 
