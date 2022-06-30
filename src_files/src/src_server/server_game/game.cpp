@@ -133,6 +133,7 @@ void Game::updateUnidad(long iter) {
         unidades_jugador.second->update(iter, &tiempo, &direccion);
 
         if (tiempo != -1){
+            // uint8_t id_jugador_actual = unidades_jugador.second->obtenerIdJugador();
             for (auto& cola: colas_comandos) {
                 CmdMoverUnidadServer* comando =
                     new CmdMoverUnidadServer(unidades_jugador.first, direccion, tiempo);

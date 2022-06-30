@@ -1,6 +1,8 @@
 #ifndef CLIENTE_DTO_CMD_EMPEZAR_ENTRENAMIENTO_UNIDAD_H
 #define CLIENTE_DTO_CMD_EMPEZAR_ENTRENAMIENTO_UNIDAD_H
 
+#include <cstdint>
+
 struct CmdEmpezarEntrenamientoClienteDTO {
     uint8_t tipo;
     uint16_t tiempo_construccion;

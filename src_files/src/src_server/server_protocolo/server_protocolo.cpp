@@ -123,7 +123,10 @@ SolicitudMoverUnidadDTO ProtocoloServidor::recibirSolicitudMoverUnidad() {
 }
 
 
-void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t id_unidad, char direccion, long tiempo) {}
+void ProtocoloServidor::enviarComandoMoverUnidad(uint8_t id_unidad, char direccion, long tiempo) {
+    std::vector<uint8_t> buffer = serializador.serializarComandoMoverUnidad(id_unidad, direccion, tiempo);
+    enviarBuffer(buffer);
+}
 
 uint8_t ProtocoloServidor::recibirCodigoDeSolicitud() {
     uint8_t codigo;

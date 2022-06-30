@@ -15,9 +15,9 @@ class ComandoCrearEdificio : public ComandoCliente {
     uint8_t casa;
 public:
     ComandoCrearEdificio(ComandoCrearEdificioDTO& dto);
-    bool ejecutar(WorldView& worldView) const override;
+    virtual bool ejecutar(WorldView& worldView) const override;
 
-    ~ComandoCrearEdificio() = default;
+    virtual ~ComandoCrearEdificio() = default;
 };
 
 

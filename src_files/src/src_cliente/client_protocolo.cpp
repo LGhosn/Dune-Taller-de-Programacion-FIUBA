@@ -178,7 +178,7 @@ CmdEmpezarConstruccionEdificioDTO ProtocoloCliente::recibirComandoEmpezarConstru
 }
 
 /* *****************************************************************
- *          METODOS REFERIDOS A COMPRA DE UNIDADES
+ *          METODOS REFERIDOS A UNIDADES
  * *****************************************************************/
 
 void ProtocoloCliente::enviarSolicitudComprarUnidad(uint8_t id_jugador, uint8_t tipo) {
@@ -204,6 +204,19 @@ CmdEmpezarEntrenamientoClienteDTO ProtocoloCliente::recibirComandoEmpezarEntrena
     tiempo_de_entrenamiento = ntohs(tiempo_de_entrenamiento);
     return CmdEmpezarEntrenamientoClienteDTO(tipo_unidad, tiempo_de_entrenamiento);
 }
+
+CmdMoverUnidadClienteDTO ProtocoloCliente::recibirComandoMoverUnidad() {
+    char direccion;
+    this->skt_cliente.recvall(&direccion, SIZEOF_BYTE);
+    direccion = ntohs(direccion);
+    uint8_t tipo_unidad;
+    this->skt_cliente.recvall(&tipo_unidad, SIZEOF_BYTE);
+    long tiempo;
+    this->skt_cliente.recvall(&tiempo, SIZEOF_TWO_BYTES);
+    tiempo = ntohl(tiempo);
+    return CmdMoverUnidadClienteDTO(direccion, tipo_unidad, tiempo);
+}
+
 
 /* *****************************************************************
  *                  METODOS REFERIDOS A ENERGIA

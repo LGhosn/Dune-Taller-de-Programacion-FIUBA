@@ -99,6 +99,19 @@ std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(ui
 }
 
 /* *****************************************************************
+ *                  METODOS REFERIDOS A MOVER UNIDAD
+ * *****************************************************************/
+std::vector<uint8_t> SerializadorServer::serializarComandoMoverUnidad(uint8_t id_unidad, char direccion, long tiempo){
+    std::vector<uint8_t> buffer(5);
+    buffer[0] = CODIGO_MOVER_UNIDAD;
+    buffer[1] = direccion;
+    buffer[2] = id_unidad;
+    long* aux2 = (long*)(buffer.data() + 3);
+    aux2[0] = htonl(tiempo);
+    return buffer;
+}
+
+/* *****************************************************************
  *                          MOVE SEMANTICS
  * *****************************************************************/
 

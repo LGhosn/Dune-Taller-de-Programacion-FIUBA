@@ -41,7 +41,7 @@ protected:
 
 public:
     Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen);
-    virtual Jugador& obtenerJugador();
+    virtual uint8_t obtenerIdJugador();
     // virtual void atacar(Unidad& unidad) = 0;
     virtual void empezarMovimiento(const Coordenadas& destino);
     virtual void update(long ticks_transcurridos, long *tiempo, char *direccion);

@@ -66,6 +66,7 @@ add_executable(client
         src/src_cliente/client_comandos/cmd_modificar_energia.cpp
         src/src_cliente/client_comandos/cmd_empezar_construccion_edificio.cpp
         src/src_cliente/client_comandos/cmd_empezar_entrenamiento.cpp
+        src/src_cliente/client_comandos/cmd_mover_unidad.cpp
         src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
         src/src_cliente/client_solicitudes/sol_comprar_edificio.cpp
         src/src_cliente/client_solicitudes/sol_comprar_unidad.cpp

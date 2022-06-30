@@ -9,6 +9,7 @@
 #include "client_DTO/dto_cmd_empezar_construccion_edificio.h"
 #include "client_DTO/dto_cmd_empezar_entrenamiento_unidad.h"
 #include "client_DTO/dto_cmd_modificar_energia.h"
+#include "client_DTO/dto_cmd_mover_unidad.h"
 #include "client_serializador.h"
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_socket.h"
@@ -75,6 +76,11 @@ public:
     std::vector<bool> recibirComandoActualizarTiendaUnidades();
     CmdEmpezarEntrenamientoClienteDTO recibirComandoEmpezarEntrenamientoUnidad();
     
+/* *****************************************************************
+ *          METODOS REFERIDOS A MOVER UNIDADES
+ * *****************************************************************/
+    CmdMoverUnidadClienteDTO recibirComandoMoverUnidad();
+
 /* *****************************************************************
  *                  METODOS REFERIDOS A ENERGIA
  * *****************************************************************/

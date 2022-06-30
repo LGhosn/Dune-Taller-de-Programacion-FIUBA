@@ -29,8 +29,8 @@ void Unidad::update(long ticks_transcurridos, long *tiempo, char *direccion) {
     }
 }
 
-Jugador& Unidad::obtenerJugador() {
-    return this->duenio;
+uint8_t Unidad::obtenerIdJugador() {
+    return this->duenio.obtenerId();
 }
 
 Unidad::Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen) : duenio(duenio), mapa(mapa), origen(origen) {}

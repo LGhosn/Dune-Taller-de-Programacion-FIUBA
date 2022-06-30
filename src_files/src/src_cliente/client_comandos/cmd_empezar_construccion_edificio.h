@@ -11,7 +11,7 @@ public:
 
     virtual bool ejecutar(WorldView& worldView) const override;
 
-    ~CmdEmpezarConstruccionEdificioCliente() = default;
+    virtual ~CmdEmpezarConstruccionEdificioCliente() = default;
 };
 
 #endif // CLIENT_CMD_EMPEZAR_CONSTRUCCION_EDIFICIO_H

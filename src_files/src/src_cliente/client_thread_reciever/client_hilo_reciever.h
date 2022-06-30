@@ -1,13 +1,27 @@
 #ifndef CLIENT_HILO_RECEIVER_H
 #define CLIENT_HILO_RECEIVER_H
 
+#include <thread>
+
 #include "../client_client.h"
 #include "../client_protocolo.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
+
+// COMANDOS
 #include "../client_comandos/client_comando.h"
-#include "../client_DTO/dto_cmd_crear_edificio.h"
 #include "../client_comandos/cmd_crear_edificio.h"
-#include <thread>
+#include "../client_comandos/cmd_salir.h"
+#include "../client_comandos/cmd_modificar_especia.h"
+#include "../client_comandos/cmd_actualizar_tienda_edificios.h"
+#include "../client_comandos/cmd_empezar_construccion_edificio.h"
+#include "../client_comandos/cmd_empezar_entrenamiento.h"
+#include "../client_comandos/cmd_modificar_energia.h"
+#include "../client_comandos/cmd_mover_unidad.h"
+
+// DTOs
+#include "../client_DTO/dto_cmd_crear_edificio.h"
+#include "../client_DTO/dto_cmd_empezar_construccion_edificio.h"
+#include "../client_DTO/dto_cmd_mover_unidad.h"
 
 class Client;
 

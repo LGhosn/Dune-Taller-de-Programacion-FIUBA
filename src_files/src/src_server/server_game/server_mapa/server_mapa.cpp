@@ -141,6 +141,7 @@ std::unique_ptr<Entidades> Mapa::clasificarTerreno(char tipo) {
 
 char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destino) {
     char arriba = 'a', abajo = 'b', izquierda = 'i', derecha = 'd';
+    char diagonal_abajo_izq = '1', diagonal_abajo_der = '2', diagonal_arriba_izq = '3', diagonal_arriba_der = '4'; //TODO: determinar chars
     if (origen.x == destino.x){
         if (origen.y < destino.y){
             return arriba;
@@ -151,8 +152,17 @@ char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destin
             return derecha;
         }
         return izquierda;
+    } else if (origen.x < destino.x){
+        if (origen.y < destino.y){
+            return diagonal_arriba_der;
+        }
+        return diagonal_abajo_der;
+    } else {
+        if (origen.y < destino.y){
+            return diagonal_arriba_izq;
+        }
+        return diagonal_abajo_izq;
     }
-    return ' ';
 }
 
 bool Mapa::esCoordenadaValida(const Coordenadas& posicion) {
