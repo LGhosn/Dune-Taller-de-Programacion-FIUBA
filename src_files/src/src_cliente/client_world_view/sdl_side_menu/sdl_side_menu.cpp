@@ -47,9 +47,15 @@ void SideMenuSDL::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_cons
     tienda.empezarConstruccionEdificio(tipo, tiempo_construccion);
 }
 
-void SideMenuSDL::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion) {
-    tienda.empezarEntrenamiento(tipo, tiempo_construccion);
+void SideMenuSDL::empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_construccion) {
+    tienda.empezarEntrenamientoInfanteria(tipo, tiempo_construccion);
 }
+
+void SideMenuSDL::empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_construccion) {
+    tienda.empezarEntrenamientoVehiculo(tipo, tiempo_construccion);
+}
+
+
 
 void SideMenuSDL::actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables) {
     tienda.actualizarEdificios(edificios_comprables);

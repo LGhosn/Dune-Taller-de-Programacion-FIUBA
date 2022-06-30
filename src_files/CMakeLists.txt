@@ -147,6 +147,18 @@ add_executable(server
         src/src_server/server_game/server_jugador/jugador.cpp
         src/src_server/server_game/server_jugador/especia_acumulada.cpp
         src/src_server/server_game/server_jugador/energia_acumulada.cpp
+        src/src_server/server_game/server_unidades/unidades.cpp
+        src/src_server/server_game/server_unidades/cosechadora.cpp
+        src/src_server/server_game/server_unidades/desviador.cpp
+        src/src_server/server_game/server_unidades/devastador.cpp
+        src/src_server/server_game/server_unidades/fremen.cpp
+        src/src_server/server_game/server_unidades/infanteriaLigera.cpp
+        src/src_server/server_game/server_unidades/infanteriaPesada.cpp
+        src/src_server/server_game/server_unidades/raider.cpp
+        src/src_server/server_game/server_unidades/sardaukar.cpp
+        src/src_server/server_game/server_unidades/tanque.cpp
+        src/src_server/server_game/server_unidades/tanqueSonico.cpp
+        src/src_server/server_game/server_unidades/trike.cpp
         src/src_server/server_aceptador.cpp
         src/src_server/server_handler_cliente/server_handler_cliente.cpp
         src/src_server/server_partida/server_partida.cpp

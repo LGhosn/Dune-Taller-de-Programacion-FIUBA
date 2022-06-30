@@ -115,7 +115,7 @@ public:
  *             METODOS REFERIDOS A COMPRAS
  * *****************************************************************/
 
-    SolicitudComprarUnidadDTO recibirSolicitudComprarUnidad(); //TODO: implementar
+    SolicitudComprarUnidadDTO recibirSolicitudComprarUnidad();
 
     void enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad); // TODO: implementar
 

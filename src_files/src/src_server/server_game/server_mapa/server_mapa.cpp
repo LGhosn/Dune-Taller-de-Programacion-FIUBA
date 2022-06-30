@@ -21,10 +21,6 @@
 /* ******************************************************************
  *                        PRIVADAS
  * *****************************************************************/
-// template<typename Base, typename T>
-// inline bool instaciaDe(const T&) {
-//     return std::is_base_of<Base, T>::value;
-// }
 
 bool Mapa::hayColisiones(const Coordenadas& coords, int dimension_x, int dimension_y) {
     for (int i = coords.y; i < coords.y + dimension_y; i++){
@@ -53,11 +49,6 @@ void Mapa::edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edific
     for (int i = coords.y; i < (coords.y + dimension_y); i++){
         for (int j = coords.x; j < (coords.x + dimension_x); j++){
             this->mapa[i][j] = clasificarEdificio(tipo_edificio, this->edificio_config, id_jugador);
-            // std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
-            // std::cout << "Tipo de entidad: " << entidad->obtenerTipoDeEntidad() << std::endl;
-            // std::cout << "Tipo de id jugador: " << entidad->obtenerIdJugador() << std::endl;
-            // std::cout << "Tipo de identificador: " << entidad->obtenerIdentificador() << std::endl;
-
         }
     }
 }
@@ -87,7 +78,6 @@ bool Mapa::construccionLejana(const Coordenadas& coords, uint16_t id_jugador) {
             std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
 
             char tipo_entidad = entidad->obtenerTipoDeEntidad();
-            std::cout << "tipo_entidad: " << tipo_entidad << std::endl;
             if (tipo_entidad == 'E'){
                 uint16_t id_actual_jugador = entidad->obtenerIdJugador();
                 if (id_actual_jugador == id_jugador){

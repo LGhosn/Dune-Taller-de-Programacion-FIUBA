@@ -3,7 +3,7 @@
 
 #include "cliente_solicitud.h"
 
-class SolComprarUnidadCliente : SolicitudCliente {
+class SolComprarUnidadCliente : public SolicitudCliente {
     uint8_t id_jugador;
     uint8_t tipo;
 public:

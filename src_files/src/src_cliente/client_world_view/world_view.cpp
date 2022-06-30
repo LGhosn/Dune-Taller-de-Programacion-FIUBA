@@ -96,7 +96,11 @@ void WorldView::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_constr
 }
 
 void WorldView::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion) {
-	side_menu.empezarEntrenamiento(tipo, tiempo_construccion);
+	if (tipo < 4) {
+		side_menu.empezarEntrenamientoInfanteria(tipo, tiempo_construccion);
+	} else {
+		side_menu.empezarEntrenamientoVehiculo(tipo, tiempo_construccion);
+	}
 }
 
 void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador,

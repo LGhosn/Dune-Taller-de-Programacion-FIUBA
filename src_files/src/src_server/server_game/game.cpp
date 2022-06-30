@@ -47,7 +47,8 @@ void Game::crearCentrosDeConstruccion(std::map<uint8_t, Coordenadas>& centros_so
 Game::Game(const std::string& nombre_mapa) :
             mapa(nombre_mapa),
             nombre_mapa(nombre_mapa),
-            constantes(YAML::LoadFile(RUTA_CONSTANTES)) {}
+            constantes(YAML::LoadFile(RUTA_CONSTANTES)),
+            atributos_unidades(YAML::LoadFile(RUTA_ATRIBUTOS_UNIDADES)) {}
 
 
 void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
@@ -67,7 +68,7 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
 std::unique_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador* jugador, uint8_t id_unidad) {
     switch (tipo_unidad) {
         case 1:
-            // return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa));
+            // return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa, this->atributos_unidades));
         default:
             throw std::runtime_error("Game: Tipo de unidad no reconocido");
     }
