@@ -6,6 +6,7 @@
 #include "../server_comandos/cmd_mover_unidad.h"
 #include "../server_DTO/dto_unidad_info.h"
 #include "../server_comandos/cmd_empezar_construccion_edificio.h"
+#include "../server_comandos/cmd_construccion_invalida.h"
 
 #define CODIGO_CENTRO 0
 
@@ -61,6 +62,9 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
         }
         conts_id_edificios++;
         jugador->edificioCreado(tipo);
+    } else {
+        CmdConstruccionInvalidaServer* comando = new CmdConstruccionInvalidaServer();
+        colas_comandos[id_jugador]->push(comando);
     }
 }
 

@@ -66,6 +66,7 @@ public:
 	void zoomOut();
 
 	void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
+	void construccionInvalida();
 
 	void empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion);
 

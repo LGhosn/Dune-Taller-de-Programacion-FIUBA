@@ -10,7 +10,7 @@ SideMenuSDL::SideMenuSDL(SDL2pp::Renderer& renderer, MixerSDL& mixer,
                             tienda(renderer, mixer, casa, texturas, id_jugador,
                                     constantes, color),
                             especia(renderer, texturas, constantes, color),
-                            energia(renderer, texturas, constantes, color),
+                            energia(renderer, texturas, mixer, constantes, color),
                             logo_casa(texturas.obtenerLogoCasa(casa)) {
     uint32_t ancho_menu = constantes["WorldView"]["SideMenu"]["Ancho"].as<uint32_t>();
     uint32_t ancho_ventana = constantes["WorldView"]["Ventana"]["Ancho"].as<uint32_t>();

@@ -111,6 +111,8 @@ public:
                                     const Coordenadas& coords, uint8_t casa) const;
     SolicitudCrearEdificioDTO recibirSolicitudCrearEdificio();
 
+    void enviarComandoConstruccionInvalida();
+
 /* *****************************************************************
  *             METODOS REFERIDOS A COMPRAS
  * *****************************************************************/

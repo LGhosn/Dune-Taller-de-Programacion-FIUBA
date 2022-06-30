@@ -3,6 +3,7 @@
 #include "../client_comandos/cmd_modificar_especia.h"
 #include "../client_comandos/cmd_actualizar_tienda_edificios.h"
 #include "../client_comandos/cmd_empezar_construccion_edificio.h"
+#include "../client_comandos/cmd_construccion_invalida.h"
 #include "../client_comandos/cmd_empezar_entrenamiento.h"
 #include "../client_comandos/cmd_modificar_energia.h"
 #include "../client_DTO/dto_cmd_empezar_construccion_edificio.h"
@@ -41,6 +42,9 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
         case 5:{
             ComandoCrearEdificioDTO comandoDTO = protocolo.recibirComandoCrearEdificio();
             return new ComandoCrearEdificio(comandoDTO);
+        }
+        case 6: {
+            return new CmdConstruccionInvalidaCliente();
         }
         case 11: {
             CmdEmpezarEntrenamientoClienteDTO comandoDTO = protocolo.recibirComandoEmpezarEntrenamientoUnidad();

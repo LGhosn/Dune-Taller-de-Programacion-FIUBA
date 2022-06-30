@@ -98,6 +98,10 @@ void WorldView::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_constr
 	side_menu.empezarConstruccionEdificio(tipo, tiempo_construccion);
 }
 
+void WorldView::construccionInvalida() {
+	mixer.reproducirMensajeConstruccionInvalida();
+}
+
 void WorldView::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion) {
 	side_menu.empezarEntrenamiento(tipo, tiempo_construccion);
 }
