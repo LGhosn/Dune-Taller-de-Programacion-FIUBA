@@ -75,7 +75,7 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
             cola.second->push(comando);
         }
         conts_id_edificios++;
-        jugador->edificioCreado(tipo);
+        jugador.edificioCreado(tipo);
     } else {
         CmdConstruccionInvalidaServer* comando = new CmdConstruccionInvalidaServer();
         colas_comandos[id_jugador]->push(comando);
