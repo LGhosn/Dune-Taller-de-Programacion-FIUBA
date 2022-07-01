@@ -51,10 +51,11 @@ public:
 
     void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
 
-    void empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
-    void empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
+    void empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_construccion);
+    void empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_construccion);
 
     void actualizarEdificios(const std::vector<bool>& edificios_comprables);
+    void actualizarUnidades(const std::vector<bool>& unidades_comprables);
 
     /*
      * Le informa al boton del tipo de edificio que fue creado acerca de la construccion del

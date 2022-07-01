@@ -9,6 +9,7 @@
 #include "sdl_texturas.h"
 #include "sdl_unidad/sdl_unidad.h"
 #include "sdl_edificio/sdl_edificio.h"
+#include "sdl_unidad/sdl_unidad_factory.h"
 #include "sdl_edificio/sdl_edificio_factory.h"
 #include "sdl_side_menu/sdl_side_menu.h"
 #include "../client_solicitudes/cliente_solicitud.h"
@@ -46,6 +47,7 @@ class WorldView {
     std::vector<UnidadSDL*> unidades_seleccionadas;
     std::map<uint8_t, UnidadSDL*> unidades;
 	EdificioFactorySDL edificio_factory;
+	UnidadFactorySDL unidad_factory;
 	long frame_anterior = 0;
 	uint8_t id_jugador;
 	InfoPartidaDTO info_partida;
@@ -73,7 +75,9 @@ public:
 	void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
 	void construccionInvalida();
 
-	void empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
+	void empezarEntrenamiento(uint8_t id_unidad, uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
+
+	void empezarAparicionDeUnidad(uint8_t id_jugador,uint8_t id_unidad,uint8_t tipo_unidad,long tiempo_entrenamiento,Coordenadas& coords_spawn);
 
 	void crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 						const Coordenadas& coords, uint8_t tipo, uint8_t casa);
@@ -87,6 +91,7 @@ public:
 	void modificarEnergia(int16_t cantidad_energia);
 
 	void actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
+	void actualizarTiendaUnidades(const std::vector<bool>& unidades_comprables);
 
 	void salir();
 

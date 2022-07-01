@@ -197,6 +197,8 @@ std::vector<bool> ProtocoloCliente::recibirComandoActualizarTiendaUnidades() {
 }
 
 CmdEmpezarEntrenamientoClienteDTO ProtocoloCliente::recibirComandoEmpezarEntrenamientoUnidad() {
+    uint8_t id_unidad;
+    this->skt_cliente.recvall(&id_unidad, SIZEOF_BYTE);
     uint8_t tipo_unidad;
     this->skt_cliente.recvall(&tipo_unidad, SIZEOF_BYTE);
     uint16_t tiempo_de_entrenamiento;
@@ -208,7 +210,7 @@ CmdEmpezarEntrenamientoClienteDTO ProtocoloCliente::recibirComandoEmpezarEntrena
     uint16_t coord_y;
     this->skt_cliente.recvall(&coord_y, SIZEOF_TWO_BYTES);
     coord_y = ntohs(coord_y);
-    return CmdEmpezarEntrenamientoClienteDTO(tipo_unidad, tiempo_de_entrenamiento, coord_x, coord_y);
+    return CmdEmpezarEntrenamientoClienteDTO(id_unidad, tipo_unidad, tiempo_de_entrenamiento, coord_x, coord_y);
 }
 
 CmdMoverUnidadClienteDTO ProtocoloCliente::recibirComandoMoverUnidad() {
@@ -221,6 +223,25 @@ CmdMoverUnidadClienteDTO ProtocoloCliente::recibirComandoMoverUnidad() {
     this->skt_cliente.recvall(&tiempo, SIZEOF_TWO_BYTES);
     tiempo = ntohl(tiempo);
     return CmdMoverUnidadClienteDTO(direccion, tipo_unidad, tiempo);
+}
+
+CmdEnemigoDespliegaUnidadDTO ProtocoloCliente::recibirComandoEnemigoDespliegaUnidad() {
+    uint8_t id_unidad;
+    this->skt_cliente.recvall(&id_unidad, SIZEOF_BYTE);
+    uint8_t id_jugador;
+    this->skt_cliente.recvall(&id_jugador, SIZEOF_BYTE);
+    uint8_t tipo_unidad;
+    this->skt_cliente.recvall(&tipo_unidad, SIZEOF_BYTE);
+    uint16_t coord_x;
+    this->skt_cliente.recvall(&coord_x, SIZEOF_TWO_BYTES);
+    coord_x = ntohs(coord_x);
+    uint16_t coord_y;
+    this->skt_cliente.recvall(&coord_y, SIZEOF_TWO_BYTES);
+    coord_y = ntohs(coord_y);
+    long tiempo;
+    this->skt_cliente.recvall(&tiempo, SIZEOF_TWO_BYTES);
+    tiempo = ntohl(tiempo);
+    return CmdEnemigoDespliegaUnidadDTO(id_unidad, id_jugador, tipo_unidad, tiempo, coord_x, coord_y);
 }
 
 

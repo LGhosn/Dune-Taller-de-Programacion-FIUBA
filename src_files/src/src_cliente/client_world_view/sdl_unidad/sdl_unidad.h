@@ -13,11 +13,11 @@ protected:
     uint8_t id_jugador;
     SDL2pp::Renderer& renderer;
     SDL2pp::Texture& textura;
+    Coordenadas coords;
     ColorSDL& color;
+    long frames_restantes;
     SDL2pp::Rect destino;
     SDL2pp::Rect destino_ui;
-    Coordenadas coords;
-    long frame_anterior = 0;
     bool seleccionado = false;
     float zoom;
 
@@ -47,13 +47,15 @@ public:
                 SDL2pp::Texture& textura,
                 const Coordenadas& coords,
                 YAML::Node& constantes,
-                ColorSDL& color);
+                ColorSDL& color,
+                long frames_restantes);
 
 
     void cambiarHP(uint16_t hp_edificio);
     bool contiene(int pos_x, int pos_y);
     void seleccionar();
     void deseleccionar();
+    bool listaParaRenderizar(long frames_actual);
     virtual void update(uint32_t offset_x, uint32_t offset_y, long frame_actual, float zoom);
     virtual void render();
     void renderUI();

@@ -200,11 +200,11 @@ void TiendaSDL::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_constr
     botones_edificios[tipo - 1].empezarConstruccion(tiempo_construccion);
 }
 
-void TiendaSDL::empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_entrenamiento, Coordenadas& coords_spawn) {
+void TiendaSDL::empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_entrenamiento) {
     botones_infanteria[tipo - 1].empezarEntrenamiento(tiempo_entrenamiento);
 }
 
-void TiendaSDL::empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_entrenamiento, Coordenadas& coords_spawn) {
+void TiendaSDL::empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_entrenamiento) {
     botones_vehiculos[tipo - 1].empezarEntrenamiento(tiempo_entrenamiento);
 }
 
@@ -217,6 +217,19 @@ void TiendaSDL::actualizarEdificios(const std::vector<bool>& edificios_comprable
         }
     }
 }
+
+void TiendaSDL::actualizarUnidades(const std::vector<bool>& unidades_comprables) {
+    for (uint8_t i = 0; i < unidades_comprables.size(); i++) {
+        if (unidades_comprables[i + 1]) {
+            botones_infanteria[i].habilitar();
+            botones_vehiculos[i].habilitar();
+        } else {
+            botones_infanteria[i].deshabilitar();
+            botones_vehiculos[i].deshabilitar();
+        }
+    }
+}
+
 
 void TiendaSDL::edificioCreado(uint8_t tipo) {
     botones_edificios[tipo - 1].edificioCreado();

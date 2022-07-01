@@ -38,12 +38,16 @@ bool Jugador::comprarUnidad(uint8_t tipo_unidad) {
 }
 
 bool Jugador::comprarEdificio(uint8_t tipo_edificio) {
-    return especia.comprarEdificio(tipo_edificio);
+    if(especia.comprarEdificio(tipo_edificio, cantidad_edificios, casa)) {
+        edificioCreado(tipo_edificio);
+        return true;
+    }
+    return false;
 }
 
 void Jugador::edificioCreado(uint8_t tipo_edificio) {
     energia.edificioCreado(tipo_edificio);
-    cantidad_edificios[tipo_edificio]++;
+    // cantidad_edificios[tipo_edificio]++;
 }
 
 uint16_t Jugador::obtenerTiempoConstruccionEdificio() {

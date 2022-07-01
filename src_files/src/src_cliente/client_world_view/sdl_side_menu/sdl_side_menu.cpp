@@ -49,18 +49,22 @@ void SideMenuSDL::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_cons
     tienda.empezarConstruccionEdificio(tipo, tiempo_construccion);
 }
 
-void SideMenuSDL::empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn) {
-    tienda.empezarEntrenamientoInfanteria(tipo, tiempo_construccion, coords_spawn);
+void SideMenuSDL::empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_construccion) {
+    tienda.empezarEntrenamientoInfanteria(tipo, tiempo_construccion);
 }
 
-void SideMenuSDL::empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn) {
-    tienda.empezarEntrenamientoVehiculo(tipo, tiempo_construccion, coords_spawn);
+void SideMenuSDL::empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_construccion) {
+    tienda.empezarEntrenamientoVehiculo(tipo, tiempo_construccion);
 }
 
 
 
 void SideMenuSDL::actualizarTiendaEdificios(const std::vector<bool>& edificios_comprables) {
     tienda.actualizarEdificios(edificios_comprables);
+}
+
+void SideMenuSDL::actualizarTiendaUnidades(const std::vector<bool>& unidades_comprables) {
+    tienda.actualizarUnidades(unidades_comprables);
 }
 
 void SideMenuSDL::edificioCreado(uint8_t tipo) {

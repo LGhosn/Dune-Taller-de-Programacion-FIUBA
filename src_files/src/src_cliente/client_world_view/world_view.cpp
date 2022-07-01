@@ -50,6 +50,7 @@ WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
 					side_menu(renderer, mixer, casa, texturas, id_jugador, constantes,
 								colores.obtenerColor(id_jugador)),
 					edificio_factory(renderer, texturas, constantes, colores),
+                    unidad_factory(renderer, texturas, constantes, colores),
 					id_jugador(id_jugador),
 					info_partida(info_partida) {
 	renderer.SetDrawBlendMode(SDL_BLENDMODE_BLEND);
@@ -66,7 +67,9 @@ void WorldView::update(long frame_actual) {
     }
 
     for (auto & unidad: this->unidades) {
-        unidad.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(), frame_actual, zoom);
+        if(unidad.second->listaParaRenderizar(frame_actual)){
+            unidad.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(), frame_actual, zoom);
+        }
     }
 
     this->side_menu.update(frames_transcurridos);
@@ -148,6 +151,10 @@ void WorldView::actualizarTiendaEdificios(const std::vector<bool>& edificios_com
     side_menu.actualizarTiendaEdificios(edificios_comprables);
 }
 
+void WorldView::actualizarTiendaUnidades(const std::vector<bool>& unidades_comprables) {
+    side_menu.actualizarTiendaUnidades(unidades_comprables);
+}
+
 /* *****************************************************************
  *                METODOS REFERIDOS A UNIDADES
  * *****************************************************************/
@@ -157,12 +164,30 @@ void WorldView::moverUnidad(uint8_t id_unidad, char direccion, long tiempo_movim
     unidad_a_mover->moverse(direccion, tiempo_movimiento);
 }
 
-void WorldView::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn) {
-    if (tipo < 4) {
-        side_menu.empezarEntrenamientoInfanteria(tipo, tiempo_construccion, coords_spawn);
+void WorldView::empezarEntrenamiento(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo_aparicion, Coordenadas& coords_spawn) {
+    if (tipo_unidad < 4) {
+        side_menu.empezarEntrenamientoInfanteria(tipo_unidad, tiempo_aparicion);
     } else {
-        side_menu.empezarEntrenamientoVehiculo(tipo, tiempo_construccion, coords_spawn);
+        side_menu.empezarEntrenamientoVehiculo(tipo_unidad, tiempo_aparicion);
     }
+    empezarAparicionDeUnidad(id_unidad, this->id_jugador, tipo_unidad, tiempo_aparicion, coords_spawn);
+}
+
+void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
+                                                uint8_t id_jugador,
+                                                uint8_t tipo_unidad,
+                                                long tiempo_entrenamiento,
+                                                Coordenadas& coords_spawn) {
+    UnidadSDL* unidad_a_desplegar = unidad_factory.crearUnidad(id_unidad,
+                                                                id_jugador,
+                                                                renderer,
+                                                                texturas,
+                                                                coords_spawn,
+                                                                constantes,
+                                                                colores,
+                                                                tiempo_entrenamiento,
+                                                                tipo_unidad);
+    unidades.insert(std::make_pair(id_unidad, unidad_a_desplegar));
 }
 
 void WorldView::seleccionarUnidad(UnidadSDL* unidad) {

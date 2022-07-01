@@ -7,6 +7,27 @@
 #include "../../../src_common/common_colas/cola_bloqueante.h"
 #include "../../server_comandos/server_comando.h"
 
+#define CENTRO 0
+#define CUARTEL 1
+#define FABRICA_LIGERA 2
+#define FABRICA_PESADA 3
+#define PALACIO 4
+#define REFINERIA 5
+#define SILO 6
+#define TAMPA_DE_AIRE 7
+
+#define INFANTERIA_LIGERA 0
+#define INFANTERIA_PESADA 1
+#define FREMEN 2
+#define SARDAUKAR 3
+#define TRIKE 4
+#define RAIDER 5
+#define TANQUE 6
+#define TANQUE_SONICO 7
+#define DESVIADOR 8
+#define DEVASTARDOR 9
+#define COSECHADORA 10 
+
 class EspeciaAcumulada {
     ColaBloqueante<ComandoServer>& cola_comandos;
     uint16_t cantidad_especia;
@@ -18,9 +39,11 @@ class EspeciaAcumulada {
     float fraccion_demoler;
 
     void actualizarEdificiosComprables();
-    void actualizarUnidadesComprables();
+    void actualizarUnidadesComprables(std::vector<uint8_t>& edificios_comprados, uint8_t& casa);
 
     void enviarNuevaCantidadEspecia();
+
+    bool validarCompraUnidad(uint8_t unidad, std::vector<uint8_t>& edificios_comprados, uint8_t& casa);
 
 public:
     EspeciaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
@@ -38,7 +61,7 @@ public:
      * los edificios comprables al cliente, y el nuevo valor de la especia.
      * De no ser posible comprar el edificio, simplemente devuelve false.
     */
-    bool comprarEdificio(uint8_t tipo);
+    bool comprarEdificio(uint8_t tipo, std::vector<uint8_t>& edificios_comprados, uint8_t& casa);
 
     /*
      * Recibe el tipo de edificio a demoler, y suma la cantidad de especia

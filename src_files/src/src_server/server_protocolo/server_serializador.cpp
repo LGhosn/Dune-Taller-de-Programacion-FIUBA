@@ -82,24 +82,40 @@ std::vector<uint8_t> SerializadorServer::serializarComandoActualizarTiendaEdific
 }
 std::vector<uint8_t> SerializadorServer::serializarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables) {
     std::vector<uint8_t> buffer(unidades_comprables.size() + 1);
-    buffer[0] = 21;
+    buffer[0] = 22;
     for (uint8_t i = 0; i < unidades_comprables.size(); i++)
         buffer[i + 1] = unidades_comprables[i];
     return buffer;
 }
 
-std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad,
+std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad,
                                                                             uint16_t tiempo_construccion,
                                                                             Coordenadas& coords_spawn) {
     std::vector<uint8_t> buffer(4);
     buffer[0] = CODIGO_EMPEZAR_ENTRENAMIENTO;
-    buffer[1] = tipo_unidad;
-    uint16_t* aux = (uint16_t*) (buffer.data() + 2);
+    buffer[1] = id_unidad;
+    buffer[2] = tipo_unidad;
+    uint16_t* aux = (uint16_t*) (buffer.data() + 3);
     aux[0] = htons(tiempo_construccion);
     aux[1] = htons(coords_spawn.x);
     aux[2] = htons(coords_spawn.y);
     return buffer;
 }
+
+std::vector<uint8_t> SerializadorServer::serializarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, long tiempo, Coordenadas& coords) {
+    std::vector<uint8_t> buffer(5);
+    buffer[0] = CODIGO_ENEMIGO_DESPLIEGA_UNIDAD;
+    buffer[1] = id_unidad;
+    buffer[2] = id_jugador;
+    buffer[3] = tipo_unidad;
+    uint16_t* aux = (uint16_t*) (buffer.data() + 4);
+    aux[1] = htons(coords.x);
+    aux[2] = htons(coords.y);
+    long* aux2 = (long*) (buffer.data() + 8);
+    aux2[0] = htonl(tiempo);
+    return buffer;
+}
+
 
 /* *****************************************************************
  *                  METODOS REFERIDOS A MOVER UNIDAD

@@ -8,6 +8,7 @@
 #include "../server_DTO/dto_unidad_info.h"
 #include "../server_comandos/cmd_empezar_construccion_edificio.h"
 #include "../server_comandos/cmd_construccion_invalida.h"
+#include "../server_comandos/cmd_enemigo_despliega_unidad.h"
 //unidades
 #include "server_unidades/cosechadora.h"
 #include "server_unidades/desviador.h"
@@ -41,7 +42,7 @@ void Game::crearCentro(uint16_t id_jugador, const Coordenadas& coords) {
                 new CmdCrearEdificioServer(id_jugador, conts_id_edificios, CODIGO_CENTRO, coords, jugador.obtenerCasa());
         cola.second->push(comando);
     }
-    jugador.edificioCreado(CODIGO_CENTRO);
+    // jugador.edificioCreado(CODIGO_CENTRO);
     conts_id_edificios++;
 }
 
@@ -75,7 +76,7 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
             cola.second->push(comando);
         }
         conts_id_edificios++;
-        jugador.edificioCreado(tipo);
+        // jugador.edificioCreado(tipo);
     } else {
         CmdConstruccionInvalidaServer* comando = new CmdConstruccionInvalidaServer();
         colas_comandos[id_jugador]->push(comando);
@@ -122,8 +123,17 @@ void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
 
         uint16_t tiempo_construccion = jugador.obtenerTiempoConstruccionUnidad(tipo_unidad);
         CmdEmpezarEntrenamientoServer* comando =
-                        new CmdEmpezarEntrenamientoServer(tipo_unidad, tiempo_construccion, coords_spawn);
+                        new CmdEmpezarEntrenamientoServer(id_uni, tipo_unidad, tiempo_construccion, coords_spawn);
         colas_comandos[id_jugador]->push(comando);
+
+        for (auto& cola : colas_comandos) {
+            if (cola.first == id_jugador) {
+                continue;
+            }
+            CmdEnemigoDespliegaUnidadServer* comando =
+                new CmdEnemigoDespliegaUnidadServer(id_uni, cola.first, tipo_unidad, tiempo_construccion, coords_spawn);
+            cola.second->push(comando);
+        }
     }
 }
 

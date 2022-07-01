@@ -6,13 +6,15 @@ UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 SDL2pp::Texture& textura,
                 const Coordenadas& coords,
                 YAML::Node& constantes,
-                ColorSDL& color) :
+                ColorSDL& color,
+                long frames_restantes) :
                 id_unidad(id_unidad),
                 id_jugador(id_jugador),
                 renderer(renderer),
                 textura(textura),
-                color(color),
                 coords(coords),
+                color(color),
+                frames_restantes(frames_restantes),
                 offset_x_hp(constantes["WorldView"]["Unidades"]["UI"]["HP"]["OffsetX"].as<int32_t>()),
                 offset_y_hp(constantes["WorldView"]["Unidades"]["UI"]["HP"]["OffsetY"].as<int32_t>()),
                 alto_hp(constantes["WorldView"]["Unidades"]["UI"]["HP"]["Alto"].as<uint32_t>()),
@@ -33,6 +35,15 @@ void UnidadSDL::update(uint32_t offset_x, uint32_t offset_y, long frame_actual, 
 void UnidadSDL::render() {
     renderer.Copy(textura, SDL2pp::NullOpt, destino);
     renderUI();
+}
+
+bool UnidadSDL::listaParaRenderizar(long frame_actual) {
+    if (this->frames_restantes > frame_actual) {
+        this->frames_restantes -= frame_actual;
+        return false;
+    } 
+    this->frames_restantes = 0;
+    return true;
 }
 
 void UnidadSDL::seleccionar() {

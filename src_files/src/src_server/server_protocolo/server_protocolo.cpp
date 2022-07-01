@@ -183,11 +183,16 @@ SolicitudComprarUnidadDTO ProtocoloServidor::recibirSolicitudComprarUnidad() {
     return SolicitudComprarUnidadDTO(id_jugador,tipo);
 }
 
-void ProtocoloServidor::enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {}
+// void ProtocoloServidor::enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {}
 
 void ProtocoloServidor::enviarComandoConstruccionInvalida() {
     uint8_t codigo = 6;
     this->skt_comunicador.sendall(&codigo, SIZEOF_BYTE);
+}
+
+void ProtocoloServidor::enviarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, long tiempo, Coordenadas& coords) {
+    std::vector<uint8_t> buffer = serializador.serializarComandoEnemigoDespliegaUnidad(id_unidad, id_jugador, tipo_unidad, tiempo, coords);
+    this->enviarBuffer(buffer);
 }
 
 /* *****************************************************************
@@ -218,7 +223,7 @@ void ProtocoloServidor::enviarComandoActualizarTiendaUnidades(const std::vector<
     enviarBuffer(serializador.serializarComandoActualizarTiendaUnidades(unidades_comprables));
 }
 
-void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn) {
-    std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(tipo_unidad, tiempo_construccion, coords_spawn);
+void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad, long tiempo_construccion, Coordenadas& coords_spawn) {
+    std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(id_unidad, tipo_unidad, tiempo_construccion, coords_spawn);
     enviarBuffer(buffer);
 }

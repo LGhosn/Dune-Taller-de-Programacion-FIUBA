@@ -1,119 +1,126 @@
 #include "sdl_unidad_factory.h"
 
-/*UnidadSDL* UnidadFactorySDL::crearUnidad(uint8_t id_unidad,
-                                         uint8_t id_jugador,
-                                         uint8_t tipo_unidad,
-                                         const Coordenadas& coords) {
+UnidadSDL* UnidadFactorySDL::crearUnidad(uint8_t id_unidad,
+                                        uint8_t id_jugador,
+                                        SDL2pp::Renderer& renderer,
+                                        TexturasSDL& texturas,
+                                        const Coordenadas& coords,
+                                        YAML::Node& constantes,
+                                        ColoresSDL& colores,
+                                        long tiempo_aparicion,
+                                        uint8_t tipo_unidad) {
     switch (tipo_unidad) {
-        case 0: {
-            return new InfanteriaLigeraSDL(uint8_t id_unidad,
-                                           uint8_t id_jugador,
+       /* case 0: {
+            return new InfanteriaLigeraSDL(id_unidad,
+                                           id_jugador,
                                            renderer,
-                                           textura,
+                                           texturas,
                                            coords,
                                            constantes,
-                                           color);
+                                           color,
+                                           tiempo_aparicion);
         }
         case 1: {
-            return new InfanteriaPesadaSDL(uint8_t id_unidad,
-                                            uint8_t id_jugador,
+            return new InfanteriaPesadaSDL( id_unidad,
+                                             id_jugador,
                                             renderer,
-                                            textura,
+                                            texturas,
                                             coords,
                                             constantes,
-                                            color);
+                                            color,
+                                            tiempo_aparicion);
         }
         case 2: {
-            return new FremenSDL(uint8_t id_unidad,
-                                uint8_t id_jugador,
+            return new FremenSDL(id_unidad,
+                                id_jugador,
                                 renderer,
-                                textura,
+                                texturas,
                                 coords,
                                 constantes,
-                                color);
+                                color,
+                                tiempo_aparicion);
         }
         case 3: {
-            return new SardaukarSDL(uint8_t id_unidad,
-                                    uint8_t id_jugador,
+            return new SardaukarSDL(id_unidad,
+                                    id_jugador,
                                     renderer,
-                                    textura,
+                                    texturas,
                                     coords,
                                     constantes,
-                                    color);
+                                    color,
+                                    tiempo_aparicion);
         }
         case 4: {
-            return new TrikeSDL(uint8_t id_unidad,
-                                uint8_t id_jugador,
+            return new TrikeSDL(id_unidad,
+                                id_jugador,
                                 renderer,
-                                textura,
+                                texturas,
                                 coords,
                                 constantes,
-                                color);
+                                color,
+                                tiempo_aparicion);
         }
         case 5: {
-            return new RaiderSDL(uint8_t id_unidad,
-                                uint8_t id_jugador,
+            return new RaiderSDL(id_unidad,
+                                id_jugador,
                                 renderer,
-                                textura,
+                                texturas,
                                 coords,
                                 constantes,
-                                color);
+                                color,
+                                tiempo_aparicion);
         }
         case 6: {
-            return new TanqueSDL(uint8_t id_unidad,
-                                uint8_t id_jugador,
+            return new TanqueSDL(id_unidad,
+                                id_jugador,
                                 renderer,
-                                textura,
+                                texturas,
                                 coords,
                                 constantes,
-                                color);
+                                color,
+                                tiempo_aparicion);
         }
         case 7: {
-            return new TanqueSonicoSDL(uint8_t id_unidad,
-                                        uint8_t id_jugador,
+            return new TanqueSonicoSDL(id_unidad,
+                                        id_jugador,
                                         renderer,
-                                        textura,
+                                        texturas,
                                         coords,
                                         constantes,
-                                        color);
+                                        color,
+                                        tiempo_aparicion);
         }
         case 8: {
-            return new TanqueSonicoSDL(uint8_t id_unidad,
-                                        uint8_t id_jugador,
-                                        renderer,
-                                        textura,
-                                        coords,
-                                        constantes,
-                                        color);
+            return new DesviadorSDL(id_unidad,
+                                    id_jugador,
+                                    renderer,
+                                    texturas,
+                                    coords,
+                                    constantes,
+                                    color,
+                                    tiempo_aparicion);
         }
         case 9: {
-            return new DesviadorSDL(uint8_t id_unidad,
-                                    uint8_t id_jugador,
+            return new DevastadorSDL(id_unidad,
+                                    id_jugador,
                                     renderer,
-                                    textura,
+                                    texturas,
                                     coords,
                                     constantes,
-                                    color);
+                                    color,
+                                    tiempo_aparicion);
         }
         case 10: {
-            return new DevastadorSDL(uint8_t id_unidad,
-                                    uint8_t id_jugador,
-                                    renderer,
-                                    textura,
-                                    coords,
-                                    constantes,
-                                    color);
-        }
-        case 11: {
-            return new CosechadoraSDL(uint8_t id_unidad,
-                                        uint8_t id_jugador,
+            return new CosechadoraSDL(id_unidad,
+                                        id_jugador,
                                         renderer,
-                                        textura,
+                                        texturas,
                                         coords,
                                         constantes,
-                                        color);
-        }
+                                        color,
+                                        tiempo_aparicion);
+        }*/
         default:
             throw std::runtime_error("UnidadFactory: codigo de Unidad invalido");
     }
-}*/
+}

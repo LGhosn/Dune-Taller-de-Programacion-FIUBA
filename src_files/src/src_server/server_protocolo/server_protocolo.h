@@ -119,7 +119,9 @@ public:
 
     SolicitudComprarUnidadDTO recibirSolicitudComprarUnidad();
 
-    void enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad); // TODO: implementar
+    void enviarComandoEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad, long tiempo, Coordenadas& coords);
+
+    void enviarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, long tiempo, Coordenadas& coords);
 
 /* *****************************************************************
  *             METODOS REFERIDOS A ACTUALIZAR ESPECIA

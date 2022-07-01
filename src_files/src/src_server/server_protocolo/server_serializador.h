@@ -11,6 +11,7 @@
 
 #define CODIGO_EMPEZAR_ENTRENAMIENTO 11
 #define CODIGO_MOVER_UNIDAD 12
+#define CODIGO_ENEMIGO_DESPLIEGA_UNIDAD 13
 
 class SerializadorServer {
 private:
@@ -49,7 +50,8 @@ public:
 
     std::vector<uint8_t> serializarComandoActualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
     std::vector<uint8_t> serializarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables);
-    std::vector<uint8_t> serializarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
+    std::vector<uint8_t> serializarEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
+    std::vector<uint8_t> serializarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, long tiempo, Coordenadas& coords);
 
 /* *****************************************************************
  *               METODOS REFERIDOS A MOVER UNIDAD

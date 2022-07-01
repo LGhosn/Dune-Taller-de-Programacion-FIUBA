@@ -6,7 +6,7 @@
 
 class BotonUnidadSDL {
     SDL2pp::Renderer& renderer;
-    uint8_t tipo;
+    uint8_t tipo_unidad;
     uint8_t casa;
     uint8_t id_jugador;
     SDL2pp::Texture& logo;

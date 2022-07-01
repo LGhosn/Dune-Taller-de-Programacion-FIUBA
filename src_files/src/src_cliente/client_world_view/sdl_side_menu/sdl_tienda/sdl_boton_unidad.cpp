@@ -2,15 +2,19 @@
 #include "../../../client_solicitudes/sol_comprar_unidad.h"
 
 
-BotonUnidadSDL::BotonUnidadSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
-                    uint8_t casa, uint8_t id_jugador, SDL2pp::Rect destino,
-                    YAML::Node& constantes):
-                    renderer(renderer),
-                    tipo(tipo),
-                    casa(casa),
-                    id_jugador(id_jugador),
-                    logo(texturas.obtenerLogoUnidad(tipo)),
-                    destino(destino) {}
+BotonUnidadSDL::BotonUnidadSDL(SDL2pp::Renderer& renderer,
+                                TexturasSDL& texturas,
+                                uint8_t tipo_unidad,
+                                uint8_t casa,
+                                uint8_t id_jugador,
+                                SDL2pp::Rect destino,
+                                YAML::Node& constantes):
+                                renderer(renderer),
+                                tipo_unidad(tipo_unidad),
+                                casa(casa),
+                                id_jugador(id_jugador),
+                                logo(texturas.obtenerLogoUnidad(tipo_unidad)),
+                                destino(destino) {}
 
 bool BotonUnidadSDL::contiene(int pos_x, int pos_y) const {
     return destino.Contains(pos_x, pos_y);
@@ -34,7 +38,7 @@ SolicitudCliente* BotonUnidadSDL::click(int pos_x, int pos_y) {
     if (!this->contiene(pos_x, pos_y))
         return nullptr;
     if (habilitado && !entrenando) {
-        return new SolComprarUnidadCliente(tipo);
+        return new SolComprarUnidadCliente(tipo_unidad);
     } else {
         return nullptr;
     }

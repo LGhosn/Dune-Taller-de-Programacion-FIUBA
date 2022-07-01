@@ -10,6 +10,7 @@
 #include "client_DTO/dto_cmd_empezar_entrenamiento_unidad.h"
 #include "client_DTO/dto_cmd_modificar_energia.h"
 #include "client_DTO/dto_cmd_mover_unidad.h"
+#include "client_DTO/dto_cmd_enemigo_despliega_unidad.h"
 #include "client_serializador.h"
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_socket.h"
@@ -75,6 +76,7 @@ public:
     void enviarSolicitudComprarUnidad(uint8_t id_jugador, uint8_t tipo);
     std::vector<bool> recibirComandoActualizarTiendaUnidades();
     CmdEmpezarEntrenamientoClienteDTO recibirComandoEmpezarEntrenamientoUnidad();
+    CmdEnemigoDespliegaUnidadDTO recibirComandoEnemigoDespliegaUnidad();
     
 /* *****************************************************************
  *          METODOS REFERIDOS A MOVER UNIDADES

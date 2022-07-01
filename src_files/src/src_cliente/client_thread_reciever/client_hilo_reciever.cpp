@@ -2,11 +2,14 @@
 #include "../client_comandos/cmd_salir.h"
 #include "../client_comandos/cmd_modificar_especia.h"
 #include "../client_comandos/cmd_actualizar_tienda_edificios.h"
+#include "../client_comandos/cmd_actualizar_tienda_unidades.h"
 #include "../client_comandos/cmd_empezar_construccion_edificio.h"
 #include "../client_comandos/cmd_construccion_invalida.h"
 #include "../client_comandos/cmd_empezar_entrenamiento.h"
 #include "../client_comandos/cmd_modificar_energia.h"
+#include "../client_comandos/cmd_enemigo_despliega_unidad.h"
 #include "../client_DTO/dto_cmd_empezar_construccion_edificio.h"
+#include "../client_DTO/dto_cmd_enemigo_despliega_unidad.h"
 
 
 ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, Client* cliente) :
@@ -54,13 +57,21 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
             CmdMoverUnidadClienteDTO comandoDTO = protocolo.recibirComandoMoverUnidad();
             return new CmdMoverUnidadCliente(comandoDTO);
         }
+        case 13: {
+            CmdEnemigoDespliegaUnidadDTO comandoDTO = protocolo.recibirComandoEnemigoDespliegaUnidad();
+            return new CmdEnemigoDespliegaUnidadCliente(comandoDTO);
+        }
         case 20: {
             uint16_t cantidad_especia = protocolo.recibirComandoModificarEspecia();
             return new CmdModificarEspeciaServer(cantidad_especia);
         }
         case 21: {
-            std::vector<bool> edificios_construidos = protocolo.recibirComandoActualizarTiendaEdificios();
-            return new CmdActualizarTiendaEdificiosCliente(edificios_construidos);
+            std::vector<bool> edificios_comprables = protocolo.recibirComandoActualizarTiendaEdificios();
+            return new CmdActualizarTiendaEdificiosCliente(edificios_comprables);
+        }
+        case 22: {
+            std::vector<bool> unidades_comprables = protocolo.recibirComandoActualizarTiendaUnidades();
+            return new CmdActualizarTiendaUnidadesCliente(unidades_comprables);
         }
         case 25: {
             CmdEmpezarConstruccionEdificioDTO comando_dto = protocolo.recibirComandoEmpezarConstruccionEdificio();

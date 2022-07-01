@@ -62,12 +62,14 @@ add_executable(client
         src/src_cliente/client_comandos/cmd_click_en_mapa.cpp
         src/src_cliente/client_comandos/cmd_crear_edificio.cpp
         src/src_cliente/client_comandos/cmd_actualizar_tienda_edificios.cpp
+        src/src_cliente/client_comandos/cmd_actualizar_tienda_unidades.cpp
         src/src_cliente/client_comandos/cmd_modificar_especia.cpp
         src/src_cliente/client_comandos/cmd_modificar_energia.cpp
         src/src_cliente/client_comandos/cmd_empezar_construccion_edificio.cpp
         src/src_cliente/client_comandos/cmd_empezar_entrenamiento.cpp
         src/src_cliente/client_comandos/cmd_construccion_invalida.cpp
         src/src_cliente/client_comandos/cmd_mover_unidad.cpp
+        src/src_cliente/client_comandos/cmd_enemigo_despliega_unidad.cpp
         src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
         src/src_cliente/client_solicitudes/sol_comprar_edificio.cpp
         src/src_cliente/client_solicitudes/sol_comprar_unidad.cpp
@@ -76,6 +78,7 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_mapa.cpp
         src/src_cliente/client_world_view/sdl_unidad/sdl_unidad.cpp
+        src/src_cliente/client_world_view/sdl_unidad/sdl_unidad_factory.cpp
         src/src_cliente/client_world_view/sdl_edificio/sdl_edificio.cpp
         src/src_cliente/client_world_view/sdl_edificio/sdl_edificio_factory.cpp
         src/src_cliente/client_world_view/sdl_edificio/sdl_centro.cpp
@@ -121,10 +124,10 @@ add_executable(server
         src/src_server/server_comandos/cmd_crear_edificio.cpp
         src/src_server/server_comandos/cmd_empezar_partida.cpp
         src/src_server/server_comandos/cmd_modificar_especia.cpp
-        src/src_server/server_comandos/cmd_comprar_unidad.cpp
         src/src_server/server_comandos/cmd_mover_unidad.cpp
         src/src_server/server_comandos/cmd_empezar_entrenamiento.cpp
         src/src_server/server_comandos/cmd_modificar_energia.cpp
+        src/src_server/server_comandos/cmd_enemigo_despliega_unidad.cpp
         src/src_server/server_comandos/cmd_construccion_invalida.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_comprar_unidad.cpp
