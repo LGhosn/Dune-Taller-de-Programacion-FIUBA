@@ -18,18 +18,22 @@
 
 class Partida;
 class Lobby;
-class ServerHiloReceiver;
 class ServerHiloSender;
+class ServerHiloReceiver;
 
 class HandlerCliente {
     uint8_t id_cliente;
     std::string nombre;
     Socket socket;
-    Lobby *lobby;
+    Lobby& lobby;
     ProtocoloServidor protocolo;
-    YAML::Node* codigos;
-    ColaBloqueante<ComandoServer>* cola_comandos;
-    ServerHiloSender* hilo_sender;
+    ColaBloqueante<ComandoServer> cola_comandos;
+    ServerHiloSender hilo_sender;
+    /* 
+     * En el heap para evitar problemas por dependencia circular
+     * (HandlerCliente->Receiver->HandlerCliente). Idealmente se evitaria
+     * la dependencia circular para asi tener todo en el stack.
+    */
     ServerHiloReceiver* hilo_reciever;
     std::thread hilo;
 
@@ -37,7 +41,7 @@ public:
     /*
      * Constructor, lanza el HiloClienteLobby.
      */
-    HandlerCliente(Socket& socket, Lobby* lobby, YAML::Node* codigos, uint8_t id_cliente);
+    HandlerCliente(Socket& socket, Lobby& lobby, YAML::Node& codigos, uint8_t id_cliente);
 
     void unirsePartida(SolicitudUnirseAPartidaDTO& partida_a_unirse);
     void enviarStatusDeUnion(Status &status_de_union);
@@ -45,9 +49,9 @@ public:
     void crearPartida(SolicitudCrearPartidaDTO& partida_a_unirse);
     void enviarStatusDeCreacion(Status &status_de_creacion);
 
-    void empezarPartida(ColaNoBloqueante<SolicitudServer>* cola);
+    void empezarPartida(ColaNoBloqueante<SolicitudServer>& cola);
 
-    ColaBloqueante<ComandoServer>* obtenerColaSender();
+    ColaBloqueante<ComandoServer>& obtenerColaSender();
 
     bool haFinalizado() const;
 
@@ -61,8 +65,8 @@ public:
 
     HandlerCliente(const HandlerCliente&) = delete;
     HandlerCliente& operator=(const HandlerCliente&) = delete;
-    HandlerCliente(HandlerCliente&&);
-    HandlerCliente& operator=(HandlerCliente&&);
+    HandlerCliente(HandlerCliente&&) = delete;
+    HandlerCliente& operator=(HandlerCliente&&) = delete;
 };
 
 

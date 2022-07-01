@@ -5,7 +5,7 @@ float Jugador::obtenerMultiplicadorPorEdificios(uint8_t tipo_unidad) {
 }
 
 Jugador::Jugador(uint8_t id, uint8_t casa, std::string& nombre,
-                ColaBloqueante<ComandoServer>* cola_comandos,
+                ColaBloqueante<ComandoServer>& cola_comandos,
                 YAML::Node& constantes) :
                 id(id),
                 casa(casa),

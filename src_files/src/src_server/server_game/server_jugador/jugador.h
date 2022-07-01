@@ -12,7 +12,7 @@ class Jugador {
     uint8_t id;
     uint8_t casa;
     std::string nombre;
-    ColaBloqueante<ComandoServer>* cola_comandos;
+    ColaBloqueante<ComandoServer>& cola_comandos;
     EspeciaAcumulada especia;
     EnergiaAcumulada energia;
     std::vector<uint8_t> cantidad_edificios;
@@ -24,7 +24,7 @@ class Jugador {
 
 public:
     Jugador(uint8_t id, uint8_t casa, std::string& nombre,
-            ColaBloqueante<ComandoServer>* cola_comandos,
+            ColaBloqueante<ComandoServer>& cola_comandos,
             YAML::Node& constantes);
     
     /*
@@ -70,8 +70,8 @@ public:
 
     Jugador& operator=(const Jugador& otro) = delete;
     Jugador(const Jugador& otro) = delete;
-    Jugador& operator=(Jugador&& otro);
-    Jugador(Jugador&& otro);
+    Jugador& operator=(Jugador&& otro) = delete;
+    Jugador(Jugador&& otro) = delete;
 };
 
 #endif

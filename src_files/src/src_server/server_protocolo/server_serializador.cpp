@@ -3,7 +3,7 @@
 #include <tuple>
 #include <iostream>
 
-SerializadorServer::SerializadorServer(YAML::Node* codigos): codigos(codigos) {}
+SerializadorServer::SerializadorServer(YAML::Node& codigos): codigos(codigos) {}
 
 std::vector<uint8_t> SerializadorServer::serializarComandoEmpezarConstruccionEdificio(
                                                             uint8_t tipo_edificio,
@@ -112,19 +112,4 @@ std::vector<uint8_t> SerializadorServer::serializarComandoMoverUnidad(uint8_t id
     long* aux2 = (long*)(buffer.data() + 3);
     aux2[0] = htonl(tiempo);
     return buffer;
-}
-
-/* *****************************************************************
- *                          MOVE SEMANTICS
- * *****************************************************************/
-
-SerializadorServer::SerializadorServer(SerializadorServer&& otro) {
-    this->codigos = otro.codigos;
-}
-SerializadorServer& SerializadorServer::operator=(SerializadorServer&& otro) {
-    if (this == &otro) {
-        return *this;
-    }
-    this->codigos = otro.codigos;
-    return *this;
 }

@@ -8,7 +8,7 @@
 #include "../../server_comandos/server_comando.h"
 
 class EnergiaAcumulada {
-    ColaBloqueante<ComandoServer>* cola_comandos;
+    ColaBloqueante<ComandoServer>& cola_comandos;
     int16_t cantidad_energia;
 
     // Constantes
@@ -31,7 +31,7 @@ class EnergiaAcumulada {
     void actualizarEnergia(int16_t diferencia);
 
 public:
-    EnergiaAcumulada(ColaBloqueante<ComandoServer>* cola_comandos,
+    EnergiaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
                     YAML::Node& constantes);
     
     /*
@@ -43,6 +43,11 @@ public:
     float obtenerMultiplicadorDeudaEnergetica() const;
 
     void empezarPartida();
+
+    EnergiaAcumulada(const EnergiaAcumulada&) = delete;
+    EnergiaAcumulada& operator=(const EnergiaAcumulada&) = delete;
+    EnergiaAcumulada(EnergiaAcumulada&&) = delete;
+    EnergiaAcumulada& operator=(EnergiaAcumulada&&) = delete;
 };
 
 #endif // SERVER_ENERGIA_ACUMULADA_H

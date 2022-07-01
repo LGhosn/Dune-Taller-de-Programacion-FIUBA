@@ -13,7 +13,7 @@ void EspeciaAcumulada::actualizarEdificiosComprables() {
     edificios_comprables[7] = cantidad_especia >= costo_edificios[7] ? true : false;
     CmdActualizarTiendaEdificiosServer* comando =
                     new CmdActualizarTiendaEdificiosServer(edificios_comprables);
-    cola_comandos->push(comando);
+    cola_comandos.push(comando);
 }
 
 void EspeciaAcumulada::actualizarUnidadesComprables() {
@@ -30,15 +30,15 @@ void EspeciaAcumulada::actualizarUnidadesComprables() {
     unidades_comprables[10] = cantidad_especia >= costo_unidades[10] ? true : false;
     CmdActualizarTiendaUnidadesServer* comando =
                     new CmdActualizarTiendaUnidadesServer(unidades_comprables);
-    cola_comandos->push(comando);
+    cola_comandos.push(comando);
 }
 
 void EspeciaAcumulada::enviarNuevaCantidadEspecia() {
     CmdModificarEspeciaServer* comando = new CmdModificarEspeciaServer(cantidad_especia);
-    cola_comandos->push(comando);
+    cola_comandos.push(comando);
 }
 
-EspeciaAcumulada::EspeciaAcumulada(ColaBloqueante<ComandoServer>* cola_comandos,
+EspeciaAcumulada::EspeciaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
                                     YAML::Node& constantes) :
                     cola_comandos(cola_comandos),
                     cantidad_especia(constantes["Game"]["Especia"]["ValorInicial"].as<uint16_t>()),
@@ -105,25 +105,3 @@ void EspeciaAcumulada::aumentarEspecia(uint16_t cantidad) {
     cantidad_especia += cantidad;
     enviarNuevaCantidadEspecia();
 }
-
-EspeciaAcumulada& EspeciaAcumulada::operator=(EspeciaAcumulada&& otra) {
-    if (this == &otra)
-        return *this;
-    cola_comandos = otra.cola_comandos;
-    cantidad_especia = otra.cantidad_especia;
-    edificios_comprables = std::move(otra.edificios_comprables);
-    unidades_comprables = std::move(otra.unidades_comprables);
-    costo_edificios = std::move(otra.costo_edificios);
-    costo_unidades = std::move(otra.costo_unidades);
-    fraccion_demoler = std::move(otra.fraccion_demoler);
-    return *this;
-}
-
-EspeciaAcumulada::EspeciaAcumulada(EspeciaAcumulada&& otra):
-                                cola_comandos(otra.cola_comandos),
-                                cantidad_especia(otra.cantidad_especia),
-                                edificios_comprables(std::move(otra.edificios_comprables)),
-                                unidades_comprables(std::move(otra.unidades_comprables)),
-                                costo_edificios(std::move(otra.costo_edificios)),
-                                costo_unidades(std::move(otra.costo_unidades)),
-                                fraccion_demoler(otra.fraccion_demoler) {}

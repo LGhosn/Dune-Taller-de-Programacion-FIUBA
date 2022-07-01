@@ -14,8 +14,7 @@
 class HiloAceptador {
     uint8_t clientes_conectados = 1;
     Socket skt_aceptador;
-    YAML::Node *codigos;
-    std::map<uint8_t, ColaBloqueante<ComandoServer>*> colas_sender;
+    YAML::Node& codigos;
     Lobby lobby;
     std::atomic <bool> hay_que_seguir;
     std::list<HandlerCliente> clientes;
@@ -60,7 +59,7 @@ public:
      * para luego utilizar y pasar por movimiento a los clientes cada
      * socket aceptado (el lobby lo pasa por referencia).
      */
-    HiloAceptador(const char* servicename, YAML::Node* codigos);
+    HiloAceptador(const char* servicename, YAML::Node& codigos);
 
     /*
      * Metodo principal de este objeto, es el encargado de lanzar los

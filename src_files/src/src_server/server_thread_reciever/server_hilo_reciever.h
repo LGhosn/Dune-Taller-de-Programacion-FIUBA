@@ -12,7 +12,6 @@
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
 #include "../server_solicitudes/solicitud_juego/sol_comprar_unidad.h"
 #include "../server_solicitudes/solicitud_juego/sol_mover_unidad.h"
-#include "yaml-cpp/yaml.h"
 #include <thread>
 #include <atomic>
 
@@ -21,11 +20,10 @@ class HandlerCliente;
 class ServerHiloReceiver {
 private:
     ColaNoBloqueante<SolicitudServer>* cola_solicitudes;
-    ProtocoloServidor* protocolo;
+    ProtocoloServidor& protocolo;
     bool hay_que_seguir;
     std::atomic<bool> partida_comenzada;
-    YAML::Node* codigos;
-    HandlerCliente* cliente_asociado;
+    HandlerCliente& cliente_asociado;
     std::thread thread;
 
     void handleThread();
@@ -43,11 +41,10 @@ private:
     void manejarSoliciutdComprarEdificio();
 
 public:
-    ServerHiloReceiver(ProtocoloServidor* protocolo,
-                        YAML::Node* codigos,
-                        HandlerCliente* cliente_asociado);
+    ServerHiloReceiver(ProtocoloServidor& protocolo,
+                        HandlerCliente& cliente_asociado);
     
-    void empezarPartida(ColaNoBloqueante<SolicitudServer>* cola_solicitudes);
+    void empezarPartida(ColaNoBloqueante<SolicitudServer>& cola_solicitudes);
 
     void stop();
 
@@ -55,8 +52,8 @@ public:
 
     ServerHiloReceiver(const ServerHiloReceiver&) = delete;
     ServerHiloReceiver& operator=(const ServerHiloReceiver&) = delete;
-    ServerHiloReceiver(ServerHiloReceiver&&);
-    ServerHiloReceiver& operator=(ServerHiloReceiver&&);
+    ServerHiloReceiver(ServerHiloReceiver&&) = delete;
+    ServerHiloReceiver& operator=(ServerHiloReceiver&&) = delete;
 };
 
 

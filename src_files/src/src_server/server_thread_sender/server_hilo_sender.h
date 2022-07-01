@@ -10,25 +10,23 @@
 class ServerHiloSender {
 private:
     std::thread thread;
-    ColaBloqueante<ComandoServer>* cola_comandos;
-    ProtocoloServidor* protocolo;
+    ColaBloqueante<ComandoServer>& cola_comandos;
+    ProtocoloServidor& protocolo;
     bool hay_que_seguir = true;
-    YAML::Node* codigos;
 
     void handleThread();
     void run();
     void send(std::unique_ptr<ComandoServer> comando);
     void stop();
 public:
-    ServerHiloSender(ColaBloqueante<ComandoServer>* cola_comandos,
-                        ProtocoloServidor* protocolo,
-                        YAML::Node* codigos);
+    ServerHiloSender(ColaBloqueante<ComandoServer>& cola_comandos,
+                        ProtocoloServidor& protocolo);
     void start();
     ~ServerHiloSender();
 
     ServerHiloSender(const ServerHiloSender&) = delete;
     ServerHiloSender& operator=(const ServerHiloSender&) = delete;
-    ServerHiloSender(ServerHiloSender&&);
-    ServerHiloSender& operator=(ServerHiloSender&&);
+    ServerHiloSender(ServerHiloSender&&) = delete;
+    ServerHiloSender& operator=(ServerHiloSender&&) = delete;
 };
 #endif //SERVER_HILO_SENDER_H

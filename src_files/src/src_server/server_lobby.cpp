@@ -9,7 +9,7 @@ Partida* Lobby::encontrarPartida(const std::string& nombre) {
     return nullptr;
 }
 
-void Lobby::crearPartida(const SolicitudCrearPartidaDTO& partida_a_crear, HandlerCliente* cliente) {
+void Lobby::crearPartida(const SolicitudCrearPartidaDTO& partida_a_crear, HandlerCliente& cliente) {
     std::lock_guard<std::mutex> lock(m);
     Partida* partida = encontrarPartida(partida_a_crear.nombre_partida);
     if (!partida) {
@@ -18,32 +18,32 @@ void Lobby::crearPartida(const SolicitudCrearPartidaDTO& partida_a_crear, Handle
                                             partida_a_crear.mapa);
         partidas_creadas.back().agregarJugador(cliente, partida_a_crear.casa_codigo);
         Status status(CONEXION_EXITOSA, PARTIDA_NO_EXISTENTE);
-        cliente->enviarStatusDeCreacion(status);
+        cliente.enviarStatusDeCreacion(status);
     } else {
         Status status(CONEXION_FALLIDA, PARTIDA_EXISTENTE);
-        cliente->enviarStatusDeCreacion(status);
+        cliente.enviarStatusDeCreacion(status);
     }
 }
 
-void Lobby::unirAPartida(const SolicitudUnirseAPartidaDTO& partida_a_unirse, HandlerCliente* cliente) {
+void Lobby::unirAPartida(const SolicitudUnirseAPartidaDTO& partida_a_unirse, HandlerCliente& cliente) {
     std::lock_guard<std::mutex> lock(m);
     Partida* partida = encontrarPartida(partida_a_unirse.nombre_partida);
     // Si el iterador llegó hasta el final del map,
     // entonces, la partida no fue creada.
     if (!partida) {
          Status status(CONEXION_FALLIDA, PARTIDA_NO_EXISTENTE);
-         cliente->enviarStatusDeUnion(status);
+         cliente.enviarStatusDeUnion(status);
     } else {
         // En cambio, si el iterador encontró dicha partida,
         // debemos chequear que no esté completa.
         if (partida->estaCompleta()) {
             Status status(CONEXION_FALLIDA, PARTIDA_EXISTENTE);
-            cliente->enviarStatusDeUnion(status);
+            cliente.enviarStatusDeUnion(status);
         } else {
             partida->agregarJugador(cliente, partida_a_unirse.casa_codigo);
             partida->jugadores_actuales++;
             Status status(CONEXION_EXITOSA, PARTIDA_EXISTENTE);
-            cliente->enviarStatusDeUnion(status);
+            cliente.enviarStatusDeUnion(status);
             if (partida->estaCompleta()) {
                 informarPartidaComenzada(partida->nombre_partida);
                 partida->empezar();

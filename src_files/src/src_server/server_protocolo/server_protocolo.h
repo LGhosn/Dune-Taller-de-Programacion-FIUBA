@@ -25,7 +25,7 @@ class PartidaDTO;
 class Status;
 
 class ProtocoloServidor {
-    Socket* skt_comunicador;
+    Socket& skt_comunicador;
     SerializadorServer serializador;
     enum class Operaciones : uint8_t {unirse = 1, listar = 2, crear = 3};
 
@@ -49,7 +49,7 @@ public:
      * Construye la clase, estableciendo un socket
      * válido como su atributo.
      * */
-    explicit ProtocoloServidor(Socket* comunicador, YAML::Node* codigos);
+    explicit ProtocoloServidor(Socket& comunicador, YAML::Node& codigos);
 
     /*
      * Recibe el codigo de operacion solicitado
@@ -144,7 +144,7 @@ public:
      * */
     ProtocoloServidor(const ProtocoloServidor&) = delete;
     ProtocoloServidor& operator=(const ProtocoloServidor&) = delete;
-    ProtocoloServidor(ProtocoloServidor&&);
-    ProtocoloServidor& operator=(ProtocoloServidor&&);
+    ProtocoloServidor(ProtocoloServidor&&) = delete;
+    ProtocoloServidor& operator=(ProtocoloServidor&&) = delete;
 };
 #endif  // SERVER_PROTOCOLO_H_

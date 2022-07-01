@@ -19,7 +19,7 @@ class Partida {
     uint8_t jugadores_requeridos;
     std::string nombre_mapa;
     std::list<HandlerCliente*> clientes_conectados;
-    ColaNoBloqueante<SolicitudServer>*  cola_solicitudes;
+    ColaNoBloqueante<SolicitudServer>  cola_solicitudes;
     HiloGameLoop hilo_gameloop;
 
     friend class Lobby;
@@ -30,16 +30,14 @@ public:
     Partida(const std::string& nombre_partida, uint8_t jugadores_requeridos,
             const std::string& nombre_mapa);
     void empezar();
-    void agregarJugador(HandlerCliente* cliente, uint8_t casa);
+    void agregarJugador(HandlerCliente& cliente, uint8_t casa);
     bool estaCompleta() const;
     std::string getNombre() const;
 
-    ~Partida();
-
     Partida& operator=(const Partida&) = delete;
     Partida(const Partida&) = delete;
-    Partida& operator=(Partida&&);
-    Partida(Partida&&);
+    Partida& operator=(Partida&&) = delete;
+    Partida(Partida&&) = delete;
 };
 
 #endif //SERVER_PARTIDA_H

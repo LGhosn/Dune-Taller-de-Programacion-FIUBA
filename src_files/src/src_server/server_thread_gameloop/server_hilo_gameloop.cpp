@@ -41,24 +41,24 @@ void HiloGameLoop::run() {
 }
 
 void HiloGameLoop::manejarSolicitudes() {
-    std::queue<std::unique_ptr<SolicitudServer>> solicitudes = this->cola_solicitudes->popAll();
+    std::queue<std::unique_ptr<SolicitudServer>> solicitudes = cola_solicitudes.popAll();
     while(!solicitudes.empty()) {
         std::unique_ptr<SolicitudServer> solicitud = std::move(solicitudes.front());
         solicitudes.pop();
-        solicitud->ejecutar(this->game);
+        solicitud->ejecutar(game);
     }
 }
 
 bool HiloGameLoop::update(long iter) {
-    return this->game.update(iter);
+    return game.update(iter);
 }
 
-HiloGameLoop::HiloGameLoop(ColaNoBloqueante<SolicitudServer>* cola_solicitudes,
+HiloGameLoop::HiloGameLoop(ColaNoBloqueante<SolicitudServer>& cola_solicitudes,
                                         const std::string& nombre_mapa):
                                         cola_solicitudes(cola_solicitudes),
                                         game(nombre_mapa) {}
 
-void HiloGameLoop::agregarJugador(ColaBloqueante<ComandoServer>* cola_comando,
+void HiloGameLoop::agregarJugador(ColaBloqueante<ComandoServer>& cola_comando,
                                     uint8_t id_jugador, uint8_t casa, std::string& nombre) {
     game.agregarJugador(cola_comando, id_jugador, casa, nombre);
 }
@@ -70,22 +70,7 @@ void HiloGameLoop::start() {
 }
 
 HiloGameLoop::~HiloGameLoop() {
-    if (this->hilo.joinable()) {
-        this->hilo.join();
+    if (hilo.joinable()) {
+        hilo.join();
     }
 }
-
-HiloGameLoop& HiloGameLoop::operator=(HiloGameLoop&& otro) {
-    if (this == &otro)
-        return *this;
-    this->cola_solicitudes = otro.cola_solicitudes;
-    this->game = std::move(otro.game);
-    this->hilo = std::move(otro.hilo);
-
-    otro.cola_solicitudes = nullptr;
-    return *this;
-}
-HiloGameLoop::HiloGameLoop(HiloGameLoop &&otro) :
-                            cola_solicitudes(otro.cola_solicitudes),
-                            game(std::move(otro.game)),
-                            hilo(std::move(otro.hilo)) {}
