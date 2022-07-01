@@ -7,6 +7,7 @@
 #include "sdl_sonidos/sdl_sonidos.h"
 #include "sdl_color/sdl_colores.h"
 #include "sdl_texturas.h"
+#include "sdl_unidad/sdl_unidad.h"
 #include "sdl_edificio/sdl_edificio.h"
 #include "sdl_edificio/sdl_edificio_factory.h"
 #include "sdl_side_menu/sdl_side_menu.h"
@@ -42,6 +43,8 @@ class WorldView {
 	SideMenuSDL side_menu;
 	std::unordered_map<Coordenadas, EdificioSDL*, HashCoordenadas> edificios;
 	std::vector<EdificioSDL*> edificios_seleccionados;
+    std::vector<UnidadSDL*> unidades_seleccionadas;
+    std::map<uint8_t, UnidadSDL*> unidades;
 	EdificioFactorySDL edificio_factory;
 	long frame_anterior = 0;
 	uint8_t id_jugador;
@@ -49,6 +52,8 @@ class WorldView {
 
 	void deseleccionarEdificios();
 	void seleccionarEdificio(EdificioSDL* edificio);
+    void seleccionarUnidad(UnidadSDL* edificio);
+    void deseleccionarUnidades();
 
 	void renderUI();
 
@@ -72,6 +77,8 @@ public:
 
 	void crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 						const Coordenadas& coords, uint8_t tipo, uint8_t casa);
+
+    void moverUnidad(uint8_t id_unidad, char direccion, long tiempo_movimiento);
 
 	void click(uint32_t pos_x, uint32_t pos_y);
 

@@ -6,26 +6,72 @@
 
 #IncludeRegexTransform: 
 
-/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/build/DuneEditorDeMapas_autogen/mocs_compilation.cpp
-
-/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/main_editor.cpp
-QApplication
+../src/src_editor/ClickableLabel.h
+QMessageBox
 -
-src_editor/DuneEditorDeMapas.h
-/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.h
-
-/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.cpp
 iostream
 -
-QDir
+QMouseEvent
 -
-DuneEditorDeMapas.h
-/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.h
+QLabel
+-
+QWidget
+-
+Qt
+-
 
-/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/DuneEditorDeMapas_autogen/U42WMAKM2G/moc_ClickableLabel.cpp
+src_editor/ClickableLabel.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/DuneEditorDeMapas_autogen/U42WMAKM2G/src_editor/ClickableLabel.h
+QtCore/qbytearray.h
+-
+QtCore/qmetatype.h
+-
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/DuneEditorDeMapas_autogen/mocs_compilation.cpp
+U42WMAKM2G/moc_ClickableLabel.cpp
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/build/DuneEditorDeMapas_autogen/U42WMAKM2G/moc_ClickableLabel.cpp
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/main_editor.cpp
+QApplication
+-
+src_editor/SelectorDeModoDeEdicion.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/SelectorDeModoDeEdicion.h
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/ClickableLabel.cpp
+ClickableLabel.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/ClickableLabel.h
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/ClickableLabel.h
+QMessageBox
+-
+iostream
+-
+QMouseEvent
+-
+QLabel
+-
+QWidget
+-
+Qt
+-
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.cpp
+DuneEditorDeMapas.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.h
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.h
+tuple
+-
+fstream
+-
 vector
 -
 cstdlib
+-
+cstdint
+-
+QPixmap
 -
 QString
 -
@@ -37,10 +83,24 @@ QMainWindow
 -
 QScreen
 -
+filesystem
+-
+iostream
+-
+QDir
+-
+QScrollArea
+-
+QGridLayout
+-
 DuneEditorDeMapasUi.h
-/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapasUi.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapasUi.h
+ClickableLabel.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/ClickableLabel.h
+yaml-cpp/yaml.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/yaml-cpp/yaml.h
 
-/home/lautaro/Programacion/Taller_de_Programacion/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapasUi.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapasUi.h
 QtCore/QVariant
 -
 QtWidgets/QApplication
@@ -48,8 +108,6 @@ QtWidgets/QApplication
 QtWidgets/QComboBox
 -
 QtWidgets/QFrame
--
-QtWidgets/QGridLayout
 -
 QtWidgets/QLabel
 -
@@ -59,9 +117,45 @@ QtWidgets/QMainWindow
 -
 QtWidgets/QPushButton
 -
-QtWidgets/QSpinBox
+QtWidgets/QScrollArea
 -
 QtWidgets/QWidget
+-
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/SelectorDeModoDeEdicion.cpp
+SelectorDeModoDeEdicion.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/SelectorDeModoDeEdicion.h
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/SelectorDeModoDeEdicion.h
+string
+-
+QMessageBox
+-
+QSpinBox
+-
+QLabel
+-
+QPushButton
+-
+QDialog
+-
+SelectorDeModoDeEdicionUi.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/SelectorDeModoDeEdicionUi.h
+DuneEditorDeMapas.h
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapas.h
+
+/home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/SelectorDeModoDeEdicionUi.h
+QtCore/QVariant
+-
+QtWidgets/QApplication
+-
+QtWidgets/QDialog
+-
+QtWidgets/QLabel
+-
+QtWidgets/QPushButton
+-
+QtWidgets/QSpinBox
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QDir
@@ -95,6 +189,10 @@ qstring.h
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant
 qvariant.h
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/Qt
+qnamespace.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractitemmodel.h
 QtCore/qvariant.h
@@ -854,6 +952,14 @@ QtCore/qpoint.h
 QtCore/qglobal.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QMouseEvent
+qevent.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qevent.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QPixmap
+qpixmap.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h
+
 /usr/include/x86_64-linux-gnu/qt5/QtGui/QScreen
 qscreen.h
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qscreen.h
@@ -1276,6 +1382,10 @@ qapplication.h
 qcombobox.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcombobox.h
 
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog
+qdialog.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h
+
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFrame
 qframe.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qframe.h
@@ -1307,6 +1417,10 @@ qmessagebox.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QPushButton
 qpushbutton.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QScrollArea
+qscrollarea.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollarea.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QSpinBox
 qspinbox.h
@@ -1536,6 +1650,12 @@ QtWidgets/qabstractbutton.h
 QtWidgets/qtwidgetsglobal.h
 -
 QtWidgets/qwidget.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollarea.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qabstractscrollarea.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h

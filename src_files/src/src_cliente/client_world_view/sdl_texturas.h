@@ -25,6 +25,10 @@
 #define RUTA_SILO RESOURCE_PATH "/edificios/silo.png"
 #define RUTA_TRAMPA_DE_AIRE RESOURCE_PATH "/edificios/trampa_de_aire.png"
 
+#define RUTA_INFANTERIA RESOURCE_PATH "/unidades/infanteria/"
+#define RUTA_VEHICULOS RESOURCE_PATH "/unidades/vehiculos/"
+#define RUTA_GUSANO RESOURCE_PATH "/unidades/gusano/"
+
 #define RUTA_LOGO_ATREIDES RESOURCE_PATH "/AtreidesIcon.png"
 #define RUTA_LOGO_HARKONNEN RESOURCE_PATH "/HarkonnenIcon.png"
 #define RUTA_LOGO_ORDOS RESOURCE_PATH "/OrdosIcon.png"
@@ -103,6 +107,11 @@ class TexturasSDL {
     SDL2pp::Texture edificio_silo;
     SDL2pp::Texture edificio_trampa_de_aire;
 
+    std::vector<SDL2pp::Texture> infanteria_ligera;
+    std::vector<SDL2pp::Texture> infanteria_pesada;
+    std::vector<SDL2pp::Texture> fremen;
+    std::vector<SDL2pp::Texture> sardaukar;
+
     SDL2pp::Texture logo_atreides;
     SDL2pp::Texture logo_harkonnen;
     SDL2pp::Texture logo_ordos;
@@ -130,6 +139,8 @@ class TexturasSDL {
     void cargarLogos();
     void cargarTiles();
     void cargarEdificios();
+    void cargarVehiculos();
+    void cargarInfanteria();
 
 public:
     TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes);

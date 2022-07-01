@@ -62,5 +62,4 @@ EdificioSDL* EdificioFactorySDL::crearEdificio(uint8_t id_edificio, uint8_t id_j
         default:
             throw std::runtime_error("EdificioFactory: codigo de edificio invalido");
     }
-
 }

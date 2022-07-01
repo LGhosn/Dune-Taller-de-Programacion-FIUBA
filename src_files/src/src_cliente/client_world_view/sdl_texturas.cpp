@@ -247,6 +247,11 @@ void TexturasSDL::cargarEdificios() {
     }
 }
 
+void TexturasSDL::cargarInfanteria() {
+
+}
+
+void TexturasSDL::cargarVehiculos() {}
 TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                         constantes(constantes),
                         renderer(renderer),

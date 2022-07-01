@@ -22,8 +22,8 @@ WorldView:
     Ancho: 1224
     Alto: 768
   Mixer:
-    VolumenInicial: 20
-    VolumenInicialMusica: 5
+    VolumenInicial: 10
+    VolumenInicialMusica: 3
     CantidadMaximaSonidos: 4
   Edificios:
     UI:

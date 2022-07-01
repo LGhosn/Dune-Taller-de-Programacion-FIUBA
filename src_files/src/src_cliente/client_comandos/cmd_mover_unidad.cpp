@@ -5,7 +5,7 @@ CmdMoverUnidadCliente::CmdMoverUnidadCliente(CmdMoverUnidadClienteDTO& dto) :
                                                    direccion(dto.direccion),
                                                    tiempo(dto.tiempo){}
 
-bool CmdMoverUnidadCliente::ejecutar(WorldView& wordview) const {
-    // wordview.moverUnidad(id_unidad, direccion, tiempo);
+bool CmdMoverUnidadCliente::ejecutar(WorldView& worldView) const {
+    worldView.moverUnidad(id_unidad, direccion, tiempo);
     return true;
 }
