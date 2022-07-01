@@ -24,6 +24,7 @@ WorldView:
   Mixer:
     VolumenInicial: 20
     VolumenInicialMusica: 5
+    CantidadMaximaSonidos: 4
   Edificios:
     UI:
       HP:

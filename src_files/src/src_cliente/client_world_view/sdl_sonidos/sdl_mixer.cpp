@@ -5,36 +5,87 @@ MixerSDL::MixerSDL(uint8_t casa, YAML::Node& constantes):
                             MIX_DEFAULT_CHANNELS, 4096),
 					sonidos(casa, constantes),
                     volumen(constantes["WorldView"]["Mixer"]["VolumenInicial"].as<uint8_t>()),
-                    volumen_musica(constantes["WorldView"]["Mixer"]["VolumenInicialMusica"].as<uint8_t>()) {
+                    volumen_musica(constantes["WorldView"]["Mixer"]["VolumenInicialMusica"].as<uint8_t>()),
+                    cantidad_maxima_sonidos(constantes["WorldView"]["Mixer"]["CantidadMaximaSonidos"].as<uint8_t>()) {
+    mixer.SetChannelFinishedHandler(mensajeTerminado);
     mixer.SetVolume(-1, volumen);
     mixer.SetMusicVolume(volumen_musica);
     mixer.PlayMusic(sonidos.obtenerMusica(), -1);
 }
 
-SonidosSDL& MixerSDL::obtenerSonidosSDL() {
-    return sonidos;
+uint8_t MixerSDL::cantidad_sonidos = 0;
+
+void MixerSDL::mensajeTerminado(int canal) {
+    cantidad_sonidos--;
 }
 
 void MixerSDL::reproducirMensajeConstruyendo() {
-	mixer.PlayChannel(-1, sonidos.obtenerMensajeConstruyendo());
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeConstruyendo());
+    }
+	
 }
 
 void MixerSDL::reproducirMensajeEdificioConstruido() {
-    mixer.PlayChannel(-1, sonidos.obtenerMensajeEdificioConstruido());
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeEdificioConstruido());
+    }
 }
 
 void MixerSDL::reproducirMensajeConstruccionInvalida() {
-    mixer.PlayChannel(-1, sonidos.obtenerMensajeConstruccionInvalida());
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeConstruccionInvalida());
+    }
 }
 
 void MixerSDL::reproducirMensajeNuevosEdificiosDisponibles() {
-    mixer.PlayChannel(-1, sonidos.obtenerMensajeNuevosEdificiosDisponibles());
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeNuevosEdificiosDisponibles());
+    }
 }
 
 void MixerSDL::reproducirMensajeEntrenando() {
-    mixer.PlayChannel(-1, sonidos.obtenerMensajeEntrenando());
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeEntrenando());
+    }
 }
 
 void MixerSDL::reproducirMensajeEnergiaBaja() {
-    mixer.PlayChannel(-1, sonidos.obtenerMensajeEnergiaBaja());
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeEnergiaBaja());
+    }
+}
+
+void MixerSDL::reproducirMensajeVictoria() {
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeVictoria());
+    }
+}
+
+void MixerSDL::reproducirMensajeDerrota() {
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeDerrota());
+    }
+}
+
+void MixerSDL::reproducirMensajeAtaqueGusano() {
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeAtaqueGusano());
+    }
+}
+
+void MixerSDL::reproducirMensajeCentroAtacado() {
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeCentroAtacado());
+    }
 }

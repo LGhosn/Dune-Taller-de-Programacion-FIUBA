@@ -16,10 +16,12 @@ class SonidosSDL {
     std::vector<SDL2pp::Chunk> edificio_construido;
     std::vector<SDL2pp::Chunk> construccion_invalida;
     std::vector<SDL2pp::Chunk> nuevos_edificios_disponibles;
-
     std::vector<SDL2pp::Chunk> entrenando;
-
     std::vector<SDL2pp::Chunk> energia_baja;
+    std::vector<SDL2pp::Chunk> victoria;
+    std::vector<SDL2pp::Chunk> derrota;
+    std::vector<SDL2pp::Chunk> ataque_gusano;
+    std::vector<SDL2pp::Chunk> centro_atacado;
 
     void cargarMensajesDeVoz();
     void cargarMusica();
@@ -31,10 +33,12 @@ public:
     SDL2pp::Chunk& obtenerMensajeEdificioConstruido();
     SDL2pp::Chunk& obtenerMensajeConstruccionInvalida();
     SDL2pp::Chunk& obtenerMensajeNuevosEdificiosDisponibles();
-
     SDL2pp::Chunk& obtenerMensajeEntrenando();
-
     SDL2pp::Chunk& obtenerMensajeEnergiaBaja();
+    SDL2pp::Chunk& obtenerMensajeVictoria();
+    SDL2pp::Chunk& obtenerMensajeDerrota();
+    SDL2pp::Chunk& obtenerMensajeAtaqueGusano();
+    SDL2pp::Chunk& obtenerMensajeCentroAtacado();
 
     SonidosSDL(const SonidosSDL&) = delete;
     SonidosSDL& operator=(const SonidosSDL&) = delete;
