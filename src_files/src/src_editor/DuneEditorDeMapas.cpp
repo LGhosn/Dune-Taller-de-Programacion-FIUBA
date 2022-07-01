@@ -10,7 +10,7 @@ DuneEditorDeMapas::DuneEditorDeMapas(QWidget* parent,
                                      int cant_jugadores) :
                                      ui(new Ui_DuneEditorDeMapas),
                                      grilla_terrenos(new std::vector(cant_filas, std::vector<char>(cant_columnas, TIPO_TERRENO_DEFAULT))),
-                                     grilla_texturas(new std::vector(cant_filas, std::vector<uint8_t>(cant_columnas, TIPO_TEXTURA_DEFAULT))) {
+                                     grilla_texturas(new std::vector(cant_filas, std::vector<int>(cant_columnas, TIPO_TEXTURA_DEFAULT))) {
     ui->setupUi(this);
     ui->scrollArea->setStyleSheet("background-color: rgb(114, 159, 207);");
     ui->MostradorTexturaLabel->setPixmap(QPixmap(RESOURCE_PATH"/terrenos/arena/mostrador/arena9.bmp"));  // Textura default utilizada a la hora de crear un mapa desde cero.
@@ -69,12 +69,16 @@ void DuneEditorDeMapas::establecerDatosDeEdicionDeMapa(std::string &path_mapa) {
 
     // Establecemos las matrices internas que contienen info sobre las texturas y los terrenos.
     grilla_terrenos = new std::vector(cantidad_filas_mapa, std::vector<char>(cantidad_columnas_mapa));
-    grilla_texturas = new std::vector(cantidad_filas_mapa, std::vector<uint8_t>(cantidad_columnas_mapa));
+    grilla_texturas = new std::vector(cantidad_filas_mapa, std::vector<int>(cantidad_columnas_mapa));
     for (int i = 0; i < cantidad_filas_mapa; i++) {
-        for (int j = 0; j < cantidad_columnas_mapa; j++){
-            auto terrenos_actuales = config["TiposTerrenos"][i].as<std::vector<char>>();
-            char terreno_actual = terrenos_actuales[j];
-            (*grilla_terrenos)[i][j] = terreno_actual;
+        for (int j = 0; j < cantidad_columnas_mapa; j++) {
+            std::string celda_actual = "celda_" + std::to_string(i) + '_' + std::to_string(j);
+            std::cout << celda_actual << std::endl;
+            if(!config["Terrenos"][celda_actual]){
+                std::cout << "no existe la clave" << std::endl;
+            }
+            std::string valor_actual = config["Terrenos"][celda_actual].as<std::string>();
+            std::cout << valor_actual << std::endl;
         }
     }
 
@@ -127,7 +131,7 @@ void DuneEditorDeMapas::cargarMapaDefault() {
     for (int i = 0; i < cantidad_filas_mapa; i++) {
         for (int j = 0; j < cantidad_columnas_mapa; j++) {
             ClickableLabel* label = new ClickableLabel(reinterpret_cast<std::vector<std::vector<char>> *>(grilla_terrenos),
-                                                       reinterpret_cast<std::vector<std::vector<uint8_t>> *>(grilla_texturas),
+                                                       reinterpret_cast<std::vector<std::vector<int>> *>(grilla_texturas),
                                                        centros_ubicados,
                                                        cantidad_jugadores,
                                                        cantidad_filas_mapa,
@@ -534,7 +538,7 @@ void DuneEditorDeMapas::escribirArchivoMapa(QString &nombre_archivo) {
     YAML::Emitter out;
     escribirDatosDeMapa(out);
     escribirTiposDeTerreno(out);
-    escribirTiposDeTexturas(out);
+    //escribirTiposDeTexturas(out);
     escribirCentrosDeConstruccion(out);
     guardarArchivoMapa(nombre_archivo, out);
 }
@@ -552,44 +556,39 @@ void DuneEditorDeMapas::guardarArchivoMapa(const QString &nombre_archivo, const 
 void DuneEditorDeMapas::escribirCentrosDeConstruccion(YAML::Emitter &out) {
     out << YAML::BeginMap;
     out << YAML::Key << "CentrosDeConstruccion";
-    out << YAML::BeginSeq;
     for (auto &centros : centros_ubicados) {
         std::map<char, uint16_t> coordenada_actual;
         coordenada_actual['x'] = std::get<0>(centros);
         coordenada_actual['y'] = std::get<1>(centros);
         out << coordenada_actual;
     }
-    out << YAML::EndSeq;
+    out << YAML::EndMap;
+}
+
+void DuneEditorDeMapas::escribirTiposDeTerreno(YAML::Emitter &out) {
+    out << YAML::BeginMap;
+    out << YAML::Key << "Terrenos";
+    out << YAML::BeginMap;
+    for (int i = 0; i < cantidad_filas_mapa; i++) {
+        for (int j = 0; j < cantidad_columnas_mapa; j++) {
+            std::string celda = "celda_" + std::to_string(i) + '_' + std::to_string(j);
+            std::string posicion = std::to_string((*grilla_terrenos)[i][j]) + '_' + std::to_string((int) (*grilla_texturas)[i][j]);
+            out << YAML::Key << celda;
+            out << YAML::Value << posicion;
+        }
+    }
+    out << YAML::EndMap;
     out << YAML::EndMap;
 }
 
 void DuneEditorDeMapas::escribirTiposDeTexturas(YAML::Emitter &out) {
     out << YAML::BeginMap;
     out << YAML::Key << "TiposTexturas";
-    out << YAML::BeginSeq;
     for (int i = 0; i < cantidad_filas_mapa; i++) {
-        std::vector<int> texturas;
         for (int j = 0; j < cantidad_columnas_mapa; j++) {
-            texturas.push_back((int)(*grilla_texturas)[i][j]);
+            out << YAML::Value << (int) (*grilla_texturas)[i][j];
         }
-        out << YAML::Value << YAML::Flow << texturas;
     }
-    out << YAML::EndSeq;
-    out << YAML::EndMap;
-}
-
-void DuneEditorDeMapas::escribirTiposDeTerreno(YAML::Emitter &out) {
-    out << YAML::BeginMap;
-    out << YAML::Key << "TiposTerrenos";
-    out << YAML::BeginSeq;
-    for (int i = 0; i < cantidad_filas_mapa; i++) {
-        std::vector<char> terrenos;
-        for (int j = 0; j < cantidad_columnas_mapa; j++) {
-            terrenos.push_back((*grilla_terrenos)[i][j]);
-        }
-        out << YAML::Value << YAML::Flow << terrenos;
-    }
-    out << YAML::EndSeq;
     out << YAML::EndMap;
 }
 

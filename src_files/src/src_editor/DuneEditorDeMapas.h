@@ -17,6 +17,7 @@
 #include <QDir>
 #include <QScrollArea>
 #include <QGridLayout>
+#include <string>
 #include "DuneEditorDeMapasUi.h"
 #include "ClickableLabel.h"
 #include "yaml-cpp/yaml.h"
@@ -33,9 +34,9 @@ private:
     int cantidad_filas_mapa;
     int cantidad_columnas_mapa;
     char terreno_seleccionado = TIPO_TERRENO_DEFAULT;
-    uint8_t textura_seleccionada = TIPO_TEXTURA_DEFAULT;
+    int textura_seleccionada = TIPO_TEXTURA_DEFAULT;
     std::vector<std::vector<char>>* grilla_terrenos = nullptr;
-    std::vector<std::vector<uint8_t>>* grilla_texturas = nullptr;
+    std::vector<std::vector<int>>* grilla_texturas = nullptr;
     std::vector<std::tuple<int, int>> centros_ubicados;
 
 /* *****************************************************************
