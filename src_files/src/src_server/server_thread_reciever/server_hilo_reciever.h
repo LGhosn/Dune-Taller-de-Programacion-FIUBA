@@ -40,6 +40,7 @@ private:
     void manejarSolicitudCrearEdificio();
     void manejarSolicitudComprarUnidad();
     void manejarSolicitudMoverUnidad();
+    void manejarSoliciutdComprarEdificio();
 
 public:
     ServerHiloReceiver(ProtocoloServidor* protocolo,

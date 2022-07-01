@@ -10,7 +10,7 @@ public:
 
     virtual bool ejecutar(WorldView& worldView) const override;
 
-    ~CmdModificarEnergiaCliente() = default;
+    virtual ~CmdModificarEnergiaCliente() = default;
 };
 
 #endif // CLIENT_CMD_MODIFICAR_ENERGIA_H

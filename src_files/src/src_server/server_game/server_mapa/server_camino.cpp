@@ -128,9 +128,9 @@ std::stack<Coordenadas> Camino::obtener_camino(UnidadInfoDTO& unidad_info) const
     return this->construir_camino(padres, origen, destino);
 }
 
-Camino::Camino(const Camino& otro) : mapa(otro.mapa) {}
+Camino::Camino(const Camino& otro) : mapa(nullptr) {}
 
 Camino& Camino::operator=(const Camino& otro) {
-    this->mapa = otro.mapa;
+    // this->mapa = otro.mapa;
     return *this;
 }

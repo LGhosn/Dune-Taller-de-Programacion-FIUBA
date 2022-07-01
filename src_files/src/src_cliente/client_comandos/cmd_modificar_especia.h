@@ -10,7 +10,7 @@ public:
 
     virtual bool ejecutar(WorldView& worldView) const override;
 
-    ~CmdModificarEspeciaServer() = default;
+    virtual ~CmdModificarEspeciaServer() = default;
 };
 
 #endif // COMANDO_CLIENT_MODIFICAR_ESPECIA_H

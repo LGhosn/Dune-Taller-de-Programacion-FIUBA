@@ -67,6 +67,8 @@ private:
 
     char obtenerDireccion(const Coordenadas& coords_actual,const Coordenadas& coords_nueva);
 
+    Coordenadas& coordenadaLibreMasCercana(Coordenadas& coordenada);
+
 public:
     /*
      * Construye un mapa de ancho x alto
@@ -106,6 +108,8 @@ public:
     char moverUnidad(const Coordenadas& desde, const Coordenadas& hasta);
 
     bool esCoordenadaValida(const Coordenadas& coords);
+
+    Coordenadas& obtenerCoordenadasSpawn(uint8_t id_jugador);
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.

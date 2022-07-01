@@ -11,7 +11,7 @@ public:
 
     virtual bool ejecutar(WorldView& worldView) const;
 
-    ~CmdEmpezarEntrenamientoCliente() = default;
+    virtual ~CmdEmpezarEntrenamientoCliente() = default;
 };
 
 #endif // CMD_EMPEZAR_ENTRENAMIENTO_H

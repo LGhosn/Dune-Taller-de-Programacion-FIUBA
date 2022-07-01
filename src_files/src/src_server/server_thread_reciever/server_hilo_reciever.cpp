@@ -44,15 +44,14 @@ void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
         case 5:
             manejarSolicitudCrearEdificio();
             break;
-        case 11: // TODO: determinar codigo
+        case 11:
             manejarSolicitudComprarUnidad();
+            break;
         case 12: // TODO: determinar codigo
             manejarSolicitudMoverUnidad();
+            break;
         case 25: {
-            SolComprarEdificioDTO solicitud_dto = protocolo->recibirSolicitudComprarEdificio();
-            SolComprarEdificioServer* solicitud =
-                    new SolComprarEdificioServer(solicitud_dto.id_jugador, solicitud_dto.tipo);
-            cola_solicitudes->push(solicitud);
+            manejarSoliciutdComprarEdificio();
             break;
         }
         default:
@@ -76,6 +75,13 @@ void ServerHiloReceiver::manejarSolicitudMoverUnidad() {
     SolicitudMoverUnidadDTO solicitud = protocolo->recibirSolicitudMoverUnidad();
     SolicitudServer *solicitud_server = new SolicitudMoverUnidad(solicitud);
     cola_solicitudes->push(solicitud_server);
+}
+
+void ServerHiloReceiver::manejarSoliciutdComprarEdificio() {
+    SolComprarEdificioDTO solicitud_dto = protocolo->recibirSolicitudComprarEdificio();
+    SolComprarEdificioServer* solicitud =
+            new SolComprarEdificioServer(solicitud_dto.id_jugador, solicitud_dto.tipo);
+    cola_solicitudes->push(solicitud);
 }
 
 /* *****************************************************************

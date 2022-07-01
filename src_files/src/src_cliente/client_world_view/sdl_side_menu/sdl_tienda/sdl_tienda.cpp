@@ -200,8 +200,12 @@ void TiendaSDL::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_constr
     botones_edificios[tipo - 1].empezarConstruccion(tiempo_construccion);
 }
 
-void TiendaSDL::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion) {
-    
+void TiendaSDL::empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_entrenamiento, Coordenadas& coords_spawn) {
+    botones_infanteria[tipo - 1].empezarEntrenamiento(tiempo_entrenamiento);
+}
+
+void TiendaSDL::empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_entrenamiento, Coordenadas& coords_spawn) {
+    botones_vehiculos[tipo - 1].empezarEntrenamiento(tiempo_entrenamiento);
 }
 
 void TiendaSDL::actualizarEdificios(const std::vector<bool>& edificios_comprables) {

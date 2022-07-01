@@ -89,12 +89,28 @@ std::vector<uint8_t> SerializadorServer::serializarComandoActualizarTiendaUnidad
 }
 
 std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad,
-                                                                            uint16_t tiempo_construccion) {
+                                                                            uint16_t tiempo_construccion,
+                                                                            Coordenadas& coords_spawn) {
     std::vector<uint8_t> buffer(4);
     buffer[0] = CODIGO_EMPEZAR_ENTRENAMIENTO;
     buffer[1] = tipo_unidad;
     uint16_t* aux = (uint16_t*) (buffer.data() + 2);
     aux[0] = htons(tiempo_construccion);
+    aux[1] = htons(coords_spawn.x);
+    aux[2] = htons(coords_spawn.y);
+    return buffer;
+}
+
+/* *****************************************************************
+ *                  METODOS REFERIDOS A MOVER UNIDAD
+ * *****************************************************************/
+std::vector<uint8_t> SerializadorServer::serializarComandoMoverUnidad(uint8_t id_unidad, char direccion, long tiempo){
+    std::vector<uint8_t> buffer(5);
+    buffer[0] = CODIGO_MOVER_UNIDAD;
+    buffer[1] = direccion;
+    buffer[2] = id_unidad;
+    long* aux2 = (long*)(buffer.data() + 3);
+    aux2[0] = htonl(tiempo);
     return buffer;
 }
 

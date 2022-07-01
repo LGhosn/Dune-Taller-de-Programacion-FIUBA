@@ -1,10 +1,10 @@
 #include "cmd_mover_unidad.h"
 
-CmdMoverUnidadServer::CmdMoverUnidadServer(uint16_t id_jugador, char direccion, long tiempo) :
-                                                  id_jugador(id_jugador),
+CmdMoverUnidadServer::CmdMoverUnidadServer(uint8_t id_unidad, char direccion, long tiempo) :
+                                                  id_unidad(id_unidad),
                                                   direccion(direccion),
                                                   tiempo(tiempo){}
 
 void CmdMoverUnidadServer::enviarComando(ProtocoloServidor& protocolo) const {
-    protocolo.enviarInstruccionMoverUnidad(id_jugador, direccion, tiempo);
+    protocolo.enviarComandoMoverUnidad(id_unidad, direccion, tiempo);
 }

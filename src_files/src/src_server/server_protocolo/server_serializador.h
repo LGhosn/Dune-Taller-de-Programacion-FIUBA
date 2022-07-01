@@ -10,6 +10,7 @@
 #define RUTA_CODIGOS "codigos.yaml"
 
 #define CODIGO_EMPEZAR_ENTRENAMIENTO 11
+#define CODIGO_MOVER_UNIDAD 12
 
 class SerializadorServer {
 private:
@@ -48,8 +49,13 @@ public:
 
     std::vector<uint8_t> serializarComandoActualizarTiendaEdificios(const std::vector<bool>& edificios_comprables);
     std::vector<uint8_t> serializarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables);
-    std::vector<uint8_t> serializarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion);
+    std::vector<uint8_t> serializarEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
 
+/* *****************************************************************
+ *               METODOS REFERIDOS A MOVER UNIDAD
+ * *****************************************************************/
+    std::vector<uint8_t> serializarComandoMoverUnidad(uint8_t id_unidad, char direccion, long tiempo);
+    
 /* *****************************************************************
  *                          MOVE SEMANTICS
  * *****************************************************************/

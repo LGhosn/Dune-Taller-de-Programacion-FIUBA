@@ -123,7 +123,10 @@ SolicitudMoverUnidadDTO ProtocoloServidor::recibirSolicitudMoverUnidad() {
 }
 
 
-void ProtocoloServidor::enviarInstruccionMoverUnidad(uint16_t id_unidad, char direccion, long tiempo) {}
+void ProtocoloServidor::enviarComandoMoverUnidad(uint8_t id_unidad, char direccion, long tiempo) {
+    std::vector<uint8_t> buffer = serializador.serializarComandoMoverUnidad(id_unidad, direccion, tiempo);
+    enviarBuffer(buffer);
+}
 
 uint8_t ProtocoloServidor::recibirCodigoDeSolicitud() {
     uint8_t codigo;
@@ -215,8 +218,8 @@ void ProtocoloServidor::enviarComandoActualizarTiendaUnidades(const std::vector<
     enviarBuffer(serializador.serializarComandoActualizarTiendaUnidades(unidades_comprables));
 }
 
-void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion) {
-    std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(tipo_unidad, tiempo_construccion);
+void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn) {
+    std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(tipo_unidad, tiempo_construccion, coords_spawn);
     enviarBuffer(buffer);
 }
 

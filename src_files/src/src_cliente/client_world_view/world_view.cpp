@@ -102,8 +102,12 @@ void WorldView::construccionInvalida() {
 	mixer.reproducirMensajeConstruccionInvalida();
 }
 
-void WorldView::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion) {
-	side_menu.empezarEntrenamiento(tipo, tiempo_construccion);
+void WorldView::empezarEntrenamiento(uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn) {
+	if (tipo < 4) {
+		side_menu.empezarEntrenamientoInfanteria(tipo, tiempo_construccion, coords_spawn);
+	} else {
+		side_menu.empezarEntrenamientoVehiculo(tipo, tiempo_construccion, coords_spawn);
+	}
 }
 
 void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
