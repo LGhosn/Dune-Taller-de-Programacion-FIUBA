@@ -4,10 +4,12 @@
 #include <SDL2pp/SDL2pp.hh>
 #include "yaml-cpp/yaml.h"
 #include "../sdl_texturas.h"
+#include "../sdl_sonidos/sdl_mixer.h"
 #include "../sdl_color/sdl_color.h"
 
 class EnergiaSDL {
     SDL2pp::Renderer& renderer;
+    MixerSDL& mixer;
     ColorSDL& color_rect;
     SDL2pp::Font& fuente;
     SDL2pp::Texture texto;
@@ -17,7 +19,7 @@ class EnergiaSDL {
     SDL2pp::Rect destino_texto;
     int16_t cantidad_energia = 0;
 public:
-    EnergiaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas,
+    EnergiaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, MixerSDL& mixer,
                 YAML::Node& constantes, ColorSDL& color_rect);
 
     void modificarEnergia(int16_t cantidad_energia);

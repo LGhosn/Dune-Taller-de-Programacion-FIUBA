@@ -31,11 +31,16 @@ void Client::setInfoPartida(InfoPartidaDTO& info_partida) {
 }
 
 void Client::empezarPartida() {
-    receiver->start();
-    ClientRenderer renderer(cola_comandos, cola_solicitudes, id_jugador, info_partida, constantes);
-    ManejadorEventos manejador(cola_solicitudes, cola_comandos, constantes);
-    renderer.start();
-    std::cerr << "Cliente cerrandose" << std::endl;
+    try {
+        receiver->start();
+        ClientRenderer renderer(cola_comandos, cola_solicitudes, id_jugador, info_partida, constantes);
+        ManejadorEventos manejador(cola_solicitudes, cola_comandos, constantes);
+        renderer.start();
+        std::cerr << "Cliente cerrandose" << std::endl;
+    } catch(const std::exception& e) {
+        std::cerr << "Excepcion en cliente: " << e.what() << std::endl;
+    }
+    
 }
 
 Client::~Client() {

@@ -7,6 +7,7 @@
 #include "../server_comandos/cmd_mover_unidad.h"
 #include "../server_DTO/dto_unidad_info.h"
 #include "../server_comandos/cmd_empezar_construccion_edificio.h"
+#include "../server_comandos/cmd_construccion_invalida.h"
 //unidades
 #include "server_unidades/cosechadora.h"
 #include "server_unidades/desviador.h"
@@ -74,7 +75,10 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
             cola.second->push(comando);
         }
         conts_id_edificios++;
-        jugador.edificioCreado(tipo);
+        jugador->edificioCreado(tipo);
+    } else {
+        CmdConstruccionInvalidaServer* comando = new CmdConstruccionInvalidaServer();
+        colas_comandos[id_jugador]->push(comando);
     }
 }
 

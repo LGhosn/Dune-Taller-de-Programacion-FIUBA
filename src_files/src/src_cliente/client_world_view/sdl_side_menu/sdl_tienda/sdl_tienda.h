@@ -6,6 +6,8 @@
 #include "sdl_boton_paginas.h"
 #include "../../sdl_color/sdl_color.h"
 #include "../../../client_solicitudes/cliente_solicitud.h"
+#include "../../sdl_sonidos/sdl_mixer.h"
+#include "../../sdl_sonidos/sdl_sonidos.h"
 #include <vector>
 
 class TiendaSDL {
@@ -37,14 +39,15 @@ class TiendaSDL {
      SDL2pp::Rect tienda_rect;
 
     void cargarBotonesEdificios(TexturasSDL& texturas, YAML::Node& constantes,
-                                uint8_t id_jugador);
+                                MixerSDL& mixer, uint8_t id_jugador);
     void cargarBotonesUnidades(TexturasSDL& texturas, YAML::Node& constantes,
                                 uint8_t id_jugador);
     void cargarBotonesPaginas(TexturasSDL& texturas, YAML::Node& constantes);
 
 public:
-    TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
-                uint8_t id_jugador, YAML::Node& constantes, ColorSDL& color);
+    TiendaSDL(SDL2pp::Renderer& renderer, MixerSDL& mixer,
+                uint8_t casa, TexturasSDL& texturas, uint8_t id_jugador,
+                YAML::Node& constantes, ColorSDL& color);
 
     void empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_construccion);
 

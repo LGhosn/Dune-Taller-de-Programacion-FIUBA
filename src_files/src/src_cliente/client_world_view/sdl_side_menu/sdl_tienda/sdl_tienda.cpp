@@ -1,50 +1,50 @@
 #include "sdl_tienda.h"
 
 void TiendaSDL::cargarBotonesEdificios(TexturasSDL& texturas, YAML::Node& constantes,
-                                        uint8_t id_jugador) {
-    botones_edificios.emplace_back(renderer, texturas, 1, casa, id_jugador,
+                                        MixerSDL& mixer, uint8_t id_jugador) {
+    botones_edificios.emplace_back(renderer, texturas, mixer, 1, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
                             pos_inicial_botones_y,
                             ancho_boton,
                             largo_boton),
                         constantes);
-    botones_edificios.emplace_back(renderer, texturas, 2, casa, id_jugador,
+    botones_edificios.emplace_back(renderer, texturas, mixer, 2, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
                             pos_inicial_botones_y + largo_boton + padding_botones,
                             ancho_boton,
                             largo_boton),
                         constantes);
-    botones_edificios.emplace_back(renderer, texturas, 3, casa, id_jugador,
+    botones_edificios.emplace_back(renderer, texturas, mixer, 3, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
                             pos_inicial_botones_y + 2 * (largo_boton + padding_botones),
                             ancho_boton,
                             largo_boton),
                         constantes);
-    botones_edificios.emplace_back(renderer, texturas, 4, casa, id_jugador,
+    botones_edificios.emplace_back(renderer, texturas, mixer, 4, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
                             pos_inicial_botones_y + 3 * (largo_boton + padding_botones),
                             ancho_boton,
                             largo_boton),
                         constantes);
-    botones_edificios.emplace_back(renderer, texturas, 5, casa, id_jugador,
+    botones_edificios.emplace_back(renderer, texturas, mixer, 5, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x + ancho_boton + padding_botones,
                             pos_inicial_botones_y,
                             ancho_boton,
                             largo_boton),
                         constantes);
-    botones_edificios.emplace_back(renderer, texturas, 6, casa, id_jugador,
+    botones_edificios.emplace_back(renderer, texturas, mixer, 6, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x + ancho_boton + padding_botones,
                             pos_inicial_botones_y + largo_boton + padding_botones,
                             ancho_boton,
                             largo_boton),
                         constantes);
-    botones_edificios.emplace_back(renderer, texturas, 7, casa, id_jugador,
+    botones_edificios.emplace_back(renderer, texturas, mixer, 7, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x + ancho_boton + padding_botones,
                             pos_inicial_botones_y + 2 * (largo_boton + padding_botones),
@@ -168,8 +168,9 @@ void TiendaSDL::cargarBotonesPaginas(TexturasSDL& texturas, YAML::Node& constant
     ), texturas.obtenerTextoVehiculos(), constantes);
 }
 
-TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& texturas,
-                        uint8_t id_jugador, YAML::Node& constantes, ColorSDL& color):
+TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, MixerSDL& mixer,
+                    uint8_t casa, TexturasSDL& texturas, uint8_t id_jugador,
+                    YAML::Node& constantes, ColorSDL& color):
                     renderer(renderer),
                     color(color),
                     casa(casa),
@@ -190,7 +191,7 @@ TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, uint8_t casa, TexturasSDL& text
                                     pos_y,
                                     ancho,
                                     largo) {
-    cargarBotonesEdificios(texturas, constantes, id_jugador);
+    cargarBotonesEdificios(texturas, constantes, mixer, id_jugador);
     cargarBotonesUnidades(texturas, constantes, id_jugador);
     cargarBotonesPaginas(texturas, constantes);
 }

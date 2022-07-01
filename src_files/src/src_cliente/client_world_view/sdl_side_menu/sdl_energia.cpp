@@ -1,8 +1,9 @@
 #include "sdl_energia.h"
 
-EnergiaSDL::EnergiaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas,
+EnergiaSDL::EnergiaSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, MixerSDL& mixer,
                         YAML::Node& constantes, ColorSDL& color_rect) :
                         renderer(renderer),
+                        mixer(mixer),
                         color_rect(color_rect),
                         fuente(texturas.obtenerFontDune2000()),
                         texto(renderer,
@@ -34,6 +35,7 @@ void EnergiaSDL::modificarEnergia(int16_t cantidad_energia) {
         color_texto = SDL2pp::Color(255, 255, 255);
     } else {
         color_texto = SDL2pp::Color(229, 57, 53);
+        mixer.reproducirMensajeEnergiaBaja();
     }
     texto = SDL2pp::Texture(renderer,
                         fuente.RenderText_Blended(std::to_string(cantidad_energia) + "E",

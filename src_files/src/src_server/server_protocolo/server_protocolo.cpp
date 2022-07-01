@@ -185,6 +185,11 @@ SolicitudComprarUnidadDTO ProtocoloServidor::recibirSolicitudComprarUnidad() {
 
 void ProtocoloServidor::enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {}
 
+void ProtocoloServidor::enviarComandoConstruccionInvalida() {
+    uint8_t codigo = 6;
+    this->skt_comunicador->sendall(&codigo, SIZEOF_BYTE);
+}
+
 /* *****************************************************************
  *             METODOS REFERIDOS A ACTUALIZAR ESPECIA Y ENERGIA
  * *****************************************************************/

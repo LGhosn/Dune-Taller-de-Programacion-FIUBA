@@ -21,6 +21,9 @@ WorldView:
   Ventana:
     Ancho: 1224
     Alto: 768
+  Mixer:
+    VolumenInicial: 20
+    VolumenInicialMusica: 5
   Edificios:
     UI:
       HP:
