@@ -121,7 +121,10 @@ void WorldView::crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 			edificios.insert(std::make_pair(coord_actual, edificio));
 		}
 	}
-	side_menu.edificioCreado(tipo);
+	if (id_jugador == this->id_jugador) {
+		side_menu.edificioCreado(tipo);
+	}
+	
 }
 
 void WorldView::click(uint32_t pos_x, uint32_t pos_y) {

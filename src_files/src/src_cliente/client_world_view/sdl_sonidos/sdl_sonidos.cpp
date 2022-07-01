@@ -45,6 +45,29 @@ void SonidosSDL::cargarMensajesDeVoz() {
         stream << RUTA_SONIDOS << casa << "/mensajes_de_voz/energia_baja.mp3";
         energia_baja.emplace_back(stream.str());
     }
+
+    for (const std::string& casa : casas) {
+        std::stringstream stream;
+        stream << RUTA_SONIDOS << casa << "/mensajes_de_voz/mision_completa.mp3";
+        victoria.emplace_back(stream.str());
+    }
+    for (const std::string& casa : casas) {
+        std::stringstream stream;
+        stream << RUTA_SONIDOS << casa << "/mensajes_de_voz/mision_fallida.mp3";
+        derrota.emplace_back(stream.str());
+    }
+
+    for (const std::string& casa : casas) {
+        std::stringstream stream;
+        stream << RUTA_SONIDOS << casa << "/mensajes_de_voz/ataque_gusano.mp3";
+        ataque_gusano.emplace_back(stream.str());
+    }
+
+    for (const std::string& casa : casas) {
+        std::stringstream stream;
+        stream << RUTA_SONIDOS << casa << "/mensajes_de_voz/centro_atacado.mp3";
+        centro_atacado.emplace_back(stream.str());
+    }
 }
 
 void SonidosSDL::cargarMusica() {
@@ -87,4 +110,20 @@ SDL2pp::Chunk& SonidosSDL::obtenerMensajeEntrenando() {
 
 SDL2pp::Chunk& SonidosSDL::obtenerMensajeEnergiaBaja() {
     return energia_baja[casa];
+}
+
+SDL2pp::Chunk& SonidosSDL::obtenerMensajeVictoria() {
+    return victoria[casa];
+}
+
+SDL2pp::Chunk& SonidosSDL::obtenerMensajeDerrota() {
+    return derrota[casa];
+}
+
+SDL2pp::Chunk&  SonidosSDL::obtenerMensajeAtaqueGusano() {
+    return ataque_gusano[casa];
+}
+
+SDL2pp::Chunk& SonidosSDL::obtenerMensajeCentroAtacado() {
+    return centro_atacado[casa];
 }
