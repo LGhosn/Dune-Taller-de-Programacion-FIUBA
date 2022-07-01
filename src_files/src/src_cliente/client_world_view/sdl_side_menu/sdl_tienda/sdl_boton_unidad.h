@@ -11,9 +11,9 @@ class BotonUnidadSDL {
     uint8_t id_jugador;
     SDL2pp::Texture& logo;
     bool habilitado = false;
-    bool construyendo = false;
-    uint16_t frames_para_construir = 0;
-    uint16_t frames_restantes_construccion = 0;
+    bool entrenando = false;
+    uint16_t frames_para_entrenar = 0;
+    uint16_t frames_restantes_entrenamiento = 0;
 
     // Constantes
     float relacion_ancho_largo;
@@ -33,7 +33,7 @@ public:
     void habilitar();
     void deshabilitar();
 
-    void empezarConstruccion(uint16_t milisegundos_para_construir);
+    void empezarEntrenamiento(uint16_t milisegundos_para_construir);
 
     SolicitudCliente* click(int pos_x, int pos_y);
 

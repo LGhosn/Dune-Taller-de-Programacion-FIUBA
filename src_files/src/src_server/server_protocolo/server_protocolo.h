@@ -95,7 +95,7 @@ public:
  *             METODOS REFERIDOS A MOVER UNIDADES
  * *****************************************************************/
 
-    void enviarInstruccionMoverUnidad(uint16_t id_unidad, char direccion, long tiempo);
+    void enviarComandoMoverUnidad(uint8_t id_unidad, char direccion, long tiempo);
 
     SolicitudMoverUnidadDTO recibirSolicitudMoverUnidad();
 
@@ -117,7 +117,7 @@ public:
  *             METODOS REFERIDOS A COMPRAS
  * *****************************************************************/
 
-    SolicitudComprarUnidadDTO recibirSolicitudComprarUnidad(); //TODO: implementar
+    SolicitudComprarUnidadDTO recibirSolicitudComprarUnidad();
 
     void enviarComandoComprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad); // TODO: implementar
 
@@ -137,7 +137,7 @@ public:
 
     void enviarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables);
 
-    void enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion);
+    void enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
 
     /*
      * No tiene sentido copiar un ProtocoloServidor.

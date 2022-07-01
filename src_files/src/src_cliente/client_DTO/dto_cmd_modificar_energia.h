@@ -1,6 +1,8 @@
 #ifndef CLIENTE_CMD_MODIFICAR_ENERGIA_DTO_H
 #define CLIENTE_CMD_MODIFICAR_ENERGIA_DTO_H
 
+#include <cstdint>
+
 struct CmdModificarEnergiaDTO {
     int16_t cantidad_energia;
     uint16_t tope_energia;

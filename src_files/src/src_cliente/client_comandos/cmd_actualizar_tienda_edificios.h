@@ -10,7 +10,7 @@ public:
 
     virtual bool ejecutar(WorldView& worldView) const override;
 
-    ~CmdActualizarTiendaEdificiosCliente() = default;
+    virtual ~CmdActualizarTiendaEdificiosCliente() = default;
 };
 
 #endif

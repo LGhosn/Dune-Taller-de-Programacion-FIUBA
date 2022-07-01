@@ -50,6 +50,10 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
             CmdEmpezarEntrenamientoClienteDTO comandoDTO = protocolo.recibirComandoEmpezarEntrenamientoUnidad();
             return new CmdEmpezarEntrenamientoCliente(comandoDTO);
         }
+        case 12: {
+            CmdMoverUnidadClienteDTO comandoDTO = protocolo.recibirComandoMoverUnidad();
+            return new CmdMoverUnidadCliente(comandoDTO);
+        }
         case 20: {
             uint16_t cantidad_especia = protocolo.recibirComandoModificarEspecia();
             return new CmdModificarEspeciaServer(cantidad_especia);

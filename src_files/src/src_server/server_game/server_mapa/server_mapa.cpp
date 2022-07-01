@@ -21,10 +21,6 @@
 /* ******************************************************************
  *                        PRIVADAS
  * *****************************************************************/
-// template<typename Base, typename T>
-// inline bool instaciaDe(const T&) {
-//     return std::is_base_of<Base, T>::value;
-// }
 
 bool Mapa::hayColisiones(const Coordenadas& coords, int dimension_x, int dimension_y) {
     for (int i = coords.y; i < coords.y + dimension_y; i++){
@@ -53,11 +49,6 @@ void Mapa::edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edific
     for (int i = coords.y; i < (coords.y + dimension_y); i++){
         for (int j = coords.x; j < (coords.x + dimension_x); j++){
             this->mapa[i][j] = clasificarEdificio(tipo_edificio, this->edificio_config, id_jugador);
-            // std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
-            // std::cout << "Tipo de entidad: " << entidad->obtenerTipoDeEntidad() << std::endl;
-            // std::cout << "Tipo de id jugador: " << entidad->obtenerIdJugador() << std::endl;
-            // std::cout << "Tipo de identificador: " << entidad->obtenerIdentificador() << std::endl;
-
         }
     }
 }
@@ -87,7 +78,6 @@ bool Mapa::construccionLejana(const Coordenadas& coords, uint16_t id_jugador) {
             std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
 
             char tipo_entidad = entidad->obtenerTipoDeEntidad();
-            std::cout << "tipo_entidad: " << tipo_entidad << std::endl;
             if (tipo_entidad == 'E'){
                 uint16_t id_actual_jugador = entidad->obtenerIdJugador();
                 if (id_actual_jugador == id_jugador){
@@ -151,6 +141,7 @@ std::unique_ptr<Entidades> Mapa::clasificarTerreno(char tipo) {
 
 char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destino) {
     char arriba = 'a', abajo = 'b', izquierda = 'i', derecha = 'd';
+    char diagonal_abajo_izq = '1', diagonal_abajo_der = '2', diagonal_arriba_izq = '3', diagonal_arriba_der = '4'; //TODO: determinar chars
     if (origen.x == destino.x){
         if (origen.y < destino.y){
             return arriba;
@@ -161,12 +152,51 @@ char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destin
             return derecha;
         }
         return izquierda;
+    } else if (origen.x < destino.x){
+        if (origen.y < destino.y){
+            return diagonal_arriba_der;
+        }
+        return diagonal_abajo_der;
+    } else {
+        if (origen.y < destino.y){
+            return diagonal_arriba_izq;
+        }
+        return diagonal_abajo_izq;
     }
-    return ' ';
 }
 
 bool Mapa::esCoordenadaValida(const Coordenadas& posicion) {
     return this->mapa[posicion.y][posicion.x]->obtenerTipoDeEntidad() == 'T';
+}
+
+Coordenadas& Mapa::coordenadaLibreMasCercana(Coordenadas& posicion) {
+    for (int i = posicion.y; i > (posicion.y - DISTANCIA_EDIFICIOS); i--){
+        if (i < 0 || i >= this->alto) continue;
+        for (int j = posicion.x; j > (posicion.x - DISTANCIA_EDIFICIOS); j--){
+            if (0 > j || j >= this->ancho) continue;
+
+            if (this->mapa[i][j]->obtenerTipoDeEntidad() == 'T'){
+                posicion.x = j;
+                posicion.y = i;
+                return posicion;
+            }
+        }
+    }
+    for (int i = posicion.y; i < (posicion.y + DISTANCIA_EDIFICIOS); i++){
+        if (i < 0 || i >= this->alto) continue;
+        for (int j = posicion.x; j < (posicion.x + DISTANCIA_EDIFICIOS); j++){
+            if (0 > j || j >= this->ancho) continue;
+
+            if (this->mapa[i][j]->obtenerTipoDeEntidad() == 'T'){
+                posicion.x = j;
+                posicion.y = i;
+                return posicion;
+            }
+        }
+    }
+    posicion.x = 0;
+    posicion.y = 0;
+    return posicion;
 }
 
 /* ******************************************************************
@@ -275,6 +305,16 @@ void Mapa::demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y) {
 
 std::stack<Coordenadas> Mapa::obtenerCamino(UnidadInfoDTO& unidad_info) const {
     return this->camino.obtener_camino(unidad_info);
+}
+
+Coordenadas& Mapa::obtenerCoordenadasSpawn(uint8_t id_jugador) {
+    for (auto& coordenada : this->coords_centros) {
+        std::unique_ptr<Entidades>& entidad = this->mapa[coordenada.y][coordenada.x];
+        if (entidad->obtenerIdJugador() == id_jugador) {
+            return coordenadaLibreMasCercana(coordenada);
+        }
+    }
+    throw std::runtime_error("No se encontro spawn para el jugador");
 }
 
 Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), camino(otro.camino) {
