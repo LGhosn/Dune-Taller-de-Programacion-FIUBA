@@ -52,7 +52,7 @@ public:
 
     void moverUnidad(uint16_t id_unidad, const Coordenadas& destino);
 
-    void agregarJugador(ColaBloqueante<ComandoServer>* cola_comando, uint8_t id_jugador, 
+    void agregarJugador(ColaBloqueante<ComandoServer>& cola_comando, uint8_t id_jugador, 
                         uint8_t casa, std::string& nombre);
 
     /*
@@ -66,8 +66,8 @@ public:
 
     Game &operator=(const Game &game) = delete;
     Game(const Game &game) = delete;
-    Game &operator=(Game &&game);
-    Game(Game &&game);
+    Game &operator=(Game &&game) = delete;
+    Game(Game &&game) = delete;
 };
 
 

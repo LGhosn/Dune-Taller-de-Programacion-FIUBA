@@ -4,7 +4,7 @@
 #define CENTINELA 'q'
 #define RUTA_YAML "../../assets/constantes/codigos.yaml"
 
-Server::Server(const char* servicename) : codigos(NULL), hilo_aceptador(servicename, &codigos) {}
+Server::Server(const char* servicename) : codigos(NULL), hilo_aceptador(servicename, codigos) {}
 
 void Server::iniciar() {
     char entrada = 0;

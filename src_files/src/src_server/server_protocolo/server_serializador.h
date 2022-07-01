@@ -14,7 +14,7 @@
 
 class SerializadorServer {
 private:
-    YAML::Node* codigos;
+    YAML::Node& codigos;
 
 /* *****************************************************************
  *                          METODOS AUXILIARES
@@ -24,7 +24,7 @@ private:
                             std::vector<uint8_t> buffer_origen) const;
 
 public:
-    explicit SerializadorServer(YAML::Node* codigos);
+    explicit SerializadorServer(YAML::Node& codigos);
 /* *****************************************************************
  *             METODOS REFERIDOS A CREAR EDIFICIOS
  * *****************************************************************/
@@ -62,8 +62,8 @@ public:
 
     SerializadorServer(const SerializadorServer& otro) = delete;
     SerializadorServer& operator=(const SerializadorServer& otro) = delete;
-    SerializadorServer(SerializadorServer&& otro);
-    SerializadorServer& operator=(SerializadorServer&& otro);
+    SerializadorServer(SerializadorServer&& otro) = delete;
+    SerializadorServer& operator=(SerializadorServer&& otro) = delete;
 };
 
 #endif  // SERVER_SERIALIZADOR_H

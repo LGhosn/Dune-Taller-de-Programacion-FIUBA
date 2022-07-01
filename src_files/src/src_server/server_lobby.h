@@ -3,7 +3,6 @@
 
 #include "server_DTO/partida_DTO.h"
 #include "server_partida/server_partida.h"
-#include "server_partida/server_partida_cmp.h"
 #include "../src_common/common_DTO/dto_sol_crear_partida.h"
 #include "../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "../src_common/common_DTO/Status.h"
@@ -28,7 +27,7 @@ public:
      * Devuelve true en caso de poder crearse la partida (en tal
      * caso es listada), false en caso contrario.
      * */
-    void crearPartida(const SolicitudCrearPartidaDTO& partida_a_crear, HandlerCliente* cliente);
+    void crearPartida(const SolicitudCrearPartidaDTO& partida_a_crear, HandlerCliente& cliente);
 
     /*
      * Devuelve true en caso de poder unir un jugador a la partida
@@ -36,7 +35,7 @@ public:
      * partida, se imprime un mensaje que lo informa), false en 
      * caso contrario.
      * */
-    void unirAPartida(const SolicitudUnirseAPartidaDTO& partida_a_unirse, HandlerCliente* cliente);
+    void unirAPartida(const SolicitudUnirseAPartidaDTO& partida_a_unirse, HandlerCliente& cliente);
 
     /*
      * Imprime en la consola del servidor cuando una partida comienza.
