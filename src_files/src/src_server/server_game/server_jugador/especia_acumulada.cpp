@@ -3,56 +3,13 @@
 #include "../../server_comandos/cmd_actualizar_tienda_edificios.h"
 #include "../../server_comandos/cmd_actualizar_tienda_unidades.h"
 
-void EspeciaAcumulada::actualizarEdificiosComprables() {
-    for (int i = 1; i < 8; i++) {
-        edificios_comprables[i] = cantidad_especia >= costo_edificios[i] ? true : false;
-    }
-    CmdActualizarTiendaEdificiosServer* comando =
-                    new CmdActualizarTiendaEdificiosServer(edificios_comprables);
-    cola_comandos.push(comando);
-}
-
-void EspeciaAcumulada::actualizarUnidadesComprables(std::vector<uint8_t>& edificios_comprados, uint8_t& casa) {
-    for (uint8_t i = 0; i < 11 ; i++) {
-        unidades_comprables[i] = validarCompraUnidad(i, edificios_comprados, casa);        
-    }
-    
-
-    CmdActualizarTiendaUnidadesServer* comando =
-                    new CmdActualizarTiendaUnidadesServer(unidades_comprables);
-    cola_comandos.push(comando);
-}
-
-
-bool EspeciaAcumulada::validarCompraUnidad(uint8_t tipo_unidad,
-                                            std::vector<uint8_t>& edificios_comprados,
-                                            uint8_t& casa) {
-    if (cantidad_especia < costo_unidades[tipo_unidad]) {
-        return false;
-    }
-    
-    if ((tipo_unidad == INFANTERIA_LIGERA || tipo_unidad == INFANTERIA_PESADA)) {
-        return true;
-    }// else if (tipo_unidad == FREMEN && (edificios_comprados[] == 2))
-    return false;
-}
-
-// bool EspeciaAcumulada::validarCompraInfanteria(uint8_t tipo_edificio) {
-
-// }
-
-void EspeciaAcumulada::enviarNuevaCantidadEspecia() {
-    CmdModificarEspeciaServer* comando = new CmdModificarEspeciaServer(cantidad_especia);
-    cola_comandos.push(comando);
-}
-
 EspeciaAcumulada::EspeciaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
-                                    YAML::Node& constantes) :
-                    cola_comandos(cola_comandos),
-                    cantidad_especia(constantes["Game"]["Especia"]["ValorInicial"].as<uint16_t>()),
-                    edificios_comprables(8, false), unidades_comprables(11, false),
-                    costo_edificios(8), costo_unidades(11),
-                    fraccion_demoler(constantes["Game"]["Precios"]["Edificios"]["FraccionDemoler"].as<float>()) {
+                                   YAML::Node& constantes) :
+        cola_comandos(cola_comandos),
+        cantidad_especia(constantes["Game"]["Especia"]["ValorInicial"].as<uint16_t>()),
+        edificios_comprables(8, false), unidades_comprables(11, false),
+        costo_edificios(8), costo_unidades(11),
+        fraccion_demoler(constantes["Game"]["Precios"]["Edificios"]["FraccionDemoler"].as<float>()) {
     costo_edificios[0] = 0;
     costo_edificios[1] = constantes["Game"]["Precios"]["Edificios"]["Cuartel"].as<uint16_t>();
     costo_edificios[2] = constantes["Game"]["Precios"]["Edificios"]["FabricaLigera"].as<uint16_t>();
@@ -80,6 +37,20 @@ void EspeciaAcumulada::empezarPartida() {
     actualizarEdificiosComprables();
 }
 
+void EspeciaAcumulada::enviarNuevaCantidadEspecia() {
+    CmdModificarEspeciaServer* comando = new CmdModificarEspeciaServer(cantidad_especia);
+    cola_comandos.push(comando);
+}
+
+void EspeciaAcumulada::actualizarEdificiosComprables() {
+    for (int i = 1; i < 8; i++) {
+        edificios_comprables[i] = cantidad_especia >= costo_edificios[i] ? true : false;
+    }
+    CmdActualizarTiendaEdificiosServer* comando =
+                    new CmdActualizarTiendaEdificiosServer(edificios_comprables);
+    cola_comandos.push(comando);
+}
+
 bool EspeciaAcumulada::comprarEdificio(uint8_t tipo_edificio, std::vector<uint8_t>& edificios_comprados, uint8_t& casa) {
     if (cantidad_especia >= costo_edificios[tipo_edificio]) {
         cantidad_especia -= costo_edificios[tipo_edificio];
@@ -98,6 +69,24 @@ void EspeciaAcumulada::demolerEdificio(uint8_t tipo) {
     enviarNuevaCantidadEspecia();
 }
 
+void EspeciaAcumulada::aumentarEspecia(uint16_t cantidad) {
+    cantidad_especia += cantidad;
+    enviarNuevaCantidadEspecia();
+}
+
+void EspeciaAcumulada::actualizarUnidadesComprables(std::vector<uint8_t>& edificios_comprados, uint8_t& casa) {
+    for (uint8_t i = 0; i < 11 ; i++) {
+        unidades_comprables[i] = validarCompraUnidad(i, edificios_comprados, casa);        
+    }
+    CmdActualizarTiendaUnidadesServer* comando =
+                    new CmdActualizarTiendaUnidadesServer(unidades_comprables);
+    cola_comandos.push(comando);
+}
+
+/* *****************************************************************
+ *          METODOS SOBRE VALIDACION DE COMPRA DE UNIDADES
+ * *****************************************************************/
+
 bool EspeciaAcumulada::comprarUnidad(uint8_t tipo) {
     if (cantidad_especia >= costo_unidades[tipo]) {
         cantidad_especia -= costo_unidades[tipo];
@@ -110,7 +99,108 @@ bool EspeciaAcumulada::comprarUnidad(uint8_t tipo) {
     }
 }
 
-void EspeciaAcumulada::aumentarEspecia(uint16_t cantidad) {
-    cantidad_especia += cantidad;
-    enviarNuevaCantidadEspecia();
+bool EspeciaAcumulada::validarCompraUnidad(uint8_t tipo_unidad,
+                                           std::vector<uint8_t>& edificios_comprados,
+                                           uint8_t& casa) {
+    // Primero corroboramos que el jugador tenga la especia suficiente.
+    if (noHayEspeciaSuficienteParaLaUnidad(tipo_unidad)) {
+        return false;
+    }
+
+    // Luego corroboramos que el jugador tenga los edificios adecuados para comprar la unidad.
+    if (laUnidadAComprarEsInfanteria(tipo_unidad) && elJugadorConstruyoElCuartel(edificios_comprados)) {
+        return true;
+    } else if (laUnidadAComprarEsFremen(tipo_unidad, casa) && elJugadorConstruyoElCuartelYElPalacio(edificios_comprados)) {
+        return true;
+    } else if (laUnidadAComprarEsSardaukar(tipo_unidad, casa) && elJugadorConstruyoElCuartelYElPalacio(edificios_comprados)) {
+        return true;
+    } else if (laUnidadAComprarEsTrike(tipo_unidad, casa) && elJugadorConstruyoLaFabricaLigera(edificios_comprados)) {
+        return true;
+    } else if (laUnidadAComprarEsRaider(tipo_unidad, casa) && elJugadorConstruyoLaFabricaLigera(edificios_comprados)) {
+        return true;
+    } else if (laUnidadAComprarEsTanque(tipo_unidad) && elJugadorConstruyoLaFabricaPesada(edificios_comprados)) {
+        return true;
+    } else if (laUnidadAComprarEsTanqueSonico(tipo_unidad, casa) && elJugadorConstruyoLaFabricaPesadaYElPalacio(edificios_comprados)) {
+        return true;
+    } else if (laUnidadAComprarEsDesviador(tipo_unidad, casa) && elJugadorConstruyoLaFabricaPesadaYElPalacio(edificios_comprados)) {
+        return true;
+    } else if (laUnidadAComprarEsDevastador(tipo_unidad, casa) && elJugadorConstruyoLaFabricaPesadaYElPalacio(edificios_comprados)) {
+        return true;
+    } else if(laUnidadAComprarEsCosechadora(tipo_unidad) && elJugadorConstruyoLaFabricaPesada(edificios_comprados)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool EspeciaAcumulada::noHayEspeciaSuficienteParaLaUnidad(uint8_t tipo_unidad) {
+    return cantidad_especia < costo_unidades[tipo_unidad];
+}
+
+/* *****************************************************************
+ *          METODOS BOOL SOBRE EXISTENCIA DE EDIFICIOS
+ * *****************************************************************/
+
+bool EspeciaAcumulada::elJugadorConstruyoElCuartel(std::vector<uint8_t>& edificios_comprados) {
+    return edificios_comprados[CUARTEL];
+}
+
+bool EspeciaAcumulada::elJugadorConstruyoElCuartelYElPalacio(std::vector<uint8_t>& edificios_comprados) {
+    return edificios_comprados[CUARTEL] && edificios_comprados[PALACIO];
+}
+
+bool EspeciaAcumulada::elJugadorConstruyoLaFabricaLigera(std::vector<uint8_t>& edificios_comprados) {
+    return edificios_comprados[FABRICA_LIGERA];
+}
+
+bool EspeciaAcumulada::elJugadorConstruyoLaFabricaPesada(std::vector<uint8_t>& edificios_comprados) {
+    return edificios_comprados[FABRICA_PESADA];
+}
+
+bool EspeciaAcumulada::elJugadorConstruyoLaFabricaPesadaYElPalacio(std::vector<uint8_t>& edificios_comprados) {
+    return edificios_comprados[FABRICA_PESADA] && edificios_comprados[PALACIO];
+}
+
+/* *****************************************************************
+ *          METODOS BOOL SOBRE CASO DE UNIDADES
+ * *****************************************************************/
+
+bool EspeciaAcumulada::laUnidadAComprarEsInfanteria(uint8_t tipo_unidad) {
+    return tipo_unidad == INFANTERIA_LIGERA || tipo_unidad == INFANTERIA_PESADA;
+}
+
+bool EspeciaAcumulada::laUnidadAComprarEsFremen(uint8_t tipo_unidad, uint8_t casa) {
+    return tipo_unidad == FREMEN && casa == ATREIDES;
+}
+
+bool EspeciaAcumulada::laUnidadAComprarEsSardaukar(uint8_t tipo_unidad, uint8_t casa) {
+    return tipo_unidad == SARDAUKAR && casa == HARKONNEN;
+}
+
+bool EspeciaAcumulada::laUnidadAComprarEsTrike(uint8_t tipo_unidad, uint8_t casa) {
+    return tipo_unidad == TRIKE && (casa == ORDOS || casa == HARKONNEN);
+}
+
+bool EspeciaAcumulada::laUnidadAComprarEsRaider(uint8_t tipo_unidad, uint8_t casa) {
+    return tipo_unidad == RAIDER && casa == ORDOS;
+}
+
+bool EspeciaAcumulada::laUnidadAComprarEsTanque(uint8_t tipo_unidad) {
+    return tipo_unidad == TANQUE;
+}
+
+bool EspeciaAcumulada::laUnidadAComprarEsTanqueSonico(uint8_t tipo_unidad, uint8_t casa) {
+    return tipo_unidad == TANQUE_SONICO && casa == ATREIDES;
+}
+
+bool EspeciaAcumulada::laUnidadAComprarEsDesviador(uint8_t tipo_unidad, uint8_t casa) {
+    return tipo_unidad == DESVIADOR && casa == ORDOS;
+}
+
+bool EspeciaAcumulada::laUnidadAComprarEsDevastador(uint8_t tipo_unidad, uint8_t casa) {
+    return tipo_unidad == DEVASTADOR && casa == HARKONNEN;
+}
+
+bool EspeciaAcumulada::laUnidadAComprarEsCosechadora(uint8_t tipo_unidad) {
+    return tipo_unidad == COSECHADORA;
 }
