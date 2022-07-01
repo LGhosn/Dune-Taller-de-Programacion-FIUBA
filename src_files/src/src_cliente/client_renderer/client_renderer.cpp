@@ -5,6 +5,14 @@
 #include <thread>
 #include "client_renderer.h"
 
+ClientRenderer::ClientRenderer(ColaNoBloqueante<ComandoCliente>& cola_comandos,
+                               ColaBloqueante<SolicitudCliente>& cola_solicitudes,
+                               uint8_t id_jugador, InfoPartidaDTO& info_partida,
+                               YAML::Node& constantes) :
+        cola_solicitudes(cola_solicitudes),
+        cola_comandos(cola_comandos),
+        world_view(cola_solicitudes, id_jugador, info_partida, constantes) {}
+
 bool ClientRenderer::manejar_comando() {
 	// popall
 	std::unique_ptr<ComandoCliente> comando = this->cola_comandos.pop();
@@ -48,14 +56,6 @@ void ClientRenderer::game_loop() {
 		std::this_thread::sleep_for(rest);
 	}
 }
-
-ClientRenderer::ClientRenderer(ColaNoBloqueante<ComandoCliente>& cola_comandos,
-								ColaBloqueante<SolicitudCliente>& cola_solicitudes,
-								uint8_t id_jugador, InfoPartidaDTO& info_partida,
-								YAML::Node& constantes) :
-								cola_solicitudes(cola_solicitudes),
-								cola_comandos(cola_comandos),
-								world_view(cola_solicitudes, id_jugador, info_partida, constantes) {}
 
 void ClientRenderer::start() {
 	try {
