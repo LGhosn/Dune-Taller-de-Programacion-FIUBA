@@ -49,7 +49,6 @@ void FormUnion::unirseNotificacion(ProtocoloCliente &protocolo, Status &status) 
         std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
         cliente.establecerPartidaEmpezada();
         close();
-        cliente.empezarPartida();
     } else {
         if (status.obtenerCodigoDePartida() == PARTIDA_EXISTENTE) {
             std::cout << "Union Fallida, parece que esa partida ya ha comenzado." << std::endl;

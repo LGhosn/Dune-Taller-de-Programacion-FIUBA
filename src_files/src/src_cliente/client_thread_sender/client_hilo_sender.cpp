@@ -1,10 +1,9 @@
 #include "client_hilo_sender.h"
 
-ClientHiloSender::ClientHiloSender(ColaBloqueante<SolicitudCliente> &cola_comandos, Client* cliente,
+ClientHiloSender::ClientHiloSender(ColaBloqueante<SolicitudCliente> &cola_comandos, ProtocoloCliente &protocolo,
                                     uint8_t id_jugador) :
                                     cola_comandos(cola_comandos),
-                                    cliente(cliente),
-                                    protocolo(cliente->protocoloAsociado()),
+                                    protocolo(protocolo),
                                     id_jugador(id_jugador),
                                     thread(std::thread(&ClientHiloSender::handleThread, this)) {}
 
@@ -32,11 +31,16 @@ void ClientHiloSender::send(std::unique_ptr<SolicitudCliente>& solicitud) {
         solicitud->enviarSolicitud(this->protocolo, id_jugador);
 }
 
-ClientHiloSender::~ClientHiloSender() {
+void ClientHiloSender::stop() {
     this->hay_que_seguir = false;
     this->cola_comandos.push(nullptr);
+    this->thread.join();
+    std::cerr << "Stop en sender" << std::endl;
+}
+
+ClientHiloSender::~ClientHiloSender() {
     if (this->thread.joinable()) {
-        this->thread.join();
+        stop();
     }
     std::cerr << "Destruyendo Sender\n";
 }

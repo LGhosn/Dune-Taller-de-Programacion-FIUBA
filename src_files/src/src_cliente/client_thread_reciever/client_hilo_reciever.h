@@ -3,7 +3,6 @@
 
 #include <thread>
 
-#include "../client_client.h"
 #include "../client_protocolo.h"
 #include "../../src_common/common_colas/cola_no_bloqueante.h"
 
@@ -23,14 +22,12 @@
 #include "../client_DTO/dto_cmd_empezar_construccion_edificio.h"
 #include "../client_DTO/dto_cmd_mover_unidad.h"
 
-class Client;
-
 class ClientHiloReciever {
 private:
-    Client* cliente;
-    ProtocoloCliente& protocolo;
+    ProtocoloCliente& protocolo_asociado;
     ColaNoBloqueante<ComandoCliente>& cola_eventos;
     bool hay_que_seguir = true;
+    bool servidor_termino_partida = true;
     std::thread thread;
 
     void run();
@@ -39,9 +36,10 @@ private:
     ComandoCliente *crearComandoSegunCodigo(uint8_t codigo_comando);
 
 public:
-    ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, Client* cliente);
+    ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, ProtocoloCliente& protocolo_asociado);
     
     void start();
+    void stop();
 
     ~ClientHiloReciever();
 

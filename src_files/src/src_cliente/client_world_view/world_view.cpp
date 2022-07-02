@@ -86,11 +86,6 @@ void WorldView::render() {
     this->renderer.Present();
 }
 
-WorldView::~WorldView() {
-    for (auto& edificio : this->edificios)
-        delete edificio.second;
-}
-
 /* *****************************************************************
  *              METODOS REFERIDOS A ESPECIA Y ENERGÍA
  * *****************************************************************/
@@ -112,7 +107,7 @@ void WorldView::crearEdificio(uint16_t id_edificio,
                               const Coordenadas& coords,
                               uint8_t tipo,
                               uint8_t casa) {
-    EdificioSDL* edificio = edificio_factory.crearEdificio
+    std::shared_ptr<EdificioSDL> edificio = edificio_factory.crearEdificio
             (id_edificio, id_jugador, casa, tipo, coords);
     Coordenadas dimensiones = edificio->obtenerDimensiones();
     for (int i = 0; i < dimensiones.x; i++) {
@@ -141,7 +136,7 @@ void WorldView::deseleccionarEdificios() {
     edificios_seleccionados.clear();
 }
 
-void WorldView::seleccionarEdificio(EdificioSDL* edificio) {
+void WorldView::seleccionarEdificio(std::shared_ptr<EdificioSDL> edificio) {
     deseleccionarEdificios();
     edificio->seleccionar();
     edificios_seleccionados.push_back(edificio);

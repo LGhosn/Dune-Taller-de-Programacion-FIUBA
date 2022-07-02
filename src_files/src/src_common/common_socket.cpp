@@ -8,6 +8,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <unistd.h>
+#include <iostream>
 
 #include "common_socket.h"
 #include "common_resolver.h"
@@ -282,6 +283,7 @@ int Socket::close() {
 
 Socket::~Socket() {
     if (!this->closed) {
+        std::cerr << "Cerrando socket en destructor" << std::endl;
         ::shutdown(this->skt, 2);
         ::close(this->skt);
     }

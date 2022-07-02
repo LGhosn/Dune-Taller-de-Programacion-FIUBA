@@ -73,7 +73,6 @@ void SonidosSDL::cargarMensajesDeVoz() {
 void SonidosSDL::cargarMusica() {
     for (const auto& archivo_musica : std::filesystem::directory_iterator(RUTA_MUSICA)) {
         musica.emplace_back(archivo_musica.path());
-        std::cout << "Archivo: " << archivo_musica.path() << std::endl;
     }
 }
 

@@ -11,7 +11,13 @@ int main(int argc, char *argv[]) {
     menu.show();
     int resultado = QApplication::exec();
     if (resultado == 0 && cliente.estaEnPartida()) {
-        cliente.empezarPartida();
+        try {
+            cliente.empezarPartida();
+        } catch(const std::exception& e) {
+            std::cerr << "Excepcion en cliente: " << e.what() << std::endl;
+        } catch(...) {
+            std::cerr << "Excepcion desconocida" << std::endl;
+        }
         return 0;
     }
     return 1;

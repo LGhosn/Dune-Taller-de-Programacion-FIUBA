@@ -7,8 +7,8 @@ Client::Client(const char *hostname, const char *servicename) :
                 protocolo(skt_cliente),
                 id_jugador(protocolo.obtenerId()),
                 constantes(YAML::LoadFile(RUTA_CONSTANTES)),
-                receiver(new ClientHiloReciever(cola_comandos, this)),
-                sender(new ClientHiloSender(cola_solicitudes, this, id_jugador)) {}
+                receiver(cola_comandos, protocolo),
+                sender(cola_solicitudes, protocolo, id_jugador) {}
 
 ProtocoloCliente& Client::protocoloAsociado() {
     return this->protocolo;
@@ -31,21 +31,11 @@ void Client::setInfoPartida(InfoPartidaDTO& info_partida) {
 }
 
 void Client::empezarPartida() {
-    try {
-        receiver->start();
-        ClientRenderer renderer(cola_comandos, cola_solicitudes, id_jugador, info_partida, constantes);
-        ManejadorEventos manejador(cola_solicitudes, cola_comandos, constantes);
-        renderer.start();
-        std::cerr << "Cliente cerrandose" << std::endl;
-    } catch(const std::exception& e) {
-        std::cerr << "Excepcion en cliente: " << e.what() << std::endl;
-    }
-    
-}
-
-Client::~Client() {
-    skt_cliente.shutdown(2);
-    skt_cliente.close();
-    delete this->receiver;
-    delete this->sender;
+    receiver.start();
+    ClientRenderer renderer(cola_comandos, cola_solicitudes, id_jugador, info_partida, constantes);
+    ManejadorEventos manejador(cola_solicitudes, cola_comandos, constantes);
+    renderer.start();
+    std::cerr << "Cliente cerrandose" << std::endl;
+    sender.stop();
+    receiver.stop();
 }

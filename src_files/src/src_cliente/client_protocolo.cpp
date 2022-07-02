@@ -6,6 +6,11 @@
 ProtocoloCliente::ProtocoloCliente(Socket& skt_cliente) :
 skt_cliente(skt_cliente) {}
 
+void ProtocoloCliente::cerrarSocket() {
+    skt_cliente.shutdown(2);
+    skt_cliente.close();
+}
+
 uint8_t ProtocoloCliente::obtenerId() const {
     uint8_t id_jugador;
     skt_cliente.recvall(&id_jugador, SIZEOF_BYTE);

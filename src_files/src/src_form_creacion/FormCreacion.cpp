@@ -75,7 +75,6 @@ void FormCreacion::crearNotificacion(Status& status) {
         std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
         cliente.establecerPartidaEmpezada();
         close();
-        cliente.empezarPartida();
         //cliente_en_partida = true;
     } else {
         if (status.obtenerCodigoDePartida() == PARTIDA_EXISTENTE) {

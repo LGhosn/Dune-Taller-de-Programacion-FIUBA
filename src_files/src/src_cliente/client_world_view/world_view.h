@@ -42,8 +42,8 @@ class WorldView {
 	float zoom;
 	MapaSDL mapa;
 	SideMenuSDL side_menu;
-	std::unordered_map<Coordenadas, EdificioSDL*, HashCoordenadas> edificios;
-	std::vector<EdificioSDL*> edificios_seleccionados;
+	std::unordered_map<Coordenadas, std::shared_ptr<EdificioSDL>, HashCoordenadas> edificios;
+	std::vector<std::shared_ptr<EdificioSDL>> edificios_seleccionados;
     std::vector<UnidadSDL*> unidades_seleccionadas;
     std::map<uint8_t, UnidadSDL*> unidades;
 	EdificioFactorySDL edificio_factory;
@@ -53,7 +53,7 @@ class WorldView {
 	InfoPartidaDTO info_partida;
 
 	void deseleccionarEdificios();
-	void seleccionarEdificio(EdificioSDL* edificio);
+	void seleccionarEdificio(std::shared_ptr<EdificioSDL> edificio);
     void seleccionarUnidad(UnidadSDL* edificio);
     void deseleccionarUnidades();
 
@@ -99,8 +99,6 @@ public:
 
 	void update(long frame_actual);
 	void render();
-
-	~WorldView();
 };
 
 #endif

@@ -65,8 +65,9 @@ void ClientRenderer::start() {
 	} catch (...) {
 		std::cerr << "Excepción desconocida en ClientHiloRenderer: " << std::endl;
 	}
+	std::cerr << "Renderer terminado\n";
 }
 
 ClientRenderer::~ClientRenderer() {
-	std::cerr << "Destruyendo ClientHiloRenderer\n";
+	std::cerr << "Destruyendo ClientRenderer\n";
 }

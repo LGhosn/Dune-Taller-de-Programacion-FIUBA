@@ -6,6 +6,7 @@
 #include "sdl_edificio.h"
 #include "../sdl_texturas.h"
 #include "../sdl_color/sdl_colores.h"
+#include <memory>
 
 class EdificioFactorySDL {
     YAML::Node& constantes;
@@ -17,7 +18,7 @@ public:
     EdificioFactorySDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas,
                         YAML::Node& constantes, ColoresSDL& colores);
 
-    EdificioSDL* crearEdificio(uint8_t id_edificio, uint8_t id_jugador, uint8_t casa,
+    std::shared_ptr<EdificioSDL> crearEdificio(uint8_t id_edificio, uint8_t id_jugador, uint8_t casa,
                                 uint8_t tipo_edificio, const Coordenadas& coords);
 
     ~EdificioFactorySDL() = default;

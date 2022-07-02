@@ -15,9 +15,6 @@
 
 #define RUTA_CONSTANTES RESOURCE_PATH "/constantes/client_constantes.yaml"
 
-class ClientHiloReciever;
-class ClientHiloSender;
-
 class Client {
 private:
     Socket skt_cliente;
@@ -27,8 +24,8 @@ private:
 
     ColaNoBloqueante<ComandoCliente> cola_comandos;
     ColaBloqueante<SolicitudCliente> cola_solicitudes;
-    ClientHiloReciever* receiver;
-    ClientHiloSender* sender;
+    ClientHiloReciever receiver;
+    ClientHiloSender sender;
     bool partida_empezada = false;
     InfoPartidaDTO info_partida;
 
@@ -64,7 +61,5 @@ public:
     Client& operator=(const Client&) = delete;
     Client(Client&&) = delete;
     Client& operator=(Client&&) = delete;
-
-    ~Client();
 };
 #endif  // CLIENT_CLIENT_H_

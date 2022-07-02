@@ -39,6 +39,8 @@ private:
 public:
     explicit ProtocoloCliente(Socket& skt_cliente);
 
+    void cerrarSocket();
+
     uint8_t obtenerId() const;
 
     void enviarSolicitudCrearPartida(SolicitudCrearPartidaDTO& solicitud);
