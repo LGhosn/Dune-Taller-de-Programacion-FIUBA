@@ -219,13 +219,18 @@ void TiendaSDL::actualizarEdificios(const std::vector<bool>& edificios_comprable
 }
 
 void TiendaSDL::actualizarUnidades(const std::vector<bool>& unidades_comprables) {
-    for (uint8_t i = 0; i < unidades_comprables.size(); i++) {
-        if (unidades_comprables[i + 1]) {
+    for (uint8_t i = 0; i < 4; i++) {
+        if (unidades_comprables[i]) {
             botones_infanteria[i].habilitar();
-            botones_vehiculos[i].habilitar();
         } else {
             botones_infanteria[i].deshabilitar();
-            botones_vehiculos[i].deshabilitar();
+        }
+    }
+    for (uint8_t j = 4; j < 11; j++) {
+        if (unidades_comprables[j]) {
+            botones_vehiculos[j - 4].habilitar();
+        } else {
+            botones_vehiculos[j - 4].deshabilitar();
         }
     }
 }
