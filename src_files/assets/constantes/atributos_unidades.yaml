@@ -1,111 +1,163 @@
 Infanteria:
   InfanteriaLigera:
-   Arma: ["Rifle"]
+   Arma: 
+    - "Rifle"
    Rango: 3
    Velocidad: 16
    TiempoEntrenamiento: 1
    Costo: 50
    Vida: 50
-   PenalizacionTerreno: ['D']
-   PenalizacionVelocidad: [50]
-   TerrenosNoAccesibles: ['P']
+   PenalizacionTerreno: 
+    - 'D'
+   PenalizacionVelocidad: 
+    - 50
+   TerrenosNoAccesibles: 
+    - 'P'
   InfanteriaPesada:
-   Arma: ["Lanza misiles"]
+   Arma: 
+    - "Lanza misiles"
    Rango: 3
    Velocidad: 12
    TiempoEntrenamiento: 1.3
    Costo: 70
    Vida: 80
-   PenalizacionTerreno: ['D']
-   PenalizacionVelocidad: [50]
-   TerrenosNoAccesibles: ['P']
+   PenalizacionTerreno:
+    - 'D'
+   PenalizacionVelocidad:
+    - 50
+   TerrenosNoAccesibles:
+    - 'P'
   Fremen:
-   Arma: ["Rifle", "Lanza misiles"]
+   Arma:
+    - "Rifle"
+    - "Lanza misiles"
    Rango: 3
    Velocidad: 20
    TiempoEntrenamiento: 2
    Costo: 100
    Vida: 50
-   PenalizacionTerreno: ['D']
-   PenalizacionVelocidad: [50]
-   TerrenosNoAccesibles: ['P']
+   PenalizacionTerreno:
+    - 'D'
+   PenalizacionVelocidad:
+    - 50
+   TerrenosNoAccesibles:
+    - 'P'
   Sardaukar:
-   Arma: ["Rifle", "Lanza misiles"]
+   Arma:
+    - "Rifle"
+    - "Lanza misiles"
    Rango: 3
    Velocidad: 12
    TiempoEntrenamiento: 2
    Costo: 100
    Vida: 80
-   PenalizacionTerreno: ['D']
-   PenalizacionVelocidad: [50]
-   TerrenosNoAccesibles: ['P']
+   PenalizacionTerreno:
+    - 'D'
+   PenalizacionVelocidad:
+    - 50
+   TerrenosNoAccesibles:
+    - 'P'
 
 Vehiculos:
   Trike:
-   Arma: ["Rifle"]
+   Arma:
+    - "Rifle"
    Rango: 4
    Velocidad: 64
    TiempoEntrenamiento: 2
    Costo: 100
    Vida: 80
-   PenalizacionTerreno: ['D']
-   PenalizacionVelocidad: [50]
-   TerrenosNoAccesibles: ['P', 'C']
+   PenalizacionTerreno:
+    - 'D'
+   PenalizacionVelocidad:
+    - 50
+   TerrenosNoAccesibles:
+    - 'P'
+    - 'C'
   TanqueSonico:
-    Arma: ["Ondas de sonido"]
+    Arma:
+      - "Ondas de sonido"
     Rango: 4
     Velocidad: 12
     TiempoEntrenamiento: 4
     Costo: 300
     Vida: 300
-    PenalizacionTerreno: ['D']
-    PenalizacionVelocidad: [50]
-    TerrenosNoAccesibles: ['P', 'C']
+    PenalizacionTerreno:
+      - 'D'
+    PenalizacionVelocidad:
+      - 50
+    TerrenosNoAccesibles:
+      - 'P'
+      - 'C'
   Raider:
-    Arma: ["Canion 22mm"]
+    Arma:
+      - "Canion 22mm"
     Rango: 4
     Velocidad: 84
     TiempoEntrenamiento: 2
     Costo: 100
     Vida: 80
-    PenalizacionTerreno: ['D']
-    PenalizacionVelocidad: [50]
-    TerrenosNoAccesibles: ['P', 'C']
+    PenalizacionTerreno:
+      - 'D'
+    PenalizacionVelocidad:
+      - 50
+    TerrenosNoAccesibles:
+      - 'P'
+      - 'C'
   Desviador:
-    Arma: ["Lanza misiles"]
+    Arma:
+      - "Lanza misiles"
     Rango: 5
     Velocidad: 12
     TiempoEntrenamiento: 4
     Costo: 400
     Vida: 300
-    PenalizacionTerreno: ['D']
-    PenalizacionVelocidad: [50]
-    TerrenosNoAccesibles: ['P', 'C']
+    PenalizacionTerreno:
+      - 'D'
+    PenalizacionVelocidad:
+      - 50
+    TerrenosNoAccesibles:
+      - 'P'
+      - 'C'
   Tanque:
-    Arma: ["Canion"]
+    Arma:
+      - "Canion"
     Rango: 4
     Velocidad: 40
     TiempoEntrenamiento: 4
     Costo: 300
     Vida: 30
-    PenalizacionTerreno: ['D']
-    PenalizacionVelocidad: [50]
-    TerrenosNoAccesibles: ['P', 'C']
+    PenalizacionTerreno:
+      - 'D'
+    PenalizacionVelocidad:
+      - 50
+    TerrenosNoAccesibles:
+      - 'P'
+      - 'C'
   Devastador:
-    Arma: ["Canion de plasma"]
+    Arma:
+      - "Canion de plasma"
     Rango: 4
     Velocidad: 12
     TiempoEntrenamiento: 5
     Costo: 400
     Vida: 400
-    PenalizacionTerreno: ['D']
-    PenalizacionVelocidad: [50]
-    TerrenosNoAccesibles: ['P', 'C']
+    PenalizacionTerreno:
+      - 'D'
+    PenalizacionVelocidad:
+      - 50
+    TerrenosNoAccesibles:
+      - 'P'
+      - 'C'
   Cosechadora:
     Velocidad: 12
     TiempoEntrenamiento: 3
     Costo: 300
     Vida: 600
-    PenalizacionTerreno: ['D']
-    PenalizacionVelocidad: [50]
-    TerrenosNoAccesibles: ['P', 'C']
+    PenalizacionTerreno:
+      - 'D'
+    PenalizacionVelocidad:
+      - 50
+    TerrenosNoAccesibles:
+      - 'P'
+      - 'C'

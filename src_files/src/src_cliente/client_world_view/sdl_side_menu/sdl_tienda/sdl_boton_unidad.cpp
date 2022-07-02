@@ -39,8 +39,6 @@ SolicitudCliente* BotonUnidadSDL::click(int pos_x, int pos_y) {
         return nullptr;
     if (habilitado && !entrenando) {
         return new SolComprarUnidadCliente(tipo_unidad);
-    } else {
-        return nullptr;
     }
     return nullptr;
 }

@@ -55,6 +55,7 @@ void UnidadSDL::deseleccionar() {
 }
 
 bool UnidadSDL::contiene(int pos_x, int pos_y) {
+    std::cout << "contine????" << std::endl;
     return destino.Contains(pos_x, pos_y);
 }
 

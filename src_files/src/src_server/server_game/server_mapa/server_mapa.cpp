@@ -143,6 +143,15 @@ std::unique_ptr<Entidades> Mapa::clasificarTerreno(int tipo) {
     }
 }
 
+std::unique_ptr<Entidades> Mapa::clasificarUnidad(uint8_t tipo_unidad, uint8_t id_jugador, uint8_t id_unidad) {
+    switch (tipo_unidad) {
+        //TODO: implementar unidades
+        default:
+            throw std::runtime_error("Mapa: tipo de unidad no reconocido");
+    }
+}
+
+
 char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destino) {
     char arriba = 'a', abajo = 'b', izquierda = 'i', derecha = 'd';
     char diagonal_abajo_izq = '1', diagonal_abajo_der = '2', diagonal_arriba_izq = '3', diagonal_arriba_der = '4'; //TODO: determinar chars
@@ -320,6 +329,11 @@ Coordenadas& Mapa::obtenerCoordenadasSpawn(uint8_t id_jugador) {
     }
     throw std::runtime_error("No se encontro spawn para el jugador");
 }
+
+void Mapa::spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas& coords_spawn){
+    this->mapa[coords_spawn.y][coords_spawn.x] = clasificarUnidad(tipo_unidad, id_jugador, id_uni);
+}
+
 
 Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), camino(otro.camino) {
     // otro.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (otro.alto);
