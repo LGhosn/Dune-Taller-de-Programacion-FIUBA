@@ -15,10 +15,11 @@ protected:
     SDL2pp::Texture& textura;
     Coordenadas coords;
     ColorSDL& color;
-    long frames_restantes;
+    long frames_restantes = 0;
     SDL2pp::Rect destino;
     SDL2pp::Rect destino_ui;
     bool seleccionado = false;
+    bool desplegada = false;
     float zoom;
 
     // Constantes
@@ -30,6 +31,7 @@ protected:
     const float relacion_lineas_largo;
     const uint32_t ancho_tile;
     const uint32_t largo_tile;
+    const float fps;
     //const uint8_t codigo_atreides;
     //const uint8_t codigo_harkonnen;
     //const uint8_t codigo_ordos;*/
@@ -40,15 +42,18 @@ private:
     void renderRectanguloSeleccion();
     void renderHP();
 
+    void updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, float zoom);
+    void updateTiempoRestante(long frames_transcurridos);
+
 public:
     UnidadSDL(uint8_t id_unidad,
                 uint8_t id_jugador,
                 SDL2pp::Renderer& renderer,
-                SDL2pp::Texture& textura,
+                TexturasSDL& texturas,
                 const Coordenadas& coords,
                 YAML::Node& constantes,
                 ColorSDL& color,
-                long frames_restantes);
+                uint16_t tiempo_aparicion);
 
 
     void cambiarHP(uint16_t hp_edificio);
@@ -56,7 +61,7 @@ public:
     void seleccionar();
     void deseleccionar();
     bool listaParaRenderizar(long frames_actual);
-    virtual void update(uint32_t offset_x, uint32_t offset_y, long frame_actual, float zoom);
+    virtual void update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
     virtual void render();
     void renderUI();
     void moverse(char direccion, long tiempo_movimiento);

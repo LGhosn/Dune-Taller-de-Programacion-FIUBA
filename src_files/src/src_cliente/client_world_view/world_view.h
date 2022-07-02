@@ -44,8 +44,8 @@ class WorldView {
 	SideMenuSDL side_menu;
 	std::unordered_map<Coordenadas, std::shared_ptr<EdificioSDL>, HashCoordenadas> edificios;
 	std::vector<std::shared_ptr<EdificioSDL>> edificios_seleccionados;
-    std::vector<UnidadSDL*> unidades_seleccionadas;
-    std::map<uint8_t, UnidadSDL*> unidades;
+    std::vector<std::shared_ptr<UnidadSDL>> unidades_seleccionadas;
+    std::map<uint8_t, std::shared_ptr<UnidadSDL>> unidades;
 	EdificioFactorySDL edificio_factory;
 	UnidadFactorySDL unidad_factory;
 	long frame_anterior = 0;
@@ -54,7 +54,7 @@ class WorldView {
 
 	void deseleccionarEdificios();
 	void seleccionarEdificio(std::shared_ptr<EdificioSDL> edificio);
-    void seleccionarUnidad(UnidadSDL* edificio);
+    void seleccionarUnidad(std::shared_ptr<UnidadSDL> edificio);
     void deseleccionarUnidades();
 
 	void renderUI();

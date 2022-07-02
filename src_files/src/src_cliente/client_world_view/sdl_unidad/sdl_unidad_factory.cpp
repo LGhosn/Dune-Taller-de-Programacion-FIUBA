@@ -1,6 +1,6 @@
 #include "sdl_unidad_factory.h"
 
-UnidadSDL* UnidadFactorySDL::crearUnidad(uint8_t id_unidad,
+std::shared_ptr<UnidadSDL> UnidadFactorySDL::crearUnidad(uint8_t id_unidad,
                                         uint8_t id_jugador,
                                         SDL2pp::Renderer& renderer,
                                         TexturasSDL& texturas,
@@ -9,7 +9,7 @@ UnidadSDL* UnidadFactorySDL::crearUnidad(uint8_t id_unidad,
                                         ColoresSDL& colores,
                                         long tiempo_aparicion,
                                         uint8_t tipo_unidad) {
-    switch (tipo_unidad) {
+    // switch (tipo_unidad) {
        /* case 0: {
             return new InfanteriaLigeraSDL(id_unidad,
                                            id_jugador,
@@ -120,7 +120,10 @@ UnidadSDL* UnidadFactorySDL::crearUnidad(uint8_t id_unidad,
                                         color,
                                         tiempo_aparicion);
         }*/
-        default:
-            throw std::runtime_error("UnidadFactory: codigo de Unidad invalido");
-    }
+        // default:
+        //     throw std::runtime_error("UnidadFactory: codigo de Unidad invalido");
+    // }
+    return std::shared_ptr<UnidadSDL>(new UnidadSDL(
+        id_unidad, id_jugador, renderer, texturas, coords, constantes,
+        colores.obtenerColor(id_jugador), tiempo_aparicion));
 }

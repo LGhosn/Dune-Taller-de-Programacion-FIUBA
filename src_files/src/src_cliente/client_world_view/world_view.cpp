@@ -155,7 +155,7 @@ void WorldView::actualizarTiendaUnidades(const std::vector<bool>& unidades_compr
  * *****************************************************************/
 
 void WorldView::moverUnidad(uint8_t id_unidad, char direccion, long tiempo_movimiento) {
-    UnidadSDL* unidad_a_mover = unidades[id_unidad];
+    std::shared_ptr<UnidadSDL> unidad_a_mover = unidades[id_unidad];
     unidad_a_mover->moverse(direccion, tiempo_movimiento);
 }
 
@@ -173,7 +173,7 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                 uint8_t tipo_unidad,
                                                 long tiempo_entrenamiento,
                                                 Coordenadas& coords_spawn) {
-    UnidadSDL* unidad_a_desplegar = unidad_factory.crearUnidad(id_unidad,
+    std::shared_ptr<UnidadSDL> unidad_a_desplegar = unidad_factory.crearUnidad(id_unidad,
                                                                 id_jugador,
                                                                 renderer,
                                                                 texturas,
@@ -185,7 +185,7 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
     unidades.insert(std::make_pair(id_unidad, unidad_a_desplegar));
 }
 
-void WorldView::seleccionarUnidad(UnidadSDL* unidad) {
+void WorldView::seleccionarUnidad(std::shared_ptr<UnidadSDL> unidad) {
     deseleccionarEdificios();
     deseleccionarUnidades();
     unidad->seleccionar();
