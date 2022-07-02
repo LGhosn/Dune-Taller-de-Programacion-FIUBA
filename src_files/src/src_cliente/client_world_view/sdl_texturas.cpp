@@ -49,17 +49,17 @@ void TexturasSDL::cargarLogos() {
         logos_trampa_de_aire.emplace_back(renderer, stream.str());
     }
 
-    logos_unidades.emplace_back(renderer, RUTA_LOGO_FREMEN);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_INFANTERIA_LIGERA);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_INFANTERIA_PESADA);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_FREMEN);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_SARDAUKAR);
-    logos_unidades.emplace_back(renderer, RUTA_LOGO_COSECHADORA);
-    logos_unidades.emplace_back(renderer, RUTA_LOGO_DESVIADOR);
-    logos_unidades.emplace_back(renderer, RUTA_LOGO_DEVASTADOR);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_TRIKE);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_RAIDER);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_TANQUE);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_TANQUE_SONICO);
-    logos_unidades.emplace_back(renderer, RUTA_LOGO_TRIKE);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_DESVIADOR);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_DEVASTADOR);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_COSECHADORA);
 }
 
 void TexturasSDL::cargarTiles() {
@@ -281,8 +281,8 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                         texto_vehiculos(renderer,
                             font_tienda.RenderText_Blended("Vehiculos", SDL_Color{255, 255, 255, 255}
                         )) {
-    casas.emplace_back("atreides");
     casas.emplace_back("harkonnen");
+    casas.emplace_back("atreides");
     casas.emplace_back("ordos");
     cargarLogos();
     cargarTiles();
@@ -395,9 +395,9 @@ std::vector<SDL2pp::Texture>& TexturasSDL::obtenerLucesTrampa() {
 SDL2pp::Texture& TexturasSDL::obtenerLogoCasa(uint8_t casa) {
     switch (casa) {
         case 0:
-            return logo_atreides;
-        case 1:
             return logo_harkonnen;
+        case 1:
+            return logo_atreides;
         case 2:
             return logo_ordos;
         default:

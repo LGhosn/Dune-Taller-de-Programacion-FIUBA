@@ -28,8 +28,8 @@
 #define DEVASTADOR 9
 #define COSECHADORA 10
 
-#define ATREIDES 0
-#define HARKONNEN 1
+#define HARKONNEN 0
+#define ATREIDES 1
 #define ORDOS 2
 
 class EspeciaAcumulada {
@@ -61,25 +61,25 @@ class EspeciaAcumulada {
 
     bool elJugadorConstruyoLaFabricaPesadaYElPalacio(std::vector<uint8_t>& edificios_comprados);
 
-    bool laUnidadAComprarEsInfanteria(uint8_t tipo_unidad);
+    bool laUnidadARevisarEsInfanteria(uint8_t tipo_unidad);
 
-    bool laUnidadAComprarEsFremen(uint8_t tipo_unidad, uint8_t casa);
+    bool laUnidadARevisarEsFremen(uint8_t tipo_unidad, uint8_t casa);
 
-    bool laUnidadAComprarEsSardaukar(uint8_t tipo_unidad, uint8_t casa);
+    bool laUnidadARevisarEsSardaukar(uint8_t tipo_unidad, uint8_t casa);
 
-    bool laUnidadAComprarEsTrike(uint8_t tipo_unidad, uint8_t casa);
+    bool laUnidadARevisarEsTrike(uint8_t tipo_unidad, uint8_t casa);
 
-    bool laUnidadAComprarEsRaider(uint8_t tipo_unidad, uint8_t casa);
+    bool laUnidadARevisarEsRaider(uint8_t tipo_unidad, uint8_t casa);
 
-    bool laUnidadAComprarEsTanque(uint8_t tipo_unidad);
+    bool laUnidadARevisarEsTanque(uint8_t tipo_unidad);
 
-    bool laUnidadAComprarEsTanqueSonico(uint8_t tipo_unidad, uint8_t casa);
+    bool laUnidadARevisarEsTanqueSonico(uint8_t tipo_unidad, uint8_t casa);
 
-    bool laUnidadAComprarEsDesviador(uint8_t tipo_unidad, uint8_t casa);
+    bool laUnidadARevisarEsDesviador(uint8_t tipo_unidad, uint8_t casa);
 
-    bool laUnidadAComprarEsDevastador(uint8_t tipo_unidad, uint8_t casa);
+    bool laUnidadARevisarEsDevastador(uint8_t tipo_unidad, uint8_t casa);
 
-    bool laUnidadAComprarEsCosechadora(uint8_t tipo_unidad);
+    bool laUnidadARevisarEsCosechadora(uint8_t tipo_unidad);
 
 public:
     EspeciaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
