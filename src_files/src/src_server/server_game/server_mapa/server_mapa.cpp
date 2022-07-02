@@ -143,14 +143,6 @@ std::unique_ptr<Entidades> Mapa::clasificarTerreno(int tipo) {
     }
 }
 
-std::unique_ptr<Entidades> Mapa::clasificarUnidad(uint8_t tipo_unidad, uint8_t id_jugador, uint8_t id_unidad) {
-    switch (tipo_unidad) {
-        //TODO: implementar unidades
-        default:
-            throw std::runtime_error("Mapa: tipo de unidad no reconocido");
-    }
-}
-
 
 char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destino) {
     char arriba = 'a', abajo = 'b', izquierda = 'i', derecha = 'd';
@@ -278,12 +270,15 @@ char Mapa::moverUnidad(const Coordenadas& coords_actual, const Coordenadas& coor
         throw std::runtime_error("Coordenadas de movimiento invalidas");
     }
     std::unique_ptr<UnidadesMapa>& unidad = (std::unique_ptr<UnidadesMapa>&)entidad;
+    uint8_t id_jug = unidad->obtenerIdJugador();
+    uint8_t tipo = unidad->obtenerTipoDeUnidad();
+    uint8_t id_unidad = unidad->obtenerIdUnidad();
     char terreno = unidad->obtenerTerrenoQueEstaParada();
 
     this->mapa[coords_actual.y][coords_actual.x] = clasificarTerreno(terreno);
 
     char terreno_nuevo = this->mapa[coords_nueva.y][coords_nueva.x]->obtenerIdentificador();
-    this->mapa[coords_nueva.y][coords_nueva.x] = std::unique_ptr<Entidades>(new UnidadesMapa(terreno_nuevo));
+    this->mapa[coords_nueva.y][coords_nueva.x] = std::unique_ptr<Entidades>(new UnidadesMapa(terreno_nuevo, id_jug, tipo, id_unidad));
     return obtenerDireccion(coords_actual, coords_nueva);
 }
 
@@ -331,7 +326,9 @@ Coordenadas& Mapa::obtenerCoordenadasSpawn(uint8_t id_jugador) {
 }
 
 void Mapa::spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas& coords_spawn){
-    this->mapa[coords_spawn.y][coords_spawn.x] = clasificarUnidad(tipo_unidad, id_jugador, id_uni);
+    std::unique_ptr<Entidades>& entidad = this->mapa[coords_spawn.y][coords_spawn.x];
+    char terreno = entidad->obtenerIdentificador();
+    this->mapa[coords_spawn.y][coords_spawn.x] = std::unique_ptr<Entidades>(new UnidadesMapa(terreno, tipo_unidad, id_jugador, id_uni));
 }
 
 
