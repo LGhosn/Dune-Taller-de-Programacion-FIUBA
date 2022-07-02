@@ -1,11 +1,12 @@
 #include "terrenos_mapa.h"
 #include <iostream>
 
-#define ROCA 'R'
-#define CIMA 'I'
-#define ARENA 'A'
-#define DUNA 'U'
-#define PRECIPICIO 'P'
+#define ROCA 5
+#define CIMA 1
+#define ARENA 0
+#define DUNA 2
+#define PRECIPICIO 4
+#define ESPECIA 3
 
 
 /* ******************************************************************

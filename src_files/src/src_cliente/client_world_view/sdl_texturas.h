@@ -65,8 +65,7 @@ class TexturasSDL {
     std::vector<SDL2pp::Texture> tiles_arena;
     std::vector<SDL2pp::Texture> tiles_cima;
     std::vector<SDL2pp::Texture> tiles_duna;
-    std::vector<SDL2pp::Texture> tiles_especia_abundante;
-    std::vector<SDL2pp::Texture> tiles_especia_escasa;
+    std::vector<SDL2pp::Texture> tiles_especia;
     std::vector<SDL2pp::Texture> tiles_precipicio;
     std::vector<SDL2pp::Texture> tiles_roca;
     SDL2pp::Texture slab;

@@ -12,11 +12,12 @@
 #define REFINERIA 5
 #define SILO 6
 #define TRAMPA_DE_AIRE 7
-#define ROCA 'R'
-#define CIMA 'I'
-#define ARENA 'A'
-#define DUNA 'U'
-#define PRECIPICIO 'P'
+#define ROCA 5
+#define CIMA 1
+#define ARENA 0
+#define DUNA 2
+#define PRECIPICIO 4
+#define ESPECIA 3
 
 /* ******************************************************************
  *                        PRIVADAS
@@ -122,7 +123,7 @@ std::unique_ptr<Entidades> Mapa::clasificarEdificio(char tipo_edificio, YAML::No
     }
 }
 
-std::unique_ptr<Entidades> Mapa::clasificarTerreno(char tipo) {
+std::unique_ptr<Entidades> Mapa::clasificarTerreno(int tipo) {
     switch (tipo) {
         case ROCA:
             return std::unique_ptr<Entidades>(new Roca());
@@ -132,10 +133,13 @@ std::unique_ptr<Entidades> Mapa::clasificarTerreno(char tipo) {
             return std::unique_ptr<Entidades>(new Cima());
         case DUNA:
             return std::unique_ptr<Entidades>(new Duna());
+        case ESPECIA:
+            return std::unique_ptr<Entidades>(new Arena()); // Placeholder
         case PRECIPICIO:
             return std::unique_ptr<Entidades>(new Precipicio());
         default:
-            return nullptr;
+            std::cout << "Tipo: " << tipo << std::endl;
+            throw std::runtime_error("Mapa: tipo de terreno no reconocido");
     }
 }
 
@@ -221,7 +225,7 @@ Mapa::Mapa(const std::string& nombre_mapa) {
     }
     for (int i = 0; i < alto; i++) {
 		for (int j = 0; j < ancho; j++){
-            this->mapa[i][j] = clasificarTerreno(mapa_config["TiposTerrenos"][i][j].as<char>());
+            this->mapa[i][j] = clasificarTerreno(mapa_config["TiposTerrenos"][i][j].as<int>());
         }
     }
     cargarCentrosDeConstruccion(mapa_config);
@@ -251,7 +255,7 @@ void Mapa::construirCentro(uint16_t id_jugador, const Coordenadas& coords) {
     int dimension_x = centro->obtenerDimensionX();
     int dimension_y = centro->obtenerDimensionY();
     if (!terrenoFirme(coords, dimension_x, dimension_y) || hayColisiones(coords, dimension_x, dimension_y)) {
-        throw std::runtime_error("Coordenadas del centro invalidas");
+        throw std::runtime_error("Mapa: Coordenadas del centro invalidas");
     }
     edificar(coords, centro, id_jugador);
 }

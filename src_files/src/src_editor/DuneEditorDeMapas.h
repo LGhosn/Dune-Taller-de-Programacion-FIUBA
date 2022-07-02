@@ -33,9 +33,9 @@ private:
     int cantidad_jugadores;
     int cantidad_filas_mapa;
     int cantidad_columnas_mapa;
-    char terreno_seleccionado = TIPO_TERRENO_DEFAULT;
+    int terreno_seleccionado = TIPO_TERRENO_DEFAULT;
     int textura_seleccionada = TIPO_TEXTURA_DEFAULT;
-    std::vector<std::vector<char>>* grilla_terrenos = nullptr;
+    std::vector<std::vector<int>>* grilla_terrenos = nullptr;
     std::vector<std::vector<int>>* grilla_texturas = nullptr;
     std::vector<std::tuple<int, int>> centros_ubicados;
 
@@ -99,7 +99,7 @@ public:
     DuneEditorDeMapas(QWidget* parent, std::string &path_mapa);
 
     void establecerGrillaEstandar();
-    static std::string obtenerPathSegunInfo(const char &terreno_editado, std::string &textura_editada);
+    static std::string obtenerPathSegunInfo(uint8_t terreno_editado, uint8_t textura_editada);
 
     DuneEditorDeMapas(const DuneEditorDeMapas&) = delete;
     DuneEditorDeMapas& operator=(const DuneEditorDeMapas&) = delete;

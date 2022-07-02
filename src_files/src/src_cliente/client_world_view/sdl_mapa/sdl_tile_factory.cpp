@@ -21,7 +21,7 @@ TileFactorySDL::TileFactorySDL(SDL2pp::Renderer& renderer, std::string& nombre_m
     for (uint32_t i = 0; i < alto; i++) {
 		for (uint32_t j = 0; j < ancho; j++){
 			Coordenadas coords(j, i);
-            uint8_t tipo_terreno = mapa_config["TiposTerrenos"][i][j].as<char>();
+            uint8_t tipo_terreno = mapa_config["TiposTerrenos"][i][j].as<uint16_t>();
             uint16_t tipo_textura = mapa_config["TiposTexturas"][i][j].as<uint16_t>();
             agregarTile(tipo_terreno, tipo_textura, coords);
 		}

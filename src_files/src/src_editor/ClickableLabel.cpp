@@ -1,12 +1,12 @@
 #include "ClickableLabel.h"
 
-ClickableLabel::ClickableLabel(std::vector<std::vector<char>>* grilla_terrenos,
+ClickableLabel::ClickableLabel(std::vector<std::vector<int>>* grilla_terrenos,
                                std::vector<std::vector<int>>* grilla_texturas,
                                std::vector<std::tuple<int, int>>& centros_ubicados,
                                int &cant_jugadores,
                                int &cant_filas_grillas,
                                int &cant_columnas_grillas,
-                               char* terreno_seleccionado,
+                               int* terreno_seleccionado,
                                int* textura_seleccionada,
                                QString* path_textura,
                                QWidget* parent,
@@ -20,12 +20,12 @@ ClickableLabel::ClickableLabel(std::vector<std::vector<char>>* grilla_terrenos,
                                cant_columnas_grillas(cant_columnas_grillas),
                                terreno_seleccionado(terreno_seleccionado),
                                textura_seleccionada(textura_seleccionada),
-                               path_textura_seleccionada(path_textura) {
+                               path_textura_seleccionada(*path_textura) {
     this->setFrameShape(QFrame::Box);
     this->setBaseSize(50, 50);
     this->setMinimumSize(QSize(50, 50));
     this->setMaximumSize(QSize(50, 50));
-    this->setPixmap(QPixmap(QString::fromUtf8(RESOURCE_PATH"/terrenos/arena/mostrador/arena9.bmp")));
+    this->setPixmap(QPixmap(path_textura_seleccionada));
 }
 
 ClickableLabel::~ClickableLabel() = default;
@@ -41,7 +41,7 @@ void ClickableLabel::establecerTextura() {
     if (seQuiereEstablecerUnCentro()) {
         if (faltanEstablecerCentros()) {
             if (laPosicionParaUnCentroEsValida(coord_x, coord_y)) {
-                setPixmap(QPixmap(*path_textura_seleccionada));
+                setPixmap(QPixmap(path_textura_seleccionada));
                 centros_ubicados.emplace_back(std::make_tuple(coord_x, coord_y));
                 marcarUbicacionDelCentro(coord_x, coord_y);
             } else {
@@ -71,11 +71,11 @@ void ClickableLabel::establecerTextura() {
 void ClickableLabel::establecerTexturaEnLaGrilla(int coord_x, int coord_y) {
     (*grilla_terrenos)[coord_y][coord_x] = *terreno_seleccionado;
     (*grilla_texturas)[coord_y][coord_x] = *textura_seleccionada;
-    setPixmap(QPixmap(*path_textura_seleccionada));
+    setPixmap(QPixmap(path_textura_seleccionada));
 }
 
 bool ClickableLabel::seQuiereEstablecerTexturaSobreUnCentro(int& coord_x, int& coord_y) {
-    if ((*grilla_terrenos)[coord_y][coord_x] == 'X') {
+    if ((*grilla_terrenos)[coord_y][coord_x] == 6) {
         return true;
     }
     return false;
@@ -122,7 +122,7 @@ int ClickableLabel::obtenerCoordenadaX() {
 
 bool ClickableLabel::faltanEstablecerCentros() { return (int) centros_ubicados.size() < cant_jugadores; }
 
-bool ClickableLabel::seQuiereEstablecerUnCentro() { return *terreno_seleccionado == 'X'; }
+bool ClickableLabel::seQuiereEstablecerUnCentro() { return *terreno_seleccionado == 6; }
 
 bool ClickableLabel::laPosicionParaUnCentroEsValida(int& coord_x, int& coord_y) {
     return lasCoordenadasDelCentroPermanecenEnElMapa(coord_x, coord_y) && lasCoordenadasNoCoincidenConLasDeOtroCentro(coord_x, coord_y);
@@ -131,7 +131,7 @@ bool ClickableLabel::laPosicionParaUnCentroEsValida(int& coord_x, int& coord_y) 
 bool ClickableLabel::lasCoordenadasNoCoincidenConLasDeOtroCentro(const int &coord_x, const int &coord_y) const {
     for (int i = coord_y; i < coord_y + 3; i++) {
         for (int j = coord_x; j < coord_x + 3; j++) {
-            if ((*grilla_terrenos)[i][j] == 'X') {
+            if ((*grilla_terrenos)[i][j] == 6) {
                 return false;
             }
         }

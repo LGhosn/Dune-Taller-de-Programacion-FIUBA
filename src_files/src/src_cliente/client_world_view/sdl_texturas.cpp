@@ -88,14 +88,14 @@ void TexturasSDL::cargarTiles() {
     for (uint8_t i = 0; i < cantidad_texturas; i++) {
         std::stringstream stream;
         stream << RUTA_TILES_ESPECIA_ABUNDANTE << "especia_abundante" << (int) i << ".bmp";
-        tiles_especia_abundante.emplace_back(renderer, stream.str());
+        tiles_especia.emplace_back(renderer, stream.str());
     }
 
     cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_ESPECIA_ESCASA);
     for (uint8_t i = 0; i < cantidad_texturas; i++) {
         std::stringstream stream;
         stream << RUTA_TILES_ESPECIA_ESCASA << "especia_escasa" << (int) i << ".bmp";
-        tiles_especia_escasa.emplace_back(renderer, stream.str());
+        tiles_especia.emplace_back(renderer, stream.str());
     }
 
     cantidad_texturas = obtenerCantidadTexturas(RUTA_TILES_PRECIPICIO) - 1;
@@ -291,19 +291,20 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
 
 SDL2pp::Texture& TexturasSDL::obtenerTexTile(uint8_t tipo_tile, uint8_t tipo_textura) {
     switch (tipo_tile) {
-        case 'A':
+        case 0:
             return tiles_arena[tipo_textura];
-        case 'C':
+        case 1:
             return tiles_cima[tipo_textura];
-        case 'D':
+        case 2:
             return tiles_duna[tipo_textura];
-        case 'E':
-            return tiles_especia_abundante[tipo_textura];
-        case 'P':
+        case 3:
+            return tiles_especia[tipo_textura];
+        case 4:
             return tiles_precipicio[tipo_textura];
-        case 'R':
+        case 5:
             return tiles_roca[tipo_textura];
         default:
+            std::cout << "Tipo: " << (int) tipo_tile << std::endl;
             throw std::runtime_error("Texturas: Tipo de tile no reconocido.");
     }
 }

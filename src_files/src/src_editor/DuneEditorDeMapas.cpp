@@ -9,7 +9,7 @@ DuneEditorDeMapas::DuneEditorDeMapas(QWidget* parent,
                                      int cant_columnas,
                                      int cant_jugadores) :
                                      ui(new Ui_DuneEditorDeMapas),
-                                     grilla_terrenos(new std::vector(cant_filas, std::vector<char>(cant_columnas, TIPO_TERRENO_DEFAULT))),
+                                     grilla_terrenos(new std::vector(cant_filas, std::vector<int>(cant_columnas, TIPO_TERRENO_DEFAULT))),
                                      grilla_texturas(new std::vector(cant_filas, std::vector<int>(cant_columnas, TIPO_TEXTURA_DEFAULT))) {
     ui->setupUi(this);
     ui->scrollArea->setStyleSheet("background-color: rgb(114, 159, 207);");
@@ -68,56 +68,51 @@ void DuneEditorDeMapas::establecerDatosDeEdicionDeMapa(std::string &path_mapa) {
     ui->CantFilasLabel->setNum(cantidad_filas_mapa);
 
     // Establecemos las matrices internas que contienen info sobre las texturas y los terrenos.
-    grilla_terrenos = new std::vector(cantidad_filas_mapa, std::vector<char>(cantidad_columnas_mapa));
-    grilla_texturas = new std::vector(cantidad_filas_mapa, std::vector<int>(cantidad_columnas_mapa));
+    grilla_terrenos = new std::vector<std::vector<int>>;
+    grilla_texturas = new std::vector<std::vector<int>>;
     for (int i = 0; i < cantidad_filas_mapa; i++) {
-        for (int j = 0; j < cantidad_columnas_mapa; j++) {
-            std::string celda_actual = "celda_" + std::to_string(i) + '_' + std::to_string(j);
-            std::cout << celda_actual << std::endl;
-            if(!config["Terrenos"][celda_actual]){
-                std::cout << "no existe la clave" << std::endl;
-            }
-            std::string valor_actual = config["Terrenos"][celda_actual].as<std::string>();
-            std::cout << valor_actual << std::endl;
-        }
+        (*grilla_terrenos).emplace_back(config["TiposTerrenos"][i].as<std::vector<int>>());
+        (*grilla_texturas).emplace_back(config["TiposTexturas"][i].as<std::vector<int>>());
     }
 
     // Establecemos las ClickableLabels que muestran las texturas establecidas.
-    /*for (int i = 0; i < cantidad_filas_mapa; i++) {
+    for (int i = 0; i < cantidad_filas_mapa; i++) {
         for (int j = 0; j < cantidad_columnas_mapa; j++){
-            char terreno_editado = (*grilla_terrenos)[i][j] = config["TiposTerrenos"][i][j].as<char>();
-            uint8_t textura_editada = (*grilla_texturas)[i][j] = config["TiposTexturas"][i][j].as<uint8_t>();
-            std::string path_textura_editada = obtenerPathSegunInfo(terreno_editado, reinterpret_cast<std::string &>(textura_editada));
-            ClickableLabel* label = new ClickableLabel(reinterpret_cast<std::vector<std::vector<char>> *>(grilla_terrenos),
-                                                       reinterpret_cast<std::vector<std::vector<uint8_t>> *>(grilla_texturas),
-                                                       nullptr,
+            int terreno_editado = (*grilla_terrenos)[i][j];
+            int textura_editada = (*grilla_texturas)[i][j];
+            std::string path_textura_editada = obtenerPathSegunInfo(terreno_editado, textura_editada);
+            ClickableLabel* label = new ClickableLabel(reinterpret_cast<std::vector<std::vector<int>> *>(grilla_terrenos),
+                                                       reinterpret_cast<std::vector<std::vector<int>> *>(grilla_texturas),
+                                                       centros_ubicados,
+                                                       cantidad_jugadores,
                                                        cantidad_filas_mapa,
                                                        cantidad_columnas_mapa,
                                                        &terreno_editado,
                                                        &textura_editada,
-                                                       reinterpret_cast<QString *>(&path_textura_editada));
+                                                       reinterpret_cast<QString*>(&path_textura_editada));
             connect(label, &ClickableLabel::clicked, label, &ClickableLabel::establecerTextura);
             grilla->addWidget(label, i, j);
         }
-    }*/
+    }
 }
 
-std::string DuneEditorDeMapas::obtenerPathSegunInfo(const char &terreno_editado, std::string &textura_editada) {
-    std::string path_resultante = RESOURCE_PATH"/terrenos/";
-    if (terreno_editado == 'A') {
-        path_resultante =+ "arena/mostrador/arena" + textura_editada + ".bmp";
-    }  else if (terreno_editado == 'D') {
-        path_resultante =+ "duna/mostrador/duna" + textura_editada + ".bmp";
-    } else if (terreno_editado == 'R') {
-        path_resultante =+ "roca/mostrador/roca"  + textura_editada + ".bmp";
-    } else if (terreno_editado == 'C') {
-        path_resultante =+ "cimas/mostrador/cima"  + textura_editada + ".bmp";
-    } else if (terreno_editado == 'P') {
-        path_resultante =+ "precipicio/mostrador/precipicio"  + textura_editada + ".bmp";
-    } else if (terreno_editado == 'E') {
-        path_resultante =+ "especia/mostrador/especia"  + textura_editada + ".bmp";
+std::string DuneEditorDeMapas::obtenerPathSegunInfo(uint8_t terreno_editado, uint8_t textura_editada) {
+    std::stringstream path_resultante;
+    path_resultante << RESOURCE_PATH << "/terrenos/";
+    if (terreno_editado == 0) {
+        path_resultante << "arena/mostrador/arena" << (int) textura_editada << ".bmp";
+    }  else if (terreno_editado == 2) {
+        path_resultante << "duna/mostrador/duna" << (int) textura_editada << ".bmp";
+    } else if (terreno_editado == 5) {
+        path_resultante << "roca/mostrador/roca" << (int) textura_editada << ".bmp";
+    } else if (terreno_editado == 1) {
+        path_resultante << "cimas/mostrador/cima" << (int) textura_editada << ".bmp";
+    } else if (terreno_editado == 4) {
+        path_resultante << "precipicio/mostrador/precipicio" << (int) textura_editada << ".bmp";
+    } else if (terreno_editado == 3) {
+        path_resultante << "especia/mostrador/especia"  << (int) textura_editada << ".bmp";
     }
-    return path_resultante;
+    return path_resultante.str();
 }
 
 void DuneEditorDeMapas::establecerGrillaEstandar() {
@@ -130,7 +125,7 @@ void DuneEditorDeMapas::establecerGrillaEstandar() {
 void DuneEditorDeMapas::cargarMapaDefault() {
     for (int i = 0; i < cantidad_filas_mapa; i++) {
         for (int j = 0; j < cantidad_columnas_mapa; j++) {
-            ClickableLabel* label = new ClickableLabel(reinterpret_cast<std::vector<std::vector<char>> *>(grilla_terrenos),
+            ClickableLabel* label = new ClickableLabel(reinterpret_cast<std::vector<std::vector<int>> *>(grilla_terrenos),
                                                        reinterpret_cast<std::vector<std::vector<int>> *>(grilla_texturas),
                                                        centros_ubicados,
                                                        cantidad_jugadores,
@@ -138,7 +133,7 @@ void DuneEditorDeMapas::cargarMapaDefault() {
                                                        cantidad_columnas_mapa,
                                                        &terreno_seleccionado,
                                                        &textura_seleccionada,
-                                                       &path_textura_seleccionada);
+                                                       reinterpret_cast<QString*>(&path_textura_seleccionada));
             connect(label, &ClickableLabel::clicked, label, &ClickableLabel::establecerTextura);
             grilla->addWidget(label, i, j);
         }
@@ -249,226 +244,226 @@ void DuneEditorDeMapas::mostrarCentroDeConstruccionSeleccionado() {
     ui->TerrainTextureComboBox->clear();
     path_textura_seleccionada = RESOURCE_PATH"/terrenos/cuartel.png";
     ui->MostradorTexturaLabel->setPixmap(QPixmap(path_textura_seleccionada));
-    terreno_seleccionado = 'X';
+    terreno_seleccionado = 6;
 }
 
 void DuneEditorDeMapas::mostrarArenaSeleccionada() {
     QString textura = ui->TerrainTextureComboBox->currentText();
     if (textura == "arena0.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena0.bmp", 'A', 0);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena0.bmp", 0, 0);
     } else if (textura == "arena1.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena1.bmp", 'A', 1);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena1.bmp", 0, 1);
     } else if (textura == "arena2.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena2.bmp", 'A', 2);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena2.bmp", 0, 2);
     } else if (textura == "arena3.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena3.bmp", 'A', 3);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena3.bmp", 0, 3);
     } else if (textura == "arena4.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena4.bmp", 'A', 4);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena4.bmp", 0, 4);
     } else if (textura == "arena5.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena5.bmp", 'A', 5);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena5.bmp", 0, 5);
     } else if (textura == "arena6.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena6.bmp", 'A', 6);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena6.bmp", 0, 6);
     } else if (textura == "arena7.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena7.bmp", 'A', 7);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena7.bmp", 0, 7);
     } else if (textura == "arena8.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena8.bmp", 'A', 8);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena8.bmp", 0, 8);
     } else if (textura == "arena9.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena9.bmp", 'A', 9);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena9.bmp", 0, 9);
     } else if (textura == "arena10.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena10.bmp", 'A', 10);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena10.bmp", 0, 10);
     } else if (textura == "arena11.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena11.bmp", 'A', 11);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena11.bmp", 0, 11);
     } else if (textura == "arena12.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena12.bmp", 'A', 12);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/arena/mostrador/arena12.bmp", 0, 12);
     }
 }
 
 void DuneEditorDeMapas::mostrarDunaSeleccionada() {
     QString textura = ui->TerrainTextureComboBox->currentText();
     if (textura == "duna0.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna0.bmp", 'D', 0);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna0.bmp", 2, 0);
     } else if (textura == "duna1.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna1.bmp", 'D', 1);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna1.bmp", 2, 1);
     } else if (textura == "duna2.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna2.bmp", 'D', 2);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna2.bmp", 2, 2);
     } else if (textura == "duna3.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna3.bmp", 'D', 3);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna3.bmp", 2, 3);
     } else if (textura == "duna4.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna4.bmp", 'D', 4);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna4.bmp", 2, 4);
     } else if (textura == "duna5.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna5.bmp", 'D', 5);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna5.bmp", 2, 5);
     } else if (textura == "duna6.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna6.bmp", 'D', 6);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/dunas/mostrador/duna6.bmp", 2, 6);
     }
 }
 
 void DuneEditorDeMapas::mostrarRocaSeleccionada() {
     QString textura = ui->TerrainTextureComboBox->currentText();
     if (textura == "roca1.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca1.bmp", 'R', 1);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca1.bmp", 5, 1);
     } else if (textura == "roca2.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca2.bmp", 'R', 2);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca2.bmp", 5, 2);
     } else if (textura == "roca3.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca3.bmp", 'R', 3);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca3.bmp", 5, 3);
     } else if (textura == "roca4.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca4.bmp", 'R', 4);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca4.bmp", 5, 4);
     } else if (textura == "roca5.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca5.bmp", 'R', 5);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca5.bmp", 5, 5);
     } else if (textura == "roca6.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca6.bmp", 'R', 6);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca6.bmp", 5, 6);
     } else if (textura == "roca7.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca7.bmp", 'R', 7);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca7.bmp", 5, 7);
     } else if (textura == "roca8.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca8.bmp", 'R', 8);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca8.bmp", 5, 8);
     } else if (textura == "roca9.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca9.bmp", 'R', 9);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca9.bmp", 5, 9);
     } else if (textura == "roca10.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca10.bmp", 'R', 10);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca10.bmp", 5, 10);
     } else if (textura == "roca11.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca11.bmp", 'R', 11);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca11.bmp", 5, 11);
     } else if (textura == "roca12.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca12.bmp", 'R', 12);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca12.bmp", 5, 12);
     } else if (textura == "roca13.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca13.bmp", 'R', 13);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca13.bmp", 5, 13);
     } else if (textura == "roca14.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca14.bmp", 'R', 14);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca14.bmp", 5, 14);
     } else if (textura == "roca15.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca15.bmp", 'R', 15);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca15.bmp", 5, 15);
     } else if (textura == "roca16.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca16.bmp", 'R', 16);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/roca/mostrador/roca16.bmp", 5, 16);
     }
 }
 
 void DuneEditorDeMapas::mostrarCimaSeleccionada() {
     QString textura = ui->TerrainTextureComboBox->currentText();
     if (textura == "cima0.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima0.bmp", 'C', 0);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima0.bmp", 1, 0);
     } else if (textura == "cima1.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima1.bmp", 'C', 1);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima1.bmp", 1, 1);
     } else if (textura == "cima2.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima2.bmp", 'C', 2);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima2.bmp", 1, 2);
     } else if (textura == "cima3.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima3.bmp", 'C', 3);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima3.bmp", 1, 3);
     } else if (textura == "cima4.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima4.bmp", 'C', 4);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima4.bmp", 1, 4);
     } else if (textura == "cima5.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima5.bmp", 'C', 5);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima5.bmp", 1, 5);
     } else if (textura == "cima6.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima6.bmp", 'C', 6);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima6.bmp", 1, 6);
     } else if (textura == "cima7.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima7.bmp", 'C', 7);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima7.bmp", 1, 7);
     } else if (textura == "cima8.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima8.bmp", 'C', 8);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima8.bmp", 1, 8);
     } else if (textura == "cima9.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima9.bmp", 'C', 9);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima9.bmp", 1, 9);
     } else if (textura == "cima10.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima10.bmp", 'C', 10);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima10.bmp", 1, 10);
     } else if (textura == "cima11.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima11.bmp", 'C', 11);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima11.bmp", 1, 11);
     } else if (textura == "cima12.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima12.bmp", 'C', 12);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima12.bmp", 1, 12);
     } else if (textura == "cima13.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima13.bmp", 'C', 13);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima13.bmp", 1, 13);
     } else if (textura == "cima14.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima14.bmp", 'C', 14);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima14.bmp", 1, 14);
     } else if (textura == "cima15.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima15.bmp", 'C', 15);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima15.bmp", 1, 15);
     } else if (textura == "cima16.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima16.bmp", 'C', 16);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima16.bmp", 1, 16);
     } else if (textura == "cima17.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima17.bmp", 'C', 17);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/cimas/mostrador/cima17.bmp", 1, 17);
     }
 }
 
 void DuneEditorDeMapas::mostrarPrecipicioSeleccionada() {
     QString textura = ui->TerrainTextureComboBox->currentText();
     if (textura == "Precipicio1.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio1.bmp", 'P', 1);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio1.bmp", 4, 1);
     } else if (textura == "Precipicio2.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio2.bmp", 'P', 2);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio2.bmp", 4, 2);
     } else if (textura == "Precipicio3.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio3.bmp", 'P', 3);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio3.bmp", 4, 3);
     } else if (textura == "Precipicio4.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio4.bmp", 'P', 4);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio4.bmp", 4, 4);
     } else if (textura == "Precipicio5.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio5.bmp", 'P', 5);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio5.bmp", 4, 5);
     } else if (textura == "Precipicio6.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio6.bmp", 'P', 6);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio6.bmp", 4, 6);
     } else if (textura == "Precipicio7.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio7.bmp", 'P', 7);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio7.bmp", 4, 7);
     } else if (textura == "Precipicio8.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio8.bmp", 'P', 8);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio8.bmp", 4, 8);
     } else if (textura == "Precipicio9.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio9.bmp", 'P', 9);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio9.bmp", 4, 9);
     } else if (textura == "Precipicio10.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio10.bmp", 'P', 10);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio10.bmp", 4, 10);
     } else if (textura == "Precipicio11.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio11.bmp", 'P', 11);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio11.bmp", 4, 11);
     } else if (textura == "Precipicio12.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio12.bmp", 'P', 12);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio12.bmp", 4, 12);
     } else if (textura == "Precipicio13.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio13.bmp", 'P', 13);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio13.bmp", 4, 13);
     }  else if (textura == "Precipicio14.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio14.bmp", 'P', 14);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio14.bmp", 4, 14);
     } else if (textura == "Precipicio15.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio15.bmp", 'P', 15);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio15.bmp", 4, 15);
     } else if (textura == "Precipicio16.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio16.bmp", 'P', 16);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio16.bmp", 4, 16);
     } else if (textura == "Precipicio17.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio17.bmp", 'P', 17);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio17.bmp", 4, 17);
     } else if (textura == "Precipicio18.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio18.bmp", 'P', 18);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio18.bmp", 4, 18);
     } else if (textura == "Precipicio19.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio19.bmp", 'P', 19);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio19.bmp", 4, 19);
     } else if (textura == "Precipicio20.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio20.bmp", 'P', 20);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio20.bmp", 4, 20);
     } else if (textura == "Precipicio21.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio21.bmp", 'P', 21);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio21.bmp", 4, 21);
     } else if (textura == "Precipicio22.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio22.bmp", 'P', 22);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio22.bmp", 4, 22);
     } else if (textura == "Precipicio23.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio23.bmp", 'P', 23);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/precipicio/mostrador/Precipicio23.bmp", 4, 23);
     }
 }
 
 void DuneEditorDeMapas::mostrarEspeciaSeleccionada() {
     QString textura = ui->TerrainTextureComboBox->currentText();
     if (textura == "especia_abundante0.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_abundante0.bmp", 'E', 1);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_abundante0.bmp", 3, 1);
     } else if (textura == "especia_abundante1.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_abundante1.bmp", 'E', 2);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_abundante1.bmp", 3, 2);
     } else if (textura == "especia_abundante2.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_abundante2.bmp", 'E', 3);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_abundante2.bmp", 3, 3);
     } else if (textura == "especia_abundante3.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_abundante3.bmp", 'E', 4);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_abundante3.bmp", 3, 4);
     } else if (textura == "especia_abundante4.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_abundante4.bmp", 'E', 5);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_abundante4.bmp", 3, 5);
     } else if (textura == "especia_escasa1.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa1.bmp", 'E', 6);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa1.bmp", 3, 6);
     } else if (textura == "especia_escasa2.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa2.bmp", 'E', 7);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa2.bmp", 3, 7);
     } else if (textura == "especia_escasa3.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa3.bmp", 'E', 8);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa3.bmp", 3, 8);
     } else if (textura == "especia_escasa4.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa4.bmp", 'E', 9);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa4.bmp", 3, 9);
     } else if (textura == "especia_escasa5.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa5.bmp", 'E', 10);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa5.bmp", 3, 10);
     } else if (textura == "especia_escasa6.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa6.bmp", 'E', 11);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa6.bmp", 3, 11);
     } else if (textura == "especia_escasa7.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa7.bmp", 'E', 12);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa7.bmp", 3, 12);
     } else if (textura == "especia_escasa8.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa8.bmp", 'E', 13);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa8.bmp", 3, 13);
     }  else if (textura == "especia_escasa9.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa9.bmp", 'E', 14);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa9.bmp", 3, 14);
     } else if (textura == "especia_escasa10.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa10.bmp", 'E', 15);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa10.bmp", 3, 15);
     } else if (textura == "especia_escasa11.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa11.bmp", 'E', 16);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa11.bmp", 3, 16);
     } else if (textura == "especia_escasa12.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa12.bmp", 'E', 17);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa12.bmp", 3, 17);
     } else if (textura == "especia_escasa13.bmp") {
-        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa13.bmp", 'E', 18);
+        seleccionarTextura(RESOURCE_PATH"/terrenos/especia/mostrador/especia_escasa13.bmp", 3, 18);
     }
 }
 
@@ -538,7 +533,7 @@ void DuneEditorDeMapas::escribirArchivoMapa(QString &nombre_archivo) {
     YAML::Emitter out;
     escribirDatosDeMapa(out);
     escribirTiposDeTerreno(out);
-    //escribirTiposDeTexturas(out);
+    escribirTiposDeTexturas(out);
     escribirCentrosDeConstruccion(out);
     guardarArchivoMapa(nombre_archivo, out);
 }
@@ -554,42 +549,42 @@ void DuneEditorDeMapas::guardarArchivoMapa(const QString &nombre_archivo, const 
 }
 
 void DuneEditorDeMapas::escribirCentrosDeConstruccion(YAML::Emitter &out) {
-    out << YAML::BeginMap;
     out << YAML::Key << "CentrosDeConstruccion";
+    out << YAML::BeginSeq;
     for (auto &centros : centros_ubicados) {
         std::map<char, uint16_t> coordenada_actual;
         coordenada_actual['x'] = std::get<0>(centros);
         coordenada_actual['y'] = std::get<1>(centros);
         out << coordenada_actual;
     }
-    out << YAML::EndMap;
-}
-
-void DuneEditorDeMapas::escribirTiposDeTerreno(YAML::Emitter &out) {
-    out << YAML::BeginMap;
-    out << YAML::Key << "Terrenos";
-    out << YAML::BeginMap;
-    for (int i = 0; i < cantidad_filas_mapa; i++) {
-        for (int j = 0; j < cantidad_columnas_mapa; j++) {
-            std::string celda = "celda_" + std::to_string(i) + '_' + std::to_string(j);
-            std::string posicion = std::to_string((*grilla_terrenos)[i][j]) + '_' + std::to_string((int) (*grilla_texturas)[i][j]);
-            out << YAML::Key << celda;
-            out << YAML::Value << posicion;
-        }
-    }
-    out << YAML::EndMap;
+    out << YAML::EndSeq;
     out << YAML::EndMap;
 }
 
 void DuneEditorDeMapas::escribirTiposDeTexturas(YAML::Emitter &out) {
-    out << YAML::BeginMap;
     out << YAML::Key << "TiposTexturas";
+    out << YAML::BeginSeq;
     for (int i = 0; i < cantidad_filas_mapa; i++) {
+        std::vector<int> texturas;
         for (int j = 0; j < cantidad_columnas_mapa; j++) {
-            out << YAML::Value << (int) (*grilla_texturas)[i][j];
+            texturas.push_back((int)(*grilla_texturas)[i][j]);
         }
+        out << YAML::Value << YAML::Flow << texturas;
     }
-    out << YAML::EndMap;
+    out << YAML::EndSeq;
+}
+
+void DuneEditorDeMapas::escribirTiposDeTerreno(YAML::Emitter &out) {
+    out << YAML::Key << "TiposTerrenos";
+    out << YAML::BeginSeq;
+    for (int i = 0; i < cantidad_filas_mapa; i++) {
+        std::vector<int> terrenos;
+        for (int j = 0; j < cantidad_columnas_mapa; j++) {
+            terrenos.push_back((int)(*grilla_terrenos)[i][j]);
+        }
+        out << YAML::Value << YAML::Flow << terrenos;
+    }
+    out << YAML::EndSeq;
 }
 
 void DuneEditorDeMapas::escribirDatosDeMapa(YAML::Emitter &out) {
@@ -600,5 +595,4 @@ void DuneEditorDeMapas::escribirDatosDeMapa(YAML::Emitter &out) {
     out << YAML::Value << cantidad_columnas_mapa;
     out << YAML::Key << "Alto";
     out << YAML::Value << cantidad_filas_mapa;
-    out << YAML::EndMap;
 }

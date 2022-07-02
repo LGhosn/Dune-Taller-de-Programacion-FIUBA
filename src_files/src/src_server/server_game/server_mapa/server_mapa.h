@@ -21,7 +21,7 @@ class Mapa {
 private:
     int ancho;
     int alto;
-    std::vector< std::vector<std::unique_ptr<Entidades> > > mapa;
+    std::vector<std::vector<std::unique_ptr<Entidades>>> mapa;
     std::vector< Coordenadas > colisiones;
     Camino camino;
     std::list<Coordenadas> coords_centros;
@@ -63,7 +63,7 @@ private:
 
     std::unique_ptr<Entidades> clasificarEdificio(char tipo, YAML::Node& edificio_config, uint16_t id_jugador);
 
-    std::unique_ptr<Entidades> clasificarTerreno(char tipo);
+    std::unique_ptr<Entidades> clasificarTerreno(int tipo);
 
     char obtenerDireccion(const Coordenadas& coords_actual,const Coordenadas& coords_nueva);
 

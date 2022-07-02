@@ -6,37 +6,38 @@
 
 #include <QMessageBox>
 #include <iostream>
+#include <string>
 #include <QMouseEvent>
 #include <QLabel>
 #include <QWidget>
 #include <Qt>
 
 #define TIPO_TEXTURA_DEFAULT 9
-#define TERRENO_ROCA 'R'
-#define TIPO_TERRENO_DEFAULT 'A'
+#define TERRENO_ROCA 5
+#define TIPO_TERRENO_DEFAULT 0
 #define PIXELES_COORDENADA 50
 
 class ClickableLabel : public QLabel {
 Q_OBJECT
 private:
-    std::vector<std::vector<char>>* grilla_terrenos = nullptr;
+    std::vector<std::vector<int>>* grilla_terrenos = nullptr;
     std::vector<std::vector<int>>* grilla_texturas = nullptr;
     std::vector<std::tuple<int, int>>& centros_ubicados;
     int &cant_jugadores;
     int &cant_filas_grillas;
     int &cant_columnas_grillas;
-    char* terreno_seleccionado = nullptr;
+    int* terreno_seleccionado = nullptr;
     int* textura_seleccionada = nullptr;
-    QString* path_textura_seleccionada = nullptr;
+    QString path_textura_seleccionada;
 
 public:
-    ClickableLabel(std::vector<std::vector<char>>* grilla_terrenos,
+    ClickableLabel(std::vector<std::vector<int>>* grilla_terrenos,
                    std::vector<std::vector<int>>* grilla_texturas,
                    std::vector<std::tuple<int, int>>& centros_ubicados,
                    int &cant_jugadores,
                    int &cant_filas_grillas,
                    int &cant_columnas_grillas,
-                   char* terreno_seleccionado,
+                   int* terreno_seleccionado,
                    int* textura_seleccionada,
                    QString* path_textura,
                    QWidget* parent = Q_NULLPTR,
