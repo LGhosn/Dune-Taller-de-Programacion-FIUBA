@@ -6,17 +6,21 @@
 #include "../entidades_mapa.h"
 
 class UnidadesMapa : public Entidades {
-protected:
+private:
     char parada_sobre;
     uint16_t id_jugador;
+    uint8_t id_unidad;
+    uint8_t tipo_unidad;
     char tipo_entidad;
 
 public:
-    UnidadesMapa(char parada_sobre);
+    UnidadesMapa(char parada_sobre, uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_unidad);
     virtual char obtenerIdentificador();
     virtual char obtenerTerrenoQueEstaParada();
     virtual char obtenerTipoDeEntidad();
     virtual uint16_t obtenerIdJugador();
+    virtual uint8_t obtenerTipoDeUnidad();
+    virtual uint8_t obtenerIdUnidad();
     virtual ~UnidadesMapa() = default;
 };
 
