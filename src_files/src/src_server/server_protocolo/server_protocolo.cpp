@@ -227,3 +227,8 @@ void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t id_unida
     std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(id_unidad, tipo_unidad, tiempo_construccion, coords_spawn);
     enviarBuffer(buffer);
 }
+
+void ProtocoloServidor::cerrarSocket() {
+    this->skt_comunicador.shutdown(2);
+    this->skt_comunicador.close();
+}

@@ -51,6 +51,8 @@ public:
      * */
     explicit ProtocoloServidor(Socket& comunicador, YAML::Node& codigos);
 
+    void cerrarSocket();
+
     /*
      * Recibe el codigo de operacion solicitado
      * por el cliente.

@@ -15,6 +15,7 @@
 class HiloGameLoop {
     ColaNoBloqueante<SolicitudServer>& cola_solicitudes;
     Game game;
+    bool corriendo = true;
     std::thread hilo;
 
     void manejarHilo();
@@ -34,6 +35,8 @@ public:
                         uint8_t id_jugador, uint8_t casa, std::string& nombre);
 
     void start();
+
+    bool haTerminado() const;
 
     ~HiloGameLoop();
 

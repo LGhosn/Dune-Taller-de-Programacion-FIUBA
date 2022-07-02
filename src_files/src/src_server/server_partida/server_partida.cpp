@@ -22,6 +22,19 @@ bool Partida::estaCompleta() const {
     return (this->jugadores_actuales == this->jugadores_requeridos);
 }
 
+bool Partida::haFinalizado() const {
+    for (auto & cliente : clientes_conectados) {
+        if (!cliente->haFinalizado()) {
+            if (!hilo_gameloop.haTerminado()) {
+                return false;
+            } else {
+                break;
+            }
+        }
+    }
+    return true;
+}
+
 void Partida::agregarJugador(HandlerCliente& cliente, uint8_t casa) {
     this->clientes_conectados.emplace_back(&cliente);
     this->hilo_gameloop.agregarJugador(cliente.obtenerColaSender(),

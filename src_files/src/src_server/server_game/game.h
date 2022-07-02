@@ -64,6 +64,8 @@ public:
 
     bool update(long iter);
 
+    bool haTerminado() const;
+
     Game &operator=(const Game &game) = delete;
     Game(const Game &game) = delete;
     Game &operator=(Game &&game) = delete;

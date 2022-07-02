@@ -35,6 +35,7 @@ class HandlerCliente {
      * la dependencia circular para asi tener todo en el stack.
     */
     ServerHiloReceiver* hilo_reciever;
+    bool se_desconecto = false;
     std::thread hilo;
 
 public:
@@ -53,7 +54,7 @@ public:
 
     ColaBloqueante<ComandoServer>& obtenerColaSender();
 
-    bool haFinalizado() const;
+    bool haFinalizado();
 
     void cerrar();
 

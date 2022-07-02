@@ -46,6 +46,8 @@ class HiloAceptador {
      */
     void esperarHandlersCliente();
 
+    void esperarPartidas();
+
     /*
      * Borra del container de clientes aquellos cuyo HiloCliente
      * finalizo su ejecucion.

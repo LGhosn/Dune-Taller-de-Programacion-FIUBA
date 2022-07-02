@@ -32,6 +32,7 @@ public:
     void empezar();
     void agregarJugador(HandlerCliente& cliente, uint8_t casa);
     bool estaCompleta() const;
+    bool haFinalizado() const;
     std::string getNombre() const;
 
     Partida& operator=(const Partida&) = delete;

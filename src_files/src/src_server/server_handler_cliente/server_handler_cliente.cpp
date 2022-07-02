@@ -40,8 +40,12 @@ ColaBloqueante<ComandoServer>& HandlerCliente::obtenerColaSender() {
     return this->cola_comandos;
 }
 
-bool HandlerCliente::haFinalizado() const {
-    return false; // TODO: implementar
+bool HandlerCliente::haFinalizado() {
+    if (hilo_reciever->haFinalizado()) {
+        hilo_sender.stop();
+        se_desconecto = true;
+    }
+    return se_desconecto;
 }
 
 void HandlerCliente::cerrar() {

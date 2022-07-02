@@ -14,8 +14,10 @@ void HiloAceptador::atenderClientes() {
             Socket aceptado = skt_aceptador.accept();
             this->lanzarHandlerCliente(aceptado);
             this->limpiarHandlersClientesFinalizados();
+            this->lobby.limpiarPartidasFinalizadas();
         }
     } catch (const SocketError &e){
+        this->esperarPartidas();
         this->esperarHandlersCliente();
         syslog(LOG_CRIT, "Un error: %s", e.what());
     } catch (...) {
@@ -52,6 +54,10 @@ void HiloAceptador::esperarHandlersCliente() {
 	while (iter != clientes.end()) {
         iter = clientes.erase(iter);
 	}
+}
+
+void HiloAceptador::esperarPartidas() {
+    lobby.terminarPartidas();
 }
 
 void HiloAceptador::terminar() {

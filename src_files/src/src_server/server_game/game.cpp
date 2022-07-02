@@ -200,3 +200,7 @@ bool Game::update(long iter) {
     updateUnidad(iter);
     return true;
 }
+
+bool Game::haTerminado() const {
+    return finished;
+}

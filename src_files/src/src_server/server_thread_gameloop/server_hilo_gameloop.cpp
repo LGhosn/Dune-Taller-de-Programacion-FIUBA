@@ -17,12 +17,11 @@ void HiloGameLoop::manejarHilo() {
 void HiloGameLoop::run() {
     using namespace std::chrono;
     long iter = 0;
-    bool running = true;
     time_point t1 = system_clock::now();
     milliseconds tick_rate(1000 / TICKS_POR_SEGUNDO);
-    while(running) {
+    while(corriendo) {
         this->manejarSolicitudes();
-        running = this->update(iter);
+        this->update(iter);
         time_point t2 = system_clock::now();
 		milliseconds tiempo_transcurrido = duration_cast<milliseconds>(t2 - t1);
 		t1 = t2;
@@ -69,8 +68,13 @@ void HiloGameLoop::start() {
     this->hilo = std::thread(&HiloGameLoop::manejarHilo, this);
 }
 
+bool HiloGameLoop::haTerminado() const {
+    return game.haTerminado();
+}
+
 HiloGameLoop::~HiloGameLoop() {
     if (hilo.joinable()) {
+        corriendo = false;
         hilo.join();
     }
 }

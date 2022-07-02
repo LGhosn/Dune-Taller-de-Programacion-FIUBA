@@ -17,11 +17,11 @@ private:
     void handleThread();
     void run();
     void send(std::unique_ptr<ComandoServer> comando);
-    void stop();
 public:
     ServerHiloSender(ColaBloqueante<ComandoServer>& cola_comandos,
                         ProtocoloServidor& protocolo);
     void start();
+    void stop();
     ~ServerHiloSender();
 
     ServerHiloSender(const ServerHiloSender&) = delete;

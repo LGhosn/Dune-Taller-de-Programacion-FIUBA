@@ -24,6 +24,7 @@ private:
     bool hay_que_seguir;
     std::atomic<bool> partida_comenzada;
     HandlerCliente& cliente_asociado;
+    bool desconectado = false;
     std::thread thread;
 
     void handleThread();
@@ -47,6 +48,8 @@ public:
     void empezarPartida(ColaNoBloqueante<SolicitudServer>& cola_solicitudes);
 
     void stop();
+
+    bool haFinalizado() const;
 
     ~ServerHiloReceiver();
 

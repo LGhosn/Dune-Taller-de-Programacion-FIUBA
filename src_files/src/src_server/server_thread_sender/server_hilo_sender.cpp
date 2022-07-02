@@ -31,14 +31,14 @@ void ServerHiloSender::send(std::unique_ptr<ComandoServer> comando) {
         comando->enviarComando(this->protocolo);
 }
 
-// void ServerHiloSender::stop() {
-//     this->hay_que_seguir = false;
-// }
-
-ServerHiloSender::~ServerHiloSender() {
-    hay_que_seguir = false;
-    cola_comandos.push(nullptr);
+void ServerHiloSender::stop() {
     if (thread.joinable()) {
+        hay_que_seguir = false;
+        cola_comandos.push(nullptr);
         thread.join();
     }
+}
+
+ServerHiloSender::~ServerHiloSender() {
+    stop();
 }

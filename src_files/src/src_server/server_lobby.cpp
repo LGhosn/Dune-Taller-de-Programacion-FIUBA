@@ -57,6 +57,20 @@ void Lobby::informarPartidaComenzada(std::string &nombre_partida) {
     std::cout << notificacion;
 }
 
+void Lobby::limpiarPartidasFinalizadas() {
+    std::list<Partida>::iterator it;
+    for (it = partidas_creadas.begin(); it != partidas_creadas.end(); it++) {
+        if (it->haFinalizado()) {
+            it = partidas_creadas.erase(it);
+            std::cerr << "Cerrando partida" << std::endl;
+        }
+    }
+}
+
+void Lobby::terminarPartidas() {
+    partidas_creadas.clear();
+}
+
 // PartidasDTO Lobby::getListado() {
 //     std::lock_guard<std::mutex> lock(m);
 //     std::vector<PartidaDTO> partidas;

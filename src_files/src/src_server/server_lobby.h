@@ -42,6 +42,10 @@ public:
      * */
     static void informarPartidaComenzada(std::string &nombre_partida);
 
+    void limpiarPartidasFinalizadas();
+
+    void terminarPartidas();
+
     /*
      * Devuelve un objeto DTO para enviarlo al protocolo.
      * */
