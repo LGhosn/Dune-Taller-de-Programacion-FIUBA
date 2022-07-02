@@ -85,28 +85,28 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
 
 std::unique_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador, uint8_t id_unidad, Coordenadas& coords_spawn) {
     switch (tipo_unidad) {
-        case 1:
-            return std::unique_ptr<Unidad>(new Cosechadora(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 2:
-            return std::unique_ptr<Unidad>(new Desviador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 3:
-            return std::unique_ptr<Unidad>(new Devastador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 4:
-            return std::unique_ptr<Unidad>(new Fremen(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 5:
+        case 0:
             return std::unique_ptr<Unidad>(new InfanteriaLigera(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 6:
+        case 1:
             return std::unique_ptr<Unidad>(new InfanteriaPesada(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 7:
-            return std::unique_ptr<Unidad>(new Raider(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 8:
+        case 2:
+            return std::unique_ptr<Unidad>(new Fremen(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 3:
             return std::unique_ptr<Unidad>(new Sardaukar(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 9:
-            return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 10:
-            return std::unique_ptr<Unidad>(new TanqueSonico(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 11:
+        case 4:
             return std::unique_ptr<Unidad>(new Trike(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 5:
+            return std::unique_ptr<Unidad>(new Raider(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 6:
+            return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 7:
+            return std::unique_ptr<Unidad>(new TanqueSonico(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 8:
+            return std::unique_ptr<Unidad>(new Desviador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 9:
+            return std::unique_ptr<Unidad>(new Devastador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 10:
+            return std::unique_ptr<Unidad>(new Cosechadora(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
         default:
             throw std::runtime_error("Game: Tipo de unidad no reconocido");
     }
@@ -118,6 +118,7 @@ void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
     if (resultado) {
         uint8_t id_uni = this->conts_id_unidad++;
         Coordenadas& coords_spawn = this->mapa.obtenerCoordenadasSpawn(id_jugador);
+        this->mapa.spawnearUnidad(id_jugador, tipo_unidad, id_uni, coords_spawn);
         std::unique_ptr<Unidad> uni = this->clasificarUnidad(tipo_unidad, jugador, id_uni, coords_spawn);
         this->unidades.insert(std::make_pair(id_uni, std::move(uni)));
 

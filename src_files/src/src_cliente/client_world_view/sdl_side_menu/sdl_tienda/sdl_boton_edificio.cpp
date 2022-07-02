@@ -35,12 +35,12 @@ BotonEdificioSDL::BotonEdificioSDL(SDL2pp::Renderer& renderer, TexturasSDL& text
 
 void BotonEdificioSDL::habilitar() {
     habilitado = true;
-    std::cout << "Habilito el boton " << (int) tipo << std::endl;
+    // std::cout << "Habilito el boton " << (int) tipo << std::endl;
 }
 
 void BotonEdificioSDL::deshabilitar() {
     habilitado = false;
-    std::cout << "Deshabilito el boton " << (int) tipo << std::endl;
+    // std::cout << "Deshabilito el boton " << (int) tipo << std::endl;
 }
 
 void BotonEdificioSDL::edificioCreado() {

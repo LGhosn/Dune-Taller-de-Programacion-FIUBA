@@ -65,6 +65,8 @@ private:
 
     std::unique_ptr<Entidades> clasificarTerreno(int tipo);
 
+    std::unique_ptr<Entidades> clasificarUnidad(uint8_t tipo_unidad, uint8_t id_jugador, uint8_t id_unidad);
+
     char obtenerDireccion(const Coordenadas& coords_actual,const Coordenadas& coords_nueva);
 
     Coordenadas& coordenadaLibreMasCercana(Coordenadas& coordenada);
@@ -110,6 +112,9 @@ public:
     bool esCoordenadaValida(const Coordenadas& coords);
 
     Coordenadas& obtenerCoordenadasSpawn(uint8_t id_jugador);
+
+    void spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas& coords_spawn);
+
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.

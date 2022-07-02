@@ -289,7 +289,7 @@ SolicitudCliente* TiendaSDL::clickEnMapa(Coordenadas& coords) {
         solicitud = boton.clickEnMapa(coords);
         if (solicitud)
             break;
-        }
+    }
     return solicitud;
 }
 

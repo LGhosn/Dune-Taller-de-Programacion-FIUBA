@@ -19,17 +19,17 @@ EspeciaAcumulada::EspeciaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
     costo_edificios[6] = constantes["Game"]["Precios"]["Edificios"]["Silo"].as<uint16_t>();
     costo_edificios[7] = constantes["Game"]["Precios"]["Edificios"]["Trampa"].as<uint16_t>();
 
-    costo_unidades[0] = constantes["Game"]["Precios"]["Unidades"]["Infanteria"]["Fremen"].as<uint16_t>();
-    costo_unidades[1] = constantes["Game"]["Precios"]["Unidades"]["Infanteria"]["InfanteriaLigera"].as<uint16_t>();
-    costo_unidades[2] = constantes["Game"]["Precios"]["Unidades"]["Infanteria"]["InfanteriaPesada"].as<uint16_t>();
+    costo_unidades[0] = constantes["Game"]["Precios"]["Unidades"]["Infanteria"]["InfanteriaLigera"].as<uint16_t>();
+    costo_unidades[1] = constantes["Game"]["Precios"]["Unidades"]["Infanteria"]["InfanteriaPesada"].as<uint16_t>();
+    costo_unidades[2] = constantes["Game"]["Precios"]["Unidades"]["Infanteria"]["Fremen"].as<uint16_t>();
     costo_unidades[3] = constantes["Game"]["Precios"]["Unidades"]["Infanteria"]["Sardaukar"].as<uint16_t>();
-    costo_unidades[4] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Cosechadora"].as<uint16_t>();
-    costo_unidades[5] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Desviador"].as<uint16_t>();
-    costo_unidades[6] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Devastador"].as<uint16_t>();
-    costo_unidades[7] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Raider"].as<uint16_t>();
-    costo_unidades[8] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Tanque"].as<uint16_t>();
-    costo_unidades[9] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["TanqueSonico"].as<uint16_t>();
-    costo_unidades[10] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Trike"].as<uint16_t>();
+    costo_unidades[4] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Trike"].as<uint16_t>();
+    costo_unidades[5] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Raider"].as<uint16_t>();
+    costo_unidades[6] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Tanque"].as<uint16_t>();
+    costo_unidades[7] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["TanqueSonico"].as<uint16_t>();
+    costo_unidades[8] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Desviador"].as<uint16_t>();
+    costo_unidades[9] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Devastador"].as<uint16_t>();
+    costo_unidades[10] = constantes["Game"]["Precios"]["Unidades"]["Vehiculos"]["Cosechadora"].as<uint16_t>();
 }
 
 void EspeciaAcumulada::empezarPartida() {
