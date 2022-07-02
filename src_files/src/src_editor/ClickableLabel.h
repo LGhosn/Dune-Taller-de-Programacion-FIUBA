@@ -28,7 +28,7 @@ private:
     int &cant_columnas_grillas;
     int* terreno_seleccionado = nullptr;
     int* textura_seleccionada = nullptr;
-    QString path_textura_seleccionada;
+    QString* path_textura_seleccionada;
 
 public:
     ClickableLabel(std::vector<std::vector<int>>* grilla_terrenos,

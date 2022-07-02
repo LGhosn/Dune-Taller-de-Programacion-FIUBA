@@ -20,12 +20,12 @@ ClickableLabel::ClickableLabel(std::vector<std::vector<int>>* grilla_terrenos,
                                cant_columnas_grillas(cant_columnas_grillas),
                                terreno_seleccionado(terreno_seleccionado),
                                textura_seleccionada(textura_seleccionada),
-                               path_textura_seleccionada(*path_textura) {
+                               path_textura_seleccionada(path_textura) {
     this->setFrameShape(QFrame::Box);
     this->setBaseSize(50, 50);
     this->setMinimumSize(QSize(50, 50));
     this->setMaximumSize(QSize(50, 50));
-    this->setPixmap(QPixmap(path_textura_seleccionada));
+    this->setPixmap(QPixmap(*path_textura));
 }
 
 ClickableLabel::~ClickableLabel() = default;
@@ -37,14 +37,16 @@ void ClickableLabel::mousePressEvent(QMouseEvent* event) {
 void ClickableLabel::establecerTextura() {
     int coord_x = obtenerCoordenadaX();
     int coord_y = obtenerCoordenadaY();
-    std::cout << "Se clickeo la coordenada: " << coord_x << " " << coord_y << std::endl;
     if (seQuiereEstablecerUnCentro()) {
         if (faltanEstablecerCentros()) {
+            std::cout<< "Faltan establecer centros" << std::endl;
             if (laPosicionParaUnCentroEsValida(coord_x, coord_y)) {
-                setPixmap(QPixmap(path_textura_seleccionada));
+                std::cout<< "Se va a establecer un centro" << std::endl;
+                setPixmap(QPixmap(*path_textura_seleccionada));
                 centros_ubicados.emplace_back(std::make_tuple(coord_x, coord_y));
                 marcarUbicacionDelCentro(coord_x, coord_y);
             } else {
+                std::cout<< "la posicion para un centro no es valida" << std::endl;
                 if (!lasCoordenadasDelCentroPermanecenEnElMapa(coord_x, coord_y)) {
                     QMessageBox::information(this, "Error al establecer Centro", "Las coordenadas del centro se van de límites, recuerde que el centro es de 3x3.");
                 } else {
@@ -52,9 +54,11 @@ void ClickableLabel::establecerTextura() {
                 }
             }
         } else {
+            std::cout<< "No faltan establecer centros" << std::endl;
             QMessageBox::information(this, "Error al establecer Centro", "Ya fueron establecidos todos los centros de construcción.");
         }
     } else {
+        std::cout<< "No se quiere establecer un centro" << std::endl;
         if (seQuiereEstablecerTexturaSobreUnCentro(coord_x, coord_y)) {
             if (seClickeoSobreElOrigenDelCentro(coord_x, coord_y)) {
                 eliminarCentro(coord_x, coord_y);
@@ -71,7 +75,7 @@ void ClickableLabel::establecerTextura() {
 void ClickableLabel::establecerTexturaEnLaGrilla(int coord_x, int coord_y) {
     (*grilla_terrenos)[coord_y][coord_x] = *terreno_seleccionado;
     (*grilla_texturas)[coord_y][coord_x] = *textura_seleccionada;
-    setPixmap(QPixmap(path_textura_seleccionada));
+    setPixmap(QPixmap(*path_textura_seleccionada));
 }
 
 bool ClickableLabel::seQuiereEstablecerTexturaSobreUnCentro(int& coord_x, int& coord_y) {

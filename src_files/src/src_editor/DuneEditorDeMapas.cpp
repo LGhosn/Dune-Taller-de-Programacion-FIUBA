@@ -77,19 +77,20 @@ void DuneEditorDeMapas::establecerDatosDeEdicionDeMapa(std::string &path_mapa) {
 
     // Establecemos las ClickableLabels que muestran las texturas establecidas.
     for (int i = 0; i < cantidad_filas_mapa; i++) {
-        for (int j = 0; j < cantidad_columnas_mapa; j++){
-            int terreno_editado = (*grilla_terrenos)[i][j];
-            int textura_editada = (*grilla_texturas)[i][j];
-            std::string path_textura_editada = obtenerPathSegunInfo(terreno_editado, textura_editada);
+        for (int j = 0; j < cantidad_columnas_mapa; j++) {
+            terreno_seleccionado = (*grilla_terrenos)[i][j];
+            textura_seleccionada = (*grilla_texturas)[i][j];
+            std::string path_textura_editada = obtenerPathSegunInfo(terreno_seleccionado, textura_seleccionada);
+            path_textura_seleccionada = QString::fromStdString(path_textura_editada);
             ClickableLabel* label = new ClickableLabel(reinterpret_cast<std::vector<std::vector<int>> *>(grilla_terrenos),
                                                        reinterpret_cast<std::vector<std::vector<int>> *>(grilla_texturas),
                                                        centros_ubicados,
                                                        cantidad_jugadores,
                                                        cantidad_filas_mapa,
                                                        cantidad_columnas_mapa,
-                                                       &terreno_editado,
-                                                       &textura_editada,
-                                                       reinterpret_cast<QString*>(&path_textura_editada));
+                                                       &terreno_seleccionado,
+                                                       &textura_seleccionada,
+                                                       &path_textura_seleccionada);
             connect(label, &ClickableLabel::clicked, label, &ClickableLabel::establecerTextura);
             grilla->addWidget(label, i, j);
         }
