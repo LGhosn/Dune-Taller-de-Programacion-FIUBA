@@ -36,7 +36,7 @@ public:
     void habilitar();
     void deshabilitar();
 
-    void empezarEntrenamiento(uint16_t milisegundos_para_construir);
+    void empezarEntrenamiento(uint16_t segundos_para_construir);
 
     SolicitudCliente* click(int pos_x, int pos_y);
 

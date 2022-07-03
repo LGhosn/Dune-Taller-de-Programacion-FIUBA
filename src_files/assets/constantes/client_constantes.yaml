@@ -25,6 +25,15 @@ WorldView:
     VolumenInicial: 10
     VolumenInicialMusica: 3
     CantidadMaximaSonidos: 4
+  Unidades:
+    UI:
+      HP:
+        Alto: 6
+        OffsetX: 0
+        OffsetY: 0
+        PaddingX: 0
+        PaddingRect: 0
+      RelacionLineasLargo: 0.2
   Edificios:
     UI:
       HP:
@@ -88,12 +97,12 @@ WorldView:
       Ancho: 32
       Largo: 32
       Tipos:
-        Roca: 82 #'R'
-        Arena: 65 #'A'
-        Precipicio: 80 #'P'
-        Cima: 67 #'C'
-        Duna: 68 #'D'
-        Especia: 69 #'E'
+        Roca: 5
+        Arena: 0
+        Precipicio: 4
+        Cima: 1
+        Duna: 2
+        Especia: 3
   SideMenu:
     Ancho: 300
     Tienda:

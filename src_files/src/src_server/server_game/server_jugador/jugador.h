@@ -20,7 +20,9 @@ class Jugador {
     ValidadorUnidades validador_de_unidades;
 
     // Constantes
-    uint16_t tiempo_construccion_base;
+    const uint16_t tiempo_construccion_base;
+    const std::vector<uint8_t> edificios_multiplicadores;
+    const std::vector<uint16_t> tiempo_entrenamiento_por_unidad;
 
     float obtenerMultiplicadorPorEdificios(uint8_t tipo_unidad);
 

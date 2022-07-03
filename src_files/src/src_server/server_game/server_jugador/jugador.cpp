@@ -1,7 +1,7 @@
 #include "jugador.h"
 
 float Jugador::obtenerMultiplicadorPorEdificios(uint8_t tipo_unidad) {
-    return 1 / (float) cantidad_edificios[tipo_unidad];
+    return 1 / (float) cantidad_edificios[edificios_multiplicadores[tipo_unidad]];
 }
 
 Jugador::Jugador(uint8_t id, uint8_t casa, std::string& nombre,
@@ -15,7 +15,9 @@ Jugador::Jugador(uint8_t id, uint8_t casa, std::string& nombre,
                 energia(cola_comandos, constantes),
                 cantidad_edificios(8, 0),
                 validador_de_unidades(constantes, casa, cantidad_edificios, cola_comandos),
-                tiempo_construccion_base(constantes["Game"]["Precios"]["Edificios"]["TiempoConstruccionBase"].as<uint16_t>()) {}
+                tiempo_construccion_base(constantes["Game"]["Precios"]["Edificios"]["TiempoConstruccionBase"].as<uint16_t>()),
+                edificios_multiplicadores(constantes["Game"]["Unidades"]["EdificioMultiplicador"].as<std::vector<uint8_t>>()),
+                tiempo_entrenamiento_por_unidad(constantes["Game"]["Unidades"]["TiempoDeEntrenamiento"].as<std::vector<uint16_t>>()) {}
 
 void Jugador::empezarPartida() {
     especia.empezarPartida();
@@ -63,9 +65,14 @@ uint16_t Jugador::obtenerTiempoConstruccionEdificio() {
 }
 
 uint16_t Jugador::obtenerTiempoConstruccionUnidad(uint8_t tipo_unidad) {
+    uint16_t tiempo_entrenamiento_base = tiempo_entrenamiento_por_unidad[tipo_unidad];
     float multiplicador_edificios = obtenerMultiplicadorPorEdificios(tipo_unidad);
+    std::cout << "Multiplicador Edificios: " << multiplicador_edificios << std::endl;
     float multiplicador_deuda_energetica = energia.obtenerMultiplicadorDeudaEnergetica();
-    return (float) tiempo_construccion_base * multiplicador_edificios * multiplicador_deuda_energetica;
+    std::cout << "Multiplicador Deuda Energetica: " << multiplicador_deuda_energetica << std::endl;
+    uint16_t resultado = tiempo_entrenamiento_base * multiplicador_edificios * multiplicador_deuda_energetica;
+    std::cout << "Resultado: " << resultado << std::endl;
+    return resultado;
 }
 
 bool Jugador::operator==(const uint8_t& id_jugador) const {

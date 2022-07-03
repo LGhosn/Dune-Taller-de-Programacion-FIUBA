@@ -84,3 +84,49 @@ Game:
       - [true, false, false, true, true, false, false]
       #Trike
       - [true, false, true, false, false, false, false]
+    EdificioMultiplicador:
+      #Fremen
+      - 4
+      #Infanteria Ligera
+      - 1
+      #Infanteria Pesada
+      - 1
+      #Sardaukar
+      - 4
+      #Cosechadora
+      - 3
+      #Desviador
+      - 3
+      #Devastador
+      - 3
+      #Raider
+      - 2
+      #Tanque
+      - 3
+      #TanqueSonico
+      - 4
+      #Trike
+      - 2
+    TiempoDeEntrenamiento: # En segundos
+      #Fremen
+      - 120
+      #Infanteria Ligera
+      - 60
+      #Infanteria Pesada
+      - 78
+      #Sardaukar
+      - 120
+      #Cosechadora
+      - 180
+      #Desviador
+      - 240
+      #Devastador
+      - 300
+      #Raider
+      - 120
+      #Tanque
+      - 240
+      #TanqueSonico
+      - 240
+      #Trike
+      - 120

@@ -30,9 +30,9 @@ void BotonUnidadSDL::deshabilitar() {
     habilitado = false;
 }
 
-void BotonUnidadSDL::empezarEntrenamiento(uint16_t milisegundos_para_construir) {
+void BotonUnidadSDL::empezarEntrenamiento(uint16_t segundos_para_construir) {
     entrenando = true;
-    frames_para_entrenar = milisegundos_para_construir * fps / 1000;
+    frames_para_entrenar = segundos_para_construir * fps;
     frames_restantes_entrenamiento = frames_para_entrenar;
     mixer.reproducirMensajeEntrenando();
 }
