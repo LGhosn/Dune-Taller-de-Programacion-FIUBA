@@ -10,6 +10,7 @@
 #include "server_mapa/server_mapa.h"
 #include "server_jugador/jugador.h"
 #include "yaml-cpp/yaml.h"
+#include "server_gusano.h"
 
 #define RUTA_CONSTANTES RESOURCE_PATH "/constantes/server_constantes.yaml"
 #define RUTA_ATRIBUTOS_UNIDADES RESOURCE_PATH "/constantes/atributos_unidades.yaml"
@@ -25,6 +26,7 @@ class Game {
     uint8_t conts_id_unidad = 0;
     YAML::Node constantes;
     YAML::Node atributos_unidades;
+    Gusano gusano;
 
     std::map<uint8_t, Coordenadas> sortearCentros() const;
 
@@ -40,6 +42,7 @@ class Game {
     std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador, uint8_t id_unidad, Coordenadas& coords_spawn);
     
     void updateUnidad(long iter);
+    void updateGusano(long iter);
 
 public:
     Game(const std::string& nombre_mapa);

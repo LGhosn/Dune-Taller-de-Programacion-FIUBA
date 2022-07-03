@@ -31,7 +31,7 @@ protected:
     std::vector<std::string> armas;
     uint8_t rango;
     int16_t velocidad;
-    float tiempo_entrenamiento;
+    uint16_t tiempo_entrenamiento;
     int16_t vida;
     uint8_t costo;
     std::unordered_map<char, float> penalizacion_terreno;

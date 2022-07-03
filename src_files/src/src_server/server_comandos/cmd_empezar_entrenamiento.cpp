@@ -8,5 +8,5 @@ CmdEmpezarEntrenamientoServer::CmdEmpezarEntrenamientoServer(uint8_t id_unidad, 
                                                  coords_spawn(coords_spawn) {}
 
 void CmdEmpezarEntrenamientoServer::enviarComando(ProtocoloServidor& protocolo) const {
-    protocolo.enviarComandoEmpezarEntrenamientoUnidad(id_unidad, tipo_unidad, tipo_unidad, coords_spawn);
+    protocolo.enviarComandoEmpezarEntrenamientoUnidad(id_unidad, tipo_unidad, tiempo_construccion, coords_spawn);
 }

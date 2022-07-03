@@ -7,7 +7,7 @@ InfanteriaPesada::InfanteriaPesada(uint8_t id, Jugador& duenio, Mapa& mapa, YAML
     this->armas = atributos_unidad["Infanteria"]["InfanteriaPesada"]["Arma"].as<std::vector<std::string>>();
     this->rango = atributos_unidad["Infanteria"]["InfanteriaPesada"]["Rango"].as<uint8_t>();
     this->velocidad = atributos_unidad["Infanteria"]["InfanteriaPesada"]["Velocidad"].as<int16_t>();
-    this->tiempo_entrenamiento = atributos_unidad["Infanteria"]["InfanteriaPesada"]["TiempoEntrenamiento"].as<float>();
+    this->tiempo_entrenamiento = atributos_unidad["Infanteria"]["InfanteriaPesada"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Infanteria"]["InfanteriaPesada"]["Vida"].as<int16_t>();
     this->costo = atributos_unidad["Infanteria"]["InfanteriaPesada"]["Costo"].as<uint8_t>();
     

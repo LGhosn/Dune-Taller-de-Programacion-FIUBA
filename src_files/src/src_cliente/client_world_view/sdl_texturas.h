@@ -27,6 +27,14 @@
 
 #define RUTA_INFANTERIA RESOURCE_PATH "/unidades/infanteria/"
 #define RUTA_VEHICULOS RESOURCE_PATH "/unidades/vehiculos/"
+#define RUTA_COSECHADORA RUTA_VEHICULOS "cosechadora/"
+#define RUTA_DESVIADOR RUTA_VEHICULOS "desviador/" 
+#define RUTA_DEVASTADOR RUTA_VEHICULOS "devastador/"
+#define RUTA_RAIDER RUTA_VEHICULOS "raider/"
+#define RUTA_TANQUE RUTA_VEHICULOS "tanque/"
+#define RUTA_TANQUE_SONICO RUTA_VEHICULOS "tanque_sonico/"
+#define RUTA_TRIKE RUTA_VEHICULOS "trike/"
+
 #define RUTA_GUSANO RESOURCE_PATH "/unidades/gusano/"
 
 #define RUTA_LOGO_ATREIDES RESOURCE_PATH "/AtreidesIcon.png"
@@ -106,10 +114,13 @@ class TexturasSDL {
     SDL2pp::Texture edificio_silo;
     SDL2pp::Texture edificio_trampa_de_aire;
 
-    std::vector<SDL2pp::Texture> infanteria_ligera;
-    std::vector<SDL2pp::Texture> infanteria_pesada;
-    std::vector<SDL2pp::Texture> fremen;
-    std::vector<SDL2pp::Texture> sardaukar;
+    std::vector<SDL2pp::Texture> cosechadora;
+    std::vector<SDL2pp::Texture> desviador;
+    std::vector<SDL2pp::Texture> devastador;
+    std::vector<SDL2pp::Texture> raider;
+    std::vector<SDL2pp::Texture> tanque;
+    std::vector<SDL2pp::Texture> tanque_sonico;
+    std::vector<SDL2pp::Texture> trike;
 
     SDL2pp::Texture logo_atreides;
     SDL2pp::Texture logo_harkonnen;
@@ -149,6 +160,8 @@ public:
 
     SDL2pp::Texture& obtenerSlab();
     SDL2pp::Texture& obtenerEdificio(uint8_t tipo, uint8_t casa, bool debilitado);
+    std::vector<SDL2pp::Texture>& obtenerVehiculo(uint8_t tipo_vehiculo);
+    std::vector<SDL2pp::Texture>& obtenerInfanteria(uint8_t tipo_infanteria);
     std::vector<SDL2pp::Texture>& obtenerFramesBrazoCentro(uint8_t casa);
     SDL2pp::Texture& obtenerParedesFabricaLigera(uint8_t casa);
     SDL2pp::Texture& obtenerParedesFabricaPesada(uint8_t casa);

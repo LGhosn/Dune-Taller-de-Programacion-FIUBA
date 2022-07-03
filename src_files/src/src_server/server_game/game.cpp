@@ -63,8 +63,9 @@ Game::Game(const std::string& nombre_mapa) :
             mapa(nombre_mapa),
             nombre_mapa(nombre_mapa),
             constantes(YAML::LoadFile(RUTA_CONSTANTES)),
-            atributos_unidades(YAML::LoadFile(RUTA_ATRIBUTOS_UNIDADES)) {}
-
+            atributos_unidades(YAML::LoadFile(RUTA_ATRIBUTOS_UNIDADES)),
+            gusano(constantes["Game"]["Gusano"]["VictimasADevorar"].as<int>(),
+                    constantes["Game"]["Gusano"]["TiempoEntreVictimas"].as<uint16_t>(), this->mapa) {}
 
 void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     bool resultado = mapa.construirEdificio(id_jugador, tipo, coords);
@@ -86,27 +87,27 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
 std::unique_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador, uint8_t id_unidad, Coordenadas& coords_spawn) {
     switch (tipo_unidad) {
         case 0:
-            return std::unique_ptr<Unidad>(new InfanteriaLigera(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 1:
-            return std::unique_ptr<Unidad>(new InfanteriaPesada(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 2:
             return std::unique_ptr<Unidad>(new Fremen(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 1:
+            return std::unique_ptr<Unidad>(new InfanteriaLigera(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 2:
+            return std::unique_ptr<Unidad>(new InfanteriaPesada(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
         case 3:
             return std::unique_ptr<Unidad>(new Sardaukar(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
         case 4:
-            return std::unique_ptr<Unidad>(new Trike(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 5:
-            return std::unique_ptr<Unidad>(new Raider(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 6:
-            return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 7:
-            return std::unique_ptr<Unidad>(new TanqueSonico(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 8:
-            return std::unique_ptr<Unidad>(new Desviador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 9:
-            return std::unique_ptr<Unidad>(new Devastador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
-        case 10:
             return std::unique_ptr<Unidad>(new Cosechadora(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 5:
+            return std::unique_ptr<Unidad>(new Desviador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 6:
+            return std::unique_ptr<Unidad>(new Devastador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 7:
+            return std::unique_ptr<Unidad>(new Raider(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 8:
+            return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 9:
+            return std::unique_ptr<Unidad>(new TanqueSonico(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+        case 10:
+            return std::unique_ptr<Unidad>(new Trike(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
         default:
             throw std::runtime_error("Game: Tipo de unidad no reconocido");
     }
@@ -123,9 +124,9 @@ void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
         std::unique_ptr<Unidad> uni = this->clasificarUnidad(tipo_unidad, jugador, id_uni, coords_spawn);
         this->unidades.insert(std::make_pair(id_uni, std::move(uni)));
 
-        uint16_t tiempo_construccion = jugador.obtenerTiempoConstruccionUnidad(tipo_unidad);
+        uint16_t tiempo_entrenamiento_unidad = jugador.obtenerTiempoConstruccionUnidad(tipo_unidad);
         CmdEmpezarEntrenamientoServer* comando =
-                        new CmdEmpezarEntrenamientoServer(id_uni, tipo_unidad, tiempo_construccion, coords_spawn);
+                        new CmdEmpezarEntrenamientoServer(id_uni, tipo_unidad, tiempo_entrenamiento_unidad, coords_spawn);
         colas_comandos[id_jugador]->push(comando);
 
         for (auto& cola : colas_comandos) {
@@ -133,9 +134,10 @@ void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
                 continue;
             }
             CmdEnemigoDespliegaUnidadServer* comando =
-                new CmdEnemigoDespliegaUnidadServer(id_uni, cola.first, tipo_unidad, tiempo_construccion, coords_spawn);
+                new CmdEnemigoDespliegaUnidadServer(id_uni, cola.first, tipo_unidad, tiempo_entrenamiento_unidad, coords_spawn);
             cola.second->push(comando);
         }
+        gusano.empezarAAsechar();
     }
 }
 
@@ -197,8 +199,19 @@ void Game::updateUnidad(long iter) {
     }
 }
 
+void Game::updateGusano(long iter) {
+    uint8_t victima;
+    if (gusano.devorar(iter, &victima)) {
+        // std::unique_ptr<Unidad>& unidad = unidades.at(victima);
+        // for (auto& cola_jugador: colas_comandos) {
+            // cola_jugador.second->push(new CmdGusanoDevoroServer(victima));
+        // }
+    }
+}
+
 bool Game::update(long iter) {
     updateUnidad(iter);
+    updateGusano(iter);
     return true;
 }
 

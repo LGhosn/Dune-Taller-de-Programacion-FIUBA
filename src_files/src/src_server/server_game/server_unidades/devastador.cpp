@@ -7,7 +7,7 @@ Devastador::Devastador(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atri
     this->armas = atributos_unidad["Vehiculo"]["Devastador"]["Arma"].as<std::vector<std::string>>();
     this->rango = atributos_unidad["Vehiculo"]["Devastador"]["Rango"].as<uint8_t>();
     this->velocidad = atributos_unidad["Vehiculo"]["Devastador"]["Velocidad"].as<int16_t>();
-    this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Devastador"]["TiempoEntrenamiento"].as<float>();
+    this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Devastador"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Vehiculo"]["Devastador"]["Vida"].as<int16_t>();
     this->costo = atributos_unidad["Vehiculo"]["Devastador"]["Costo"].as<uint8_t>();
     

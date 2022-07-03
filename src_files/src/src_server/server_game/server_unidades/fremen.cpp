@@ -7,7 +7,7 @@ Fremen::Fremen(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_un
     this->armas = atributos_unidad["Infanteria"]["Fremen"]["Arma"].as<std::vector<std::string>>();
     this->rango = atributos_unidad["Infanteria"]["Fremen"]["Rango"].as<uint8_t>();
     this->velocidad = atributos_unidad["Infanteria"]["Fremen"]["Velocidad"].as<int16_t>();
-    this->tiempo_entrenamiento = atributos_unidad["Infanteria"]["Fremen"]["TiempoEntrenamiento"].as<float>();
+    this->tiempo_entrenamiento = atributos_unidad["Infanteria"]["Fremen"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Infanteria"]["Fremen"]["Vida"].as<int16_t>();
     this->costo = atributos_unidad["Infanteria"]["Fremen"]["Costo"].as<uint8_t>();
     

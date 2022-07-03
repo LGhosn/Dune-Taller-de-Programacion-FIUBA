@@ -1,6 +1,9 @@
 ---
 
 Game:
+  Gusano:
+    VictimasADevorar: 20
+    TiempoEntreVictimas: 120
   Precios:
     Edificios:
       Cuartel: 300
@@ -63,27 +66,28 @@ Game:
   Unidades:
     EdificiosRequeridos:
       #Fremen
-      - [true, true, false, false, true, false, false]
+      - [true, true, false, false, true, false, false, false]
       #Infanteria Ligera
-      - [true, true, false, false, false, false, false]
+      - [true, true, false, false, false, false, false, false]
       #Infanteria Pesada
-      - [true, true, false, false, false, false, false]
+      - [true, true, false, false, false, false, false, false]
       #Sardaukar
-      - [true, true, false, false, true, false, false]
+      - [true, true, false, false, true, false, false, false]
       #Cosechadora
-      - [true, false, false, true, false, true, false]
+      - [true, false, false, true, false, true, false, false]
       #Desviador
-      - [true, true, false, false, true, false, false]
+      - [true, false, false, true, true, false, false, false]
       #Devastador
-      - [true, false, false, true, true, false, false]
+      - [true, false, false, true, true, false, false, false]
       #Raider
-      - [true, false, true, false, false, false, false]
+      - [true, false, true, false, false, false, false, false]
       #Tanque
-      - [true, true, false, false, true, false, false]
+      - [true, false, false, true, false, false, false, false]
       #TanqueSonico
-      - [true, false, false, true, true, false, false]
+      - [true, false, false, true, true, false, false, false]
       #Trike
-      - [true, false, true, false, false, false, false]
+      - [true, false, true, false, false, false, false, false]
+      #   CE,   CUAR, FABLI, FABPE, PALA, REFIN, SILO, TRAMP 
     EdificioMultiplicador:
       #Fremen
       - 4

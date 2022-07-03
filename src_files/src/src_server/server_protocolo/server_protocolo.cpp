@@ -123,7 +123,7 @@ SolicitudMoverUnidadDTO ProtocoloServidor::recibirSolicitudMoverUnidad() {
 }
 
 
-void ProtocoloServidor::enviarComandoMoverUnidad(uint8_t id_unidad, char direccion, long tiempo) {
+void ProtocoloServidor::enviarComandoMoverUnidad(uint8_t id_unidad, char direccion, uint16_t tiempo) {
     std::vector<uint8_t> buffer = serializador.serializarComandoMoverUnidad(id_unidad, direccion, tiempo);
     enviarBuffer(buffer);
 }
@@ -190,7 +190,7 @@ void ProtocoloServidor::enviarComandoConstruccionInvalida() {
     this->skt_comunicador.sendall(&codigo, SIZEOF_BYTE);
 }
 
-void ProtocoloServidor::enviarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, long tiempo, Coordenadas& coords) {
+void ProtocoloServidor::enviarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, uint16_t tiempo, Coordenadas& coords) {
     std::vector<uint8_t> buffer = serializador.serializarComandoEnemigoDespliegaUnidad(id_unidad, id_jugador, tipo_unidad, tiempo, coords);
     this->enviarBuffer(buffer);
 }
@@ -223,7 +223,7 @@ void ProtocoloServidor::enviarComandoActualizarTiendaUnidades(const std::vector<
     enviarBuffer(serializador.serializarComandoActualizarTiendaUnidades(unidades_comprables));
 }
 
-void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad, long tiempo_construccion, Coordenadas& coords_spawn) {
+void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn) {
     std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(id_unidad, tipo_unidad, tiempo_construccion, coords_spawn);
     enviarBuffer(buffer);
 }
