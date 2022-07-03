@@ -4,7 +4,7 @@ Infanteria:
     - "Rifle"
    Rango: 3
    Velocidad: 16
-   TiempoEntrenamiento: 1
+   TiempoEntrenamiento: 60
    Costo: 50
    Vida: 50
    PenalizacionTerreno: 
@@ -18,7 +18,7 @@ Infanteria:
     - "Lanza misiles"
    Rango: 3
    Velocidad: 12
-   TiempoEntrenamiento: 1.3
+   TiempoEntrenamiento: 78
    Costo: 70
    Vida: 80
    PenalizacionTerreno:
@@ -33,7 +33,7 @@ Infanteria:
     - "Lanza misiles"
    Rango: 3
    Velocidad: 20
-   TiempoEntrenamiento: 2
+   TiempoEntrenamiento: 120
    Costo: 100
    Vida: 50
    PenalizacionTerreno:
@@ -48,7 +48,7 @@ Infanteria:
     - "Lanza misiles"
    Rango: 3
    Velocidad: 12
-   TiempoEntrenamiento: 2
+   TiempoEntrenamiento: 120
    Costo: 100
    Vida: 80
    PenalizacionTerreno:
@@ -58,13 +58,13 @@ Infanteria:
    TerrenosNoAccesibles:
     - 'P'
 
-Vehiculos:
+Vehiculo:
   Trike:
    Arma:
     - "Rifle"
    Rango: 4
    Velocidad: 64
-   TiempoEntrenamiento: 2
+   TiempoEntrenamiento: 120
    Costo: 100
    Vida: 80
    PenalizacionTerreno:
@@ -79,7 +79,7 @@ Vehiculos:
       - "Ondas de sonido"
     Rango: 4
     Velocidad: 12
-    TiempoEntrenamiento: 4
+    TiempoEntrenamiento: 240
     Costo: 300
     Vida: 300
     PenalizacionTerreno:
@@ -94,7 +94,7 @@ Vehiculos:
       - "Canion 22mm"
     Rango: 4
     Velocidad: 84
-    TiempoEntrenamiento: 2
+    TiempoEntrenamiento: 120
     Costo: 100
     Vida: 80
     PenalizacionTerreno:
@@ -109,7 +109,7 @@ Vehiculos:
       - "Lanza misiles"
     Rango: 5
     Velocidad: 12
-    TiempoEntrenamiento: 4
+    TiempoEntrenamiento: 240
     Costo: 400
     Vida: 300
     PenalizacionTerreno:
@@ -124,7 +124,7 @@ Vehiculos:
       - "Canion"
     Rango: 4
     Velocidad: 40
-    TiempoEntrenamiento: 4
+    TiempoEntrenamiento: 240
     Costo: 300
     Vida: 30
     PenalizacionTerreno:
@@ -139,7 +139,7 @@ Vehiculos:
       - "Canion de plasma"
     Rango: 4
     Velocidad: 12
-    TiempoEntrenamiento: 5
+    TiempoEntrenamiento: 300
     Costo: 400
     Vida: 400
     PenalizacionTerreno:
@@ -151,7 +151,7 @@ Vehiculos:
       - 'C'
   Cosechadora:
     Velocidad: 12
-    TiempoEntrenamiento: 3
+    TiempoEntrenamiento: 180
     Costo: 300
     Vida: 600
     PenalizacionTerreno:

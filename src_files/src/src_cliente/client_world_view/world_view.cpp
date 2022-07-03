@@ -163,7 +163,6 @@ void WorldView::moverUnidad(uint8_t id_unidad, char direccion, long tiempo_movim
 
 void WorldView::empezarEntrenamiento(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo_aparicion, Coordenadas& coords_spawn) {
     if (tipo_unidad < 4) {
-        std::cout << "Tiempo de aparicion: " << tiempo_aparicion << std::endl;
         side_menu.empezarEntrenamientoInfanteria(tipo_unidad, tiempo_aparicion);
     } else {
         side_menu.empezarEntrenamientoVehiculo(tipo_unidad, tiempo_aparicion);

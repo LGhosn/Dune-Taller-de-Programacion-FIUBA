@@ -202,20 +202,19 @@ std::vector<bool> ProtocoloCliente::recibirComandoActualizarTiendaUnidades() {
 }
 
 CmdEmpezarEntrenamientoClienteDTO ProtocoloCliente::recibirComandoEmpezarEntrenamientoUnidad() {
-    std::cout << "Recibiendo comando entrenando" << std::endl;
     uint8_t id_unidad;
     this->skt_cliente.recvall(&id_unidad, SIZEOF_BYTE);
     uint8_t tipo_unidad;
     this->skt_cliente.recvall(&tipo_unidad, SIZEOF_BYTE);
-    uint16_t tiempo_de_entrenamiento;
-    this->skt_cliente.recvall(&tiempo_de_entrenamiento, SIZEOF_TWO_BYTES);
-    tiempo_de_entrenamiento = ntohs(tiempo_de_entrenamiento);
     uint16_t coord_x;
     this->skt_cliente.recvall(&coord_x, SIZEOF_TWO_BYTES);
     coord_x = ntohs(coord_x);
     uint16_t coord_y;
     this->skt_cliente.recvall(&coord_y, SIZEOF_TWO_BYTES);
     coord_y = ntohs(coord_y);
+    uint16_t tiempo_de_entrenamiento;
+    this->skt_cliente.recvall(&tiempo_de_entrenamiento, SIZEOF_TWO_BYTES);
+    tiempo_de_entrenamiento = ntohs(tiempo_de_entrenamiento);
     return CmdEmpezarEntrenamientoClienteDTO(id_unidad, tipo_unidad, tiempo_de_entrenamiento, coord_x, coord_y);
 }
 
@@ -244,7 +243,7 @@ CmdEnemigoDespliegaUnidadDTO ProtocoloCliente::recibirComandoEnemigoDespliegaUni
     uint16_t coord_y;
     this->skt_cliente.recvall(&coord_y, SIZEOF_TWO_BYTES);
     coord_y = ntohs(coord_y);
-    long tiempo;
+    uint16_t tiempo;
     this->skt_cliente.recvall(&tiempo, SIZEOF_TWO_BYTES);
     tiempo = ntohl(tiempo);
     return CmdEnemigoDespliegaUnidadDTO(id_unidad, id_jugador, tipo_unidad, tiempo, coord_x, coord_y);

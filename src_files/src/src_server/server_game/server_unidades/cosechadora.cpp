@@ -4,15 +4,14 @@ Cosechadora::Cosechadora(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& at
     this->id = id;
     this->tipo_unidad = VEHICULO;
 
-    this->armas = atributos_unidad["Vehiculo"]["Cosechadora"]["Arma"].as<std::vector<std::string>>();
-    this->rango = atributos_unidad["Vehiculo"]["Cosechadora"]["Rango"].as<uint8_t>();
     this->velocidad = atributos_unidad["Vehiculo"]["Cosechadora"]["Velocidad"].as<int16_t>();
-    this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Cosechadora"]["TiempoEntrenamiento"].as<float>();
+    this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Cosechadora"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Vehiculo"]["Cosechadora"]["Vida"].as<int16_t>();
-    this->costo = atributos_unidad["Vehiculo"]["Cosechadora"]["Costo"].as<uint8_t>();
+    this->costo = atributos_unidad["Vehiculo"]["Cosechadora"]["Costo"].as<uint16_t>();
     
     std::vector<char> aux = atributos_unidad["Vehiculo"]["Cosechadora"]["PenalizacionTerreno"].as<std::vector<char>>();
     std::vector<float> aux_float = atributos_unidad["Vehiculo"]["Cosechadora"]["PenalizacionVelocidad"].as<std::vector<float>>();
+
     for (int i = 0; i < (int)aux.size(); i++) {
         this->penalizacion_terreno.insert(std::pair<char, float>(aux[i], aux_float[i]));
     }

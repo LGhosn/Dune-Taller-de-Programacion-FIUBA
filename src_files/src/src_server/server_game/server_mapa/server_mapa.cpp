@@ -1,7 +1,9 @@
-#include "yaml-cpp/yaml.h"
 #include "server_mapa.h"
+#include "yaml-cpp/yaml.h"
 #include <iostream>
 #include <typeinfo>
+#include <iterator>
+#include <cstdlib>
 
 #define DISTANCIA_EDIFICIOS 5
 #define CENTRO 0
@@ -275,6 +277,10 @@ char Mapa::moverUnidad(const Coordenadas& coords_actual, const Coordenadas& coor
     uint8_t id_unidad = unidad->obtenerIdUnidad();
     char terreno = unidad->obtenerTerrenoQueEstaParada();
 
+    auto it = unidades_en_mapa.find(id_unidad);
+    if (it != unidades_en_mapa.end()) {
+        it->second = coords_nueva;
+    }
     this->mapa[coords_actual.y][coords_actual.x] = clasificarTerreno(terreno);
 
     char terreno_nuevo = this->mapa[coords_nueva.y][coords_nueva.x]->obtenerIdentificador();
@@ -329,6 +335,26 @@ void Mapa::spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_un
     std::unique_ptr<Entidades>& entidad = this->mapa[coords_spawn.y][coords_spawn.x];
     char terreno = entidad->obtenerIdentificador();
     this->mapa[coords_spawn.y][coords_spawn.x] = std::unique_ptr<Entidades>(new UnidadesMapa(terreno, tipo_unidad, id_jugador, id_uni));
+    unidades_en_mapa.emplace(id_uni, coords_spawn);
+}
+
+bool Mapa::obtenerUnidadRandomSobreArena(uint8_t *id_victima) {
+    uint8_t cont = 0;
+    uint8_t cant_unidades = unidades_en_mapa.size();
+    while (cont != cant_unidades) {
+        auto it = unidades_en_mapa.begin();
+        std::advance(it, rand() % cant_unidades);
+        Coordenadas& coords = it->second;
+        std::unique_ptr<Entidades>& entidad = this->mapa[coords.y][coords.x];
+        std::unique_ptr<UnidadesMapa>& unidad = (std::unique_ptr<UnidadesMapa>&)entidad;
+        char terreno = unidad->obtenerTerrenoQueEstaParada();
+        if (terreno == 'A') {
+            *id_victima = it->first;
+            return true;
+        }
+        cont++;
+    }
+    return false;
 }
 
 

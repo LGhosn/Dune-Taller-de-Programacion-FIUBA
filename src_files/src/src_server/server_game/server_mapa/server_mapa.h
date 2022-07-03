@@ -3,11 +3,11 @@
 
 #include <vector>
 #include <list>
-#include <tuple>
 #include <memory>
 #include <stack>
 #include <algorithm>
 #include <sstream>
+#include <unordered_map>
 
 
 #include "../../../src_common/common_coords.h"
@@ -26,12 +26,8 @@ private:
     Camino camino;
     std::list<Coordenadas> coords_centros;
     YAML::Node edificio_config;
+    std::unordered_map <uint8_t, Coordenadas&> unidades_en_mapa;
 
-    /*
-     * Dado un edificio, devuelve la cantidad de casillas que ocupa y el tipo de edificio que es 
-     * @param edificio: edificio a construir
-    */
-    std::tuple<int, int, char> propiedadesEdificio(uint8_t edificio);
 
     /*
      * Verifica que no haya colisiones con el edificio a construir, si las hay las agrega a la lista de colisiones
@@ -79,8 +75,6 @@ public:
     */
     Mapa(const std::string& nombre_mapa);
 
-    //Hago este typedef para no superar los 100 caracteres y que no haya problemas con cpplint
-    typedef std::tuple<uint8_t, uint16_t, uint16_t> comando_t;
     /*
      * @brief Coloca un edificio en el mapa en caso de ser posible
      * @param comando una tupla conformada por el edificio(uint8_t), la coordenada x(uint16_t) y la coordenada y(uint16_t)
@@ -115,6 +109,7 @@ public:
 
     void spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas& coords_spawn);
 
+    bool obtenerUnidadRandomSobreArena(uint8_t *id_victima);
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.

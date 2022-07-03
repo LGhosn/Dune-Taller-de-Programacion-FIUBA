@@ -96,23 +96,22 @@ std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(ui
     buffer[1] = id_unidad;
     buffer[2] = tipo_unidad;
     uint16_t* aux = (uint16_t*) (buffer.data() + 3);
-    aux[0] = htons(tiempo_construccion);
-    aux[1] = htons(coords_spawn.x);
-    aux[2] = htons(coords_spawn.y);
+    aux[0] = htons(coords_spawn.x);
+    aux[1] = htons(coords_spawn.y);
+    aux[2] = htons(tiempo_construccion);
     return buffer;
 }
 
-std::vector<uint8_t> SerializadorServer::serializarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, long tiempo, Coordenadas& coords) {
+std::vector<uint8_t> SerializadorServer::serializarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, uint16_t tiempo, Coordenadas& coords) {
     std::vector<uint8_t> buffer(10);
     buffer[0] = CODIGO_ENEMIGO_DESPLIEGA_UNIDAD;
     buffer[1] = id_unidad;
     buffer[2] = id_jugador;
     buffer[3] = tipo_unidad;
     uint16_t* aux = (uint16_t*) (buffer.data() + 4);
-    aux[1] = htons(coords.x);
-    aux[2] = htons(coords.y);
-    long* aux2 = (long*) (buffer.data() + 8);
-    aux2[0] = htonl(tiempo);
+    aux[0] = htons(coords.x);
+    aux[1] = htons(coords.y);
+    aux[2] = htons(tiempo);
     return buffer;
 }
 
@@ -120,7 +119,7 @@ std::vector<uint8_t> SerializadorServer::serializarComandoEnemigoDespliegaUnidad
 /* *****************************************************************
  *                  METODOS REFERIDOS A MOVER UNIDAD
  * *****************************************************************/
-std::vector<uint8_t> SerializadorServer::serializarComandoMoverUnidad(uint8_t id_unidad, char direccion, long tiempo){
+std::vector<uint8_t> SerializadorServer::serializarComandoMoverUnidad(uint8_t id_unidad, char direccion, uint16_t tiempo){
     std::vector<uint8_t> buffer(5);
     buffer[0] = CODIGO_MOVER_UNIDAD;
     buffer[1] = direccion;

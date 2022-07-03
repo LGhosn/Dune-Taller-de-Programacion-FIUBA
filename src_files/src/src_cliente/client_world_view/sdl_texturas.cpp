@@ -248,10 +248,53 @@ void TexturasSDL::cargarEdificios() {
 }
 
 void TexturasSDL::cargarInfanteria() {
-
 }
 
-void TexturasSDL::cargarVehiculos() {}
+void TexturasSDL::cargarVehiculos() {
+    for (int i = 0; i < 8; i++) {
+        std::stringstream stream;
+        stream << RUTA_COSECHADORA << "cosechadora" << (int) i << ".bmp";
+        cosechadora.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
+
+    for (int i = 0; i < 8; i++) {
+        std::stringstream stream;
+        stream << RUTA_DESVIADOR << "desviador" << (int) i << ".bmp";
+        desviador.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
+
+    for (int i = 0; i < 8; i++) {
+        std::stringstream stream;
+        stream << RUTA_DEVASTADOR << "devastador" << (int) i << ".bmp";
+        devastador.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
+
+    // for (int i = 0; i < 8; i++) {
+        // std::stringstream stream;
+    //     stream << RUTA_RAIDER << "raider" << (int) i << ".bmp";
+    //     raider.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    // }
+
+    //for (int i = 0; i < 8; i++) {
+    //    std::stringstream stream;
+    //    stream << RUTA_TANQUE << "tanque" << (int) i << ".bmp";
+    //    tanque.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    //}
+
+    for (int i = 0; i < 8; i++) {
+        std::stringstream stream;
+        stream << RUTA_TANQUE_SONICO << "tanque_sonico" << (int) i << ".bmp";
+        tanque_sonico.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
+
+    for (int i = 0; i < 8; i++) {
+        std::stringstream stream;
+        stream << RUTA_TRIKE << "trike" << (int) i << ".bmp";
+        trike.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
+}
+
+
 TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                         constantes(constantes),
                         renderer(renderer),
@@ -287,6 +330,8 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
     cargarLogos();
     cargarTiles();
     cargarEdificios();
+    cargarVehiculos();
+    //cargarInfanterias();
 }
 
 SDL2pp::Texture& TexturasSDL::obtenerTexTile(uint8_t tipo_tile, uint8_t tipo_textura) {
@@ -308,6 +353,40 @@ SDL2pp::Texture& TexturasSDL::obtenerTexTile(uint8_t tipo_tile, uint8_t tipo_tex
             throw std::runtime_error("Texturas: Tipo de tile no reconocido.");
     }
 }
+
+std::vector<SDL2pp::Texture>& TexturasSDL::obtenerVehiculo(uint8_t tipo_vehiculo) {
+    switch (tipo_vehiculo) {
+        case 4:{
+            return cosechadora;
+        }
+        case 5:{
+            return desviador;        
+        }
+        case 6:{
+            return devastador;        
+        }
+        case 7:{
+            return raider;        
+        }
+        case 8:{
+            return tanque;        
+        }
+        case 9:{
+            return tanque_sonico;        
+        }
+        case 10:{
+            return trike;        
+        }
+        default:
+            break;
+    }
+    return cosechadora;
+}
+    
+std::vector<SDL2pp::Texture>& TexturasSDL::obtenerInfanteria(uint8_t tipo_infanteria) {
+    return this->cosechadora; // TODO: arreglar
+}
+
 
 SDL2pp::Texture& TexturasSDL::obtenerSlab() {
     return slab;

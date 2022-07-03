@@ -8,10 +8,10 @@ class CmdMoverUnidadServer : public ComandoServer {
 private:
     uint8_t id_unidad;
     char direccion;
-    long tiempo;
+    uint16_t tiempo;
 
 public:
-    CmdMoverUnidadServer(uint8_t id_unidad, char direccion, long tiempo);
+    CmdMoverUnidadServer(uint8_t id_unidad, char direccion, uint16_t tiempo);
     virtual void enviarComando(ProtocoloServidor& protocolo) const override;
     virtual ~CmdMoverUnidadServer() = default;
 };

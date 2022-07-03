@@ -97,7 +97,7 @@ public:
  *             METODOS REFERIDOS A MOVER UNIDADES
  * *****************************************************************/
 
-    void enviarComandoMoverUnidad(uint8_t id_unidad, char direccion, long tiempo);
+    void enviarComandoMoverUnidad(uint8_t id_unidad, char direccion, uint16_t tiempo);
 
     SolicitudMoverUnidadDTO recibirSolicitudMoverUnidad();
 
@@ -121,9 +121,9 @@ public:
 
     SolicitudComprarUnidadDTO recibirSolicitudComprarUnidad();
 
-    void enviarComandoEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad, long tiempo, Coordenadas& coords);
+    void enviarComandoEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo, Coordenadas& coords);
 
-    void enviarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, long tiempo, Coordenadas& coords);
+    void enviarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, uint16_t tiempo, Coordenadas& coords);
 
 /* *****************************************************************
  *             METODOS REFERIDOS A ACTUALIZAR ESPECIA

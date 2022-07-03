@@ -7,9 +7,9 @@ Desviador::Desviador(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atribu
     this->armas = atributos_unidad["Vehiculo"]["Desviador"]["Arma"].as<std::vector<std::string>>();
     this->rango = atributos_unidad["Vehiculo"]["Desviador"]["Rango"].as<uint8_t>();
     this->velocidad = atributos_unidad["Vehiculo"]["Desviador"]["Velocidad"].as<int16_t>();
-    this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Desviador"]["TiempoEntrenamiento"].as<float>();
+    this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Desviador"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Vehiculo"]["Desviador"]["Vida"].as<int16_t>();
-    this->costo = atributos_unidad["Vehiculo"]["Desviador"]["Costo"].as<uint8_t>();
+    this->costo = atributos_unidad["Vehiculo"]["Desviador"]["Costo"].as<uint16_t>();
     
     std::vector<char> aux = atributos_unidad["Vehiculo"]["Desviador"]["PenalizacionTerreno"].as<std::vector<char>>();
     std::vector<float> aux_float = atributos_unidad["Vehiculo"]["Desviador"]["PenalizacionVelocidad"].as<std::vector<float>>();
