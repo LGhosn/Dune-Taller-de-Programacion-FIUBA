@@ -54,29 +54,29 @@ void TiendaSDL::cargarBotonesEdificios(TexturasSDL& texturas, YAML::Node& consta
 }
 
 void TiendaSDL::cargarBotonesUnidades(TexturasSDL& texturas, YAML::Node& constantes,
-                                        uint8_t id_jugador) {
-    botones_infanteria.emplace_back(renderer, texturas, 0, casa, id_jugador,
+                                        MixerSDL& mixer, uint8_t id_jugador) {
+    botones_infanteria.emplace_back(renderer, texturas, mixer, 0, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
                             pos_inicial_botones_y,
                             ancho_boton,
                             largo_boton),
                         constantes);
-    botones_infanteria.emplace_back(renderer, texturas, 1, casa, id_jugador,
+    botones_infanteria.emplace_back(renderer, texturas, mixer, 1, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
                             pos_inicial_botones_y + largo_boton + padding_botones,
                             ancho_boton,
                             largo_boton),
                         constantes);
-    botones_infanteria.emplace_back(renderer, texturas, 2, casa, id_jugador,
+    botones_infanteria.emplace_back(renderer, texturas, mixer, 2, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x + ancho_boton + padding_botones,
                             pos_inicial_botones_y,
                             ancho_boton,
                             largo_boton),
                         constantes);
-    botones_infanteria.emplace_back(renderer, texturas, 3, casa, id_jugador,
+    botones_infanteria.emplace_back(renderer, texturas, mixer, 3, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x + ancho_boton + padding_botones,
                             pos_inicial_botones_y + largo_boton + padding_botones,
@@ -84,7 +84,7 @@ void TiendaSDL::cargarBotonesUnidades(TexturasSDL& texturas, YAML::Node& constan
                             largo_boton),
                         constantes);
     
-    botones_vehiculos.emplace_back(renderer, texturas, 4, casa, id_jugador,
+    botones_vehiculos.emplace_back(renderer, texturas, mixer, 4, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
                             pos_inicial_botones_y,
@@ -92,7 +92,7 @@ void TiendaSDL::cargarBotonesUnidades(TexturasSDL& texturas, YAML::Node& constan
                             largo_boton
                         ), constantes);
 
-    botones_vehiculos.emplace_back(renderer, texturas, 5, casa, id_jugador,
+    botones_vehiculos.emplace_back(renderer, texturas, mixer, 5, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
                             pos_inicial_botones_y + largo_boton + padding_botones,
@@ -100,35 +100,35 @@ void TiendaSDL::cargarBotonesUnidades(TexturasSDL& texturas, YAML::Node& constan
                             largo_boton
                         ), constantes);
     
-    botones_vehiculos.emplace_back(renderer, texturas, 6, casa, id_jugador,
+    botones_vehiculos.emplace_back(renderer, texturas, mixer, 6, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
                             pos_inicial_botones_y + 2 * (largo_boton + padding_botones),
                             ancho_boton,
                             largo_boton
                         ), constantes);
-    botones_vehiculos.emplace_back(renderer, texturas, 7, casa, id_jugador,
+    botones_vehiculos.emplace_back(renderer, texturas, mixer, 7, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x,
                             pos_inicial_botones_y + 3 * (largo_boton + padding_botones),
                             ancho_boton,
                             largo_boton
                         ), constantes);
-    botones_vehiculos.emplace_back(renderer, texturas, 8, casa, id_jugador,
+    botones_vehiculos.emplace_back(renderer, texturas, mixer, 8, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x + ancho_boton + padding_botones,
                             pos_inicial_botones_y,
                             ancho_boton,
                             largo_boton
                         ), constantes);
-    botones_vehiculos.emplace_back(renderer, texturas, 9, casa, id_jugador,
+    botones_vehiculos.emplace_back(renderer, texturas, mixer, 9, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x + ancho_boton + padding_botones,
                             pos_inicial_botones_y + largo_boton + padding_botones,
                             ancho_boton,
                             largo_boton
                         ), constantes);
-    botones_vehiculos.emplace_back(renderer, texturas, 10, casa, id_jugador,
+    botones_vehiculos.emplace_back(renderer, texturas, mixer, 10, casa, id_jugador,
                         SDL2pp::Rect(
                             pos_inicial_botones_x + ancho_boton + padding_botones,
                             pos_inicial_botones_y + 2 * (largo_boton + padding_botones),
@@ -192,7 +192,7 @@ TiendaSDL::TiendaSDL(SDL2pp::Renderer& renderer, MixerSDL& mixer,
                                     ancho,
                                     largo) {
     cargarBotonesEdificios(texturas, constantes, mixer, id_jugador);
-    cargarBotonesUnidades(texturas, constantes, id_jugador);
+    cargarBotonesUnidades(texturas, constantes, mixer, id_jugador);
     cargarBotonesPaginas(texturas, constantes);
 }
 
@@ -201,11 +201,11 @@ void TiendaSDL::empezarConstruccionEdificio(uint8_t tipo, uint16_t tiempo_constr
 }
 
 void TiendaSDL::empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_entrenamiento) {
-    botones_infanteria[tipo - 1].empezarEntrenamiento(tiempo_entrenamiento);
+    botones_infanteria[tipo].empezarEntrenamiento(tiempo_entrenamiento);
 }
 
 void TiendaSDL::empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_entrenamiento) {
-    botones_vehiculos[tipo - 1].empezarEntrenamiento(tiempo_entrenamiento);
+    botones_vehiculos[tipo].empezarEntrenamiento(tiempo_entrenamiento);
 }
 
 void TiendaSDL::actualizarEdificios(const std::vector<bool>& edificios_comprables) {

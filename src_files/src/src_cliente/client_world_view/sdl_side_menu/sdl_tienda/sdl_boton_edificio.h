@@ -4,7 +4,6 @@
 #include <SDL2pp/SDL2pp.hh>
 #include "../../sdl_texturas.h"
 #include "../../sdl_sonidos/sdl_mixer.h"
-#include "../../sdl_sonidos/sdl_sonidos.h"
 #include "../../../client_solicitudes/cliente_solicitud.h"
 #include "../../../../src_common/common_coords.h"
 

@@ -34,7 +34,7 @@ EspeciaAcumulada::EspeciaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
 
 void EspeciaAcumulada::empezarPartida() {
     enviarNuevaCantidadEspecia();
-    actualizarEdificiosComprables();
+    actualizarYEnviarEdificiosComprables();
 }
 
 void EspeciaAcumulada::enviarNuevaCantidadEspecia() {
@@ -42,8 +42,8 @@ void EspeciaAcumulada::enviarNuevaCantidadEspecia() {
     cola_comandos.push(comando);
 }
 
-void EspeciaAcumulada::actualizarEdificiosComprables() {
-    for (int i = 1; i < 8; i++) {
+void EspeciaAcumulada::actualizarYEnviarEdificiosComprables() {
+    for (size_t i = 1; i < edificios_comprables.size(); i++) {
         edificios_comprables[i] = cantidad_especia >= costo_edificios[i] ? true : false;
     }
     CmdActualizarTiendaEdificiosServer* comando =
@@ -55,8 +55,8 @@ bool EspeciaAcumulada::comprarEdificio(uint8_t tipo_edificio, std::vector<uint8_
     if (cantidad_especia >= costo_edificios[tipo_edificio]) {
         cantidad_especia -= costo_edificios[tipo_edificio];
         edificios_comprados[tipo_edificio]++;
-        actualizarEdificiosComprables();
-        actualizarUnidadesComprables(edificios_comprados, casa);
+        actualizarYEnviarEdificiosComprables();
+        actualizarUnidadesComprables();
         enviarNuevaCantidadEspecia();
         return true;
     } else {
@@ -74,13 +74,10 @@ void EspeciaAcumulada::aumentarEspecia(uint16_t cantidad) {
     enviarNuevaCantidadEspecia();
 }
 
-void EspeciaAcumulada::actualizarUnidadesComprables(std::vector<uint8_t>& edificios_comprados, uint8_t& casa) {
-    for (uint8_t i = 0; i < 11 ; i++) {
-        unidades_comprables[i] = validarCompraUnidad(i, edificios_comprados, casa);
+void EspeciaAcumulada::actualizarUnidadesComprables() {
+    for (size_t i = 0; i < unidades_comprables.size(); i++) {
+        unidades_comprables[i] = cantidad_especia >= costo_unidades[i] ? true : false;
     }
-    CmdActualizarTiendaUnidadesServer* comando =
-                    new CmdActualizarTiendaUnidadesServer(unidades_comprables);
-    cola_comandos.push(comando);
 }
 
 /* *****************************************************************
@@ -90,45 +87,9 @@ void EspeciaAcumulada::actualizarUnidadesComprables(std::vector<uint8_t>& edific
 bool EspeciaAcumulada::comprarUnidad(uint8_t tipo) {
     if (cantidad_especia >= costo_unidades[tipo]) {
         cantidad_especia -= costo_unidades[tipo];
-        actualizarEdificiosComprables();
-        for (uint8_t i = 0; i < 11 ; i++) {
-            unidades_comprables[i] = (noHayEspeciaSuficienteParaLaUnidad(i) == false) ? false : true;
-        }
+        actualizarYEnviarEdificiosComprables();
+        actualizarUnidadesComprables();
         enviarNuevaCantidadEspecia();
-        return true;
-    } else {
-        return false;
-    }
-}
-
-bool EspeciaAcumulada::validarCompraUnidad(uint8_t tipo_unidad,
-                                           std::vector<uint8_t>& edificios_comprados,
-                                           uint8_t& casa) {
-    // Primero corroboramos que el jugador tenga la especia suficiente.
-    if (noHayEspeciaSuficienteParaLaUnidad(tipo_unidad)) {
-        return false;
-    }
-
-    // Luego corroboramos que el jugador tenga los edificios adecuados para comprar la unidad.
-    if (laUnidadARevisarEsInfanteria(tipo_unidad) && elJugadorConstruyoElCuartel(edificios_comprados)) {
-        return true;
-    } else if (laUnidadARevisarEsFremen(tipo_unidad, casa) && elJugadorConstruyoElCuartelYElPalacio(edificios_comprados)) {
-        return true;
-    } else if (laUnidadARevisarEsSardaukar(tipo_unidad, casa) && elJugadorConstruyoElCuartelYElPalacio(edificios_comprados)) {
-        return true;
-    } else if (laUnidadARevisarEsTrike(tipo_unidad, casa) && elJugadorConstruyoLaFabricaLigera(edificios_comprados)) {
-        return true;
-    } else if (laUnidadARevisarEsRaider(tipo_unidad, casa) && elJugadorConstruyoLaFabricaLigera(edificios_comprados)) {
-        return true;
-    } else if (laUnidadARevisarEsTanque(tipo_unidad) && elJugadorConstruyoLaFabricaPesada(edificios_comprados)) {
-        return true;
-    } else if (laUnidadARevisarEsTanqueSonico(tipo_unidad, casa) && elJugadorConstruyoLaFabricaPesadaYElPalacio(edificios_comprados)) {
-        return true;
-    } else if (laUnidadARevisarEsDesviador(tipo_unidad, casa) && elJugadorConstruyoLaFabricaPesadaYElPalacio(edificios_comprados)) {
-        return true;
-    } else if (laUnidadARevisarEsDevastador(tipo_unidad, casa) && elJugadorConstruyoLaFabricaPesadaYElPalacio(edificios_comprados)) {
-        return true;
-    } else if(laUnidadARevisarEsCosechadora(tipo_unidad) && elJugadorConstruyoLaFabricaPesada(edificios_comprados)) {
         return true;
     } else {
         return false;
@@ -139,70 +100,6 @@ bool EspeciaAcumulada::noHayEspeciaSuficienteParaLaUnidad(uint8_t tipo_unidad) {
     return cantidad_especia < costo_unidades[tipo_unidad];
 }
 
-/* *****************************************************************
- *          METODOS BOOL SOBRE EXISTENCIA DE EDIFICIOS
- * *****************************************************************/
-
-bool EspeciaAcumulada::elJugadorConstruyoElCuartel(std::vector<uint8_t>& edificios_comprados) {
-    return (edificios_comprados[CUARTEL]);
-}
-
-bool EspeciaAcumulada::elJugadorConstruyoElCuartelYElPalacio(std::vector<uint8_t>& edificios_comprados) {
-    return (edificios_comprados[CUARTEL] && edificios_comprados[PALACIO]);
-}
-
-bool EspeciaAcumulada::elJugadorConstruyoLaFabricaLigera(std::vector<uint8_t>& edificios_comprados) {
-    return (edificios_comprados[FABRICA_LIGERA]);
-}
-
-bool EspeciaAcumulada::elJugadorConstruyoLaFabricaPesada(std::vector<uint8_t>& edificios_comprados) {
-    return (edificios_comprados[FABRICA_PESADA]);
-}
-
-bool EspeciaAcumulada::elJugadorConstruyoLaFabricaPesadaYElPalacio(std::vector<uint8_t>& edificios_comprados) {
-    return (edificios_comprados[FABRICA_PESADA] && edificios_comprados[PALACIO]);
-}
-
-/* *****************************************************************
- *          METODOS BOOL SOBRE CASO DE UNIDADES
- * *****************************************************************/
-
-bool EspeciaAcumulada::laUnidadARevisarEsInfanteria(uint8_t tipo_unidad) {
-    return (tipo_unidad == INFANTERIA_LIGERA || tipo_unidad == INFANTERIA_PESADA);
-}
-
-bool EspeciaAcumulada::laUnidadARevisarEsFremen(uint8_t tipo_unidad, uint8_t casa) {
-    return (tipo_unidad == FREMEN && casa == ATREIDES);
-}
-
-bool EspeciaAcumulada::laUnidadARevisarEsSardaukar(uint8_t tipo_unidad, uint8_t casa) {
-    return (tipo_unidad == SARDAUKAR && casa == HARKONNEN);
-}
-
-bool EspeciaAcumulada::laUnidadARevisarEsTrike(uint8_t tipo_unidad, uint8_t casa) {
-    return (tipo_unidad == TRIKE && (casa == ORDOS || casa == HARKONNEN));
-}
-
-bool EspeciaAcumulada::laUnidadARevisarEsRaider(uint8_t tipo_unidad, uint8_t casa) {
-    return (tipo_unidad == RAIDER && casa == ORDOS);
-}
-
-bool EspeciaAcumulada::laUnidadARevisarEsTanque(uint8_t tipo_unidad) {
-    return (tipo_unidad == TANQUE);
-}
-
-bool EspeciaAcumulada::laUnidadARevisarEsTanqueSonico(uint8_t tipo_unidad, uint8_t casa) {
-    return (tipo_unidad == TANQUE_SONICO && casa == ATREIDES);
-}
-
-bool EspeciaAcumulada::laUnidadARevisarEsDesviador(uint8_t tipo_unidad, uint8_t casa) {
-    return (tipo_unidad == DESVIADOR && casa == ORDOS);
-}
-
-bool EspeciaAcumulada::laUnidadARevisarEsDevastador(uint8_t tipo_unidad, uint8_t casa) {
-    return (tipo_unidad == DEVASTADOR && casa == HARKONNEN);
-}
-
-bool EspeciaAcumulada::laUnidadARevisarEsCosechadora(uint8_t tipo_unidad) {
-    return (tipo_unidad == COSECHADORA);
+std::vector<bool> EspeciaAcumulada::obtenerUnidadesComprables() {
+    return unidades_comprables;
 }

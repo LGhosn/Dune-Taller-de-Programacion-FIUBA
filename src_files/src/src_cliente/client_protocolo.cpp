@@ -202,6 +202,7 @@ std::vector<bool> ProtocoloCliente::recibirComandoActualizarTiendaUnidades() {
 }
 
 CmdEmpezarEntrenamientoClienteDTO ProtocoloCliente::recibirComandoEmpezarEntrenamientoUnidad() {
+    std::cout << "Recibiendo comando entrenando" << std::endl;
     uint8_t id_unidad;
     this->skt_cliente.recvall(&id_unidad, SIZEOF_BYTE);
     uint8_t tipo_unidad;

@@ -6,8 +6,8 @@
 
 void SonidosSDL::cargarMensajesDeVoz() {
     std::vector<std::string> casas;
-    casas.emplace_back("atreides");
     casas.emplace_back("harkonnen");
+    casas.emplace_back("atreides");
     casas.emplace_back("ordos");
 
     for (const std::string& casa : casas) {

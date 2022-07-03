@@ -49,17 +49,17 @@ void TexturasSDL::cargarLogos() {
         logos_trampa_de_aire.emplace_back(renderer, stream.str());
     }
 
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_FREMEN);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_INFANTERIA_LIGERA);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_INFANTERIA_PESADA);
-    logos_unidades.emplace_back(renderer, RUTA_LOGO_FREMEN);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_SARDAUKAR);
-    logos_unidades.emplace_back(renderer, RUTA_LOGO_TRIKE);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_COSECHADORA);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_DESVIADOR);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_DEVASTADOR);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_RAIDER);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_TANQUE);
     logos_unidades.emplace_back(renderer, RUTA_LOGO_TANQUE_SONICO);
-    logos_unidades.emplace_back(renderer, RUTA_LOGO_DESVIADOR);
-    logos_unidades.emplace_back(renderer, RUTA_LOGO_DEVASTADOR);
-    logos_unidades.emplace_back(renderer, RUTA_LOGO_COSECHADORA);
+    logos_unidades.emplace_back(renderer, RUTA_LOGO_TRIKE);
 }
 
 void TexturasSDL::cargarTiles() {

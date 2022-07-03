@@ -27,7 +27,7 @@ Game:
         TanqueSonico: 300
         Trike: 100
   Especia:
-    ValorInicial: 800
+    ValorInicial: 50000
     Capacidad:
       Centro: 0
       Cuartel: 0
@@ -38,7 +38,7 @@ Game:
       Silo: 1000
       Trampa: 0
   Energia:
-    ValorInicial: 0
+    ValorInicial: 8000
     TopeInicial: 200
     MultiplicadorEnergiaPositiva: 1
     DivisorEnergiaNegativa: 1000
@@ -52,3 +52,35 @@ Game:
       Refineria: 400
       Silo: 100
       Trampa: -500
+  Casas:
+    UnidadesDisponibles:
+      #Harkonnen
+      - [false, true, true, true, true, false, true, false, true, false, true]
+      #Atreides
+      - [true, true, true, false, true, false, false, false, true, true, true]
+      #Ordos
+      - [false, true, true, false, true, true, false, true, true, false, false]
+  Unidades:
+    EdificiosRequeridos:
+      #Fremen
+      - [true, true, false, false, true, false, false]
+      #Infanteria Ligera
+      - [true, true, false, false, false, false, false]
+      #Infanteria Pesada
+      - [true, true, false, false, false, false, false]
+      #Sardaukar
+      - [true, true, false, false, true, false, false]
+      #Cosechadora
+      - [true, false, false, true, false, true, false]
+      #Desviador
+      - [true, true, false, false, true, false, false]
+      #Devastador
+      - [true, false, false, true, true, false, false]
+      #Raider
+      - [true, false, true, false, false, false, false]
+      #Tanque
+      - [true, true, false, false, true, false, false]
+      #TanqueSonico
+      - [true, false, false, true, true, false, false]
+      #Trike
+      - [true, false, true, false, false, false, false]

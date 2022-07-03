@@ -91,7 +91,7 @@ std::vector<uint8_t> SerializadorServer::serializarComandoActualizarTiendaUnidad
 std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad,
                                                                             uint16_t tiempo_construccion,
                                                                             Coordenadas& coords_spawn) {
-    std::vector<uint8_t> buffer(4);
+    std::vector<uint8_t> buffer(9);
     buffer[0] = CODIGO_EMPEZAR_ENTRENAMIENTO;
     buffer[1] = id_unidad;
     buffer[2] = tipo_unidad;
@@ -103,7 +103,7 @@ std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(ui
 }
 
 std::vector<uint8_t> SerializadorServer::serializarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, long tiempo, Coordenadas& coords) {
-    std::vector<uint8_t> buffer(5);
+    std::vector<uint8_t> buffer(10);
     buffer[0] = CODIGO_ENEMIGO_DESPLIEGA_UNIDAD;
     buffer[1] = id_unidad;
     buffer[2] = id_jugador;

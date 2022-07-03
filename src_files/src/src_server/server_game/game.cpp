@@ -42,7 +42,7 @@ void Game::crearCentro(uint16_t id_jugador, const Coordenadas& coords) {
                 new CmdCrearEdificioServer(id_jugador, conts_id_edificios, CODIGO_CENTRO, coords, jugador.obtenerCasa());
         cola.second->push(comando);
     }
-    // jugador.edificioCreado(CODIGO_CENTRO);
+    jugador.edificioCreado(CODIGO_CENTRO);
     conts_id_edificios++;
 }
 
@@ -76,7 +76,7 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
             cola.second->push(comando);
         }
         conts_id_edificios++;
-        // jugador.edificioCreado(tipo);
+        jugador.edificioCreado(tipo);
     } else {
         CmdConstruccionInvalidaServer* comando = new CmdConstruccionInvalidaServer();
         colas_comandos[id_jugador]->push(comando);
@@ -116,6 +116,7 @@ void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
     Jugador& jugador = encontrarJugador(id_jugador);
     bool resultado = jugador.comprarUnidad(tipo_unidad);
     if (resultado) {
+        std::cout << "Se pudo comprar la unidad" << std::endl;
         uint8_t id_uni = this->conts_id_unidad++;
         Coordenadas& coords_spawn = this->mapa.obtenerCoordenadasSpawn(id_jugador);
         this->mapa.spawnearUnidad(id_jugador, tipo_unidad, id_uni, coords_spawn);

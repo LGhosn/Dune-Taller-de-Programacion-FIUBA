@@ -7,6 +7,7 @@
 #include "../../server_comandos/server_comando.h"
 #include "especia_acumulada.h"
 #include "energia_acumulada.h"
+#include "validador_unidades.h"
 
 class Jugador {
     uint8_t id;
@@ -16,6 +17,7 @@ class Jugador {
     EspeciaAcumulada especia;
     EnergiaAcumulada energia;
     std::vector<uint8_t> cantidad_edificios;
+    ValidadorUnidades validador_de_unidades;
 
     // Constantes
     uint16_t tiempo_construccion_base;

@@ -4,12 +4,14 @@
 
 BotonUnidadSDL::BotonUnidadSDL(SDL2pp::Renderer& renderer,
                                 TexturasSDL& texturas,
+                                MixerSDL& mixer,
                                 uint8_t tipo_unidad,
                                 uint8_t casa,
                                 uint8_t id_jugador,
                                 SDL2pp::Rect destino,
                                 YAML::Node& constantes):
                                 renderer(renderer),
+                                mixer(mixer),
                                 tipo_unidad(tipo_unidad),
                                 casa(casa),
                                 id_jugador(id_jugador),
@@ -32,6 +34,7 @@ void BotonUnidadSDL::empezarEntrenamiento(uint16_t milisegundos_para_construir) 
     entrenando = true;
     frames_para_entrenar = milisegundos_para_construir * fps / 1000;
     frames_restantes_entrenamiento = frames_para_entrenar;
+    mixer.reproducirMensajeEntrenando();
 }
 
 SolicitudCliente* BotonUnidadSDL::click(int pos_x, int pos_y) {

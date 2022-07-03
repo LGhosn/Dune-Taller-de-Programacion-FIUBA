@@ -41,7 +41,7 @@ class TiendaSDL {
     void cargarBotonesEdificios(TexturasSDL& texturas, YAML::Node& constantes,
                                 MixerSDL& mixer, uint8_t id_jugador);
     void cargarBotonesUnidades(TexturasSDL& texturas, YAML::Node& constantes,
-                                uint8_t id_jugador);
+                                MixerSDL& mixer, uint8_t id_jugador);
     void cargarBotonesPaginas(TexturasSDL& texturas, YAML::Node& constantes);
 
 public:

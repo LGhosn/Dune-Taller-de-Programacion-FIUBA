@@ -14,6 +14,7 @@ Jugador::Jugador(uint8_t id, uint8_t casa, std::string& nombre,
                 especia(cola_comandos, constantes),
                 energia(cola_comandos, constantes),
                 cantidad_edificios(8, 0),
+                validador_de_unidades(constantes, casa, cantidad_edificios, cola_comandos),
                 tiempo_construccion_base(constantes["Game"]["Precios"]["Edificios"]["TiempoConstruccionBase"].as<uint16_t>()) {}
 
 void Jugador::empezarPartida() {
@@ -34,12 +35,18 @@ const std::string& Jugador::obtenerNombre() const {
 }
 
 bool Jugador::comprarUnidad(uint8_t tipo_unidad) {
-    return especia.comprarUnidad(tipo_unidad);
+    if (validador_de_unidades.unidadDisponible(tipo_unidad)) {
+        if (especia.comprarUnidad(tipo_unidad)) {
+            validador_de_unidades.actualizarUnidadesDisponibles(especia.obtenerUnidadesComprables());
+            return true;
+        }
+    }
+    return false;
 }
 
 bool Jugador::comprarEdificio(uint8_t tipo_edificio) {
     if(especia.comprarEdificio(tipo_edificio, cantidad_edificios, casa)) {
-        edificioCreado(tipo_edificio);
+        validador_de_unidades.actualizarUnidadesDisponibles(especia.obtenerUnidadesComprables());
         return true;
     }
     return false;
@@ -47,7 +54,8 @@ bool Jugador::comprarEdificio(uint8_t tipo_edificio) {
 
 void Jugador::edificioCreado(uint8_t tipo_edificio) {
     energia.edificioCreado(tipo_edificio);
-    // cantidad_edificios[tipo_edificio]++;
+    cantidad_edificios[tipo_edificio]++;
+    validador_de_unidades.actualizarUnidadesDisponibles(especia.obtenerUnidadesComprables());
 }
 
 uint16_t Jugador::obtenerTiempoConstruccionEdificio() {
@@ -57,7 +65,7 @@ uint16_t Jugador::obtenerTiempoConstruccionEdificio() {
 uint16_t Jugador::obtenerTiempoConstruccionUnidad(uint8_t tipo_unidad) {
     float multiplicador_edificios = obtenerMultiplicadorPorEdificios(tipo_unidad);
     float multiplicador_deuda_energetica = energia.obtenerMultiplicadorDeudaEnergetica();
-    return tiempo_construccion_base * multiplicador_edificios * multiplicador_deuda_energetica;
+    return (float) tiempo_construccion_base * multiplicador_edificios * multiplicador_deuda_energetica;
 }
 
 bool Jugador::operator==(const uint8_t& id_jugador) const {

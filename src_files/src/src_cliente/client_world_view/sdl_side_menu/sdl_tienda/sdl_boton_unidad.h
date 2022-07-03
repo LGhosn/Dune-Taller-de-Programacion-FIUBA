@@ -3,9 +3,11 @@
 
 #include "../../sdl_texturas.h"
 #include "../../../client_solicitudes/cliente_solicitud.h"
+#include "../../sdl_sonidos/sdl_mixer.h"
 
 class BotonUnidadSDL {
     SDL2pp::Renderer& renderer;
+    MixerSDL& mixer;
     uint8_t tipo_unidad;
     uint8_t casa;
     uint8_t id_jugador;
@@ -26,7 +28,8 @@ class BotonUnidadSDL {
 
     bool contiene(int pos_x, int pos_y) const;
 public:
-    BotonUnidadSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, uint8_t tipo,
+    BotonUnidadSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, MixerSDL& mixer,
+                    uint8_t tipo,
                     uint8_t casa, uint8_t id_jugador, SDL2pp::Rect destino,
                     YAML::Node& constantes);
 

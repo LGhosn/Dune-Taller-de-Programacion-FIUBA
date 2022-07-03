@@ -156,6 +156,7 @@ add_executable(server
         src/src_server/server_game/server_jugador/jugador.cpp
         src/src_server/server_game/server_jugador/especia_acumulada.cpp
         src/src_server/server_game/server_jugador/energia_acumulada.cpp
+        src/src_server/server_game/server_jugador/validador_unidades.cpp
         src/src_server/server_game/server_unidades/unidades.cpp
         src/src_server/server_game/server_unidades/cosechadora.cpp
         src/src_server/server_game/server_unidades/desviador.cpp

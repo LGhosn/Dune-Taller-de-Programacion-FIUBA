@@ -42,44 +42,12 @@ class EspeciaAcumulada {
 
     float fraccion_demoler;
 
-    void actualizarEdificiosComprables();
-    void actualizarUnidadesComprables(std::vector<uint8_t>& edificios_comprados, uint8_t& casa);
+    void actualizarYEnviarEdificiosComprables();
+    void actualizarUnidadesComprables();
 
     void enviarNuevaCantidadEspecia();
 
-    bool validarCompraUnidad(uint8_t unidad, std::vector<uint8_t>& edificios_comprados, uint8_t& casa);
-
     bool noHayEspeciaSuficienteParaLaUnidad(uint8_t tipo_unidad);
-
-    bool elJugadorConstruyoElCuartel(std::vector<uint8_t>& edificios_comprados);
-
-    bool elJugadorConstruyoElCuartelYElPalacio(std::vector<uint8_t>& edificios_comprados);
-
-    bool elJugadorConstruyoLaFabricaLigera(std::vector<uint8_t>& edificios_comprados);
-
-    bool elJugadorConstruyoLaFabricaPesada(std::vector<uint8_t>& edificios_comprados);
-
-    bool elJugadorConstruyoLaFabricaPesadaYElPalacio(std::vector<uint8_t>& edificios_comprados);
-
-    bool laUnidadARevisarEsInfanteria(uint8_t tipo_unidad);
-
-    bool laUnidadARevisarEsFremen(uint8_t tipo_unidad, uint8_t casa);
-
-    bool laUnidadARevisarEsSardaukar(uint8_t tipo_unidad, uint8_t casa);
-
-    bool laUnidadARevisarEsTrike(uint8_t tipo_unidad, uint8_t casa);
-
-    bool laUnidadARevisarEsRaider(uint8_t tipo_unidad, uint8_t casa);
-
-    bool laUnidadARevisarEsTanque(uint8_t tipo_unidad);
-
-    bool laUnidadARevisarEsTanqueSonico(uint8_t tipo_unidad, uint8_t casa);
-
-    bool laUnidadARevisarEsDesviador(uint8_t tipo_unidad, uint8_t casa);
-
-    bool laUnidadARevisarEsDevastador(uint8_t tipo_unidad, uint8_t casa);
-
-    bool laUnidadARevisarEsCosechadora(uint8_t tipo_unidad);
 
 public:
     EspeciaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
@@ -106,9 +74,15 @@ public:
      * su vez el nuevo monto en forma de comandos.
     */
     void demolerEdificio(uint8_t tipo);
+
+    /*
+     * 
+    */
     bool comprarUnidad(uint8_t tipo);
 
     void aumentarEspecia(uint16_t cantidad);
+
+    std::vector<bool> obtenerUnidadesComprables();
 
     EspeciaAcumulada& operator=(const EspeciaAcumulada& otra) = delete;
     EspeciaAcumulada(const EspeciaAcumulada& otra) = delete;
