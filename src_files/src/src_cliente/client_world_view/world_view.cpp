@@ -7,6 +7,7 @@ void WorldView::renderUI() {
 		edificio.second->renderUI();
 	}
 	this->side_menu.render();
+    this->marcador.render();
 }
 
 WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
@@ -49,6 +50,7 @@ WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
 					),
 					side_menu(renderer, mixer, casa, texturas, id_jugador, constantes,
 								colores.obtenerColor(id_jugador)),
+                    marcador(renderer, texturas, constantes, info_partida, colores.obtenerColor(id_jugador)),
 					edificio_factory(renderer, texturas, constantes, colores),
                     unidad_factory(renderer, texturas, constantes, colores),
 					id_jugador(id_jugador),

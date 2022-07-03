@@ -12,6 +12,7 @@
 #include "sdl_unidad/sdl_unidad_factory.h"
 #include "sdl_edificio/sdl_edificio_factory.h"
 #include "sdl_side_menu/sdl_side_menu.h"
+#include "sdl_marcador/sdl_marcador.h"
 #include "../client_solicitudes/cliente_solicitud.h"
 #include "../../src_common/common_coords.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
@@ -42,6 +43,7 @@ class WorldView {
 	float zoom;
 	MapaSDL mapa;
 	SideMenuSDL side_menu;
+	MarcadorSDL marcador;
 	std::unordered_map<Coordenadas, std::shared_ptr<EdificioSDL>, HashCoordenadas> edificios;
 	std::vector<std::shared_ptr<EdificioSDL>> edificios_seleccionados;
     std::vector<std::shared_ptr<UnidadSDL>> unidades_seleccionadas;

@@ -96,6 +96,7 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_side_menu/sdl_tienda/sdl_boton_paginas.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_especia.cpp
         src/src_cliente/client_world_view/sdl_side_menu/sdl_energia.cpp
+        src/src_cliente/client_world_view/sdl_marcador/sdl_marcador.cpp
         src/src_cliente/client_world_view/sdl_sonidos/sdl_sonidos.cpp
         src/src_cliente/client_world_view/sdl_sonidos/sdl_mixer.cpp
         src/src_cliente/client_world_view/world_view.cpp
