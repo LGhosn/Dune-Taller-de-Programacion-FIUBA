@@ -9,7 +9,7 @@ Tanque::Tanque(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_un
     this->velocidad = atributos_unidad["Vehiculo"]["Tanque"]["Velocidad"].as<int16_t>();
     this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Tanque"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Vehiculo"]["Tanque"]["Vida"].as<int16_t>();
-    this->costo = atributos_unidad["Vehiculo"]["Tanque"]["Costo"].as<uint8_t>();
+    this->costo = atributos_unidad["Vehiculo"]["Tanque"]["Costo"].as<uint16_t>();
     
     std::vector<char> aux = atributos_unidad["Vehiculo"]["Tanque"]["PenalizacionTerreno"].as<std::vector<char>>();
     std::vector<float> aux_float = atributos_unidad["Vehiculo"]["Tanque"]["PenalizacionVelocidad"].as<std::vector<float>>();

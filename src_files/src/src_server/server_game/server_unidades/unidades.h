@@ -33,7 +33,7 @@ protected:
     int16_t velocidad;
     uint16_t tiempo_entrenamiento;
     int16_t vida;
-    uint8_t costo;
+    uint16_t costo;
     std::unordered_map<char, float> penalizacion_terreno;
     std::vector<char> terrenos_no_accesibles;
 

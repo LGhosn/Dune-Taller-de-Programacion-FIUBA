@@ -58,7 +58,7 @@ Infanteria:
    TerrenosNoAccesibles:
     - 'P'
 
-Vehiculos:
+Vehiculo:
   Trike:
    Arma:
     - "Rifle"

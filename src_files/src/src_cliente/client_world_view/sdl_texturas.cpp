@@ -253,7 +253,7 @@ void TexturasSDL::cargarInfanteria() {
 void TexturasSDL::cargarVehiculos() {
     for (int i = 0; i < 8; i++) {
         std::stringstream stream;
-        std::cout << "PATH: " << stream.str() << std::endl;
+        stream << RUTA_COSECHADORA << "cosechadora" << (int) i << ".bmp";
         cosechadora.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
     }
 

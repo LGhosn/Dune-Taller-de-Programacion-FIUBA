@@ -9,7 +9,7 @@ Sardaukar::Sardaukar(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atribu
     this->velocidad = atributos_unidad["Infanteria"]["Sardaukar"]["Velocidad"].as<int16_t>();
     this->tiempo_entrenamiento = atributos_unidad["Infanteria"]["Sardaukar"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Infanteria"]["Sardaukar"]["Vida"].as<int16_t>();
-    this->costo = atributos_unidad["Infanteria"]["Sardaukar"]["Costo"].as<uint8_t>();
+    this->costo = atributos_unidad["Infanteria"]["Sardaukar"]["Costo"].as<uint16_t>();
     
     std::vector<char> aux = atributos_unidad["Infanteria"]["Sardaukar"]["PenalizacionTerreno"].as<std::vector<char>>();
     std::vector<float> aux_float = atributos_unidad["Infanteria"]["Sardaukar"]["PenalizacionVelocidad"].as<std::vector<float>>();

@@ -9,7 +9,7 @@ Trike::Trike(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unid
     this->velocidad = atributos_unidad["Vehiculo"]["Trike"]["Velocidad"].as<int16_t>();
     this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Trike"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Vehiculo"]["Trike"]["Vida"].as<int16_t>();
-    this->costo = atributos_unidad["Vehiculo"]["Trike"]["Costo"].as<uint8_t>();
+    this->costo = atributos_unidad["Vehiculo"]["Trike"]["Costo"].as<uint16_t>();
     
     std::vector<char> aux = atributos_unidad["Vehiculo"]["Trike"]["PenalizacionTerreno"].as<std::vector<char>>();
     std::vector<float> aux_float = atributos_unidad["Vehiculo"]["Trike"]["PenalizacionVelocidad"].as<std::vector<float>>();

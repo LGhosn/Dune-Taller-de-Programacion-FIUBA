@@ -9,7 +9,7 @@ Raider::Raider(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_un
     this->velocidad = atributos_unidad["Vehiculo"]["Raider"]["Velocidad"].as<int16_t>();
     this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Raider"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Vehiculo"]["Raider"]["Vida"].as<int16_t>();
-    this->costo = atributos_unidad["Vehiculo"]["Raider"]["Costo"].as<uint8_t>();
+    this->costo = atributos_unidad["Vehiculo"]["Raider"]["Costo"].as<uint16_t>();
     
     std::vector<char> aux = atributos_unidad["Vehiculo"]["Raider"]["PenalizacionTerreno"].as<std::vector<char>>();
     std::vector<float> aux_float = atributos_unidad["Vehiculo"]["Raider"]["PenalizacionVelocidad"].as<std::vector<float>>();
