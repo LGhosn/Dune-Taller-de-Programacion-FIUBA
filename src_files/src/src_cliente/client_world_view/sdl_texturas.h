@@ -26,6 +26,7 @@
 #define RUTA_TRAMPA_DE_AIRE RESOURCE_PATH "/edificios/trampa_de_aire.png"
 
 #define RUTA_INFANTERIA RESOURCE_PATH "/unidades/infanteria/"
+#define RUTA_SARDAUKAR RUTA_INFANTERIA "sardaukar/"
 #define RUTA_VEHICULOS RESOURCE_PATH "/unidades/vehiculos/"
 #define RUTA_COSECHADORA RUTA_VEHICULOS "cosechadora/"
 #define RUTA_DESVIADOR RUTA_VEHICULOS "desviador/" 
@@ -114,6 +115,7 @@ class TexturasSDL {
     SDL2pp::Texture edificio_silo;
     SDL2pp::Texture edificio_trampa_de_aire;
 
+    //Texturas vehiculos
     std::vector<SDL2pp::Texture> cosechadora;
     std::vector<SDL2pp::Texture> desviador;
     std::vector<SDL2pp::Texture> devastador;
@@ -121,6 +123,11 @@ class TexturasSDL {
     std::vector<SDL2pp::Texture> tanque;
     std::vector<SDL2pp::Texture> tanque_sonico;
     std::vector<SDL2pp::Texture> trike;
+
+    //Texturas infanteria
+    std::vector<SDL2pp::Texture> sardaukar_quieto;
+    std::vector<SDL2pp::Texture> sardaukar_disparando;
+    std::vector<SDL2pp::Texture> sardaukar_moviendose;
 
     std::vector<SDL2pp::Texture> gusano;
 
@@ -181,6 +188,10 @@ public:
     SDL2pp::Texture& obtenerTextoEdificios();
     SDL2pp::Texture& obtenerTextoInfanteria();
     SDL2pp::Texture& obtenerTextoVehiculos();
+
+    std::vector<SDL2pp::Texture>& obtenerInfanteriaQuieta(uint8_t tipo_infanteria);
+    std::vector<SDL2pp::Texture>& obtenerInfanteriaMoviendose(uint8_t tipo_infanteria);
+    std::vector<SDL2pp::Texture>& obtenerInfanteriaDisparando(uint8_t tipo_infanteria);
 };
 
 #endif // SDL_TEXTURAS_H

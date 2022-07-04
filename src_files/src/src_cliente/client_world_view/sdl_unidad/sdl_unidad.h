@@ -5,7 +5,6 @@
 #include "yaml-cpp/yaml.h"
 #include "../../../src_common/common_coords.h"
 #include "../sdl_color/sdl_color.h"
-#include "../sdl_texturas.h"
 #include "../sdl_sonidos/sdl_mixer.h"
 
 
@@ -27,7 +26,6 @@ protected:
     bool unidad_amiga;
     MixerSDL& mixer;
     SDL2pp::Renderer& renderer;
-    std::vector<SDL2pp::Texture>& texturas;
     Coordenadas coords;
     Coordenadas coords_siguiente;
     ColorSDL& color;
@@ -58,14 +56,13 @@ protected:
 
     //void setearPosicionUI(uint32_t origen_movil_x, uint32_t origen_movil_y);
 
-private:
     void renderRectanguloSeleccion();
     void renderHP();
 
-    void updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
     void updateTiempoRestante(long frames_transcurridos);
-
     void actualizarCoordenadaFutura(uint8_t direccion_actual);
+
+    virtual void updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom) = 0;
 
 public:
     UnidadSDL(uint8_t id_unidad,
@@ -75,14 +72,13 @@ public:
                 bool unidad_amiga,
                 MixerSDL& mixer,
                 SDL2pp::Renderer& renderer,
-                TexturasSDL& texturas,
                 const Coordenadas& coords,
                 YAML::Node& constantes,
                 ColorSDL& color,
                 uint16_t tiempo_aparicion);
 
 
-    void cambiarHP(uint16_t hp_edificio);
+    void cambiarHP(uint16_t hp_unidad);
     bool contiene(int pos_x, int pos_y);
     void seleccionar();
     void deseleccionar();
@@ -90,7 +86,7 @@ public:
     uint8_t obtenerIdJugador() const;
     
     void update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
-    void render();
+    virtual void render() = 0;
     void renderUI();
     void moverse(uint8_t direccion, uint16_t tiempo_movimiento);
     virtual ~UnidadSDL() = default;

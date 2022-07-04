@@ -2,6 +2,7 @@
 #include "../client_solicitudes/client_sol_crear_edificio.h"
 #include "../client_solicitudes/sol_mover_unidad.h"
 #include "../client_solicitudes/sol_atacar_unidad.h"
+#include "sdl_unidad/sdl_infanteria/sdl_infanteria.h"
 #include <functional>
 
 void WorldView::renderUI() {
@@ -182,7 +183,8 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                 bool unidad_amiga,
                                                 uint16_t tiempo_entrenamiento,
                                                 Coordenadas& coords_spawn) {
-    this->unidades[id_unidad] = std::shared_ptr<UnidadSDL>(new UnidadSDL(id_unidad,
+    if (tipo_unidad < 4) {
+        this->unidades[id_unidad] = std::shared_ptr<InfanteriaSDL>(new InfanteriaSDL(id_unidad,
                                                                          id_jugador,
                                                                          tipo_unidad,
                                                                          casa,
@@ -194,6 +196,20 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                                          constantes,
                                                                          colores.obtenerColor(id_jugador),
                                                                          tiempo_entrenamiento));
+    } else {
+        this->unidades[id_unidad] = std::shared_ptr<VehiculoSDL>(new VehiculoSDL(id_unidad,
+                                                                         id_jugador,
+                                                                         tipo_unidad,
+                                                                         casa,
+                                                                         unidad_amiga,
+                                                                         mixer,
+                                                                         renderer,
+                                                                         texturas,
+                                                                         coords_spawn,
+                                                                         constantes,
+                                                                         colores.obtenerColor(id_jugador),
+                                                                         tiempo_entrenamiento));
+    }
 }
 
 void WorldView::seleccionarUnidad(std::shared_ptr<UnidadSDL> unidad) {

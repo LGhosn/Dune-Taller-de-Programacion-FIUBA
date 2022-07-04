@@ -248,6 +248,28 @@ void TexturasSDL::cargarEdificios() {
 }
 
 void TexturasSDL::cargarInfanteria() {
+    // Texturas Fremen
+    // Texturas Inf lig
+    // Texturas Ing pes
+    
+    // Texturas Sardaukar
+    for (int i = 0; i < 8; i++) {
+        std::stringstream stream;
+        stream << RUTA_SARDAUKAR << "sardaukar_quieto" << (int) i << ".bmp";
+        sardaukar_quieto.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
+
+    for (int i = 0; i < 8; i++) {
+        std::stringstream stream;
+        stream << RUTA_SARDAUKAR << "sardaukar_disparando" << (int) i << ".bmp";
+        sardaukar_disparando.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
+
+    for (int i = 0; i < 8; i++) {
+        std::stringstream stream;
+        stream << RUTA_SARDAUKAR << "sardaukar" << (int) i << ".bmp";
+        sardaukar_moviendose.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
 }
 
 void TexturasSDL::cargarVehiculos() {
@@ -275,11 +297,11 @@ void TexturasSDL::cargarVehiculos() {
         raider.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
     }
 
-    //for (int i = 0; i < 8; i++) {
-    //    std::stringstream stream;
-    //    stream << RUTA_TANQUE << "tanque" << (int) i << ".bmp";
-    //    tanque.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
-    //}
+    for (int i = 0; i < 8; i++) {
+        std::stringstream stream;
+        stream << RUTA_TANQUE << "tanque" << (int) i << ".bmp";
+        tanque.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
 
     for (int i = 0; i < 8; i++) {
         std::stringstream stream;
@@ -340,7 +362,7 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
     cargarEdificios();
     cargarVehiculos();
     cargarGusano();
-    //cargarInfanterias();
+    cargarInfanteria();
 }
 
 SDL2pp::Texture& TexturasSDL::obtenerTexTile(uint8_t tipo_tile, uint8_t tipo_textura) {
@@ -387,13 +409,20 @@ std::vector<SDL2pp::Texture>& TexturasSDL::obtenerVehiculo(uint8_t tipo_vehiculo
             return trike;        
         }
         default:
-            break;
+            throw std::runtime_error("SDLTexturas: vehiculo no reconocido");
     }
-    return cosechadora;
 }
     
-std::vector<SDL2pp::Texture>& TexturasSDL::obtenerInfanteria(uint8_t tipo_infanteria) {
-    return this->cosechadora; // TODO: arreglar
+std::vector<SDL2pp::Texture>& TexturasSDL::obtenerInfanteriaQuieta(uint8_t tipo_infanteria) {
+    return this->sardaukar_quieto; // TODO: arreglar
+}
+
+std::vector<SDL2pp::Texture>& TexturasSDL::obtenerInfanteriaMoviendose(uint8_t tipo_infanteria) {
+    return this->sardaukar_moviendose; // TODO: arreglar
+}
+
+std::vector<SDL2pp::Texture>& TexturasSDL::obtenerInfanteriaDisparando(uint8_t tipo_infanteria) {
+    return this->sardaukar_disparando; // TODO: arreglar
 }
 
 

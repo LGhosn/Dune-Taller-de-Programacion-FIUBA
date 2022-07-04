@@ -7,7 +7,7 @@
 #include "sdl_sonidos/sdl_sonidos.h"
 #include "sdl_color/sdl_colores.h"
 #include "sdl_texturas.h"
-#include "sdl_unidad/sdl_unidad.h"
+#include "sdl_unidad/sdl_vehiculo/sdl_vehiculo.h"
 #include "sdl_edificio/sdl_edificio.h"
 #include "sdl_edificio/sdl_edificio_factory.h"
 #include "sdl_side_menu/sdl_side_menu.h"
@@ -54,7 +54,7 @@ class WorldView {
 
 	void deseleccionarEdificios();
 	void seleccionarEdificio(std::shared_ptr<EdificioSDL> edificio);
-    void seleccionarUnidad(std::shared_ptr<UnidadSDL> edificio);
+    void seleccionarUnidad(std::shared_ptr<UnidadSDL> unidad);
     void deseleccionarUnidades();
 
 	void renderUI();
