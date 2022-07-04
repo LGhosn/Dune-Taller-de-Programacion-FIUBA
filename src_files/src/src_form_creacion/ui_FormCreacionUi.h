@@ -93,7 +93,6 @@ public:
         JugadoresSpinBox->setGeometry(QRect(380, 230, 48, 26));
         JugadoresSpinBox->setMinimum(2);
         MapaComboBox = new QComboBox(FromCrear);
-        MapaComboBox->addItem(QString());
         MapaComboBox->setObjectName(QString::fromUtf8("MapaComboBox"));
         MapaComboBox->setGeometry(QRect(380, 200, 161, 25));
 
@@ -115,8 +114,6 @@ public:
         AtreidesButton->setText(QString());
         HarkonnenButton->setText(QString());
         OrdosButton->setText(QString());
-        MapaComboBox->setItemText(0, QApplication::translate("FromCrear", "-", nullptr));
-
     } // retranslateUi
 
 };

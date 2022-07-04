@@ -30,7 +30,7 @@ void UnidadSDL::update(uint32_t offset_x, uint32_t offset_y, long frames_transcu
     if (!desplegada) {
         updateTiempoRestante(frames_transcurridos);
     }
-    updatePosicionUnidad(offset_x, offset_y, zoom);
+    updatePosicionUnidad(offset_x, offset_y, frames_transcurridos, zoom);
 }
 
 void UnidadSDL::updateTiempoRestante(long frames_transcurridos) {
@@ -41,7 +41,7 @@ void UnidadSDL::updateTiempoRestante(long frames_transcurridos) {
     }
 }
 
-void UnidadSDL::updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, float zoom) {
+void UnidadSDL::updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom) {
     this->zoom = zoom;
     destino.SetX(coords.x * ancho_tile * zoom - offset_x);
     destino.SetY((coords.y * largo_tile) * zoom - offset_y);
@@ -147,10 +147,10 @@ void UnidadSDL::renderRectanguloSeleccion() {
 }
 
 void UnidadSDL::moverse(uint8_t direccion, uint16_t tiempo_movimiento) {
-    actualizarCoordenadaActual(direccion);
+    actualizarCoordenadaFutura(direccion);
 }
 
-void UnidadSDL::actualizarCoordenadaActual(uint8_t direccion_actual) {
+void UnidadSDL::actualizarCoordenadaFutura(uint8_t direccion_actual) {
     switch(direccion_actual) {
         case ABAJO_UNIDAD: {
             coords.y++;

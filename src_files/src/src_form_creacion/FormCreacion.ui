@@ -222,11 +222,6 @@
      <height>25</height>
     </rect>
    </property>
-   <item>
-    <property name="text">
-     <string>-</string>
-    </property>
-   </item>
   </widget>
  </widget>
  <resources>
