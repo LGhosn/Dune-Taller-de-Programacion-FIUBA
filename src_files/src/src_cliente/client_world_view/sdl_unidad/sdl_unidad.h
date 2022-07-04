@@ -20,6 +20,7 @@ class UnidadSDL {
 protected:
     uint8_t id_unidad;
     uint8_t id_jugador;
+    uint8_t tipo_unidad;
     SDL2pp::Renderer& renderer;
     std::vector<SDL2pp::Texture>& texturas;
     Coordenadas coords;
@@ -64,6 +65,7 @@ private:
 public:
     UnidadSDL(uint8_t id_unidad,
                 uint8_t id_jugador,
+                uint8_t tipo_unidad,
                 SDL2pp::Renderer& renderer,
                 TexturasSDL& texturas,
                 const Coordenadas& coords,

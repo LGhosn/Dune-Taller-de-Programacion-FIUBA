@@ -11,6 +11,8 @@ QMessageBox
 -
 iostream
 -
+string
+-
 QMouseEvent
 -
 QLabel
@@ -46,6 +48,8 @@ ClickableLabel.h
 QMessageBox
 -
 iostream
+-
+string
 -
 QMouseEvent
 -
@@ -92,6 +96,8 @@ QDir
 QScrollArea
 -
 QGridLayout
+-
+string
 -
 DuneEditorDeMapasUi.h
 /home/sruizs/Escritorio/FIUBA/TALLER DE PROGRAMACION/TP FINAL/Dune-Taller-de-Programacion-FIUBA/src_files/src/src_editor/DuneEditorDeMapasUi.h

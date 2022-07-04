@@ -269,11 +269,11 @@ void TexturasSDL::cargarVehiculos() {
         devastador.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
     }
 
-    // for (int i = 0; i < 8; i++) {
-        // std::stringstream stream;
-    //     stream << RUTA_RAIDER << "raider" << (int) i << ".bmp";
-    //     raider.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
-    // }
+    for (int i = 0; i < 8; i++) {
+        std::stringstream stream;
+        stream << RUTA_TRIKE << "trike" << (int) i << ".bmp";
+        raider.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
 
     //for (int i = 0; i < 8; i++) {
     //    std::stringstream stream;

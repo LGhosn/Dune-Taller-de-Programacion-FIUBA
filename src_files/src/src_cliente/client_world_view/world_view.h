@@ -9,7 +9,6 @@
 #include "sdl_texturas.h"
 #include "sdl_unidad/sdl_unidad.h"
 #include "sdl_edificio/sdl_edificio.h"
-#include "sdl_unidad/sdl_unidad_factory.h"
 #include "sdl_edificio/sdl_edificio_factory.h"
 #include "sdl_side_menu/sdl_side_menu.h"
 #include "sdl_marcador/sdl_marcador.h"
@@ -49,7 +48,6 @@ class WorldView {
     std::vector<std::shared_ptr<UnidadSDL>> unidades_seleccionadas;
     std::map<uint8_t, std::shared_ptr<UnidadSDL>> unidades;
 	EdificioFactorySDL edificio_factory;
-	UnidadFactorySDL unidad_factory;
 	long frame_anterior = 0;
 	uint8_t id_jugador;
 	InfoPartidaDTO info_partida;
@@ -80,7 +78,7 @@ public:
 
 	void empezarEntrenamiento(uint8_t id_unidad, uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
 
-	void empezarAparicionDeUnidad(uint8_t id_jugador,uint8_t id_unidad,uint8_t tipo_unidad,long tiempo_entrenamiento, Coordenadas& coords_spawn);
+	void empezarAparicionDeUnidad(uint8_t id_jugador,uint8_t id_unidad,uint8_t tipo_unidad, uint16_t tiempo_entrenamiento, Coordenadas& coords_spawn);
 
 	void crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 						const Coordenadas& coords, uint8_t tipo, uint8_t casa);

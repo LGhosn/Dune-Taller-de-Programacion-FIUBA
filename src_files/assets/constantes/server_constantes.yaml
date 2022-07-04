@@ -120,26 +120,26 @@ Game:
       - 2
     TiempoDeEntrenamiento: # En segundos
       #Fremen
-      - 120
+      - 5
       #Infanteria Ligera
       #- 60
       - 5
       #Infanteria Pesada
       #- 78
-      - 10
+      - 5
       #Sardaukar
-      - 120
+      - 5
       #Cosechadora
-      - 180
+      - 5
       #Desviador
-      - 240
+      - 5
       #Devastador
-      - 300
+      - 5
       #Raider
-      - 120
+      - 5
       #Tanque
-      - 240
+      - 5
       #TanqueSonico
-      - 240
+      - 5
       #Trike
-      - 120
+      - 5

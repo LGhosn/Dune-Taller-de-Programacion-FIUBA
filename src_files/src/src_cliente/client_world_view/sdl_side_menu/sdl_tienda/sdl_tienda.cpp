@@ -205,7 +205,7 @@ void TiendaSDL::empezarEntrenamientoInfanteria(uint8_t tipo, uint16_t tiempo_ent
 }
 
 void TiendaSDL::empezarEntrenamientoVehiculo(uint8_t tipo, uint16_t tiempo_entrenamiento) {
-    botones_vehiculos[tipo].empezarEntrenamiento(tiempo_entrenamiento);
+    botones_vehiculos[tipo - 4].empezarEntrenamiento(tiempo_entrenamiento);
 }
 
 void TiendaSDL::actualizarEdificios(const std::vector<bool>& edificios_comprables) {

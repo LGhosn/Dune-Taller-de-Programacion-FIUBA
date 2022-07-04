@@ -53,7 +53,6 @@ WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
 								colores.obtenerColor(id_jugador)),
                     marcador(renderer, texturas, constantes, info_partida, colores.obtenerColor(id_jugador)),
 					edificio_factory(renderer, texturas, constantes, colores),
-                    unidad_factory(renderer, texturas, constantes, colores),
 					id_jugador(id_jugador),
 					info_partida(info_partida) {
 	renderer.SetDrawBlendMode(SDL_BLENDMODE_BLEND);
@@ -179,10 +178,17 @@ void WorldView::empezarEntrenamiento(uint8_t id_unidad, uint8_t tipo_unidad, uin
 void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                 uint8_t id_jugador,
                                                 uint8_t tipo_unidad,
-                                                long tiempo_entrenamiento,
+                                                uint16_t tiempo_entrenamiento,
                                                 Coordenadas& coords_spawn) {
-    std::cout << "IdUnidad: " << (int)id_unidad << std::endl;
-    this->unidades[id_unidad] = unidad_factory.crearUnidad(id_unidad, id_jugador, renderer, coords_spawn, constantes, colores, tiempo_entrenamiento, tipo_unidad);
+    this->unidades[id_unidad] = std::shared_ptr<UnidadSDL>(new UnidadSDL(id_unidad,
+                                                                         id_jugador,
+                                                                         tipo_unidad,
+                                                                         renderer,
+                                                                         texturas,
+                                                                         coords_spawn,
+                                                                         constantes,
+                                                                         colores.obtenerColor(id_jugador),
+                                                                         tiempo_entrenamiento));
 }
 
 void WorldView::seleccionarUnidad(std::shared_ptr<UnidadSDL> unidad) {
