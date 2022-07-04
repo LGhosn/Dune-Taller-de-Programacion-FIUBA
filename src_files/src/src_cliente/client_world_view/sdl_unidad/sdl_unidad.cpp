@@ -1,5 +1,4 @@
 #include "sdl_unidad.h"
-#include <cmath>
 
 UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 uint8_t id_jugador,
@@ -8,7 +7,6 @@ UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 bool unidad_amiga,
                 MixerSDL& mixer,
                 SDL2pp::Renderer& renderer,
-                TexturasSDL& texturas,
                 const Coordenadas& coords,
                 YAML::Node& constantes,
                 ColorSDL& color,
@@ -20,7 +18,6 @@ UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 unidad_amiga(unidad_amiga),
                 mixer(mixer),
                 renderer(renderer),
-                texturas(texturas.obtenerVehiculo(tipo_unidad)),
                 coords(coords),
                 coords_siguiente(coords),
                 color(color),
@@ -36,13 +33,6 @@ UnidadSDL::UnidadSDL(uint8_t id_unidad,
     frames_restantes = tiempo_aparicion * fps;
 }
 
-void UnidadSDL::update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom) {
-    if (!desplegada) {
-        updateTiempoRestante(frames_transcurridos);
-    }
-    updatePosicionUnidad(offset_x, offset_y, frames_transcurridos, zoom);
-}
-
 void UnidadSDL::updateTiempoRestante(long frames_transcurridos) {
     if (frames_restantes > frames_transcurridos) {
         frames_restantes -= frames_transcurridos;
@@ -50,41 +40,6 @@ void UnidadSDL::updateTiempoRestante(long frames_transcurridos) {
         desplegada = true;
     }
 }
-
-void UnidadSDL::updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom) {
-    this->zoom = zoom;
-    if (!moviendose) {
-        destino.SetX(coords.x * ancho_tile * zoom - offset_x);
-        destino.SetY((coords.y * largo_tile) * zoom - offset_y);
-    } else {
-        if (frames_transcurridos > frames_restantes) {
-            moviendose = false;
-            coords = coords_siguiente;
-            destino.SetX(coords.x * ancho_tile * zoom - offset_x);
-            destino.SetY((coords.y * largo_tile) * zoom - offset_y);
-        } else {
-            frames_restantes -= frames_transcurridos;
-            float porcentaje_completo = (float) frames_restantes / (float) frames_para_llegar;
-            int8_t diferencia_x = coords_siguiente.x - coords.x;
-            int8_t diferencia_y = coords_siguiente.y - coords.y;
-            destino.SetX((coords.x * largo_tile + diferencia_x * (1 - porcentaje_completo) * ancho_tile) * zoom - offset_x);
-            destino.SetY((coords.y * largo_tile + diferencia_y * (1 - porcentaje_completo) * largo_tile) * zoom - offset_y);
-        }
-    }
-    destino.SetW(ancho_tile * zoom);
-    destino.SetH(largo_tile * zoom);
-}
-
-void UnidadSDL::render() {
-    if (desplegada) {
-        renderer.Copy(texturas[direccion_actual], SDL2pp::NullOpt, destino);
-        renderUI();
-    } else {
-        renderer.SetDrawColor(color.obtenerOscuroSemitransparente());
-        renderer.FillRect(destino);
-    }
-}
-
 void UnidadSDL::seleccionar() {
     if (unidad_amiga) {
         seleccionado = true;
@@ -234,12 +189,15 @@ void UnidadSDL::actualizarCoordenadaFutura(uint8_t direccion) {
             this->direccion_actual = ABAJO_DER_UNIDAD;
             break;
         } default: {
-            std::string error("UnidadSDL: direccion no reconocida" + direccion_actual);
+            std::string error("VehiculoSDL: direccion no reconocida" + direccion_actual);
             throw std::runtime_error(error);
         }
     }
 }
 
-UnidadSDL::~UnidadSDL() {
-    std::cout << "UnidadSDL: destructor" << std::endl;
+void UnidadSDL::update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom) {
+    if (!desplegada) {
+        updateTiempoRestante(frames_transcurridos);
+    }
+    updatePosicionUnidad(offset_x, offset_y, frames_transcurridos, zoom);
 }

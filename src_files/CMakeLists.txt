@@ -79,6 +79,8 @@ add_executable(client
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile_factory.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_tile.cpp
         src/src_cliente/client_world_view/sdl_mapa/sdl_mapa.cpp
+        src/src_cliente/client_world_view/sdl_unidad/sdl_vehiculo/sdl_vehiculo.cpp
+        src/src_cliente/client_world_view/sdl_unidad/sdl_infanteria/sdl_infanteria.cpp
         src/src_cliente/client_world_view/sdl_unidad/sdl_unidad.cpp
         src/src_cliente/client_world_view/sdl_edificio/sdl_edificio.cpp
         src/src_cliente/client_world_view/sdl_edificio/sdl_edificio_factory.cpp

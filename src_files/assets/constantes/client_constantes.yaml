@@ -45,6 +45,7 @@ WorldView:
         PaddingX: 0
         PaddingRect: 0
       RelacionLineasLargo: 0.2
+    Alto: 20
   Edificios:
     UI:
       HP:
