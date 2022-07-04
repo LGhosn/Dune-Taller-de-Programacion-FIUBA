@@ -8,10 +8,10 @@
 struct UnidadInfoDTO {
     const Coordenadas& origen;
     const Coordenadas& destino;
-    std::vector<char>& terrenos_no_accesibles;
+    std::vector<uint8_t>& terrenos_no_accesibles;
     const std::vector<float>& penalizacion_terreno;
 
-    UnidadInfoDTO(const Coordenadas& origen, const Coordenadas& destino, std::vector<char>& terrenos_no_accesibles, const std::vector<float>& penalizacion_terreno) :
+    UnidadInfoDTO(const Coordenadas& origen, const Coordenadas& destino, std::vector<uint8_t>& terrenos_no_accesibles, const std::vector<float>& penalizacion_terreno) :
         origen(origen),
         destino(destino),
         terrenos_no_accesibles(terrenos_no_accesibles),

@@ -120,13 +120,13 @@ std::vector<uint8_t> SerializadorServer::serializarComandoEnemigoDespliegaUnidad
 /* *****************************************************************
  *                  METODOS REFERIDOS A MOVER UNIDAD
  * *****************************************************************/
-std::vector<uint8_t> SerializadorServer::serializarComandoMoverUnidad(uint8_t id_unidad, char direccion, uint16_t tiempo){
+std::vector<uint8_t> SerializadorServer::serializarComandoMoverUnidad(uint8_t id_unidad, uint8_t direccion, uint16_t tiempo){
     std::vector<uint8_t> buffer(5);
     buffer[0] = CODIGO_MOVER_UNIDAD;
     buffer[1] = direccion;
     buffer[2] = id_unidad;
-    long* aux2 = (long*)(buffer.data() + 3);
-    aux2[0] = htonl(tiempo);
+    uint16_t* aux2 = (uint16_t*)(buffer.data() + 3);
+    aux2[0] = htons(tiempo);
     return buffer;
 }
 

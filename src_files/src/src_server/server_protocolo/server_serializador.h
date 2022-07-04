@@ -57,7 +57,7 @@ public:
 /* *****************************************************************
  *               METODOS REFERIDOS A MOVER UNIDAD
  * *****************************************************************/
-    std::vector<uint8_t> serializarComandoMoverUnidad(uint8_t id_unidad, char direccion, uint16_t tiempo);
+    std::vector<uint8_t> serializarComandoMoverUnidad(uint8_t id_unidad, uint8_t direccion, uint16_t tiempo);
 
 /* *****************************************************************
  *                  METODOS REFERIDOS A PUNTAJE

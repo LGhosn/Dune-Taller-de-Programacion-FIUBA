@@ -66,7 +66,7 @@ void WorldView::update(long frame_actual) {
     }
 
     for (auto& edificio : this->edificios) {
-        edificio.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(), frame_actual, zoom);
+        edificio.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(), frames_transcurridos, zoom);
     }
 
     for (auto & unidad: this->unidades) {
@@ -181,7 +181,7 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                 uint8_t id_jugador,
                                                 uint8_t tipo_unidad,
                                                 long tiempo_entrenamiento,
-                                                const Coordenadas& coords_spawn) {
+                                                Coordenadas& coords_spawn) {
     std::shared_ptr<UnidadSDL> unidad_a_desplegar = unidad_factory.crearUnidad(id_unidad,
                                                                 id_jugador,
                                                                 renderer,
@@ -190,7 +190,7 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                                 colores,
                                                                 tiempo_entrenamiento,
                                                                 tipo_unidad);
-    unidades.insert(std::make_pair(id_unidad, unidad_a_desplegar));
+    unidades[id_unidad] = unidad_a_desplegar;
 }
 
 void WorldView::seleccionarUnidad(std::shared_ptr<UnidadSDL> unidad) {

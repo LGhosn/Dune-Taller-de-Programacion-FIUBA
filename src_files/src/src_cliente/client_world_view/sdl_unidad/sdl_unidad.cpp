@@ -201,3 +201,7 @@ void UnidadSDL::actualizarCoordenadaActual(uint8_t direccion_actual) {
         }
     }
 }
+
+UnidadSDL::~UnidadSDL() {
+    std::cout << "UnidadSDL: destructor" << std::endl;
+}

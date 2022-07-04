@@ -11,7 +11,7 @@ public:
     Entidades() = default;
     virtual char obtenerIdentificador() = 0;
     virtual char obtenerTipoDeEntidad() = 0;
-    virtual uint16_t obtenerIdJugador() = 0;
+    virtual uint8_t obtenerIdJugador() = 0;
     virtual ~Entidades() = default;
 };
 

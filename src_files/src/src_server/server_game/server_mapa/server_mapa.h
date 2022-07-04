@@ -53,7 +53,7 @@ private:
      * @param pos_y: posicion en y de donde se quiere colocar el edificio 
      * @param propiedades_edif: propiedades del edificio a construir <dimension_x, dimension_y, tipo_edificio>
     */
-    void edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio, uint16_t id_jugador);
+    void edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio, uint8_t id_jugador);
 
     /*
      * @brief Verifica que el terreno sea lo suficiente resistente para las construcciones
@@ -62,11 +62,11 @@ private:
     */
     bool terrenoFirme(const Coordenadas& coords, int dimension_x, int dimension_y);
 
-    bool construccionLejana(const Coordenadas &coords, uint16_t id_jugador);
+    bool construccionLejana(const Coordenadas &coords, uint8_t id_jugador);
 
     void cargarCentrosDeConstruccion(YAML::Node& mapa_config);
 
-    std::unique_ptr<Entidades> clasificarEdificio(char tipo, YAML::Node& edificio_config, uint16_t id_jugador);
+    std::unique_ptr<Entidades> clasificarEdificio(char tipo, YAML::Node& edificio_config, uint8_t id_jugador);
 
     std::unique_ptr<Entidades> clasificarTerreno(int tipo);
 
@@ -87,13 +87,13 @@ public:
      * @param comando una tupla conformada por el edificio(uint8_t), la coordenada x(uint16_t) y la coordenada y(uint16_t)
      * @return un booleano indicando si se pudo construir o no.
      */
-    bool construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords);
+    bool construirEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& coords);
 
     /*
      * Construye un centro de construccion para el jugador con la id dada, en
      * las coordenadas pasadas por parametro.
     */
-    void construirCentro(uint16_t id_jugador, const Coordenadas& coords);
+    void construirCentro(uint8_t id_jugador, const Coordenadas& coords);
 
     /*
      * Imprime el mapa en consola
@@ -122,7 +122,7 @@ public:
 
     char obtenerTipoDeTerreno(Coordenadas& coords);
 
-    char obtenerDireccion(const Coordenadas& coords_actual,const Coordenadas& coords_nueva);
+    uint8_t obtenerDireccion(const Coordenadas& coords_actual,const Coordenadas& coords_nueva);
 
 
     /*

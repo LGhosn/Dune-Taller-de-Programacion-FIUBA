@@ -16,7 +16,7 @@ char UnidadesMapa::obtenerTipoDeEntidad() {
     return this->tipo_entidad;
 }
 
-uint16_t UnidadesMapa::obtenerIdJugador() {
+uint8_t UnidadesMapa::obtenerIdJugador() {
     return this->id_jugador;
 }
 

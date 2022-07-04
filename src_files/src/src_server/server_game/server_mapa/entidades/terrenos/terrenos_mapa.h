@@ -8,12 +8,12 @@
 class Terrenos : public Entidades {
 protected:
     char tipo_entidad;
-    uint16_t id_jugador = 0;
+    uint8_t id_jugador = 0;
 public:
     Terrenos() = default;
     virtual char obtenerIdentificador();
     virtual char obtenerTipoDeEntidad();
-    virtual uint16_t obtenerIdJugador();
+    virtual uint8_t obtenerIdJugador();
     virtual ~Terrenos() = default;
 };
 

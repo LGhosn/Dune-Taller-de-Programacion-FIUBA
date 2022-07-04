@@ -16,6 +16,8 @@ Infanteria:
     - 1 # Roca
    TerrenosNoAccesibles: 
     - 4
+    - 85
+    - 69
   InfanteriaPesada:
    Arma: 
     - "Lanza misiles"
@@ -33,6 +35,8 @@ Infanteria:
     - 1 # Roca
    TerrenosNoAccesibles:
     - 4
+    - 85
+    - 69
   Fremen:
    Arma:
     - "Rifle"
@@ -51,6 +55,8 @@ Infanteria:
     - 1 # Roca
    TerrenosNoAccesibles:
     - 4
+    - 85
+    - 69
   Sardaukar:
    Arma:
     - "Rifle"
@@ -69,6 +75,8 @@ Infanteria:
     - 1 # Roca
    TerrenosNoAccesibles:
     - 4
+    - 85
+    - 69
 
 Vehiculo:
   Trike:
@@ -87,8 +95,10 @@ Vehiculo:
     - 1 # Precipicio
     - 1 # Roca
    TerrenosNoAccesibles:
-    - 'P'
-    - 'C'
+    - 4
+    - 1
+    - 85
+    - 69
   TanqueSonico:
     Arma:
       - "Ondas de sonido"
@@ -107,6 +117,8 @@ Vehiculo:
     TerrenosNoAccesibles:
       - 4
       - 1
+      - 85
+      - 69
   Raider:
     Arma:
       - "Canion 22mm"
@@ -125,6 +137,8 @@ Vehiculo:
     TerrenosNoAccesibles:
       - 2
       - 1
+      - 85
+      - 69
   Desviador:
     Arma:
       - "Lanza misiles"
@@ -143,6 +157,8 @@ Vehiculo:
     TerrenosNoAccesibles:
       - 4
       - 1
+      - 85
+      - 69
   Tanque:
     Arma:
       - "Canion"
@@ -161,6 +177,8 @@ Vehiculo:
     TerrenosNoAccesibles:
       - 4
       - 1
+      - 85
+      - 69
   Devastador:
     Arma:
       - "Canion de plasma"
@@ -179,6 +197,8 @@ Vehiculo:
     TerrenosNoAccesibles:
       - 4
       - 1
+      - 85
+      - 69
   Cosechadora:
     Velocidad: 12
     TiempoEntrenamiento: 180

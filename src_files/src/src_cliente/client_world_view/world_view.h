@@ -80,7 +80,7 @@ public:
 
 	void empezarEntrenamiento(uint8_t id_unidad, uint8_t tipo, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
 
-	void empezarAparicionDeUnidad(uint8_t id_jugador,uint8_t id_unidad,uint8_t tipo_unidad,long tiempo_entrenamiento, const Coordenadas& coords_spawn);
+	void empezarAparicionDeUnidad(uint8_t id_jugador,uint8_t id_unidad,uint8_t tipo_unidad,long tiempo_entrenamiento, Coordenadas& coords_spawn);
 
 	void crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
 						const Coordenadas& coords, uint8_t tipo, uint8_t casa);

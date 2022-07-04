@@ -210,14 +210,13 @@ CmdEmpezarEntrenamientoClienteDTO ProtocoloCliente::recibirComandoEmpezarEntrena
 }
 
 CmdMoverUnidadClienteDTO ProtocoloCliente::recibirComandoMoverUnidad() {
-    char direccion;
+    uint8_t direccion;
     this->skt_cliente.recvall(&direccion, SIZEOF_BYTE);
-    direccion = ntohs(direccion);
     uint8_t id_unidad;
     this->skt_cliente.recvall(&id_unidad, SIZEOF_BYTE);
-    long tiempo;
+    uint16_t tiempo;
     this->skt_cliente.recvall(&tiempo, SIZEOF_TWO_BYTES);
-    tiempo = ntohl(tiempo);
+    tiempo = ntohs(tiempo);
     return CmdMoverUnidadClienteDTO(direccion, id_unidad, tiempo);
 }
 

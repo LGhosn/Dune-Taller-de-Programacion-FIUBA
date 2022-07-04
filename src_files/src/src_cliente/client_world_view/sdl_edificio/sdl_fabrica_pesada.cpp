@@ -19,7 +19,7 @@ void FabricaPesadaSDL::cambiarHP(uint16_t hp_edificio) {
 }
 
 void FabricaPesadaSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y,
-                                long frame_actual, float zoom) {
+                                long frame_transcurridos, float zoom) {
     this->zoom = zoom;
     destino.SetW(ancho_tile * ancho * zoom);
     destino.SetH(destino.GetW() * textura.GetHeight() / textura.GetWidth());

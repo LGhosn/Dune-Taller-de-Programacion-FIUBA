@@ -18,7 +18,7 @@ class CentroSDL : public EdificioSDL {
     const uint32_t rate_brazo;
     const int32_t offset_x_brazo;
     const int32_t offset_y_brazo;
-    
+    long frames_restantes;
 
     void actualizarFrameBrazo(long frame_actual);
     void setearPosicionBrazo();
@@ -30,7 +30,7 @@ public:
 
     void cambiarHP(uint16_t hp_edificio) override;
 
-    void update(uint32_t offset_x, uint32_t offset_y, long frame_actual, float zoom) override;
+    void update(uint32_t offset_x, uint32_t offset_y, long frame_transcurridos, float zoom) override;
 
     void render() override;
 

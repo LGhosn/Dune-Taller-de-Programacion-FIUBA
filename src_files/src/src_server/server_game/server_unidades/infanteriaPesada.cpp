@@ -15,5 +15,5 @@ InfanteriaPesada::InfanteriaPesada(uint8_t id, Jugador& duenio, Mapa& mapa, YAML
     
     this->penalizacion_terreno = atributos_unidad["Infanteria"]["InfanteriaPesada"]["PenalizacionTerreno"].as<std::vector<float>>();
 
-    this->terrenos_no_accesibles = atributos_unidad["Infanteria"]["InfanteriaPesada"]["TerrenosNoAccesibles"].as<std::vector<char>>();
+    this->terrenos_no_accesibles = atributos_unidad["Infanteria"]["InfanteriaPesada"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }

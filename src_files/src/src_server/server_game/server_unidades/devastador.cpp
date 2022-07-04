@@ -18,5 +18,5 @@ Devastador::Devastador(uint8_t id,
     this->costo = atributos_unidad["Vehiculo"]["Devastador"]["Costo"].as<uint16_t>();
     
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Devastador"]["PenalizacionTerreno"].as<std::vector<float>>();
-    this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Devastador"]["TerrenosNoAccesibles"].as<std::vector<char>>();
+    this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Devastador"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }

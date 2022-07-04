@@ -63,7 +63,7 @@ public:
     void seleccionar();
     void deseleccionar();
 
-    virtual void update(uint32_t offset_x, uint32_t offset_y, long frame_actual, float zoom) = 0;
+    virtual void update(uint32_t offset_x, uint32_t offset_y, long frame_transcurridos, float zoom) = 0;
 
     virtual void render() = 0;
 
