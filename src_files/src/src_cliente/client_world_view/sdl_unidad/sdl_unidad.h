@@ -23,14 +23,18 @@ protected:
     SDL2pp::Renderer& renderer;
     std::vector<SDL2pp::Texture>& texturas;
     Coordenadas coords;
+    Coordenadas coords_siguiente;
     ColorSDL& color;
     long frames_restantes = 0;
+    uint16_t frames_para_llegar = 0;
     SDL2pp::Rect destino;
     SDL2pp::Rect destino_ui;
     bool seleccionado = false;
     bool desplegada = false;
+    bool moviendose = false;
     float zoom;
     uint8_t direccion_actual = 0;
+    float distancia = 0.0f;
 
     // Constantes
     const int32_t offset_x_hp;
@@ -52,10 +56,10 @@ private:
     void renderRectanguloSeleccion();
     void renderHP();
 
-    void updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, float zoom);
+    void updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
     void updateTiempoRestante(long frames_transcurridos);
 
-    void actualizarCoordenadaActual(uint8_t direccion_actual);
+    void actualizarCoordenadaFutura(uint8_t direccion_actual);
 
 public:
     UnidadSDL(uint8_t id_unidad,
