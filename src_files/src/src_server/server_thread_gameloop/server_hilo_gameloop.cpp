@@ -17,13 +17,13 @@ void HiloGameLoop::manejarHilo() {
 void HiloGameLoop::run() {
     using namespace std::chrono;
     long iter_actual = 0, iter_anterior = 0;
-    time_point t1 = system_clock::now();
+    time_point t1 = steady_clock::now();
     milliseconds tick_rate(1000 / TICKS_POR_SEGUNDO);
     while(corriendo) {
         long iter_transcurridos = iter_actual - iter_anterior;
         this->manejarSolicitudes();
         this->update(iter_transcurridos);
-        time_point t2 = system_clock::now();
+        time_point t2 = steady_clock::now();
 		milliseconds tiempo_transcurrido = duration_cast<milliseconds>(t2 - t1);
 		t1 = t2;
         milliseconds rest;

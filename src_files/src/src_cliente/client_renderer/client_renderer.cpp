@@ -33,13 +33,13 @@ void ClientRenderer::game_loop() {
 	using namespace std::chrono;
 	bool running = true;
 	long frame = 0;
-	time_point t1 = system_clock::now();
+	time_point t1 = steady_clock::now();
 	milliseconds frame_rate(1000 / FPS);
 	while (running) {
 		running = this->manejar_comando();
 		this->update(frame);
 		this->render();
-		time_point t2 = system_clock::now();
+		time_point t2 = steady_clock::now();
 		milliseconds tiempo_transcurrido = duration_cast<milliseconds>(t2 - t1);
 		t1 = t2;
 		milliseconds rest;

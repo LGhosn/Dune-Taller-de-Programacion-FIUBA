@@ -24,6 +24,7 @@ protected:
     Coordenadas origen;
     uint8_t id;
     bool moviendose = false;
+    bool atacando = false;
     std::stack<Coordenadas> camino;
     long ticks_para_sig_movimiento = 0;
     long ticks_restantes = 0;

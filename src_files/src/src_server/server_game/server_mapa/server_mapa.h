@@ -124,6 +124,8 @@ public:
 
     uint8_t obtenerDireccion(const Coordenadas& coords_actual,const Coordenadas& coords_nueva);
 
+    Coordenadas obtenerCoordenadasEnRango(uint8_t rango,const Coordenadas& coords_nueva);
+
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.

@@ -175,7 +175,7 @@ Coordenadas Mapa::coordenadaLibreMasCercana(Coordenadas& posicion) {
             }
         }
     }
-    return coordenada_libre;
+    throw std::runtime_error("Mapa: no hay coordenadas libres cercanas");
 }
 
 /* ******************************************************************
@@ -357,6 +357,20 @@ uint8_t Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& des
     } else {
         throw std::runtime_error("Mapa: No cambio de posicion");
     }
+}
+
+Coordenadas Mapa::obtenerCoordenadasEnRango(uint8_t rango,const Coordenadas& coords_nueva) {
+    for (int i = coords_nueva.y - rango; i <= coords_nueva.y + rango; i++) {
+        if (0 > i || i >= this->alto) continue;
+        for (int j = coords_nueva.x - rango; j <= coords_nueva.x + rango; j++) {
+            if (0 > j || j >= this->ancho) continue;
+            std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
+            if (entidad->obtenerTipoDeEntidad() == 'T') {
+                return Coordenadas(j, i);
+            }
+        }
+    }
+    throw std::runtime_error("Mapa: No se encontro un terreno en el rango");
 }
 
 
