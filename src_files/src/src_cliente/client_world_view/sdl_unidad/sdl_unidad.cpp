@@ -1,4 +1,5 @@
 #include "sdl_unidad.h"
+#include <cmath>
 
 UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 uint8_t id_jugador,
@@ -13,6 +14,7 @@ UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 renderer(renderer),
                 texturas(texturas.obtenerVehiculo(6)),
                 coords(coords),
+                coords_siguiente(coords),
                 color(color),
                 offset_x_hp(constantes["WorldView"]["Unidades"]["UI"]["HP"]["OffsetX"].as<int32_t>()),
                 offset_y_hp(constantes["WorldView"]["Unidades"]["UI"]["HP"]["OffsetY"].as<int32_t>()),
@@ -30,7 +32,7 @@ void UnidadSDL::update(uint32_t offset_x, uint32_t offset_y, long frames_transcu
     if (!desplegada) {
         updateTiempoRestante(frames_transcurridos);
     }
-    updatePosicionUnidad(offset_x, offset_y, zoom);
+    updatePosicionUnidad(offset_x, offset_y, frames_transcurridos, zoom);
 }
 
 void UnidadSDL::updateTiempoRestante(long frames_transcurridos) {
@@ -41,10 +43,26 @@ void UnidadSDL::updateTiempoRestante(long frames_transcurridos) {
     }
 }
 
-void UnidadSDL::updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, float zoom) {
+void UnidadSDL::updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom) {
     this->zoom = zoom;
-    destino.SetX(coords.x * ancho_tile * zoom - offset_x);
-    destino.SetY((coords.y * largo_tile) * zoom - offset_y);
+    if (!moviendose) {
+        destino.SetX(coords.x * ancho_tile * zoom - offset_x);
+        destino.SetY((coords.y * largo_tile) * zoom - offset_y);
+    } else {
+        if (frames_transcurridos > frames_restantes) {
+            moviendose = false;
+            coords = coords_siguiente;
+            destino.SetX(coords.x * ancho_tile * zoom - offset_x);
+            destino.SetY((coords.y * largo_tile) * zoom - offset_y);
+        } else {
+            frames_restantes -= frames_transcurridos;
+            float porcentaje_completo = (float) frames_restantes / (float) frames_para_llegar;
+            int8_t diferencia_x = coords_siguiente.x - coords.x;
+            int8_t diferencia_y = coords_siguiente.y - coords.y;
+            destino.SetX((coords.x * largo_tile + diferencia_x * (1 - porcentaje_completo) * ancho_tile) * zoom - offset_x);
+            destino.SetY((coords.y * largo_tile + diferencia_y * (1 - porcentaje_completo) * largo_tile) * zoom - offset_y);
+        }
+    }
     destino.SetW(ancho_tile * zoom);
     destino.SetH(largo_tile * zoom);
 }
@@ -147,53 +165,59 @@ void UnidadSDL::renderRectanguloSeleccion() {
 }
 
 void UnidadSDL::moverse(uint8_t direccion, uint16_t tiempo_movimiento) {
-    actualizarCoordenadaActual(direccion);
+    if (desplegada) {
+        coords = coords_siguiente;
+        actualizarCoordenadaFutura(direccion);
+        frames_para_llegar = fps * tiempo_movimiento / 1000;
+        frames_restantes = frames_para_llegar;
+        moviendose = true;
+    }
 }
 
-void UnidadSDL::actualizarCoordenadaActual(uint8_t direccion_actual) {
-    switch(direccion_actual) {
+void UnidadSDL::actualizarCoordenadaFutura(uint8_t direccion) {
+    switch(direccion) {
         case ABAJO_UNIDAD: {
-            coords.y++;
-            direccion_actual = ABAJO_UNIDAD;
+            coords_siguiente.y++;
+            this->direccion_actual = ABAJO_UNIDAD;
             break;
         }
         case ABAJO_IZQ_UNIDAD: {
-            coords.x--;
-            coords.y++;
-            direccion_actual = ABAJO_IZQ_UNIDAD;
+            coords_siguiente.x--;
+            coords_siguiente.y++;
+            this->direccion_actual = ABAJO_IZQ_UNIDAD;
             break;
         }
         case IZQUIERDA_UNIDAD: {
-            coords.x--;
-            direccion_actual = IZQUIERDA_UNIDAD;
+            coords_siguiente.x--;
+            this->direccion_actual = IZQUIERDA_UNIDAD;
             break;
         }
         case ARRIBA_IZQ_UNIDAD: {
-            coords.x--;
-            coords.y--;
-            direccion_actual = ARRIBA_IZQ_UNIDAD;
+            coords_siguiente.x--;
+            coords_siguiente.y--;
+            this->direccion_actual = ARRIBA_IZQ_UNIDAD;
             break;
         }
         case ARRIBA_UNIDAD: {
-            coords.y--;
-            direccion_actual = ARRIBA_UNIDAD;
+            coords_siguiente.y--;
+            this->direccion_actual = ARRIBA_UNIDAD;
             break;
         }
         case ARRIBA_DER_UNIDAD: {
-            coords.x++;
-            coords.y--;
-            direccion_actual = ARRIBA_DER_UNIDAD;
+            coords_siguiente.x++;
+            coords_siguiente.y--;
+            this->direccion_actual = ARRIBA_DER_UNIDAD;
             break;
         }
         case DERECHA_UNIDAD: {
-            coords.x++;
-            direccion_actual = DERECHA_UNIDAD;
+            coords_siguiente.x++;
+            this->direccion_actual = DERECHA_UNIDAD;
             break;
         }
         case ABAJO_DER_UNIDAD: {
-            coords.y++;
-            coords.x++;
-            direccion_actual = ABAJO_DER_UNIDAD;
+            coords_siguiente.y++;
+            coords_siguiente.x++;
+            this->direccion_actual = ABAJO_DER_UNIDAD;
             break;
         } default: {
             std::string error("UnidadSDL: direccion no reconocida" + direccion_actual);

@@ -30,8 +30,9 @@ void Unidad::setearNuevoMovimiento() {
 }
 
 uint16_t Unidad::obtenerTiempoParaMoverse() {
+    float distancia = sqrt(pow(origen.x - this->camino.top().x, 2) + pow(origen.y - this->camino.top().y, 2));
     char tipo_de_terreno = this->mapa.obtenerTipoDeTerreno(this->camino.top());
-    return (DISTANCIA_A_MOVER / this->velocidad) * penalizacion_terreno[tipo_de_terreno] * 1000;
+    return (DISTANCIA_A_MOVER / this->velocidad) * penalizacion_terreno[tipo_de_terreno] * 1000 * distancia;
 }
 
 void Unidad::setTicksParaSigMovimiento(uint16_t tiempo_para_moverse) {
