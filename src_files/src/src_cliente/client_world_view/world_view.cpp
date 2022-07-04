@@ -1,5 +1,6 @@
 #include "world_view.h"
 #include "../client_solicitudes/client_sol_crear_edificio.h"
+#include "../client_solicitudes/sol_mover_unidad.h"
 #include <functional>
 
 void WorldView::renderUI() {
@@ -69,9 +70,7 @@ void WorldView::update(long frame_actual) {
     }
 
     for (auto & unidad: this->unidades) {
-        if(unidad.second->listaParaRenderizar(frame_actual)){
-            unidad.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(), frame_actual, zoom);
-        }
+        unidad.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(), frames_transcurridos, zoom);
     }
 
     this->side_menu.update(frames_transcurridos);
@@ -84,9 +83,17 @@ void WorldView::render() {
     this->mapa.render();
     for (auto& edificio : this->edificios)
         edificio.second->render();
+    for (auto& unidad : this->unidades) {
+        unidad.second->render();
+    }
     this->renderUI();
     this->renderer.Present();
 }
+
+void WorldView::actualizarPuntaje(uint8_t id_jugador, uint16_t nuevo_puntaje) {
+    marcador.actualizarPuntajes(id_jugador, nuevo_puntaje);
+}
+
 
 /* *****************************************************************
  *              METODOS REFERIDOS A ESPECIA Y ENERGÍA
@@ -156,7 +163,7 @@ void WorldView::actualizarTiendaUnidades(const std::vector<bool>& unidades_compr
  *                METODOS REFERIDOS A UNIDADES
  * *****************************************************************/
 
-void WorldView::moverUnidad(uint8_t id_unidad, char direccion, long tiempo_movimiento) {
+void WorldView::moverUnidad(uint8_t id_unidad, uint8_t direccion, uint16_t tiempo_movimiento) {
     std::shared_ptr<UnidadSDL> unidad_a_mover = unidades[id_unidad];
     unidad_a_mover->moverse(direccion, tiempo_movimiento);
 }
@@ -174,11 +181,10 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                 uint8_t id_jugador,
                                                 uint8_t tipo_unidad,
                                                 long tiempo_entrenamiento,
-                                                Coordenadas& coords_spawn) {
+                                                const Coordenadas& coords_spawn) {
     std::shared_ptr<UnidadSDL> unidad_a_desplegar = unidad_factory.crearUnidad(id_unidad,
                                                                 id_jugador,
                                                                 renderer,
-                                                                texturas,
                                                                 coords_spawn,
                                                                 constantes,
                                                                 colores,
@@ -242,7 +248,7 @@ void WorldView::zoomOut() {
 }
 
 void WorldView::click(uint32_t pos_x, uint32_t pos_y) {
-    if (pos_x < ancho_ventana - ancho_menu) {
+    if (pos_x < ancho_ventana - ancho_menu) {       // Click en mapa
         Coordenadas coords = mapa.obtenerCoords(pos_x, pos_y);
         bool entidad_seleccionada = false;
         if (edificios.find(coords) != edificios.end()) {
@@ -261,17 +267,28 @@ void WorldView::click(uint32_t pos_x, uint32_t pos_y) {
             if (solicitud) {
                 cola_solicitudes.push(solicitud);
             } else {
+                if (!unidades_seleccionadas.empty()) {
+                    for (auto& unidad: unidades_seleccionadas) {
+                        SolicitudCliente* solicitud = new SolicitudMoverUnidad(unidad->obtenerId(), coords);
+                        cola_solicitudes.push(solicitud);
+                    }
+                }
+                deseleccionarUnidades();
                 deseleccionarEdificios();
-                //unidades.emplace_back(new UnidadSDL(0, id_jugador, renderer, texturas.obtenerCosechadora(), coords, constantes, colores.obtenerColor(id_jugador)));
             }
         }
-    } else {
+    } else {        // Click en menu
         SolicitudCliente* solicitud = side_menu.clickEnMenu(pos_x, pos_y);
         if (solicitud) {
             cola_solicitudes.push(solicitud);
             deseleccionarEdificios();
+            deseleccionarUnidades();
         }
     }
+}
+
+void WorldView::establecerEstadoDelMarcador(bool estado) {
+    marcador.estaHabilitado(estado);
 }
 
 void WorldView::salir() {}

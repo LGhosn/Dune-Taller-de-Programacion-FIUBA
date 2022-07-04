@@ -48,11 +48,12 @@ void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
         case 11:
             manejarSolicitudComprarUnidad();
             break;
-        case 12: // TODO: determinar codigo
-            manejarSolicitudMoverUnidad();
-            break;
         case 25: {
             manejarSoliciutdComprarEdificio();
+            break;
+        }
+        case 50: {
+            manejarSolicitudMoverUnidad();
             break;
         }
         default:

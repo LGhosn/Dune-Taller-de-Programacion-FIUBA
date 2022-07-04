@@ -70,6 +70,8 @@ add_executable(client
         src/src_cliente/client_comandos/cmd_construccion_invalida.cpp
         src/src_cliente/client_comandos/cmd_mover_unidad.cpp
         src/src_cliente/client_comandos/cmd_enemigo_despliega_unidad.cpp
+        src/src_cliente/client_comandos/cmd_actualizar_puntaje.cpp
+        src/src_cliente/client_comandos/cmd_marcador.cpp
         src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
         src/src_cliente/client_solicitudes/sol_comprar_edificio.cpp
         src/src_cliente/client_solicitudes/sol_comprar_unidad.cpp
@@ -130,6 +132,7 @@ add_executable(server
         src/src_server/server_comandos/cmd_modificar_energia.cpp
         src/src_server/server_comandos/cmd_enemigo_despliega_unidad.cpp
         src/src_server/server_comandos/cmd_construccion_invalida.cpp
+        src/src_server/server_comandos/cmd_actualizar_puntaje.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_comprar_unidad.cpp
         src/src_server/server_solicitudes/solicitud_juego/sol_mover_unidad.cpp

@@ -51,9 +51,9 @@ public:
 
     void comprarEdificio(uint8_t id_jugador, uint8_t id_edificio);
 
-    void comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad);
+    void comprarUnidad(uint8_t id_jugador, uint8_t tipo_unidad);
 
-    void moverUnidad(uint16_t id_unidad, const Coordenadas& destino);
+    void moverUnidad(uint8_t id_jugador, uint8_t id_unidad, const Coordenadas& destino);
 
     void agregarJugador(ColaBloqueante<ComandoServer>& cola_comando, uint8_t id_jugador, 
                         uint8_t casa, std::string& nombre);

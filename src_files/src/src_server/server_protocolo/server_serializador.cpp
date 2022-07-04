@@ -81,9 +81,9 @@ std::vector<uint8_t> SerializadorServer::serializarComandoActualizarTiendaEdific
     return buffer;
 }
 std::vector<uint8_t> SerializadorServer::serializarComandoActualizarTiendaUnidades(const std::vector<bool>& unidades_comprables) {
-    std::vector<uint8_t> buffer(unidades_comprables.size() + 1);
+    std::vector<uint8_t> buffer(12);
     buffer[0] = 22;
-    for (uint8_t i = 0; i < unidades_comprables.size(); i++)
+    for (uint8_t i = 0; i < 11; i++)
         buffer[i + 1] = unidades_comprables[i];
     return buffer;
 }
@@ -103,6 +103,7 @@ std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(ui
 }
 
 std::vector<uint8_t> SerializadorServer::serializarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, uint16_t tiempo, Coordenadas& coords) {
+    std::cout << "ID en serializador: " << (int) id_jugador << std::endl;
     std::vector<uint8_t> buffer(10);
     buffer[0] = CODIGO_ENEMIGO_DESPLIEGA_UNIDAD;
     buffer[1] = id_unidad;
@@ -126,5 +127,18 @@ std::vector<uint8_t> SerializadorServer::serializarComandoMoverUnidad(uint8_t id
     buffer[2] = id_unidad;
     long* aux2 = (long*)(buffer.data() + 3);
     aux2[0] = htonl(tiempo);
+    return buffer;
+}
+
+/* *****************************************************************
+ *                  METODOS REFERIDOS A PUNTAJE
+ * *****************************************************************/
+
+std::vector<uint8_t> SerializadorServer::serializarComandoActualizarPuntaje(uint8_t id_jugador, uint16_t nuevo_puntaje) {
+    std::vector<uint8_t> buffer(4);
+    buffer[0] = CODIGO_ACTUALIZAR_PUNTAJE;
+    buffer[1] = id_jugador;
+    uint16_t* aux = (uint16_t*) (buffer.data() + 2);
+    aux[0] = htons(nuevo_puntaje);
     return buffer;
 }

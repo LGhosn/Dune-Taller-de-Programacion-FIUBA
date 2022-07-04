@@ -77,3 +77,15 @@ std::vector<uint8_t> SerializadorCliente::serializarSolicitudComprarUnidad(uint8
     buffer[2] = tipo;
     return buffer;
 }
+
+std::vector<uint8_t> SerializadorCliente::serializarSolicitudMoverUnidad(uint8_t id_jugador, uint8_t id_unidad,
+                                                    Coordenadas& coords_a_moverse) {
+    std::vector<uint8_t> buffer(7);
+    buffer[0] = CODIGO_SOLICITUD_MOVER_UNIDAD;
+    buffer[1] = id_jugador;
+    buffer[2] = id_unidad;
+    uint16_t* aux = (uint16_t*) (buffer.data() + 3);
+    aux[0] = htons(coords_a_moverse.x);
+    aux[1] = htons(coords_a_moverse.y);
+    return buffer;
+}

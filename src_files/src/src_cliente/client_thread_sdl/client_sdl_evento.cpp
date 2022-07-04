@@ -1,6 +1,7 @@
 #include "client_sdl_evento.h"
 #include "../client_solicitudes/sol_mover_unidad.h"
 #include "../client_comandos/cmd_click_en_mapa.h"
+#include "../client_comandos/cmd_marcador.h"
 
 SDLEvento::SDLEvento(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
                     ColaNoBloqueante<ComandoCliente>& cola_comandos,
@@ -42,6 +43,11 @@ void TeclaPresionada::ejecutar_evento(SDL_Event& keyEvent) {
             cola_comandos.push(comando);
             break;
         }
+        case (SDLK_TAB): {
+            ComandoCliente* comando = new ComandoMarcador(true);
+            cola_comandos.push(comando);
+            break;
+        }
     }
 }
 
@@ -74,6 +80,11 @@ void TeclaLevantada::ejecutar_evento(SDL_Event& keyEvent) {
             cola_comandos.push(comando);
             break;
         }
+         case (SDLK_TAB):{
+            ComandoCliente *comando = new ComandoMarcador(false);
+            cola_comandos.push(comando);
+            break;
+        }
     }
 }
 
@@ -92,12 +103,12 @@ void ClickPresionado::ejecutar_evento(SDL_Event& mouseButtonEvent) {
             break;
         }
         case (SDL_BUTTON_RIGHT): {
-            uint16_t x = mouseButtonEvent.button.x;
-            uint16_t y = mouseButtonEvent.button.y;
+            // uint16_t x = mouseButtonEvent.button.x;
+            // uint16_t y = mouseButtonEvent.button.y;
 
-            PixACoords coords_normalizadas(x, y);
-            SolicitudMoverUnidad* solicitud = new SolicitudMoverUnidad(1, coords_normalizadas.get_x(), coords_normalizadas.get_y()); //TODO: ver id unidad
-            this->cola_solicitudes.push(solicitud);
+            // PixACoords coords_normalizadas(x, y);
+            // SolicitudMoverUnidad* solicitud = new SolicitudMoverUnidad(1, coords_normalizadas.get_x(), coords_normalizadas.get_y()); //TODO: ver id unidad
+            // this->cola_solicitudes.push(solicitud);
             break;
         }
     }

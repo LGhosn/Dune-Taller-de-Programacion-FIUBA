@@ -17,18 +17,18 @@ float Camino::distancia(const Coordenadas& origen, const Coordenadas& destino) c
 }
 
 float Camino::calcular_costo_adicional(const Coordenadas& actual, const Coordenadas& vecino,
-    const std::unordered_map<char, float>& pen_terr) const {
+    const std::vector<float>& pen_terr) const {
     float dist = distancia(actual, vecino);
     char terreno_actual = get_tipo_de_terreno(actual);
     char terreno_vecino = get_tipo_de_terreno(vecino);
-    float pen_actual = pen_terr.find(terreno_actual) == pen_terr.end() ? 1 : pen_terr.at(terreno_actual);
-    float pen_vecino = pen_terr.find(terreno_vecino) == pen_terr.end() ? 1 : pen_terr.at(terreno_vecino);
+    float pen_actual = pen_terr.at(terreno_actual);
+    float pen_vecino = pen_terr.at(terreno_vecino);
     return (dist * pen_actual) / 2 + (dist * pen_vecino) / 2;
 }
 
 void Camino::a_star(const Coordenadas& origen, const Coordenadas& destino,
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas>& padres,
-    std::vector<char>& terrenos_no_accesibles, const std::unordered_map<char, float>& penalizacion_terreno) const {
+    std::vector<char>& terrenos_no_accesibles, const std::vector<float>& penalizacion_terreno) const {
     std::unordered_map<Coordenadas, float, HashCoordenadas> costo;
     std::priority_queue<std::pair<float, Coordenadas>,
     std::vector<std::pair<float, Coordenadas>>, std::greater<std::pair<float, Coordenadas>>> frontera;
@@ -117,11 +117,11 @@ std::stack<Coordenadas> Camino::obtener_camino(UnidadInfoDTO& unidad_info) const
     const Coordenadas& origen = unidad_info.origen;
     const Coordenadas& destino = unidad_info.destino;
     std::vector<char>& terrenos_no_accesibles = unidad_info.terrenos_no_accesibles;
-    const std::unordered_map<char, float>& penalizacion_terreno = unidad_info.penalizacion_terreno;
+    const std::vector<float>& penalizacion_terreno = unidad_info.penalizacion_terreno;
 
     if (!posicion_es_valida(origen, terrenos_no_accesibles) || 
         !posicion_es_valida(destino, terrenos_no_accesibles)) {
-        throw FueraDeRangoException("La posicion de origen y/o destino no es valida");
+        return std::stack<Coordenadas>();
     }
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas> padres;
     this->a_star(origen, destino, padres, terrenos_no_accesibles, penalizacion_terreno);

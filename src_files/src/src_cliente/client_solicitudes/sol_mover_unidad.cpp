@@ -1,7 +1,7 @@
 #include "sol_mover_unidad.h"
 
-SolicitudMoverUnidad::SolicitudMoverUnidad(uint16_t id_unidad, uint16_t x, uint16_t y) : id_unidad(id_unidad), x(x), y(y) {}
+SolicitudMoverUnidad::SolicitudMoverUnidad(uint8_t id_unidad, Coordenadas& coords_a_moverse) : id_unidad(id_unidad), coords_a_moverse(coords_a_moverse) {}
 
 void SolicitudMoverUnidad::enviarSolicitud(ProtocoloCliente& protocolo, uint8_t id_jugador) {
-    protocolo.enviarSolicitudMoverUnidad(id_jugador, id_unidad, x, y);
+    protocolo.enviarSolicitudMoverUnidad(id_jugador, id_unidad, coords_a_moverse);
 }

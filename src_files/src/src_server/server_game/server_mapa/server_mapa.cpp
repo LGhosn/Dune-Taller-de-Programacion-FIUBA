@@ -145,33 +145,6 @@ std::unique_ptr<Entidades> Mapa::clasificarTerreno(int tipo) {
     }
 }
 
-
-char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destino) {
-    char arriba = 'a', abajo = 'b', izquierda = 'i', derecha = 'd';
-    char diagonal_abajo_izq = '1', diagonal_abajo_der = '2', diagonal_arriba_izq = '3', diagonal_arriba_der = '4'; //TODO: determinar chars
-    if (origen.x == destino.x){
-        if (origen.y < destino.y){
-            return arriba;
-        }
-        return abajo;
-    } else if (origen.y == destino.y){
-        if (origen.x < destino.x){
-            return derecha;
-        }
-        return izquierda;
-    } else if (origen.x < destino.x){
-        if (origen.y < destino.y){
-            return diagonal_arriba_der;
-        }
-        return diagonal_abajo_der;
-    } else {
-        if (origen.y < destino.y){
-            return diagonal_arriba_izq;
-        }
-        return diagonal_abajo_izq;
-    }
-}
-
 bool Mapa::esCoordenadaValida(const Coordenadas& posicion) {
     return this->mapa[posicion.y][posicion.x]->obtenerTipoDeEntidad() == 'T';
 }
@@ -263,7 +236,7 @@ void Mapa::construirCentro(uint16_t id_jugador, const Coordenadas& coords) {
     edificar(coords, centro, id_jugador);
 }
 
-char Mapa::moverUnidad(const Coordenadas& coords_actual, const Coordenadas& coords_nueva) {
+void Mapa::moverUnidad(const Coordenadas& coords_actual, const Coordenadas& coords_nueva) {
     std::unique_ptr<Entidades>& entidad = this->mapa[coords_actual.y][coords_actual.x];
     if (!entidad) {
         throw std::runtime_error("No se encontro la unidad en la posicion actual");
@@ -285,7 +258,6 @@ char Mapa::moverUnidad(const Coordenadas& coords_actual, const Coordenadas& coor
 
     char terreno_nuevo = this->mapa[coords_nueva.y][coords_nueva.x]->obtenerIdentificador();
     this->mapa[coords_nueva.y][coords_nueva.x] = std::unique_ptr<Entidades>(new UnidadesMapa(terreno_nuevo, id_jug, tipo, id_unidad));
-    return obtenerDireccion(coords_actual, coords_nueva);
 }
 
 std::list<Coordenadas> Mapa::obtenerCoordsCentros() const {
@@ -355,6 +327,35 @@ bool Mapa::obtenerUnidadRandomSobreArena(uint8_t *id_victima) {
         cont++;
     }
     return false;
+}
+
+char Mapa::obtenerTipoDeTerreno(Coordenadas& coords) {
+    std::unique_ptr<Entidades>& entidad = this->mapa[coords.y][coords.x];
+    return entidad->obtenerIdentificador();
+}
+
+char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destino) {
+    if (origen.x == destino.x){
+        if (origen.y < destino.y){
+            return ARRIBA_UNIDAD;
+        }
+        return ABAJO_UNIDAD;
+    } else if (origen.y == destino.y){
+        if (origen.x < destino.x){
+            return DERECHA_UNIDAD;
+        }
+        return IZQUIERDA_UNIDAD;
+    } else if (origen.x < destino.x){
+        if (origen.y < destino.y){
+            return ARRIBA_DER_UNIDAD;
+        }
+        return ABAJO_DER_UNIDAD;
+    } else {
+        if (origen.y < destino.y){
+            return ARRIBA_IZQ_UNIDAD;
+        }
+        return ABAJO_IZQ_UNIDAD;
+    }
 }
 
 

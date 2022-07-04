@@ -17,6 +17,15 @@
 #include "entidades/unidades/unidades_mapa.h"
 #include "../../server_DTO/dto_unidad_info.h"
 
+#define ABAJO_UNIDAD 0
+#define ABAJO_IZQ_UNIDAD 1
+#define IZQUIERDA_UNIDAD 2
+#define ARRIBA_IZQ_UNIDAD 3
+#define ARRIBA_UNIDAD 4
+#define ARRIBA_DER_UNIDAD 5
+#define DERECHA_UNIDAD 6
+#define ABAJO_DER_UNIDAD 7
+
 class Mapa {
 private:
     int ancho;
@@ -63,8 +72,6 @@ private:
 
     std::unique_ptr<Entidades> clasificarUnidad(uint8_t tipo_unidad, uint8_t id_jugador, uint8_t id_unidad);
 
-    char obtenerDireccion(const Coordenadas& coords_actual,const Coordenadas& coords_nueva);
-
     Coordenadas& coordenadaLibreMasCercana(Coordenadas& coordenada);
 
 public:
@@ -101,15 +108,22 @@ public:
 
     void demoler_edificio(uint8_t edificio, uint16_t pos_x, uint16_t pos_y);
 
-    char moverUnidad(const Coordenadas& desde, const Coordenadas& hasta);
+    void moverUnidad(const Coordenadas& desde, const Coordenadas& hasta);
 
     bool esCoordenadaValida(const Coordenadas& coords);
 
     Coordenadas& obtenerCoordenadasSpawn(uint8_t id_jugador);
 
+    Coordenadas& obtenerCoordenadasRefinamiento();
+
     void spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas& coords_spawn);
 
     bool obtenerUnidadRandomSobreArena(uint8_t *id_victima);
+
+    char obtenerTipoDeTerreno(Coordenadas& coords);
+
+    char obtenerDireccion(const Coordenadas& coords_actual,const Coordenadas& coords_nueva);
+
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.

@@ -54,19 +54,32 @@ MarcadorSDL::MarcadorSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, YAML
     if (cantidad_jugadores > jugadores_maximos) {
         cantidad_jugadores = jugadores_maximos;
     }
-    for (size_t i = 0; i < cantidad_jugadores; i++) {
+    uint8_t i = 0;
+    for (auto jugador : info_partida.info_jugadores) {
+        puntajes[jugador.first] = 0;
+        posicion_vectores_por_jugador[jugador.first] = i;
+
+        texturas_nombres.emplace_back(renderer,
+                    fuente.RenderText_Blended(jugador.second.second, SDL_Color{255, 255, 255, 255}));
+
         uint32_t altura_fila = destino_marcador.GetY() + (i + 1) * largo_fila + padding_texto;
         destinos_posiciones.emplace_back(
             destino_marcador.GetX() + padding_interno,
-            altura_fila, 0, 0);
-        
+            altura_fila, 0, largo_texto
+        );
+
         destinos_nombres.emplace_back(
             destino_marcador.GetX() + ancho_posicion + padding_interno,
-            altura_fila, 0, 0);
-
+            altura_fila,
+            largo_texto * texturas_nombres.back().GetWidth() / texturas_nombres.back().GetHeight(),
+            largo_texto
+        );
+        
         destinos_puntajes.emplace_back(
             destino_marcador.GetX() + ancho_posicion + ancho_nombre + padding_interno,
-            altura_fila, 0, 0);
+            altura_fila, 0, largo_texto
+        );
+        i++;
     }
     
 }
@@ -75,21 +88,20 @@ void MarcadorSDL::actualizarPuntajes(uint8_t id_jugador, uint16_t nuevo_puntaje)
     puntajes[id_jugador] = nuevo_puntaje;
 }
 
-void MarcadorSDL::habilitar() {
-    habilitado = true;
-}
-
-void MarcadorSDL::deshabilitar() {
-    habilitado = false;
+void MarcadorSDL::estaHabilitado(bool habilitar) {
+    habilitado = habilitar;
 }
 
 void MarcadorSDL::render() {
     if (!habilitado) {
         return;
     }
-    renderer.SetDrawColor(color.obtenerPrimario());
+    renderer.SetDrawColor(color.obtenerOscuroSemitransparente());
     renderer.FillRect(destino_marcador);
     renderer.Copy(textura_etiqueta_posiciones, destino_etiqueta_posiciones);
     renderer.Copy(textura_etiqueta_nombres, destino_etiqueta_nombres);
     renderer.Copy(textura_etiqueta_puntajes, destino_etiqueta_puntajes);
+    for (size_t i = 0; i < texturas_nombres.size(); i++) {
+        renderer.Copy(texturas_nombres[i], destinos_nombres[i]);
+    }
 }

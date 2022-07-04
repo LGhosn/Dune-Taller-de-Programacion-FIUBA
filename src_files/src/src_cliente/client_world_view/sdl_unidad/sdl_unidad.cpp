@@ -11,7 +11,7 @@ UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 id_unidad(id_unidad),
                 id_jugador(id_jugador),
                 renderer(renderer),
-                textura(texturas.obtenerSlab()),
+                textura(texturas.obtenerVehiculo(6)[0]),
                 coords(coords),
                 color(color),
                 offset_x_hp(constantes["WorldView"]["Unidades"]["UI"]["HP"]["OffsetX"].as<int32_t>()),
@@ -22,16 +22,15 @@ UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 relacion_lineas_largo(constantes["WorldView"]["Unidades"]["UI"]["RelacionLineasLargo"].as<float>()),
                 ancho_tile(constantes["WorldView"]["Mapa"]["Tiles"]["Largo"].as<uint32_t>()),
                 largo_tile(constantes["WorldView"]["Mapa"]["Tiles"]["Largo"].as<uint32_t>()),
-                fps(constantes["FPS"].as<float>()) {
-    frames_restantes = tiempo_aparicion * fps / 1000;;
+                fps(constantes["FPS"].as<uint16_t>()) {
+    frames_restantes = tiempo_aparicion * fps;
 }
 
 void UnidadSDL::update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom) {
-    if (desplegada) {
-        updatePosicionUnidad(offset_x, offset_y, zoom);
-    } else {
+    if (!desplegada) {
         updateTiempoRestante(frames_transcurridos);
     }
+    updatePosicionUnidad(offset_x, offset_y, zoom);
 }
 
 void UnidadSDL::updateTiempoRestante(long frames_transcurridos) {
@@ -55,18 +54,9 @@ void UnidadSDL::render() {
         renderer.Copy(textura, SDL2pp::NullOpt, destino);
         renderUI();
     } else {
-        renderer.SetDrawColor(color.obtenerPrimario());
+        renderer.SetDrawColor(color.obtenerOscuroSemitransparente());
         renderer.FillRect(destino);
     }
-}
-
-bool UnidadSDL::listaParaRenderizar(long frame_actual) {
-    if (this->frames_restantes > frame_actual) {
-        this->frames_restantes -= frame_actual;
-        return false;
-    } 
-    this->frames_restantes = 0;
-    return true;
 }
 
 void UnidadSDL::seleccionar() {
@@ -75,6 +65,10 @@ void UnidadSDL::seleccionar() {
 
 void UnidadSDL::deseleccionar() {
     seleccionado = false;
+}
+
+uint8_t UnidadSDL::obtenerId() const {
+    return id_unidad;
 }
 
 bool UnidadSDL::contiene(int pos_x, int pos_y) {
@@ -152,4 +146,50 @@ void UnidadSDL::renderRectanguloSeleccion() {
         );
 }
 
-void UnidadSDL::moverse(char direccion, long tiempo_movimiento) {}
+void UnidadSDL::moverse(uint8_t direccion, uint16_t tiempo_movimiento) {
+    actualizarCoordenadaActual(direccion);
+}
+
+void UnidadSDL::actualizarCoordenadaActual(uint8_t direccion_actual) {
+    switch(direccion_actual) {
+        case ABAJO_UNIDAD: {
+            coords.y++;
+            break;
+        }
+        case ABAJO_IZQ_UNIDAD: {
+            coords.x--;
+            coords.y++;
+            break;
+        }
+        case IZQUIERDA_UNIDAD: {
+            coords.x--;
+            break;
+        }
+        case ARRIBA_IZQ_UNIDAD: {
+            coords.x--;
+            coords.y--;
+            break;
+        }
+        case ARRIBA_UNIDAD: {
+            coords.y--;
+            break;
+        }
+        case ARRIBA_DER_UNIDAD: {
+            coords.x++;
+            coords.y--;
+            break;
+        }
+        case DERECHA_UNIDAD: {
+            coords.x++;
+            break;
+        }
+        case ABAJO_DER_UNIDAD: {
+            coords.y++;
+            coords.x++;
+            break;
+        } default: {
+            std::string error("UnidadSDL: direccion no reconocida" + direccion_actual);
+            throw std::runtime_error(error);
+        }
+    }
+}

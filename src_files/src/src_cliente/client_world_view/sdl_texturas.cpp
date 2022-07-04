@@ -294,6 +294,14 @@ void TexturasSDL::cargarVehiculos() {
     }
 }
 
+void TexturasSDL::cargarGusano() {
+    for (int i = 0; i < 13; i++) {
+        std::stringstream stream;
+        stream << RUTA_GUSANO << "gusano" << (int) i << ".bmp";
+        gusano.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
+    }
+}
+
 
 TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                         constantes(constantes),
@@ -331,6 +339,7 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
     cargarTiles();
     cargarEdificios();
     cargarVehiculos();
+    cargarGusano();
     //cargarInfanterias();
 }
 

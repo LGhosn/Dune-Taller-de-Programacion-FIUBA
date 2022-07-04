@@ -69,16 +69,19 @@ void FormCreacion::crearNotificacion(Status& status) {
     ProtocoloCliente& protocolo = cliente.protocoloAsociado();
     if (status.obtenerCodigoDeConexion() == CONEXION_EXITOSA) {
         std::cout << "Creacion Existosa, esperando jugadores restantes..." << std::endl;
+        QMessageBox::information(this, "Conexion exitosa",
+                                       "Esperando jugadores restantes...");
         InfoPartidaDTO info_partida = protocolo.recibirInfoComienzoDePartida();
         cliente.setInfoPartida(info_partida);
         // Cierro todas las ventanas y abro el juego
-        std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
         cliente.establecerPartidaEmpezada();
         close();
         //cliente_en_partida = true;
     } else {
         if (status.obtenerCodigoDePartida() == PARTIDA_EXISTENTE) {
             std::cout << "Creacion Fallida, existe otra partida con ese mismo nombre, por favor elegir otro...." << std::endl;
+            QMessageBox::information(this, "Creacion Fallida",
+                                           "Existe otra partida con ese mismo nombre, por favor elegir otro....");
         }
     }
 }
@@ -91,7 +94,7 @@ bool FormCreacion::algunParametroNoEsValido(std::string &nombre_partida,
 }
 
 bool FormCreacion::elNombreDePartidaNoEsValido(std::string& nombre_partida) {
-    return nombre_partida.empty();
+    return nombre_partida == "-";
 }
 
 bool FormCreacion::elMapaNoEsValido(std::string& mapa) {

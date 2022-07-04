@@ -8,8 +8,10 @@
 #include "../client_comandos/cmd_empezar_entrenamiento.h"
 #include "../client_comandos/cmd_modificar_energia.h"
 #include "../client_comandos/cmd_enemigo_despliega_unidad.h"
+#include "../client_comandos/cmd_actualizar_puntaje.h"
 #include "../client_DTO/dto_cmd_empezar_construccion_edificio.h"
 #include "../client_DTO/dto_cmd_enemigo_despliega_unidad.h"
+#include "../client_DTO/dto_cmd_actualizar_puntajes_cliente.h"
 
 
 ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, ProtocoloCliente& protocolo_asociado) :
@@ -36,6 +38,7 @@ void ClientHiloReciever::run() {
     while (this->hay_que_seguir) {
         uint8_t codigo_comando;
         protocolo_asociado.recibirCodigoDeComando(codigo_comando);
+        std::cout << "Codigo recibido: " << (int) codigo_comando << std::endl;
         ComandoCliente* comando = this->crearComandoSegunCodigo(codigo_comando);
         cola_eventos.push(comando);
     }
@@ -83,6 +86,14 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
         case 30: {
             int16_t cantidad_energia = protocolo_asociado.recibirComandoModificarEnergia();
             return new CmdModificarEnergiaCliente(cantidad_energia);
+        }
+        case 40: {
+            CmdActualizarPuntajesClienteDTO comandoDTO = protocolo_asociado.recibirComandoActualizarPuntajes();
+            return new CmdActualizarPuntajeCliente(comandoDTO.id_jugador, comandoDTO.nuevo_puntaje);
+        }
+        case 50: {
+            CmdMoverUnidadClienteDTO comandoDTO = protocolo_asociado.recibirComandoMoverUnidad();
+            return new CmdMoverUnidadCliente(comandoDTO);
         }
         default:
             throw std::runtime_error("ClientHiloReciever: Codigo de comando desconocido");

@@ -1,36 +1,68 @@
 #include "unidades.h"
+#include "../../server_comandos/cmd_mover_unidad.h"
+
+Unidad::Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen, YAML::Node& constantes,
+                std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comando) :
+                duenio(duenio),
+                mapa(mapa),
+                origen(origen),
+                colas_comandos(colas_comando),
+                ticks(constantes["TicksPorSegundo"].as<uint16_t>()) {}
 
 void Unidad::empezarMovimiento(const Coordenadas& destino) {
     UnidadInfoDTO info(this->origen, destino, this->terrenos_no_accesibles, this->penalizacion_terreno);
     this->camino = this->mapa.obtenerCamino(info);
+    if(this->camino.empty()) {
+        return;
+    }
     this->moviendose = true;
-    setTicksParaSigMovimiento();
+    setearNuevoMovimiento();
 }
 
-void Unidad::setTicksParaSigMovimiento() {
-    this->ticks_para_sig_movimiento = (DISTANCIA_A_MOVER / this->velocidad) * 60;
+void Unidad::setearNuevoMovimiento() {
+    uint16_t tiempo_para_moverse = obtenerTiempoParaMoverse();
+    setTicksParaSigMovimiento(tiempo_para_moverse);
+    uint8_t direccion = mapa.obtenerDireccion(origen, camino.top());
+    for (auto& cola : colas_comandos) {
+        CmdMoverUnidadServer* comando = new CmdMoverUnidadServer(id, direccion, tiempo_para_moverse);
+        cola.second->push(comando);
+    }
+}
+
+uint16_t Unidad::obtenerTiempoParaMoverse() {
+    char tipo_de_terreno = this->mapa.obtenerTipoDeTerreno(this->camino.top());
+    return (DISTANCIA_A_MOVER / this->velocidad) * penalizacion_terreno[tipo_de_terreno] * 1000;
+}
+
+void Unidad::setTicksParaSigMovimiento(uint16_t tiempo_para_moverse) {
+    this->ticks_para_sig_movimiento =  tiempo_para_moverse * ticks / 1000;
     this->ticks_restantes = this->ticks_para_sig_movimiento;
 }
 
-void Unidad::update(long ticks_transcurridos, long *tiempo, char *direccion) {
+void Unidad::updateMovimiento(long ticks_transcurridos) {
     if (this->moviendose) {
         if (this->ticks_restantes > ticks_transcurridos) {
             this->ticks_restantes -= ticks_transcurridos;
         }else {
             Coordenadas top = this->camino.top();
             if (this->mapa.esCoordenadaValida(top)) {
-                *tiempo = this->ticks_para_sig_movimiento;
-                *direccion = this->mapa.moverUnidad(this->origen, top);
+                this->mapa.moverUnidad(this->origen, top);
                 this->origen = top;
                 this->camino.pop();
-                setTicksParaSigMovimiento();
+                if (camino.empty()) {
+                    moviendose = false;
+                } else {
+                    setearNuevoMovimiento();
+                }
             }
         }
     }
 }
 
+void Unidad::update(long ticks_transcurridos) {
+    updateMovimiento(ticks_transcurridos);
+}
+
 uint8_t Unidad::obtenerIdJugador() {
     return this->duenio.obtenerId();
 }
-
-Unidad::Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen) : duenio(duenio), mapa(mapa), origen(origen) {}

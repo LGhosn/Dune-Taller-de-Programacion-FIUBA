@@ -6,8 +6,8 @@
 
 class CmdMoverUnidadCliente : public ComandoCliente {
     uint8_t id_unidad;
-    char direccion;
-    long tiempo;
+    uint8_t direccion;
+    uint16_t tiempo;
 public:
     CmdMoverUnidadCliente(CmdMoverUnidadClienteDTO& dto);
 

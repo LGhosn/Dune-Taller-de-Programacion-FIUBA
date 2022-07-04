@@ -5,16 +5,16 @@ float Jugador::obtenerMultiplicadorPorEdificios(uint8_t tipo_unidad) {
 }
 
 Jugador::Jugador(uint8_t id, uint8_t casa, std::string& nombre,
-                ColaBloqueante<ComandoServer>& cola_comandos,
+                std::map<uint8_t, ColaBloqueante<ComandoServer>*>& colas_comandos,
                 YAML::Node& constantes) :
                 id(id),
                 casa(casa),
                 nombre(nombre),
-                cola_comandos(cola_comandos),
-                especia(cola_comandos, constantes),
-                energia(cola_comandos, constantes),
+                colas_comandos(colas_comandos),
+                especia(colas_comandos, id, constantes),
+                energia((*colas_comandos[id]), constantes),
                 cantidad_edificios(8, 0),
-                validador_de_unidades(constantes, casa, cantidad_edificios, cola_comandos),
+                validador_de_unidades(constantes, casa, cantidad_edificios, *(colas_comandos[id])),
                 tiempo_construccion_base(constantes["Game"]["Precios"]["Edificios"]["TiempoConstruccionBase"].as<uint16_t>()),
                 edificios_multiplicadores(constantes["Game"]["Unidades"]["EdificioMultiplicador"].as<std::vector<uint8_t>>()),
                 tiempo_entrenamiento_por_unidad(constantes["Game"]["Unidades"]["TiempoDeEntrenamiento"].as<std::vector<uint16_t>>()) {}

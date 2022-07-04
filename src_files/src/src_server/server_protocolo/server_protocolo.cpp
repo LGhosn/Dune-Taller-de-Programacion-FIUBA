@@ -107,6 +107,9 @@ void ProtocoloServidor::enviarStatusDeUnion(Status &status_de_union) {
  * *****************************************************************/
 
 SolicitudMoverUnidadDTO ProtocoloServidor::recibirSolicitudMoverUnidad() {
+    uint8_t id_jugador;
+    this->skt_comunicador.recvall(&id_jugador, SIZEOF_BYTE);
+    
     uint8_t id_unidad;
     this->skt_comunicador.recvall(&id_unidad, SIZEOF_BYTE);
 
@@ -119,7 +122,7 @@ SolicitudMoverUnidadDTO ProtocoloServidor::recibirSolicitudMoverUnidad() {
     y = ntohs(y);
 
     const Coordenadas coords(x,y);
-    return SolicitudMoverUnidadDTO(id_unidad, coords);
+    return SolicitudMoverUnidadDTO(id_jugador, id_unidad, coords);
 }
 
 
@@ -191,6 +194,7 @@ void ProtocoloServidor::enviarComandoConstruccionInvalida() {
 }
 
 void ProtocoloServidor::enviarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, uint16_t tiempo, Coordenadas& coords) {
+    std::cout << "ID en protocolo: " << (int) id_jugador << std::endl;
     std::vector<uint8_t> buffer = serializador.serializarComandoEnemigoDespliegaUnidad(id_unidad, id_jugador, tipo_unidad, tiempo, coords);
     this->enviarBuffer(buffer);
 }
@@ -225,6 +229,15 @@ void ProtocoloServidor::enviarComandoActualizarTiendaUnidades(const std::vector<
 
 void ProtocoloServidor::enviarComandoEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn) {
     std::vector<uint8_t> buffer = serializador.serializarEmpezarEntrenamientoUnidad(id_unidad, tipo_unidad, tiempo_construccion, coords_spawn);
+    enviarBuffer(buffer);
+}
+
+/* *****************************************************************
+ *                  METODOS REFERIDOS A PUNTAJE
+ * *****************************************************************/
+
+void ProtocoloServidor::enviarComandoActualizarPuntaje(uint8_t id_jugador, uint16_t nuevo_puntaje) {
+    std::vector<uint8_t> buffer = serializador.serializarComandoActualizarPuntaje(id_jugador, nuevo_puntaje);
     enviarBuffer(buffer);
 }
 

@@ -11,6 +11,7 @@
 #define CODIGO_SOLICITUD_CREAR_PARTIDA 3
 #define CODIGO_SOLICITUD_CREAR_EDIFICIO 5
 #define CODIGO_SOLICITUD_COMPRAR_UNIDAD 11
+#define CODIGO_SOLICITUD_MOVER_UNIDAD 50
 
 class SerializadorCliente {
     uint8_t obtenerCodigoCasa(const std::string& casa) const;
@@ -23,6 +24,8 @@ public:
                                                             uint8_t tipo);
 
     std::vector<uint8_t> serializarSolicitudComprarUnidad(uint8_t id_jugador, uint8_t tipo);
+
+    std::vector<uint8_t> serializarSolicitudMoverUnidad(uint8_t id_jugador, uint8_t id_unidad, Coordenadas& coords_a_moverse);
 };
 
 #endif

@@ -7,6 +7,15 @@
 #include "../sdl_color/sdl_color.h"
 #include "../sdl_texturas.h"
 
+#define ABAJO_UNIDAD 0
+#define ABAJO_IZQ_UNIDAD 1
+#define IZQUIERDA_UNIDAD 2
+#define ARRIBA_IZQ_UNIDAD 3
+#define ARRIBA_UNIDAD 4
+#define ARRIBA_DER_UNIDAD 5
+#define DERECHA_UNIDAD 6
+#define ABAJO_DER_UNIDAD 7
+
 class UnidadSDL {
 protected:
     uint8_t id_unidad;
@@ -21,6 +30,7 @@ protected:
     bool seleccionado = false;
     bool desplegada = false;
     float zoom;
+    uint8_t direccion_actual = 0;
 
     // Constantes
     const int32_t offset_x_hp;
@@ -31,7 +41,7 @@ protected:
     const float relacion_lineas_largo;
     const uint32_t ancho_tile;
     const uint32_t largo_tile;
-    const float fps;
+    const uint16_t fps;
     //const uint8_t codigo_atreides;
     //const uint8_t codigo_harkonnen;
     //const uint8_t codigo_ordos;*/
@@ -44,6 +54,8 @@ private:
 
     void updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, float zoom);
     void updateTiempoRestante(long frames_transcurridos);
+
+    void actualizarCoordenadaActual(uint8_t direccion_actual);
 
 public:
     UnidadSDL(uint8_t id_unidad,
@@ -60,11 +72,12 @@ public:
     bool contiene(int pos_x, int pos_y);
     void seleccionar();
     void deseleccionar();
-    bool listaParaRenderizar(long frames_actual);
+    uint8_t obtenerId() const;
+
     virtual void update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
     virtual void render();
     void renderUI();
-    void moverse(char direccion, long tiempo_movimiento);
+    void moverse(uint8_t direccion, uint16_t tiempo_movimiento);
     virtual ~UnidadSDL() = default;
 };
 

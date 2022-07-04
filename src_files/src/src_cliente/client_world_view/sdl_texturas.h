@@ -122,6 +122,8 @@ class TexturasSDL {
     std::vector<SDL2pp::Texture> tanque_sonico;
     std::vector<SDL2pp::Texture> trike;
 
+    std::vector<SDL2pp::Texture> gusano;
+
     SDL2pp::Texture logo_atreides;
     SDL2pp::Texture logo_harkonnen;
     SDL2pp::Texture logo_ordos;
@@ -151,6 +153,7 @@ class TexturasSDL {
     void cargarEdificios();
     void cargarVehiculos();
     void cargarInfanteria();
+    void cargarGusano();
 
 public:
     TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes);

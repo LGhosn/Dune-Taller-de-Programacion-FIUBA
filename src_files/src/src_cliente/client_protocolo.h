@@ -6,6 +6,7 @@
 #include "../src_common/common_DTO/dto_sol_unirse_a_partida.h"
 #include "../src_common/common_DTO/dto_info_partida.h"
 #include "client_DTO/dto_cmd_crear_edificio.h"
+#include "client_DTO/dto_cmd_actualizar_puntajes_cliente.h"
 #include "client_DTO/dto_cmd_empezar_construccion_edificio.h"
 #include "client_DTO/dto_cmd_empezar_entrenamiento_unidad.h"
 #include "client_DTO/dto_cmd_modificar_energia.h"
@@ -45,8 +46,7 @@ public:
 
     void enviarSolicitudCrearPartida(SolicitudCrearPartidaDTO& solicitud);
     void enviarSolicitudUnirseAPartida(SolicitudUnirseAPartidaDTO& solicitud);
-    void enviarSolicitudMoverUnidad(uint8_t id_jugador, uint16_t& id_unidad,
-                                    uint16_t& x, uint16_t& y);
+    void enviarSolicitudMoverUnidad(uint8_t id_jugador, uint8_t id_unidad, Coordenadas& coords_a_moverse);
 
     void recibirCodigoDeComando(uint8_t& codigo);
     void recibirInfoSegunCodigo(uint8_t& codigo);
@@ -57,6 +57,7 @@ public:
     void enviarSolicitudUnirseAPartida(std::string& casa, std::string& nombre_partida);
 
     uint16_t recibirComandoModificarEspecia();
+    CmdActualizarPuntajesClienteDTO recibirComandoActualizarPuntajes();
 
     /*
      * Recibe el status de una petición de union o creacion, el mismo

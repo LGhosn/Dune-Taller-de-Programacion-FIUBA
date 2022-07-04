@@ -1,5 +1,6 @@
 #include "sdl_boton_unidad.h"
 #include "../../../client_solicitudes/sol_comprar_unidad.h"
+#include <utility>
 
 
 BotonUnidadSDL::BotonUnidadSDL(SDL2pp::Renderer& renderer,
@@ -16,7 +17,9 @@ BotonUnidadSDL::BotonUnidadSDL(SDL2pp::Renderer& renderer,
                                 casa(casa),
                                 id_jugador(id_jugador),
                                 logo(texturas.obtenerLogoUnidad(tipo_unidad)),
-                                destino(destino) {}
+                                fps(constantes["FPS"].as<uint16_t>()),
+                                destino(destino),
+                                destino_construyendo(destino.GetX(), destino.GetY(), destino.GetW(), destino.GetH()) {}
 
 bool BotonUnidadSDL::contiene(int pos_x, int pos_y) const {
     return destino.Contains(pos_x, pos_y);
@@ -32,7 +35,9 @@ void BotonUnidadSDL::deshabilitar() {
 
 void BotonUnidadSDL::empezarEntrenamiento(uint16_t segundos_para_construir) {
     entrenando = true;
+    std::cout << "Segundos para construir: " << segundos_para_construir << std::endl;
     frames_para_entrenar = segundos_para_construir * fps;
+    std::cout << "Frames para entrenar: " << frames_para_entrenar << std::endl;
     frames_restantes_entrenamiento = frames_para_entrenar;
     mixer.reproducirMensajeEntrenando();
 }
@@ -50,8 +55,10 @@ void BotonUnidadSDL::update(long frames_transcurridos) {
     if (entrenando) {
         if (frames_restantes_entrenamiento > frames_transcurridos) {
             frames_restantes_entrenamiento -= frames_transcurridos;
+            std::cout << "Tiempo restante: " << frames_restantes_entrenamiento << std::endl;
             float porciento_completado = (float) frames_restantes_entrenamiento / (float) frames_para_entrenar;
-            destino_construyendo.SetY(destino.GetY() + destino.GetH() * (1 - porciento_completado));
+            std::cout << "%: " << porciento_completado << std::endl;
+            destino_construyendo.SetY(destino.GetY() + (float) destino.GetH() * (1 - porciento_completado));
             destino_construyendo.SetH(destino.GetH() * porciento_completado);
         } else {
             entrenando = false;

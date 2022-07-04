@@ -143,6 +143,12 @@ public:
 
     void enviarComandoEmpezarEntrenamientoUnidad(uint8_t tipo_unidad, uint16_t tiempo_construccion, Coordenadas& coords_spawn);
 
+/* *****************************************************************
+ *                  METODOS REFERIDOS A PUNTAJE
+ * *****************************************************************/
+
+    void enviarComandoActualizarPuntaje(uint8_t id_jugador, uint16_t nuevo_puntaje);
+
     /*
      * No tiene sentido copiar un ProtocoloServidor.
      * */

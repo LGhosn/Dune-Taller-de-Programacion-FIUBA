@@ -26,7 +26,6 @@ public:
     std::shared_ptr<UnidadSDL> crearUnidad(uint8_t id_unidad,
                                         uint8_t id_jugador,
                                         SDL2pp::Renderer& renderer,
-                                        TexturasSDL& texturas,
                                         const Coordenadas& coords,
                                         YAML::Node& constantes,
                                         ColoresSDL& colores,

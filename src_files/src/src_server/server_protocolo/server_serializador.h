@@ -10,8 +10,9 @@
 #define RUTA_CODIGOS "codigos.yaml"
 
 #define CODIGO_EMPEZAR_ENTRENAMIENTO 11
-#define CODIGO_MOVER_UNIDAD 12
 #define CODIGO_ENEMIGO_DESPLIEGA_UNIDAD 13
+#define CODIGO_ACTUALIZAR_PUNTAJE 40
+#define CODIGO_MOVER_UNIDAD 50
 
 class SerializadorServer {
 private:
@@ -57,7 +58,13 @@ public:
  *               METODOS REFERIDOS A MOVER UNIDAD
  * *****************************************************************/
     std::vector<uint8_t> serializarComandoMoverUnidad(uint8_t id_unidad, char direccion, uint16_t tiempo);
-    
+
+/* *****************************************************************
+ *                  METODOS REFERIDOS A PUNTAJE
+ * *****************************************************************/
+
+    std::vector<uint8_t> serializarComandoActualizarPuntaje(uint8_t id_jugador, uint16_t nuevo_puntaje);
+
 /* *****************************************************************
  *                          MOVE SEMANTICS
  * *****************************************************************/

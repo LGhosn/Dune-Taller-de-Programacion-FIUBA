@@ -1,6 +1,13 @@
 #include "tanque.h"
 
-Tanque::Tanque(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad, Coordenadas& coords_spawn) : Unidad(duenio, mapa, coords_spawn) {
+Tanque::Tanque(uint8_t id,
+                Jugador& duenio,
+                Mapa& mapa,
+                YAML::Node& atributos_unidad,
+                Coordenadas& coords_spawn,
+                YAML::Node& constantes,
+                std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos) :
+                Unidad(duenio, mapa, coords_spawn, constantes, colas_comandos) {
     this->id = id;
     this->tipo_unidad = VEHICULO;
 
@@ -11,10 +18,6 @@ Tanque::Tanque(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_un
     this->vida = atributos_unidad["Vehiculo"]["Tanque"]["Vida"].as<int16_t>();
     this->costo = atributos_unidad["Vehiculo"]["Tanque"]["Costo"].as<uint16_t>();
     
-    std::vector<char> aux = atributos_unidad["Vehiculo"]["Tanque"]["PenalizacionTerreno"].as<std::vector<char>>();
-    std::vector<float> aux_float = atributos_unidad["Vehiculo"]["Tanque"]["PenalizacionVelocidad"].as<std::vector<float>>();
-    for (int i = 0; i < (int)aux.size(); i++) {
-        this->penalizacion_terreno.insert(std::pair<char, float>(aux[i], aux_float[i]));
-    }
+    this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Tanque"]["PenalizacionTerreno"].as<std::vector<float>>();
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Tanque"]["TerrenosNoAccesibles"].as<std::vector<char>>();
 }

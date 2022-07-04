@@ -7,7 +7,7 @@ CmdEnemigoDespliegaUnidadCliente::CmdEnemigoDespliegaUnidadCliente(CmdEnemigoDes
                                                                  tiempo_entrenamiento(dto.tiempo_entrenamiento),
                                                                  coords_spawn(dto.coords_spawn) {}
 
-bool CmdEnemigoDespliegaUnidadCliente::ejecutar(WorldView& wordView) const {
-    // wordView.despliegaUnidadEnemiga(id_jugador, id_unidad, tipo_unidad, tiempo_entrenamiento, coords_spawn);
+bool CmdEnemigoDespliegaUnidadCliente::ejecutar(WorldView& worldView) const {
+    worldView.empezarAparicionDeUnidad(id_jugador, id_unidad, tipo_unidad, tiempo_entrenamiento, coords_spawn);
     return true;
 }

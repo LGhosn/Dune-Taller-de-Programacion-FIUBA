@@ -8,11 +8,14 @@ Infanteria:
    Costo: 50
    Vida: 50
    PenalizacionTerreno: 
-    - 'D'
-   PenalizacionVelocidad: 
-    - 50
+    - 1 # Arena
+    - 1 # Cima
+    - 2 # Duna
+    - 1 # Especia
+    - 1 # Precipicio
+    - 1 # Roca
    TerrenosNoAccesibles: 
-    - 'P'
+    - 4
   InfanteriaPesada:
    Arma: 
     - "Lanza misiles"
@@ -22,11 +25,14 @@ Infanteria:
    Costo: 70
    Vida: 80
    PenalizacionTerreno:
-    - 'D'
-   PenalizacionVelocidad:
-    - 50
+    - 1 # Arena
+    - 1 # Cima
+    - 2 # Duna
+    - 1 # Especia
+    - 1 # Precipicio
+    - 1 # Roca
    TerrenosNoAccesibles:
-    - 'P'
+    - 4
   Fremen:
    Arma:
     - "Rifle"
@@ -37,11 +43,14 @@ Infanteria:
    Costo: 100
    Vida: 50
    PenalizacionTerreno:
-    - 'D'
-   PenalizacionVelocidad:
-    - 50
+    - 1 # Arena
+    - 1 # Cima
+    - 2 # Duna
+    - 1 # Especia
+    - 1 # Precipicio
+    - 1 # Roca
    TerrenosNoAccesibles:
-    - 'P'
+    - 4
   Sardaukar:
    Arma:
     - "Rifle"
@@ -52,11 +61,14 @@ Infanteria:
    Costo: 100
    Vida: 80
    PenalizacionTerreno:
-    - 'D'
-   PenalizacionVelocidad:
-    - 50
+    - 1 # Arena
+    - 1 # Cima
+    - 2 # Duna
+    - 1 # Especia
+    - 1 # Precipicio
+    - 1 # Roca
    TerrenosNoAccesibles:
-    - 'P'
+    - 4
 
 Vehiculo:
   Trike:
@@ -68,9 +80,12 @@ Vehiculo:
    Costo: 100
    Vida: 80
    PenalizacionTerreno:
-    - 'D'
-   PenalizacionVelocidad:
-    - 50
+    - 1 # Arena
+    - 1 # Cima
+    - 2 # Duna
+    - 1 # Especia
+    - 1 # Precipicio
+    - 1 # Roca
    TerrenosNoAccesibles:
     - 'P'
     - 'C'
@@ -83,12 +98,15 @@ Vehiculo:
     Costo: 300
     Vida: 300
     PenalizacionTerreno:
-      - 'D'
-    PenalizacionVelocidad:
-      - 50
+      - 1 # Arena
+      - 1 # Cima
+      - 2 # Duna
+      - 1 # Especia
+      - 1 # Precipicio
+      - 1 # Roca
     TerrenosNoAccesibles:
-      - 'P'
-      - 'C'
+      - 4
+      - 1
   Raider:
     Arma:
       - "Canion 22mm"
@@ -98,12 +116,15 @@ Vehiculo:
     Costo: 100
     Vida: 80
     PenalizacionTerreno:
-      - 'D'
-    PenalizacionVelocidad:
-      - 50
+      - 1 # Arena
+      - 1 # Cima
+      - 2 # Duna
+      - 1 # Especia
+      - 1 # Precipicio
+      - 1 # Roca
     TerrenosNoAccesibles:
-      - 'P'
-      - 'C'
+      - 2
+      - 1
   Desviador:
     Arma:
       - "Lanza misiles"
@@ -113,12 +134,15 @@ Vehiculo:
     Costo: 400
     Vida: 300
     PenalizacionTerreno:
-      - 'D'
-    PenalizacionVelocidad:
-      - 50
+      - 1 # Arena
+      - 1 # Cima
+      - 2 # Duna
+      - 1 # Especia
+      - 1 # Precipicio
+      - 1 # Roca
     TerrenosNoAccesibles:
-      - 'P'
-      - 'C'
+      - 4
+      - 1
   Tanque:
     Arma:
       - "Canion"
@@ -128,12 +152,15 @@ Vehiculo:
     Costo: 300
     Vida: 30
     PenalizacionTerreno:
-      - 'D'
-    PenalizacionVelocidad:
-      - 50
+      - 1 # Arena
+      - 1 # Cima
+      - 2 # Duna
+      - 1 # Especia
+      - 1 # Precipicio
+      - 1 # Roca
     TerrenosNoAccesibles:
-      - 'P'
-      - 'C'
+      - 4
+      - 1
   Devastador:
     Arma:
       - "Canion de plasma"
@@ -143,21 +170,27 @@ Vehiculo:
     Costo: 400
     Vida: 400
     PenalizacionTerreno:
-      - 'D'
-    PenalizacionVelocidad:
-      - 50
+      - 1 # Arena
+      - 1 # Cima
+      - 2 # Duna
+      - 1 # Especia
+      - 1 # Precipicio
+      - 1 # Roca
     TerrenosNoAccesibles:
-      - 'P'
-      - 'C'
+      - 4
+      - 1
   Cosechadora:
     Velocidad: 12
     TiempoEntrenamiento: 180
     Costo: 300
     Vida: 600
     PenalizacionTerreno:
-      - 'D'
-    PenalizacionVelocidad:
-      - 50
+    - 1 # Arena
+    - 1 # Cima
+    - 2 # Duna
+    - 1 # Especia
+    - 1 # Precipicio
+    - 1 # Roca
     TerrenosNoAccesibles:
-      - 'P'
-      - 'C'
+      - 4
+      - 1

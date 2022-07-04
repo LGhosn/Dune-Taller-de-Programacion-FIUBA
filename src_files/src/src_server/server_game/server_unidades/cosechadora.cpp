@@ -1,6 +1,13 @@
 #include "cosechadora.h"
 
-Cosechadora::Cosechadora(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad, Coordenadas& coords_spawn) : Unidad(duenio, mapa, coords_spawn) {
+Cosechadora::Cosechadora(uint8_t id,
+                        Jugador& duenio,
+                        Mapa& mapa,
+                        YAML::Node& atributos_unidad,
+                        Coordenadas& coords_spawn,
+                        YAML::Node& constantes,
+                        std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos) :
+                            Unidad(duenio, mapa, coords_spawn, constantes, colas_comandos) {
     this->id = id;
     this->tipo_unidad = VEHICULO;
 
@@ -8,12 +15,46 @@ Cosechadora::Cosechadora(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& at
     this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Cosechadora"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Vehiculo"]["Cosechadora"]["Vida"].as<int16_t>();
     this->costo = atributos_unidad["Vehiculo"]["Cosechadora"]["Costo"].as<uint16_t>();
-    
-    std::vector<char> aux = atributos_unidad["Vehiculo"]["Cosechadora"]["PenalizacionTerreno"].as<std::vector<char>>();
-    std::vector<float> aux_float = atributos_unidad["Vehiculo"]["Cosechadora"]["PenalizacionVelocidad"].as<std::vector<float>>();
-
-    for (int i = 0; i < (int)aux.size(); i++) {
-        this->penalizacion_terreno.insert(std::pair<char, float>(aux[i], aux_float[i]));
-    }
+    this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Cosechadora"]["PenalizacionTerreno"].as<std::vector<float>>();
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Cosechadora"]["TerrenosNoAccesibles"].as<std::vector<char>>();
+    
+    this->capacidad_especia = constantes["CapacidadCosechadora"].as<int>();
+    this->tiempo_extraer = constantes["TiempoDeExtraccion"].as<uint16_t>();
+    this->tiempo_depositar = constantes["TiempoDeDeposito"].as<uint16_t>();
+}
+
+void Cosechadora::empezarProcesoDeCosecha(Coordenadas coords_cosecha) {
+    //this->coords_refinamiento = mapa.obtenerCoordenadasDeRefinamientoParaCosechadora();
+    //this->coords_cosecha = coords_cosecha;
+}
+
+void Cosechadora::cargarCosecha() {
+    this->especia_cosechada += capacidad_maxima_extraccion_por_cosecha;
+}
+
+int Cosechadora::vaciarCosecha() {
+    int total_especia_cosechada = capacidad_especia;
+    int fraccion_a_depositar = total_especia_cosechada / 5;
+    this->especia_cosechada -= fraccion_a_depositar;
+    return fraccion_a_depositar;
+}
+
+void Cosechadora::volverACosechar() {
+    if (mapa.esCoordenadaValida(coords_cosecha)) {
+        this->empezarMovimiento(coords_cosecha);
+    }
+}
+
+void Cosechadora::volverARefinar() {
+    if (mapa.esCoordenadaValida(coords_refinamiento)) {
+        this->empezarMovimiento(coords_refinamiento);
+    }
+}
+
+bool Cosechadora::estaEnLasCoordenadasDeCosecha(){
+    return origen == coords_cosecha;
+}
+
+void Cosechadora::update(long ticks_transcurridos) {
+    updateMovimiento(ticks_transcurridos);
 }

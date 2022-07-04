@@ -43,17 +43,22 @@ void FormUnion::solicitudDeUnion() {
 void FormUnion::unirseNotificacion(ProtocoloCliente &protocolo, Status &status) {
     if (status.obtenerCodigoDeConexion() == CONEXION_EXITOSA) {
         std::cout << "Union Existosa, esperando jugadores restantes..." << std::endl;
+        QMessageBox::information(this, "Conexion exitosa",
+                                        "Esperando jugadores restantes...");
         InfoPartidaDTO info_partida = protocolo.recibirInfoComienzoDePartida();
         cliente.setInfoPartida(info_partida);
         // Cierro todas las ventanas y abro el juego
-        std::cout << "LA PARTIDA COMENZÓ !!" << std::endl;
         cliente.establecerPartidaEmpezada();
         close();
     } else {
         if (status.obtenerCodigoDePartida() == PARTIDA_EXISTENTE) {
             std::cout << "Union Fallida, parece que esa partida ya ha comenzado." << std::endl;
+            QMessageBox::information(this, "Union Fallida",
+                                            "Parece que esa partida ya ha comenzado...");
         } else if (status.obtenerCodigoDePartida() == PARTIDA_NO_EXISTENTE) {
             std::cout << "Union Fallida, parece que esa partida no existe." << std::endl;
+            QMessageBox::information(this, "Union Fallida",
+                                            "Parece que esa partida no existe...");
         }
     }
 }

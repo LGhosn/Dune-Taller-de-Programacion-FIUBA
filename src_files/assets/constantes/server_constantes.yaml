@@ -1,6 +1,12 @@
 ---
 
+TicksPorSegundo: 60
+
 Game:
+  Cosechadora:
+    CapacidadCosechadora: 1000
+    TiempoDeExtraccion: 20
+    TiempoDeDeposito: 5
   Gusano:
     VictimasADevorar: 20
     TiempoEntreVictimas: 120
@@ -31,6 +37,7 @@ Game:
         Trike: 100
   Especia:
     ValorInicial: 50000
+    DivisorPuntaje: 10
     Capacidad:
       Centro: 0
       Cuartel: 0
@@ -115,9 +122,11 @@ Game:
       #Fremen
       - 120
       #Infanteria Ligera
-      - 60
+      #- 60
+      - 5
       #Infanteria Pesada
-      - 78
+      #- 78
+      - 10
       #Sardaukar
       - 120
       #Cosechadora

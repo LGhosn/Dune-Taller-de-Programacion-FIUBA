@@ -21,7 +21,7 @@ class BotonUnidadSDL {
     float relacion_ancho_largo;
     uint32_t padding_texto_x;
     uint32_t tam_texto_y;
-    uint8_t fps;
+    uint16_t fps;
     
     SDL2pp::Rect destino;
     SDL2pp::Rect destino_construyendo;

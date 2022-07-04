@@ -2,7 +2,7 @@
 #define SERVER_ESPECIA_ACUMULADA_H
 
 #include <cstdint>
-#include <vector>
+#include <map>
 #include "yaml-cpp/yaml.h"
 #include "../../../src_common/common_colas/cola_bloqueante.h"
 #include "../../server_comandos/server_comando.h"
@@ -33,25 +33,29 @@
 #define ORDOS 2
 
 class EspeciaAcumulada {
-    ColaBloqueante<ComandoServer>& cola_comandos;
+    uint8_t id_jugador;
+    std::map<uint8_t, ColaBloqueante<ComandoServer>*>& colas_comandos;
     uint16_t cantidad_especia;
+    uint16_t puntaje_actual = 0;
     std::vector<bool> edificios_comprables;
     std::vector<bool> unidades_comprables;
     std::vector<uint16_t> costo_edificios;
     std::vector<uint16_t> costo_unidades;
 
-    float fraccion_demoler;
+    const float fraccion_demoler;
+    const uint16_t divisor_puntaje;
 
     void actualizarYEnviarEdificiosComprables();
     void actualizarUnidadesComprables();
+    void actualizarYEnviarNuevoPuntaje(uint16_t diferencia);
 
     void enviarNuevaCantidadEspecia();
 
     bool noHayEspeciaSuficienteParaLaUnidad(uint8_t tipo_unidad);
 
 public:
-    EspeciaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
-                    YAML::Node& constantes);
+    EspeciaAcumulada(std::map<uint8_t, ColaBloqueante<ComandoServer>*>& colas_comandos,
+                    uint8_t id_jugador, YAML::Node& constantes);
 
     /*
      * Le envia al cliente los edificios que se pueden comprar, como asi

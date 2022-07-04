@@ -25,6 +25,17 @@ WorldView:
     VolumenInicial: 10
     VolumenInicialMusica: 3
     CantidadMaximaSonidos: 4
+  Marcador:
+    JugadoresMaximos: 10
+    PaddingX: 100
+    PaddingY: 100
+    PaddingInterno: 0
+    PaddingTexto: 0
+    AnchoPosicion: 50
+    AnchoPuntaje: 100
+    EtiquetaPosiciones: "#"
+    EtiquetaNombres: "Nombre"
+    EtiquetaPuntaje: "Puntaje"
   Unidades:
     UI:
       HP:

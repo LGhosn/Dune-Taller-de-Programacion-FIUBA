@@ -18,6 +18,11 @@ ColorSDL::ColorSDL(YAML::Node& archivo_colores, uint8_t id_color) {
     oscuro.SetGreen(archivo_colores[id_color]["Oscuro"]["G"].as<uint8_t>());
     oscuro.SetBlue(archivo_colores[id_color]["Oscuro"]["B"].as<uint8_t>());
     oscuro.SetAlpha(255);
+
+    oscuro_semitransparente.SetRed(oscuro.GetRed());
+    oscuro_semitransparente.SetGreen(oscuro.GetGreen());
+    oscuro_semitransparente.SetBlue(oscuro.GetBlue());
+    oscuro_semitransparente.SetAlpha(140);
 }
 
 SDL2pp::Color& ColorSDL::obtenerPrimario() {
@@ -30,4 +35,8 @@ SDL2pp::Color& ColorSDL::obtenerSecundario() {
 
 SDL2pp::Color& ColorSDL::obtenerOscuro() {
     return this->oscuro;
+}
+
+SDL2pp::Color& ColorSDL::obtenerOscuroSemitransparente() {
+    return this->oscuro_semitransparente;
 }

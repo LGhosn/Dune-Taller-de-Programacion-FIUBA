@@ -2,14 +2,17 @@
 #include "../../server_comandos/cmd_modificar_especia.h"
 #include "../../server_comandos/cmd_actualizar_tienda_edificios.h"
 #include "../../server_comandos/cmd_actualizar_tienda_unidades.h"
+#include "../../server_comandos/cmd_actualizar_puntaje.h"
 
-EspeciaAcumulada::EspeciaAcumulada(ColaBloqueante<ComandoServer>& cola_comandos,
-                                   YAML::Node& constantes) :
-        cola_comandos(cola_comandos),
+EspeciaAcumulada::EspeciaAcumulada(std::map<uint8_t, ColaBloqueante<ComandoServer>*>& colas_comandos,
+                                    uint8_t id_jugador, YAML::Node& constantes) :
+        id_jugador(id_jugador),
+        colas_comandos(colas_comandos),
         cantidad_especia(constantes["Game"]["Especia"]["ValorInicial"].as<uint16_t>()),
         edificios_comprables(8, false), unidades_comprables(11, false),
         costo_edificios(8), costo_unidades(11),
-        fraccion_demoler(constantes["Game"]["Precios"]["Edificios"]["FraccionDemoler"].as<float>()) {
+        fraccion_demoler(constantes["Game"]["Precios"]["Edificios"]["FraccionDemoler"].as<float>()),
+        divisor_puntaje(constantes["Game"]["Especia"]["DivisorPuntaje"].as<uint16_t>()) {
     costo_edificios[0] = 0;
     costo_edificios[1] = constantes["Game"]["Precios"]["Edificios"]["Cuartel"].as<uint16_t>();
     costo_edificios[2] = constantes["Game"]["Precios"]["Edificios"]["FabricaLigera"].as<uint16_t>();
@@ -39,7 +42,7 @@ void EspeciaAcumulada::empezarPartida() {
 
 void EspeciaAcumulada::enviarNuevaCantidadEspecia() {
     CmdModificarEspeciaServer* comando = new CmdModificarEspeciaServer(cantidad_especia);
-    cola_comandos.push(comando);
+    colas_comandos[id_jugador]->push(comando);
 }
 
 void EspeciaAcumulada::actualizarYEnviarEdificiosComprables() {
@@ -48,7 +51,15 @@ void EspeciaAcumulada::actualizarYEnviarEdificiosComprables() {
     }
     CmdActualizarTiendaEdificiosServer* comando =
                     new CmdActualizarTiendaEdificiosServer(edificios_comprables);
-    cola_comandos.push(comando);
+    colas_comandos[id_jugador]->push(comando);
+}
+
+void EspeciaAcumulada::actualizarYEnviarNuevoPuntaje(uint16_t diferencia) {
+    puntaje_actual += diferencia / divisor_puntaje;
+    for (auto& cola : colas_comandos) {
+        CmdActualizarPuntajeServer* comando = new CmdActualizarPuntajeServer(id_jugador, puntaje_actual);
+        cola.second->push(comando);
+    }
 }
 
 bool EspeciaAcumulada::comprarEdificio(uint8_t tipo_edificio, std::vector<uint8_t>& edificios_comprados, uint8_t& casa) {
@@ -58,6 +69,7 @@ bool EspeciaAcumulada::comprarEdificio(uint8_t tipo_edificio, std::vector<uint8_
         actualizarYEnviarEdificiosComprables();
         actualizarUnidadesComprables();
         enviarNuevaCantidadEspecia();
+        actualizarYEnviarNuevoPuntaje(costo_edificios[tipo_edificio]);
         return true;
     } else {
         return false;
@@ -67,6 +79,7 @@ bool EspeciaAcumulada::comprarEdificio(uint8_t tipo_edificio, std::vector<uint8_
 void EspeciaAcumulada::demolerEdificio(uint8_t tipo) {
     cantidad_especia += costo_edificios[tipo] * fraccion_demoler;
     enviarNuevaCantidadEspecia();
+    actualizarYEnviarNuevoPuntaje( - costo_edificios[tipo] * fraccion_demoler);
 }
 
 void EspeciaAcumulada::aumentarEspecia(uint16_t cantidad) {
@@ -90,6 +103,7 @@ bool EspeciaAcumulada::comprarUnidad(uint8_t tipo) {
         actualizarYEnviarEdificiosComprables();
         actualizarUnidadesComprables();
         enviarNuevaCantidadEspecia();
+        actualizarYEnviarNuevoPuntaje(costo_unidades[tipo]);
         return true;
     } else {
         return false;

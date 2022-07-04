@@ -87,33 +87,33 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
 std::unique_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador, uint8_t id_unidad, Coordenadas& coords_spawn) {
     switch (tipo_unidad) {
         case 0:
-            return std::unique_ptr<Unidad>(new Fremen(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new Fremen(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         case 1:
-            return std::unique_ptr<Unidad>(new InfanteriaLigera(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new InfanteriaLigera(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         case 2:
-            return std::unique_ptr<Unidad>(new InfanteriaPesada(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new InfanteriaPesada(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         case 3:
-            return std::unique_ptr<Unidad>(new Sardaukar(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new Sardaukar(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         case 4:
-            return std::unique_ptr<Unidad>(new Cosechadora(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new Cosechadora(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         case 5:
-            return std::unique_ptr<Unidad>(new Desviador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new Desviador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         case 6:
-            return std::unique_ptr<Unidad>(new Devastador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new Devastador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         case 7:
-            return std::unique_ptr<Unidad>(new Raider(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new Raider(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         case 8:
-            return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         case 9:
-            return std::unique_ptr<Unidad>(new TanqueSonico(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new TanqueSonico(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         case 10:
-            return std::unique_ptr<Unidad>(new Trike(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn));
+            return std::unique_ptr<Unidad>(new Trike(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos));
         default:
             throw std::runtime_error("Game: Tipo de unidad no reconocido");
     }
 }
 
-void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
+void Game::comprarUnidad(uint8_t id_jugador, uint8_t tipo_unidad) {
     Jugador& jugador = encontrarJugador(id_jugador);
     bool resultado = jugador.comprarUnidad(tipo_unidad);
     if (resultado) {
@@ -128,22 +128,23 @@ void Game::comprarUnidad(uint16_t id_jugador, uint8_t tipo_unidad) {
         CmdEmpezarEntrenamientoServer* comando =
                         new CmdEmpezarEntrenamientoServer(id_uni, tipo_unidad, tiempo_entrenamiento_unidad, coords_spawn);
         colas_comandos[id_jugador]->push(comando);
-
         for (auto& cola : colas_comandos) {
             if (cola.first == id_jugador) {
                 continue;
             }
             CmdEnemigoDespliegaUnidadServer* comando =
-                new CmdEnemigoDespliegaUnidadServer(id_uni, cola.first, tipo_unidad, tiempo_entrenamiento_unidad, coords_spawn);
+                new CmdEnemigoDespliegaUnidadServer(id_uni, id_jugador, tipo_unidad, tiempo_entrenamiento_unidad, coords_spawn);
             cola.second->push(comando);
         }
         gusano.empezarAAsechar();
     }
 }
 
-void Game::moverUnidad(uint16_t id_unidad, const Coordenadas& destino) {
+void Game::moverUnidad(uint8_t id_jugador, uint8_t id_unidad, const Coordenadas& destino) {
     std::unique_ptr<Unidad>& unidad = this->unidades.at(id_unidad);
-    unidad->empezarMovimiento(destino);
+    if (id_jugador == unidad->obtenerIdJugador()) {
+        unidad->empezarMovimiento(destino);
+    }
 }
 
 
@@ -162,7 +163,7 @@ void Game::agregarJugador(ColaBloqueante<ComandoServer>& cola_comando,
                             uint8_t id_jugador, uint8_t casa, std::string& nombre) {
     // colas_comandos.emplace(id_jugador, cola_comando);
     colas_comandos[id_jugador] = &cola_comando;
-    jugadores.emplace_back(id_jugador, casa, nombre, cola_comando, constantes);
+    jugadores.emplace_back(id_jugador, casa, nombre, colas_comandos, constantes);
 }
 
 void Game::empezarPartida() {
@@ -184,18 +185,8 @@ void Game::empezarPartida() {
 }
 
 void Game::updateUnidad(long iter) {
-    long tiempo = -1;
-    char direccion = ' ';
-    for (auto& unidades_jugador: unidades) {
-        unidades_jugador.second->update(iter, &tiempo, &direccion);
-
-        if (tiempo != -1){
-            uint8_t id_jugador_actual = unidades_jugador.second->obtenerIdJugador();
-            colas_comandos[id_jugador_actual]->push(new CmdMoverUnidadServer(unidades_jugador.first, tiempo, direccion));
-            tiempo = -1;
-            direccion = ' ';
-        }
-        
+    for (auto& unidad_jugador: unidades) {
+        unidad_jugador.second->update(iter);
     }
 }
 

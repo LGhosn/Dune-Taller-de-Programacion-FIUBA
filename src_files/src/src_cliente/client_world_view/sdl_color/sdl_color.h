@@ -8,12 +8,14 @@ class ColorSDL {
     SDL2pp::Color primario;
     SDL2pp::Color secundario;
     SDL2pp::Color oscuro;
+    SDL2pp::Color oscuro_semitransparente;
 public:
     ColorSDL(YAML::Node& archivo_colores, uint8_t id_color);
 
     SDL2pp::Color& obtenerPrimario();
     SDL2pp::Color& obtenerSecundario();
     SDL2pp::Color& obtenerOscuro();
+    SDL2pp::Color& obtenerOscuroSemitransparente();
 };
 
 #endif

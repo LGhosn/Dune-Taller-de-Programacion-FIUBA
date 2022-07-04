@@ -14,6 +14,8 @@
 #include "../../server_DTO/dto_unidad_info.h"
 #include "../server_jugador/jugador.h"
 #include "../server_mapa/server_mapa.h"
+#include "../../../src_common/common_colas/cola_bloqueante.h"
+#include "../../server_comandos/server_comando.h"
 
 class Unidad {
 protected:
@@ -26,6 +28,7 @@ protected:
     long ticks_para_sig_movimiento = 0;
     long ticks_restantes = 0;
     char tipo_unidad;
+    std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos;
 
     // Atributos
     std::vector<std::string> armas;
@@ -34,17 +37,27 @@ protected:
     uint16_t tiempo_entrenamiento;
     int16_t vida;
     uint16_t costo;
-    std::unordered_map<char, float> penalizacion_terreno;
+    std::vector<float> penalizacion_terreno;
     std::vector<char> terrenos_no_accesibles;
 
-    virtual void setTicksParaSigMovimiento();
+    // Constantes
+    const uint16_t ticks;
+
+    virtual void setTicksParaSigMovimiento(uint16_t tiempo_para_moverse);
+
+    uint16_t obtenerTiempoParaMoverse();
+
+    void updateMovimiento(long ticks_transcurridos);
+
+    void setearNuevoMovimiento();
 
 public:
-    Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen);
+    Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen, YAML::Node& constantes,
+            std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comando);
     virtual uint8_t obtenerIdJugador();
     // virtual void atacar(Unidad& unidad) = 0;
     virtual void empezarMovimiento(const Coordenadas& destino);
-    virtual void update(long ticks_transcurridos, long *tiempo, char *direccion);
+    virtual void update(long ticks_transcurridos);
     // virtual void atacar(Edificio& edificio) = 0;
     virtual ~Unidad() = default;
 };

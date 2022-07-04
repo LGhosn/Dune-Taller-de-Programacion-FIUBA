@@ -129,20 +129,11 @@ InfoPartidaDTO ProtocoloCliente::recibirInfoComienzoDePartida() {
 }
 
 
-void ProtocoloCliente::enviarSolicitudMoverUnidad(uint8_t id_jugador, uint16_t& id_unidad,
-                                                    uint16_t& x, uint16_t& y){
-	Serializador s;
-    std::string operacion = "mover";
-	uint8_t codigo = s.obtenerCodigoOperacion(operacion);
-
-    id_unidad = s.uint16_hton(id_unidad);
-    x = s.uint16_hton(x);
-    y = s.uint16_hton(y);
-
-	this->skt_cliente.sendall(&codigo, SIZEOF_BYTE);
-	this->skt_cliente.sendall(&id_unidad, SIZEOF_TWO_BYTES);
-	this->skt_cliente.sendall(&x, SIZEOF_TWO_BYTES);
-	this->skt_cliente.sendall(&y, SIZEOF_TWO_BYTES);
+void ProtocoloCliente::enviarSolicitudMoverUnidad(uint8_t id_jugador,
+                                                    uint8_t id_unidad,
+                                                    Coordenadas& coords_a_moverse) {
+    std::vector<uint8_t> buffer = serializador.serializarSolicitudMoverUnidad(id_jugador, id_unidad, coords_a_moverse);
+    this->enviarBuffer(buffer);
 }
 
 uint16_t ProtocoloCliente::recibirComandoModificarEspecia() {
@@ -222,12 +213,12 @@ CmdMoverUnidadClienteDTO ProtocoloCliente::recibirComandoMoverUnidad() {
     char direccion;
     this->skt_cliente.recvall(&direccion, SIZEOF_BYTE);
     direccion = ntohs(direccion);
-    uint8_t tipo_unidad;
-    this->skt_cliente.recvall(&tipo_unidad, SIZEOF_BYTE);
+    uint8_t id_unidad;
+    this->skt_cliente.recvall(&id_unidad, SIZEOF_BYTE);
     long tiempo;
     this->skt_cliente.recvall(&tiempo, SIZEOF_TWO_BYTES);
     tiempo = ntohl(tiempo);
-    return CmdMoverUnidadClienteDTO(direccion, tipo_unidad, tiempo);
+    return CmdMoverUnidadClienteDTO(direccion, id_unidad, tiempo);
 }
 
 CmdEnemigoDespliegaUnidadDTO ProtocoloCliente::recibirComandoEnemigoDespliegaUnidad() {
@@ -245,7 +236,7 @@ CmdEnemigoDespliegaUnidadDTO ProtocoloCliente::recibirComandoEnemigoDespliegaUni
     coord_y = ntohs(coord_y);
     uint16_t tiempo;
     this->skt_cliente.recvall(&tiempo, SIZEOF_TWO_BYTES);
-    tiempo = ntohl(tiempo);
+    tiempo = ntohs(tiempo);
     return CmdEnemigoDespliegaUnidadDTO(id_unidad, id_jugador, tipo_unidad, tiempo, coord_x, coord_y);
 }
 
@@ -258,6 +249,19 @@ int16_t ProtocoloCliente::recibirComandoModificarEnergia() {
     int16_t cantidad_energia;
     this->skt_cliente.recvall(&cantidad_energia, SIZEOF_TWO_BYTES);
     return ntohs(cantidad_energia);
+}
+
+/* *****************************************************************
+ *                 METODOS REFERIDOS A PUNTAJE
+ * *****************************************************************/
+
+CmdActualizarPuntajesClienteDTO ProtocoloCliente::recibirComandoActualizarPuntajes() {
+    uint8_t id_jugador;
+    this->skt_cliente.recvall(&id_jugador, SIZEOF_BYTE);
+    uint16_t nuevo_puntaje;
+    this->skt_cliente.recvall(&nuevo_puntaje, SIZEOF_TWO_BYTES);
+    nuevo_puntaje = ntohs(nuevo_puntaje);
+    return CmdActualizarPuntajesClienteDTO(id_jugador, nuevo_puntaje);
 }
 
 /* *****************************************************************

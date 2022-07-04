@@ -7,6 +7,7 @@
 #include "../sdl_texturas.h"
 #include "../../../src_common/common_DTO/dto_info_partida.h"
 #include <string>
+#include <map>
 
 class MarcadorSDL {
     SDL2pp::Renderer& renderer;
@@ -15,7 +16,9 @@ class MarcadorSDL {
     std::vector<SDL2pp::Rect> destinos_posiciones;
     std::vector<SDL2pp::Rect> destinos_nombres;
     std::vector<SDL2pp::Rect> destinos_puntajes;
+    std::map<uint8_t, uint8_t> posicion_vectores_por_jugador;
     std::map<uint8_t, uint16_t> puntajes;
+    std::vector<SDL2pp::Texture> texturas_nombres;
     InfoPartidaDTO& info_partida;
     bool habilitado = false;
 
@@ -54,8 +57,7 @@ public:
 
     void actualizarPuntajes(uint8_t id_jugador, uint16_t nuevo_puntaje);
 
-    void habilitar();
-    void deshabilitar();
+    void estaHabilitado(bool habilitar);
 
     void render();
 };

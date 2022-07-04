@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <string>
+#include <map>
 #include "../../../src_common/common_colas/cola_bloqueante.h"
 #include "../../server_comandos/server_comando.h"
 #include "especia_acumulada.h"
@@ -13,7 +14,7 @@ class Jugador {
     uint8_t id;
     uint8_t casa;
     std::string nombre;
-    ColaBloqueante<ComandoServer>& cola_comandos;
+    std::map<uint8_t, ColaBloqueante<ComandoServer>*>& colas_comandos;
     EspeciaAcumulada especia;
     EnergiaAcumulada energia;
     std::vector<uint8_t> cantidad_edificios;
@@ -28,7 +29,7 @@ class Jugador {
 
 public:
     Jugador(uint8_t id, uint8_t casa, std::string& nombre,
-            ColaBloqueante<ComandoServer>& cola_comandos,
+            std::map<uint8_t, ColaBloqueante<ComandoServer>*>& colas_comandos,
             YAML::Node& constantes);
     
     /*
