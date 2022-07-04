@@ -117,9 +117,8 @@ void Game::comprarUnidad(uint8_t id_jugador, uint8_t tipo_unidad) {
     Jugador& jugador = encontrarJugador(id_jugador);
     bool resultado = jugador.comprarUnidad(tipo_unidad);
     if (resultado) {
-        std::cout << "Se pudo comprar la unidad" << std::endl;
         uint8_t id_uni = this->conts_id_unidad++;
-        Coordenadas& coords_spawn = this->mapa.obtenerCoordenadasSpawn(id_jugador);
+        Coordenadas coords_spawn = this->mapa.obtenerCoordenadasSpawn(id_jugador);
         this->mapa.spawnearUnidad(id_jugador, tipo_unidad, id_uni, coords_spawn);
         std::unique_ptr<Unidad> uni = this->clasificarUnidad(tipo_unidad, jugador, id_uni, coords_spawn);
         this->unidades.insert(std::make_pair(id_uni, std::move(uni)));
@@ -136,7 +135,7 @@ void Game::comprarUnidad(uint8_t id_jugador, uint8_t tipo_unidad) {
                 new CmdEnemigoDespliegaUnidadServer(id_uni, id_jugador, tipo_unidad, tiempo_entrenamiento_unidad, coords_spawn);
             cola.second->push(comando);
         }
-        gusano.empezarAAsechar();
+        // gusano.empezarAAsechar();
     }
 }
 

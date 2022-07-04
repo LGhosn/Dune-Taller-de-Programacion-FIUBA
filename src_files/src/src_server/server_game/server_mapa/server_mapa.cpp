@@ -149,16 +149,17 @@ bool Mapa::esCoordenadaValida(const Coordenadas& posicion) {
     return this->mapa[posicion.y][posicion.x]->obtenerTipoDeEntidad() == 'T';
 }
 
-Coordenadas& Mapa::coordenadaLibreMasCercana(Coordenadas& posicion) {
+Coordenadas Mapa::coordenadaLibreMasCercana(Coordenadas& posicion) {
+    Coordenadas coordenada_libre(0,0);
     for (int i = posicion.y; i > (posicion.y - DISTANCIA_EDIFICIOS); i--){
         if (i < 0 || i >= this->alto) continue;
         for (int j = posicion.x; j > (posicion.x - DISTANCIA_EDIFICIOS); j--){
             if (0 > j || j >= this->ancho) continue;
 
             if (this->mapa[i][j]->obtenerTipoDeEntidad() == 'T'){
-                posicion.x = j;
-                posicion.y = i;
-                return posicion;
+                coordenada_libre.x = j;
+                coordenada_libre.y = i;
+                return coordenada_libre;
             }
         }
     }
@@ -168,15 +169,13 @@ Coordenadas& Mapa::coordenadaLibreMasCercana(Coordenadas& posicion) {
             if (0 > j || j >= this->ancho) continue;
 
             if (this->mapa[i][j]->obtenerTipoDeEntidad() == 'T'){
-                posicion.x = j;
-                posicion.y = i;
-                return posicion;
+                coordenada_libre.x = j;
+                coordenada_libre.y = i;
+                return coordenada_libre;
             }
         }
     }
-    posicion.x = 0;
-    posicion.y = 0;
-    return posicion;
+    return coordenada_libre;
 }
 
 /* ******************************************************************
@@ -293,7 +292,7 @@ std::stack<Coordenadas> Mapa::obtenerCamino(UnidadInfoDTO& unidad_info) const {
     return this->camino.obtener_camino(unidad_info);
 }
 
-Coordenadas& Mapa::obtenerCoordenadasSpawn(uint8_t id_jugador) {
+Coordenadas Mapa::obtenerCoordenadasSpawn(uint8_t id_jugador) {
     for (auto& coordenada : this->coords_centros) {
         std::unique_ptr<Entidades>& entidad = this->mapa[coordenada.y][coordenada.x];
         if (entidad->obtenerIdJugador() == id_jugador) {
@@ -303,7 +302,7 @@ Coordenadas& Mapa::obtenerCoordenadasSpawn(uint8_t id_jugador) {
     throw std::runtime_error("No se encontro spawn para el jugador");
 }
 
-void Mapa::spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas& coords_spawn){
+void Mapa::spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas coords_spawn){
     std::unique_ptr<Entidades>& entidad = this->mapa[coords_spawn.y][coords_spawn.x];
     char terreno = entidad->obtenerIdentificador();
     this->mapa[coords_spawn.y][coords_spawn.x] = std::unique_ptr<Entidades>(new UnidadesMapa(terreno, tipo_unidad, id_jugador, id_uni));

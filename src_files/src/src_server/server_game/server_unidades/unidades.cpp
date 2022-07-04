@@ -61,8 +61,10 @@ void Unidad::updateMovimiento(long ticks_transcurridos) {
 }
 
 void Unidad::atacar(uint8_t id_unidad_a_atacar, const Coordenadas& coords_unidad_a_atacar) {
-    UnidadInfoDTO info(this->origen, coords_unidad_a_atacar, this->terrenos_no_accesibles, this->penalizacion_terreno);
-    this->camino = this->mapa.obtenerCamino(info);
+    Coordenadas coords(coords_unidad_a_atacar.x - 1, coords_unidad_a_atacar.y - 1);
+    empezarMovimiento(coords);
+    // UnidadInfoDTO info(this->origen, coords, this->terrenos_no_accesibles, this->penalizacion_terreno);
+    // this->camino = this->mapa.obtenerCamino(info);
 
 }
 

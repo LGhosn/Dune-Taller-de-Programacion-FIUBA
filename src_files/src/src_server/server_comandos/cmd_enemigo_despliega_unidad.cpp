@@ -4,7 +4,7 @@ CmdEnemigoDespliegaUnidadServer::CmdEnemigoDespliegaUnidadServer(uint8_t id_unid
                                                                 uint8_t id_jugador,
                                                                 uint8_t tipo_unidad,
                                                                 uint16_t tiempo_entrenamiento,
-                                                                Coordenadas& coords_spawn) :
+                                                                Coordenadas coords_spawn) :
                                                                 id_unidad(id_unidad),
                                                                 id_jugador(id_jugador),
                                                                 tipo_unidad(tipo_unidad),
@@ -12,5 +12,5 @@ CmdEnemigoDespliegaUnidadServer::CmdEnemigoDespliegaUnidadServer(uint8_t id_unid
                                                                 coords_spawn(coords_spawn) {}
 
 void CmdEnemigoDespliegaUnidadServer::enviarComando(ProtocoloServidor& protocolo) const {
-    protocolo.enviarComandoEnemigoDespliegaUnidad(id_unidad, id_jugador, tipo_unidad, tiempo_entrenamiento, coords_spawn);
+    protocolo.enviarComandoEnemigoDespliegaUnidad(id_unidad, id_jugador, tipo_unidad, tiempo_entrenamiento, (Coordenadas&)coords_spawn);
 }

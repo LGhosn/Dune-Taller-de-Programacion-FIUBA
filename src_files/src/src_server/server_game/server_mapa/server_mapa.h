@@ -35,7 +35,7 @@ private:
     Camino camino;
     std::list<Coordenadas> coords_centros;
     YAML::Node edificio_config;
-    std::unordered_map <uint8_t, Coordenadas&> unidades_en_mapa;
+    std::unordered_map <uint8_t, Coordenadas> unidades_en_mapa;
 
 
     /*
@@ -72,7 +72,7 @@ private:
 
     std::unique_ptr<Entidades> clasificarUnidad(uint8_t tipo_unidad, uint8_t id_jugador, uint8_t id_unidad);
 
-    Coordenadas& coordenadaLibreMasCercana(Coordenadas& coordenada);
+    Coordenadas coordenadaLibreMasCercana(Coordenadas& coordenada);
 
 public:
     /*
@@ -112,11 +112,11 @@ public:
 
     bool esCoordenadaValida(const Coordenadas& coords);
 
-    Coordenadas& obtenerCoordenadasSpawn(uint8_t id_jugador);
+    Coordenadas obtenerCoordenadasSpawn(uint8_t id_jugador);
 
     Coordenadas& obtenerCoordenadasRefinamiento();
 
-    void spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas& coords_spawn);
+    void spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas coords_spawn);
 
     bool obtenerUnidadRandomSobreArena(uint8_t *id_victima);
 

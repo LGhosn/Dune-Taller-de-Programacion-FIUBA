@@ -9,10 +9,10 @@ private:
     uint8_t id_jugador;
     uint8_t tipo_unidad;
     uint16_t tiempo_entrenamiento;
-    Coordenadas& coords_spawn;
+    Coordenadas coords_spawn;
 
 public:
-    CmdEnemigoDespliegaUnidadServer(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, uint16_t tiempo_entrenamiento, Coordenadas& coords_spawn);
+    CmdEnemigoDespliegaUnidadServer(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, uint16_t tiempo_entrenamiento, Coordenadas coords_spawn);
     virtual void enviarComando(ProtocoloServidor& protocolo) const override;
     virtual ~CmdEnemigoDespliegaUnidadServer() = default;
 };

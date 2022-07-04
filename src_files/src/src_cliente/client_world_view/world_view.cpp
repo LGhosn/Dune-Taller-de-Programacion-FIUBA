@@ -255,8 +255,8 @@ void WorldView::clickDerecho(uint32_t pos_x, uint32_t pos_y) {
         Coordenadas coords = mapa.obtenerCoords(pos_x, pos_y);
         bool entidad_seleccionada = false;
         if (edificios.find(coords) != edificios.end()) {
-            entidad_seleccionada = true;
-            for 
+            // entidad_seleccionada = true;
+            // for 
         } else {
             uint8_t id_unidad_a_atacar;
             for (auto& unidad : unidades) {
