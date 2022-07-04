@@ -23,8 +23,20 @@ class SonidosSDL {
     std::vector<SDL2pp::Chunk> ataque_gusano;
     std::vector<SDL2pp::Chunk> centro_atacado;
 
+    std::vector<std::vector<SDL2pp::Chunk>> vehiculo_seleccionado;
+    std::vector<std::vector<SDL2pp::Chunk>> vehiculo_movido;
+    std::vector<std::vector<SDL2pp::Chunk>> infanteria_ligera_seleccionada;
+    std::vector<std::vector<SDL2pp::Chunk>> infanteria_ligera_movida;
+    std::vector<std::vector<SDL2pp::Chunk>> infanteria_pesada_seleccionada;
+    std::vector<std::vector<SDL2pp::Chunk>> infanteria_pesada_movida;
+    std::vector<SDL2pp::Chunk> sardaukar_seleccionado;
+    std::vector<SDL2pp::Chunk> sardaukar_movido;
+    std::vector<SDL2pp::Chunk> fremen_seleccionado;
+    std::vector<SDL2pp::Chunk> fremen_movido;
+
     void cargarMensajesDeVoz();
     void cargarMusica();
+    void cargarVoces();
 public:
     SonidosSDL(uint8_t casa, YAML::Node& constantes);
 
@@ -39,6 +51,8 @@ public:
     SDL2pp::Chunk& obtenerMensajeDerrota();
     SDL2pp::Chunk& obtenerMensajeAtaqueGusano();
     SDL2pp::Chunk& obtenerMensajeCentroAtacado();
+    SDL2pp::Chunk& obtenerMensajeUnidadSeleccionada(uint8_t tipo_unidad, uint8_t casa);
+    SDL2pp::Chunk& obtenerMensajeUnidadMovida(uint8_t tipo_unidad, uint8_t casa);
 
     SonidosSDL(const SonidosSDL&) = delete;
     SonidosSDL& operator=(const SonidosSDL&) = delete;

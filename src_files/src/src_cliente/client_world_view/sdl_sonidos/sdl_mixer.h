@@ -31,6 +31,9 @@ public:
     void reproducirMensajeAtaqueGusano();
     void reproducirMensajeCentroAtacado();
 
+    void reproducirUnidadSeleccionada(uint8_t tipo_unidad, uint8_t casa);
+    void reproducirUnidadMovida(uint8_t tipo_unidad, uint8_t casa);
+
 };
 
 #endif // CLIENTE_SDL_MIXER_H

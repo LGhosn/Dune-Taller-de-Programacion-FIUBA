@@ -6,6 +6,8 @@
 #include "../../../src_common/common_coords.h"
 #include "../sdl_color/sdl_color.h"
 #include "../sdl_texturas.h"
+#include "../sdl_sonidos/sdl_mixer.h"
+
 
 #define ABAJO_UNIDAD 0
 #define ABAJO_IZQ_UNIDAD 1
@@ -21,6 +23,9 @@ protected:
     uint8_t id_unidad;
     uint8_t id_jugador;
     uint8_t tipo_unidad;
+    uint8_t casa;
+    bool unidad_amiga;
+    MixerSDL& mixer;
     SDL2pp::Renderer& renderer;
     std::vector<SDL2pp::Texture>& texturas;
     Coordenadas coords;
@@ -66,6 +71,9 @@ public:
     UnidadSDL(uint8_t id_unidad,
                 uint8_t id_jugador,
                 uint8_t tipo_unidad,
+                uint8_t casa,
+                bool unidad_amiga,
+                MixerSDL& mixer,
                 SDL2pp::Renderer& renderer,
                 TexturasSDL& texturas,
                 const Coordenadas& coords,

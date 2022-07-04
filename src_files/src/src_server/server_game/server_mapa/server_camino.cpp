@@ -27,9 +27,11 @@ float Camino::calcular_costo_adicional(const Coordenadas& actual, const Coordena
     return (dist * pen_actual) / 2 + (dist * pen_vecino) / 2;
 }
 
-void Camino::a_star(const Coordenadas& origen, const Coordenadas& destino,
-    std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas>& padres,
-    std::vector<uint8_t>& terrenos_no_accesibles, const std::vector<float>& penalizacion_terreno) const {
+bool Camino::a_star(const Coordenadas& origen,
+                    const Coordenadas& destino,
+                    std::unordered_map<Coordenadas,Coordenadas, HashCoordenadas>& padres,
+                    std::vector<uint8_t>& terrenos_no_accesibles,
+                    const std::vector<float>& penalizacion_terreno) const {
     std::unordered_map<Coordenadas, float, HashCoordenadas> costo;
     std::priority_queue<std::pair<float, Coordenadas>,
     std::vector<std::pair<float, Coordenadas>>, std::greater<std::pair<float, Coordenadas>>> frontera;
@@ -55,8 +57,9 @@ void Camino::a_star(const Coordenadas& origen, const Coordenadas& destino,
         }
     }
     if (padres.find(destino) == padres.end()) {
-        throw CaminoNoEncontradoException("No se encontro un camino posible de origen a destino.");
+        return false;
     }
+    return true;
 }
 
 char Camino::getTipoDeSuperficie(const Coordenadas& pos) const {
@@ -136,8 +139,12 @@ std::stack<Coordenadas> Camino::obtener_camino(UnidadInfoDTO& unidad_info) const
     const std::vector<float>& penalizacion_terreno = unidad_info.penalizacion_terreno;
 
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas> padres;
-    this->a_star(origen, destino, padres, terrenos_no_accesibles, penalizacion_terreno);
-    return this->construir_camino(padres, origen, destino);
+    bool resultado = this->a_star(origen, destino, padres, terrenos_no_accesibles, penalizacion_terreno);
+    if (resultado) {
+        return this->construir_camino(padres, origen, destino);
+    }
+    
+    return std::stack<Coordenadas>();
 }
 
 Camino::Camino(const Camino& otro) : mapa(nullptr) {}

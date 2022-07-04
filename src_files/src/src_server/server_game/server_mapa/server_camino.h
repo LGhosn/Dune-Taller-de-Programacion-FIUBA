@@ -21,7 +21,7 @@ class Camino {
 	float calcular_costo_adicional(const Coordenadas& actual, const Coordenadas& vecino,
     const std::vector<float>& pen_terr) const;
 
-	void a_star(const Coordenadas& origen, const Coordenadas& destino,
+	bool a_star(const Coordenadas& origen, const Coordenadas& destino,
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas>& padres,
     std::vector<uint8_t>& terrenos_no_accesibles, const std::vector<float>& penalizacion_terrenoo) const;
 

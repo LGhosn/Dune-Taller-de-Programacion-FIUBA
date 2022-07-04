@@ -4,6 +4,9 @@
 UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 uint8_t id_jugador,
                 uint8_t tipo_unidad,
+                uint8_t casa,
+                bool unidad_amiga,
+                MixerSDL& mixer,
                 SDL2pp::Renderer& renderer,
                 TexturasSDL& texturas,
                 const Coordenadas& coords,
@@ -12,6 +15,10 @@ UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 uint16_t tiempo_aparicion) :
                 id_unidad(id_unidad),
                 id_jugador(id_jugador),
+                tipo_unidad(tipo_unidad),
+                casa(casa),
+                unidad_amiga(unidad_amiga),
+                mixer(mixer),
                 renderer(renderer),
                 texturas(texturas.obtenerVehiculo(tipo_unidad)),
                 coords(coords),
@@ -79,7 +86,10 @@ void UnidadSDL::render() {
 }
 
 void UnidadSDL::seleccionar() {
-    seleccionado = true;
+    if (unidad_amiga) {
+        seleccionado = true;
+        mixer.reproducirUnidadSeleccionada(tipo_unidad, casa);
+    }
 }
 
 void UnidadSDL::deseleccionar() {
@@ -167,6 +177,9 @@ void UnidadSDL::renderRectanguloSeleccion() {
 
 void UnidadSDL::moverse(uint8_t direccion, uint16_t tiempo_movimiento) {
     if (desplegada) {
+        if (!moviendose && unidad_amiga) {
+            mixer.reproducirUnidadMovida(tipo_unidad, casa);
+        }
         coords = coords_siguiente;
         actualizarCoordenadaFutura(direccion);
         frames_para_llegar = fps * tiempo_movimiento / 1000;

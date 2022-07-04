@@ -172,17 +172,21 @@ void WorldView::empezarEntrenamiento(uint8_t id_unidad, uint8_t tipo_unidad, uin
     } else {
         side_menu.empezarEntrenamientoVehiculo(tipo_unidad, tiempo_aparicion);
     }
-    empezarAparicionDeUnidad(id_unidad, this->id_jugador, tipo_unidad, tiempo_aparicion, coords_spawn);
+    empezarAparicionDeUnidad(id_unidad, this->id_jugador, tipo_unidad, true, tiempo_aparicion, coords_spawn);
 }
 
 void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                 uint8_t id_jugador,
                                                 uint8_t tipo_unidad,
+                                                bool unidad_amiga,
                                                 uint16_t tiempo_entrenamiento,
                                                 Coordenadas& coords_spawn) {
     this->unidades[id_unidad] = std::shared_ptr<UnidadSDL>(new UnidadSDL(id_unidad,
                                                                          id_jugador,
                                                                          tipo_unidad,
+                                                                         casa,
+                                                                         unidad_amiga,
+                                                                         mixer,
                                                                          renderer,
                                                                          texturas,
                                                                          coords_spawn,

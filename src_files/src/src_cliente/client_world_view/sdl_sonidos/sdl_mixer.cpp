@@ -89,3 +89,17 @@ void MixerSDL::reproducirMensajeCentroAtacado() {
         mixer.PlayChannel(-1, sonidos.obtenerMensajeCentroAtacado());
     }
 }
+
+void MixerSDL::reproducirUnidadSeleccionada(uint8_t tipo_unidad, uint8_t casa) {
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeUnidadSeleccionada(tipo_unidad, casa));
+    }
+}
+
+void MixerSDL::reproducirUnidadMovida(uint8_t tipo_unidad, uint8_t casa) {
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeUnidadMovida(tipo_unidad, casa));
+    }
+}

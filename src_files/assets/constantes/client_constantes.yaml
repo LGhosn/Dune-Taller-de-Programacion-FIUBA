@@ -22,9 +22,9 @@ WorldView:
     Ancho: 1224
     Alto: 768
   Mixer:
-    VolumenInicial: 10
-    VolumenInicialMusica: 3
-    CantidadMaximaSonidos: 4
+    VolumenInicial: 3
+    VolumenInicialMusica: 1
+    CantidadMaximaSonidos: 2
   Marcador:
     JugadoresMaximos: 10
     PaddingX: 100
