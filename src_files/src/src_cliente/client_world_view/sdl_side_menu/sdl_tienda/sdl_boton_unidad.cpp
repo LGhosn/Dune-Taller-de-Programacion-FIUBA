@@ -35,9 +35,7 @@ void BotonUnidadSDL::deshabilitar() {
 
 void BotonUnidadSDL::empezarEntrenamiento(uint16_t segundos_para_construir) {
     entrenando = true;
-    std::cout << "Segundos para construir: " << segundos_para_construir << std::endl;
     frames_para_entrenar = segundos_para_construir * fps;
-    std::cout << "Frames para entrenar: " << frames_para_entrenar << std::endl;
     frames_restantes_entrenamiento = frames_para_entrenar;
     mixer.reproducirMensajeEntrenando();
 }
@@ -55,9 +53,7 @@ void BotonUnidadSDL::update(long frames_transcurridos) {
     if (entrenando) {
         if (frames_restantes_entrenamiento > frames_transcurridos) {
             frames_restantes_entrenamiento -= frames_transcurridos;
-            std::cout << "Tiempo restante: " << frames_restantes_entrenamiento << std::endl;
             float porciento_completado = (float) frames_restantes_entrenamiento / (float) frames_para_entrenar;
-            std::cout << "%: " << porciento_completado << std::endl;
             destino_construyendo.SetY(destino.GetY() + (float) destino.GetH() * (1 - porciento_completado));
             destino_construyendo.SetH(destino.GetH() * porciento_completado);
         } else {
