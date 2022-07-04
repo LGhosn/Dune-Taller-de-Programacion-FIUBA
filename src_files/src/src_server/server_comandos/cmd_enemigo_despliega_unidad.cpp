@@ -5,8 +5,8 @@ CmdEnemigoDespliegaUnidadServer::CmdEnemigoDespliegaUnidadServer(uint8_t id_unid
                                                                 uint8_t tipo_unidad,
                                                                 uint16_t tiempo_entrenamiento,
                                                                 Coordenadas& coords_spawn) :
-                                                                id_jugador(id_jugador),
                                                                 id_unidad(id_unidad),
+                                                                id_jugador(id_jugador),
                                                                 tipo_unidad(tipo_unidad),
                                                                 tiempo_entrenamiento(tiempo_entrenamiento),
                                                                 coords_spawn(coords_spawn) {}

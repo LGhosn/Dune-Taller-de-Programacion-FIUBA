@@ -5,8 +5,8 @@
 
 class CmdEnemigoDespliegaUnidadServer : public ComandoServer {
 private:
-    uint8_t id_jugador;
     uint8_t id_unidad;
+    uint8_t id_jugador;
     uint8_t tipo_unidad;
     uint16_t tiempo_entrenamiento;
     Coordenadas& coords_spawn;

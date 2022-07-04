@@ -74,11 +74,11 @@ public:
     void deseleccionar();
     uint8_t obtenerId() const;
 
-    virtual void update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
-    virtual void render();
+    void update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
+    void render();
     void renderUI();
     void moverse(uint8_t direccion, uint16_t tiempo_movimiento);
-    virtual ~UnidadSDL();
+    ~UnidadSDL();
 };
 
 #endif //SDL_UNIDAD_H
