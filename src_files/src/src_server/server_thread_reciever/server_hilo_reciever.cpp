@@ -1,6 +1,7 @@
 #include "server_hilo_reciever.h"
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
 #include "../server_solicitudes/solicitud_juego/sol_comprar_edificio.h"
+#include "../server_solicitudes/solicitud_juego/sol_atacar_unidad.h"
 
 ServerHiloReceiver::ServerHiloReceiver(ProtocoloServidor& protocolo,
                                     HandlerCliente& cliente_asociado) :
@@ -56,6 +57,10 @@ void ServerHiloReceiver::recibirSolicitudSegunCodigo(uint8_t codigo) {
             manejarSolicitudMoverUnidad();
             break;
         }
+        case 51: {
+            manejarSolicitudAtacarUnidad();
+            break;
+        }
         default:
             throw std::runtime_error("Código de solicitud no reconocido");
     }
@@ -84,6 +89,12 @@ void ServerHiloReceiver::manejarSoliciutdComprarEdificio() {
     SolComprarEdificioServer* solicitud =
             new SolComprarEdificioServer(solicitud_dto.id_jugador, solicitud_dto.tipo);
     cola_solicitudes->push(solicitud);
+}
+
+void ServerHiloReceiver::manejarSolicitudAtacarUnidad() {
+    SolicitudAtacarUnidadDTO solicitud = protocolo.recibirSolicitudAtacarUnidad();
+    SolicitudServer *solicitud_server = new SolicitudAtacarUnidadServer(solicitud);
+    cola_solicitudes->push(solicitud_server);
 }
 
 /* *****************************************************************

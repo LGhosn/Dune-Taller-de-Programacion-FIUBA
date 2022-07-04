@@ -184,6 +184,10 @@ void Game::empezarPartida() {
         jugador.empezarPartida();
 }
 
+void Game::atacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_a_atacar, const Coordenadas& coords_unidad_a_atacar) {
+    this->unidades.at(id_unidad_atacante)->atacar(id_unidad_a_atacar, coords_unidad_a_atacar);
+}
+
 void Game::updateUnidad(long iter) {
     for (auto& unidad_jugador: unidades) {
         unidad_jugador.second->update(iter);

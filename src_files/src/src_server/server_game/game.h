@@ -58,6 +58,8 @@ public:
     void agregarJugador(ColaBloqueante<ComandoServer>& cola_comando, uint8_t id_jugador, 
                         uint8_t casa, std::string& nombre);
 
+    void atacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_a_atacar, const Coordenadas& coords_unidad_a_atacar);
+
     /*
      * Envia un Comando EmpezarPartida a cada cliente, con todos los detalles necesarios.
      * Ademas, distribuye los centros de construccion del mapa a cada jugador, y los

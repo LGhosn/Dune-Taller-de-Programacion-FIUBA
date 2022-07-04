@@ -1,6 +1,7 @@
 #include "world_view.h"
 #include "../client_solicitudes/client_sol_crear_edificio.h"
 #include "../client_solicitudes/sol_mover_unidad.h"
+#include "../client_solicitudes/sol_atacar_unidad.h"
 #include <functional>
 
 void WorldView::renderUI() {
@@ -249,6 +250,43 @@ void WorldView::zoomOut() {
 	}
 }
 
+void WorldView::clickDerecho(uint32_t pos_x, uint32_t pos_y) {
+    if (pos_x < ancho_ventana - ancho_menu) {       // Click en mapa
+        Coordenadas coords = mapa.obtenerCoords(pos_x, pos_y);
+        bool entidad_seleccionada = false;
+        if (edificios.find(coords) != edificios.end()) {
+            entidad_seleccionada = true;
+            for 
+        } else {
+            uint8_t id_unidad_a_atacar;
+            for (auto& unidad : unidades) {
+                if (unidad.second->contiene(pos_x, pos_y)) {
+                    id_unidad_a_atacar = unidad.second->obtenerId();
+                    entidad_seleccionada = true;
+                }
+            }
+
+            if (entidad_seleccionada) {
+                for (auto& unidad: unidades_seleccionadas) {
+                    SolicitudCliente* solicitud = new SolicitudAtacarUnidad(unidad->obtenerId(), id_unidad_a_atacar, coords);
+                    cola_solicitudes.push(solicitud);
+                }
+            }
+        }
+        if (!entidad_seleccionada) {
+            if (!unidades_seleccionadas.empty()) {
+                for (auto& unidad: unidades_seleccionadas) {
+                    std::cout<< "Unidad seleccionada: " << (int)unidad->obtenerId() << std::endl;
+                    SolicitudCliente* solicitud = new SolicitudMoverUnidad(unidad->obtenerId(), coords);
+                    cola_solicitudes.push(solicitud);
+                }
+            }
+            deseleccionarUnidades();
+            deseleccionarEdificios();
+        }
+    }
+}
+
 void WorldView::click(uint32_t pos_x, uint32_t pos_y) {
     if (pos_x < ancho_ventana - ancho_menu) {       // Click en mapa
         Coordenadas coords = mapa.obtenerCoords(pos_x, pos_y);
@@ -268,15 +306,6 @@ void WorldView::click(uint32_t pos_x, uint32_t pos_y) {
             SolicitudCliente* solicitud = side_menu.clickEnMapa(coords);
             if (solicitud) {
                 cola_solicitudes.push(solicitud);
-            } else {
-                if (!unidades_seleccionadas.empty()) {
-                    for (auto& unidad: unidades_seleccionadas) {
-                        SolicitudCliente* solicitud = new SolicitudMoverUnidad(unidad->obtenerId(), coords);
-                        cola_solicitudes.push(solicitud);
-                    }
-                }
-                deseleccionarUnidades();
-                deseleccionarEdificios();
             }
         }
     } else {        // Click en menu

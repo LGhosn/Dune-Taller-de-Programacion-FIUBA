@@ -48,6 +48,7 @@ protected:
     uint16_t obtenerTiempoParaMoverse();
 
     void updateMovimiento(long ticks_transcurridos);
+    void updateAtaque(long ticks_transcurridos);
 
     void setearNuevoMovimiento();
 
@@ -58,6 +59,7 @@ public:
     // virtual void atacar(Unidad& unidad) = 0;
     virtual void empezarMovimiento(const Coordenadas& destino);
     virtual void update(long ticks_transcurridos);
+    virtual void atacar(uint8_t id_unidad_a_atacar, const Coordenadas& coords_unidad_a_atacar);
     // virtual void atacar(Edificio& edificio) = 0;
     virtual ~Unidad() = default;
 };

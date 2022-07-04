@@ -11,6 +11,7 @@
 #include "../server_DTO/dto_sol_crear_edificio.h"
 #include "../server_DTO/dto_sol_comprar_unidad.h"
 #include "../server_DTO/dto_sol_mover_unidad.h"
+#include "../server_DTO/dto_sol_atacar_unidad.h"
 #include "../../src_common/common_DTO/dto_info_partida.h"
 #include "server_serializador.h"
 #include <memory>
@@ -149,6 +150,14 @@ public:
 
     void enviarComandoActualizarPuntaje(uint8_t id_jugador, uint16_t nuevo_puntaje);
 
+/* *****************************************************************
+ *                  METODOS REFERIDOS A ATAQUES
+ * *****************************************************************/
+    SolicitudAtacarUnidadDTO recibirSolicitudAtacarUnidad();
+
+/* *****************************************************************
+ *                  MOVE SEMANTICS
+ * *****************************************************************/
     /*
      * No tiene sentido copiar un ProtocoloServidor.
      * */

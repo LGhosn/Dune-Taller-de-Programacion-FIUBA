@@ -240,6 +240,6 @@ void UnidadSDL::actualizarCoordenadaFutura(uint8_t direccion) {
     }
 }
 
-UnidadSDL::~UnidadSDL() {
-    std::cout << "UnidadSDL: destructor" << std::endl;
+uint8_t UnidadSDL::obtenerIdJugador() const {
+    return this->id_jugador;
 }

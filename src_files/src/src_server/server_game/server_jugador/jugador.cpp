@@ -67,11 +67,8 @@ uint16_t Jugador::obtenerTiempoConstruccionEdificio() {
 uint16_t Jugador::obtenerTiempoConstruccionUnidad(uint8_t tipo_unidad) {
     uint16_t tiempo_entrenamiento_base = tiempo_entrenamiento_por_unidad[tipo_unidad];
     float multiplicador_edificios = obtenerMultiplicadorPorEdificios(tipo_unidad);
-    std::cout << "Multiplicador Edificios: " << multiplicador_edificios << std::endl;
     float multiplicador_deuda_energetica = energia.obtenerMultiplicadorDeudaEnergetica();
-    std::cout << "Multiplicador Deuda Energetica: " << multiplicador_deuda_energetica << std::endl;
     uint16_t resultado = tiempo_entrenamiento_base * multiplicador_edificios * multiplicador_deuda_energetica;
-    std::cout << "Resultado: " << resultado << std::endl;
     return resultado;
 }
 

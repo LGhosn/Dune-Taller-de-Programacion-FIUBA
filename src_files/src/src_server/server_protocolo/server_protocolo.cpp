@@ -194,7 +194,6 @@ void ProtocoloServidor::enviarComandoConstruccionInvalida() {
 }
 
 void ProtocoloServidor::enviarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, uint16_t tiempo, Coordenadas& coords) {
-    std::cout << "ID en protocolo: " << (int) id_jugador << std::endl;
     std::vector<uint8_t> buffer = serializador.serializarComandoEnemigoDespliegaUnidad(id_unidad, id_jugador, tipo_unidad, tiempo, coords);
     this->enviarBuffer(buffer);
 }
@@ -245,3 +244,23 @@ void ProtocoloServidor::cerrarSocket() {
     this->skt_comunicador.shutdown(2);
     this->skt_comunicador.close();
 }
+
+/* *****************************************************************
+ *                  METODOS REFERIDOS A ATAQUES
+ * *****************************************************************/
+SolicitudAtacarUnidadDTO ProtocoloServidor::recibirSolicitudAtacarUnidad() {
+    uint8_t id_jugador_atacante;
+    this->skt_comunicador.recvall(&id_jugador_atacante, SIZEOF_BYTE);
+    uint8_t id_unidad_atacante;
+    this->skt_comunicador.recvall(&id_unidad_atacante, SIZEOF_BYTE);
+    uint8_t id_unidad_atacada;
+    this->skt_comunicador.recvall(&id_unidad_atacada, SIZEOF_BYTE);
+    uint16_t x;
+    this->skt_comunicador.recvall(&x, SIZEOF_TWO_BYTES);
+    uint16_t y;
+    this->skt_comunicador.recvall(&y, SIZEOF_TWO_BYTES);
+    x = ntohs(x);
+    y = ntohs(y);
+    return SolicitudAtacarUnidadDTO(id_jugador_atacante, id_unidad_atacante, id_unidad_atacada, x, y);
+}
+

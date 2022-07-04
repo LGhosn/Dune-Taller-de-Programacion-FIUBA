@@ -86,7 +86,8 @@ public:
     void moverUnidad(uint8_t id_unidad, uint8_t direccion, uint16_t tiempo_movimiento);
 
 	void click(uint32_t pos_x, uint32_t pos_y);
-
+	void clickDerecho(uint32_t pos_x, uint32_t pos_y);
+	
 	void modificarEspecia(uint16_t cantidad_especia);
 
 	void modificarEnergia(int16_t cantidad_energia);

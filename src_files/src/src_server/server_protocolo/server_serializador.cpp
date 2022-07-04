@@ -103,7 +103,6 @@ std::vector<uint8_t> SerializadorServer::serializarEmpezarEntrenamientoUnidad(ui
 }
 
 std::vector<uint8_t> SerializadorServer::serializarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, uint16_t tiempo, Coordenadas& coords) {
-    std::cout << "ID en serializador: " << (int) id_jugador << std::endl;
     std::vector<uint8_t> buffer(10);
     buffer[0] = CODIGO_ENEMIGO_DESPLIEGA_UNIDAD;
     buffer[1] = id_unidad;

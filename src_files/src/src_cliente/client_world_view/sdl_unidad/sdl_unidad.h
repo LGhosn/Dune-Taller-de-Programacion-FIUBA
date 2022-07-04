@@ -87,12 +87,13 @@ public:
     void seleccionar();
     void deseleccionar();
     uint8_t obtenerId() const;
-
+    uint8_t obtenerIdJugador() const;
+    
     void update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
     void render();
     void renderUI();
     void moverse(uint8_t direccion, uint16_t tiempo_movimiento);
-    ~UnidadSDL();
+    virtual ~UnidadSDL() = default;
 };
 
 #endif //SDL_UNIDAD_H

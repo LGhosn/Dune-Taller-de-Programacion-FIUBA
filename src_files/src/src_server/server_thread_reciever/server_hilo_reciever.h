@@ -7,6 +7,7 @@
 #include "../server_handler_cliente/server_handler_cliente.h"
 #include "../server_DTO/dto_sol_crear_edificio.h"
 #include "../server_DTO/dto_sol_comprar_unidad.h"
+#include "../server_DTO/dto_sol_atacar_unidad.h"
 #include "../server_DTO/dto_sol_mover_unidad.h"
 #include "../server_solicitudes/solicitud_juego/server_solicitud.h"
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
@@ -40,6 +41,7 @@ private:
     void manejarSolicitudComprarUnidad();
     void manejarSolicitudMoverUnidad();
     void manejarSoliciutdComprarEdificio();
+    void manejarSolicitudAtacarUnidad();
 
 public:
     ServerHiloReceiver(ProtocoloServidor& protocolo,

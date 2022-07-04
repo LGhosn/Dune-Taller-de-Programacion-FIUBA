@@ -69,6 +69,8 @@ public:
 
     void renderUI();
 
+    virtual uint8_t obtenerId() const;
+
     virtual ~EdificioSDL() = default;
 };
 

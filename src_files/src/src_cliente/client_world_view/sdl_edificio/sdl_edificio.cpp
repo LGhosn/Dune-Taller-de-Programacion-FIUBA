@@ -128,3 +128,7 @@ void EdificioSDL::seleccionar() {
 void EdificioSDL::deseleccionar() {
     seleccionado = false;
 }
+
+uint8_t EdificioSDL::obtenerId() const {
+    return id;
+}

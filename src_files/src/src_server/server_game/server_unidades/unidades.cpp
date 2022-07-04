@@ -60,8 +60,25 @@ void Unidad::updateMovimiento(long ticks_transcurridos) {
     }
 }
 
+void Unidad::atacar(uint8_t id_unidad_a_atacar, const Coordenadas& coords_unidad_a_atacar) {
+    UnidadInfoDTO info(this->origen, coords_unidad_a_atacar, this->terrenos_no_accesibles, this->penalizacion_terreno);
+    this->camino = this->mapa.obtenerCamino(info);
+
+}
+
+void Unidad::updateAtaque(long ticks_transcurridos) {
+    // if (!this->moviendose) {
+    //     if (this->ticks_restantes > ticks_transcurridos) {
+    //         this->ticks_restantes -= ticks_transcurridos;
+    //     }else {
+    //         this->atacando = false;
+    //     }
+    // }
+}
+
 void Unidad::update(long ticks_transcurridos) {
     updateMovimiento(ticks_transcurridos);
+    updateAtaque(ticks_transcurridos);
 }
 
 uint8_t Unidad::obtenerIdJugador() {
