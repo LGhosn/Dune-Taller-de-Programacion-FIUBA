@@ -14,7 +14,7 @@
 
 class Camino {
 	std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa;
-	std::vector<Coordenadas> vecinos_posibles;
+	std::vector<std::pair<int8_t, int8_t>> vecinos_posibles;
 
 	float distancia(const Coordenadas& origen, const Coordenadas& destino) const;
 
@@ -25,7 +25,9 @@ class Camino {
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas>& padres,
     std::vector<uint8_t>& terrenos_no_accesibles, const std::vector<float>& penalizacion_terrenoo) const;
 
-	char get_tipo_de_terreno(const Coordenadas& pos) const;
+	char getTipoDeSuperficie(const Coordenadas& pos) const;
+
+	char getTipoDeTerreno(const Coordenadas& pos) const;
 
 	bool posicion_es_valida(const Coordenadas& pos, std::vector<uint8_t>& terr_no_accesibles) const;
 

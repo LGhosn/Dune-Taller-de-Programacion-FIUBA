@@ -153,43 +153,47 @@ void UnidadSDL::moverse(uint8_t direccion, uint16_t tiempo_movimiento) {
 void UnidadSDL::actualizarCoordenadaActual(uint8_t direccion_actual) {
     switch(direccion_actual) {
         case ABAJO_UNIDAD: {
-            coords.y++;
+            this->coords.y++;
             break;
         }
         case ABAJO_IZQ_UNIDAD: {
-            coords.x--;
-            coords.y++;
+            this->coords.x--;
+            this->coords.y++;
             break;
         }
         case IZQUIERDA_UNIDAD: {
-            coords.x--;
+            this->coords.x--;
             break;
         }
         case ARRIBA_IZQ_UNIDAD: {
-            coords.x--;
-            coords.y--;
+            this->coords.x--;
+            this->coords.y--;
             break;
         }
         case ARRIBA_UNIDAD: {
-            coords.y--;
+            this->coords.y--;
             break;
         }
         case ARRIBA_DER_UNIDAD: {
-            coords.x++;
-            coords.y--;
+            this->coords.x++;
+            this->coords.y--;
             break;
         }
         case DERECHA_UNIDAD: {
-            coords.x++;
+            this->coords.x++;
             break;
         }
         case ABAJO_DER_UNIDAD: {
-            coords.y++;
-            coords.x++;
+            this->coords.y++;
+            this->coords.x++;
             break;
         } default: {
             std::string error("UnidadSDL: direccion no reconocida" + direccion_actual);
             throw std::runtime_error(error);
         }
     }
+}
+
+UnidadSDL::~UnidadSDL() {
+    std::cout << "UnidadSDL: destructor" << std::endl;
 }

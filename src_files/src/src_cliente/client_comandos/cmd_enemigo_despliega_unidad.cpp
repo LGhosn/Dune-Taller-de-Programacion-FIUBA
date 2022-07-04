@@ -8,6 +8,6 @@ CmdEnemigoDespliegaUnidadCliente::CmdEnemigoDespliegaUnidadCliente(CmdEnemigoDes
                                                                  coords_spawn(dto.coords_spawn) {}
 
 bool CmdEnemigoDespliegaUnidadCliente::ejecutar(WorldView& worldView) const {
-    worldView.empezarAparicionDeUnidad(id_jugador, id_unidad, tipo_unidad, tiempo_entrenamiento, coords_spawn);
+    worldView.empezarAparicionDeUnidad(id_jugador, id_unidad, tipo_unidad, tiempo_entrenamiento, (Coordenadas&) coords_spawn);
     return true;
 }

@@ -97,7 +97,7 @@ public:
  *             METODOS REFERIDOS A MOVER UNIDADES
  * *****************************************************************/
 
-    void enviarComandoMoverUnidad(uint8_t id_unidad, char direccion, uint16_t tiempo);
+    void enviarComandoMoverUnidad(uint8_t id_unidad, uint8_t direccion, uint16_t tiempo);
 
     SolicitudMoverUnidadDTO recibirSolicitudMoverUnidad();
 

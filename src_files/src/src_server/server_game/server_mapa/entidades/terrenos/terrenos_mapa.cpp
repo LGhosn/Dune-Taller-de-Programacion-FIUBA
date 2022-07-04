@@ -20,7 +20,7 @@ char Terrenos::obtenerTipoDeEntidad() {
     return this->tipo_entidad;
 }
 
-uint16_t Terrenos::obtenerIdJugador() {
+uint8_t Terrenos::obtenerIdJugador() {
     return this->id_jugador;
 }
 

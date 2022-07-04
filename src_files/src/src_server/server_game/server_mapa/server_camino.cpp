@@ -20,8 +20,8 @@ float Camino::distancia(const Coordenadas& origen, const Coordenadas& destino) c
 float Camino::calcular_costo_adicional(const Coordenadas& actual, const Coordenadas& vecino,
     const std::vector<float>& pen_terr) const {
     float dist = distancia(actual, vecino);
-    char terreno_actual = get_tipo_de_terreno(actual);
-    char terreno_vecino = get_tipo_de_terreno(vecino);
+    char terreno_actual = getTipoDeTerreno(actual);
+    char terreno_vecino = getTipoDeTerreno(vecino);
     float pen_actual = pen_terr.at(terreno_actual);
     float pen_vecino = pen_terr.at(terreno_vecino);
     return (dist * pen_actual) / 2 + (dist * pen_vecino) / 2;
@@ -59,10 +59,18 @@ void Camino::a_star(const Coordenadas& origen, const Coordenadas& destino,
     }
 }
 
-char Camino::get_tipo_de_terreno(const Coordenadas& pos) const {
+char Camino::getTipoDeSuperficie(const Coordenadas& pos) const {
     std::unique_ptr<Entidades>& entidad = (*this->mapa)[pos.y][pos.x];
-    if (entidad->obtenerIdentificador() == 'U') {
-        std::unique_ptr<UnidadesMapa>& unidad = ((std::unique_ptr<UnidadesMapa>&)entidad);
+    if (entidad->obtenerTipoDeEntidad() == 'T') {
+        return entidad->obtenerIdentificador();
+    }
+    return entidad->obtenerTipoDeEntidad();
+}
+
+char Camino::getTipoDeTerreno(const Coordenadas& pos) const {
+    std::unique_ptr<Entidades>& entidad = (*this->mapa)[pos.y][pos.x];
+    if (entidad->obtenerTipoDeEntidad() == 'U') {
+        std::unique_ptr<UnidadesMapa>& unidad = (std::unique_ptr<UnidadesMapa>&) entidad;
         return unidad->obtenerTerrenoQueEstaParada();
     }
     return entidad->obtenerIdentificador();
@@ -70,7 +78,7 @@ char Camino::get_tipo_de_terreno(const Coordenadas& pos) const {
 
 bool Camino::posicion_es_valida(const Coordenadas& pos, std::vector<uint8_t>& terr_no_accesibles) const {
     if (pos.x < this->mapa[0].size() && pos.y < mapa->size()) {
-        char terreno = get_tipo_de_terreno(pos);
+        char terreno = getTipoDeSuperficie(pos);
         return std::find(terr_no_accesibles.begin(), terr_no_accesibles.end(), terreno) == terr_no_accesibles.end();
     }
     return false;
@@ -79,8 +87,10 @@ bool Camino::posicion_es_valida(const Coordenadas& pos, std::vector<uint8_t>& te
 std::list<Coordenadas> Camino::get_vecinos(const Coordenadas& origen,
     std::vector<uint8_t>& terrenos_no_accesibles) const {
     std::list<Coordenadas> vecinos;
-    for (const Coordenadas& posicion_vecina : this->vecinos_posibles) {
-        Coordenadas vecino_posible = posicion_vecina + origen;
+    for (const auto& posicion_vecina : this->vecinos_posibles) {
+        Coordenadas vecino_posible;
+        vecino_posible.x = posicion_vecina.first + origen.x;
+        vecino_posible.y = posicion_vecina.second + origen.y;
         if (posicion_es_valida(vecino_posible, terrenos_no_accesibles))
             vecinos.push_back(vecino_posible);
     }

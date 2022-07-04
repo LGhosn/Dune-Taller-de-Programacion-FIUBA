@@ -45,7 +45,7 @@ bool Mapa::hayColisiones(const Coordenadas& coords, int dimension_x, int dimensi
     return false;
 }
 
-void Mapa::edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio, uint16_t id_jugador) {
+void Mapa::edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio, uint8_t id_jugador) {
     char tipo_edificio = edificio->obtenerIdentificador();
     int dimension_x = edificio->obtenerDimensionX();
     int dimension_y = edificio->obtenerDimensionY();
@@ -64,7 +64,7 @@ bool Mapa::terrenoFirme(const Coordenadas& coords, int dimension_x, int dimensio
             if (0 > j || j >= this->ancho) return false;
 
             std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
-            if (entidad->obtenerIdentificador() != ROCA){
+            if (entidad->obtenerTipoDeEntidad() == 'T' && entidad->obtenerIdentificador() != ROCA){
                 return false;
             }
         }
@@ -72,7 +72,7 @@ bool Mapa::terrenoFirme(const Coordenadas& coords, int dimension_x, int dimensio
     return true;
 }
 
-bool Mapa::construccionLejana(const Coordenadas& coords, uint16_t id_jugador) {
+bool Mapa::construccionLejana(const Coordenadas& coords, uint8_t id_jugador) {
     for (int i = (coords.y - DISTANCIA_EDIFICIOS); i < (coords.y + DISTANCIA_EDIFICIOS); i++){
         if (i < 0 || i >= this->alto) continue;
 
@@ -82,7 +82,7 @@ bool Mapa::construccionLejana(const Coordenadas& coords, uint16_t id_jugador) {
 
             char tipo_entidad = entidad->obtenerTipoDeEntidad();
             if (tipo_entidad == 'E'){
-                uint16_t id_actual_jugador = entidad->obtenerIdJugador();
+                uint8_t id_actual_jugador = entidad->obtenerIdJugador();
                 if (id_actual_jugador == id_jugador){
                     return false;
                 }
@@ -102,7 +102,7 @@ void Mapa::cargarCentrosDeConstruccion(YAML::Node& mapa_config) {
     }
 }
 
-std::unique_ptr<Entidades> Mapa::clasificarEdificio(char tipo_edificio, YAML::Node& edificio_config, uint16_t id_jugador) {
+std::unique_ptr<Entidades> Mapa::clasificarEdificio(char tipo_edificio, YAML::Node& edificio_config, uint8_t id_jugador) {
     switch (tipo_edificio) {
         case CENTRO:
             return std::unique_ptr<Entidades>(new CentroDeConstruccion(edificio_config, id_jugador));
@@ -208,7 +208,7 @@ Mapa::Mapa(const std::string& nombre_mapa) {
     this->camino.start(&this->mapa);
 }
 
-bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
+bool Mapa::construirEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
     // Cada vez que se intente construir un edificio, se limpia la lista de colisiones
     this->colisiones = std::vector< Coordenadas >();
 
@@ -225,7 +225,7 @@ bool Mapa::construirEdificio(uint16_t id_jugador, uint8_t tipo, const Coordenada
     return true;
 }
 
-void Mapa::construirCentro(uint16_t id_jugador, const Coordenadas& coords) {
+void Mapa::construirCentro(uint8_t id_jugador, const Coordenadas& coords) {
     std::unique_ptr<Entidades> entidad = std::unique_ptr<Entidades>(new CentroDeConstruccion(this->edificio_config, id_jugador));
     std::unique_ptr<Edificio>& centro = ((std::unique_ptr<Edificio>&)entidad);
     int dimension_x = centro->obtenerDimensionX();
@@ -338,27 +338,25 @@ char Mapa::obtenerTipoDeTerreno(Coordenadas& coords) {
     return entidad->obtenerIdentificador();
 }
 
-char Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destino) {
-    if (origen.x == destino.x){
-        if (origen.y < destino.y){
-            return ARRIBA_UNIDAD;
-        }
+uint8_t Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& destino) {
+    if (origen.x == destino.x && origen.y > destino.y) {
+        return ARRIBA_UNIDAD;
+    } else if (origen.x == destino.x && origen.y < destino.y) {
         return ABAJO_UNIDAD;
-    } else if (origen.y == destino.y){
-        if (origen.x < destino.x){
-            return DERECHA_UNIDAD;
-        }
+    } else if (origen.x < destino.x && origen.y == destino.y) {
+        return DERECHA_UNIDAD;
+    } else if (origen.x > destino.x && origen.y == destino.y) {
         return IZQUIERDA_UNIDAD;
-    } else if (origen.x < destino.x){
-        if (origen.y < destino.y){
-            return ARRIBA_DER_UNIDAD;
-        }
+    } else if (origen.x > destino.x && origen.y > destino.y) {
+        return ARRIBA_IZQ_UNIDAD;
+    } else if (origen.x < destino.x && origen.y > destino.y) {
+        return ARRIBA_DER_UNIDAD;
+    } else if (origen.x > destino.x && origen.y < destino.y) {
+        return ABAJO_IZQ_UNIDAD;
+    } else if (origen.x < destino.x && origen.y < destino.y) {
         return ABAJO_DER_UNIDAD;
     } else {
-        if (origen.y < destino.y){
-            return ARRIBA_IZQ_UNIDAD;
-        }
-        return ABAJO_IZQ_UNIDAD;
+        throw std::runtime_error("Mapa: No cambio de posicion");
     }
 }
 

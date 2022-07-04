@@ -78,7 +78,7 @@ public:
     virtual void render();
     void renderUI();
     void moverse(uint8_t direccion, uint16_t tiempo_movimiento);
-    virtual ~UnidadSDL() = default;
+    virtual ~UnidadSDL();
 };
 
 #endif //SDL_UNIDAD_H
