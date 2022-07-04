@@ -16,24 +16,26 @@ void HiloGameLoop::manejarHilo() {
 
 void HiloGameLoop::run() {
     using namespace std::chrono;
-    long iter = 0;
+    long iter_actual = 0, iter_anterior = 0;
     time_point t1 = system_clock::now();
     milliseconds tick_rate(1000 / TICKS_POR_SEGUNDO);
     while(corriendo) {
+        long iter_transcurridos = iter_actual - iter_anterior;
         this->manejarSolicitudes();
-        this->update(iter);
+        this->update(iter_transcurridos);
         time_point t2 = system_clock::now();
 		milliseconds tiempo_transcurrido = duration_cast<milliseconds>(t2 - t1);
 		t1 = t2;
         milliseconds rest;
+        iter_anterior = iter_actual;
         if (tiempo_transcurrido.count() > tick_rate.count()) {
 			milliseconds demora = duration_cast<milliseconds>(tiempo_transcurrido - tick_rate);
 			rest = duration_cast<milliseconds>(demora % tick_rate);
 			milliseconds tiempo_perdido = demora + rest;
-			iter += tiempo_perdido.count() / tick_rate.count();
+			iter_actual += tiempo_perdido.count() / tick_rate.count();
 		} else {
 			rest = duration_cast<milliseconds>(tick_rate - tiempo_transcurrido);
-            iter++;
+            iter_actual++;
 		}
         std::this_thread::sleep_for(rest);
     }

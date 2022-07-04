@@ -18,7 +18,7 @@ void SiloSDL::cambiarCantidadEspecia(uint8_t estado_especia) {
     this->estado_especia = estado_especia;
 }
 
-void SiloSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_actual, float zoom) {
+void SiloSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_transcurridos, float zoom) {
     this->zoom = zoom;
     destino.SetX(coords.x * ancho_tile * zoom - origen_movil_x);
     destino.SetY(coords.y * largo_tile * zoom - origen_movil_y);

@@ -23,14 +23,14 @@ class Camino {
 
 	void a_star(const Coordenadas& origen, const Coordenadas& destino,
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas>& padres,
-    std::vector<char>& terrenos_no_accesibles, const std::vector<float>& penalizacion_terrenoo) const;
+    std::vector<uint8_t>& terrenos_no_accesibles, const std::vector<float>& penalizacion_terrenoo) const;
 
 	char get_tipo_de_terreno(const Coordenadas& pos) const;
 
-	bool posicion_es_valida(const Coordenadas& pos, std::vector<char>& terr_no_accesibles) const;
+	bool posicion_es_valida(const Coordenadas& pos, std::vector<uint8_t>& terr_no_accesibles) const;
 
 	std::list<Coordenadas> get_vecinos(const Coordenadas& origen,
-		std::vector<char>& terrenos_no_accesibles) const;
+		std::vector<uint8_t>& terrenos_no_accesibles) const;
 
 	std::stack<Coordenadas> construir_camino(const std::unordered_map<Coordenadas,Coordenadas, HashCoordenadas>& padres,
 		const Coordenadas& origen, const Coordenadas& destino) const;

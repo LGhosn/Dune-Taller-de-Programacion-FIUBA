@@ -15,7 +15,7 @@ void FabricaLigeraSDL::cambiarHP(uint16_t hp_edificio) {
         debilitado = true;
 }
 
-void FabricaLigeraSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_actual,
+void FabricaLigeraSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_transcurridos,
                                 float zoom) {
     this->zoom = zoom;
     destino.SetX(coords.x * ancho_tile * zoom - origen_movil_x);

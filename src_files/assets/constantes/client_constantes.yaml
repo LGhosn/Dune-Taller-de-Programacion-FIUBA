@@ -63,7 +63,7 @@ WorldView:
       LimiteHPDebilitar: 750
       Brazo:
         CantidadFrames: 14
-        Rate: 5
+        Rate: 15
         OffsetX: 50
         OffsetY: 61
     Cuartel:

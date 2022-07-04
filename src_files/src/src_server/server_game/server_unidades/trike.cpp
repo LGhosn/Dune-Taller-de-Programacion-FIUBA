@@ -19,5 +19,5 @@ Trike::Trike(uint8_t id,
     this->costo = atributos_unidad["Vehiculo"]["Trike"]["Costo"].as<uint16_t>();
     
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Trike"]["PenalizacionTerreno"].as<std::vector<float>>();
-    this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Trike"]["TerrenosNoAccesibles"].as<std::vector<char>>();
+    this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Trike"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }

@@ -20,5 +20,5 @@ Desviador::Desviador(uint8_t id,
     
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Desviador"]["PenalizacionTerreno"].as<std::vector<float>>();
 
-    this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Desviador"]["TerrenosNoAccesibles"].as<std::vector<char>>();
+    this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Desviador"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }

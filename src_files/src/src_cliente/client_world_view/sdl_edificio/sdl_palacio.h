@@ -13,7 +13,7 @@ public:
     
     void cambiarHP(uint16_t hp_edificio) override;
 
-    void update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_actual, float zoom) override;
+    void update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_transcurridos, float zoom) override;
 
     void render() override;
 };

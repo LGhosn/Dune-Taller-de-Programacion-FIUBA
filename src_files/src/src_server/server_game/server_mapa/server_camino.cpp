@@ -2,6 +2,7 @@
 #include "../src_common/common_coords.h"
 #include "server_camino_no_encontrado_exception.h"
 #include "server_fuera_de_rango_exception.h"
+#include "entidades/unidades/unidades_mapa.h"
 #include <queue>
 #include <cmath>
 #include <functional>
@@ -28,7 +29,7 @@ float Camino::calcular_costo_adicional(const Coordenadas& actual, const Coordena
 
 void Camino::a_star(const Coordenadas& origen, const Coordenadas& destino,
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas>& padres,
-    std::vector<char>& terrenos_no_accesibles, const std::vector<float>& penalizacion_terreno) const {
+    std::vector<uint8_t>& terrenos_no_accesibles, const std::vector<float>& penalizacion_terreno) const {
     std::unordered_map<Coordenadas, float, HashCoordenadas> costo;
     std::priority_queue<std::pair<float, Coordenadas>,
     std::vector<std::pair<float, Coordenadas>>, std::greater<std::pair<float, Coordenadas>>> frontera;
@@ -59,10 +60,15 @@ void Camino::a_star(const Coordenadas& origen, const Coordenadas& destino,
 }
 
 char Camino::get_tipo_de_terreno(const Coordenadas& pos) const {
-    return (*this->mapa)[pos.y][pos.x]->obtenerIdentificador();
+    std::unique_ptr<Entidades>& entidad = (*this->mapa)[pos.y][pos.x];
+    if (entidad->obtenerIdentificador() == 'U') {
+        std::unique_ptr<UnidadesMapa>& unidad = ((std::unique_ptr<UnidadesMapa>&)entidad);
+        return unidad->obtenerTerrenoQueEstaParada();
+    }
+    return entidad->obtenerIdentificador();
 }
 
-bool Camino::posicion_es_valida(const Coordenadas& pos, std::vector<char>& terr_no_accesibles) const {
+bool Camino::posicion_es_valida(const Coordenadas& pos, std::vector<uint8_t>& terr_no_accesibles) const {
     if (pos.x < this->mapa[0].size() && pos.y < mapa->size()) {
         char terreno = get_tipo_de_terreno(pos);
         return std::find(terr_no_accesibles.begin(), terr_no_accesibles.end(), terreno) == terr_no_accesibles.end();
@@ -71,7 +77,7 @@ bool Camino::posicion_es_valida(const Coordenadas& pos, std::vector<char>& terr_
 }
 
 std::list<Coordenadas> Camino::get_vecinos(const Coordenadas& origen,
-    std::vector<char>& terrenos_no_accesibles) const {
+    std::vector<uint8_t>& terrenos_no_accesibles) const {
     std::list<Coordenadas> vecinos;
     for (const Coordenadas& posicion_vecina : this->vecinos_posibles) {
         Coordenadas vecino_posible = posicion_vecina + origen;
@@ -116,13 +122,9 @@ void Camino::start(std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa
 std::stack<Coordenadas> Camino::obtener_camino(UnidadInfoDTO& unidad_info) const {
     const Coordenadas& origen = unidad_info.origen;
     const Coordenadas& destino = unidad_info.destino;
-    std::vector<char>& terrenos_no_accesibles = unidad_info.terrenos_no_accesibles;
+    std::vector<uint8_t>& terrenos_no_accesibles = unidad_info.terrenos_no_accesibles;
     const std::vector<float>& penalizacion_terreno = unidad_info.penalizacion_terreno;
 
-    if (!posicion_es_valida(origen, terrenos_no_accesibles) || 
-        !posicion_es_valida(destino, terrenos_no_accesibles)) {
-        return std::stack<Coordenadas>();
-    }
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas> padres;
     this->a_star(origen, destino, padres, terrenos_no_accesibles, penalizacion_terreno);
     return this->construir_camino(padres, origen, destino);

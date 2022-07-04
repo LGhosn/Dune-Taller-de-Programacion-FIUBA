@@ -21,7 +21,7 @@ class Unidad {
 protected:
     Jugador& duenio;
     Mapa& mapa;
-    Coordenadas& origen;
+    Coordenadas origen;
     uint8_t id;
     bool moviendose = false;
     std::stack<Coordenadas> camino;
@@ -38,7 +38,7 @@ protected:
     int16_t vida;
     uint16_t costo;
     std::vector<float> penalizacion_terreno;
-    std::vector<char> terrenos_no_accesibles;
+    std::vector<uint8_t> terrenos_no_accesibles;
 
     // Constantes
     const uint16_t ticks;

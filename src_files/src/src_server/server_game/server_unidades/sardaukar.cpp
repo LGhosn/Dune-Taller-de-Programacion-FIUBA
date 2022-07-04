@@ -19,5 +19,5 @@ Sardaukar::Sardaukar(uint8_t id, Jugador& duenio,
     
     this->penalizacion_terreno = atributos_unidad["Infanteria"]["Sardaukar"]["PenalizacionTerreno"].as<std::vector<float>>();
 
-    this->terrenos_no_accesibles = atributos_unidad["Infanteria"]["Sardaukar"]["TerrenosNoAccesibles"].as<std::vector<char>>();
+    this->terrenos_no_accesibles = atributos_unidad["Infanteria"]["Sardaukar"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }

@@ -26,7 +26,7 @@ void TrampaSDL::cambiarHP(uint16_t hp_edificio) {
         debilitado = true;
 }
 
-void TrampaSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_actual, float zoom) {
+void TrampaSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frames_transcurridos, float zoom) {
     this->zoom = zoom;
     destino.SetX(coords.x * ancho_tile * zoom - origen_movil_x);
     destino.SetY(coords.y * largo_tile * zoom - origen_movil_y);

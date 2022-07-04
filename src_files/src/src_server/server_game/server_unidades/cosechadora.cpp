@@ -16,7 +16,7 @@ Cosechadora::Cosechadora(uint8_t id,
     this->vida = atributos_unidad["Vehiculo"]["Cosechadora"]["Vida"].as<int16_t>();
     this->costo = atributos_unidad["Vehiculo"]["Cosechadora"]["Costo"].as<uint16_t>();
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Cosechadora"]["PenalizacionTerreno"].as<std::vector<float>>();
-    this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Cosechadora"]["TerrenosNoAccesibles"].as<std::vector<char>>();
+    this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Cosechadora"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
     
     this->capacidad_especia = constantes["CapacidadCosechadora"].as<int>();
     this->tiempo_extraer = constantes["TiempoDeExtraccion"].as<uint16_t>();

@@ -66,7 +66,7 @@ void WorldView::update(long frame_actual) {
     }
 
     for (auto& edificio : this->edificios) {
-        edificio.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(), frame_actual, zoom);
+        edificio.second->update(mapa.obtener_offset_x(), mapa.obtener_offset_y(), frames_transcurridos, zoom);
     }
 
     for (auto & unidad: this->unidades) {

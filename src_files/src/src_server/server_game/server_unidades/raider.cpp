@@ -20,5 +20,5 @@ Raider::Raider(uint8_t id,
     
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Raider"]["PenalizacionTerreno"].as<std::vector<float>>();
 
-    this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Raider"]["TerrenosNoAccesibles"].as<std::vector<char>>();
+    this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Raider"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }

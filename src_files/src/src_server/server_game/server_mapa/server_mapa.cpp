@@ -331,6 +331,10 @@ bool Mapa::obtenerUnidadRandomSobreArena(uint8_t *id_victima) {
 
 char Mapa::obtenerTipoDeTerreno(Coordenadas& coords) {
     std::unique_ptr<Entidades>& entidad = this->mapa[coords.y][coords.x];
+    if (entidad->obtenerIdentificador() == 'U') {
+        std::unique_ptr<UnidadesMapa>& unidad = ((std::unique_ptr<UnidadesMapa>&)entidad);
+        return unidad->obtenerTerrenoQueEstaParada();
+    }
     return entidad->obtenerIdentificador();
 }
 

@@ -15,7 +15,7 @@ Infanteria:
     - 1 # Precipicio
     - 1 # Roca
    TerrenosNoAccesibles: 
-    - 4
+    - 0x4
   InfanteriaPesada:
    Arma: 
     - "Lanza misiles"

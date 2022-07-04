@@ -1,10 +1,11 @@
 #include "sdl_centro.h"
 
-void CentroSDL::actualizarFrameBrazo(long frame_actual) {
-    long cant_frames = (frame_actual - frame_anterior) / rate_brazo;
-    if (cant_frames > 0) {
-        frame_actual_brazo = (frame_actual_brazo + cant_frames) % cant_frames_brazo;
-        frame_anterior = frame_actual;
+void CentroSDL::actualizarFrameBrazo(long frame_transcurridos) {
+    if (frame_transcurridos > frames_restantes) {
+        frame_actual_brazo = (frame_actual_brazo + 1) % cant_frames_brazo;
+        frames_restantes = rate_brazo;
+    } else {
+        frames_restantes -= frame_transcurridos;
     }
 }
 
@@ -51,20 +52,21 @@ CentroSDL::CentroSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
                     cant_frames_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["CantidadFrames"].as<uint8_t>()),
                     rate_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["Rate"].as<uint32_t>()),
                     offset_x_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["OffsetX"].as<int32_t>()),
-                    offset_y_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["OffsetY"].as<int32_t>()){}
+                    offset_y_brazo(constantes["WorldView"]["Edificios"]["Centro"]["Brazo"]["OffsetY"].as<int32_t>()),
+                    frames_restantes(rate_brazo) {}
 
 void CentroSDL::cambiarHP(uint16_t hp_edificio) {
     if (hp_edificio < limite_hp_debilitar)
         debilitado = true;
 }
 
-void CentroSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_actual,
+void CentroSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_transcurridos,
                         float zoom) {
     this->zoom = zoom;
     destino.SetX(coords.x * ancho_tile * zoom - origen_movil_x);
     destino.SetY((coords.y * largo_tile + padding_edificio_y) * zoom - origen_movil_y);
     setearPosicionUI(origen_movil_x, origen_movil_y);
-    actualizarFrameBrazo(frame_actual);
+    actualizarFrameBrazo(frame_transcurridos);
     setearPosicionBrazo();
     destino.SetW(ancho_tile * ancho * zoom);
     destino.SetH((largo_tile * alto - 2 * padding_edificio_y) * zoom);
