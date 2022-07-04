@@ -164,8 +164,7 @@ void WorldView::actualizarTiendaUnidades(const std::vector<bool>& unidades_compr
  * *****************************************************************/
 
 void WorldView::moverUnidad(uint8_t id_unidad, uint8_t direccion, uint16_t tiempo_movimiento) {
-    std::shared_ptr<UnidadSDL> unidad_a_mover = unidades[id_unidad];
-    unidad_a_mover->moverse(direccion, tiempo_movimiento);
+    this->unidades[id_unidad]->moverse(direccion, tiempo_movimiento);
 }
 
 void WorldView::empezarEntrenamiento(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo_aparicion, Coordenadas& coords_spawn) {
@@ -182,15 +181,8 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                 uint8_t tipo_unidad,
                                                 long tiempo_entrenamiento,
                                                 Coordenadas& coords_spawn) {
-    std::shared_ptr<UnidadSDL> unidad_a_desplegar = unidad_factory.crearUnidad(id_unidad,
-                                                                id_jugador,
-                                                                renderer,
-                                                                coords_spawn,
-                                                                constantes,
-                                                                colores,
-                                                                tiempo_entrenamiento,
-                                                                tipo_unidad);
-    unidades[id_unidad] = unidad_a_desplegar;
+    std::cout << "IdUnidad: " << (int)id_unidad << std::endl;
+    this->unidades[id_unidad] = unidad_factory.crearUnidad(id_unidad, id_jugador, renderer, coords_spawn, constantes, colores, tiempo_entrenamiento, tipo_unidad);
 }
 
 void WorldView::seleccionarUnidad(std::shared_ptr<UnidadSDL> unidad) {
