@@ -21,7 +21,7 @@ protected:
     uint8_t id_unidad;
     uint8_t id_jugador;
     SDL2pp::Renderer& renderer;
-    SDL2pp::Texture& textura;
+    std::vector<SDL2pp::Texture>& texturas;
     Coordenadas coords;
     ColorSDL& color;
     long frames_restantes = 0;

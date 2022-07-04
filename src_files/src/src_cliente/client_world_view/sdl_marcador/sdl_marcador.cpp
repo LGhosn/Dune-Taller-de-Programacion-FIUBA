@@ -31,6 +31,7 @@ MarcadorSDL::MarcadorSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, YAML
                         largo_max_nombre(ancho_nombre - 2 * padding_interno),
                         textura_etiqueta_posiciones(renderer,
                                 fuente.RenderText_Blended(etiqueta_posiciones, SDL_Color{255, 255, 255, 255})),
+                        // textura_etiqueta_posiciones(texturas.obtenerSlab()),
                         textura_etiqueta_nombres(renderer,
                                 fuente.RenderText_Blended(etiqueta_nombres, SDL_Color{255, 255, 255, 255})),
                         textura_etiqueta_puntajes(renderer,
@@ -81,7 +82,6 @@ MarcadorSDL::MarcadorSDL(SDL2pp::Renderer& renderer, TexturasSDL& texturas, YAML
         );
         i++;
     }
-    
 }
 
 void MarcadorSDL::actualizarPuntajes(uint8_t id_jugador, uint16_t nuevo_puntaje) {
@@ -98,9 +98,9 @@ void MarcadorSDL::render() {
     }
     renderer.SetDrawColor(color.obtenerOscuroSemitransparente());
     renderer.FillRect(destino_marcador);
-    renderer.Copy(textura_etiqueta_posiciones, destino_etiqueta_posiciones);
-    renderer.Copy(textura_etiqueta_nombres, destino_etiqueta_nombres);
-    renderer.Copy(textura_etiqueta_puntajes, destino_etiqueta_puntajes);
+    renderer.Copy(textura_etiqueta_posiciones, destino_marcador);
+    renderer.Copy(textura_etiqueta_posiciones, destino_etiqueta_nombres);
+    renderer.Copy(textura_etiqueta_posiciones, destino_etiqueta_puntajes);
     for (size_t i = 0; i < texturas_nombres.size(); i++) {
         renderer.Copy(texturas_nombres[i], destinos_nombres[i]);
     }

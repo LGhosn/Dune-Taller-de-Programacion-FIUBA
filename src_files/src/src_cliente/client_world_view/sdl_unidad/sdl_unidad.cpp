@@ -11,7 +11,7 @@ UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 id_unidad(id_unidad),
                 id_jugador(id_jugador),
                 renderer(renderer),
-                textura(texturas.obtenerVehiculo(6)[0]),
+                texturas(texturas.obtenerVehiculo(6)),
                 coords(coords),
                 color(color),
                 offset_x_hp(constantes["WorldView"]["Unidades"]["UI"]["HP"]["OffsetX"].as<int32_t>()),
@@ -51,7 +51,7 @@ void UnidadSDL::updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, float
 
 void UnidadSDL::render() {
     if (desplegada) {
-        renderer.Copy(textura, SDL2pp::NullOpt, destino);
+        renderer.Copy(texturas[direccion_actual], SDL2pp::NullOpt, destino);
         renderUI();
     } else {
         renderer.SetDrawColor(color.obtenerOscuroSemitransparente());
@@ -154,38 +154,46 @@ void UnidadSDL::actualizarCoordenadaActual(uint8_t direccion_actual) {
     switch(direccion_actual) {
         case ABAJO_UNIDAD: {
             coords.y++;
+            direccion_actual = ABAJO_UNIDAD;
             break;
         }
         case ABAJO_IZQ_UNIDAD: {
             coords.x--;
             coords.y++;
+            direccion_actual = ABAJO_IZQ_UNIDAD;
             break;
         }
         case IZQUIERDA_UNIDAD: {
             coords.x--;
+            direccion_actual = IZQUIERDA_UNIDAD;
             break;
         }
         case ARRIBA_IZQ_UNIDAD: {
             coords.x--;
             coords.y--;
+            direccion_actual = ARRIBA_IZQ_UNIDAD;
             break;
         }
         case ARRIBA_UNIDAD: {
             coords.y--;
+            direccion_actual = ARRIBA_UNIDAD;
             break;
         }
         case ARRIBA_DER_UNIDAD: {
             coords.x++;
             coords.y--;
+            direccion_actual = ARRIBA_DER_UNIDAD;
             break;
         }
         case DERECHA_UNIDAD: {
             coords.x++;
+            direccion_actual = DERECHA_UNIDAD;
             break;
         }
         case ABAJO_DER_UNIDAD: {
             coords.y++;
             coords.x++;
+            direccion_actual = ABAJO_DER_UNIDAD;
             break;
         } default: {
             std::string error("UnidadSDL: direccion no reconocida" + direccion_actual);
