@@ -44,7 +44,7 @@ class MarcadorSDL {
     const uint32_t largo_texto;
     const uint32_t ancho_nombre;
     const uint32_t largo_max_nombre;
-    SDL2pp::Texture textura_etiqueta_posiciones;
+    SDL2pp::Texture& textura_etiqueta_posiciones;
     SDL2pp::Texture textura_etiqueta_nombres;
     SDL2pp::Texture textura_etiqueta_puntajes;
     const SDL2pp::Rect destino_etiqueta_posiciones;
