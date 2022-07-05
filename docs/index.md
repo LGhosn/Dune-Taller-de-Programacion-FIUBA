@@ -12,19 +12,30 @@
 **Ubuntu 20.04 LTS**
 
 ## Dependencias necesarias
-**YAML-CPP**: seguir las instrucciones desde el subtítulo `How to build` del [repositorio original](https://github.com/jbeder/yaml-cpp).
+**YAML-CPP**
+**SDL2PP**
+**QT5**
 
-**SDL2PP**: hay que instalar el [release 0.16.2](https://github.com/libSDL2pp/libSDL2pp/releases/tag/0.16.2) y para su instalación seguir las instrucciones del [repositorio original](https://github.com/libSDL2pp/libSDL2pp) a partir del subtitulo `Building` e `Installation`.
+## Instalación
+Para instalar el juego se provee del script installer.sh que corre en bash. Se debe ejecutar:
+```
+$ ./installer.sh
+```
+Si fallan los permisos, se le deberán conceder los mismos ejecutando:
+```
+$ chmod +x ./installer.sh
+```
+Una vez que la instalación haya finalizado, se puede abrir el cliente corriendo:
+``
+$ ClientDune2000 localhost <puerto>
+``
+donde `<puerto>` es un parámetro que representa el puerto en que queremos abrir el servidor.
 
-**QT5**: ingresar las siguientes líneas en la consola (las últimas tres corresponden a la documentación):
+Para lanzar el servidor hacer:
 ```
-sudo apt-get install build-essential
-sudo apt-get install qtcreator
-sudo apt-get install qt5-default
-sudo apt-get install qt5-doc
-sudo apt-get install qt5-doc-html qtbase5-doc-html
-sudo apt-get install qtbase5-examples
+$ ServerDune2000 <puerto>
 ```
+donde `<puerto>` es un parámetro que representa el puerto en que queremos abrir el servidor.
 
 ## Como lanzar el servidor
 1. Abrir la terminal de Linux dentro de la carpeta `build`
@@ -63,4 +74,4 @@ Para hacer aparecer una unidad requerimos de tener los edificios necesarios para
 Para atacar otras unidades deberemos seleccionar las nuestras con click izquierdo y luego la unidad enemiga con click derecho, la misma operación se lleva a cabo para atacar edificios enemigos.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-## Manuales de Proyecto y Documentación Técnica disponibles en https://drive.google.com/drive/folders/1i1DJQOORScO8AFi8x2nMgytjtSEab5Kv?usp=sharing
+## [Manuales de Proyecto y Documentación Técnica disponibles](https://drive.google.com/drive/folders/1i1DJQOORScO8AFi8x2nMgytjtSEab5Kv?usp=sharing)
