@@ -22,7 +22,6 @@ InfanteriaSDL::InfanteriaSDL(uint8_t id_unidad,
 void InfanteriaSDL::updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom) {
     this->zoom = zoom;
     float relacion_ancho_largo = (float) texturaActual().GetWidth() / (float) texturaActual().GetHeight();
-    std::cout << "Relacion ancho largo: " << relacion_ancho_largo << std::endl;
     uint16_t ancho = relacion_ancho_largo * alto;
     uint16_t padding_x = (ancho_tile - ancho) / 2;
     uint16_t padding_y = (largo_tile - alto) / 2;

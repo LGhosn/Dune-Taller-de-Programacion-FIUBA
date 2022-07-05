@@ -8,7 +8,6 @@ class SolicitudAtacarUnidadServer : public SolicitudServer {
     uint8_t id_jugador_atacante;
     uint8_t id_unidad_atacante;
     uint8_t id_unidad_a_atacar;
-    const Coordenadas coords_a_atacar;
 public:
     SolicitudAtacarUnidadServer(SolicitudAtacarUnidadDTO &dto);
 

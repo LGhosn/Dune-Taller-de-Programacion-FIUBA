@@ -43,8 +43,8 @@ void FormUnion::solicitudDeUnion() {
 void FormUnion::unirseNotificacion(ProtocoloCliente &protocolo, Status &status) {
     if (status.obtenerCodigoDeConexion() == CONEXION_EXITOSA) {
         std::cout << "Union Existosa, esperando jugadores restantes..." << std::endl;
-        QMessageBox::information(this, "Conexion exitosa",
-                                        "Esperando jugadores restantes...");
+        //QMessageBox::information(this, "Conexion exitosa",
+        //                                "Esperando jugadores restantes...");
         InfoPartidaDTO info_partida = protocolo.recibirInfoComienzoDePartida();
         cliente.setInfoPartida(info_partida);
         // Cierro todas las ventanas y abro el juego

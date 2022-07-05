@@ -1,15 +1,23 @@
 #include "unidades.h"
 #include "../../server_comandos/cmd_mover_unidad.h"
+#include <cmath>
 
 Unidad::Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen, YAML::Node& constantes,
-                std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comando) :
+                std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comando,
+                std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades) :
                 duenio(duenio),
                 mapa(mapa),
                 origen(origen),
                 colas_comandos(colas_comando),
+                unidades(unidades),
                 ticks(constantes["TicksPorSegundo"].as<uint16_t>()) {}
 
 void Unidad::empezarMovimiento(const Coordenadas& destino) {
+    this->destino = destino;
+    setearNuevoCamino();
+}
+
+void Unidad::setearNuevoCamino() {
     UnidadInfoDTO info(this->origen, destino, this->terrenos_no_accesibles, this->penalizacion_terreno);
     this->camino = this->mapa.obtenerCamino(info);
     if(this->camino.empty()) {
@@ -44,7 +52,16 @@ void Unidad::updateMovimiento(long ticks_transcurridos) {
     if (this->moviendose) {
         if (this->ticks_restantes > ticks_transcurridos) {
             this->ticks_restantes -= ticks_transcurridos;
-        }else {
+        } else {
+            if (persiguiendo && estaEnRango()) {
+                moviendose = false;
+                atacando = true;
+                return;
+            } else if ((unidad_a_atacar != nullptr) && persiguiendo && destino != unidad_a_atacar->origen) {
+                destino = unidad_a_atacar->origen;
+                UnidadInfoDTO info(this->origen, this->destino, this->terrenos_no_accesibles, this->penalizacion_terreno);
+                this->camino = mapa.obtenerCamino(info);
+            }
             Coordenadas top = this->camino.top();
             if (this->mapa.esCoordenadaValida(top)) {
                 this->mapa.moverUnidad(this->origen, top);
@@ -55,32 +72,84 @@ void Unidad::updateMovimiento(long ticks_transcurridos) {
                 } else {
                     setearNuevoMovimiento();
                 }
+            } else {
+                UnidadInfoDTO info(this->origen, this->destino, this->terrenos_no_accesibles, this->penalizacion_terreno);
+                this->camino = this->mapa.obtenerCamino(info);
+                if(this->camino.size() <= 1) {
+                    this->moviendose = false;
+                    this->camino = std::stack<Coordenadas>();
+                    return;
+                }
             }
         }
     }
 }
 
-void Unidad::atacar(uint8_t id_unidad_a_atacar, const Coordenadas& coords_unidad_a_atacar) {
-    Coordenadas coords = this->mapa.obtenerCoordenadasEnRango(this->rango, coords_unidad_a_atacar);
-    empezarMovimiento(coords);
-    atacando = true;
+void Unidad::atacar(std::shared_ptr<Unidad> unidad_a_atacar) {
+    this->destino = unidad_a_atacar->origen;
+    if (!unidad_a_atacar->sigueViva()) {
+        return;
+    }
+    if (estaEnRango()) {
+        atacando = true;
+        // disparar();
+    } else {
+        atacando = false;
+        Coordenadas coords = this->mapa.obtenerCoordenadasEnRango(this->rango, destino);
+        empezarMovimiento(coords);
+    }
+    persiguiendo = true;
+    this->unidad_a_atacar = unidad_a_atacar;
 }
 
 void Unidad::updateAtaque(long ticks_transcurridos) {
-    // if (!this->moviendose) {
-    //     if (this->ticks_restantes > ticks_transcurridos) {
-    //         this->ticks_restantes -= ticks_transcurridos;
-    //     }else {
-    //         this->atacando = false;
-    //     }
-    // }
+    // Si la unidad no tiene ordenes del jugador.
+    if (!atacando) {
+        if (!moviendose && !persiguiendo) {
+            uint8_t id_unidad_enemiga = 0;
+            bool hay_unidad = mapa.obtenerUnidadEnemigaEnRango(obtenerIdJugador(), rango, id_unidad_enemiga, origen);
+            std::cout << "Resultado: " <<  hay_unidad << std::endl;
+            if (hay_unidad) {
+                atacando = true;
+                unidad_a_atacar = unidades.at(id_unidad_enemiga);
+                // disparar
+                return;
+            }
+        }
+    } else {
+        if (!estaEnRango()) {
+            moviendose = true;
+            atacando = false;
+        } else {
+            // disparar
+        }
+    }
+
+    // Si la unidad a atacar murio hay que esperar una orden del jugador.
+    if ((unidad_a_atacar != nullptr) && (!unidad_a_atacar->sigueViva())) {
+        unidad_a_atacar = nullptr;
+        atacando = false;
+    }
 }
 
-void Unidad::update(long ticks_transcurridos) {
-    updateMovimiento(ticks_transcurridos);
+bool Unidad::update(long ticks_transcurridos) {
+    if (!sigueViva()) {
+        return false;
+    }
     updateAtaque(ticks_transcurridos);
+    updateMovimiento(ticks_transcurridos);
+    return true;
 }
 
 uint8_t Unidad::obtenerIdJugador() {
     return this->duenio.obtenerId();
+}
+
+bool Unidad::sigueViva() {
+    return esta_viva;
+}
+
+bool Unidad::estaEnRango() const {
+    uint16_t distancia = sqrt(pow(origen.x - destino.x, 2) + pow(origen.y - destino.y, 2));
+    return distancia <= rango;
 }

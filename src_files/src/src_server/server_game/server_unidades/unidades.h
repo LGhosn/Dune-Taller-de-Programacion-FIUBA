@@ -22,14 +22,19 @@ protected:
     Jugador& duenio;
     Mapa& mapa;
     Coordenadas origen;
+    Coordenadas destino;
     uint8_t id;
     bool moviendose = false;
     bool atacando = false;
+    bool esta_viva = true;
+    bool persiguiendo = false;
     std::stack<Coordenadas> camino;
     long ticks_para_sig_movimiento = 0;
     long ticks_restantes = 0;
     char tipo_unidad;
     std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos;
+    std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades;
+    std::shared_ptr<Unidad> unidad_a_atacar = nullptr;
 
     // Atributos
     std::vector<std::string> armas;
@@ -53,14 +58,19 @@ protected:
 
     void setearNuevoMovimiento();
 
+    bool estaEnRango() const;
+
 public:
     Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen, YAML::Node& constantes,
-            std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comando);
+            std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comando,
+            std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades);
+    bool sigueViva();
+    void setearNuevoCamino();
     virtual uint8_t obtenerIdJugador();
     // virtual void atacar(Unidad& unidad) = 0;
     virtual void empezarMovimiento(const Coordenadas& destino);
-    virtual void update(long ticks_transcurridos);
-    virtual void atacar(uint8_t id_unidad_a_atacar, const Coordenadas& coords_unidad_a_atacar);
+    virtual bool update(long ticks_transcurridos);
+    virtual void atacar(std::shared_ptr<Unidad> unidad_a_atacar);
     // virtual void atacar(Edificio& edificio) = 0;
     virtual ~Unidad() = default;
 };

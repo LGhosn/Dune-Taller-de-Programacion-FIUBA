@@ -267,8 +267,8 @@ CmdActualizarPuntajesClienteDTO ProtocoloCliente::recibirComandoActualizarPuntaj
  *                 METODOS REFERIDOS A ATAQUES
  * *****************************************************************/
 
-void ProtocoloCliente::enviarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada, Coordenadas& coords) {
-    std::vector<uint8_t> buffer = serializador.serializarSolicitudAtacarUnidad(id_jugador_atacante, id_unidad_atacante, id_unidad_atacada, coords);
+void ProtocoloCliente::enviarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada) {
+    std::vector<uint8_t> buffer = serializador.serializarSolicitudAtacarUnidad(id_jugador_atacante, id_unidad_atacante, id_unidad_atacada);
     enviarBuffer(buffer);
 }
 

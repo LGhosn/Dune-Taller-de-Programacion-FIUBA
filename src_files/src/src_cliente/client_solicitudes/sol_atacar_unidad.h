@@ -8,10 +8,9 @@
 class SolicitudAtacarUnidad : public SolicitudCliente {
     uint8_t id_unidad_atacante;
     uint8_t id_unidad_a_atacar;
-    Coordenadas coords_a_atacar;
 
 public:
-    SolicitudAtacarUnidad(uint8_t id_unidad_atacante,uint8_t id_unidad_a_atacar, Coordenadas& coords_a_atacar);
+    SolicitudAtacarUnidad(uint8_t id_unidad_atacante,uint8_t id_unidad_a_atacar);
     virtual void enviarSolicitud(ProtocoloCliente& protocolo, uint8_t id_jugador);
     virtual ~SolicitudAtacarUnidad() = default;
 };

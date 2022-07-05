@@ -4,6 +4,7 @@
 #include <vector>
 #include <list>
 #include <unordered_map>
+#include <memory>
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../server_comandos/server_comando.h"
 #include "server_unidades/unidades.h"
@@ -19,7 +20,7 @@ class Game {
     bool finished = false;
     std::map< uint8_t, ColaBloqueante<ComandoServer>* > colas_comandos;
     std::list<Jugador> jugadores;
-    std::unordered_map<uint8_t, std::unique_ptr<Unidad> > unidades;
+    std::unordered_map<uint8_t, std::shared_ptr<Unidad> > unidades;
     Mapa mapa;
     std::string nombre_mapa;
     uint8_t conts_id_edificios = 0;
@@ -30,7 +31,7 @@ class Game {
 
     std::map<uint8_t, Coordenadas> sortearCentros() const;
 
-    void crearCentro(uint16_t id_jugador, const Coordenadas& coords);
+    void crearCentro(uint8_t id_jugador, const Coordenadas& coords);
     void crearCentrosDeConstruccion(std::map<uint8_t, Coordenadas>& centros_sorteados);
     
     /*
@@ -39,7 +40,7 @@ class Game {
     */
     Jugador& encontrarJugador(uint8_t id_jugador);
     
-    std::unique_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador, uint8_t id_unidad, Coordenadas& coords_spawn);
+    std::shared_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador, uint8_t id_unidad, Coordenadas& coords_spawn);
     
     void updateUnidad(long iter);
     void updateGusano(long iter);
@@ -58,7 +59,7 @@ public:
     void agregarJugador(ColaBloqueante<ComandoServer>& cola_comando, uint8_t id_jugador, 
                         uint8_t casa, std::string& nombre);
 
-    void atacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_a_atacar, const Coordenadas& coords_unidad_a_atacar);
+    void atacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_a_atacar);
 
     /*
      * Envia un Comando EmpezarPartida a cada cliente, con todos los detalles necesarios.

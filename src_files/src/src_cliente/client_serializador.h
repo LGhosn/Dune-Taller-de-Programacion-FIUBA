@@ -28,7 +28,7 @@ public:
 
     std::vector<uint8_t> serializarSolicitudMoverUnidad(uint8_t id_jugador, uint8_t id_unidad, Coordenadas& coords_a_moverse);
 
-    std::vector<uint8_t> serializarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada, Coordenadas& coords);
+    std::vector<uint8_t> serializarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada);
 };
 
 #endif

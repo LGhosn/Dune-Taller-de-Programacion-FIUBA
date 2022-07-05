@@ -284,7 +284,7 @@ void WorldView::clickDerecho(uint32_t pos_x, uint32_t pos_y) {
 
             if (entidad_seleccionada) {
                 for (auto& unidad: unidades_seleccionadas) {
-                    SolicitudCliente* solicitud = new SolicitudAtacarUnidad(unidad->obtenerId(), id_unidad_a_atacar, coords);
+                    SolicitudCliente* solicitud = new SolicitudAtacarUnidad(unidad->obtenerId(), id_unidad_a_atacar);
                     cola_solicitudes.push(solicitud);
                 }
             }

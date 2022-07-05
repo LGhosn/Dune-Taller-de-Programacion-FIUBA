@@ -126,6 +126,7 @@ public:
 
     Coordenadas obtenerCoordenadasEnRango(uint8_t rango,const Coordenadas& coords_nueva);
 
+    bool obtenerUnidadEnemigaEnRango(uint8_t id_jugador, uint8_t rango,  uint8_t& id_unidad, Coordenadas& coords);
 
     /*
      * @brief Crea el camino que lleve menos tiempo recorrer desde un origen indicado hasta un destino.

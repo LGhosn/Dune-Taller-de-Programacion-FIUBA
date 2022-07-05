@@ -373,6 +373,23 @@ Coordenadas Mapa::obtenerCoordenadasEnRango(uint8_t rango,const Coordenadas& coo
     throw std::runtime_error("Mapa: No se encontro un terreno en el rango");
 }
 
+bool Mapa::obtenerUnidadEnemigaEnRango(uint8_t id_jugador, uint8_t rango,  uint8_t& id_unidad, Coordenadas& coords) {
+    for (int i = coords.y - rango; i < coords.y + rango; i++) {
+        if (i < 0 || i >= this->alto) continue;
+        for (int j = coords.x - rango; j < coords.x + rango; j++) {
+            if (j < 0 || j >= this->ancho) continue;
+            std::unique_ptr<Entidades>& entidad = this->mapa[i][j];
+            if (entidad->obtenerTipoDeEntidad() == 'U' && entidad->obtenerIdJugador() != id_jugador) {
+                std::unique_ptr<UnidadesMapa>& unidad = (std::unique_ptr<UnidadesMapa>&)entidad;
+                id_unidad = unidad->obtenerIdUnidad();
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
 
 Mapa::Mapa(Mapa&& otro) : ancho(otro.ancho), alto(otro.alto), camino(otro.camino) {
     // otro.mapa = std::vector< std::vector<std::unique_ptr<Entidades> > > (otro.alto);

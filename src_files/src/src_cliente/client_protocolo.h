@@ -95,7 +95,7 @@ public:
 /* *****************************************************************
  *                  METODOS REFERIDOS A ATAQUES
  * *****************************************************************/
-    void enviarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada, Coordenadas& coords);
+    void enviarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada);
 
 
 /* *****************************************************************

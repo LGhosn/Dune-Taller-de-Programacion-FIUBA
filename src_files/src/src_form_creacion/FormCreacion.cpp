@@ -69,8 +69,8 @@ void FormCreacion::crearNotificacion(Status& status) {
     ProtocoloCliente& protocolo = cliente.protocoloAsociado();
     if (status.obtenerCodigoDeConexion() == CONEXION_EXITOSA) {
         std::cout << "Creacion Existosa, esperando jugadores restantes..." << std::endl;
-        QMessageBox::information(this, "Conexion exitosa",
-                                       "Esperando jugadores restantes...");
+        //QMessageBox::information(this, "Conexion exitosa",
+        //                               "Esperando jugadores restantes...");
         InfoPartidaDTO info_partida = protocolo.recibirInfoComienzoDePartida();
         cliente.setInfoPartida(info_partida);
         // Cierro todas las ventanas y abro el juego

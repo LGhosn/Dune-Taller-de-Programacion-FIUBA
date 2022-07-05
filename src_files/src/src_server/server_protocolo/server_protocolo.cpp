@@ -255,12 +255,6 @@ SolicitudAtacarUnidadDTO ProtocoloServidor::recibirSolicitudAtacarUnidad() {
     this->skt_comunicador.recvall(&id_unidad_atacante, SIZEOF_BYTE);
     uint8_t id_unidad_atacada;
     this->skt_comunicador.recvall(&id_unidad_atacada, SIZEOF_BYTE);
-    uint16_t x;
-    this->skt_comunicador.recvall(&x, SIZEOF_TWO_BYTES);
-    uint16_t y;
-    this->skt_comunicador.recvall(&y, SIZEOF_TWO_BYTES);
-    x = ntohs(x);
-    y = ntohs(y);
-    return SolicitudAtacarUnidadDTO(id_jugador_atacante, id_unidad_atacante, id_unidad_atacada, x, y);
+    return SolicitudAtacarUnidadDTO(id_jugador_atacante, id_unidad_atacante, id_unidad_atacada);
 }
 
