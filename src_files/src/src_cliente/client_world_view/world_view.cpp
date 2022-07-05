@@ -11,6 +11,7 @@ void WorldView::renderUI() {
 	}
 	this->side_menu.render();
     this->marcador.render();
+    this->estado.render();
 }
 
 WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
@@ -54,7 +55,8 @@ WorldView::WorldView(ColaBloqueante<SolicitudCliente>& cola_solicitudes,
 					side_menu(renderer, mixer, casa, texturas, id_jugador, constantes,
 								colores.obtenerColor(id_jugador)),
                     marcador(renderer, texturas, constantes, info_partida, colores.obtenerColor(id_jugador)),
-					edificio_factory(renderer, texturas, constantes, colores),
+					estado(renderer, mixer, texturas, colores.obtenerColor(id_jugador), constantes),
+                    edificio_factory(renderer, texturas, constantes, colores),
 					id_jugador(id_jugador),
 					info_partida(info_partida) {
 	renderer.SetDrawBlendMode(SDL_BLENDMODE_BLEND);
@@ -346,6 +348,10 @@ void WorldView::modificarVidaUnidad(uint8_t id_unidad, uint16_t vida) {
     if (!esta_viva) {
         unidades.erase(id_unidad);
     }
+}
+
+void WorldView::terminarPartida(uint8_t id_ganador) {
+    estado.mostrarEstado(id_ganador == id_jugador);
 }
 
 void WorldView::salir() {}

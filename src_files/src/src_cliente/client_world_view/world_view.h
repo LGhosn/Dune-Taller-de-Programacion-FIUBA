@@ -12,6 +12,7 @@
 #include "sdl_edificio/sdl_edificio_factory.h"
 #include "sdl_side_menu/sdl_side_menu.h"
 #include "sdl_marcador/sdl_marcador.h"
+#include "sdl_estado_partida/sdl_estado_partida.h"
 #include "../client_solicitudes/cliente_solicitud.h"
 #include "../../src_common/common_coords.h"
 #include "../../src_common/common_colas/cola_bloqueante.h"
@@ -43,6 +44,7 @@ class WorldView {
 	MapaSDL mapa;
 	SideMenuSDL side_menu;
 	MarcadorSDL marcador;
+	EstadoPartidaSDL estado;
 	std::unordered_map<Coordenadas, std::shared_ptr<EdificioSDL>, HashCoordenadas> edificios;
 	std::vector<std::shared_ptr<EdificioSDL>> edificios_seleccionados;
     std::vector<std::shared_ptr<UnidadSDL>> unidades_seleccionadas;
@@ -101,6 +103,8 @@ public:
 	void establecerEstadoDelMarcador(bool estado);
 
 	void modificarVidaUnidad(uint8_t id_unidad, uint16_t vida);
+
+	void terminarPartida(uint8_t id_ganador);
 
 	void salir();
 

@@ -268,3 +268,16 @@ void ProtocoloServidor::enviarComandoModificarVidaUnidad(uint8_t id_unidad, uint
     std::vector<uint8_t> buffer = serializador.serializarComandoModificarVidaUnidad(id_unidad, vida);
     enviarBuffer(buffer);
 }
+
+
+
+/* *****************************************************************
+ *              METODOS REFERIDOS A TERMINAR
+ * *****************************************************************/
+
+    void ProtocoloServidor::enviarComandoTerminarPartida(uint8_t id_ganador) {
+        std::vector<uint8_t> buffer(2);
+        buffer[0] = CODIGO_TERMINAR_PARTIDA;
+        buffer[1] = id_ganador;
+        enviarBuffer(buffer);
+    }

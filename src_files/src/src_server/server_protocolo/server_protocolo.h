@@ -160,6 +160,12 @@ public:
     void enviarComandoModificarVidaUnidad(uint8_t id_unidad, uint16_t vida);
 
 /* *****************************************************************
+ *              METODOS REFERIDOS A TERMINAR
+ * *****************************************************************/
+
+    void enviarComandoTerminarPartida(uint8_t id_ganador);
+
+/* *****************************************************************
  *                  MOVE SEMANTICS
  * *****************************************************************/
     /*

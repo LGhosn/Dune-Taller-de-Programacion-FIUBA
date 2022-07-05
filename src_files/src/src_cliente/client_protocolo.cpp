@@ -287,6 +287,15 @@ CmdModificarVidaUnidadClienteDTO ProtocoloCliente::recibirComandoModificarVidaUn
     return CmdModificarVidaUnidadClienteDTO(nueva_cant_vida, id_unidad);
 }
 
+/* *****************************************************************
+ *                  METODOS REFERIDOS A ATAQUES
+ * *****************************************************************/
+
+uint8_t ProtocoloCliente::recibirComandoTerminarPartida() {
+    uint8_t id_ganador;
+    this->skt_cliente.recvall(&id_ganador, SIZEOF_BYTE);
+    return id_ganador;
+}
 
 /* *****************************************************************
  *                          METODOS AUXILIARES

@@ -14,6 +14,7 @@
 #define CODIGO_ACTUALIZAR_PUNTAJE 40
 #define CODIGO_MOVER_UNIDAD 50
 #define CODIGO_MODIFICAR_VIDA_UNIDAD 60
+#define CODIGO_TERMINAR_PARTIDA 70
 
 class SerializadorServer {
 private:
