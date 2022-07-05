@@ -22,3 +22,7 @@ TanqueSonico::TanqueSonico(uint8_t id,
 
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["TanqueSonico"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }
+
+uint8_t TanqueSonico::obtenerTipoDeUnidad() {
+    return 1;
+}

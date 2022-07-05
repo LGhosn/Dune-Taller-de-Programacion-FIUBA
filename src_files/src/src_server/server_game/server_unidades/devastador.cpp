@@ -21,3 +21,7 @@ Devastador::Devastador(uint8_t id,
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Devastador"]["PenalizacionTerreno"].as<std::vector<float>>();
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Devastador"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }
+
+uint8_t Devastador::obtenerTipoDeUnidad() {
+    return 1;
+}

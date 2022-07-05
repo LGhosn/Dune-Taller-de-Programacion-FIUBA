@@ -23,3 +23,7 @@ Desviador::Desviador(uint8_t id,
 
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Desviador"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }
+
+uint8_t Desviador::obtenerTipoDeUnidad() {
+    return 1;
+}

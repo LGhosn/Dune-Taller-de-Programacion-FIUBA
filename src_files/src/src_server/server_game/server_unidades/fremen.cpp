@@ -18,3 +18,7 @@ Fremen::Fremen(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_un
 
     this->terrenos_no_accesibles = atributos_unidad["Infanteria"]["Fremen"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }
+
+uint8_t Fremen::obtenerTipoDeUnidad() {
+    return 0;
+}

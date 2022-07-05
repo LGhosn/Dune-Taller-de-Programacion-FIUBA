@@ -21,3 +21,7 @@ InfanteriaLigera::InfanteriaLigera(uint8_t id, Jugador& duenio, Mapa& mapa, YAML
     this->penalizacion_terreno = atributos_unidad["Infanteria"]["InfanteriaLigera"]["PenalizacionTerreno"].as<std::vector<float>>();
     this->terrenos_no_accesibles = atributos_unidad["Infanteria"]["InfanteriaLigera"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }
+
+uint8_t InfanteriaLigera::obtenerTipoDeUnidad() {
+    return 0;
+}

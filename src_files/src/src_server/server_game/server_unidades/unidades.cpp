@@ -175,3 +175,13 @@ void Unidad::atacarUnidadEnRango() {
         unidad_a_atacar = nullptr;
     }
 }
+
+void Unidad::recibirDmg(uint8_t dmg_entrante) {
+    this->vida -= dmg_entrante;
+    if (vida <= 0) {
+        moviendose = false;
+        persiguiendo = false;
+        atacando = false;
+        esta_viva = false;
+    }
+}

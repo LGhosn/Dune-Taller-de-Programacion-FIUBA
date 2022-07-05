@@ -22,3 +22,7 @@ Tanque::Tanque(uint8_t id,
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Tanque"]["PenalizacionTerreno"].as<std::vector<float>>();
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Tanque"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }
+
+uint8_t Tanque::obtenerTipoDeUnidad() {
+    return 1;
+}

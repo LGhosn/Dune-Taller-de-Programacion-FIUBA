@@ -22,3 +22,7 @@ Sardaukar::Sardaukar(uint8_t id, Jugador& duenio,
 
     this->terrenos_no_accesibles = atributos_unidad["Infanteria"]["Sardaukar"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 }
+
+uint8_t Sardaukar::obtenerTipoDeUnidad() {
+    return 0;
+}
