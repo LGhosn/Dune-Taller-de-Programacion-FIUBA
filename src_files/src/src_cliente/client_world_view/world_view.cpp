@@ -292,14 +292,13 @@ void WorldView::clickDerecho(uint32_t pos_x, uint32_t pos_y) {
         if (!entidad_seleccionada) {
             if (!unidades_seleccionadas.empty()) {
                 for (auto& unidad: unidades_seleccionadas) {
-                    std::cout<< "Unidad seleccionada: " << (int)unidad->obtenerId() << std::endl;
                     SolicitudCliente* solicitud = new SolicitudMoverUnidad(unidad->obtenerId(), coords);
                     cola_solicitudes.push(solicitud);
                 }
             }
-            deseleccionarUnidades();
-            deseleccionarEdificios();
         }
+        deseleccionarUnidades();
+        deseleccionarEdificios();
     }
 }
 

@@ -1,5 +1,4 @@
 #include "server_camino.h"
-#include "../src_common/common_coords.h"
 #include "server_camino_no_encontrado_exception.h"
 #include "server_fuera_de_rango_exception.h"
 #include "entidades/unidades/unidades_mapa.h"

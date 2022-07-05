@@ -61,6 +61,7 @@ protected:
     bool estaEnRango(Coordenadas& coords) const;
 
     void atacarUnidadEnRango();
+    void enviarComando();
 
 public:
     Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen, YAML::Node& constantes,

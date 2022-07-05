@@ -33,6 +33,10 @@ void Unidad::setearNuevoCamino() {
 void Unidad::setearNuevoMovimiento() {
     uint16_t tiempo_para_moverse = obtenerTiempoParaMoverse();
     setTicksParaSigMovimiento(tiempo_para_moverse);
+}
+
+void Unidad::enviarComando() {
+    uint16_t tiempo_para_moverse = obtenerTiempoParaMoverse();
     uint8_t direccion = mapa.obtenerDireccion(origen, camino.top());
     for (auto& cola : colas_comandos) {
         CmdMoverUnidadServer* comando = new CmdMoverUnidadServer(id, direccion, tiempo_para_moverse);
@@ -56,17 +60,15 @@ void Unidad::updateMovimiento(long ticks_transcurridos) {
         if (this->ticks_restantes > ticks_transcurridos) {
             this->ticks_restantes -= ticks_transcurridos;
         } else {
-            if (persiguiendo && (unidad_a_atacar != nullptr) && estaEnRango(unidad_a_atacar->destino)) {
+            if (persiguiendo && (unidad_a_atacar != nullptr) && estaEnRango(unidad_a_atacar->origen)) {
                 moviendose = false;
                 atacando = true;
+                this->camino = std::stack<Coordenadas>();
                 return;
-            } else if ((unidad_a_atacar != nullptr) && persiguiendo && destino != unidad_a_atacar->origen) {
-                destino = unidad_a_atacar->origen;
-                UnidadInfoDTO info(this->origen, this->destino, this->terrenos_no_accesibles, this->penalizacion_terreno);
-                this->camino = mapa.obtenerCamino(info);
             }
             Coordenadas top = this->camino.top();
             if (this->mapa.esCoordenadaValida(top)) {
+                enviarComando();
                 this->mapa.moverUnidad(this->origen, top);
                 this->origen = top;
                 this->camino.pop();
@@ -89,7 +91,6 @@ void Unidad::updateMovimiento(long ticks_transcurridos) {
 }
 
 void Unidad::atacar(std::shared_ptr<Unidad> unidad_a_atacar) {
-    this->destino = unidad_a_atacar->origen;
     if (!unidad_a_atacar->sigueViva()) {
         return;
     }
@@ -98,8 +99,8 @@ void Unidad::atacar(std::shared_ptr<Unidad> unidad_a_atacar) {
         // disparar();
     } else {
         atacando = false;
-        Coordenadas coords = this->mapa.obtenerCoordenadasEnRango(this->rango, destino);
-        empezarMovimiento(coords);
+        this->destino = this->mapa.obtenerCoordenadasEnRango(this->rango, unidad_a_atacar->origen);
+        setearNuevoCamino();
     }
     persiguiendo = true;
     this->unidad_a_atacar = unidad_a_atacar;
@@ -111,28 +112,19 @@ void Unidad::updateAtaque(long ticks_transcurridos) {
         if (!moviendose && !persiguiendo) {
             atacarUnidadEnRango();
         }
-    } else {
-        if (!estaEnRango(unidad_a_atacar->origen)) {
-            if(persiguiendo) {
-                moviendose = true;
-                Coordenadas coords = mapa.obtenerCoordenadasEnRango(rango, unidad_a_atacar->origen);
-                this->destino = coords;
-                UnidadInfoDTO info(this->origen, coords, this->terrenos_no_accesibles, this->penalizacion_terreno);
-                this->camino = mapa.obtenerCamino(info);
-            } else {
-                unidad_a_atacar = nullptr;
-            }
-            atacando = false;
-
-        } else {
-            // disparar
+    } 
+    if (persiguiendo) {
+        if (!moviendose && !estaEnRango(unidad_a_atacar->origen)) {
+            moviendose = true;
+            this->destino = mapa.obtenerCoordenadasEnRango(rango, unidad_a_atacar->origen);
+            setearNuevoCamino();
+        } else if (!moviendose && estaEnRango(unidad_a_atacar->origen)) {
+            atacando = true;
+            //disparar
         }
-    }
 
-    // Si la unidad a atacar murio hay que esperar una orden del jugador.
-    if ((unidad_a_atacar != nullptr) && (!unidad_a_atacar->sigueViva())) {
-        unidad_a_atacar = nullptr;
-        atacando = false;
+    } else {
+        // disparar
     }
 }
 
@@ -140,8 +132,8 @@ bool Unidad::update(long ticks_transcurridos) {
     if (!sigueViva()) {
         return false;
     }
-    updateAtaque(ticks_transcurridos);
     updateMovimiento(ticks_transcurridos);
+    updateAtaque(ticks_transcurridos);
     return true;
 }
 
