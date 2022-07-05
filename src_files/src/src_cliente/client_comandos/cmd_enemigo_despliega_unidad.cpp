@@ -5,9 +5,11 @@ CmdEnemigoDespliegaUnidadCliente::CmdEnemigoDespliegaUnidadCliente(CmdEnemigoDes
                                                                  id_unidad(dto.id_unidad),
                                                                  tipo_unidad(dto.tipo_unidad),
                                                                  tiempo_entrenamiento(dto.tiempo_entrenamiento),
-                                                                 coords_spawn(dto.coords_spawn) {}
+                                                                 coords_spawn(dto.coords_spawn),
+                                                                 vida(dto.vida) {}
 
 bool CmdEnemigoDespliegaUnidadCliente::ejecutar(WorldView& worldView) const {
-    worldView.empezarAparicionDeUnidad(id_unidad, id_jugador, tipo_unidad, false, tiempo_entrenamiento, (Coordenadas&) coords_spawn);
+    worldView.empezarAparicionDeUnidad(id_unidad, id_jugador, tipo_unidad, false, tiempo_entrenamiento,
+                                        (Coordenadas&) coords_spawn, vida);
     return true;
 }

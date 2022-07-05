@@ -10,11 +10,14 @@ UnidadSDL::UnidadSDL(uint8_t id_unidad,
                 const Coordenadas& coords,
                 YAML::Node& constantes,
                 ColorSDL& color,
-                uint16_t tiempo_aparicion) :
+                uint16_t tiempo_aparicion,
+                uint16_t vida) :
                 id_unidad(id_unidad),
                 id_jugador(id_jugador),
                 tipo_unidad(tipo_unidad),
                 casa(casa),
+                vida_actual(vida),
+                vida_total(vida),
                 unidad_amiga(unidad_amiga),
                 mixer(mixer),
                 renderer(renderer),
@@ -59,6 +62,11 @@ bool UnidadSDL::contiene(int pos_x, int pos_y) {
     return destino.Contains(pos_x, pos_y);
 }
 
+bool UnidadSDL::cambiarHP(uint16_t hp_unidad) {
+    vida_actual = hp_unidad;
+    return vida_actual > 0;
+}
+
 void UnidadSDL::renderUI() {
     if (seleccionado) {
         renderRectanguloSeleccion();
@@ -75,11 +83,12 @@ void UnidadSDL::renderHP() {
         destino.GetY() - alto_hp * zoom
     );
 
+    float porcentaje_restante = (float) vida_actual / (float) vida_total;
     renderer.SetDrawColor(color.obtenerPrimario());
     renderer.FillRect(
         destino.GetX(),
         destino.GetY(),
-        destino.GetX() + destino.GetW(),
+        destino.GetX() + destino.GetW() * porcentaje_restante,
         destino.GetY() - alto_hp * zoom
     );
 

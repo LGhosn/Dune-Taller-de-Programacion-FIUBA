@@ -3,12 +3,10 @@
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
 #include "../server_comandos/cmd_crear_edificio.h"
 #include "../server_comandos/cmd_empezar_partida.h"
-#include "../server_comandos/cmd_empezar_entrenamiento.h"
 #include "../server_comandos/cmd_mover_unidad.h"
 #include "../server_DTO/dto_unidad_info.h"
 #include "../server_comandos/cmd_empezar_construccion_edificio.h"
 #include "../server_comandos/cmd_construccion_invalida.h"
-#include "../server_comandos/cmd_enemigo_despliega_unidad.h"
 //unidades
 #include "server_unidades/cosechadora.h"
 #include "server_unidades/desviador.h"
@@ -84,30 +82,30 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& co
     }
 }
 
-std::shared_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador, uint8_t id_unidad, Coordenadas& coords_spawn) {
+std::shared_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador) {
     switch (tipo_unidad) {
         case 0:
-            return std::shared_ptr<Unidad>(new Fremen(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Fremen(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         case 1:
-            return std::shared_ptr<Unidad>(new InfanteriaLigera(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new InfanteriaLigera(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         case 2:
-            return std::shared_ptr<Unidad>(new InfanteriaPesada(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new InfanteriaPesada(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         case 3:
-            return std::shared_ptr<Unidad>(new Sardaukar(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Sardaukar(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         case 4:
-            return std::shared_ptr<Unidad>(new Cosechadora(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Cosechadora(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         case 5:
-            return std::shared_ptr<Unidad>(new Desviador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Desviador(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         case 6:
-            return std::shared_ptr<Unidad>(new Devastador(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Devastador(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         case 7:
-            return std::shared_ptr<Unidad>(new Raider(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Raider(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         case 8:
-            return std::shared_ptr<Unidad>(new Tanque(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Tanque(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         case 9:
-            return std::shared_ptr<Unidad>(new TanqueSonico(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new TanqueSonico(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         case 10:
-            return std::shared_ptr<Unidad>(new Trike(id_unidad, jugador, this->mapa, this->atributos_unidades, coords_spawn, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Trike(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
         default:
             throw std::runtime_error("Game: Tipo de unidad no reconocido");
     }
@@ -117,25 +115,8 @@ void Game::comprarUnidad(uint8_t id_jugador, uint8_t tipo_unidad) {
     Jugador& jugador = encontrarJugador(id_jugador);
     bool resultado = jugador.comprarUnidad(tipo_unidad);
     if (resultado) {
-        uint8_t id_uni = this->conts_id_unidad++;
-        Coordenadas coords_spawn = this->mapa.obtenerCoordenadasSpawn(id_jugador);
-        this->mapa.spawnearUnidad(id_jugador, tipo_unidad, id_uni, coords_spawn);
-        std::shared_ptr<Unidad> uni = this->clasificarUnidad(tipo_unidad, jugador, id_uni, coords_spawn);
-        this->unidades.insert(std::make_pair(id_uni, std::move(uni)));
-
-        uint16_t tiempo_entrenamiento_unidad = jugador.obtenerTiempoConstruccionUnidad(tipo_unidad);
-        CmdEmpezarEntrenamientoServer* comando =
-                        new CmdEmpezarEntrenamientoServer(id_uni, tipo_unidad, tiempo_entrenamiento_unidad, coords_spawn);
-        colas_comandos[id_jugador]->push(comando);
-        for (auto& cola : colas_comandos) {
-            if (cola.first == id_jugador) {
-                continue;
-            }
-            CmdEnemigoDespliegaUnidadServer* comando =
-                new CmdEnemigoDespliegaUnidadServer(id_uni, id_jugador, tipo_unidad, tiempo_entrenamiento_unidad, coords_spawn);
-            cola.second->push(comando);
-        }
-        // gusano.empezarAAsechar();
+        std::shared_ptr<Unidad> unidad = this->clasificarUnidad(tipo_unidad, jugador);
+        this->unidades[unidad->obtenerId()] = unidad;
     }
 }
 

@@ -90,7 +90,8 @@ std::vector<uint8_t> SerializadorCliente::serializarSolicitudMoverUnidad(uint8_t
     return buffer;
 }
 
-std::vector<uint8_t> SerializadorCliente::serializarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada) {
+std::vector<uint8_t> SerializadorCliente::serializarSolicitudAtacarUnidad(uint8_t id_jugador_atacante,
+                                                uint8_t id_unidad_atacante, uint8_t id_unidad_atacada) {
     std::vector<uint8_t> buffer(4);
     buffer[0] = CODIGO_SOLICITUD_ATACAR_UNIDAD;
     buffer[1] = id_jugador_atacante;
@@ -98,4 +99,3 @@ std::vector<uint8_t> SerializadorCliente::serializarSolicitudAtacarUnidad(uint8_
     buffer[3] = id_unidad_atacada;
     return buffer;
 }
-

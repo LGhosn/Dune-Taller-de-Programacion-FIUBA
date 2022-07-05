@@ -11,9 +11,10 @@ InfanteriaSDL::InfanteriaSDL(uint8_t id_unidad,
                 const Coordenadas& coords,
                 YAML::Node& constantes,
                 ColorSDL& color,
-                uint16_t tiempo_aparicion) :
+                uint16_t tiempo_aparicion,
+                uint16_t vida) :
                 UnidadSDL(id_unidad, id_jugador, tipo_unidad, casa, unidad_amiga, mixer, renderer,
-                        coords, constantes, color, tiempo_aparicion),
+                        coords, constantes, color, tiempo_aparicion, vida),
                 texturas_moviendose(texturas.obtenerInfanteriaMoviendose(tipo_unidad)),
                 texturas_quieta(texturas.obtenerInfanteriaQuieta(tipo_unidad)),
                 texturas_disparando(texturas.obtenerInfanteriaDisparando(tipo_unidad)),

@@ -23,6 +23,8 @@ protected:
     uint8_t id_jugador;
     uint8_t tipo_unidad;
     uint8_t casa;
+    uint16_t vida_actual;
+    uint16_t vida_total;
     bool unidad_amiga;
     MixerSDL& mixer;
     SDL2pp::Renderer& renderer;
@@ -32,7 +34,6 @@ protected:
     long frames_restantes = 0;
     uint16_t frames_para_llegar = 0;
     SDL2pp::Rect destino;
-    SDL2pp::Rect destino_ui;
     bool seleccionado = false;
     bool desplegada = false;
     bool moviendose = false;
@@ -75,10 +76,11 @@ public:
                 const Coordenadas& coords,
                 YAML::Node& constantes,
                 ColorSDL& color,
-                uint16_t tiempo_aparicion);
+                uint16_t tiempo_aparicion,
+                uint16_t vida);
 
 
-    void cambiarHP(uint16_t hp_unidad);
+    bool cambiarHP(uint16_t hp_unidad);
     bool contiene(int pos_x, int pos_y);
     void seleccionar();
     void deseleccionar();

@@ -24,7 +24,6 @@ class Game {
     Mapa mapa;
     std::string nombre_mapa;
     uint8_t conts_id_edificios = 0;
-    uint8_t conts_id_unidad = 0;
     YAML::Node constantes;
     YAML::Node atributos_unidades;
     Gusano gusano;
@@ -40,7 +39,7 @@ class Game {
     */
     Jugador& encontrarJugador(uint8_t id_jugador);
     
-    std::shared_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador, uint8_t id_unidad, Coordenadas& coords_spawn);
+    std::shared_ptr<Unidad> clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador);
     
     void updateUnidad(long iter);
     void updateGusano(long iter);

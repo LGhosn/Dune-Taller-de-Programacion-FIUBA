@@ -206,7 +206,10 @@ CmdEmpezarEntrenamientoClienteDTO ProtocoloCliente::recibirComandoEmpezarEntrena
     uint16_t tiempo_de_entrenamiento;
     this->skt_cliente.recvall(&tiempo_de_entrenamiento, SIZEOF_TWO_BYTES);
     tiempo_de_entrenamiento = ntohs(tiempo_de_entrenamiento);
-    return CmdEmpezarEntrenamientoClienteDTO(id_unidad, tipo_unidad, tiempo_de_entrenamiento, coord_x, coord_y);
+    uint16_t vida;
+    this->skt_cliente.recvall(&vida, SIZEOF_TWO_BYTES);
+    vida = ntohs(vida);
+    return CmdEmpezarEntrenamientoClienteDTO(id_unidad, tipo_unidad, tiempo_de_entrenamiento, coord_x, coord_y, vida);
 }
 
 CmdMoverUnidadClienteDTO ProtocoloCliente::recibirComandoMoverUnidad() {
@@ -236,7 +239,10 @@ CmdEnemigoDespliegaUnidadDTO ProtocoloCliente::recibirComandoEnemigoDespliegaUni
     uint16_t tiempo;
     this->skt_cliente.recvall(&tiempo, SIZEOF_TWO_BYTES);
     tiempo = ntohs(tiempo);
-    return CmdEnemigoDespliegaUnidadDTO(id_unidad, id_jugador, tipo_unidad, tiempo, coord_x, coord_y);
+    uint16_t vida;
+    this->skt_cliente.recvall(&vida, SIZEOF_TWO_BYTES);
+    vida = ntohs(vida);
+    return CmdEnemigoDespliegaUnidadDTO(id_unidad, id_jugador, tipo_unidad, tiempo, coord_x, coord_y, vida);
 }
 
 
@@ -270,6 +276,15 @@ CmdActualizarPuntajesClienteDTO ProtocoloCliente::recibirComandoActualizarPuntaj
 void ProtocoloCliente::enviarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada) {
     std::vector<uint8_t> buffer = serializador.serializarSolicitudAtacarUnidad(id_jugador_atacante, id_unidad_atacante, id_unidad_atacada);
     enviarBuffer(buffer);
+}
+
+CmdModificarVidaUnidadClienteDTO ProtocoloCliente::recibirComandoModificarVidaUnidad() {
+    uint16_t nueva_cant_vida;
+    this->skt_cliente.recvall(&nueva_cant_vida, SIZEOF_TWO_BYTES);
+    nueva_cant_vida = ntohs(nueva_cant_vida);
+    uint8_t id_unidad;
+    this->skt_cliente.recvall(&id_unidad, SIZEOF_BYTE);
+    return CmdModificarVidaUnidadClienteDTO(nueva_cant_vida, id_unidad);
 }
 
 

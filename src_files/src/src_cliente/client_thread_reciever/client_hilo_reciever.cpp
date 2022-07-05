@@ -9,9 +9,11 @@
 #include "../client_comandos/cmd_modificar_energia.h"
 #include "../client_comandos/cmd_enemigo_despliega_unidad.h"
 #include "../client_comandos/cmd_actualizar_puntaje.h"
+#include "../client_comandos/cmd_modificar_vida_unidad.h"
 #include "../client_DTO/dto_cmd_empezar_construccion_edificio.h"
 #include "../client_DTO/dto_cmd_enemigo_despliega_unidad.h"
 #include "../client_DTO/dto_cmd_actualizar_puntajes_cliente.h"
+#include "../client_DTO/dto_cmd_modificar_vida_unidad_cliente.h"
 
 
 ClientHiloReciever::ClientHiloReciever(ColaNoBloqueante<ComandoCliente>& cola_eventos, ProtocoloCliente& protocolo_asociado) :
@@ -94,6 +96,10 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
         case 50: {
             CmdMoverUnidadClienteDTO comandoDTO = protocolo_asociado.recibirComandoMoverUnidad();
             return new CmdMoverUnidadCliente(comandoDTO);
+        }
+        case 60: {
+            CmdModificarVidaUnidadClienteDTO comandoDTO = protocolo_asociado.recibirComandoModificarVidaUnidad();
+            return new CmdModificarVidaUnidadCliente(comandoDTO);
         }
         default:
             throw std::runtime_error("ClientHiloReciever: Codigo de comando desconocido");

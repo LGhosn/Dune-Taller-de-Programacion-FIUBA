@@ -11,6 +11,7 @@ private:
     uint8_t tipo_unidad;
     uint16_t tiempo_entrenamiento;
     Coordenadas coords_spawn;
+    uint16_t vida;
 
 public:
     CmdEnemigoDespliegaUnidadCliente(CmdEnemigoDespliegaUnidadDTO& dto);
