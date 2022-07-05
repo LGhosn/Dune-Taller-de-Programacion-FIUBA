@@ -13,6 +13,8 @@
 #define CODIGO_SOLICITUD_COMPRAR_UNIDAD 11
 #define CODIGO_SOLICITUD_MOVER_UNIDAD 50
 #define CODIGO_SOLICITUD_ATACAR_UNIDAD 51
+#define CODIGO_SOLICITUD_ATACAR_EDIFICIO 52
+
 
 class SerializadorCliente {
     uint8_t obtenerCodigoCasa(const std::string& casa) const;
@@ -29,6 +31,7 @@ public:
     std::vector<uint8_t> serializarSolicitudMoverUnidad(uint8_t id_jugador, uint8_t id_unidad, Coordenadas& coords_a_moverse);
 
     std::vector<uint8_t> serializarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada);
+    std::vector<uint8_t> serializarSolicitudAtacarEdificio(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada);
 };
 
 #endif

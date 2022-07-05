@@ -12,6 +12,7 @@
 #include "../server_DTO/dto_sol_comprar_unidad.h"
 #include "../server_DTO/dto_sol_mover_unidad.h"
 #include "../server_DTO/dto_sol_atacar_unidad.h"
+#include "../server_DTO/dto_sol_atacar_edificio.h"
 #include "../../src_common/common_DTO/dto_info_partida.h"
 #include "server_serializador.h"
 #include <memory>
@@ -111,7 +112,7 @@ public:
     SolComprarEdificioDTO recibirSolicitudComprarEdificio();
 
     void enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio, uint8_t tipo,
-                                    const Coordenadas& coords, uint8_t casa) const;
+                                    const Coordenadas& coords, uint8_t casa, uint16_t vida) const;
     SolicitudCrearEdificioDTO recibirSolicitudCrearEdificio();
 
     void enviarComandoConstruccionInvalida();
@@ -156,8 +157,12 @@ public:
  *                  METODOS REFERIDOS A ATAQUES
  * *****************************************************************/
     SolicitudAtacarUnidadDTO recibirSolicitudAtacarUnidad();
+    SolicitudAtacarEdificioDTO recibirSolicitudAtacarEdificio();
 
     void enviarComandoModificarVidaUnidad(uint8_t id_unidad, uint16_t vida);
+
+    void enviarComandoModificarVidaEdificio(uint8_t id_edificio,
+                                            uint8_t unidad_atacante, uint16_t vida);
 
 /* *****************************************************************
  *                  MOVE SEMANTICS

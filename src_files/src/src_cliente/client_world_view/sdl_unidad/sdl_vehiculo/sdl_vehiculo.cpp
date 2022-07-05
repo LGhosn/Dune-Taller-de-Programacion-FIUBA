@@ -49,6 +49,10 @@ void VehiculoSDL::updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, lon
     destino.SetH(largo_tile * zoom);
 }
 
+void VehiculoSDL::disparar() {
+
+}
+
 void VehiculoSDL::render() {
     if (desplegada) {
         renderer.Copy(texturas[direccion_actual], SDL2pp::NullOpt, destino);

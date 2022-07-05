@@ -158,8 +158,8 @@ SolComprarEdificioDTO ProtocoloServidor::recibirSolicitudComprarEdificio() {
 
 void ProtocoloServidor::enviarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio, 
                                             uint8_t tipo, const Coordenadas& coords,
-                                            uint8_t casa) const {
-    std::vector<uint8_t> buffer = serializador.serializarComandoCrearEdificio(id_jugador, id_edificio, tipo, coords, casa);
+                                            uint8_t casa, uint16_t vida) const {
+    std::vector<uint8_t> buffer = serializador.serializarComandoCrearEdificio(id_jugador, id_edificio, tipo, coords, casa, vida);
     this->enviarBuffer(buffer);
 }
 
@@ -264,7 +264,25 @@ SolicitudAtacarUnidadDTO ProtocoloServidor::recibirSolicitudAtacarUnidad() {
     return SolicitudAtacarUnidadDTO(id_jugador_atacante, id_unidad_atacante, id_unidad_atacada);
 }
 
+SolicitudAtacarEdificioDTO ProtocoloServidor::recibirSolicitudAtacarEdificio() {
+    uint8_t id_jugador_atacante;
+    this->skt_comunicador.recvall(&id_jugador_atacante, SIZEOF_BYTE);
+    uint8_t id_unidad_atacante;
+    this->skt_comunicador.recvall(&id_unidad_atacante, SIZEOF_BYTE);
+    uint8_t id_edificio_atacado;
+    this->skt_comunicador.recvall(&id_edificio_atacado, SIZEOF_BYTE);
+    return SolicitudAtacarEdificioDTO(id_jugador_atacante, id_unidad_atacante, id_edificio_atacado);
+}
+
+
 void ProtocoloServidor::enviarComandoModificarVidaUnidad(uint8_t id_unidad, uint16_t vida) {
     std::vector<uint8_t> buffer = serializador.serializarComandoModificarVidaUnidad(id_unidad, vida);
+    enviarBuffer(buffer);
+}
+
+void ProtocoloServidor::enviarComandoModificarVidaEdificio(uint8_t id_edificio,
+                                    uint8_t unidad_atacante, uint16_t vida) {
+    std::vector<uint8_t> buffer =
+    serializador.serializarComandoModificarVidaEdificio(id_edificio, unidad_atacante, vida);
     enviarBuffer(buffer);
 }

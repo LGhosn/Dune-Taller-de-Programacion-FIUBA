@@ -1,7 +1,6 @@
 #include "game.h"
 #include <utility>
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
-#include "../server_comandos/cmd_crear_edificio.h"
 #include "../server_comandos/cmd_empezar_partida.h"
 #include "../server_comandos/cmd_mover_unidad.h"
 #include "../server_DTO/dto_unidad_info.h"
@@ -32,16 +31,13 @@ std::map<uint8_t, Coordenadas> Game::sortearCentros() const {
     return centros_sorteados;
 }
 
-void Game::crearCentro(uint8_t id_jugador, const Coordenadas& coords) {
-    mapa.construirCentro(id_jugador, coords);
+void Game::crearCentro(uint8_t id_jugador, Coordenadas& coords) {
+    cont_id_edificios++;
+    mapa.construirCentro(id_jugador, coords, cont_id_edificios);
     Jugador& jugador = encontrarJugador(id_jugador);
-    for (auto& cola : colas_comandos) {
-        CmdCrearEdificioServer* comando =
-                new CmdCrearEdificioServer(id_jugador, conts_id_edificios, CODIGO_CENTRO, coords, jugador.obtenerCasa());
-        cola.second->push(comando);
-    }
     jugador.edificioCreado(CODIGO_CENTRO);
-    conts_id_edificios++;
+    std::shared_ptr<EdificioServer> edif = std::shared_ptr<EdificioServer>(new EdificioServer(jugador,this->mapa, CODIGO_CENTRO, coords, constantes, this->colas_comandos, this->edificios));
+    this->edificios[edif->obtenerId()] = edif;
 }
 
 Jugador& Game::encontrarJugador(uint8_t id_jugador) {
@@ -57,6 +53,14 @@ void Game::crearCentrosDeConstruccion(std::map<uint8_t, Coordenadas>& centros_so
     }
 }
 
+// bool Game::hayGanador() const {
+//     for (auto& edificio: edificios) {
+//            if (esCentro()) {
+//                  
+//             }
+//     }
+// }
+
 Game::Game(const std::string& nombre_mapa) :
             mapa(nombre_mapa),
             nombre_mapa(nombre_mapa),
@@ -65,18 +69,17 @@ Game::Game(const std::string& nombre_mapa) :
             gusano(constantes["Game"]["Gusano"]["VictimasADevorar"].as<int>(),
                     constantes["Game"]["Gusano"]["TiempoEntreVictimas"].as<uint16_t>(), this->mapa) {}
 
-void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& coords) {
-    bool resultado = mapa.construirEdificio(id_jugador, tipo, coords);
+void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, Coordenadas coords) {
+    cont_id_edificios++;
+    bool resultado = mapa.construirEdificio(id_jugador, tipo, coords, cont_id_edificios);
     if (resultado) {
         Jugador& jugador = encontrarJugador(id_jugador);
-        for (auto& cola : colas_comandos) {
-            CmdCrearEdificioServer* comando =
-                new CmdCrearEdificioServer(id_jugador, conts_id_edificios, tipo, coords, jugador.obtenerCasa());
-            cola.second->push(comando);
-        }
-        conts_id_edificios++;
         jugador.edificioCreado(tipo);
+        std::shared_ptr<EdificioServer> edif =
+        std::shared_ptr<EdificioServer>(new EdificioServer(jugador,this->mapa, tipo, coords, constantes, this->colas_comandos, this->edificios));
+        this->edificios[edif->obtenerId()] = edif;
     } else {
+        cont_id_edificios--;
         CmdConstruccionInvalidaServer* comando = new CmdConstruccionInvalidaServer();
         colas_comandos[id_jugador]->push(comando);
     }
@@ -116,7 +119,9 @@ void Game::comprarUnidad(uint8_t id_jugador, uint8_t tipo_unidad) {
     bool resultado = jugador.comprarUnidad(tipo_unidad);
     if (resultado) {
         std::shared_ptr<Unidad> unidad = this->clasificarUnidad(tipo_unidad, jugador);
-        this->unidades[unidad->obtenerId()] = unidad;
+        uint8_t id_unidad = unidad->obtenerId();
+        std::cout << "Game: Unidad creada con id " << (int)id_unidad << std::endl;
+        this->unidades[id_unidad] = unidad;
     }
 }
 
@@ -167,6 +172,15 @@ void Game::empezarPartida() {
 void Game::atacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_a_atacar) {
     this->unidades.at(id_unidad_atacante)->atacar(this->unidades.at(id_unidad_a_atacar));
 }
+
+void Game::atacarEdificio(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_edificio_a_atacar) {
+    std::shared_ptr<EdificioServer> edificio = this->edificios.at(id_edificio_a_atacar);
+    std::cout << "unidad atacante " << (int)id_jugador_atacante << std::endl;
+    std::shared_ptr<Unidad> unidad = this->unidades.at(id_unidad_atacante);
+    std::cout << "unidad obtenido " << std::endl;
+    unidad->atacar(edificio);
+}
+
 
 void Game::updateUnidad(long iter) {
     for (auto it = unidades.begin(); it != unidades.end(); it++) {

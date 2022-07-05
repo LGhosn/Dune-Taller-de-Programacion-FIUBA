@@ -19,11 +19,11 @@ class TrampaSDL : public EdificioSDL {
     void actualizarFrameLuces(long frame_actual);
 
 public: 
-    TrampaSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
+    TrampaSDL(uint8_t id, uint8_t id_jugador,uint16_t vida,  SDL2pp::Renderer& renderer,
             TexturasSDL& texturas, const Coordenadas& coords, uint16_t alto,
             uint16_t ancho, uint8_t casa,YAML::Node& constantes, ColorSDL& color);
 
-    void cambiarHP(uint16_t hp_edificio) override;
+    bool cambiarHP(uint16_t hp_edificio) override;
 
     void update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frames_transcurridos, float zoom) override;
 

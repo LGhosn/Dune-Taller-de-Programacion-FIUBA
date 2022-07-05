@@ -60,7 +60,10 @@ ComandoCrearEdificioDTO ProtocoloCliente::recibirComandoCrearEdificio() {
     skt_cliente.recvall(&y, SIZEOF_TWO_BYTES);
     y = ntohs(y);
     Coordenadas coords(x, y);
-    return ComandoCrearEdificioDTO(id_edificio, id_jugador, coords, tipo, casa);
+    uint16_t vida;
+    skt_cliente.recvall(&vida, SIZEOF_TWO_BYTES);
+    vida = ntohs(vida);
+    return ComandoCrearEdificioDTO(id_edificio, id_jugador, coords, tipo, casa, vida);
 }
 
 /* *****************************************************************
@@ -279,14 +282,29 @@ void ProtocoloCliente::enviarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, 
 }
 
 CmdModificarVidaUnidadClienteDTO ProtocoloCliente::recibirComandoModificarVidaUnidad() {
+    uint8_t id_unidad;
+    this->skt_cliente.recvall(&id_unidad, SIZEOF_BYTE);
     uint16_t nueva_cant_vida;
     this->skt_cliente.recvall(&nueva_cant_vida, SIZEOF_TWO_BYTES);
     nueva_cant_vida = ntohs(nueva_cant_vida);
-    uint8_t id_unidad;
-    this->skt_cliente.recvall(&id_unidad, SIZEOF_BYTE);
     return CmdModificarVidaUnidadClienteDTO(nueva_cant_vida, id_unidad);
 }
 
+void ProtocoloCliente::enviarSolicitudAtacarEdificio(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_edificio_atacado) {
+    std::vector<uint8_t> buffer = serializador.serializarSolicitudAtacarEdificio(id_jugador_atacante, id_unidad_atacante, id_edificio_atacado);
+    enviarBuffer(buffer);
+}
+
+CmdModificarVidaEdificioClienteDTO ProtocoloCliente::recibirComandoModificarVidaEdificio() {
+    uint8_t id_edificio;
+    this->skt_cliente.recvall(&id_edificio,SIZEOF_BYTE);
+    uint8_t unidad_atacante;
+    this->skt_cliente.recvall(&unidad_atacante, SIZEOF_BYTE);
+    uint16_t vida;
+    this->skt_cliente.recvall(&vida, SIZEOF_TWO_BYTES);
+    vida = ntohs(vida);
+    return CmdModificarVidaEdificioClienteDTO(id_edificio, unidad_atacante, vida);
+}
 
 /* *****************************************************************
  *                          METODOS AUXILIARES

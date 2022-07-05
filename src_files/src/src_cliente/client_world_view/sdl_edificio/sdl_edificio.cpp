@@ -72,11 +72,12 @@ void EdificioSDL::renderHP() {
         destino.GetY() + offset_y_hp * zoom
     );
 
+    float porcentaje_restante = (float) vida_restante / (float) vida_total;
     renderer.SetDrawColor(color.obtenerPrimario());
     renderer.FillRect(
         destino.GetX() + (padding_x_hp + padding_rect_hp) * zoom,
         destino.GetY() + (offset_y_hp - alto_hp + padding_rect_hp) * zoom,
-        destino.GetX() + destino.GetW() - (padding_x_hp + padding_rect_hp) * zoom,
+        destino.GetX() + destino.GetW() * porcentaje_restante - (padding_x_hp + padding_rect_hp) * zoom,
         destino.GetY() + (offset_y_hp - padding_rect_hp) * zoom
     );
 
@@ -89,12 +90,13 @@ void EdificioSDL::renderHP() {
     );
 }
 
-EdificioSDL::EdificioSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
-                        SDL2pp::Texture& textura, SDL2pp::Texture& textura_debilitado,
+EdificioSDL::EdificioSDL(uint8_t id, uint8_t id_jugador, uint16_t vida,
+                        SDL2pp::Renderer& renderer, SDL2pp::Texture& textura,
+                        SDL2pp::Texture& textura_debilitado,
                         const Coordenadas& coords, uint16_t alto, uint16_t ancho,
                         uint8_t casa, YAML::Node& constantes, ColorSDL& color,
                         SDL2pp::Texture& textura_slab) :
-        id(id), id_jugador(id_jugador), renderer(renderer),
+        id(id), id_jugador(id_jugador), vida_restante(vida), vida_total(vida), renderer(renderer),
         textura(textura),textura_debilitado(textura_debilitado), textura_slab(textura_slab),
         color(color), coords(coords), alto(alto), ancho(ancho),
         alto_hp(constantes["WorldView"]["Edificios"]["UI"]["HP"]["Alto"].as<int>()),
@@ -131,4 +133,8 @@ void EdificioSDL::deseleccionar() {
 
 uint8_t EdificioSDL::obtenerId() const {
     return id;
+}
+
+uint8_t EdificioSDL::obtenerIdJugador() const {
+    return id_jugador;
 }

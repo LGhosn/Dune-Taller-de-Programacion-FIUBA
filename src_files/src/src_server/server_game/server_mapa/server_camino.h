@@ -13,7 +13,7 @@
 #include "../../server_DTO/dto_unidad_info.h"
 
 class Camino {
-	std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa;
+	std::vector< std::vector<std::shared_ptr<Entidades> > >* mapa;
 	std::vector<std::pair<int8_t, int8_t>> vecinos_posibles;
 
 	float distancia(const Coordenadas& origen, const Coordenadas& destino) const;
@@ -40,7 +40,7 @@ class Camino {
 public:
 	Camino();
 
-	void start(std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa);
+	void start(std::vector< std::vector<std::shared_ptr<Entidades> > >* mapa);
 
 	std::stack<Coordenadas> obtener_camino(UnidadInfoDTO& unidad_info) const;
 

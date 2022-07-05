@@ -15,10 +15,11 @@
 #include "../../../src_common/common_colas/cola_bloqueante.h"
 #include "../../server_comandos/server_comando.h"
 #include "server_armas/arma.h"
+#include "../entidad_server.h"
 
 class Arma;
 
-class Unidad {
+class Unidad : public EntidadServer{
     static uint8_t contador_ids;
 protected:
     Jugador& duenio;
@@ -37,7 +38,7 @@ protected:
     long ticks_restantes = 0;
     std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos;
     std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades;
-    std::shared_ptr<Unidad> unidad_a_atacar = nullptr;
+    std::shared_ptr<EntidadServer> unidad_a_atacar = nullptr;
 
     // Atributos
     uint8_t rango;
@@ -66,6 +67,7 @@ protected:
     void enviarComando();
 
     void enviarComandoEmpezarEntrenamiento();
+    void setearNuevoCamino();
 
 public:
     Unidad(Jugador& duenio,
@@ -75,17 +77,15 @@ public:
             std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comando,
             std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades);
 
-    bool sigueViva();
-    void setearNuevoCamino();
+    virtual Coordenadas& ubicacion();
+    virtual bool sigueViva();
     virtual uint8_t obtenerIdJugador();
-    uint8_t obtenerId() const;
-    // virtual void atacar(Unidad& unidad) = 0;
-    virtual void recibirDmg(uint8_t dmg_entrante);
+    virtual uint8_t obtenerId() const;
+    virtual void recibirDmg(uint8_t dmg_entrante, uint8_t id_unidad_atacante);
     virtual void empezarMovimiento(const Coordenadas& destino);
     virtual bool update(long ticks_transcurridos);
-    virtual void atacar(std::shared_ptr<Unidad> unidad_a_atacar);
+    virtual void atacar(std::shared_ptr<EntidadServer> unidad_a_atacar);
     virtual uint8_t obtenerTipoDeUnidad() = 0;
-    // virtual void atacar(Edificio& edificio) = 0;
     virtual ~Unidad() = default;
 };
 

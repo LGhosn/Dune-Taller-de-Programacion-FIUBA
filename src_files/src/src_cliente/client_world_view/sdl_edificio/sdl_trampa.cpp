@@ -8,10 +8,10 @@ void TrampaSDL::actualizarFrameLuces(long frame_actual) {
     }
 }
 
-TrampaSDL::TrampaSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
+TrampaSDL::TrampaSDL(uint8_t id, uint8_t id_jugador, uint16_t vida, SDL2pp::Renderer& renderer,
             TexturasSDL& texturas, const Coordenadas& coords, uint16_t alto,
             uint16_t ancho, uint8_t casa,YAML::Node& constantes, ColorSDL& color):
-            EdificioSDL(id, id_jugador, renderer, texturas.obtenerEdificio(7, casa, false),
+            EdificioSDL(id, id_jugador, vida, renderer, texturas.obtenerEdificio(7, casa, false),
                     texturas.obtenerEdificio(7, casa, true), coords, alto, ancho, casa,
                     constantes, color, texturas.obtenerSlab()),
             luces(texturas.obtenerLucesTrampa()),
@@ -21,9 +21,13 @@ TrampaSDL::TrampaSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
             offset_luces_y(constantes["WorldView"]["Edificios"]["Trampa"]["Luces"]["OffsetY"].as<int32_t>()),
             cantidad_frames(constantes["WorldView"]["Edificios"]["Trampa"]["Luces"]["CantidadFrames"].as<uint8_t>()) {}
 
-void TrampaSDL::cambiarHP(uint16_t hp_edificio) {
-    if (hp_edificio < limite_hp_debilitar)
+bool TrampaSDL::cambiarHP(uint16_t hp_edificio) {
+    vida_restante = hp_edificio;
+    if (hp_edificio < limite_hp_debilitar) {
         debilitado = true;
+        return true;
+    }
+    return false;
 }
 
 void TrampaSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frames_transcurridos, float zoom) {

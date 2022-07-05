@@ -8,6 +8,7 @@
 #include "../../src_common/common_colas/cola_bloqueante.h"
 #include "../server_comandos/server_comando.h"
 #include "server_unidades/unidades.h"
+#include "server_edificios/edificio.h"
 #include "server_mapa/server_mapa.h"
 #include "server_jugador/jugador.h"
 #include "yaml-cpp/yaml.h"
@@ -21,16 +22,17 @@ class Game {
     std::map< uint8_t, ColaBloqueante<ComandoServer>* > colas_comandos;
     std::list<Jugador> jugadores;
     std::unordered_map<uint8_t, std::shared_ptr<Unidad> > unidades;
+    std::unordered_map<uint8_t, std::shared_ptr<EdificioServer> > edificios;
     Mapa mapa;
     std::string nombre_mapa;
-    uint8_t conts_id_edificios = 0;
     YAML::Node constantes;
     YAML::Node atributos_unidades;
     Gusano gusano;
+    uint8_t cont_id_edificios;
 
     std::map<uint8_t, Coordenadas> sortearCentros() const;
 
-    void crearCentro(uint8_t id_jugador, const Coordenadas& coords);
+    void crearCentro(uint8_t id_jugador, Coordenadas& coords);
     void crearCentrosDeConstruccion(std::map<uint8_t, Coordenadas>& centros_sorteados);
     
     /*
@@ -44,10 +46,12 @@ class Game {
     void updateUnidad(long iter);
     void updateGusano(long iter);
 
+    bool hayGanador() const;
+
 public:
     Game(const std::string& nombre_mapa);
 
-    void crearEdificio(uint8_t id_jugador, uint8_t id_edificio, const Coordenadas& coords);
+    void crearEdificio(uint8_t id_jugador, uint8_t id_edificio, Coordenadas coords);
 
     void comprarEdificio(uint8_t id_jugador, uint8_t id_edificio);
 
@@ -59,6 +63,7 @@ public:
                         uint8_t casa, std::string& nombre);
 
     void atacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_a_atacar);
+    void atacarEdificio(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_edificio_a_atacar);
 
     /*
      * Envia un Comando EmpezarPartida a cada cliente, con todos los detalles necesarios.

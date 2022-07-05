@@ -48,6 +48,10 @@ void InfanteriaSDL::updatePosicionUnidad(uint32_t offset_x, uint32_t offset_y, l
     destino.SetH(alto * zoom);
 }
 
+void InfanteriaSDL::disparar() {
+    disparando = true;
+}
+
 SDL2pp::Texture& InfanteriaSDL::texturaActual() {
     if (disparando) {
         return texturas_disparando[direccion_actual];

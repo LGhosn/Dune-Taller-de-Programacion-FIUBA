@@ -9,7 +9,6 @@ class InfanteriaSDL : public UnidadSDL {
     std::vector<SDL2pp::Texture>& texturas_moviendose;
     std::vector<SDL2pp::Texture>& texturas_quieta;
     std::vector<SDL2pp::Texture>& texturas_disparando;
-    bool disparando = false;
     
     // Constantes
     const uint16_t alto;
@@ -32,6 +31,8 @@ public:
                 uint16_t tiempo_aparicion,
                 uint16_t vida);
     
+    virtual void disparar();
+
     void update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
     void render();
 

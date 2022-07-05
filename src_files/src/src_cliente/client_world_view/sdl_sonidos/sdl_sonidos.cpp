@@ -68,6 +68,12 @@ void SonidosSDL::cargarMensajesDeVoz() {
         stream << RUTA_SONIDOS << casa << "/mensajes_de_voz/centro_atacado.mp3";
         centro_atacado.emplace_back(stream.str());
     }
+
+    for (const std::string& casa : casas) {
+        std::stringstream stream;
+        stream << RUTA_SONIDOS << casa << "/mensajes_de_voz/unidad_creada.mp3";
+        unidad_creada.emplace_back(stream.str());
+    }
 }
 
 void SonidosSDL::cargarMusica() {
@@ -239,6 +245,10 @@ SDL2pp::Chunk&  SonidosSDL::obtenerMensajeAtaqueGusano() {
 
 SDL2pp::Chunk& SonidosSDL::obtenerMensajeCentroAtacado() {
     return centro_atacado[casa];
+}
+
+SDL2pp::Chunk& SonidosSDL::obtenerMensajeUnidadCreada() {
+    return unidad_creada[casa];
 }
 
 SDL2pp::Chunk& SonidosSDL::obtenerMensajeUnidadSeleccionada(uint8_t tipo_unidad, uint8_t casa) {

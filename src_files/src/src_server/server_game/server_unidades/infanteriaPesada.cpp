@@ -17,7 +17,7 @@ InfanteriaPesada::InfanteriaPesada(Jugador& duenio,
 
     this->terrenos_no_accesibles = atributos_unidad["Infanteria"]["InfanteriaPesada"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
     
-    this->arma = std::unique_ptr<Arma>(new LanzaMisiles(atributos_unidad, ticks));
+    this->arma = std::unique_ptr<Arma>(new LanzaMisiles(atributos_unidad, id, ticks));
 
     enviarComandoEmpezarEntrenamiento();
 }

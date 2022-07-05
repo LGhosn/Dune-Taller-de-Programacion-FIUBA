@@ -14,6 +14,7 @@
 #define CODIGO_ACTUALIZAR_PUNTAJE 40
 #define CODIGO_MOVER_UNIDAD 50
 #define CODIGO_MODIFICAR_VIDA_UNIDAD 60
+#define CODIGO_MODIFICAR_VIDA_EDIFICIO 61
 
 class SerializadorServer {
 private:
@@ -38,7 +39,7 @@ public:
                                                             uint16_t tiempo_construccion);
 
     std::vector<uint8_t> serializarComandoCrearEdificio(uint8_t id_jugador, uint8_t id_edificio,
-    uint8_t tipo, const Coordenadas& coords, uint8_t casa) const;
+    uint8_t tipo, const Coordenadas& coords, uint8_t casa, uint16_t vida) const;
 
 /* *****************************************************************
  *             METODOS REFERIDOS A ACTUALIZAR ESPECIA
@@ -75,6 +76,9 @@ public:
  * *****************************************************************/
 
     std::vector<uint8_t> serializarComandoModificarVidaUnidad(uint8_t id_unidad, uint16_t vida);
+
+    std::vector<uint8_t> serializarComandoModificarVidaEdificio(uint8_t id_edificio, uint8_t unidad_atacante,
+                                                                uint16_t vida);
 
 /* *****************************************************************
  *                          MOVE SEMANTICS

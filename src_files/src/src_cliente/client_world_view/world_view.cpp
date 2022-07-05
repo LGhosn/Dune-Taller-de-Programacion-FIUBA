@@ -2,6 +2,7 @@
 #include "../client_solicitudes/client_sol_crear_edificio.h"
 #include "../client_solicitudes/sol_mover_unidad.h"
 #include "../client_solicitudes/sol_atacar_unidad.h"
+#include "../client_solicitudes/sol_atacar_edificio.h"
 #include "sdl_unidad/sdl_infanteria/sdl_infanteria.h"
 #include <functional>
 
@@ -116,9 +117,10 @@ void WorldView::crearEdificio(uint16_t id_edificio,
                               uint8_t id_jugador,
                               const Coordenadas& coords,
                               uint8_t tipo,
-                              uint8_t casa) {
+                              uint8_t casa,
+                              uint16_t vida) {
     std::shared_ptr<EdificioSDL> edificio = edificio_factory.crearEdificio
-            (id_edificio, id_jugador, casa, tipo, coords);
+            (id_edificio, id_jugador, casa, tipo, coords, vida);
     Coordenadas dimensiones = edificio->obtenerDimensiones();
     for (int i = 0; i < dimensiones.x; i++) {
         for (int j = 0; j < dimensiones.y; j++) {
@@ -271,12 +273,25 @@ void WorldView::zoomOut() {
 }
 
 void WorldView::clickDerecho(uint32_t pos_x, uint32_t pos_y) {
+    if (unidades_seleccionadas.empty()) {
+        return;
+    }
+    
     if (pos_x < ancho_ventana - ancho_menu) {       // Click en mapa
         Coordenadas coords = mapa.obtenerCoords(pos_x, pos_y);
         bool entidad_seleccionada = false;
         if (edificios.find(coords) != edificios.end()) {
-            // entidad_seleccionada = true;
-            // for 
+            std::shared_ptr<EdificioSDL> edificio = (*edificios.find(coords)).second;
+            uint8_t id_edificio_a_atacar = edificio->obtenerId();
+            uint8_t id_duenio_edificio = edificio->obtenerIdJugador();
+            if (id_duenio_edificio == id_jugador) {
+                return;
+            }
+            entidad_seleccionada = true;
+            for (auto& unidad : unidades_seleccionadas) {
+                SolicitudCliente* solicitud = new SolicitudAtacarEdificio(unidad->obtenerId(), id_edificio_a_atacar);
+                cola_solicitudes.push(solicitud);
+            }
         } else {
             uint8_t id_unidad_a_atacar;
             for (auto& unidad : unidades) {
@@ -341,11 +356,21 @@ void WorldView::establecerEstadoDelMarcador(bool estado) {
     marcador.estaHabilitado(estado);
 }
 
+
 void WorldView::modificarVidaUnidad(uint8_t id_unidad, uint16_t vida) {
     bool esta_viva = unidades[id_unidad]->cambiarHP(vida);
     if (!esta_viva) {
         unidades.erase(id_unidad);
     }
+}
+
+void WorldView::modificarVidaEdificio(uint8_t id_edificio, uint8_t unidad_atacante,
+							uint16_t vida) {
+    bool esta_construido = edificios_construidos[id_edificio]->cambiarHP(vida);
+    if (!esta_construido) {
+        edificios_construidos.erase(id_edificio);
+    }
+    unidades[unidad_atacante]->disparar();
 }
 
 void WorldView::salir() {}

@@ -19,7 +19,7 @@ public:
                         YAML::Node& constantes, ColoresSDL& colores);
 
     std::shared_ptr<EdificioSDL> crearEdificio(uint8_t id_edificio, uint8_t id_jugador, uint8_t casa,
-                                uint8_t tipo_edificio, const Coordenadas& coords);
+                                uint8_t tipo_edificio, const Coordenadas& coords, uint16_t vida);
 
     ~EdificioFactorySDL() = default;
 };

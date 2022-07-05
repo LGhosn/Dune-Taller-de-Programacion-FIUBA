@@ -99,3 +99,15 @@ std::vector<uint8_t> SerializadorCliente::serializarSolicitudAtacarUnidad(uint8_
     buffer[3] = id_unidad_atacada;
     return buffer;
 }
+
+std::vector<uint8_t> SerializadorCliente::serializarSolicitudAtacarEdificio(uint8_t id_jugador_atacante,
+                                                uint8_t id_unidad_atacante, uint8_t id_edificio_atacado) {
+    std::vector<uint8_t> buffer(4);
+    buffer[0] = CODIGO_SOLICITUD_ATACAR_EDIFICIO;
+    buffer[1] = id_jugador_atacante;
+    buffer[2] = id_unidad_atacante;
+    buffer[3] = id_edificio_atacado;
+    return buffer;
+}
+
+

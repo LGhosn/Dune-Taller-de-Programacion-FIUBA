@@ -47,6 +47,7 @@ class WorldView {
 	std::vector<std::shared_ptr<EdificioSDL>> edificios_seleccionados;
     std::vector<std::shared_ptr<UnidadSDL>> unidades_seleccionadas;
     std::map<uint8_t, std::shared_ptr<UnidadSDL>> unidades;
+	std::map<uint8_t, std::shared_ptr<EdificioSDL>> edificios_construidos;
 	EdificioFactorySDL edificio_factory;
 	long frame_anterior = 0;
 	uint8_t id_jugador;
@@ -84,7 +85,7 @@ public:
 									Coordenadas& coords_spawn, uint16_t vida);
 
 	void crearEdificio(uint16_t id_edificio, uint8_t id_jugador,
-						const Coordenadas& coords, uint8_t tipo, uint8_t casa);
+						const Coordenadas& coords, uint8_t tipo, uint8_t casa, uint16_t vida);
 
     void moverUnidad(uint8_t id_unidad, uint8_t direccion, uint16_t tiempo_movimiento);
 
@@ -101,6 +102,8 @@ public:
 	void establecerEstadoDelMarcador(bool estado);
 
 	void modificarVidaUnidad(uint8_t id_unidad, uint16_t vida);
+	void modificarVidaEdificio(uint8_t id_edificio, uint8_t unidad_atacante,
+								uint16_t vida);
 
 	void salir();
 

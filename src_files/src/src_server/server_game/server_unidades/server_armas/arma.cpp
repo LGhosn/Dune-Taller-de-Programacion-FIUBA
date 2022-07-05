@@ -2,17 +2,18 @@
 
 Arma::Arma(uint8_t dmg,
         uint16_t frecuencia_disparo, std::vector<uint8_t> bonificaciones,
-        uint16_t ticks):
+        uint16_t ticks,
+        uint8_t id_unidad_portador) :
         dmg(dmg),
         ticks_frecuencia_disparo(ticks / frecuencia_disparo),
-        bonificaciones(bonificaciones) {}
+        bonificaciones(bonificaciones),
+        id_unidad_portador(id_unidad_portador) {}
 
 
-void Arma::disparar(std::shared_ptr<Unidad> unidad_a_disparar){
+void Arma::disparar(std::shared_ptr<EntidadServer> edificio_a_disparar) {
     if (!en_cooldown) {
-        uint8_t bonificacion = unidad_a_disparar->obtenerTipoDeUnidad();
-        uint8_t dmg_total = dmg + bonificaciones[bonificacion];
-        unidad_a_disparar->recibirDmg(dmg_total);
+        uint8_t dmg_total = dmg + bonificaciones[2];
+        edificio_a_disparar->recibirDmg(dmg_total, id_unidad_portador);
         ticks_restantes = ticks_frecuencia_disparo;
         en_cooldown = true;
     }

@@ -1,9 +1,9 @@
 #include "sdl_fabrica_pesada.h"
 
-FabricaPesadaSDL::FabricaPesadaSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
+FabricaPesadaSDL::FabricaPesadaSDL(uint8_t id, uint8_t id_jugador, uint16_t vida, SDL2pp::Renderer& renderer,
                        TexturasSDL& texturas, const Coordenadas& coords, uint16_t alto,
                        uint16_t ancho, uint8_t casa,YAML::Node& constantes, ColorSDL& color) :
-                    EdificioSDL(id, id_jugador, renderer, texturas.obtenerEdificio(3, casa, false),
+                    EdificioSDL(id, id_jugador, vida, renderer, texturas.obtenerEdificio(3, casa, false),
                     texturas.obtenerEdificio(3, casa, true), coords, alto, ancho, casa,
                     constantes, color, texturas.obtenerSlab()),
                     textura_paredes(texturas.obtenerParedesFabricaPesada(casa)),
@@ -13,9 +13,13 @@ FabricaPesadaSDL::FabricaPesadaSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Rende
                     offset_paredes_y(constantes["WorldView"]["Edificios"]["FabricaPesada"]["Paredes"]["OffsetY"].as<int32_t>()),
                     offset_paredes_tam_x(constantes["WorldView"]["Edificios"]["FabricaPesada"]["Paredes"]["OffsetTamX"].as<int32_t>()) {}
 
-void FabricaPesadaSDL::cambiarHP(uint16_t hp_edificio) {
-    if (hp_edificio < limite_hp_debilitar)
+bool FabricaPesadaSDL::cambiarHP(uint16_t hp_edificio) {
+    vida_restante = hp_edificio;
+    if (hp_edificio < limite_hp_debilitar) {
         debilitado = true;
+        return true;
+    }
+    return false;
 }
 
 void FabricaPesadaSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y,

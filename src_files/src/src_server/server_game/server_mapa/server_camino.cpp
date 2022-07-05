@@ -62,7 +62,7 @@ bool Camino::a_star(const Coordenadas& origen,
 }
 
 char Camino::getTipoDeSuperficie(const Coordenadas& pos) const {
-    std::unique_ptr<Entidades>& entidad = (*this->mapa)[pos.y][pos.x];
+    std::shared_ptr<Entidades>& entidad = (*this->mapa)[pos.y][pos.x];
     if (entidad->obtenerTipoDeEntidad() == 'T') {
         return entidad->obtenerIdentificador();
     }
@@ -70,9 +70,9 @@ char Camino::getTipoDeSuperficie(const Coordenadas& pos) const {
 }
 
 char Camino::getTipoDeTerreno(const Coordenadas& pos) const {
-    std::unique_ptr<Entidades>& entidad = (*this->mapa)[pos.y][pos.x];
+    std::shared_ptr<Entidades>& entidad = (*this->mapa)[pos.y][pos.x];
     if (entidad->obtenerTipoDeEntidad() == 'U') {
-        std::unique_ptr<UnidadesMapa>& unidad = (std::unique_ptr<UnidadesMapa>&) entidad;
+        std::shared_ptr<UnidadesMapa>& unidad = (std::shared_ptr<UnidadesMapa>&) entidad;
         return unidad->obtenerTerrenoQueEstaParada();
     }
     return entidad->obtenerIdentificador();
@@ -127,7 +127,7 @@ Camino::Camino() : mapa(nullptr) {
     this->vecinos_posibles.emplace_back(0, -1);
 }
 
-void Camino::start(std::vector< std::vector<std::unique_ptr<Entidades> > >* mapa) {
+void Camino::start(std::vector< std::vector<std::shared_ptr<Entidades> > >* mapa) {
     this->mapa = mapa;
 }
 

@@ -90,6 +90,13 @@ void MixerSDL::reproducirMensajeCentroAtacado() {
     }
 }
 
+void MixerSDL::reproducirMensajeUnidadCreada() {
+    if (cantidad_sonidos < cantidad_maxima_sonidos) {
+        cantidad_sonidos++;
+        mixer.PlayChannel(-1, sonidos.obtenerMensajeUnidadCreada());
+    }
+}
+
 void MixerSDL::reproducirUnidadSeleccionada(uint8_t tipo_unidad, uint8_t casa) {
     if (cantidad_sonidos < cantidad_maxima_sonidos) {
         cantidad_sonidos++;

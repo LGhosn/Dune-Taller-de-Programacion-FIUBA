@@ -13,6 +13,7 @@ class ComandoCrearEdificio : public ComandoCliente {
     Coordenadas coords;
     uint8_t tipo;
     uint8_t casa;
+    uint16_t vida;
 public:
     ComandoCrearEdificio(ComandoCrearEdificioDTO& dto);
     virtual bool ejecutar(WorldView& worldView) const override;

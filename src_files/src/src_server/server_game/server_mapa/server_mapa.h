@@ -30,12 +30,13 @@ class Mapa {
 private:
     int ancho;
     int alto;
-    std::vector<std::vector<std::unique_ptr<Entidades>>> mapa;
+    std::vector<std::vector<std::shared_ptr<Entidades> > > mapa;
     std::vector< Coordenadas > colisiones;
     Camino camino;
     std::list<Coordenadas> coords_centros;
     YAML::Node edificio_config;
     std::unordered_map <uint8_t, Coordenadas> unidades_en_mapa;
+    std::unordered_map <uint8_t, Coordenadas > edificios_en_mapa;
 
 
     /*
@@ -53,7 +54,7 @@ private:
      * @param pos_y: posicion en y de donde se quiere colocar el edificio 
      * @param propiedades_edif: propiedades del edificio a construir <dimension_x, dimension_y, tipo_edificio>
     */
-    void edificar(const Coordenadas& coords, std::unique_ptr<Edificio>& edificio, uint8_t id_jugador);
+    void edificar(const Coordenadas& coords, std::shared_ptr<Edificio>& edificio, uint8_t id_jugador, uint8_t id_edificio);
 
     /*
      * @brief Verifica que el terreno sea lo suficiente resistente para las construcciones
@@ -66,11 +67,11 @@ private:
 
     void cargarCentrosDeConstruccion(YAML::Node& mapa_config);
 
-    std::unique_ptr<Entidades> clasificarEdificio(char tipo, YAML::Node& edificio_config, uint8_t id_jugador);
+    std::shared_ptr<Entidades> clasificarEdificio(char tipo, YAML::Node& edificio_config, uint8_t id_jugador);
 
-    std::unique_ptr<Entidades> clasificarTerreno(int tipo);
+    std::shared_ptr<Entidades> clasificarTerreno(int tipo);
 
-    std::unique_ptr<Entidades> clasificarUnidad(uint8_t tipo_unidad, uint8_t id_jugador, uint8_t id_unidad);
+    std::shared_ptr<Entidades> clasificarUnidad(uint8_t tipo_unidad, uint8_t id_jugador, uint8_t id_unidad);
 
     Coordenadas coordenadaLibreMasCercana(Coordenadas& coordenada);
 
@@ -87,13 +88,13 @@ public:
      * @param comando una tupla conformada por el edificio(uint8_t), la coordenada x(uint16_t) y la coordenada y(uint16_t)
      * @return un booleano indicando si se pudo construir o no.
      */
-    bool construirEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& coords);
+    bool construirEdificio(uint8_t id_jugador, uint8_t tipo, const Coordenadas& coords, uint8_t id_edificio);
 
     /*
      * Construye un centro de construccion para el jugador con la id dada, en
      * las coordenadas pasadas por parametro.
     */
-    void construirCentro(uint8_t id_jugador, const Coordenadas& coords);
+    void construirCentro(uint8_t id_jugador, const Coordenadas& coords, uint8_t id_edificio);
 
     /*
      * Imprime el mapa en consola
@@ -141,6 +142,8 @@ public:
     */
     std::stack<Coordenadas> obtenerCamino(UnidadInfoDTO& unidad_info) const;
 
+    void eliminarUnidad(uint8_t id_unidad);
+    void eliminarEdificio(uint8_t id_edificio);
 
     // Destructor del mapa
     ~Mapa() = default;

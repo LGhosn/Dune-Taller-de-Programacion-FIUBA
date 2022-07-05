@@ -8,6 +8,7 @@
 #include "../server_DTO/dto_sol_crear_edificio.h"
 #include "../server_DTO/dto_sol_comprar_unidad.h"
 #include "../server_DTO/dto_sol_atacar_unidad.h"
+#include "../server_DTO/dto_sol_atacar_edificio.h"
 #include "../server_DTO/dto_sol_mover_unidad.h"
 #include "../server_solicitudes/solicitud_juego/server_solicitud.h"
 #include "../server_solicitudes/solicitud_juego/sol_crear_edificio.h"
@@ -42,6 +43,7 @@ private:
     void manejarSolicitudMoverUnidad();
     void manejarSoliciutdComprarEdificio();
     void manejarSolicitudAtacarUnidad();
+    void manejarSolicitudAtacarEdificio();
 
 public:
     ServerHiloReceiver(ProtocoloServidor& protocolo,

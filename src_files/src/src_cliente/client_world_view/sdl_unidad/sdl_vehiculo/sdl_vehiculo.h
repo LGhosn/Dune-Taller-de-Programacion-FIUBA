@@ -37,6 +37,8 @@ public:
                 uint16_t tiempo_aparicion,
                 uint16_t vida);
 
+    virtual void disparar();
+
     void update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
     void render();
     ~VehiculoSDL();

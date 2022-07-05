@@ -30,6 +30,7 @@ public:
     void reproducirMensajeDerrota();
     void reproducirMensajeAtaqueGusano();
     void reproducirMensajeCentroAtacado();
+    void reproducirMensajeUnidadCreada();
 
     void reproducirUnidadSeleccionada(uint8_t tipo_unidad, uint8_t casa);
     void reproducirUnidadMovida(uint8_t tipo_unidad, uint8_t casa);

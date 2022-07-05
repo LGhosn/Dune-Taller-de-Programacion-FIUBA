@@ -17,6 +17,7 @@ class SonidosSDL {
     std::vector<SDL2pp::Chunk> construccion_invalida;
     std::vector<SDL2pp::Chunk> nuevos_edificios_disponibles;
     std::vector<SDL2pp::Chunk> entrenando;
+    std::vector<SDL2pp::Chunk> unidad_creada;
     std::vector<SDL2pp::Chunk> energia_baja;
     std::vector<SDL2pp::Chunk> victoria;
     std::vector<SDL2pp::Chunk> derrota;
@@ -33,6 +34,8 @@ class SonidosSDL {
     std::vector<SDL2pp::Chunk> sardaukar_movido;
     std::vector<SDL2pp::Chunk> fremen_seleccionado;
     std::vector<SDL2pp::Chunk> fremen_movido;
+
+    // std::vector<SDL2pp::Chunk> disparos;
 
     void cargarMensajesDeVoz();
     void cargarMusica();
@@ -51,6 +54,7 @@ public:
     SDL2pp::Chunk& obtenerMensajeDerrota();
     SDL2pp::Chunk& obtenerMensajeAtaqueGusano();
     SDL2pp::Chunk& obtenerMensajeCentroAtacado();
+    SDL2pp::Chunk& obtenerMensajeUnidadCreada();
     SDL2pp::Chunk& obtenerMensajeUnidadSeleccionada(uint8_t tipo_unidad, uint8_t casa);
     SDL2pp::Chunk& obtenerMensajeUnidadMovida(uint8_t tipo_unidad, uint8_t casa);
 

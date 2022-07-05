@@ -16,7 +16,7 @@ Devastador::Devastador(Jugador& duenio,
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Devastador"]["PenalizacionTerreno"].as<std::vector<float>>();
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Devastador"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 
-    this->arma = std::unique_ptr<Arma>(new CanionDePlasma(atributos_unidad, ticks));
+    this->arma = std::unique_ptr<Arma>(new CanionDePlasma(atributos_unidad, id, ticks));
 
     enviarComandoEmpezarEntrenamiento();
 }

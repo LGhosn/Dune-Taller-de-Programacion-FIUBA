@@ -218,7 +218,7 @@ Vehiculo:
 Armas:
   Rifle:
     Dmg: 2
-    FrecuenciaDisparo: 6
+    FrecuenciaDisparo: 2
     Bonificacion: [1, 0, 0] # bonificacion en funcion de si el objetivo es infanteria, vehiculo,
 
   LanzaMisiles:

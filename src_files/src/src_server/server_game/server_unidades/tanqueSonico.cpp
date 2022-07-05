@@ -17,7 +17,7 @@ TanqueSonico::TanqueSonico(Jugador& duenio,
 
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["TanqueSonico"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
 
-    this->arma = std::unique_ptr<Arma>(new OndasDeSonido(atributos_unidad, ticks));
+    this->arma = std::unique_ptr<Arma>(new OndasDeSonido(atributos_unidad, id, ticks));
 
     enviarComandoEmpezarEntrenamiento();
 }

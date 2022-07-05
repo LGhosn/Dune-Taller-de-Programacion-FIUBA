@@ -58,6 +58,7 @@ void BotonUnidadSDL::update(long frames_transcurridos) {
             destino_construyendo.SetH(destino.GetH() * porciento_completado);
         } else {
             entrenando = false;
+            mixer.reproducirMensajeUnidadCreada();
         }
     }
 }

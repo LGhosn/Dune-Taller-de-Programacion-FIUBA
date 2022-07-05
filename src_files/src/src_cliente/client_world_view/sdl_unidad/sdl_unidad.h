@@ -37,6 +37,7 @@ protected:
     bool seleccionado = false;
     bool desplegada = false;
     bool moviendose = false;
+    bool disparando = false;
     float zoom;
     uint8_t direccion_actual = 0;
     float distancia = 0.0f;
@@ -86,7 +87,8 @@ public:
     void deseleccionar();
     uint8_t obtenerId() const;
     uint8_t obtenerIdJugador() const;
-    
+    virtual void disparar() = 0;
+
     void update(uint32_t offset_x, uint32_t offset_y, long frames_transcurridos, float zoom);
     virtual void render() = 0;
     void renderUI();

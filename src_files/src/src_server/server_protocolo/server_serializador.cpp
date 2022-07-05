@@ -18,8 +18,8 @@ std::vector<uint8_t> SerializadorServer::serializarComandoEmpezarConstruccionEdi
 }
 
 std::vector<uint8_t> SerializadorServer::serializarComandoCrearEdificio(uint8_t id_jugador,
-uint8_t id_edificio, uint8_t tipo, const Coordenadas& coords, uint8_t casa) const {
-    std::vector<uint8_t> buffer(9);
+uint8_t id_edificio, uint8_t tipo, const Coordenadas& coords, uint8_t casa, uint16_t vida) const {
+    std::vector<uint8_t> buffer(11);
     // uint8_t codigo = (*codigos)["CrearEdificio"].as<uint8_t>();
     uint8_t codigo = 5;
     buffer[0] = codigo;
@@ -32,6 +32,7 @@ uint8_t id_edificio, uint8_t tipo, const Coordenadas& coords, uint8_t casa) cons
     uint16_t* aux = (uint16_t*) (buffer.data() + 5);
     aux[0] = x;
     aux[1] = y;
+    aux[2] = htons(vida);
     return buffer;
 }
 
@@ -156,8 +157,20 @@ std::vector<uint8_t> SerializadorServer::serializarComandoActualizarPuntaje(uint
 std::vector<uint8_t> SerializadorServer::serializarComandoModificarVidaUnidad(uint8_t id_unidad, uint16_t vida) {
     std::vector<uint8_t> buffer(4);
     buffer[0] = CODIGO_MODIFICAR_VIDA_UNIDAD;
-    uint16_t* aux = (uint16_t*) (buffer.data() + 1);
+    buffer[1] = id_unidad;
+    uint16_t* aux = (uint16_t*) (buffer.data() + 2);
     aux[0] = htons(vida);
-    buffer[3] = id_unidad;
     return buffer;
+}
+
+std::vector<uint8_t> SerializadorServer::serializarComandoModificarVidaEdificio(uint8_t id_edificio, uint8_t unidad_atacante,
+                                                                uint16_t vida) {
+    std::vector<uint8_t> buffer(5);
+    buffer[0] = CODIGO_MODIFICAR_VIDA_EDIFICIO;
+    buffer[1] = id_edificio;
+    buffer[2] = unidad_atacante;
+    uint16_t* aux = (uint16_t*) (buffer.data() + 3);
+    aux[0] = htons(vida);
+    return buffer;
+
 }

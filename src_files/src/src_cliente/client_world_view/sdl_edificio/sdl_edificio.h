@@ -11,6 +11,8 @@ class EdificioSDL {
 protected:
     uint8_t id;
     uint8_t id_jugador;
+    uint16_t vida_restante;
+    const uint16_t vida_total;
     SDL2pp::Renderer& renderer;
     SDL2pp::Texture& textura;
     SDL2pp::Texture& textura_debilitado;
@@ -50,15 +52,16 @@ private:
     void renderHP();
 
 public:
-    EdificioSDL(uint8_t id, uint8_t id_jugador, SDL2pp::Renderer& renderer,
-                SDL2pp::Texture& textura, SDL2pp::Texture& textura_debilitado,
+    EdificioSDL(uint8_t id, uint8_t id_jugador, uint16_t vida,
+                SDL2pp::Renderer& renderer, SDL2pp::Texture& textura,
+                SDL2pp::Texture& textura_debilitado,
                 const Coordenadas& coords, uint16_t alto, uint16_t ancho,
                 uint8_t casa, YAML::Node& constantes, ColorSDL& color,
                 SDL2pp::Texture& textura_slab);
 
     Coordenadas obtenerDimensiones() const;
     
-    virtual void cambiarHP(uint16_t hp_edificio) = 0;
+    virtual bool cambiarHP(uint16_t hp_edificio) = 0;
     
     void seleccionar();
     void deseleccionar();
@@ -70,6 +73,7 @@ public:
     void renderUI();
 
     virtual uint8_t obtenerId() const;
+    virtual uint8_t obtenerIdJugador() const;
 
     virtual ~EdificioSDL() = default;
 };
