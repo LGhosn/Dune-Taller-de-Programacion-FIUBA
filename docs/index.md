@@ -12,19 +12,9 @@
 **Ubuntu 20.04 LTS**
 
 ## Dependencias necesarias
-**YAML-CPP**: seguir las instrucciones desde el subtítulo `How to build` del [repositorio original](https://github.com/jbeder/yaml-cpp).
-
-**SDL2PP**: hay que instalar el [release 0.16.2](https://github.com/libSDL2pp/libSDL2pp/releases/tag/0.16.2) y para su instalación seguir las instrucciones del [repositorio original](https://github.com/libSDL2pp/libSDL2pp) a partir del subtitulo `Building` e `Installation`.
-
-**QT5**: ingresar las siguientes líneas en la consola (las últimas tres corresponden a la documentación):
-```
-sudo apt-get install build-essential
-sudo apt-get install qtcreator
-sudo apt-get install qt5-default
-sudo apt-get install qt5-doc
-sudo apt-get install qt5-doc-html qtbase5-doc-html
-sudo apt-get install qtbase5-examples
-```
+**YAML-CPP**
+**SDL2PP**
+**QT5**
 
 ## Instalación
 Para instalar el juego se provee del script installer.sh que corre en bash. Se debe ejecutar:
