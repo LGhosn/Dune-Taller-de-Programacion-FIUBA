@@ -1,27 +1,29 @@
 Rifle:
- Danio: 2
+ Dmg: 2
  FrecuenciaDisparo: 6
- Bonificacion: ["Infanteria", 2]
+ Bonificacion: [1, 0, 0] # bonificacion en funcion de si el objetivo es infanteria, vehiculo,
 
-Lanza misiles:
- Danio: 8
+LanzaMisiles:
+ Dmg: 8
  FrecuenciaDisparo: 1
+ Bonificacion: [0, 0, 0] # bonificacion en funcion de si el objetivo es infanteria, vehiculo,
 
 Canion:
- Danio: 7
+ Dmg: 7
  FrecuenciaDisparo: 1
+ Bonificacion: [0, 0, 0] # bonificacion en funcion de si el objetivo es infanteria, vehiculo,
 
-Canion 22mm:
- Danio: 6
+Canion22mm:
+ Dmg: 6
  FrecuenciaDisparo: 6
- Bonificacion: ["Vehiculos", 2,  "Edificios", 2]
+ Bonificacion: [0, 2, 2] # bonificacion en funcion de si el objetivo es infanteria, vehiculo,
 
-Ondas de sonido:
- Danio: 4
+OndasDeSonido:
+ Dmg: 4
  FrecuenciaDisparo: 1
- Bonificacion: ["Infanteria", 4]
+ Bonificacion: [4, 0, 0] # bonificacion en funcion de si el objetivo es infanteria, vehiculo,
 
-Canion de plasma:
- Danio: 8
+CanionDePlasma:
+ Dmg: 8
  FrecuenciaDisparo: 1
- Bonificacion: ["Vehiculos", 2,  "Edificios", 2]
+ Bonificacion: [0, 2, 2] # bonificacion en funcion de si el objetivo es infanteria, vehiculo,

@@ -19,3 +19,7 @@ TanqueSonico::TanqueSonico(Jugador& duenio,
 
     enviarComandoEmpezarEntrenamiento();
 }
+
+uint8_t TanqueSonico::obtenerTipoDeUnidad() {
+    return 1;
+}

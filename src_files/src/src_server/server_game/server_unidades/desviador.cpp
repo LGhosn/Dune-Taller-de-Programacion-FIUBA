@@ -20,3 +20,7 @@ Desviador::Desviador(Jugador& duenio,
 
     enviarComandoEmpezarEntrenamiento();
 }
+
+uint8_t Desviador::obtenerTipoDeUnidad() {
+    return 1;
+}

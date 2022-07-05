@@ -23,3 +23,7 @@ InfanteriaLigera::InfanteriaLigera(Jugador& duenio,
 
     enviarComandoEmpezarEntrenamiento();
 }
+
+uint8_t InfanteriaLigera::obtenerTipoDeUnidad() {
+    return 0;
+}

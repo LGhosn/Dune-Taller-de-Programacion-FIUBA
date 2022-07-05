@@ -18,3 +18,7 @@ Devastador::Devastador(Jugador& duenio,
 
     enviarComandoEmpezarEntrenamiento();
 }
+
+uint8_t Devastador::obtenerTipoDeUnidad() {
+    return 1;
+}

@@ -21,3 +21,7 @@ Raider::Raider(Jugador& duenio,
 
     enviarComandoEmpezarEntrenamiento();
 }
+
+uint8_t Raider::obtenerTipoDeUnidad() {
+    return 1;
+}

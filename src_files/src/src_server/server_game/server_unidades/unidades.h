@@ -14,6 +14,7 @@
 #include "../server_mapa/server_mapa.h"
 #include "../../../src_common/common_colas/cola_bloqueante.h"
 #include "../../server_comandos/server_comando.h"
+#include "server_armas/arma.h"
 
 class Unidad {
     static uint8_t contador_ids;
@@ -76,9 +77,11 @@ public:
     virtual uint8_t obtenerIdJugador();
     uint8_t obtenerId() const;
     // virtual void atacar(Unidad& unidad) = 0;
+    virtual void recibirDmg(uint8_t dmg_entrante);
     virtual void empezarMovimiento(const Coordenadas& destino);
     virtual bool update(long ticks_transcurridos);
     virtual void atacar(std::shared_ptr<Unidad> unidad_a_atacar);
+    virtual uint8_t obtenerTipoDeUnidad();
     // virtual void atacar(Edificio& edificio) = 0;
     virtual ~Unidad() = default;
 };

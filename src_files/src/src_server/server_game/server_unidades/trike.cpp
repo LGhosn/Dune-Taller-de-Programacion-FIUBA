@@ -19,3 +19,7 @@ Trike::Trike(Jugador& duenio,
 
     enviarComandoEmpezarEntrenamiento();
 }
+
+uint8_t Trike::obtenerTipoDeUnidad() {
+    return 1;
+}

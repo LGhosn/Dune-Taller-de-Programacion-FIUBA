@@ -19,3 +19,7 @@ Fremen::Fremen(Jugador& duenio,
 
     enviarComandoEmpezarEntrenamiento();
 }
+
+uint8_t Fremen::obtenerTipoDeUnidad() {
+    return 0;
+}

@@ -19,3 +19,7 @@ Tanque::Tanque(Jugador& duenio,
 
     enviarComandoEmpezarEntrenamiento();
 }
+
+uint8_t Tanque::obtenerTipoDeUnidad() {
+    return 1;
+}

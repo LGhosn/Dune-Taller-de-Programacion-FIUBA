@@ -20,3 +20,7 @@ Sardaukar::Sardaukar(Jugador& duenio,
 
     enviarComandoEmpezarEntrenamiento();
 }
+
+uint8_t Sardaukar::obtenerTipoDeUnidad() {
+    return 0;
+}

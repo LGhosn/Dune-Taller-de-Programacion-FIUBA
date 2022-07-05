@@ -19,3 +19,7 @@ InfanteriaPesada::InfanteriaPesada(Jugador& duenio,
 
     enviarComandoEmpezarEntrenamiento();
 }
+
+uint8_t InfanteriaPesada::obtenerTipoDeUnidad() {
+    return 0;
+}
