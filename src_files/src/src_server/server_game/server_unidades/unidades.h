@@ -58,7 +58,9 @@ protected:
 
     void setearNuevoMovimiento();
 
-    bool estaEnRango() const;
+    bool estaEnRango(Coordenadas& coords) const;
+
+    void atacarUnidadEnRango();
 
 public:
     Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen, YAML::Node& constantes,

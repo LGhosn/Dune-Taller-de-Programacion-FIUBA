@@ -1,7 +1,7 @@
 #include "unidades_mapa.h"
 #include <iostream>
 
-UnidadesMapa::UnidadesMapa(char parada_sobre, uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_unidad) : 
+UnidadesMapa::UnidadesMapa(char parada_sobre, uint8_t tipo_unidad, uint8_t id_jugador, uint8_t id_unidad) : 
                             parada_sobre(parada_sobre), id_jugador(id_jugador), id_unidad(id_unidad), tipo_unidad(tipo_unidad), tipo_entidad('U') {}
 
 char UnidadesMapa::obtenerIdentificador() {

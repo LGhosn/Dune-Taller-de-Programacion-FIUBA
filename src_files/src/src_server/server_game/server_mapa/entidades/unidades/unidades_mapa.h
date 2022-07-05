@@ -14,7 +14,7 @@ private:
     char tipo_entidad;
 
 public:
-    UnidadesMapa(char parada_sobre, uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_unidad);
+    UnidadesMapa(char parada_sobre, uint8_t tipo_unidad, uint8_t id_jugador, uint8_t id_unidad);
     virtual char obtenerIdentificador();
     virtual char obtenerTerrenoQueEstaParada();
     virtual char obtenerTipoDeEntidad();
