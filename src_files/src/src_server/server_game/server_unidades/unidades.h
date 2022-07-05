@@ -16,6 +16,8 @@
 #include "../../server_comandos/server_comando.h"
 #include "server_armas/arma.h"
 
+class Arma;
+
 class Unidad {
     static uint8_t contador_ids;
 protected:
@@ -25,6 +27,7 @@ protected:
     Coordenadas origen;
     Coordenadas destino;
     uint8_t id;
+    std::unique_ptr<Arma> arma;
     bool moviendose = false;
     bool atacando = false;
     bool esta_viva = true;
@@ -37,7 +40,6 @@ protected:
     std::shared_ptr<Unidad> unidad_a_atacar = nullptr;
 
     // Atributos
-    std::vector<std::string> armas;
     uint8_t rango;
     int16_t velocidad;
     uint16_t tiempo_entrenamiento;
@@ -81,7 +83,7 @@ public:
     virtual void empezarMovimiento(const Coordenadas& destino);
     virtual bool update(long ticks_transcurridos);
     virtual void atacar(std::shared_ptr<Unidad> unidad_a_atacar);
-    virtual uint8_t obtenerTipoDeUnidad();
+    virtual uint8_t obtenerTipoDeUnidad() = 0;
     // virtual void atacar(Edificio& edificio) = 0;
     virtual ~Unidad() = default;
 };

@@ -278,6 +278,15 @@ void ProtocoloCliente::enviarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, 
     enviarBuffer(buffer);
 }
 
+CmdModificarVidaUnidadClienteDTO ProtocoloCliente::recibirComandoModificarVidaUnidad() {
+    uint16_t nueva_cant_vida;
+    this->skt_cliente.recvall(&nueva_cant_vida, SIZEOF_TWO_BYTES);
+    nueva_cant_vida = ntohs(nueva_cant_vida);
+    uint8_t id_unidad;
+    this->skt_cliente.recvall(&id_unidad, SIZEOF_BYTE);
+    return CmdModificarVidaUnidadClienteDTO(nueva_cant_vida, id_unidad);
+}
+
 
 /* *****************************************************************
  *                          METODOS AUXILIARES

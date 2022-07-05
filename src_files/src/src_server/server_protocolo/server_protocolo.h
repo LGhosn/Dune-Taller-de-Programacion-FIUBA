@@ -157,6 +157,8 @@ public:
  * *****************************************************************/
     SolicitudAtacarUnidadDTO recibirSolicitudAtacarUnidad();
 
+    void enviarComandoModificarVidaUnidad(uint8_t id_unidad, uint16_t vida);
+
 /* *****************************************************************
  *                  MOVE SEMANTICS
  * *****************************************************************/

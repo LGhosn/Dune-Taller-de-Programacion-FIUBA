@@ -1,4 +1,5 @@
 #include "tanqueSonico.h"
+#include "server_armas/OndasDeSonido.h"
 
 TanqueSonico::TanqueSonico(Jugador& duenio,
                             Mapa& mapa,
@@ -7,7 +8,6 @@ TanqueSonico::TanqueSonico(Jugador& duenio,
                             std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos,
                             std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades) :
                             Unidad(duenio, 9, mapa, constantes, colas_comandos, unidades) {
-    this->armas = atributos_unidad["Vehiculo"]["TanqueSonico"]["Arma"].as<std::vector<std::string>>();
     this->rango = atributos_unidad["Vehiculo"]["TanqueSonico"]["Rango"].as<uint8_t>();
     this->velocidad = atributos_unidad["Vehiculo"]["TanqueSonico"]["Velocidad"].as<int16_t>();
     this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["TanqueSonico"]["TiempoEntrenamiento"].as<uint16_t>();
@@ -16,6 +16,8 @@ TanqueSonico::TanqueSonico(Jugador& duenio,
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["TanqueSonico"]["PenalizacionTerreno"].as<std::vector<float>>();
 
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["TanqueSonico"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
+
+    this->arma = std::unique_ptr<Arma>(new OndasDeSonido(atributos_unidad, ticks));
 
     enviarComandoEmpezarEntrenamiento();
 }

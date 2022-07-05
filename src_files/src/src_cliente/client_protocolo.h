@@ -12,6 +12,7 @@
 #include "client_DTO/dto_cmd_modificar_energia.h"
 #include "client_DTO/dto_cmd_mover_unidad.h"
 #include "client_DTO/dto_cmd_enemigo_despliega_unidad.h"
+#include "client_DTO/dto_cmd_modificar_vida_unidad_cliente.h"
 #include "client_serializador.h"
 #include "../src_common/common_serializador.h"
 #include "../src_common/common_socket.h"
@@ -96,7 +97,7 @@ public:
  *                  METODOS REFERIDOS A ATAQUES
  * *****************************************************************/
     void enviarSolicitudAtacarUnidad(uint8_t id_jugador_atacante, uint8_t id_unidad_atacante, uint8_t id_unidad_atacada);
-
+    CmdModificarVidaUnidadClienteDTO recibirComandoModificarVidaUnidad();
 
 /* *****************************************************************
  *                         MOVE SEMANTICS

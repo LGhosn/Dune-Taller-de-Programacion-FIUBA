@@ -62,8 +62,9 @@ bool UnidadSDL::contiene(int pos_x, int pos_y) {
     return destino.Contains(pos_x, pos_y);
 }
 
-void UnidadSDL::cambiarHP(uint16_t hp_unidad) {
+bool UnidadSDL::cambiarHP(uint16_t hp_unidad) {
     vida_actual = hp_unidad;
+    return vida_actual > 0;
 }
 
 void UnidadSDL::renderUI() {

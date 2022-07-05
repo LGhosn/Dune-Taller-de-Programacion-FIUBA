@@ -100,6 +100,8 @@ public:
 	
 	void establecerEstadoDelMarcador(bool estado);
 
+	void modificarVidaUnidad(uint8_t id_unidad, uint16_t vida);
+
 	void salir();
 
 	// void crearEdificio(uint16_t id, uint8_t id_jugador, const Coordenadas& coords, uint8_t tipo);

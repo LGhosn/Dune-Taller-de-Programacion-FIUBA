@@ -5,7 +5,7 @@
 
 class LanzaMisiles : public Arma {
 public:
-    LanzaMisiles(YAML::Node& atributos_armamento);
+    LanzaMisiles(YAML::Node& atributos_armamento, uint16_t ticks);
 };
 
 #endif

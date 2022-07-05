@@ -1,4 +1,5 @@
 #include "trike.h"
+#include "server_armas/Rifle.h"
 
 Trike::Trike(Jugador& duenio,
             Mapa& mapa,
@@ -7,7 +8,6 @@ Trike::Trike(Jugador& duenio,
             std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos,
             std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades) :
             Unidad(duenio, CODIGO_TRIKE, mapa, constantes, colas_comandos, unidades) {
-    this->armas = atributos_unidad["Vehiculo"]["Trike"]["Arma"].as<std::vector<std::string>>();
     this->rango = atributos_unidad["Vehiculo"]["Trike"]["Rango"].as<uint8_t>();
     this->velocidad = atributos_unidad["Vehiculo"]["Trike"]["Velocidad"].as<int16_t>();
     this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Trike"]["TiempoEntrenamiento"].as<uint16_t>();
@@ -16,6 +16,8 @@ Trike::Trike(Jugador& duenio,
     
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Trike"]["PenalizacionTerreno"].as<std::vector<float>>();
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Trike"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
+
+    this->arma = std::unique_ptr<Arma>(new Rifle(atributos_unidad, ticks));
 
     enviarComandoEmpezarEntrenamiento();
 }

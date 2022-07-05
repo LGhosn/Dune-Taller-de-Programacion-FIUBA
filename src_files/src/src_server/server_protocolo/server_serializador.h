@@ -13,6 +13,7 @@
 #define CODIGO_ENEMIGO_DESPLIEGA_UNIDAD 13
 #define CODIGO_ACTUALIZAR_PUNTAJE 40
 #define CODIGO_MOVER_UNIDAD 50
+#define CODIGO_MODIFICAR_VIDA_UNIDAD 60
 
 class SerializadorServer {
 private:
@@ -68,6 +69,12 @@ public:
  * *****************************************************************/
 
     std::vector<uint8_t> serializarComandoActualizarPuntaje(uint8_t id_jugador, uint16_t nuevo_puntaje);
+
+/* *****************************************************************
+ *                  METODOS REFERIDOS A ATAQUES
+ * *****************************************************************/
+
+    std::vector<uint8_t> serializarComandoModificarVidaUnidad(uint8_t id_unidad, uint16_t vida);
 
 /* *****************************************************************
  *                          MOVE SEMANTICS

@@ -148,3 +148,16 @@ std::vector<uint8_t> SerializadorServer::serializarComandoActualizarPuntaje(uint
     aux[0] = htons(nuevo_puntaje);
     return buffer;
 }
+
+/* *****************************************************************
+ *                  METODOS REFERIDOS A ATAQUES
+ * *****************************************************************/
+
+std::vector<uint8_t> SerializadorServer::serializarComandoModificarVidaUnidad(uint8_t id_unidad, uint16_t vida) {
+    std::vector<uint8_t> buffer(4);
+    buffer[0] = CODIGO_MODIFICAR_VIDA_UNIDAD;
+    uint16_t* aux = (uint16_t*) (buffer.data() + 1);
+    aux[0] = htons(vida);
+    buffer[3] = id_unidad;
+    return buffer;
+}

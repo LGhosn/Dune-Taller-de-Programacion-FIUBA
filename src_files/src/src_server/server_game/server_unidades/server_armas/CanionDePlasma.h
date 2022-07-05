@@ -5,7 +5,7 @@
 
 class CanionDePlasma : public Arma {
 public:
-    CanionDePlasma(YAML::Node& atributos_armamento);
+    CanionDePlasma(YAML::Node& atributos_armamento, uint16_t ticks);
 };
 
 #endif

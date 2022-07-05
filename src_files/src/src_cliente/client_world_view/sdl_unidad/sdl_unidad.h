@@ -80,7 +80,7 @@ public:
                 uint16_t vida);
 
 
-    void cambiarHP(uint16_t hp_unidad);
+    bool cambiarHP(uint16_t hp_unidad);
     bool contiene(int pos_x, int pos_y);
     void seleccionar();
     void deseleccionar();

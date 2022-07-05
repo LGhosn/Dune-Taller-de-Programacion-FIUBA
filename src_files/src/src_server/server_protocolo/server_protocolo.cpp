@@ -264,3 +264,7 @@ SolicitudAtacarUnidadDTO ProtocoloServidor::recibirSolicitudAtacarUnidad() {
     return SolicitudAtacarUnidadDTO(id_jugador_atacante, id_unidad_atacante, id_unidad_atacada);
 }
 
+void ProtocoloServidor::enviarComandoModificarVidaUnidad(uint8_t id_unidad, uint16_t vida) {
+    std::vector<uint8_t> buffer = serializador.serializarComandoModificarVidaUnidad(id_unidad, vida);
+    enviarBuffer(buffer);
+}

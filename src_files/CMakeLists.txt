@@ -57,6 +57,7 @@ add_executable(client
         src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp
         src/src_cliente/client_solicitudes/sol_atacar_unidad.cpp
         src/src_cliente/client_DTO/dto_cmd_crear_edificio.h
+        src/src_cliente/client_DTO/dto_cmd_modificar_vida_unidad_cliente.h
         src/src_cliente/client_comandos/cmd_mover_mapa.cpp
         src/src_cliente/client_comandos/cmd_zoom.cpp
         src/src_cliente/client_comandos/cmd_salir.cpp
@@ -74,6 +75,7 @@ add_executable(client
         src/src_cliente/client_comandos/cmd_enemigo_despliega_unidad.cpp
         src/src_cliente/client_comandos/cmd_actualizar_puntaje.cpp
         src/src_cliente/client_comandos/cmd_marcador.cpp
+        src/src_cliente/client_comandos/cmd_modificar_vida_unidad.cpp
         src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
         src/src_cliente/client_solicitudes/sol_comprar_edificio.cpp
         src/src_cliente/client_solicitudes/sol_comprar_unidad.cpp
@@ -178,6 +180,13 @@ add_executable(server
         src/src_server/server_game/server_unidades/tanque.cpp
         src/src_server/server_game/server_unidades/tanqueSonico.cpp
         src/src_server/server_game/server_unidades/trike.cpp
+        src/src_server/server_game/server_unidades/server_armas/arma.cpp
+        src/src_server/server_game/server_unidades/server_armas/Canion.cpp
+        src/src_server/server_game/server_unidades/server_armas/Canion22mm.cpp
+        src/src_server/server_game/server_unidades/server_armas/CanionDePlasma.cpp
+        src/src_server/server_game/server_unidades/server_armas/LanzaMisiles.cpp
+        src/src_server/server_game/server_unidades/server_armas/OndasDeSonido.cpp
+        src/src_server/server_game/server_unidades/server_armas/Rifle.cpp
         src/src_server/server_aceptador.cpp
         src/src_server/server_handler_cliente/server_handler_cliente.cpp
         src/src_server/server_partida/server_partida.cpp

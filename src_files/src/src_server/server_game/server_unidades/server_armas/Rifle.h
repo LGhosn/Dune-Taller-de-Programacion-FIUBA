@@ -5,7 +5,7 @@
 
 class Rifle : public Arma {
 public:
-    Rifle(YAML::Node& atributos_armamento);
+    Rifle(YAML::Node& atributos_armamento, uint16_t ticks);
 };
 
 #endif

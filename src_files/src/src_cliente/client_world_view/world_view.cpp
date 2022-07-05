@@ -342,4 +342,11 @@ void WorldView::establecerEstadoDelMarcador(bool estado) {
     marcador.estaHabilitado(estado);
 }
 
+void WorldView::modificarVidaUnidad(uint8_t id_unidad, uint16_t vida) {
+    bool esta_viva = unidades[id_unidad]->cambiarHP(vida);
+    if (!esta_viva) {
+        unidades.erase(id_unidad);
+    }
+}
+
 void WorldView::salir() {}

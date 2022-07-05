@@ -5,7 +5,7 @@
 
 class OndasDeSonido : public Arma {
 public:
-    OndasDeSonido(YAML::Node& atributos_armamento);
+    OndasDeSonido(YAML::Node& atributos_armamento, uint16_t ticks);
 };
 
 #endif

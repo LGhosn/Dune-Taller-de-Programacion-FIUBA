@@ -121,7 +121,7 @@ void Unidad::atacar(std::shared_ptr<Unidad> unidad_a_atacar) {
     }
     if (estaEnRango(destino)) {
         atacando = true;
-        // disparar();
+        arma->disparar(unidad_a_atacar);
     } else {
         atacando = false;
         Coordenadas coords = this->mapa.obtenerCoordenadasEnRango(this->rango, destino);
@@ -151,7 +151,7 @@ void Unidad::updateAtaque(long ticks_transcurridos) {
             atacando = false;
 
         } else {
-            // disparar
+            arma->disparar(unidad_a_atacar);
         }
     }
 
@@ -168,6 +168,7 @@ bool Unidad::update(long ticks_transcurridos) {
     }
     updateAtaque(ticks_transcurridos);
     updateMovimiento(ticks_transcurridos);
+    arma->update(ticks_transcurridos);
     return true;
 }
 
@@ -189,21 +190,17 @@ bool Unidad::estaEnRango(Coordenadas& coords) const {
 }
 
 void Unidad::atacarUnidadEnRango() {
-    bool unidad_cerca = false;
     for (auto& unidad : unidades) {
         if ((unidad.second->obtenerIdJugador() != this->obtenerIdJugador()) && estaEnRango(unidad.second->origen)) {
-            unidad_cerca = true;
             atacando = true;
             unidad_a_atacar = unidad.second;
             destino = unidad_a_atacar->origen;
-            // disparar
-            //return;
+            arma->disparar(unidad_a_atacar);
+            return;
         }
     }
-    if (!unidad_cerca) {
-        atacando = false;
-        unidad_a_atacar = nullptr;
-    }
+    atacando = false;
+    unidad_a_atacar = nullptr;
 }
 
 void Unidad::recibirDmg(uint8_t dmg_entrante) {

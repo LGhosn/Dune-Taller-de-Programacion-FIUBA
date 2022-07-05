@@ -1,6 +1,7 @@
 #include "Rifle.h"
 
-Rifle::Rifle(YAML::Node& atributos_armamento) :
-            Arma(atributos_armamento["Rifle"]["Dmg"].as<uint8_t>(),
-                 atributos_armamento["Rifle"]["FrecuenciaDisparo"].as<uint8_t>(),
-                 atributos_armamento["Rifle"]["Bonificacion"].as<std::vector<uint8_t>>()) {}
+Rifle::Rifle(YAML::Node& atributos_armamento, uint16_t ticks) :
+            Arma(atributos_armamento["Armas"]["Rifle"]["Dmg"].as<uint8_t>(),
+                 atributos_armamento["Armas"]["Rifle"]["FrecuenciaDisparo"].as<uint16_t>(),
+                 atributos_armamento["Armas"]["Rifle"]["Bonificacion"].as<std::vector<uint8_t>>(),
+                 ticks) {}

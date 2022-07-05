@@ -5,7 +5,7 @@
 
 class Canion22mm : public Arma {
 public:
-    Canion22mm(YAML::Node& atributos_armamento);
+    Canion22mm(YAML::Node& atributos_armamento, uint16_t ticks);
 };
 
 #endif
