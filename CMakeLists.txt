@@ -47,6 +47,8 @@ add_executable(ClientDune2000
         src_files/src/main_client.cpp
         src_files/src/src_cliente/pix_a_coords.cpp
         src_files/src/src_cliente/client_client.cpp
+        src_files/src/src_cliente/client_comandos/cmd_modificar_vida_unidad.cpp
+        src_files/src/src_cliente/client_DTO/dto_cmd_modificar_vida_unidad_cliente.h
         src_files/src/src_cliente/client_protocolo.cpp
         src_files/src/src_cliente/client_serializador.cpp
         src_files/src/src_cliente/client_thread_reciever/client_hilo_reciever.cpp
@@ -178,6 +180,13 @@ add_executable(ServerDune2000
         src_files/src/src_server/server_game/server_unidades/tanque.cpp
         src_files/src/src_server/server_game/server_unidades/tanqueSonico.cpp
         src_files/src/src_server/server_game/server_unidades/trike.cpp
+        src_files/src/src_server/server_game/server_unidades/server_armas/arma.cpp
+        src_files/src/src_server/server_game/server_unidades/server_armas/Canion.cpp
+        src_files/src/src_server/server_game/server_unidades/server_armas/Canion22mm.cpp
+        src_files/src/src_server/server_game/server_unidades/server_armas/CanionDePlasma.cpp
+        src_files/src/src_server/server_game/server_unidades/server_armas/LanzaMisiles.cpp
+        src_files/src/src_server/server_game/server_unidades/server_armas/OndasDeSonido.cpp
+        src_files/src/src_server/server_game/server_unidades/server_armas/Rifle.cpp
         src_files/src/src_server/server_aceptador.cpp
         src_files/src/src_server/server_handler_cliente/server_handler_cliente.cpp
         src_files/src/src_server/server_partida/server_partida.cpp

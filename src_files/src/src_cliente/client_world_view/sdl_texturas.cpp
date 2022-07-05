@@ -353,6 +353,12 @@ TexturasSDL::TexturasSDL(SDL2pp::Renderer& renderer, YAML::Node& constantes) :
                         )),
                         texto_vehiculos(renderer,
                             font_tienda.RenderText_Blended("Vehiculos", SDL_Color{255, 255, 255, 255}
+                        )),
+                        texto_victoria(renderer,
+                            font_tienda.RenderText_Blended(TEXTO_VICTORIA, SDL_Color{255, 255, 255, 255}
+                        )),
+                        texto_derrota(renderer,
+                            font_tienda.RenderText_Blended(TEXTO_DERROTA, SDL_Color{255, 255, 255, 255}
                         )) {
     casas.emplace_back("harkonnen");
     casas.emplace_back("atreides");
@@ -566,4 +572,11 @@ SDL2pp::Texture& TexturasSDL::obtenerTextoInfanteria() {
 
 SDL2pp::Texture& TexturasSDL::obtenerTextoVehiculos() {
     return texto_vehiculos;
+}
+
+SDL2pp::Texture& TexturasSDL::obtenerTextoVictoria() {
+    return texto_victoria;
+}
+SDL2pp::Texture& TexturasSDL::obtenerTextoDerrota() {
+    return texto_derrota;
 }

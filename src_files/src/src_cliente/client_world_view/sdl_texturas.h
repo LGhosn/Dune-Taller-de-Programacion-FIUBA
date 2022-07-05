@@ -64,6 +64,8 @@
 #define RUTA_FONT_DUNE_2K RESOURCE_PATH "/fonts/Dune2k.ttf"
 
 #define TEXTO_LISTO "LISTO"
+#define TEXTO_VICTORIA "VICTORIA"
+#define TEXTO_DERROTA "DERROTA"
 
 class TexturasSDL {
     YAML::Node& constantes;
@@ -153,6 +155,9 @@ class TexturasSDL {
     SDL2pp::Texture texto_infanteria;
     SDL2pp::Texture texto_vehiculos; 
 
+    SDL2pp::Texture texto_victoria;
+    SDL2pp::Texture texto_derrota;
+
     uint8_t obtenerCantidadTexturas(std::filesystem::path ruta);
 
     void cargarLogos();
@@ -192,6 +197,9 @@ public:
     std::vector<SDL2pp::Texture>& obtenerInfanteriaQuieta(uint8_t tipo_infanteria);
     std::vector<SDL2pp::Texture>& obtenerInfanteriaMoviendose(uint8_t tipo_infanteria);
     std::vector<SDL2pp::Texture>& obtenerInfanteriaDisparando(uint8_t tipo_infanteria);
+
+    SDL2pp::Texture& obtenerTextoVictoria();
+    SDL2pp::Texture& obtenerTextoDerrota();
 };
 
 #endif // SDL_TEXTURAS_H

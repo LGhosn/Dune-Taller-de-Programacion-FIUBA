@@ -86,12 +86,6 @@ void Unidad::updateMovimiento(long ticks_transcurridos) {
         if (this->ticks_restantes > ticks_transcurridos) {
             this->ticks_restantes -= ticks_transcurridos;
         } else {
-            if (persiguiendo && (unidad_a_atacar != nullptr) && estaEnRango(unidad_a_atacar->origen)) {
-                moviendose = false;
-                atacando = true;
-                this->camino = std::stack<Coordenadas>();
-                return;
-            }
             Coordenadas top = this->camino.top();
             if (this->mapa.esCoordenadaValida(top)) {
                 enviarComando();
@@ -148,8 +142,13 @@ void Unidad::updateAtaque(long ticks_transcurridos) {
             atacando = true;
             arma->disparar(unidad_a_atacar);
         }
-    } else {
-        arma->disparar(unidad_a_atacar);
+    }
+    if (atacando) {
+        if (!estaEnRango(unidad_a_atacar->origen)) {
+            atacando = false;
+        } else {
+            arma->disparar(unidad_a_atacar);
+        }
     }
 }
 
