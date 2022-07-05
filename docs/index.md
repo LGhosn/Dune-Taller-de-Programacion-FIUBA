@@ -61,11 +61,6 @@ Una vez en el juego, se puede salir presionando “Esc” o cerrando la ventana.
 Para hacer aparecer una unidad requerimos de tener los edificios necesarios para la misma, sabremos cuando podemos hacerla aparecer cuando el botón de la misma no esté oscuro, cuando ésta unidad se esté entrenando nos enteraremos de su aparición mediante un comando de voz, al igual que si la seleccionamos y movemos.
 
 Para atacar otras unidades deberemos seleccionar las nuestras con click izquierdo y luego la unidad enemiga con click derecho, la misma operación se lleva a cabo para atacar edificios enemigos.
----------------------------------------------------------------------------------------------------------------------------------------------------------
-## Manual de Proyecto
 
-[Manual del Proyecto (1).docx](https://github.com/LGhosn/Dune-Taller-de-Programacion-FIUBA/files/9049055/Manual.del.Proyecto.1.docx)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-## Manual de Documentación Técnica
-
-[Documentación técnica.docx](https://github.com/LGhosn/Dune-Taller-de-Programacion-FIUBA/files/9049052/Documentacion.tecnica.docx)
+## Manuales de Proyecto y Documentación Técnica disponibles en https://drive.google.com/drive/folders/1i1DJQOORScO8AFi8x2nMgytjtSEab5Kv?usp=sharing
