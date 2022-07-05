@@ -58,6 +58,7 @@ add_executable(ClientDune2000
         src_files/src/src_cliente/client_solicitudes/sol_crear_partida.cpp
         src_files/src/src_cliente/client_solicitudes/sol_unirse_a_partida.cpp
         src_files/src/src_cliente/client_solicitudes/sol_atacar_unidad.cpp
+        src_files/src/src_cliente/client_solicitudes/sol_atacar_edificio.cpp
         src_files/src/src_cliente/client_DTO/dto_cmd_crear_edificio.h
         src_files/src/src_cliente/client_comandos/cmd_mover_mapa.cpp
         src_files/src/src_cliente/client_comandos/cmd_zoom.cpp
@@ -69,6 +70,7 @@ add_executable(ClientDune2000
         src_files/src/src_cliente/client_comandos/cmd_actualizar_tienda_unidades.cpp
         src_files/src/src_cliente/client_comandos/cmd_modificar_especia.cpp
         src_files/src/src_cliente/client_comandos/cmd_modificar_energia.cpp
+        src_files/src/src_cliente/client_comandos/cmd_modificar_vida_edificio.cpp
         src_files/src/src_cliente/client_comandos/cmd_empezar_construccion_edificio.cpp
         src_files/src/src_cliente/client_comandos/cmd_empezar_entrenamiento.cpp
         src_files/src/src_cliente/client_comandos/cmd_construccion_invalida.cpp
@@ -138,15 +140,18 @@ add_executable(ServerDune2000
         src_files/src/src_server/server_comandos/cmd_enemigo_despliega_unidad.cpp
         src_files/src/src_server/server_comandos/cmd_construccion_invalida.cpp
         src_files/src/src_server/server_comandos/cmd_actualizar_puntaje.cpp
+        src_files/src/src_server/server_comandos/cmd_actualizar_tienda_edificios.cpp
+        src_files/src/src_server/server_comandos/cmd_actualizar_tienda_unidades.cpp
+        src_files/src/src_server/server_comandos/cmd_empezar_construccion_edificio.cpp
+        src_files/src/src_server/server_comandos/cmd_modificar_vida_unidad.cpp
+        src_files/src/src_server/server_comandos/cmd_modificar_vida_edificio.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_comprar_unidad.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_mover_unidad.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_atacar_unidad.cpp
-        src_files/src/src_server/server_comandos/cmd_actualizar_tienda_edificios.cpp
-        src_files/src/src_server/server_comandos/cmd_actualizar_tienda_unidades.cpp
-        src_files/src/src_server/server_comandos/cmd_empezar_construccion_edificio.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_comprar_edificio.cpp
+        src_files/src/src_server/server_solicitudes/solicitud_juego/sol_atacar_edificio.cpp
         src_files/src/src_server/server_protocolo/server_protocolo.cpp
         src_files/src/src_server/server_protocolo/server_serializador.cpp
         src_files/src/src_server/server_DTO/partida_DTO.h
@@ -168,6 +173,7 @@ add_executable(ServerDune2000
         src_files/src/src_server/server_game/server_jugador/especia_acumulada.cpp
         src_files/src/src_server/server_game/server_jugador/energia_acumulada.cpp
         src_files/src/src_server/server_game/server_jugador/validador_unidades.cpp
+        src_files/src/src_server/server_game/server_edificios/edificio.cpp
         src_files/src/src_server/server_game/server_unidades/unidades.cpp
         src_files/src/src_server/server_game/server_unidades/cosechadora.cpp
         src_files/src/src_server/server_game/server_unidades/desviador.cpp
