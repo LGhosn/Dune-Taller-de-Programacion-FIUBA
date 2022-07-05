@@ -122,9 +122,11 @@ public:
 
     SolicitudComprarUnidadDTO recibirSolicitudComprarUnidad();
 
-    void enviarComandoEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo, Coordenadas& coords);
+    void enviarComandoEmpezarEntrenamientoUnidad(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo,
+                                                Coordenadas& coords, uint16_t vida);
 
-    void enviarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad, uint16_t tiempo, Coordenadas& coords);
+    void enviarComandoEnemigoDespliegaUnidad(uint8_t id_unidad, uint8_t id_jugador, uint8_t tipo_unidad,
+                                            uint16_t tiempo, Coordenadas& coords, uint16_t vida);
 
 /* *****************************************************************
  *             METODOS REFERIDOS A ACTUALIZAR ESPECIA

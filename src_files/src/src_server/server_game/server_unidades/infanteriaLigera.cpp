@@ -4,13 +4,13 @@
 
 #include "infanteriaLigera.h"
 
-InfanteriaLigera::InfanteriaLigera(uint8_t id, Jugador& duenio, Mapa& mapa, YAML::Node& atributos_unidad, Coordenadas& coords_spawn,
-                                    YAML::Node& constantes, std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos,
+InfanteriaLigera::InfanteriaLigera(Jugador& duenio,
+                                    Mapa& mapa,
+                                    YAML::Node& atributos_unidad,
+                                    YAML::Node& constantes,
+                                    std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos,
                                     std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades) : 
-                                    Unidad(duenio, mapa, coords_spawn, constantes, colas_comandos, unidades) {
-    this->id = id;
-    this->tipo_unidad = INFANTERIA;
-
+                                    Unidad(duenio, 1, mapa, constantes, colas_comandos, unidades) {
     this->armas = atributos_unidad["Infanteria"]["InfanteriaLigera"]["Arma"].as<std::vector<std::string> >();
     this->rango = atributos_unidad["Infanteria"]["InfanteriaLigera"]["Rango"].as<uint8_t>();
     this->velocidad = atributos_unidad["Infanteria"]["InfanteriaLigera"]["Velocidad"].as<int16_t>();
@@ -20,4 +20,6 @@ InfanteriaLigera::InfanteriaLigera(uint8_t id, Jugador& duenio, Mapa& mapa, YAML
 
     this->penalizacion_terreno = atributos_unidad["Infanteria"]["InfanteriaLigera"]["PenalizacionTerreno"].as<std::vector<float>>();
     this->terrenos_no_accesibles = atributos_unidad["Infanteria"]["InfanteriaLigera"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
+
+    enviarComandoEmpezarEntrenamiento();
 }

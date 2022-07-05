@@ -1,8 +1,6 @@
 #ifndef SERVER_UNIDADES_H
 #define SERVER_UNIDADES_H
 
-#define INFANTERIA 'I'
-#define VEHICULO 'V'
 #define DISTANCIA_A_MOVER 16
 
 #include <vector>
@@ -18,8 +16,10 @@
 #include "../../server_comandos/server_comando.h"
 
 class Unidad {
+    static uint8_t contador_ids;
 protected:
     Jugador& duenio;
+    const uint8_t tipo_unidad;
     Mapa& mapa;
     Coordenadas origen;
     Coordenadas destino;
@@ -31,7 +31,6 @@ protected:
     std::stack<Coordenadas> camino;
     long ticks_para_sig_movimiento = 0;
     long ticks_restantes = 0;
-    char tipo_unidad;
     std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos;
     std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades;
     std::shared_ptr<Unidad> unidad_a_atacar = nullptr;
@@ -41,7 +40,7 @@ protected:
     uint8_t rango;
     int16_t velocidad;
     uint16_t tiempo_entrenamiento;
-    int16_t vida;
+    uint16_t vida;
     uint16_t costo;
     std::vector<float> penalizacion_terreno;
     std::vector<uint8_t> terrenos_no_accesibles;
@@ -62,13 +61,20 @@ protected:
 
     void atacarUnidadEnRango();
 
+    void enviarComandoEmpezarEntrenamiento();
+
 public:
-    Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen, YAML::Node& constantes,
+    Unidad(Jugador& duenio,
+            uint8_t tipo_unidad,
+            Mapa& mapa,
+            YAML::Node& constantes,
             std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comando,
             std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades);
+
     bool sigueViva();
     void setearNuevoCamino();
     virtual uint8_t obtenerIdJugador();
+    uint8_t obtenerId() const;
     // virtual void atacar(Unidad& unidad) = 0;
     virtual void empezarMovimiento(const Coordenadas& destino);
     virtual bool update(long ticks_transcurridos);

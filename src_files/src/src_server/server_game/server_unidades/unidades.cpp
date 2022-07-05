@@ -1,16 +1,42 @@
 #include "unidades.h"
 #include "../../server_comandos/cmd_mover_unidad.h"
 #include <cmath>
+#include "../../server_comandos/cmd_enemigo_despliega_unidad.h"
+#include "../../server_comandos/cmd_empezar_entrenamiento.h"
 
-Unidad::Unidad(Jugador& duenio, Mapa& mapa, Coordenadas origen, YAML::Node& constantes,
+uint8_t Unidad::contador_ids = 0;
+
+Unidad::Unidad(Jugador& duenio,
+                uint8_t tipo_unidad,
+                Mapa& mapa,
+                YAML::Node& constantes,
                 std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comando,
                 std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades) :
                 duenio(duenio),
+                tipo_unidad(tipo_unidad),
                 mapa(mapa),
-                origen(origen),
+                origen(this->mapa.obtenerCoordenadasSpawn(obtenerIdJugador())),
+                id(contador_ids++),
                 colas_comandos(colas_comando),
                 unidades(unidades),
-                ticks(constantes["TicksPorSegundo"].as<uint16_t>()) {}
+                ticks(constantes["TicksPorSegundo"].as<uint16_t>()) {
+    this->mapa.spawnearUnidad(obtenerIdJugador(), tipo_unidad, id, origen);
+}
+
+void Unidad::enviarComandoEmpezarEntrenamiento() {
+    uint16_t tiempo_entrenamiento_unidad = duenio.obtenerTiempoConstruccionUnidad(tipo_unidad);
+    CmdEmpezarEntrenamientoServer* comando =
+                    new CmdEmpezarEntrenamientoServer(id, tipo_unidad, tiempo_entrenamiento_unidad, origen, vida);
+    colas_comandos[obtenerIdJugador()]->push(comando);
+    for (auto& cola : colas_comandos) {
+        if (cola.first == obtenerIdJugador()) {
+            continue;
+        }
+        CmdEnemigoDespliegaUnidadServer* comando =
+            new CmdEnemigoDespliegaUnidadServer(id, obtenerIdJugador(), tipo_unidad, tiempo_entrenamiento_unidad, origen, vida);
+        cola.second->push(comando);
+    }
+}
 
 void Unidad::empezarMovimiento(const Coordenadas& destino) {
     this->atacando = false;
@@ -147,6 +173,10 @@ bool Unidad::update(long ticks_transcurridos) {
 
 uint8_t Unidad::obtenerIdJugador() {
     return this->duenio.obtenerId();
+}
+
+uint8_t Unidad::obtenerId() const {
+    return this->id;
 }
 
 bool Unidad::sigueViva() {

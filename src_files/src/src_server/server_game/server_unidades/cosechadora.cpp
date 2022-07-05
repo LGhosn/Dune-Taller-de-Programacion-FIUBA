@@ -1,17 +1,12 @@
 #include "cosechadora.h"
 
-Cosechadora::Cosechadora(uint8_t id,
-                        Jugador& duenio,
+Cosechadora::Cosechadora(Jugador& duenio,
                         Mapa& mapa,
                         YAML::Node& atributos_unidad,
-                        Coordenadas& coords_spawn,
                         YAML::Node& constantes,
                         std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos,
                         std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades) :
-                            Unidad(duenio, mapa, coords_spawn, constantes, colas_comandos, unidades) {
-    this->id = id;
-    this->tipo_unidad = VEHICULO;
-
+                        Unidad(duenio, 4, mapa, constantes, colas_comandos, unidades) {
     this->velocidad = atributos_unidad["Vehiculo"]["Cosechadora"]["Velocidad"].as<int16_t>();
     this->tiempo_entrenamiento = atributos_unidad["Vehiculo"]["Cosechadora"]["TiempoEntrenamiento"].as<uint16_t>();
     this->vida = atributos_unidad["Vehiculo"]["Cosechadora"]["Vida"].as<int16_t>();
@@ -19,9 +14,11 @@ Cosechadora::Cosechadora(uint8_t id,
     this->penalizacion_terreno = atributos_unidad["Vehiculo"]["Cosechadora"]["PenalizacionTerreno"].as<std::vector<float>>();
     this->terrenos_no_accesibles = atributos_unidad["Vehiculo"]["Cosechadora"]["TerrenosNoAccesibles"].as<std::vector<uint8_t>>();
     
-    this->capacidad_especia = constantes["CapacidadCosechadora"].as<int>();
-    this->tiempo_extraer = constantes["TiempoDeExtraccion"].as<uint16_t>();
-    this->tiempo_depositar = constantes["TiempoDeDeposito"].as<uint16_t>();
+    // this->capacidad_especia = atributos_unidad["CapacidadCosechadora"].as<int>();
+    // this->tiempo_extraer = atributos_unidad["TiempoDeExtraccion"].as<uint16_t>();
+    // this->tiempo_depositar = atributos_unidad["TiempoDeDeposito"].as<uint16_t>();
+
+    enviarComandoEmpezarEntrenamiento();
 }
 
 void Cosechadora::empezarProcesoDeCosecha(Coordenadas coords_cosecha) {

@@ -168,13 +168,14 @@ void WorldView::moverUnidad(uint8_t id_unidad, uint8_t direccion, uint16_t tiemp
     this->unidades[id_unidad]->moverse(direccion, tiempo_movimiento);
 }
 
-void WorldView::empezarEntrenamiento(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo_aparicion, Coordenadas& coords_spawn) {
+void WorldView::empezarEntrenamiento(uint8_t id_unidad, uint8_t tipo_unidad, uint16_t tiempo_aparicion,
+                                    Coordenadas& coords_spawn, uint16_t vida) {
     if (tipo_unidad < 4) {
         side_menu.empezarEntrenamientoInfanteria(tipo_unidad, tiempo_aparicion);
     } else {
         side_menu.empezarEntrenamientoVehiculo(tipo_unidad, tiempo_aparicion);
     }
-    empezarAparicionDeUnidad(id_unidad, this->id_jugador, tipo_unidad, true, tiempo_aparicion, coords_spawn);
+    empezarAparicionDeUnidad(id_unidad, this->id_jugador, tipo_unidad, true, tiempo_aparicion, coords_spawn, vida);
 }
 
 void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
@@ -182,7 +183,8 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                 uint8_t tipo_unidad,
                                                 bool unidad_amiga,
                                                 uint16_t tiempo_entrenamiento,
-                                                Coordenadas& coords_spawn) {
+                                                Coordenadas& coords_spawn,
+                                                uint16_t vida) {
     if (tipo_unidad < 4) {
         this->unidades[id_unidad] = std::shared_ptr<InfanteriaSDL>(new InfanteriaSDL(id_unidad,
                                                                          id_jugador,
@@ -195,7 +197,8 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                                          coords_spawn,
                                                                          constantes,
                                                                          colores.obtenerColor(id_jugador),
-                                                                         tiempo_entrenamiento));
+                                                                         tiempo_entrenamiento,
+                                                                         vida));
     } else {
         this->unidades[id_unidad] = std::shared_ptr<VehiculoSDL>(new VehiculoSDL(id_unidad,
                                                                          id_jugador,
@@ -208,7 +211,8 @@ void WorldView::empezarAparicionDeUnidad(uint8_t id_unidad,
                                                                          coords_spawn,
                                                                          constantes,
                                                                          colores.obtenerColor(id_jugador),
-                                                                         tiempo_entrenamiento));
+                                                                         tiempo_entrenamiento,
+                                                                         vida));
     }
 }
 
