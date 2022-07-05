@@ -286,3 +286,15 @@ void ProtocoloServidor::enviarComandoModificarVidaEdificio(uint8_t id_edificio,
     serializador.serializarComandoModificarVidaEdificio(id_edificio, unidad_atacante, vida);
     enviarBuffer(buffer);
 }
+
+
+/* *****************************************************************
+ *              METODOS REFERIDOS A TERMINAR
+ * *****************************************************************/
+
+    void ProtocoloServidor::enviarComandoTerminarPartida(uint8_t id_ganador) {
+        std::vector<uint8_t> buffer(2);
+        buffer[0] = CODIGO_TERMINAR_PARTIDA;
+        buffer[1] = id_ganador;
+        enviarBuffer(buffer);
+    }

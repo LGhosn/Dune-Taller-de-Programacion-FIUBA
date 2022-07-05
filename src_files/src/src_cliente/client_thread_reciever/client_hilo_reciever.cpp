@@ -11,6 +11,7 @@
 #include "../client_comandos/cmd_actualizar_puntaje.h"
 #include "../client_comandos/cmd_modificar_vida_unidad.h"
 #include "../client_comandos/cmd_modificar_vida_edificio.h"
+#include "../client_comandos/cmd_terminar_partida.h"
 #include "../client_DTO/dto_cmd_empezar_construccion_edificio.h"
 #include "../client_DTO/dto_cmd_enemigo_despliega_unidad.h"
 #include "../client_DTO/dto_cmd_actualizar_puntajes_cliente.h"
@@ -106,6 +107,9 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
         case 61: {
             CmdModificarVidaEdificioClienteDTO comandoDTO = protocolo_asociado.recibirComandoModificarVidaEdificio();
             return new CmdModificarVidaEdificioCliente(comandoDTO.id_edificio, comandoDTO.unidad_atacante, comandoDTO.vida);
+        case 70: {
+            uint8_t id_ganador = protocolo_asociado.recibirComandoTerminarPartida();
+            return new CmdTerminarPartidaCliente(id_ganador);
         }
         default:
             throw std::runtime_error("ClientHiloReciever: Codigo de comando desconocido");

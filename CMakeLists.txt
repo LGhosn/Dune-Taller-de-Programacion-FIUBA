@@ -78,6 +78,7 @@ add_executable(ClientDune2000
         src_files/src/src_cliente/client_comandos/cmd_enemigo_despliega_unidad.cpp
         src_files/src/src_cliente/client_comandos/cmd_actualizar_puntaje.cpp
         src_files/src/src_cliente/client_comandos/cmd_marcador.cpp
+        src_files/src/src_cliente/client_comandos/cmd_terminar_partida.cpp
         src_files/src/src_cliente/client_solicitudes/sol_mover_unidad.cpp
         src_files/src/src_cliente/client_solicitudes/sol_comprar_edificio.cpp
         src_files/src/src_cliente/client_solicitudes/sol_comprar_unidad.cpp
@@ -112,6 +113,7 @@ add_executable(ClientDune2000
         src_files/src/src_cliente/client_world_view/sdl_color/sdl_color.cpp
         src_files/src/src_cliente/client_world_view/sdl_color/sdl_colores.cpp
         src_files/src/src_cliente/client_world_view/sdl_texturas.cpp
+        src_files/src/src_cliente/client_world_view/sdl_estado_partida/sdl_estado_partida.cpp
         src_files/src/src_common/common_DTO/Status.cpp
         src_files/src/src_common/common_colas/cola_bloqueante.cpp
         src_files/src/src_common/common_colas/cola_no_bloqueante.cpp
@@ -149,6 +151,11 @@ add_executable(ServerDune2000
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_comprar_unidad.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_mover_unidad.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_atacar_unidad.cpp
+
+        src_files/src/src_server/server_comandos/cmd_actualizar_tienda_edificios.cpp
+        src_files/src/src_server/server_comandos/cmd_actualizar_tienda_unidades.cpp
+        src_files/src/src_server/server_comandos/cmd_empezar_construccion_edificio.cpp
+        src_files/src/src_server/server_comandos/cmd_terminar_partida.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_crear_edificio.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_comprar_edificio.cpp
         src_files/src/src_server/server_solicitudes/solicitud_juego/sol_atacar_edificio.cpp

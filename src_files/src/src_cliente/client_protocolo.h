@@ -104,6 +104,12 @@ public:
     CmdModificarVidaEdificioClienteDTO recibirComandoModificarVidaEdificio();
 
 /* *****************************************************************
+ *                  METODOS REFERIDOS A ATAQUES
+ * *****************************************************************/
+
+    uint8_t recibirComandoTerminarPartida();
+
+/* *****************************************************************
  *                         MOVE SEMANTICS
  * *****************************************************************/
 
