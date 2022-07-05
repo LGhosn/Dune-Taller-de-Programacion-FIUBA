@@ -373,6 +373,8 @@ void WorldView::modificarVidaEdificio(uint8_t id_edificio, uint8_t unidad_atacan
         edificios_construidos.erase(id_edificio);
     }
     unidades[unidad_atacante]->disparar();
+}
+
 void WorldView::terminarPartida(uint8_t id_ganador) {
     estado.mostrarEstado(id_ganador == id_jugador);
 }

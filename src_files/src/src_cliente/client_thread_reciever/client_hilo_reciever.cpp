@@ -107,6 +107,7 @@ ComandoCliente* ClientHiloReciever::crearComandoSegunCodigo(uint8_t codigo) {
         case 61: {
             CmdModificarVidaEdificioClienteDTO comandoDTO = protocolo_asociado.recibirComandoModificarVidaEdificio();
             return new CmdModificarVidaEdificioCliente(comandoDTO.id_edificio, comandoDTO.unidad_atacante, comandoDTO.vida);
+        }
         case 70: {
             uint8_t id_ganador = protocolo_asociado.recibirComandoTerminarPartida();
             return new CmdTerminarPartidaCliente(id_ganador);

@@ -304,15 +304,16 @@ CmdModificarVidaEdificioClienteDTO ProtocoloCliente::recibirComandoModificarVida
     this->skt_cliente.recvall(&vida, SIZEOF_TWO_BYTES);
     vida = ntohs(vida);
     return CmdModificarVidaEdificioClienteDTO(id_edificio, unidad_atacante, vida);
+}
 /* *****************************************************************
  *                  METODOS REFERIDOS A ATAQUES
  * *****************************************************************/
 
-// uint8_t ProtocoloCliente::recibirComandoTerminarPartida() {
-//     uint8_t id_ganador;
-//     this->skt_cliente.recvall(&id_ganador, SIZEOF_BYTE);
-//     return id_ganador;
-// }
+uint8_t ProtocoloCliente::recibirComandoTerminarPartida() {
+    uint8_t id_ganador;
+    this->skt_cliente.recvall(&id_ganador, SIZEOF_BYTE);
+    return id_ganador;
+}
 
 /* *****************************************************************
  *                          METODOS AUXILIARES
