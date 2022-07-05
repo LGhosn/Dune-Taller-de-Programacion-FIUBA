@@ -26,6 +26,27 @@ sudo apt-get install qt5-doc-html qtbase5-doc-html
 sudo apt-get install qtbase5-examples
 ```
 
+## Instalación
+Para instalar el juego se provee del script installer.sh que corre en bash. Se debe ejecutar:
+```
+$ ./installer.sh
+```
+Si fallan los permisos, se le deberán conceder los mismos ejecutando:
+```
+$ chmod +x ./installer.sh
+```
+Una vez que la instalación haya finalizado, se puede abrir el cliente corriendo:
+``
+$ ClientDune2000 localhost <puerto>
+``
+donde `<puerto>` es un parámetro que representa el puerto en que queremos abrir el servidor.
+
+Para lanzar el servidor hacer:
+```
+$ ServerDune2000 <puerto>
+```
+donde `<puerto>` es un parámetro que representa el puerto en que queremos abrir el servidor.
+
 ## Como lanzar el servidor
 1. Abrir la terminal de Linux dentro de la carpeta `build`
 2. Ejecutar el comando `cmake .. && make`.
