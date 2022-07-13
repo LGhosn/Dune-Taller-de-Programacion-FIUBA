@@ -36,6 +36,10 @@ WorldView:
     EtiquetaPosiciones: "#"
     EtiquetaNombres: "Nombre"
     EtiquetaPuntaje: "Puntaje"
+  EstadoPartida:
+    PaddingX: 100
+    PaddingY: 100
+    LargoTexto: 50
   Unidades:
     UI:
       HP:
