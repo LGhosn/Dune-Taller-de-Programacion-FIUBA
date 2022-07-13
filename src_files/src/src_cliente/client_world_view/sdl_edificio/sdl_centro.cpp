@@ -59,9 +59,9 @@ bool CentroSDL::cambiarHP(uint16_t hp_edificio) {
     vida_restante = hp_edificio;
     if (hp_edificio < limite_hp_debilitar) {
         debilitado = true;
-        return true;
     }
-    return false;
+    std::cout << "Vida restante: " << vida_restante << std::endl;
+    return vida_restante > 0;
 }
 
 void CentroSDL::update(uint32_t origen_movil_x, uint32_t origen_movil_y, long frame_transcurridos,

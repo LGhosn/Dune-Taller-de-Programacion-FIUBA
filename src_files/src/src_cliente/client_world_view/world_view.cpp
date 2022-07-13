@@ -130,6 +130,7 @@ void WorldView::crearEdificio(uint16_t id_edificio,
             edificios.insert(std::make_pair(coord_actual, edificio));
         }
     }
+    edificios_construidos.emplace(id_edificio, edificio);
     if (id_jugador == this->id_jugador) {
         side_menu.edificioCreado(tipo);
     }
@@ -368,7 +369,7 @@ void WorldView::modificarVidaUnidad(uint8_t id_unidad, uint16_t vida) {
 
 void WorldView::modificarVidaEdificio(uint8_t id_edificio, uint8_t unidad_atacante,
 							uint16_t vida) {
-    bool esta_construido = edificios_construidos[id_edificio]->cambiarHP(vida);
+    bool esta_construido = edificios_construidos.at(id_edificio)->cambiarHP(vida);
     if (!esta_construido) {
         edificios_construidos.erase(id_edificio);
     }
@@ -380,3 +381,4 @@ void WorldView::terminarPartida(uint8_t id_ganador) {
 }
 
 void WorldView::salir() {}
+

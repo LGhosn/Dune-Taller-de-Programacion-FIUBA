@@ -13,14 +13,14 @@ Unidad::Unidad(Jugador& duenio,
                 YAML::Node& constantes,
                 std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comando,
                 std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades) :
-                duenio(duenio),
-                tipo_unidad(tipo_unidad),
-                mapa(mapa),
-                origen(this->mapa.obtenerCoordenadasSpawn(obtenerIdJugador())),
-                id(contador_ids++),
-                colas_comandos(colas_comando),
-                unidades(unidades),
-                ticks(constantes["TicksPorSegundo"].as<uint16_t>()) {
+                    duenio(duenio),
+                    tipo_unidad(tipo_unidad),
+                    mapa(mapa),
+                    origen(this->mapa.obtenerCoordenadasSpawn(obtenerIdJugador())),
+                    id(contador_ids++),
+                    colas_comandos(colas_comando),
+                    unidades(unidades),
+                    ticks(constantes["TicksPorSegundo"].as<uint16_t>()) {
     this->mapa.spawnearUnidad(obtenerIdJugador(), tipo_unidad, id, origen);
 }
 
@@ -117,20 +117,20 @@ void Unidad::updateMovimiento(long ticks_transcurridos) {
     }
 }
 
-void Unidad::atacar(std::shared_ptr<EntidadServer> edificio_a_atacar) {
-    if (!edificio_a_atacar->sigueViva()) {
+void Unidad::atacar(std::shared_ptr<EntidadServer> entidad_a_atacar) {
+    if (!entidad_a_atacar->sigueViva()) {
         return;
     }
-    if (estaEnRango(edificio_a_atacar->ubicacion())) {
+    if (estaEnRango(entidad_a_atacar->ubicacion())) {
         atacando = true;
-        arma->disparar(edificio_a_atacar);
+        arma->disparar(entidad_a_atacar);
     } else {
         atacando = false;
-        this->destino = this->mapa.obtenerCoordenadasEnRango(this->rango, edificio_a_atacar->ubicacion());
+        this->destino = this->mapa.obtenerCoordenadasEnRango(this->rango, entidad_a_atacar->ubicacion());
         setearNuevoCamino();
     }
     persiguiendo = true;
-    this->unidad_a_atacar = edificio_a_atacar;
+    this->unidad_a_atacar = entidad_a_atacar;
 }
 
 void Unidad::updateAtaque(long ticks_transcurridos) {
@@ -199,6 +199,7 @@ bool Unidad::estaEnRango(Coordenadas& coords) const {
 void Unidad::atacarUnidadEnRango() {
     for (auto& unidad : unidades) {
         if ((unidad.second->obtenerIdJugador() != this->obtenerIdJugador()) && estaEnRango(unidad.second->origen)) {
+            std::cout << "Unidad en rango" << std::endl;
             atacando = true;
             this->unidad_a_atacar = unidad.second;
             arma->disparar(this->unidad_a_atacar);
