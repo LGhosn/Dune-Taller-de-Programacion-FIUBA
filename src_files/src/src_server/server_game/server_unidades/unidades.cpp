@@ -119,6 +119,7 @@ void Unidad::updateMovimiento(long ticks_transcurridos) {
 
 void Unidad::atacar(std::shared_ptr<EntidadServer> entidad_a_atacar) {
     if (!entidad_a_atacar->sigueViva()) {
+        atacando = false;
         return;
     }
     if (estaEnRango(entidad_a_atacar->ubicacion())) {

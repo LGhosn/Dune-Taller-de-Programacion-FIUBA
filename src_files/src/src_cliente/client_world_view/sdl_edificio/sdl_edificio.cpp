@@ -131,6 +131,10 @@ void EdificioSDL::deseleccionar() {
     seleccionado = false;
 }
 
+bool EdificioSDL::contiene(uint32_t pos_x, uint32_t pos_y) const {
+    return destino_ui.Contains(pos_x, pos_y);
+}
+
 uint8_t EdificioSDL::obtenerId() const {
     return id;
 }

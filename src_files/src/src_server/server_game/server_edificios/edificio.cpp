@@ -44,7 +44,6 @@ void EdificioServer::recibirDmg(uint8_t dmg_entrante, uint8_t id_unidad_atacante
             edificios.erase(id_edificio);
             this->vida = 0;
         }
-        std::cout << "Vida restante: " << vida << std::endl;
         for (auto& cola : colas_comandos) {
             CmdModificarVidaEdificioServer* comando = new CmdModificarVidaEdificioServer(id_edificio, id_unidad_atacante,this->vida);
             cola.second->push(comando);

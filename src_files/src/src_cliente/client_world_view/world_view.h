@@ -45,7 +45,6 @@ class WorldView {
 	SideMenuSDL side_menu;
 	MarcadorSDL marcador;
 	EstadoPartidaSDL estado;
-	std::unordered_map<Coordenadas, std::shared_ptr<EdificioSDL>, HashCoordenadas> edificios;
 	std::vector<std::shared_ptr<EdificioSDL>> edificios_seleccionados;
     std::vector<std::shared_ptr<UnidadSDL>> unidades_seleccionadas;
     std::map<uint8_t, std::shared_ptr<UnidadSDL>> unidades;
@@ -55,10 +54,43 @@ class WorldView {
 	uint8_t id_jugador;
 	InfoPartidaDTO info_partida;
 
+	void deseleccionarEdificio(std::shared_ptr<EdificioSDL> edificio);
 	void deseleccionarEdificios();
 	void seleccionarEdificio(std::shared_ptr<EdificioSDL> edificio);
+	/*
+	 * Devuelve el edificio situado en la posicion dada. En caso de que no haya ningun edificio
+	 * en esa posicion, devuelve nullptr.
+	*/
+	std::shared_ptr<EdificioSDL> edificioEnPosicion(uint32_t pos_x, uint32_t pos_y) const;
+
+	/*
+	 * Envia una solicitud para que todas las unidades seleccionadas ataquen al edificio.
+	*/
+	void atacarEdificio(std::shared_ptr<EdificioSDL> edificio_a_atacar);
+
+	bool edificioEstaSeleccionado(std::shared_ptr<EdificioSDL>& edificio) const;
+
     void seleccionarUnidad(std::shared_ptr<UnidadSDL> unidad);
+	void deseleccionarUnidad(std::shared_ptr<UnidadSDL> unidad);
     void deseleccionarUnidades();
+
+	/*
+	 * Devuelve la unidad situada en la posicion dada. En caso de que no haya ninguna unidad
+	 * en esa posicion, devuelve nullptr.
+	*/
+	std::shared_ptr<UnidadSDL> unidadEnPosicion(uint32_t pos_x, uint32_t pos_y) const;
+
+	bool unidadEstaSeleccionada(std::shared_ptr<UnidadSDL>& unidad) const;
+
+	/*
+	 * Envia una solicitud para que todas las unidades seleccionadas ataquen a la unidad dada.
+	*/
+	void atacarUnidad(std::shared_ptr<UnidadSDL> unidad_a_atacar);
+
+	/*
+	 * Envia solicitudes para que cada unidad seleccionada se mueva a la posicion deseada.
+	*/
+	void moverUnidades(uint32_t pos_x, uint32_t pos_y);
 
 	void renderUI();
 

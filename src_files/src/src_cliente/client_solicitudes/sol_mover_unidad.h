@@ -10,7 +10,7 @@ class SolicitudMoverUnidad : public SolicitudCliente {
     Coordenadas coords_a_moverse;
 
 public:
-    SolicitudMoverUnidad(uint8_t id_unidad, Coordenadas& coords_a_moverse);
+    SolicitudMoverUnidad(uint8_t id_unidad, const Coordenadas& coords_a_moverse);
     virtual void enviarSolicitud(ProtocoloCliente& protocolo, uint8_t id_jugador);
     virtual ~SolicitudMoverUnidad() = default;
 };

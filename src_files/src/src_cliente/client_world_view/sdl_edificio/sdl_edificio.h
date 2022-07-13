@@ -66,6 +66,8 @@ public:
     void seleccionar();
     void deseleccionar();
 
+    bool contiene(uint32_t pos_x, uint32_t pos_y) const;
+
     virtual void update(uint32_t offset_x, uint32_t offset_y, long frame_transcurridos, float zoom) = 0;
 
     virtual void render() = 0;

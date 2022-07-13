@@ -119,6 +119,7 @@ void TexturasSDL::cargarEdificios() {
         stream << RUTA_EDIFICIOS << "centro/" << casa << "/centro_" << casa << ".bmp";
         centros.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
     }
+
     uint8_t it = 0;
     centros_brazos = std::vector<std::vector<SDL2pp::Texture>>(3);
     for (const std::string& casa: casas) {
@@ -130,6 +131,12 @@ void TexturasSDL::cargarEdificios() {
                                         SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
         }
         it++;
+    }
+
+    for (const std::string& casa: casas) {
+        std::stringstream stream;
+        stream << RUTA_EDIFICIOS << "centro/" << casa << "/centro_" << casa << "_debilitado.bmp";
+        centros_debilitados.emplace_back(renderer, SDL2pp::Surface(stream.str()).SetColorKey(true, 0));
     }
 
     for (const std::string& casa: casas) {
