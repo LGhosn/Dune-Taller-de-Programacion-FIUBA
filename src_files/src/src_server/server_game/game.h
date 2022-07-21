@@ -13,6 +13,7 @@
 #include "server_jugador/jugador.h"
 #include "yaml-cpp/yaml.h"
 #include "server_gusano.h"
+#include "server_unidades/server_armas/arma_factory.h"
 
 #define RUTA_CONSTANTES RESOURCE_PATH "/constantes/server_constantes.yaml"
 #define RUTA_ATRIBUTOS_UNIDADES RESOURCE_PATH "/constantes/atributos_unidades.yaml"
@@ -27,6 +28,7 @@ class Game {
     std::string nombre_mapa;
     YAML::Node constantes;
     YAML::Node atributos_unidades;
+    ArmaFactory arma_factory;
     Gusano gusano;
     uint8_t cont_id_edificios;
 

@@ -3,7 +3,7 @@ Infanteria:
    Arma: 
     - "Rifle"
    Rango: 3
-   Velocidad: 12
+   Velocidad: 16
    TiempoEntrenamiento: 60
    Costo: 50
    Vida: 50
@@ -42,7 +42,7 @@ Infanteria:
     - "Rifle"
     - "Lanza misiles"
    Rango: 3
-   Velocidad: 12
+   Velocidad: 20
    TiempoEntrenamiento: 120
    Costo: 100
    Vida: 50
@@ -83,7 +83,7 @@ Vehiculo:
    Arma:
     - "Rifle"
    Rango: 4
-   Velocidad: 12
+   Velocidad: 64
    TiempoEntrenamiento: 120
    Costo: 100
    Vida: 80
@@ -123,7 +123,7 @@ Vehiculo:
     Arma:
       - "Canion 22mm"
     Rango: 4
-    Velocidad: 12
+    Velocidad: 84
     TiempoEntrenamiento: 120
     Costo: 100
     Vida: 80
@@ -163,7 +163,7 @@ Vehiculo:
     Arma:
       - "Canion"
     Rango: 4
-    Velocidad: 12
+    Velocidad: 40
     TiempoEntrenamiento: 240
     Costo: 300
     Vida: 30

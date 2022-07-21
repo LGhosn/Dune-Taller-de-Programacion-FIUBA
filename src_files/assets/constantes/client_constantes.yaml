@@ -65,7 +65,7 @@ WorldView:
       Alto: 86
       PaddingY: 8
       OffsetX: 3
-      LimiteHPDebilitar: 750
+      LimiteHPDebilitar: 100
       Brazo:
         CantidadFrames: 14
         Rate: 15

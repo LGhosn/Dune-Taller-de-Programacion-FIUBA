@@ -71,6 +71,7 @@ Game:
       #Ordos
       - [false, true, true, false, true, true, false, true, true, false, false]
   Unidades:
+    ConstanteTiempoMovimiento: 100
     EdificiosRequeridos:
       #Fremen
       - [true, true, false, false, true, false, false, false]
@@ -144,4 +145,4 @@ Game:
       #Trike
       - 5
   Edificios:
-    HP: [3000, 300, 500, 1500, 1000, 1000, 200, 500]
+    HP: [300, 300, 500, 1500, 1000, 1000, 200, 500]

@@ -18,6 +18,7 @@ public:
                 YAML::Node& atributos_unidad,
                 YAML::Node& constantes,
                 std::map< uint8_t, ColaBloqueante<ComandoServer>* >& colas_comandos,
+                ArmaFactory& arma_factory,
                 std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades);
     void cargarCosecha();
     int vaciarCosecha();

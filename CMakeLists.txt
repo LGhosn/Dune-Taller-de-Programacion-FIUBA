@@ -182,6 +182,9 @@ add_executable(ServerDune2000
         src_files/src/src_server/server_game/server_jugador/validador_unidades.cpp
         src_files/src/src_server/server_game/server_edificios/edificio.cpp
         src_files/src/src_server/server_game/server_unidades/unidades.cpp
+        src_files/src/src_server/server_game/server_unidades/comportamiento/unidad_comportamiento.cpp
+        src_files/src/src_server/server_game/server_unidades/comportamiento/unidad_modo_ataque.cpp
+        src_files/src/src_server/server_game/server_unidades/comportamiento/unidad_modo_pasivo.cpp
         src_files/src/src_server/server_game/server_unidades/cosechadora.cpp
         src_files/src/src_server/server_game/server_unidades/desviador.cpp
         src_files/src/src_server/server_game/server_unidades/devastador.cpp
@@ -193,6 +196,7 @@ add_executable(ServerDune2000
         src_files/src/src_server/server_game/server_unidades/tanque.cpp
         src_files/src/src_server/server_game/server_unidades/tanqueSonico.cpp
         src_files/src/src_server/server_game/server_unidades/trike.cpp
+        src_files/src/src_server/server_game/server_unidades/server_armas/arma_factory.cpp
         src_files/src/src_server/server_game/server_unidades/server_armas/arma.cpp
         src_files/src/src_server/server_game/server_unidades/server_armas/Canion.cpp
         src_files/src/src_server/server_game/server_unidades/server_armas/Canion22mm.cpp

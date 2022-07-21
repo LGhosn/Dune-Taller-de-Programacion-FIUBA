@@ -66,6 +66,7 @@ Game::Game(const std::string& nombre_mapa) :
             nombre_mapa(nombre_mapa),
             constantes(YAML::LoadFile(RUTA_CONSTANTES)),
             atributos_unidades(YAML::LoadFile(RUTA_ATRIBUTOS_UNIDADES)),
+            arma_factory(atributos_unidades, constantes["TicksPorSegundo"].as<uint16_t>()),
             gusano(constantes["Game"]["Gusano"]["VictimasADevorar"].as<int>(),
                     constantes["Game"]["Gusano"]["TiempoEntreVictimas"].as<uint16_t>(), this->mapa) {}
 
@@ -88,27 +89,27 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, Coordenadas coords) {
 std::shared_ptr<Unidad> Game::clasificarUnidad(uint8_t tipo_unidad, Jugador& jugador) {
     switch (tipo_unidad) {
         case 0:
-            return std::shared_ptr<Unidad>(new Fremen(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Fremen(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         case 1:
-            return std::shared_ptr<Unidad>(new InfanteriaLigera(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new InfanteriaLigera(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         case 2:
-            return std::shared_ptr<Unidad>(new InfanteriaPesada(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new InfanteriaPesada(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         case 3:
-            return std::shared_ptr<Unidad>(new Sardaukar(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Sardaukar(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         case 4:
-            return std::shared_ptr<Unidad>(new Cosechadora(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Cosechadora(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         case 5:
-            return std::shared_ptr<Unidad>(new Desviador(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Desviador(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         case 6:
-            return std::shared_ptr<Unidad>(new Devastador(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Devastador(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         case 7:
-            return std::shared_ptr<Unidad>(new Raider(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Raider(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         case 8:
-            return std::shared_ptr<Unidad>(new Tanque(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Tanque(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         case 9:
-            return std::shared_ptr<Unidad>(new TanqueSonico(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new TanqueSonico(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         case 10:
-            return std::shared_ptr<Unidad>(new Trike(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, unidades));
+            return std::shared_ptr<Unidad>(new Trike(jugador, this->mapa, this->atributos_unidades, constantes, colas_comandos, arma_factory, unidades));
         default:
             throw std::runtime_error("Game: Tipo de unidad no reconocido");
     }
@@ -128,7 +129,7 @@ void Game::comprarUnidad(uint8_t id_jugador, uint8_t tipo_unidad) {
 void Game::moverUnidad(uint8_t id_jugador, uint8_t id_unidad, const Coordenadas& destino) {
     std::shared_ptr<Unidad>& unidad = this->unidades.at(id_unidad);
     if (id_jugador == unidad->obtenerIdJugador()) {
-        unidad->empezarMovimiento(destino);
+        unidad->moverA(destino);
     }
 }
 

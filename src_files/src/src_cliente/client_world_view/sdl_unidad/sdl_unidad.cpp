@@ -146,7 +146,7 @@ void UnidadSDL::moverse(uint8_t direccion, uint16_t tiempo_movimiento) {
         }
         coords = coords_siguiente;
         actualizarCoordenadaFutura(direccion);
-        frames_para_llegar = fps * tiempo_movimiento / 1000;
+        frames_para_llegar = fps * tiempo_movimiento;
         frames_restantes = frames_para_llegar;
         moviendose = true;
         disparando = false;
