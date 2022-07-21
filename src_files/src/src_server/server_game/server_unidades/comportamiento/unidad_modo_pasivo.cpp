@@ -12,6 +12,7 @@ std::unique_ptr<UnidadComportamiento> UnidadModoPasivo::atacar(std::shared_ptr<E
 std::unique_ptr<UnidadComportamiento> UnidadModoPasivo::moverA(const Coordenadas& destino) {
     moviendose = true;
     this->destino = destino;
+    camino = std::stack<Coordenadas>();
     return nullptr;
 }
 
@@ -28,7 +29,7 @@ void UnidadModoPasivo::update(long ticks_transcurridos) {
             entidad_a_atacar = nullptr;
         }
     } else {
-        if (camino.empty() && ticks_restantes == 0) {
+        if (camino.empty()) {
             setearNuevoCamino(destino);
         } else {
             if (this->ticks_restantes > ticks_transcurridos) {
