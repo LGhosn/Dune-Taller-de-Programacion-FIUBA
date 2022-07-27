@@ -5,15 +5,14 @@ UnidadModoPasivo::UnidadModoPasivo(Unidad* unidad, const Coordenadas& destino_in
                     UnidadComportamiento(unidad),
                     destino(destino_inicial) {}
 
-std::unique_ptr<UnidadComportamiento> UnidadModoPasivo::atacar(std::shared_ptr<EntidadServer> entidad_a_atacar) {                            
-    return std::make_unique<UnidadModoAtaque>(unidad, entidad_a_atacar);
+void UnidadModoPasivo::atacar(std::shared_ptr<EntidadServer> entidad_a_atacar) {                            
+    unidad->comportamiento = std::make_unique<UnidadModoAtaque>(unidad, entidad_a_atacar);
 }
 
-std::unique_ptr<UnidadComportamiento> UnidadModoPasivo::moverA(const Coordenadas& destino) {
+void UnidadModoPasivo::moverA(const Coordenadas& destino) {
     moviendose = true;
     this->destino = destino;
     camino = std::stack<Coordenadas>();
-    return nullptr;
 }
 
 void UnidadModoPasivo::update(long ticks_transcurridos) {
@@ -30,7 +29,11 @@ void UnidadModoPasivo::update(long ticks_transcurridos) {
         }
     } else {
         if (camino.empty()) {
-            setearNuevoCamino(destino);
+            if (unidad->ubicacion_actual == destino) {
+                moviendose = false;
+            } else {
+                setearNuevoCamino(destino);
+            }
         } else {
             if (this->ticks_restantes > ticks_transcurridos) {
                 this->ticks_restantes -= ticks_transcurridos;

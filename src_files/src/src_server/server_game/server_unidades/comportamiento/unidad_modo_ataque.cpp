@@ -18,7 +18,7 @@ void UnidadModoAtaque::update(long ticks_transcurridos) {
         this->camino = std::stack<Coordenadas>();
         ticks_restantes = 0;
     } else {
-        if (camino.empty() && ticks_restantes == 0) {
+        if (camino.empty()) {
             setearNuevoCamino(entidad_a_atacar->ubicacion());
         } else {
             if (this->ticks_restantes > ticks_transcurridos) {
@@ -35,11 +35,10 @@ void UnidadModoAtaque::update(long ticks_transcurridos) {
     }
 }
 
-std::unique_ptr<UnidadComportamiento> UnidadModoAtaque::atacar(std::shared_ptr<EntidadServer> entidad_a_atacar) {
+void UnidadModoAtaque::atacar(std::shared_ptr<EntidadServer> entidad_a_atacar) {
     this->entidad_a_atacar = entidad_a_atacar;
-    return nullptr;
 }
 
-std::unique_ptr<UnidadComportamiento> UnidadModoAtaque::moverA(const Coordenadas& destino) {
-    return std::make_unique<UnidadModoPasivo>(unidad, destino);
+void UnidadModoAtaque::moverA(const Coordenadas& destino) {
+    unidad->comportamiento = std::make_unique<UnidadModoPasivo>(unidad, destino);
 }

@@ -35,16 +35,16 @@ public:
     UnidadComportamiento(Unidad* unidad);
 
     /*
-     * Realiza el comando de atacar dependiendo del comportamiento actual de la unidad. Devuelve
-     * el siguiente estado si hay que cambiar, nullptr si hay que permanecer en el mismo estado.
+     * Realiza el comando de atacar dependiendo del comportamiento actual de la unidad.
+     * Puede modificar el comportamiento de la unidad.
     */
-    virtual std::unique_ptr<UnidadComportamiento>  atacar(std::shared_ptr<EntidadServer> entidad_a_atacar) = 0;
+    virtual void atacar(std::shared_ptr<EntidadServer> entidad_a_atacar) = 0;
 
     /*
-     * Realiza el comando de mover dependiendo del comportamiento actual de la unidad. Devuelve
-     * el siguiente estado si hay que cambiar, nullptr si hay que permanecer en el mismo estado.
+     * Realiza el comando de mover dependiendo del comportamiento actual de la unidad.
+     * Puede modificar el comportamiento de la unidad.
     */
-    virtual std::unique_ptr<UnidadComportamiento>  moverA(const Coordenadas& destino) = 0;
+    virtual void moverA(const Coordenadas& destino) = 0;
 
     virtual void update(long ticks_transcurridos) = 0;
 };

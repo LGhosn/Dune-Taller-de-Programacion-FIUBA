@@ -62,15 +62,11 @@ void Unidad::enviarComandoEmpezarEntrenamiento() {
 }
 
 void Unidad::atacar(std::shared_ptr<EntidadServer> entidad_a_atacar) {
-    std::unique_ptr<UnidadComportamiento> nuevo_comportamiento = comportamiento->atacar(entidad_a_atacar);
-    if (nuevo_comportamiento)
-        comportamiento = std::move(nuevo_comportamiento);
+    comportamiento->atacar(entidad_a_atacar);
 }
 
 void Unidad::moverA(const Coordenadas& destino) {
-    std::unique_ptr<UnidadComportamiento> nuevo_comportamiento = comportamiento->moverA(destino);
-    if (nuevo_comportamiento)
-        comportamiento = std::move(nuevo_comportamiento);
+    comportamiento->moverA(destino);
 }
 
 bool Unidad::update(long ticks_transcurridos) {

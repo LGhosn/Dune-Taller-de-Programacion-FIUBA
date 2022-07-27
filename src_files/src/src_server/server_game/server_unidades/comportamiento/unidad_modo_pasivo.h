@@ -9,8 +9,8 @@ class UnidadModoPasivo : public UnidadComportamiento {
 public:
     UnidadModoPasivo(Unidad* unidad, const Coordenadas& destino_inicial);
     
-    virtual std::unique_ptr<UnidadComportamiento> atacar(std::shared_ptr<EntidadServer> entidad_a_atacar);
-    virtual std::unique_ptr<UnidadComportamiento> moverA(const Coordenadas& destino);
+    virtual void atacar(std::shared_ptr<EntidadServer> entidad_a_atacar);
+    virtual void moverA(const Coordenadas& destino);
 
     virtual void update(long ticks_transcurridos);
 };
