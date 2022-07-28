@@ -75,6 +75,8 @@ private:
 
     Coordenadas coordenadaLibreMasCercana(Coordenadas& coordenada);
 
+    Coordenadas obtenerCoordenadasSpawn(uint8_t id_jugador);
+
 public:
     /*
      * Construye un mapa de ancho x alto
@@ -113,19 +115,19 @@ public:
 
     bool esCoordenadaValida(const Coordenadas& coords);
 
-    Coordenadas obtenerCoordenadasSpawn(uint8_t id_jugador);
+    /*
+     * Encuentra una ubicacion en la que pueda spawnear la unidad, y la devuelve.
+     * En caso de no encontrar un lugar en donde spawnear una unidad, lanza una excepcion.
+    */
+    Coordenadas spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni);
 
     Coordenadas& obtenerCoordenadasRefinamiento();
-
-    void spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas coords_spawn);
 
     bool obtenerUnidadRandomSobreArena(uint8_t *id_victima);
 
     char obtenerTipoDeTerreno(Coordenadas& coords);
 
     uint8_t obtenerDireccion(const Coordenadas& coords_actual,const Coordenadas& coords_nueva);
-
-    Coordenadas obtenerCoordenadasEnRango(uint8_t rango,const Coordenadas& coords_nueva);
 
     bool obtenerUnidadEnemigaEnRango(uint8_t id_jugador, uint8_t rango,  uint8_t& id_unidad, Coordenadas& coords);
 

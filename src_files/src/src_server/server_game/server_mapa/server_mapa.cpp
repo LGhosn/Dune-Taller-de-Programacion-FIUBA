@@ -303,11 +303,13 @@ Coordenadas Mapa::obtenerCoordenadasSpawn(uint8_t id_jugador) {
     throw std::runtime_error("No se encontro spawn para el jugador");
 }
 
-void Mapa::spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni, Coordenadas coords_spawn){
+Coordenadas Mapa::spawnearUnidad(uint8_t id_jugador, uint8_t tipo_unidad, uint8_t id_uni) {
+    Coordenadas coords_spawn = obtenerCoordenadasSpawn(id_jugador);
     std::shared_ptr<Entidades>& entidad = this->mapa[coords_spawn.y][coords_spawn.x];
     char terreno = entidad->obtenerIdentificador();
     this->mapa[coords_spawn.y][coords_spawn.x] = std::shared_ptr<Entidades>(new UnidadesMapa(terreno, tipo_unidad, id_jugador, id_uni));
     unidades_en_mapa.emplace(id_uni, coords_spawn);
+    return coords_spawn;
 }
 
 bool Mapa::obtenerUnidadRandomSobreArena(uint8_t *id_victima) {
@@ -358,20 +360,6 @@ uint8_t Mapa::obtenerDireccion(const Coordenadas& origen, const Coordenadas& des
     } else {
         throw std::runtime_error("Mapa: No cambio de posicion");
     }
-}
-
-Coordenadas Mapa::obtenerCoordenadasEnRango(uint8_t rango,const Coordenadas& coords_nueva) {
-    for (int i = coords_nueva.y - rango; i <= coords_nueva.y + rango; i++) {
-        if (0 > i || i >= this->alto) continue;
-        for (int j = coords_nueva.x - rango; j <= coords_nueva.x + rango; j++) {
-            if (0 > j || j >= this->ancho) continue;
-            std::shared_ptr<Entidades>& entidad = this->mapa[i][j];
-            if (entidad->obtenerTipoDeEntidad() == 'T') {
-                return Coordenadas(j, i);
-            }
-        }
-    }
-    throw std::runtime_error("Mapa: No se encontro un terreno en el rango");
 }
 
 bool Mapa::obtenerUnidadEnemigaEnRango(uint8_t id_jugador, uint8_t rango,  uint8_t& id_unidad, Coordenadas& coords) {

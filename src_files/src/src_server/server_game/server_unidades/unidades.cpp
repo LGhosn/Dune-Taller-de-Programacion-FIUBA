@@ -26,7 +26,7 @@ Unidad::Unidad(Jugador& duenio,
                     duenio(duenio),
                     tipo_unidad(tipo_unidad),
                     id(contador_ids++),
-                    ubicacion_actual(mapa.obtenerCoordenadasSpawn(duenio.obtenerId())),
+                    ubicacion_actual(mapa.spawnearUnidad(obtenerIdJugador(), tipo_unidad, id)),
                     arma(arma_factory.obtenerArma(tipo_unidad, id)),
                     colas_comandos(colas_comando),
                     rango(rango),
@@ -40,9 +40,7 @@ Unidad::Unidad(Jugador& duenio,
                     unidades(unidades),
                     ticks(constantes["TicksPorSegundo"].as<uint16_t>()),
                     multiplicador_tiempo_mov(constantes["Game"]["Unidades"]["ConstanteTiempoMovimiento"].as<uint16_t>()),
-                    comportamiento(std::make_unique<UnidadModoPasivo>(this, ubicacion_actual)) {
-    mapa.spawnearUnidad(obtenerIdJugador(), tipo_unidad, id, ubicacion_actual);
-}
+                    comportamiento(std::make_unique<UnidadModoPasivo>(this, ubicacion_actual)) {}
 
 void Unidad::enviarComandoEmpezarEntrenamiento() {
     uint16_t tiempo_entrenamiento_unidad = duenio.obtenerTiempoConstruccionUnidad(tipo_unidad);

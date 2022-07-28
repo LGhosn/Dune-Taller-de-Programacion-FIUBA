@@ -4,6 +4,14 @@
 
 uint8_t EdificioServer::contador_ids = 0;
 
+void EdificioServer::enviarVidaActualizada(uint8_t id_unidad_atacante) {
+    for (auto& cola : colas_comandos) {
+        CmdModificarVidaEdificioServer* comando =
+            new CmdModificarVidaEdificioServer(id_edificio, id_unidad_atacante,this->vida);
+        cola.second->push(comando);
+    }
+}
+
 EdificioServer::EdificioServer(Jugador& duenio,
                                 Mapa& mapa,
                                 uint8_t tipo_edificio,
@@ -37,17 +45,16 @@ uint8_t EdificioServer::obtenerId() {
 
 void EdificioServer::recibirDmg(uint8_t dmg_entrante, uint8_t id_unidad_atacante) {
     if (sigueViva()) {
-        if (this->vida > dmg_entrante) {
-            this->vida -= dmg_entrante;
+        if (vida > dmg_entrante) {
+            vida -= dmg_entrante;
+            enviarVidaActualizada(id_unidad_atacante);
         } else {
-            this->mapa.eliminarEdificio(id_edificio);
+            vida = 0;
+            enviarVidaActualizada(id_unidad_atacante);
+            mapa.eliminarEdificio(id_edificio);
             edificios.erase(id_edificio);
-            this->vida = 0;
         }
-        for (auto& cola : colas_comandos) {
-            CmdModificarVidaEdificioServer* comando = new CmdModificarVidaEdificioServer(id_edificio, id_unidad_atacante,this->vida);
-            cola.second->push(comando);
-        }
+        std::cout << "Vida actual: " << vida << std::endl;
     }
 }
 

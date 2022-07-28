@@ -9,6 +9,8 @@
 
 class EdificioServer : public EntidadServer {
     static uint8_t contador_ids;
+
+    void enviarVidaActualizada(uint8_t id_unidad_atacante);
 protected:
     Jugador& duenio;
     Mapa& mapa;
