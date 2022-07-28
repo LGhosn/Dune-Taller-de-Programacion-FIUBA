@@ -27,7 +27,7 @@ public:
     void volverARefinar();
     bool estaEnLasCoordenadasDeCosecha();
     virtual ~Cosechadora() = default;
-    virtual bool update(long ticks_transcurridos) override;
+    virtual void update(long ticks_transcurridos) override;
     virtual uint8_t obtenerTipoDeUnidad();
 };
 

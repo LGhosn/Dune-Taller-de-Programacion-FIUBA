@@ -185,9 +185,7 @@ void Game::atacarEdificio(uint8_t id_jugador_atacante, uint8_t id_unidad_atacant
 
 void Game::updateUnidad(long iter) {
     for (auto it = unidades.begin(); it != unidades.end(); it++) {
-        if (!it->second->update(iter)) {
-            it = unidades.erase(it);
-        }
+        it->second->update(iter);
     }
 }
 

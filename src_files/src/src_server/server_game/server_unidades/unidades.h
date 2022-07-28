@@ -66,14 +66,14 @@ public:
             ArmaFactory& arma_factory,
             std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades);
 
-    virtual Coordenadas& ubicacion();
-    virtual bool sigueViva();
-    virtual uint8_t obtenerIdJugador();
-    virtual uint8_t obtenerId() const;
-    virtual void recibirDmg(uint8_t dmg_entrante, uint8_t id_unidad_atacante);
-    virtual void moverA(const Coordenadas& destino);
-    virtual bool update(long ticks_transcurridos);
-    virtual void atacar(std::shared_ptr<EntidadServer> unidad_a_atacar);
+    Coordenadas& ubicacion();
+    bool sigueViva();
+    uint8_t obtenerIdJugador();
+    uint8_t obtenerId() const;
+    void recibirDmg(uint8_t dmg_entrante, uint8_t id_unidad_atacante);
+    void moverA(const Coordenadas& destino);
+    virtual void update(long ticks_transcurridos);
+    void atacar(std::shared_ptr<EntidadServer> unidad_a_atacar);
     virtual uint8_t obtenerTipoDeUnidad() = 0;
     virtual ~Unidad() = default;
 };

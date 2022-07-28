@@ -69,13 +69,13 @@ void Unidad::moverA(const Coordenadas& destino) {
     comportamiento->moverA(destino);
 }
 
-bool Unidad::update(long ticks_transcurridos) {
+void Unidad::update(long ticks_transcurridos) {
     if (!sigueViva()) {
-        return false;
+        unidades.erase(id);
+        mapa.eliminarUnidad(id);
     }
     comportamiento->update(ticks_transcurridos);
     arma->update(ticks_transcurridos);
-    return true;
 }
 
 uint8_t Unidad::obtenerIdJugador() {

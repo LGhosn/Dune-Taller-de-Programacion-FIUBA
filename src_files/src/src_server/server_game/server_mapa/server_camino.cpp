@@ -27,13 +27,14 @@ float Camino::calcular_costo_adicional(const Coordenadas& actual, const Coordena
 }
 
 bool Camino::a_star(const Coordenadas& origen,
-                    const Coordenadas& destino,
+                    Coordenadas& destino,
                     std::unordered_map<Coordenadas,Coordenadas, HashCoordenadas>& padres,
                     std::vector<uint8_t>& terrenos_no_accesibles,
                     const std::vector<float>& penalizacion_terreno) const {
     std::unordered_map<Coordenadas, float, HashCoordenadas> costo;
     std::priority_queue<std::pair<float, Coordenadas>,
-    std::vector<std::pair<float, Coordenadas>>, std::greater<std::pair<float, Coordenadas>>> frontera;
+                        std::vector<std::pair<float, Coordenadas>>,
+                        std::greater<std::pair<float, Coordenadas>>> frontera;
     frontera.push(std::make_pair(0.0f, origen));
     padres[origen] = origen;
     costo[origen] = this->distancia(origen, destino);
@@ -42,9 +43,10 @@ bool Camino::a_star(const Coordenadas& origen,
         float puntaje;
         std::tie(puntaje, actual) = frontera.top();
         frontera.pop();
-        if (actual == destino)
+        std::list<Coordenadas> vecinos = this->get_vecinos(actual, destino, terrenos_no_accesibles);
+        if (actual == destino) {
             break;
-        std::list<Coordenadas> vecinos = this->get_vecinos(actual, terrenos_no_accesibles);
+        }
         for (const Coordenadas& vecino : vecinos) {
             float costo_nuevo = costo[actual] + calcular_costo_adicional(actual, vecino, penalizacion_terreno);
             if (costo.find(vecino) == costo.end() || costo_nuevo < costo[vecino]) {
@@ -86,15 +88,21 @@ bool Camino::posicion_es_valida(const Coordenadas& pos, std::vector<uint8_t>& te
     return false;
 }
 
-std::list<Coordenadas> Camino::get_vecinos(const Coordenadas& origen,
-    std::vector<uint8_t>& terrenos_no_accesibles) const {
+std::list<Coordenadas> Camino::get_vecinos(const Coordenadas& ubicacion_actual,
+                                        Coordenadas& destino,
+                                        std::vector<uint8_t>& terrenos_no_accesibles) const {
     std::list<Coordenadas> vecinos;
     for (const auto& posicion_vecina : this->vecinos_posibles) {
         Coordenadas vecino_posible;
-        vecino_posible.x = posicion_vecina.first + origen.x;
-        vecino_posible.y = posicion_vecina.second + origen.y;
-        if (posicion_es_valida(vecino_posible, terrenos_no_accesibles))
+        vecino_posible.x = posicion_vecina.first + ubicacion_actual.x;
+        vecino_posible.y = posicion_vecina.second + ubicacion_actual.y;
+        if (posicion_es_valida(vecino_posible, terrenos_no_accesibles)) {
             vecinos.push_back(vecino_posible);
+        } else if (vecino_posible == destino) {
+            destino.x = ubicacion_actual.x;
+            destino.y = ubicacion_actual.y;
+            break;
+        }
     }
     return vecinos;
 }
@@ -132,18 +140,16 @@ void Camino::start(std::vector< std::vector<std::shared_ptr<Entidades> > >* mapa
 }
 
 std::stack<Coordenadas> Camino::obtener_camino(UnidadInfoDTO& unidad_info) const {
-    const Coordenadas& origen = unidad_info.origen;
-    const Coordenadas& destino = unidad_info.destino;
-    std::vector<uint8_t>& terrenos_no_accesibles = unidad_info.terrenos_no_accesibles;
-    const std::vector<float>& penalizacion_terreno = unidad_info.penalizacion_terreno;
-
     std::unordered_map<Coordenadas, Coordenadas, HashCoordenadas> padres;
-    bool resultado = this->a_star(origen, destino, padres, terrenos_no_accesibles, penalizacion_terreno);
-    if (resultado) {
-        return this->construir_camino(padres, origen, destino);
+    Coordenadas destino_actual = unidad_info.destino;
+    bool se_pudo_encontrar = this->a_star(unidad_info.origen, destino_actual,
+                                padres, unidad_info.terrenos_no_accesibles,
+                                unidad_info.penalizacion_terreno);
+    if (se_pudo_encontrar) {
+        return this->construir_camino(padres, unidad_info.origen, destino_actual);
+    } else {
+        return std::stack<Coordenadas>();
     }
-    
-    return std::stack<Coordenadas>();
 }
 
 Camino::Camino(const Camino& otro) : mapa(nullptr) {}

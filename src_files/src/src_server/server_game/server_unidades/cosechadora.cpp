@@ -61,9 +61,8 @@ bool Cosechadora::estaEnLasCoordenadasDeCosecha(){
     return true;
 }
 
-bool Cosechadora::update(long ticks_transcurridos) {
+void Cosechadora::update(long ticks_transcurridos) {
     // updateMovimiento(ticks_transcurridos);
-    return true;
 }
 
 uint8_t Cosechadora::obtenerTipoDeUnidad() {
