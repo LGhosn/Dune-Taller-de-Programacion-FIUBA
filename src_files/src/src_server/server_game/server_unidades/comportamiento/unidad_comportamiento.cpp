@@ -14,12 +14,12 @@ void UnidadComportamiento::encontrarUnidadAAtacarEnRango() {
     }
 }
 
-bool UnidadComportamiento::estaEnRango(Coordenadas& coords) const {
+bool UnidadComportamiento::estaEnRango(const Coordenadas& coords) const {
     uint16_t distancia = sqrt(pow(unidad->ubicacion_actual.x - coords.x, 2) + pow(unidad->ubicacion_actual.y - coords.y, 2));
     return distancia <= unidad->rango;
 }
 
-void UnidadComportamiento::setearNuevoCamino(Coordenadas& destino) {
+void UnidadComportamiento::setearNuevoCamino(const Coordenadas& destino) {
     UnidadInfoDTO info(unidad->ubicacion_actual, destino, unidad->terrenos_no_accesibles, unidad->penalizacion_terreno);
     camino = unidad->mapa.obtenerCamino(info);
     if(this->camino.empty()) {

@@ -66,6 +66,6 @@ bool EdificioServer::sigueViva() {
     return vida > 0;
 }
 
-Coordenadas& EdificioServer::ubicacion() {
+const Coordenadas& EdificioServer::ubicacion() const {
     return coords;
 }

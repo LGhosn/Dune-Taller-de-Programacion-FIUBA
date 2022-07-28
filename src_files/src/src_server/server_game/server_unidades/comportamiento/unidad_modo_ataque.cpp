@@ -10,6 +10,10 @@ UnidadModoAtaque::UnidadModoAtaque(Unidad* unidad,
 void UnidadModoAtaque::update(long ticks_transcurridos) {
     if (!entidad_a_atacar) {
         encontrarUnidadAAtacarEnRango();
+        if (!entidad_a_atacar) {
+            unidad->comportamiento = std::make_unique<UnidadModoPasivo>(unidad, unidad->ubicacion_actual);
+            return;
+        }
     } else if (estaEnRango(entidad_a_atacar->ubicacion())) {
         unidad->arma->disparar(entidad_a_atacar);
         if (!entidad_a_atacar->sigueViva()) {

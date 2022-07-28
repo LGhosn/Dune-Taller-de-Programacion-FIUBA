@@ -66,9 +66,9 @@ public:
             ArmaFactory& arma_factory,
             std::unordered_map<uint8_t, std::shared_ptr<Unidad> >& unidades);
 
-    Coordenadas& ubicacion();
+    const Coordenadas& ubicacion() const;
     bool sigueViva();
-    uint8_t obtenerIdJugador();
+    uint8_t obtenerIdJugador() const;
     uint8_t obtenerId() const;
     void recibirDmg(uint8_t dmg_entrante, uint8_t id_unidad_atacante);
     void moverA(const Coordenadas& destino);

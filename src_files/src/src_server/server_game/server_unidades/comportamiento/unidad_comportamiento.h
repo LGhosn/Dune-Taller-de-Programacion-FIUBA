@@ -22,9 +22,9 @@ protected:
 
     void encontrarUnidadAAtacarEnRango();
 
-    bool estaEnRango(Coordenadas& coords) const;
+    bool estaEnRango(const Coordenadas& coords) const;
 
-    void setearNuevoCamino(Coordenadas& destino);
+    void setearNuevoCamino(const Coordenadas& destino);
 
     void setearNuevoMovimiento();
     uint16_t obtenerTiempoParaMoverse();

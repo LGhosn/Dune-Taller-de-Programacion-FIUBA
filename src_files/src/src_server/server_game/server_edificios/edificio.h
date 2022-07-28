@@ -38,7 +38,7 @@ public:
     virtual uint8_t obtenerId();
     bool esCentro() const;
     virtual void recibirDmg(uint8_t dmg_entrante, uint8_t id_unidad_atacante);
-    virtual Coordenadas& ubicacion();
+    virtual const Coordenadas& ubicacion() const;
     virtual bool sigueViva();
     virtual ~EdificioServer() = default;
 };

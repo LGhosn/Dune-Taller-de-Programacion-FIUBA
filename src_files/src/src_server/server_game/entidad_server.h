@@ -6,7 +6,7 @@
 class EntidadServer {
 public:
     EntidadServer() = default;
-    virtual Coordenadas& ubicacion() = 0;
+    virtual const Coordenadas& ubicacion() const = 0;
     virtual bool sigueViva() = 0;
     virtual void recibirDmg(uint8_t dmg_entrante, uint8_t id_unidad_atacante) = 0;
     virtual ~EntidadServer() = default;

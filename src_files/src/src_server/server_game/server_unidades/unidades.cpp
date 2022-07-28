@@ -76,7 +76,7 @@ void Unidad::update(long ticks_transcurridos) {
     arma->update(ticks_transcurridos);
 }
 
-uint8_t Unidad::obtenerIdJugador() {
+uint8_t Unidad::obtenerIdJugador() const {
     return this->duenio.obtenerId();
 }
 
@@ -104,6 +104,6 @@ void Unidad::recibirDmg(uint8_t dmg_entrante, uint8_t id_unidad_atacante) {
     }
 }
 
-Coordenadas& Unidad::ubicacion() {
+const Coordenadas& Unidad::ubicacion() const {
     return ubicacion_actual;
 }
