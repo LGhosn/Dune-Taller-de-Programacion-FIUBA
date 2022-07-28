@@ -65,7 +65,6 @@ void EspeciaAcumulada::actualizarYEnviarNuevoPuntaje(uint16_t diferencia) {
 bool EspeciaAcumulada::comprarEdificio(uint8_t tipo_edificio, std::vector<uint8_t>& edificios_comprados, uint8_t& casa) {
     if (cantidad_especia >= costo_edificios[tipo_edificio]) {
         cantidad_especia -= costo_edificios[tipo_edificio];
-        edificios_comprados[tipo_edificio]++;
         actualizarYEnviarEdificiosComprables();
         actualizarUnidadesComprables();
         enviarNuevaCantidadEspecia();

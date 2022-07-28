@@ -43,7 +43,6 @@ void ClientHiloReciever::run() {
     while (this->hay_que_seguir) {
         uint8_t codigo_comando;
         protocolo_asociado.recibirCodigoDeComando(codigo_comando);
-        std::cout << "Codigo recibido: " << (int) codigo_comando << std::endl;
         ComandoCliente* comando = this->crearComandoSegunCodigo(codigo_comando);
         cola_eventos.push(comando);
     }

@@ -76,8 +76,10 @@ void Game::crearEdificio(uint8_t id_jugador, uint8_t tipo, Coordenadas coords) {
     if (resultado) {
         Jugador& jugador = encontrarJugador(id_jugador);
         jugador.edificioCreado(tipo);
-        std::shared_ptr<EdificioServer> edif =
-        std::shared_ptr<EdificioServer>(new EdificioServer(jugador,this->mapa, tipo, coords, constantes, this->colas_comandos, this->edificios));
+        std::shared_ptr<EdificioServer> edif = std::make_shared<EdificioServer>(
+                                                    jugador,this->mapa, tipo, coords,
+                                                    constantes, this->colas_comandos,
+                                                    this->edificios);
         this->edificios[edif->obtenerId()] = edif;
     } else {
         cont_id_edificios--;
